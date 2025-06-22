@@ -57,7 +57,7 @@ const config = {
           rehypePlugins: [rehypeKatex],
           showLastUpdateTime: true,
           showLastUpdateAuthor: true,
-          breadcrumbs: true,
+          breadcrumbs: false,
         },
         blog: {
           path: "blog",
@@ -132,15 +132,21 @@ const config = {
         {
           type: "doc",
           docId: "intro",
-          label: "Machine Learning Wiki",
+          label: "Wiki",
         },
         {
           to: "blog",
-          label: "Posts",
+          label: "Blog",
         },
         {
           type: "localeDropdown",
           position: "right",
+        },
+        {
+          href: "https://github.com/danibcorr/ml-wiki",
+          position: "right",
+          className: "header-github-link",
+          "aria-label": "GitHub repository",
         },
       ],
     },
