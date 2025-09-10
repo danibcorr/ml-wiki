@@ -29,19 +29,6 @@ const config = {
       },
     },
   },
-  plugins: [
-    [
-      "@docusaurus/plugin-client-redirects",
-      {
-        redirects: [
-          {
-            to: "/intro/",
-            from: ["/"],
-          },
-        ],
-      },
-    ],
-  ],
   presets: [
     [
       "@docusaurus/preset-classic",

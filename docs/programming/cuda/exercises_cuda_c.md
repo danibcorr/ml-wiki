@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 7
 authors:
   - name: Daniel Bazo Correa
 description: Ejercicios de CUDA en C.

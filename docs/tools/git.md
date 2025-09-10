@@ -26,42 +26,43 @@ historial de cambios en proyectos de software. Facilita la colaboración entre
 desarrolladores, el seguimiento de modificaciones en el código y la administración de
 distintas versiones del código a lo largo del tiempo.
 
-Originalmente, Git se diseña para la línea de comandos en relación con el kernel de
-Linux, por lo que mantiene una estrecha vinculación con la interfaz de línea de comandos
-(CLI - **_Command Line Interface_**).
-
 Plataformas como **GitHub** o **GitLab** utilizan Git para facilitar la gestión de
 proyectos y la colaboración en línea, ofreciendo interfaces gráficas y funcionalidades
-adicionales como la integración continua, la gestión de problemas y la colaboración entre
-equipos.
+adicionales como la integración continua, la gestión de problemas y la colaboración
+entre equipos.
 
 ## 2. Control de versiones
 
-El control de versiones gestiona los cambios en archivos a lo largo del tiempo,
-permitiendo la recuperación de versiones anteriores cuando es necesario.
+El **control de versiones** es una herramienta que permite gestionar los cambios en
+archivos a lo largo del tiempo, facilitando la recuperación de versiones anteriores
+cuando sea necesario. Puedes imaginarlo como un sistema de **etiquetas de cambios**,
+cada vez que guardas un cambio usando un _commit_ en Git, se genera un **identificador
+único** que registra el estado exacto de los archivos en ese momento. Esto te permite
+consultar, comparar o restaurar versiones anteriores de manera segura y organizada.
 
 ### 2.1. Terminología
 
-- **Repositorio local**: Espacio en el ordenador donde se almacenan todos los archivos de
-  un proyecto y sus versiones anteriores. Git permite hacer un seguimiento de los cambios
-  en estos archivos sin necesidad de conexión a internet.
+- **Repositorio local**: Espacio en el ordenador donde se almacenan todos los archivos
+  de un proyecto y sus versiones anteriores. Git permite hacer un seguimiento de los
+  cambios en estos archivos sin necesidad de conexión a internet.
 
-- **Repositorio remoto**: Copia del repositorio local almacenada en internet o en una red
-  externa. Plataformas como GitHub, GitLab o Bitbucket permiten que varias personas
+- **Repositorio remoto**: Copia del repositorio local almacenada en internet o en una
+  red externa. Plataformas como GitHub, GitLab o Bitbucket permiten que varias personas
   trabajen en el mismo proyecto desde diferentes ubicaciones. Es útil para compartir el
   código y realizar copias de seguridad.
 
-- **Histórico (_Log_)**: Registro que muestra todos los cambios realizados en el proyecto
-  a lo largo del tiempo. Cada vez que se guarda un cambio en Git (un **_commit_**), queda
-  registrado en este historial con información como la fecha, el autor del cambio y una
-  descripción de lo modificado. También se conoce como **_Commit History_**, siendo el
-  lugar donde se almacenan todos los **_commits_** realizados.
+- **Histórico (_Log_)**: Registro que muestra todos los cambios realizados en el
+  proyecto a lo largo del tiempo. Cada vez que se guarda un cambio en Git (un
+  **_commit_**), queda registrado en este historial con información como la fecha, el
+  autor del cambio y una descripción de lo modificado. También se conoce como **_Commit
+  History_**, siendo el lugar donde se almacenan todos los **_commits_** realizados.
 
 - **Conflicto**: Situación que ocurre cuando Git no puede combinar automáticamente los
-  cambios de diferentes personas en un mismo archivo. Por ejemplo, si dos personas editan
-  la misma línea de un archivo y luego intentan guardar sus cambios en el repositorio
-  remoto, Git no puede determinar qué versión debe mantener y marca un conflicto. En ese
-  caso, es necesario revisar y decidir manualmente qué cambios conservar.
+  cambios de diferentes personas en un mismo archivo. Por ejemplo, si dos personas
+  editan la misma línea de un archivo y luego intentan guardar sus cambios en el
+  repositorio remoto, Git no puede determinar qué versión debe mantener y marca un
+  conflicto. En ese caso, es necesario revisar y decidir manualmente qué cambios
+  conservar.
 
 ### 2.2. Áreas
 
@@ -81,10 +82,10 @@ Dentro del sistema Git se distinguen diferentes áreas:
    Cuando se añaden nuevos archivos en esta área, para Git están en estado _untracked_
    (sin seguimiento) hasta que se añadan explícitamente.
 
-2. **_Staging Area_**: Funciona como un espacio de borrador donde se preparan los cambios
-   para el siguiente _commit_. Se representa físicamente mediante un fichero llamado
-   `index` dentro de la carpeta `.git` en la raíz del repositorio. Los archivos añadidos
-   a esta área pasan a estar _tracked_ (con seguimiento).
+2. **_Staging Area_**: Funciona como un espacio de borrador donde se preparan los
+   cambios para el siguiente _commit_. Se representa físicamente mediante un fichero
+   llamado `index` dentro de la carpeta `.git` en la raíz del repositorio. Los archivos
+   añadidos a esta área pasan a estar _tracked_ (con seguimiento).
 
 3. **_Commit History_**: Área donde se almacenan todas las versiones confirmadas del
    proyecto.
@@ -104,9 +105,9 @@ Durante su ciclo de vida en Git, un archivo puede pasar por diferentes estados:
    rastreando. No se guarda en el historial del repositorio hasta que se agregue
    manualmente con `git add`.
 
-2. **Ignorado (_Ignored_)**: Archivos como configuraciones personales o temporales pueden
-   estar en una lista especial llamada `.gitignore`. Git los omite y no los agrega al
-   repositorio.
+2. **Ignorado (_Ignored_)**: Archivos como configuraciones personales o temporales
+   pueden estar en una lista especial llamada `.gitignore`. Git los omite y no los
+   agrega al repositorio.
 
 3. **Modificado (_Modified_)**: El archivo ha sido editado después de su última
    confirmación (_commit_), pero esos cambios aún no han sido registrados en Git.
@@ -119,27 +120,14 @@ Durante su ciclo de vida en Git, un archivo puede pasar por diferentes estados:
    se guardan en la base de datos de Git, registrándolos en el historial del repositorio
    de manera permanente.
 
-### 2.4. Operaciones básicas
-
-- **Clone**: Crea una copia local de un repositorio remoto.
-- **Add**: Añade cambios al área de preparación (_Staging Area_).
-- **Commit**: Registra una nueva versión en el repositorio local. Puede considerarse como
-  una versión del proyecto. Cada _commit_ tiene un hash único compuesto por 40
-  caracteres, aunque solo se necesitan los 5 primeros para referirse a dicho _commit_.
-- **Push**: Sincroniza cambios locales con un repositorio remoto.
-- **Pull**: Actualiza el repositorio local con cambios del repositorio remoto.
-- **Fork**: Crea una copia de un proyecto para modificarla independientemente.
-- **Pull Request**: Solicita la integración de cambios en un proyecto.
-
 ## 3. Git
 
 ### 3.1. Comandos básicos de Linux para Git Bash
 
 **Git Bash** es una interfaz de línea de comandos que permite la interacción con Git
-mediante el uso de comandos de Linux, facilitando la gestión del sistema de archivos y la
-ejecución de diversas operaciones.
-
-A continuación, se describen algunos comandos fundamentales y ejemplos de su uso:
+mediante el uso de comandos de Linux, facilitando la gestión del sistema de archivos y
+la ejecución de diversas operaciones. A continuación, se describen algunos comandos
+fundamentales y ejemplos de su uso:
 
 | Comando   | Función                                                      | Ejemplo de uso                                                                                                                                                                                                         |
 | --------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -193,9 +181,10 @@ control de versiones de manera local en un repositorio Git:
 Antes de trabajar con GitHub o GitLab, es necesario configurar el entorno de Git local.
 Esto incluye establecer la identidad y configurar la autenticación con las plataformas.
 
-Con `git config --global --list` se pueden listar todas las variables en la configuración
-global de Git y sus valores. Esta configuración es necesaria para establecer el usuario y
-el correo electrónico al que estarán asociados todos los commits realizados.
+Con `git config --global --list` se pueden listar todas las variables en la
+configuración global de Git y sus valores. Esta configuración es necesaria para
+establecer el usuario y el correo electrónico al que estarán asociados todos los commits
+realizados.
 
 #### 3.3.1. Configurar nombre de usuario y correo
 
@@ -213,8 +202,8 @@ Para verificar la configuración:
 git config --global --list
 ```
 
-Si deseas configurarlos solo para un repositorio específico, omite la opción `--global` y
-ejecuta los comandos dentro del directorio del repositorio.
+Si deseas configurarlos solo para un repositorio específico, omite la opción `--global`
+y ejecuta los comandos dentro del directorio del repositorio.
 
 #### 3.3.2. Configurar autenticación SSH para GitHub/GitLab
 
@@ -269,14 +258,14 @@ distintas personas colaboren en un proyecto simultáneamente.
 Una de las metodologías más básicas o estándares de Git consiste en utilizar una rama
 principal conocida como `main` o `master`, que es la que se lleva a producción y debe
 estar siempre disponible. Adicionalmente, se cuenta con una rama de desarrollo (`dev`)
-que incorpora las nuevas características o funcionalidades que posteriormente se añadirán
-a la rama principal. A partir de estas, es posible crear diferentes subramas que permiten
-implementar cada característica por separado, aunque esto dependerá de la metodología de
-trabajo utilizada.
+que incorpora las nuevas características o funcionalidades que posteriormente se
+añadirán a la rama principal. A partir de estas, es posible crear diferentes subramas
+que permiten implementar cada característica por separado, aunque esto dependerá de la
+metodología de trabajo utilizada.
 
-En Git existe el concepto de `HEAD`, un puntero que indica la rama que se está utilizando
-y apunta a un commit específico. Es posible encontrarse en un commit que no está siendo
-apuntado por una rama, situación conocida como **Detached HEAD State**.
+En Git existe el concepto de `HEAD`, un puntero que indica la rama que se está
+utilizando y apunta a un commit específico. Es posible encontrarse en un commit que no
+está siendo apuntado por una rama, situación conocida como **Detached HEAD State**.
 
 Tanto **Trunk-Based Development** como **Git Flow** son estrategias populares de control
 de versiones, cada una con sus propias ventajas y casos de uso.
@@ -312,8 +301,8 @@ Sin embargo, presenta las siguientes desventajas:
 
 - **Gestión en equipos grandes**: Puede ser difícil de gestionar en equipos grandes sin
   una estricta disciplina y coordinación.
-- **Rastreo de cambios individuales**: Es menos capaz de rastrear cambios individuales en
-  comparación con Git Flow, lo que puede dificultar la identificación de problemas
+- **Rastreo de cambios individuales**: Es menos capaz de rastrear cambios individuales
+  en comparación con Git Flow, lo que puede dificultar la identificación de problemas
   específicos.
 
 ### 4.4. Git Flow
@@ -324,8 +313,8 @@ Sin embargo, presenta las siguientes desventajas:
   <em>Esquema de desarrollo Git Flow. [Link](https://www.alura.com.br/artigos/assets/git-flow-o-que-e-como-quando-utilizar/imagem3.png)</em>
 </p>
 
-Esta estrategia utiliza múltiples ramas para diferentes propósitos (por ejemplo, ramas de
-características, ramas de lanzamiento, ramas de corrección).
+Esta estrategia utiliza múltiples ramas para diferentes propósitos (por ejemplo, ramas
+de características, ramas de lanzamiento, ramas de corrección).
 
 Las principales ventajas de esta estrategia son:
 
@@ -356,8 +345,8 @@ Sin embargo, presenta las siguientes desventajas:
 
 ## 5. Git Hooks
 
-Los **Git Hooks** son una funcionalidad integrada en Git que permite automatizar tareas y
-aplicar políticas a lo largo del flujo de trabajo. Gracias a ellos, Git puede ejecutar
+Los **Git Hooks** son una funcionalidad integrada en Git que permite automatizar tareas
+y aplicar políticas a lo largo del flujo de trabajo. Gracias a ellos, Git puede ejecutar
 acciones en momentos clave del proceso de desarrollo, asegurando la calidad del código y
 el cumplimiento de políticas específicas del proyecto.
 

@@ -1,7 +1,10 @@
 ---
+sidebar_position: 6
+authors:
+  - name: Daniel Bazo Correa
+description: Fundamentos del Deep Learning.
 title: Deep Multi Task y Meta Learning
-authors: daniel
-tags: [deeplearning]
+toc_max_heading_level: 3
 ---
 
 Aquí intento tener una visión general del uso y aplicaciones sobre _Deep Multi Task y

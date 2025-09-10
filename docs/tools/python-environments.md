@@ -2,7 +2,8 @@
 sidebar_position: 1
 authors:
   - name: Daniel Bazo Correa
-description: Creación y gestión de entornos virtuales de Python con VENV, Anaconda y Poetry
+description:
+  Creación y gestión de entornos virtuales de Python con VENV, Anaconda y Poetry
 title: Gestión de entornos en Python
 toc_max_heading_level: 3
 ---
@@ -14,8 +15,23 @@ import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem';
 - [VENV Docs](https://docs.python.org/3/library/venv.html)
 - [Poetry Docs](https://python-poetry.org/)
 - [Anaconda Docs](https://docs.anaconda.com/)
+- [uv Docs](https://docs.astral.sh/uv/)
 
 ## 1. Introducción
+
+Existen varias opciones para la **gestión de paquetes en Python**. Independientemente de
+la que elijas, mi recomendación es optar siempre por la alternativa más **simple y
+minimalista**. Cuanto menor sea el número de dependencias y más ligero el entorno, más
+fácil será llevarlo a producción (por ejemplo, en una imagen de Docker), compartirlo con
+tu equipo o mantenerlo en el tiempo.
+
+En la actualidad, las opciones que más recomiendo son **Poetry** y **uv**. Ambas
+herramientas agilizan la creación y gestión de entornos, permiten mantener las
+configuraciones del proyecto de forma organizada mediante un archivo `pyproject.toml` y,
+sobre todo, favorecen la **reproducibilidad** de los proyectos, algo esencial tanto en
+desarrollo como en despliegue.
+
+### 1.1. Anaconda
 
 <p align="center">
   <img src={require("../../static/img/docs/logos/anaconda-logo.png").default} width="500"/>
@@ -26,15 +42,31 @@ import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem';
 **Anaconda** es una plataforma de código abierto diseñada para la creación y gestión de
 entornos virtuales en Python, enfocada en proyectos de ciencia de datos y aprendizaje
 automático. Proporciona una distribución de Python con numerosas bibliotecas
-preinstaladas, un gestor de paquetes eficiente y herramientas avanzadas, como los
-cuadernos [_Jupyter_](https://jupyter.org/). La gestión de paquetes en Anaconda se
-realiza mediante el gestor [_Conda_](https://anaconda.org/anaconda/repo), aunque también
-es posible utilizar [_PIP_](https://pypi.org/).
+preinstaladas, un gestor de paquetes eficiente y herramientas avanzadas como
+[_Jupyter_](https://jupyter.org/).
+
+La gestión de paquetes en Anaconda se realiza mediante
+[_Conda_](https://anaconda.org/anaconda/repo), aunque también es posible utilizar
+[_PIP_](https://pypi.org/). Durante años fue la plataforma más usada en ciencia de
+datos, ya que ofrecía un ecosistema completo (Jupyter, Spyder, RStudio, etc.) de manera
+muy sencilla. Sin embargo, con el tiempo ha presentado limitaciones:
+
+- **Licencia más restrictiva** para empresas.
+- **Exceso de dependencias por defecto**, lo que dificulta entornos de producción
+  ligeros.
+
+Hoy en día existen alternativas más eficientes, modernas y ligeras, como **Poetry** y
+**uv**, que utilizan el gestor de entornos virtuales de Python y evitan instalar
+paquetes innecesarios.
+
+### 1.2. VENV
 
 Por otro lado, [_VENV_](https://docs.python.org/3/library/venv.html) es una alternativa
 más ligera para la creación de entornos virtuales sin las dependencias adicionales de
 Anaconda. En este caso, la gestión de paquetes se lleva a cabo con
 [_PIP_](https://pypi.org/).
+
+### 1.3. Poetry
 
 <p align="center">
   <img src="https://python-poetry.org/images/logo-origami.svg" width="100"/>
@@ -50,53 +82,67 @@ proyectos de Python. Permite, entre otras cosas:
 - Facilitar la creación de _wheels_ para empaquetar proyectos y publicarlos en
   [_PyPI_](https://pypi.org/).
 
-:::warning
+### 1.4. uv
 
-Este tutorial asume el uso de un sistema basado en Linux, específicamente una
-distribución derivada de Debian. Ten en cuenta que algunos comandos pueden variar según
-la distribución o el sistema operativo utilizado.
+[_uv_](https://github.com/astral-sh/uv) es una de las herramientas más recientes y
+rápidas para la gestión de entornos y dependencias en Python. Desarrollada por
+**Astral** (los creadores de Ruff), destaca por:
 
-:::
+- Ser **extremadamente veloz** en comparación con `pip` y `poetry`, gracias al uso del
+  lenguaje de programación Rust.
+- Instalar y resolver dependencias en cuestión de milisegundos.
+- Usar un modelo similar a `cargo` (de Rust), con archivos `pyproject.toml`.
+- Gestionar entornos virtuales sin necesidad de configuraciones adicionales.
+
+uv busca reemplazar a `pip`, `pip-tools`, `poetry` y `venv` con una única solución
+rápida y moderna.
 
 ## 2. Utilidades para la gestión de entornos
 
 ### 2.1. Creación de un entorno virtual
 
+Un **entorno virtual** es como una “caja aislada” donde instalamos las librerías que
+necesita un proyecto en particular, sin afectar al resto del sistema ni a otros
+proyectos. Dependiendo de la herramienta que elijas, el proceso puede variar un poco.
+Aquí tienes las opciones más utilizadas:
+
 <Tabs>
    <TabItem value="venv" label="VENV">
 
-      1. **Actualizar el sistema operativo**:
+      1. **Actualizar el sistema** (para tener las últimas mejoras y seguridad):
 
          ```bash
          sudo apt update && sudo apt upgrade -y
          ```
 
-      2. **Agregar el repositorio de Python más reciente**:
+      2. **Añadir un repositorio con versiones recientes de Python** (opcional, solo si tu
+         sistema no tiene la versión que necesitas):
 
          ```bash
          sudo add-apt-repository ppa:deadsnakes/ppa
          sudo apt update
          ```
 
-      3. **Instalar una versión específica de Python** (por ejemplo, Python 3.10):
+      3. **Instalar una versión específica de Python** (ejemplo: Python 3.10):
 
          ```bash
          sudo apt install python3.10
          ```
 
-      4. **Instalar _VENV_, _PIP_ y herramientas de desarrollo**:
+      4. **Instalar VENV y herramientas básicas** (`pip` y cabeceras de desarrollo):
 
          ```bash
          sudo apt install python3.10-venv python3.10-dev python3-pip
          ```
 
-      5. **Crear el entorno virtual**:
+      5. **Crear el entorno virtual** dentro del directorio del proyecto:
 
          ```bash
          python -m venv nombre_del_entorno
          ```
 
-      6. **Activar el entorno**:
+      6. **Activar el entorno** (a partir de aquí, todo lo que instales quedará dentro de esta
+         “caja aislada”):
 
          ```bash
          source nombre_del_entorno/bin/activate
@@ -106,25 +152,25 @@ la distribución o el sistema operativo utilizado.
 
    <TabItem value="anaconda" label="Anaconda">
 
-      1. **Abrir la terminal de Anaconda Prompt**.
+      1. **Descargar e instalar Anaconda** desde la
+         [página oficial](https://www.anaconda.com/download).
 
-      2. **Crear un nuevo entorno**:
+      2. **Abrir la terminal de Anaconda Prompt** (en Windows se instala junto con Anaconda).
+
+      3. **Crear un nuevo entorno**:
 
          ```bash
          conda create --name nombre_del_entorno
          ```
 
-      3. **Activar el entorno**:
+      4. **Activar el entorno**:
 
          ```bash
          conda activate nombre_del_entorno
          ```
 
-      4. **(Opcional) Instalar y actualizar _PIP_ con Anaconda**:
-
-         Es posible usar _PIP_ dentro de Anaconda, aunque no se recomienda
-         mezclar paquetes de ambos gestores, ya que esto puede generar
-         conflictos de versiones.
+      5. **(Opcional) Usar `pip` dentro de Anaconda**: Se puede, aunque no se recomienda
+         mezclar `conda` y `pip`, porque puede dar problemas de compatibilidad.
 
          ```bash
          conda install anaconda::pip
@@ -141,24 +187,21 @@ la distribución o el sistema operativo utilizado.
          pip install poetry
          ```
 
-      2. **Configurar Poetry para usar entornos virtuales dentro del proyecto**:
-         Este es el valor por defecto que tiene Poetry, en caso contrario Poetry
-         funcionara como un gestor de dependencias sin instalar un entorno virtual
-         especifico para el proyecto.
+      2. **Configurar Poetry para que cree entornos dentro del proyecto** (esto es lo más
+         práctico y viene por defecto en las versiones recientes):
 
          ```bash
          poetry config virtualenvs.in-project true
          ```
 
-      3. **Crear un nuevo proyecto con Poetry**:
+      3. **Crear un nuevo proyecto** (Poetry genera la estructura básica con carpetas y un
+         archivo `pyproject.toml`):
 
          ```bash
          poetry new nombre_del_proyecto
          ```
 
-         Esto generará una estructura de proyecto con un archivo `pyproject.toml`.
-
-      4. **Instalar dependencias y crear el entorno virtual automáticamente**:
+      4. **Instalar dependencias y generar el entorno automáticamente**:
 
          ```bash
          poetry install
@@ -166,6 +209,29 @@ la distribución o el sistema operativo utilizado.
 
    </TabItem>
 
+   <TabItem value="uv" label="uv">
+
+      1. **Instalar uv** (en Linux/macOS):
+
+         ```bash
+         curl -LsSf https://astral.sh/uv/install.sh | sh
+         ```
+
+      2. **Crear un nuevo proyecto**:
+
+         ```bash
+         uv init nombre_del_proyecto
+         cd nombre_del_proyecto
+         ```
+
+      3. **Crear el entorno virtual e instalar dependencias**:
+
+         ```bash
+         uv venv
+         uv pip install nombre_del_paquete
+         ```
+
+   </TabItem>
 </Tabs>
 
 ### 2.2. Gestión de la caché
@@ -187,6 +253,11 @@ con los siguientes comandos:
    <TabItem value="poetry" label="Poetry">
       ```bash
       poetry cache clear --all .
+      ```
+   </TabItem>
+   <TabItem value="uv" label="uv">
+      ```bash
+      uv cache clean
       ```
    </TabItem>
 </Tabs>
@@ -262,6 +333,12 @@ proyecto.
       ```
 
    </TabItem>
+
+   <TabItem value="uv" label="uv">
+      ```bash
+      uv pip install --upgrade nombre_del_paquete
+      ```
+   </TabItem>
 </Tabs>
 
 ### 2.4. Instalación de paquetes desde un archivo de requisitos
@@ -279,14 +356,32 @@ Cuando un proyecto necesita dependencias específicas, es útil usar un archivo
 
 2. **Instalar los paquetes desde el archivo**:
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+   <Tabs>
+      <TabItem value="pip" label="PIP">
+         ```bash
+         pip install -r requirements.txt
+         ```
+      </TabItem>
+
+      <TabItem value="poetry" label="Poetry">
+         ```bash
+         poetry install
+         ```
+      </TabItem>
+
+      <TabItem value="uv" label="uv">
+         ```bash
+         uv pip install -r requirements.txt
+         ```
+      </TabItem>
+   </Tabs>
 
 ### 2.5. Eliminar un entorno
 
 <Tabs>
-   <TabItem value="venv" label="VENV">
+   <TabItem value="venv" label="VENV, Poetry, uv">
+
+      En la mayoría de los casos, los entornos creados con ``VENV``, ``Poetry`` y ``uv`` se alojan dentro del propio directorio del proyecto. Por ello, si ya no los necesitas, basta con eliminar la carpeta correspondiente para borrar por completo el entorno junto con toda su información.
 
       ```bash
       rm -rf nombre_del_entorno
@@ -312,15 +407,20 @@ Cuando un proyecto necesita dependencias específicas, es útil usar un archivo
 
 ### 2.6. Integración del entorno con Jupyter
 
-Para añadir el entorno virtual creado podemos seguir los pasos siguientes:
+Para utilizar un entorno virtual dentro de **Jupyter**, es necesario seguir estos pasos:
 
-1. **Instalar `ipykernel` para la integración con Jupyter**:
+1. **Instalar `ipykernel` en el entorno** Primero, debes añadir `ipykernel` como
+   dependencia dentro del entorno virtual. Para ello, instala el paquete utilizando el
+   gestor de dependencias correspondiente (por ejemplo, `pip`, `poetry`, `uv` o
+   `conda`).
 
-   ```bash
-   pip install ipykernel
-   ```
+2. **Registrar el entorno en Jupyter** Este paso es necesario únicamente cuando el
+   entorno virtual se encuentra en un directorio diferente al del proyecto. En la
+   mayoría de los entornos de desarrollo, como **VSCode**, si el entorno está dentro del
+   directorio del proyecto, se detectará automáticamente y podrás seleccionar el kernel
+   asociado sin pasos adicionales.
 
-2. **Añadir el entorno a Jupyter**:
+   En caso de que necesites registrar el entorno manualmente, ejecuta:
 
    ```bash
    python -m ipykernel install --user --name=nombre_del_entorno
@@ -331,14 +431,14 @@ Para añadir el entorno virtual creado podemos seguir los pasos siguientes:
 <Tabs>
    <TabItem value="pip" label="PIP">
 
-      ##### Eliminar todos los paquetes
+      Eliminar todos los paquetes
 
       ```bash
       pip list --format=freeze > installed.txt
       pip uninstall -r installed.txt -y
       ```
 
-      ##### Eliminar un paquete específico
+      Eliminar un paquete específico
 
       ```bash
       pip uninstall nombre_del_paquete
@@ -346,8 +446,6 @@ Para añadir el entorno virtual creado podemos seguir los pasos siguientes:
 
    </TabItem>
    <TabItem value="anaconda" label="Anaconda">
-
-      ##### Eliminar un paquete específico
 
       ```bash
       conda remove nombre_del_paquete
@@ -360,5 +458,10 @@ Para añadir el entorno virtual creado podemos seguir los pasos siguientes:
       poetry remove nombre_del_paquete
       ```
 
+   </TabItem>
+   <TabItem value="uv" label="uv">
+      ```bash
+      uv pip uninstall nombre_del_paquete
+      ```
    </TabItem>
 </Tabs>
