@@ -17,10 +17,7 @@ const config = {
   trailingSlash: true,
   organizationName,
   projectName,
-
-  // Configuración específica para GitHub Pages
   deploymentBranch: "gh-pages",
-
   i18n: {
     defaultLocale: "es",
     locales: ["es"],
@@ -28,24 +25,10 @@ const config = {
       es: {
         label: "Español",
         direction: "ltr",
+        htmlLang: "es",
       },
     },
   },
-
-  plugins: [
-    [
-      "@docusaurus/plugin-client-redirects",
-      {
-        redirects: [
-          {
-            to: "/intro/",
-            from: ["/"],
-          },
-        ],
-      },
-    ],
-  ],
-
   presets: [
     [
       "@docusaurus/preset-classic",
@@ -59,35 +42,11 @@ const config = {
           showLastUpdateAuthor: true,
           breadcrumbs: false,
         },
-        blog: {
-          path: "blog",
-          routeBasePath: "blog",
-          showReadingTime: true,
-          feedOptions: {
-            type: ["rss", "atom"],
-          },
-          onInlineTags: "warn",
-          onInlineAuthors: "warn",
-          onUntruncatedBlogPosts: "warn",
-          remarkPlugins: [remarkMath],
-          rehypePlugins: [rehypeKatex],
-        },
         theme: {
           customCss: "./src/css/custom.css",
         },
       },
     ],
-  ],
-
-  stylesheets: [
-    "/css/custom.css",
-    {
-      href: "https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css",
-      type: "text/css",
-      integrity:
-        "sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM",
-      crossorigin: "anonymous",
-    },
   ],
 
   themeConfig: {
@@ -100,7 +59,7 @@ const config = {
       {
         name: "description",
         content:
-          "Comprehensive Machine Learning Engineering blog featuring tutorials, best practices, and insights on AI, deep learning, Python programming, and modern software development techniques.",
+          "Comprehensive Machine Learning Engineering wiki featuring tutorials, best practices, and insights on AI, deep learning, Python programming, and modern software development techniques.",
       },
       {
         name: "author",
@@ -122,21 +81,18 @@ const config = {
     },
 
     navbar: {
+      title: "Daniel Bazo Correa",
       logo: {
         alt: "Logo",
         src: "img/logo motivo.svg",
         srcDark: "img/logo motivo dark.svg",
-        href: "/intro/",
+        href: "https://danibcorr.github.io/web/",
       },
       items: [
         {
           type: "doc",
           docId: "intro",
           label: "Wiki",
-        },
-        {
-          to: "blog",
-          label: "Blog",
         },
         {
           type: "localeDropdown",
@@ -149,12 +105,11 @@ const config = {
           "aria-label": "GitHub repository",
         },
       ],
+      hideOnScroll: true,
     },
-
     footer: {
       copyright: `Copyright © ${new Date().getFullYear()} Daniel Bazo Correa`,
     },
-
     prism: {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme,

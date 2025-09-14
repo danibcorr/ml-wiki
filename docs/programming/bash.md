@@ -34,8 +34,8 @@ en entornos de desarrollo como en servidores.
 
 ### 2.1. Ejemplo de programa base
 
-Un programa básico en BASH comienza con la línea `#!/bin/bash` (_shebang_), que indica al
-sistema qué intérprete debe usar para ejecutar los comandos del script. Es importante
+Un programa básico en BASH comienza con la línea `#!/bin/bash` (_shebang_), que indica
+al sistema qué intérprete debe usar para ejecutar los comandos del script. Es importante
 destacar que los scripts de BASH suelen tener la extensión `.sh`.
 
 :::note Nota
@@ -52,7 +52,10 @@ específicas.
 :::tip Ejemplo
 
 Supongamos que tenemos un script llamado `script.sh`. Para hacerlo ejecutable, primero
-debemos otorgarle permisos. Aquí te mostramos cómo hacerlo:
+debemos otorgarle permisos.
+
+Primero, crearemos un _script_ básico, con nombre `script.sh`, para mostrar en la
+terminal un `Hola mundo`:
 
 ```bash
 #!/bin/bash
@@ -60,24 +63,35 @@ debemos otorgarle permisos. Aquí te mostramos cómo hacerlo:
 echo "Hola mundo"
 ```
 
-**Para otorgar permisos de ejecución al script**, usamos el siguiente comando:
+En Linux, cada archivo tiene **permisos** que determinan quién puede leerlo, escribirlo
+o ejecutarlo. Cuando creas un script (`script.sh`), normalmente **no tiene permisos de
+ejecución por defecto**, lo que significa que no se puede ejecutar directamente.
+
+Para permitir que el sistema lo ejecute como un programa, usamos:
 
 ```bash
 chmod +x script.sh
 ```
 
-También puedes **ejecutar el script** con el comando:
+**Qué hace este comando:**
+
+- `chmod`: Cambia los **permisos** de un archivo.
+- `+x`: Añade el permiso de **ejecución** al archivo.
+- `script.sh`: El archivo al que le estamos dando permisos.
+
+Después de ejecutar este comando, podrás ejecutar tu script desde la terminal
+directamente así:
 
 ```bash
-bash script.sh
+./script.sh
 ```
 
 :::
 
 ### 2.2. Pasar parámetros como argumentos
 
-En BASH, los parámetros se pasan al script mediante el uso de `$`, seguido del número que
-representa la posición del argumento.
+En BASH, los parámetros se pasan al script mediante el uso de `$`, seguido del número
+que representa la posición del argumento.
 
 :::tip Ejemplo
 
@@ -135,8 +149,8 @@ echo "Tu nombre es $nombre"
 
 ### 2.5. Operaciones aritméticas
 
-Las operaciones aritméticas en BASH se realizan dentro de `(( ))`, lo que permite evaluar
-expresiones matemáticas de manera sencilla.
+Las operaciones aritméticas en BASH se realizan dentro de `(( ))`, lo que permite
+evaluar expresiones matemáticas de manera sencilla.
 
 :::tip Ejemplo
 
@@ -157,8 +171,8 @@ Operaciones disponibles:
 
 ### 2.6. Condiciones
 
-En BASH, las condiciones se expresan utilizando el comando `if`, junto con los operadores
-de comparación y lógicos.
+En BASH, las condiciones se expresan utilizando el comando `if`, junto con los
+operadores de comparación y lógicos.
 
 :::tip Ejemplo
 
@@ -197,8 +211,8 @@ Es importante recordar que `-a` y `-o` se usan dentro de corchetes, mientras que
 :::note Nota
 
 Recuerda que los operadores `&&` y `||` son más comunes fuera de los corchetes, mientras
-que los operadores `-a` y `-o` se utilizan dentro de los corchetes en las condiciones del
-`if`.
+que los operadores `-a` y `-o` se utilizan dentro de los corchetes en las condiciones
+del `if`.
 
 :::
 
@@ -250,8 +264,8 @@ variable o el resultado de una operación.
 
 Las funciones en BASH permiten organizar y reutilizar el código de manera más eficiente.
 Definir funciones ayuda a hacer el código más modular, legible y fácil de mantener,
-facilitando además la reutilización de bloques de código sin tener que escribirlos varias
-veces.
+facilitando además la reutilización de bloques de código sin tener que escribirlos
+varias veces.
 
 :::tip Ejemplo
 

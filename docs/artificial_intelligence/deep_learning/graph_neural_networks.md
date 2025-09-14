@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 5
 authors:
   - name: Daniel Bazo Correa
 description: Redes Neuronales de Grafos.

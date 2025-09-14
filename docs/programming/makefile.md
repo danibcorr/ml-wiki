@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 authors:
   - name: Daniel Bazo Correa
 description: Automatiza tus procesos con Makefile.
