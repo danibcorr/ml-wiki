@@ -2244,7 +2244,7 @@
 
 "@tsconfig/docusaurus@^2.0.3":
   version "2.0.3"
-  resolved "https://registry.yarnpkg.com/@tsconfig/docusaurus/-/docusaurus-2.0.3.tgz#08a4a65e038a499fc4154ce32b538913d9f3c90d"
+  resolved "https://registry.npmjs.org/@tsconfig/docusaurus/-/docusaurus-2.0.3.tgz"
   integrity sha512-3l1L5PzWVa7l0691TjnsZ0yOIEwG9DziSqu5IPZPlI5Dowi7z42cEym8Y35GHbgHvPcBfNxfrbxm7Cncn4nByQ==
 
 "@types/body-parser@*":
@@ -7266,7 +7266,7 @@ postcss-zindex@^6.0.2:
 
 prettier@^3.6.2:
   version "3.6.2"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.6.2.tgz#ccda02a1003ebbb2bfda6f83a074978f608b9393"
+  resolved "https://registry.npmjs.org/prettier/-/prettier-3.6.2.tgz"
   integrity sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==
 
 pretty-error@^4.0.0:

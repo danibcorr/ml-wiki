@@ -69,7 +69,6 @@ desarrollador hasta un clúster en la nube.
 ##### Características de los contenedores
 
 - **Imágenes y contenedores**:
-
   - **Imágenes**: Paquetes inmutables que contienen la aplicación y sus dependencias
     necesarias para ejecutarla. Las imágenes son reutilizables y se almacenan en
     repositorios como [**Docker Hub**](https://hub.docker.com/).

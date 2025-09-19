@@ -60,7 +60,6 @@ Un CV eficaz debe seguir una **estructura clara, lógica y profesional**. Sus se
 principales son:
 
 - **Encabezado (Datos de contacto):**
-
   - Nombre y apellidos.
   - Teléfono y correo electrónico profesional.
   - Perfil en línea (LinkedIn, GitHub u otras plataformas relevantes).
@@ -68,7 +67,6 @@ principales son:
     determinante.
 
 - **Resumen profesional o perfil:** Breve párrafo de entre 60 y 100 palabras que resuma:
-
   - Especialidad.
   - Logros más relevantes.
   - Palabras clave alineadas con el puesto.
@@ -84,14 +82,12 @@ principales son:
     :::
 
 - **Experiencia profesional:**
-
   - Presentar en orden cronológico inverso (de lo más reciente a lo más antiguo), con el
     formato: **\[Puesto] | \[Empresa] | \[Fechas]**.
   - Describir logros concretos y medibles en un máximo de dos líneas, aplicando la
     **fórmula XYZ**: _“Logré X, medido por Y, al hacer Z.”_
 
     :::tip Ejemplos
-
     - Diseñé pipelines ETL en Python y SQL, mejorando la calidad de datos en un **35%**.
     - Implementé pipelines CI/CD, reduciendo tiempos de despliegue en **50%**.
     - Entrené modelos predictivos que incrementaron la precisión en un **25%**.
@@ -107,7 +103,6 @@ principales son:
   comunicación, análisis—, siempre aplicadas a situaciones reales.
 
 - **Educación y certificaciones:**
-
   - Presentar con el formato: Grado académico | Institución | Año.
   - Certificaciones técnicas relevantes (AWS, Azure, ...). Cursos en línea como Coursera
     pueden mencionarse en entrevistas si surge el tema, pero no suelen aportar valor en
@@ -191,7 +186,6 @@ toque de personalización que refuerza la cercanía y profesionalidad del mensaj
 3. **Primer párrafo (gancho):** Expresa tu motivación para unirte a la empresa,
    demostrando conocimiento de su cultura y proyectos.
 4. **Cuerpo (2–3 párrafos):**
-
    - Relaciona tu experiencia con los requisitos del puesto.
    - Explica cómo tus logros pueden aportar a la empresa.
    - Utiliza modelos como **PAR (Problema–Acción–Resultado)** para estructurar ejemplos.

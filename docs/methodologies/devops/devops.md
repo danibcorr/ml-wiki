@@ -94,7 +94,6 @@ fundamentales:
    la arquitectura para la comunicación entre sistemas a través de la web. Utilizan los
    estándares de HTTP y se basan en la transferencia de recursos, que se identifican
    mediante **URLs**. Las principales características de las APIs REST son:
-
    1. **Cliente-Servidor**: La arquitectura se divide en dos roles: el cliente solicita
       recursos y el servidor los provee.
    2. **Sin Estado**: Cada solicitud es independiente y no depende de solicitudes

@@ -664,7 +664,6 @@ Para instalar PostgreSQL en Linux (PopOS en este caso), sigue estos pasos:
 
 5. **Instalación de extensiones en VS Code**: Para trabajar con PostgreSQL en VS Code,
    instala las siguientes extensiones:
-
    - **SQLTools**: Proporciona soporte para consultas SQL y gestión de bases de datos.
    - **SQLTools PostgreSQL**: Un complemento específico para PostgreSQL.
 

@@ -483,9 +483,9 @@ En las **capas ocultas**, se emplean funciones de activación como:
   hiperbólica tienden a saturarse en valores extremos, provocando gradientes muy
   pequeños que ralentizan el proceso de aprendizaje.
 
-    $$
-    \tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}
-    $$
+  $$
+  \tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}
+  $$
 
 En las **capas de salida**, la función de activación se selecciona según el rango de
 valores esperado en la salida:
@@ -623,185 +623,392 @@ acc = np.mean(Y_pred == Y) * 100
 print(f"Precisión final: {acc:.2f}%")
 ```
 
-TODO: NECESITO CORREGIR A PARTIR DE AQUI
+## 4. Introducción a las Redes Neuronales Profundas
 
-## 4. Introducción a las Redes Neuronales Profundas (Deep Neural Networks)
+Las redes neuronales profundas constituyen una extensión de las redes neuronales
+artificiales tradicionales y parten de los mismos fundamentos ya estudiados. Su
+principal diferencia radica en la presencia de múltiples capas ocultas, dispuestas de
+manera secuencial como una pila, lo que permite construir representaciones jerárquicas
+de la información. Dichas representaciones reflejan un nivel progresivo de conocimiento
+que se amplía tanto en profundidad como en amplitud. La amplitud depende del número de
+parámetros aprendibles de cada capa, como ocurre con la cantidad de neuronas en una capa
+densa o con el número de canales y filtros en las capas convolucionales, que se
+analizarán en capítulos posteriores.
 
-## Propagación hacia delante
+En este contexto, las primeras capas de la red, situadas cerca de la entrada, poseen una
+capacidad limitada para reconocer patrones complejos y suelen detectar únicamente
+características elementales. Por ejemplo, en arquitecturas diseñadas para procesar
+imágenes, las capas iniciales tienden a identificar líneas horizontales, verticales o
+diagonales. Conforme se avanza hacia capas más profundas, las representaciones se
+vuelven progresivamente más sofisticadas, ya que se construyen combinando las
+características detectadas en etapas anteriores. De este modo, en niveles intermedios es
+posible identificar formas más estructuradas, mientras que en las capas finales se
+logran representaciones de alto nivel que corresponden a objetos completos o conceptos
+abstractos.
 
-La **propagación hacia delante** es el proceso mediante el cual una red neuronal
-transforma las entradas en salidas. En cada capa $L$, la salida se obtiene al
-multiplicar los **pesos** de esa capa por las activaciones de la capa anterior $(L-1)$,
-sumando el **sesgo** y aplicando posteriormente una **función de activación** que
-introduce no linealidad.
+Este proceso resulta coherente porque la red aplica de manera sucesiva operaciones no
+lineales que integran y transforman la información proveniente de distintas
+características. Cada capa contribuye con una representación parcial que, al combinarse
+con las anteriores, incrementa la complejidad y la capacidad de entendimiento del
+modelo. En consecuencia, las redes neuronales profundas destacan por su habilidad para
+aprender patrones complejos y abstractos a partir de grandes volúmenes de datos
+diversos, lo que las convierte en una herramienta esencial en el campo del aprendizaje
+automático y la inteligencia artificial.
 
-En cuanto a las dimensiones:
+La principal motivación para utilizar redes profundas radica precisamente en esta
+capacidad de aprender representaciones jerárquicas. Las primeras capas tienden a
+detectar características elementales, como bordes en imágenes o frecuencias simples en
+señales de audio. Las capas intermedias combinan dichas características para identificar
+estructuras más complejas, como formas, texturas o partes específicas de un objeto.
+Finalmente, las capas más profundas integran la información previa y logran representar
+entidades completas, como rostros, palabras o categorías semánticas. Cuanto mayor es la
+profundidad de la red, mayor es la capacidad para modelar patrones de alta complejidad.
 
-- La **matriz de pesos** de la capa $L$ tiene dimensiones $(N_L, N_{L-1})$, donde $N_L$
-  es el número de neuronas de la capa actual y $N_{L-1}$ el de la capa anterior.
-- El **sesgo** de la capa $L$ tiene dimensiones $(N_L, 1)$.
+### 4.1. Parámetros y Hiperparámetros
 
-Cuando se implementa la **propagación hacia atrás**, las derivadas de pesos y sesgos
-mantienen estas mismas dimensiones.
+En el entrenamiento de redes neuronales profundas resulta esencial distinguir entre
+parámetros e hiperparámetros. Los **parámetros** incluyen los pesos y sesgos de la red,
+los cuales se aprenden automáticamente mediante algoritmos de optimización. Los
+**hiperparámetros**, en cambio, se definen antes del entrenamiento y controlan aspectos
+estructurales y dinámicos del modelo. Entre ellos destacan la **tasa de aprendizaje**,
+el número de iteraciones o épocas, la cantidad de capas ocultas, el número de neuronas
+por capa y la elección de funciones de activación. La búsqueda de hiperparámetros
+constituye un proceso iterativo en el que se combinan prueba y error con estrategias más
+sistemáticas, con el fin de encontrar la configuración que produzca el mejor desempeño.
 
-## Redes profundas: motivación
+### 4.2. Propagación hacia delante
 
-La potencia de las **redes neuronales profundas** radica en su capacidad de construir
-representaciones jerárquicas:
+La propagación hacia delante consiste en transformar las entradas de la red en salidas
+mediante operaciones sucesivas en cada capa. En una capa $L$, la salida se obtiene al
+multiplicar la matriz de pesos de esa capa por las activaciones de la capa anterior
+$(L-1)$, sumando un sesgo y aplicando posteriormente una función de activación que
+introduce no linealidad en el modelo. Esta no linealidad es fundamental, ya que permite
+a la red aproximar funciones complejas que no podrían ser representadas únicamente
+mediante combinaciones lineales.
 
-- Las primeras capas detectan características básicas (por ejemplo, bordes en imágenes).
-- Capas intermedias combinan estas características para reconocer formas más complejas
-  (ojos, narices).
-- Capas más profundas identifican objetos completos (rostros).
+En cuanto a las dimensiones, la matriz de pesos de la capa $L$ tiene forma
+$(N_L, N_{L-1})$, donde $N_L$ representa el número de neuronas de la capa actual y
+$N_{L-1}$ el número de neuronas de la capa anterior. El vector de sesgos presenta
+dimensiones $(N_L, 1)$. Durante la propagación hacia atrás, utilizada en el
+entrenamiento, las derivadas de los pesos y los sesgos mantienen estas mismas
+dimensiones, lo que asegura la consistencia de los cálculos.
 
-Cuantas más capas posee la red, mayor es su capacidad para aprender patrones abstractos
-y complejos.
+En esta fase ningún parámetro se actualiza, pues únicamente se realizan combinaciones de
+las entradas con los parámetros existentes de la red. El resultado de cada capa se
+encadena con la siguiente hasta obtener la salida final. Una vez obtenida esta salida,
+se calcula la función de pérdida, cuya finalidad es cuantificar el error y servir como
+guía para ajustar los parámetros aprendibles de la red con el objetivo de alcanzar un
+mínimo de dicha función.
 
-## Parámetros y Hiperparámetros
+En aprendizaje supervisado, la pérdida suele medir la diferencia entre las clases
+predichas y las clases reales del conjunto de entrenamiento, o bien comparar
+distribuciones para minimizar la distancia entre ellas. En aprendizaje no supervisado,
+la función de pérdida puede variar. En tareas de reconstrucción se recurre, por ejemplo,
+al error cuadrático medio, mientras que en escenarios de representación o agrupamiento
+se utilizan métricas de distancia. Un caso particular es el aprendizaje contrastivo,
+ampliamente utilizado en el aprendizaje autosupervisado, que busca acercar
+representaciones de ejemplos similares y alejar aquellas correspondientes a ejemplos
+diferentes. La función de coste se define para cada muestra individual, pero cuando se
+calcula sobre todo el conjunto de entrenamiento y se promedia, se denomina función de
+pérdida.
 
-- **Parámetros**: los **pesos** y **sesgos**, aprendidos automáticamente durante el
-  entrenamiento.
-- **Hiperparámetros**: definidos antes de entrenar, como la **tasa de aprendizaje**, el
-  número de iteraciones, el número de capas ocultas, la cantidad de neuronas por capa o
-  la elección de funciones de activación.
+### 4.3. Propagación hacia atrás y optimización en redes neuronales profundas
 
-La búsqueda de hiperparámetros es un **proceso iterativo de prueba y error**, en el que
-se ajustan los valores hasta encontrar la mejor configuración.
+En las redes neuronales profundas, no solo se requiere calcular la propagación hacia
+delante, sino también actualizar de manera sistemática los parámetros que definen el
+modelo. Una vez obtenida la salida y evaluada mediante una función de pérdida, se aplica
+la propagación hacia atrás (_backpropagation_) con el objetivo de reducir
+progresivamente el error. Este procedimiento constituye el núcleo del aprendizaje en
+redes profundas y se apoya en algoritmos de optimización que orientan el ajuste de pesos
+y sesgos.
 
-## Mejoras en redes neuronales profundas
+El proceso inicia con el cálculo de los **gradientes**, que representan las derivadas
+parciales de la función de pérdida con respecto a cada parámetro del modelo. Los
+gradientes indican la dirección de mayor incremento de la pérdida, por lo que
+desplazarse en la dirección opuesta permite reducirla. El objetivo consiste en alcanzar
+un mínimo de la función de pérdida, que en la práctica puede ser local, pero resulta
+suficiente si garantiza un desempeño adecuado. El método más básico de optimización
+actualiza los parámetros según la regla
 
-El rendimiento de una red depende en gran medida del **ajuste de hiperparámetros**, de
-las **técnicas de regularización** y de los **métodos de optimización**. El flujo de
-trabajo suele seguir un ciclo: **idea → implementación → experimento → refinamiento**.
+$$
+\theta_{t+1} = \theta_t - \eta \, \nabla_\theta \mathcal{L}(\theta_t),
+$$
+
+donde $\theta$ representa un peso o sesgo, $\eta$ es la tasa de aprendizaje y
+$\nabla_\theta \mathcal{L}(\theta_t)$ corresponde al gradiente de la función de pérdida
+en el instante $t$.
+
+La magnitud del ajuste de los parámetros está gobernada por la **tasa de aprendizaje**
+($\eta$). Una tasa demasiado alta puede provocar oscilaciones e incluso divergencia,
+mientras que una tasa demasiado baja ralentiza la convergencia. Una estrategia habitual
+consiste en iniciar con valores relativamente grandes para acelerar las primeras etapas
+del entrenamiento y reducir progresivamente la magnitud de los pasos conforme se
+aproxima al mínimo, evitando así desestabilizar el proceso.
+
+Para mejorar la eficiencia, en lugar de calcular los gradientes utilizando el conjunto
+completo de datos, se emplea el **descenso de gradiente estocástico (SGD)**, que utiliza
+pequeños subconjuntos (_mini-batches_). Esta aproximación introduce aleatoriedad,
+disminuye el coste computacional y ayuda a escapar de regiones problemáticas, como los
+puntos de silla, donde los gradientes se anulan sin representar un mínimo real.
+
+El descenso de gradiente básico puede resultar ineficiente en ciertos escenarios, por lo
+que se han desarrollado variantes que mejoran su rendimiento. Una de ellas es el
+**algoritmo Momentum**, que introduce un efecto de inercia acumulando información de
+gradientes previos para suavizar las actualizaciones. Se define mediante las ecuaciones
+
+$$
+v_t = \beta v_{t-1} + (1-\beta) \, \nabla_\theta \mathcal{L}(\theta_t),
+$$
+
+$$
+\theta_{t+1} = \theta_t - \eta \, v_t,
+$$
+
+donde $v_t$ representa la “velocidad” acumulada y $\beta \in [0,1)$ es el coeficiente de
+decaimiento, generalmente fijado en 0.9. Este mecanismo reduce las oscilaciones en
+direcciones de alta curvatura y acelera la convergencia en valles estrechos.
+
+Otro método es **RMSprop**, que adapta la tasa de aprendizaje a cada parámetro mediante
+el escalado de los gradientes por una media móvil de sus valores al cuadrado
+
+$$
+s_t = \rho s_{t-1} + (1-\rho) \left(\nabla_\theta \mathcal{L}(\theta_t)\right)^2,
+$$
+
+$$
+\theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{s_t + \epsilon}} \, \nabla_\theta \mathcal{L}(\theta_t),
+$$
+
+donde $\rho \approx 0.9$ y $\epsilon \approx 10^{-8}$ para evitar divisiones por cero.
+Este ajuste permite que los parámetros con gradientes grandes reciban pasos más
+pequeños, mientras que aquellos con gradientes pequeños se actualizan más rápidamente,
+mejorando la estabilidad del entrenamiento.
+
+El optimizador **Adam** combina las ventajas de Momentum y RMSprop, acumulando tanto la
+media de los gradientes como la media de sus cuadrados. Su formulación se realiza en
+cuatro etapas.
+
+1. **Media de gradientes (primer momento):**
+
+$$
+m_t = \beta_1 m_{t-1} + (1-\beta_1) \, \nabla_\theta \mathcal{L}(\theta_t).
+$$
+
+2. **Media de cuadrados de gradientes (segundo momento):**
+
+$$
+v_t = \beta_2 v_{t-1} + (1-\beta_2) \, \left(\nabla_\theta \mathcal{L}(\theta_t)\right)^2.
+$$
+
+3. **Corrección del sesgo inicial:**
+
+$$
+\hat{m}_t = \frac{m_t}{1-\beta_1^t}, \quad \hat{v}_t = \frac{v_t}{1-\beta_2^t}.
+$$
+
+4. **Actualización final de los parámetros:**
+
+$$
+\theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{\hat{v}_t} + \epsilon} \, \hat{m}_t.
+$$
+
+Los valores recomendados son $\beta_1 = 0.9$, $\beta_2 = 0.999$ y $\epsilon = 10^{-8}$.
+Este optimizador se utiliza ampliamente debido a su rapidez, estabilidad y robustez
+frente a configuraciones no óptimas de hiperparámetros.
+
+#### 4.3.1. Implementación práctica de optimizadores
+
+A modo de ilustración, se presenta una implementación de los principales optimizadores
+aplicada a la función de prueba $f(\theta) = \theta^2$, cuyo mínimo global se encuentra
+en $\theta=0$. En este ejemplo, todos los optimizadores parten de un valor inicial
+$\theta=5$ y buscan reducir la función de pérdida. Aunque cada algoritmo sigue
+trayectorias distintas, todos tienden hacia el mínimo global en $\theta=0$.
+
+```python
+import numpy as np
+
+# Función de pérdida y gradiente
+loss = lambda theta: theta**2
+grad = lambda theta: 2*theta
+
+# Valor inicial
+theta_init = 5.0
+
+# Descenso de gradiente estocástico (SGD)
+def sgd(theta, grad, eta=0.1, steps=20):
+    for t in range(steps):
+        theta -= eta * grad(theta)
+    return theta
+
+# Momentum
+def momentum(theta, grad, eta=0.1, beta=0.9, steps=20):
+    v = 0
+    for t in range(steps):
+        v = beta * v + (1 - beta) * grad(theta)
+        theta -= eta * v
+    return theta
+
+# RMSprop
+def rmsprop(theta, grad, eta=0.1, rho=0.9, eps=1e-8, steps=20):
+    s = 0
+    for t in range(steps):
+        g = grad(theta)
+        s = rho * s + (1 - rho) * g**2
+        theta -= eta / (np.sqrt(s) + eps) * g
+    return theta
+
+# Adam
+def adam(theta, grad, eta=0.1, beta1=0.9, beta2=0.999, eps=1e-8, steps=20):
+    m, v = 0, 0
+    for t in range(1, steps+1):
+        g = grad(theta)
+        m = beta1 * m + (1 - beta1) * g
+        v = beta2 * v + (1 - beta2) * g**2
+        m_hat = m / (1 - beta1**t)
+        v_hat = v / (1 - beta2**t)
+        theta -= eta / (np.sqrt(v_hat) + eps) * m_hat
+    return theta
+
+print("SGD:", sgd(theta_init, grad))
+print("Momentum:", momentum(theta_init, grad))
+print("RMSprop:", rmsprop(theta_init, grad))
+print("Adam:", adam(theta_init, grad))
+```
+
+HE CORREGIDO HASTA AQUI
 
 ### División de conjuntos de datos
 
-El entrenamiento de un modelo de Deep Learning requiere una adecuada gestión de los
-datos. Para ello, se dividen en subconjuntos con propósitos específicos:
+Un paso fundamental en el diseño de experimentos con redes neuronales profundas es la
+correcta gestión de los datos. Estos se dividen habitualmente en tres subconjuntos:
 
-- **Conjunto de entrenamiento**: utilizado para ajustar los parámetros internos del
-  modelo (pesos y sesgos).
-- **Conjunto de validación**: compuesto por ejemplos no vistos durante el entrenamiento,
-  sirve para comprobar que el modelo generaliza correctamente y no se limita a memorizar
-  los datos (_sobreajuste_).
-- **Conjunto de prueba (test)**: opcional pero recomendable, se reserva para una
-  evaluación final y objetiva del modelo una vez entrenado.
+1. **Conjunto de entrenamiento**, utilizado para ajustar los parámetros internos de la
+   red.
+2. **Conjunto de validación**, formado por ejemplos no vistos durante el entrenamiento y
+   empleado para verificar la capacidad de generalización del modelo, evitando así el
+   sobreajuste.
+3. **Conjunto de prueba**, reservado para una evaluación objetiva y final del modelo una
+   vez completado el entrenamiento.
 
-- **Entrenamiento**: ajuste de parámetros.
-- **Validación (o desarrollo)**: comparación entre modelos para seleccionar el mejor.
-- **Prueba (test)**: evaluación final del rendimiento.
+El tamaño de cada subconjunto depende de la cantidad de datos disponible. En contextos
+con pocos datos, suele aplicarse una partición del 70 % para entrenamiento y 30 % para
+prueba. Con bases de datos más extensas, resulta común asignar 60 % al entrenamiento, 20
+% a la validación y 20 % a la prueba. Es imprescindible que los conjuntos de validación
+y prueba procedan de la misma distribución que los datos de entrenamiento para
+garantizar una evaluación justa y representativa.
 
-Distribución habitual:
+### Sesgo y Varianza
 
-- Con pocos datos: 70% entrenamiento, 30% prueba.
-- Con muchos datos: 60% entrenamiento, 20% validación, 20% prueba.
+El análisis de sesgo y varianza permite comprender los errores de los modelos. Un
+**sesgo alto** indica subajuste, es decir, la incapacidad del modelo para capturar la
+relación subyacente en los datos. Una **varianza alta** refleja sobreajuste, lo que
+implica que el modelo se adapta en exceso a los datos de entrenamiento sin lograr
+generalizar. Para reducir el sesgo se recomienda aumentar la capacidad del modelo
+mediante redes más grandes, mayor tiempo de entrenamiento o arquitecturas alternativas.
+Para disminuir la varianza resultan útiles estrategias como incrementar la cantidad de
+datos, aplicar regularización o modificar la arquitectura.
 
-Es esencial que validación y prueba provengan de la **misma distribución**.
+### Regularización
 
-### Sesgo y varianza
+La regularización constituye un conjunto de técnicas destinadas a mejorar la
+generalización del modelo y reducir el sobreajuste. Entre las más relevantes destacan:
 
-- **Sesgo alto (subajuste)**: el modelo no logra aprender la relación subyacente.
-- **Varianza alta (sobreajuste)**: el modelo se adapta demasiado a los datos de
-  entrenamiento y no generaliza.
+- **Regularización L2 (ridge)**, que penaliza los pesos grandes, estabilizando el
+  proceso de aprendizaje.
+- **Regularización L1 (lasso)**, que favorece soluciones más simples al inducir que
+  muchos pesos sean exactamente cero.
+- **Dropout**, que desconecta aleatoriamente un subconjunto de neuronas durante el
+  entrenamiento, obligando a la red a generar representaciones más robustas.
+- **Aumentación de datos**, que consiste en crear ejemplos artificiales mediante
+  transformaciones como rotaciones, traslaciones o cambios de iluminación.
+- **Detención temprana (early stopping)**, que interrumpe el entrenamiento cuando el
+  error en el conjunto de validación deja de mejorar.
+- **Normalización de entradas**, que escala las características para acelerar la
+  convergencia y mejorar la estabilidad del aprendizaje.
 
-Estrategias:
+### Desvanecimiento y explosión de gradientes
 
-- Reducir sesgo → redes más grandes, entrenar más tiempo, probar arquitecturas
-  alternativas.
-- Reducir varianza → más datos, aplicar regularización (ej. L2, _dropout_), modificar la
-  arquitectura.
+Uno de los principales problemas en redes neuronales profundas es el **desvanecimiento**
+o la **explosión** de gradientes. En estos casos, los gradientes disminuyen o crecen de
+manera exponencial a medida que se propagan hacia atrás, lo que dificulta o imposibilita
+el aprendizaje. Para mitigar este fenómeno se aplican varias estrategias: inicialización
+adecuada de los pesos (como Xavier o He), normalización de los datos de entrada para
+asegurar media cero y varianza unitaria, y la utilización de funciones de activación más
+estables como ReLU y sus variantes.
 
-## Regularización
+### Optimización
 
-La regularización ayuda a evitar el sobreajuste:
+El entrenamiento eficiente de redes profundas requiere algoritmos de optimización
+capaces de manejar grandes volúmenes de datos. El **descenso de gradiente con
+minilotes** constituye el método más habitual, ya que equilibra la estabilidad del
+descenso de gradiente batch y la rapidez del descenso estocástico. El tamaño del
+minilote suele oscilar entre 32 y 128 ejemplos.
 
-- **L2 (ridge)**: penaliza pesos grandes, estabilizando el aprendizaje.
-- **L1 (lasso)**: favorece soluciones con muchos pesos en cero (modelos más simples).
-- **Dropout**: apaga aleatoriamente neuronas durante el entrenamiento, generando
-  representaciones más robustas.
-- **Aumentación de datos**: crear ejemplos artificiales (rotaciones, traslaciones,
-  cambios de iluminación).
-- **Detención temprana (early stopping)**: detener el entrenamiento cuando el error en
-  validación deja de mejorar.
-- **Normalización de entradas**: escalar las características para acelerar la
-  convergencia.
+Entre las variantes más utilizadas se encuentran:
 
-## Desvanecimiento y explosión de gradientes
+- **Momentum**, que acumula información de gradientes pasados y suaviza las
+  oscilaciones.
+- **RMSprop**, que ajusta la tasa de aprendizaje de manera adaptativa según la magnitud
+  de los gradientes.
+- **Adam**, que combina las ventajas de Momentum y RMSprop, siendo uno de los métodos
+  más empleados.
+- **Decaimiento de la tasa de aprendizaje**, que consiste en reducir progresivamente la
+  tasa para alcanzar una convergencia más fina.
 
-En redes profundas, los gradientes pueden **disminuir o crecer exponencialmente**,
-dificultando el entrenamiento.
+### Normalización en redes neuronales
 
-Medidas de mitigación:
+La normalización de activaciones facilita el entrenamiento y mejora la estabilidad del
+modelo. La **Batch Normalization** normaliza las activaciones dentro de cada minilote,
+acelerando el aprendizaje y simplificando el ajuste de hiperparámetros. La **Layer
+Normalization**, en cambio, se aplica a nivel de capa y resulta especialmente eficaz en
+arquitecturas secuenciales como los transformadores.
 
-- **Inicialización adecuada de pesos** (Xavier, He).
-- **Normalización de datos de entrada** (media 0, varianza 1).
-- Uso de funciones de activación más estables (ReLU y variantes).
+### Estrategia en aprendizaje automático
 
-## Optimización
+No todas las mejoras aportan el mismo impacto al rendimiento del modelo. En muchos
+casos, añadir más datos o modificar la arquitectura produce beneficios mayores que
+ajustes menores en los hiperparámetros. Por ello, resulta esencial definir métricas
+claras que orienten el proceso de decisión.
 
-El entrenamiento con grandes volúmenes de datos requiere algoritmos de optimización
-eficientes.
+Las métricas más utilizadas incluyen:
 
-- **Descenso de gradiente con minilotes**: divide los datos en lotes de tamaño
-  intermedio (ej. 32, 64, 128).
+- **Precisión (precision)**, que mide la proporción de verdaderos positivos entre todas
+  las predicciones positivas.
+- **Recall**, que cuantifica la proporción de verdaderos positivos sobre el total de
+  positivos reales.
+- **F1-score**, que representa la media armónica entre precisión y recall.
 
-  - Si el lote es de un solo ejemplo, se denomina **descenso estocástico**.
+Estas métricas se complementan con indicadores de eficiencia como el tiempo de ejecución
+o el consumo de memoria, lo que permite valorar no solo la exactitud del modelo, sino
+también su viabilidad práctica.
 
-### Principales variantes
+### Comparación con el rendimiento humano
 
-- **Momentum**: suaviza el gradiente acumulando información pasada.
-- **RMSprop**: ajusta la tasa de aprendizaje de manera adaptativa.
-- **Adam**: combina Momentum y RMSprop, siendo uno de los más usados.
-- **Decaimiento de la tasa de aprendizaje**: reducir progresivamente la tasa mejora la
-  convergencia final.
+En numerosos contextos, el desempeño de los modelos de aprendizaje profundo se compara
+con el nivel humano, lo que establece un **techo de referencia**. El **sesgo evitable**
+corresponde a la diferencia entre el error humano y el error del modelo, mientras que la
+**varianza** se define como la diferencia entre el error en entrenamiento y en
+validación. Para reducir el sesgo suele ser necesario incrementar la capacidad del
+modelo, entrenar más tiempo o utilizar algoritmos más sofisticados. Para reducir la
+varianza se recurre al aumento de datos, la regularización y el ajuste cuidadoso de los
+hiperparámetros.
 
-## Normalización en redes neuronales
+### Aprendizaje por transferencia y multitarea
 
-- **Batch Normalization**: normaliza activaciones dentro de cada minilote, acelerando el
-  entrenamiento y estabilizando el ajuste de hiperparámetros.
-- **Layer Normalization**: alternativa más usada en arquitecturas secuenciales como
-  transformadores.
+El **aprendizaje por transferencia** consiste en aprovechar el conocimiento adquirido
+por un modelo previamente entrenado en una tarea para aplicarlo en otra. Cuando los
+datos son escasos, se suele reajustar únicamente las últimas capas del modelo. Si la
+cantidad de datos es considerable, resulta viable ajustar toda la red mediante
+**fine-tuning**.
 
-## Estrategia en aprendizaje automático
+El **aprendizaje multitarea** permite que una única red aborde de manera simultánea
+diferentes problemas compartiendo representaciones internas. Un ejemplo paradigmático se
+observa en conducción autónoma, donde un mismo modelo puede detectar peatones, reconocer
+señales de tráfico, identificar carriles y planificar trayectorias.
 
-No todas las mejoras producen el mismo impacto. A veces añadir más datos o cambiar la
-arquitectura apenas mejora el rendimiento. Por ello es clave definir **métricas claras**
-que guíen las decisiones.
-
-### Principales métricas
-
-- **Precisión (precision)**: proporción de verdaderos positivos sobre los predichos
-  positivos.
-- **Recall**: proporción de verdaderos positivos sobre todos los positivos reales.
-- **F1-score**: media armónica entre precisión y recall.
-
-Se pueden combinar métricas de **optimización** (precisión) con métricas de
-**satisfacción** (tiempo de ejecución, consumo de memoria).
-
-## Comparación con el rendimiento humano
-
-El desempeño de los modelos suele compararse con el nivel humano, lo que establece un
-**techo de referencia**.
-
-- **Sesgo evitable**: diferencia entre el error humano y el del modelo.
-- **Varianza**: diferencia entre el error en entrenamiento y validación.
-
-Reducir sesgo → modelos más grandes, mejores algoritmos, más entrenamiento. Reducir
-varianza → más datos, regularización, ajuste de hiperparámetros.
-
-## Aprendizaje por transferencia y multitarea
-
-- **Transferencia de conocimiento**: reutilizar pesos de un modelo previamente entrenado
-  en otra tarea.
-
-  - Con pocos datos → ajustar solo las últimas capas.
-  - Con muchos datos → reajustar toda la red (fine-tuning).
-
-- **Aprendizaje multitarea**: una sola red resuelve múltiples tareas compartiendo
-  representaciones internas.
-
-  - Ejemplo: un mismo modelo para detección de peatones, señales, carriles y
-    planificación de trayectorias en conducción autónoma.
+De este modo, las redes neuronales profundas no solo representan un avance en la
+capacidad de aprendizaje automático, sino que también ofrecen una flexibilidad y
+escalabilidad sin precedentes para abordar problemas complejos en diversos dominios.
 
 ## 5. Arquitecturas de Deep Learning
 
