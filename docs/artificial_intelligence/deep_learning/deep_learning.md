@@ -11,6 +11,7 @@ toc_max_heading_level: 3
 
 - [Alice’s Adventures in a differentiable wonderland: A primer on designing neural networks (Volume I)](https://amzn.eu/d/3oYyuHg)
 - [Deep Learning for Coders with Fastai and PyTorch: AI Applications Without a PhD](https://course.fast.ai/Resources/book.html)
+- [Standford](https://youtube.com/playlist?list=PLoROMvodv4rNjRoawgt72BBNwL2V7doGI&si=TXQ-EA7J7sAwfKEQ).
 
 ## 1. Introducción al _Deep Learning_
 
@@ -1204,9 +1205,92 @@ vehículo. En este escenario, el entrenamiento implica optimizar distintas funci
 coste (una para la segmentación, otra para la clasificación y otra para la predicción de
 movimientos) que se combinan en un proceso conjunto de descenso del gradiente.
 
-## 5. Arquitecturas de Deep Learning: Redes Neuronales Convolucionales
+## 5. Arquitecturas de Deep Learning, Redes Neuronales Convolucionales (CNN)
 
-### 5.1. Redes Neuronales Convolucionales y su Aplicación en Visión Computacional
+### 5.1. Procesamiento visual humano
+
+El procesamiento visual humano es un proceso jerárquico que transforma la información
+lumínica captada por los ojos en representaciones visuales complejas y significativas.
+Este proceso involucra múltiples etapas funcionales que van desde la captación inicial
+de la luz hasta el análisis de formas y objetos en áreas corticales especializadas.
+
+La luz ingresa al ojo a través de la córnea y atraviesa el cristalino, el cual actúa
+como una lente convexa que invierte la imagen proyectándola sobre la retina, ubicada en
+la parte posterior del globo ocular. En la retina, los fotorreceptores —conos y
+bastones— convierten la energía lumínica en señales eléctricas, iniciando así la
+codificación neuronal de la información visual.
+
+Estas señales se transmiten por el nervio óptico de cada ojo hasta el quiasma óptico,
+donde ocurre un cruce parcial de la información visual: los campos visuales izquierdos
+de ambos ojos se dirigen al hemisferio derecho, mientras que los campos visuales
+derechos se proyectan al hemisferio izquierdo. Esta organización permite la percepción
+binocular y contribuye a la percepción de profundidad.
+
+Posteriormente, las señales continúan a través del tracto óptico hasta el núcleo
+geniculado lateral (LGN) del tálamo, que funciona como estación de relevo y organiza la
+información entrante. El LGN está compuesto por capas diferenciadas que procesan señales
+provenientes de distintos tipos de células ganglionares —magnocelulares y
+parvocelulares—, permitiendo un preprocesamiento especializado que facilita el análisis
+visual posterior.
+
+Desde el LGN, las señales visuales se transmiten mediante las radiaciones ópticas hacia
+la corteza visual primaria (V1), localizada en el lóbulo occipital. La V1 se organiza de
+manera retinotópica, de modo que cada región del campo visual se proyecta a un área
+cortical específica. En esta región, las neuronas responden a patrones visuales básicos
+mediante campos receptivos, que representan pequeñas regiones del espacio visual a las
+que responden selectivamente.
+
+En la corteza visual primaria se distinguen tres tipos principales de células: células
+simples, que responden a bordes con orientación específica; células complejas, que
+detectan bordes o movimientos en rangos más amplios; y células hipercomplejas, que
+reaccionan ante combinaciones más sofisticadas, como esquinas o terminaciones de líneas.
+El procesamiento continúa en áreas corticales posteriores (V2, V4, IT), donde se
+analizan características más complejas, incluyendo texturas, formas tridimensionales,
+rostros y objetos completos.
+
+### 5.2. Analogía entre el Sistema Visual Humano y las Redes Neuronales Convolucionales
+
+Las redes neuronales convolucionales (CNNs) son modelos computacionales diseñados para
+procesar datos visuales de manera eficiente, inspirados directamente en la arquitectura
+del sistema visual humano, especialmente en la corteza visual primaria. En este
+contexto, se establecen correspondencias claras entre las estructuras biológicas y los
+componentes de una CNN:
+
+| Sistema Visual Humano                      | Redes Convolucionales (CNNs)                             |
+| ------------------------------------------ | -------------------------------------------------------- |
+| Retina                                     | Imagen de entrada                                        |
+| Nervio óptico / Quiasma óptico             | Preprocesamiento y alineación de la información visual   |
+| LGN (núcleo geniculado lateral)            | División en canales o filtros por tipo de característica |
+| Corteza visual (V1, V2, V4, IT)            | Capas convolucionales jerárquicas                        |
+| Células simples, complejas, hipercomplejas | Filtros convolucionales de bajo, medio y alto nivel      |
+| Campos receptivos                          | Regiones locales (_receptive fields_) de los kernels     |
+| Percepción jerárquica                      | Aprendizaje progresivo de características visuales       |
+
+En las CNNs, cada unidad procesa únicamente una región limitada de la imagen, análoga a
+los campos receptivos de las neuronas en V1. Los filtros convolucionales permiten
+detectar bordes, texturas, formas y patrones complejos, emulando las funciones de las
+células visuales especializadas. La estructura jerárquica de las CNNs permite que las
+primeras capas capturen patrones simples, las intermedias estructuras más complejas y
+las últimas integren estos elementos para identificar objetos completos. Adicionalmente,
+técnicas como el _max pooling_ reducen la dimensionalidad de manera selectiva,
+conservando información relevante, similar al resumen jerárquico que realiza el cerebro
+al procesar escenas visuales complejas.
+
+### 5.3. Campo Receptivo y Jerarquía de Procesamiento Visual
+
+El campo receptivo se define como la región del campo visual que influye directamente en
+la actividad de una neurona específica. En las etapas iniciales del procesamiento
+visual, como en V1, los campos receptivos son pequeños y especializados en detectar
+patrones simples, como líneas u orientaciones. A medida que se avanza jerárquicamente en
+la corteza visual, los campos receptivos se expanden y se vuelven más complejos,
+integrando información de múltiples regiones para formar representaciones más abstractas
+y globales. Por ejemplo, una neurona en una capa inicial de un sistema visual podría
+tener un campo receptivo de 3×3 píxeles, mientras que en capas sucesivas la combinación
+de varios campos receptivos previos permite formar unidades con campos más amplios, como
+5×5 o 7×7 píxeles. Esta organización favorece la abstracción progresiva y la
+especialización en el análisis visual.
+
+### 5.4. Conceptos Fundamentales de la Convolución
 
 La visión computacional constituye uno de los campos más dinámicos y transformadores de
 la inteligencia artificial. A través de ella se han desarrollado aplicaciones que
@@ -1264,7 +1348,7 @@ significativas. Finalmente, las capas totalmente conectadas integran la informac
 extraída para producir la predicción final, que puede consistir en clasificar una
 imagen, reconocer un objeto o identificar un rostro.
 
-### 5.2. Conceptos Fundamentales de la Convolución
+### 5.5. Arquitectura Básica de una CNN
 
 El uso de convoluciones en redes neuronales introduce una serie de elementos esenciales
 que determinan el comportamiento y la eficacia del modelo. Uno de ellos es el **relleno
@@ -1316,7 +1400,7 @@ variante frecuente es el **average pooling**, que sustituye cada región por el 
 promedio de sus elementos, ofreciendo una representación más suavizada de la
 información.
 
-### 5.3. Redes Neuronales Residuales, Arquitecturas Inception y Modelos Móviles
+### 5.6. Redes Neuronales Residuales, Arquitecturas Inception y Modelos Móviles
 
 El incremento en la profundidad de las redes neuronales ha permitido avances
 significativos en la visión computacional. Sin embargo, este aumento también genera un
@@ -1376,7 +1460,7 @@ Gracias a esta flexibilidad, la arquitectura puede adaptarse a distintos escenar
 desde aplicaciones en tiempo real en teléfonos móviles hasta entornos con gran capacidad
 de cómputo, logrando un balance entre precisión y eficiencia.
 
-### 5.4. Detección de Objetos en Visión Computacional
+### 5.7. Detección de Objetos en Visión Computacional
 
 En muchas aplicaciones de la visión computacional, como la conducción autónoma o la
 vigilancia inteligente, no basta con clasificar una imagen en su conjunto. Es
@@ -1432,7 +1516,7 @@ precisión y eficiencia la convierte en una herramienta clave para aplicaciones 
 entornos dinámicos y del mundo real, donde tanto la rapidez como la exactitud resultan
 indispensables.
 
-### 5.5. Segmentación Semántica, Convoluciones Transpuestas y la Arquitectura U-Net
+### 5.8. Segmentación Semántica, Convoluciones Transpuestas y la Arquitectura U-Net
 
 La **segmentación semántica** constituye una de las tareas más avanzadas de la visión
 computacional, ya que no se limita a identificar qué objetos aparecen en una imagen,
@@ -1478,7 +1562,20 @@ imagen mucho más rica y detallada que la obtenida mediante tareas de clasificac
 detección de objetos, consolidándose como una herramienta esencial para aplicaciones que
 requieren precisión espacial a nivel de píxel.
 
-### 5.6. One-Shot Learning y el Reconocimiento de Imágenes
+### 5.9. One-Shot Learning
+
+El cerebro humano posee una notable capacidad para reconocer objetos a partir de muy
+pocos ejemplos, fenómeno conocido como _few-shot_ o _one-shot learning_. Esta habilidad
+se sustenta en dos mecanismos principales: primero, la generación de representaciones
+jerárquicas generalizables, que no dependen de la memorización exacta de píxeles, sino
+de la extracción de características abstractas como formas, colores, movimientos y
+estructuras espaciales; estas representaciones se construyen progresivamente a lo largo
+de la jerarquía cortical, de V1 a IT, donde las regiones superiores codifican objetos
+completos y conceptos visuales. Segundo, la asociación de estas representaciones con
+memoria y significado, mediante la interacción con áreas como la corteza prefrontal, el
+hipocampo y otras estructuras del sistema límbico, permite reconocer un objeto
+previamente visto incluso cuando se presenta en condiciones distintas de orientación,
+tamaño o estilo visual.
 
 Los modelos de visión por computador suelen requerir grandes volúmenes de datos para
 alcanzar un entrenamiento eficaz. Sin embargo, en numerosos escenarios prácticos solo se
@@ -1527,7 +1624,7 @@ característica lo convierte en un enfoque especialmente poderoso para generaliz
 muy pocos ejemplos, ofreciendo soluciones eficaces en contextos donde los datos son
 escasos o costosos de obtener.
 
-### 5.7. Aprendizaje Contrastivo y Autosupervisado
+### 5.10. Aprendizaje Contrastivo y Autosupervisado
 
 El **aprendizaje autosupervisado** ha adquirido un papel central en la visión por
 computador, al permitir el entrenamiento de modelos robustos sin necesidad de contar con
@@ -1829,3 +1926,316 @@ En todos estos contextos, las GNN optimizan las representaciones de nodos, arist
 grafo completo, preservando la estructura intrínseca y capturando patrones complejos que
 serían difíciles de detectar mediante modelos tradicionales, consolidándose como una
 herramienta esencial en el aprendizaje profundo aplicado a datos estructurados.
+
+## 9. Multi-Task Learning y Meta learning
+
+<p align="center">
+  <img src={require("../../../static/img/blogs/meta-learning/multi-task.png").default} height="350"/>
+  <br />
+  <em>Diagrama de una arquitectura Multi-Task</em>
+</p>
+
+El **Multi-Task Learning (MTL)** se refiere a la capacidad de un modelo para realizar
+múltiples tareas relacionadas de forma simultánea, utilizando una estructura compartida
+que permite adaptar parámetros y salidas según el entorno.
+
+Este enfoque busca optimizar recursos y mejorar la capacidad de generalización del
+modelo en escenarios dinámicos, transfiriendo conocimiento entre tareas y minimizando la
+necesidad de ajustes específicos. Un ejemplo de aplicación es el aprendizaje por
+refuerzo.
+
+<p align="center">
+  <img src={require("../../../static/img/blogs/meta-learning/meta-learning.png").default} height="350"/>
+  <br />
+  <em>Diagrama sobre el uso de Meta-Learning</em>
+</p>
+
+El **Meta-Learning** se enfoca en dotar a los modelos de la habilidad de identificar y
+aprovechar patrones subyacentes en los datos, lo que les permite adaptarse rápidamente a
+nuevos problemas o entornos con un mínimo de información.
+
+Este enfoque es particularmente útil en escenarios con datos limitados o costosos de
+obtener, como aquellos que involucran problemas de privacidad. Al mejorar la capacidad
+de generalización, los modelos son más robustos y eficientes, optimizando recursos y
+ofreciendo mejores resultados en tareas variadas.
+
+Por tanto, resulta ideal para conjuntos de datos donde la proporción de datos
+etiquetados es significativamente menor que la de datos no etiquetados. El uso del
+paradigma de _Meta-Learning_ permite extraer patrones de datos etiquetados y aplicarlos
+a datos no etiquetados, detectando variaciones y cambios en las distribuciones.
+
+### 9.1. Parámetros en Multi-Task Learning
+
+Al desarrollar modelos para _multi-task learning_, es crucial definir ciertos
+parámetros:
+
+- **Parámetros aprendibles, $\theta$**: Representa todos los parámetros que el modelo
+  puede aprender.
+- **Función, $f_\theta(y|x)$**: Describe el modelo parametrizado $\theta$, generando una
+  distribución de probabilidad para $y$ dado $x$.
+- **Tarea, $T_i$**: Se define como $T_i = \{p_i(x), p_i(y|x), L_i\}$, donde:
+  - $p_i(x)$: Distribución de entrada $x$ específica de la tarea $T_i$.
+  - $p_i(y|x)$: Distribución de probabilidad de la salida $y$ dado $x$ para la tarea
+    $T_i$.
+  - $L_i$: Función de pérdida asociada con la tarea $T_i$.
+
+El objetivo general es minimizar la pérdida total del modelo a lo largo de todas las
+tareas. Esto se puede formular como
+
+$$
+\min_{\theta} \sum_{i=1}^{T} L_i(\theta, D_i),
+$$
+
+donde $D_i$ es el conjunto de datos de la tarea $i$. Además, para ajustar la relevancia
+de cada tarea, se puede incluir un peso $w_i$
+
+$$
+\min_{\theta} \sum_{i=1}^{T} w_i \cdot L_i(\theta, D_i).
+$$
+
+### 9.2. Estrategias para Multi-Tasking
+
+Las principales estrategias para abordar múltiples tareas incluyen:
+
+1. **Modelos específicos para cada tarea**: Este enfoque no es escalable debido al alto
+   costo computacional.
+2. **Uso de _embeddings_ condicionales**: Técnicas que combinan información mediante:
+   - **Concatenación o suma de _embeddings_**: Métodos equivalentes que combinan
+     características.
+   - **Sistemas _Multi-head_**: Un modelo único con múltiples salidas, eficiente para
+     tareas variadas. Un ejemplo avanzado es el **_Multi-Gate Mixture of Experts_**.
+   - **Condicionales multiplicativos**: Ajustan los _embeddings_ mediante factores
+     multiplicativos según la tarea.
+
+### 9.3. Aprendizaje Contrastivo
+
+<p align="center">
+  <img src={require("../../../static/img/blogs/meta-learning/contrastive-learning-example.png").default}/>
+  <br />
+  <em>Ejemplo de Aprendizaje Contrastivo</em>
+</p>
+
+El **Aprendizaje Contrastivo** es una técnica que, aunque no es exactamente lo mismo que
+el _meta-learning_, contribuye a la mejora de las representaciones en los modelos de
+aprendizaje profundo. Su objetivo principal es agrupar representaciones de datos
+similares y alejar aquellas que pertenecen a clases diferentes en el espacio embebido
+del modelo.
+
+Por ejemplo, en aplicaciones de visión computacional, se utilizan transformaciones de
+los datos para que el modelo aprenda a reconocer que ciertas variaciones no alteran la
+esencia de la información original, mejorando la comprensión semántica y robusteciendo
+el modelo ante datos fuera de distribución.
+
+El proceso de entrenamiento contrastivo es una metodología clave para obtener
+representaciones efectivas y discriminativas a partir de datos no etiquetados. Este
+enfoque involucra varias etapas esenciales que, junto con técnicas de _fine-tuning_ y
+_transfer learning_, optimizan el rendimiento del modelo.
+
+1. El primer paso es la **obtención de un conjunto de datos no etiquetados**, que
+   proporciona la base sobre la cual el modelo aprenderá automáticamente las
+   características más relevantes.
+
+2. A continuación, se procede con la **generación de _embeddings_**. Aquí, se emplea un
+   modelo preentrenado, como una red neuronal profunda previamente ajustada en tareas
+   generales con gran cantidad de datos, por ejemplo, ResNet en el ámbito de la visión
+   computacional. Este modelo preentrenado ayuda a transformar los datos de entrada en
+   representaciones de menor dimensionalidad que capturan las características más
+   importantes de los datos originales, facilitando su estudio.
+
+3. La fase de **optimización mediante _fine-tuning_** es crucial para refinar las
+   representaciones. El objetivo es ajustar los parámetros del modelo usando métodos de
+   cálculo de distancias entre _embeddings_, como la **distancia euclidiana** o la
+   **similitud de coseno**. La idea es minimizar la **pérdida contrastiva**, que busca
+   maximizar la cercanía de las representaciones de datos similares y, al mismo tiempo,
+   aumentar la separación de las representaciones de datos distintos. Esto se logra
+   utilizando funciones de pérdida específicas, como la **Triplet Loss**, que optimiza
+   la distancia entre un ancla, un par positivo, y un par negativo; o la **InfoNCE
+   Loss**, que es especialmente útil en escenarios no supervisados. Sin embargo, es
+   esencial evitar el colapso de las representaciones, un problema donde todos los
+   _embeddings_ se vuelven indistinguibles. Para prevenirlo, se deben asegurar
+   diferencias suficientes entre las clases.
+
+4. Después de entrenar el modelo, se entra en la etapa de **iteración y ajuste manual**.
+   Aquí, las muestras con mayores pérdidas se revisan y, si es necesario, se realiza un
+   etiquetado manual. Esto refina aún más el modelo, permitiendo un ciclo iterativo en
+   el que las predicciones mejoran progresivamente y la necesidad de intervención humana
+   se reduce con el tiempo.
+
+Este proceso de ajuste se basa en gran medida en los principios de **_Transfer
+Learning_**, que permiten reutilizar el conocimiento de una tarea fuente $T_a$ para
+mejorar el desempeño en una tarea objetivo $T_b$.
+
+En lugar de empezar desde cero, se aprovechan las características generales ya
+aprendidas por el modelo preentrenado, lo que reduce la carga computacional y acelera el
+entrenamiento. Incluso si las distribuciones de datos de las tareas $T_a$ y $T_b$ son
+diferentes, estas características siguen siendo valiosas, ya que encapsulan información
+esencial, como bordes y texturas en imágenes o relaciones semánticas en datos textuales.
+
+En algunos casos, el _fine-tuning_ no se limita a ajustar únicamente la capa final del
+modelo. Estudios como el _Surgical Fine-Tuning_ han demostrado que afinar selectivamente
+las capas intermedias puede mejorar significativamente la precisión.
+
+El aprendizaje contrastivo se ha vuelto fundamental en la mejora de las representaciones
+en diversos dominios, especialmente en visión computacional y procesamiento del lenguaje
+natural. A continuación, detallamos algunos de los métodos más utilizados.
+
+<p align="center">
+  <img src={require("../../../static/img/blogs/meta-learning/triplet-loss-example.png").default}/>
+  <br />
+  <em>Ejemplo de Triplet Loss</em>
+</p>
+
+La **Triplet Loss** se basa en tres componentes principales:
+
+- **Ancla ($X$)**: Una muestra de datos que sirve como referencia.
+- **Par positivo ($X^+$)**: Una muestra que es similar al ancla (pertenece a la misma
+  clase o es un dato transformado del ancla).
+- **Par negativo ($X^-$)**: Una muestra que es distinta al ancla (pertenece a una clase
+  diferente).
+
+La idea detrás de Triplet Loss es minimizar la distancia entre el ancla y el par
+positivo, mientras se maximiza la distancia entre el ancla y el par negativo. Esto se
+define matemáticamente como
+
+$$
+L = \min_{\theta}\left(\max\left(0, \text{dist}(X, X^+) - \text{dist}(X, X^-) + \text{margen}\right)\right),
+$$
+
+donde:
+
+- $\text{dist}(\cdot, \cdot)$: Es una función de distancia, como la **distancia
+  euclidiana** o la **similitud del coseno**.
+- **margen**: Un valor positivo que define cuánto mayor debe ser la distancia entre el
+  ancla y el par negativo en comparación con la distancia entre el ancla y el par
+  positivo.
+
+La función de pérdida se activa cuando $\text{dist}(X, X^+)$ no es significativamente
+menor que $\text{dist}(X, X^-)$ más el margen. Este margen actúa como un umbral para
+garantizar que los pares negativos estén adecuadamente separados de los pares positivos,
+evitando el colapso de las representaciones. Sin el margen, las distancias podrían
+converger sin crear diferencias útiles en las representaciones.
+
+Otra función de pérdida clave en el aprendizaje contrastivo es la **Contrastive Loss**,
+que se usa en pares de datos (en lugar de tríos). Aquí, el objetivo es minimizar la
+distancia entre datos similares y maximizarla para datos diferentes. La fórmula se
+expresa como:
+
+$$
+L = (1 - y) \frac{1}{2} \left( \text{dist}(X_1, X_2) \right)^2 + y \frac{1}{2} \left( \max(0, m - \text{dist}(X_1, X_2)) \right)^2,
+$$
+
+donde:
+
+- $y$: Es una etiqueta binaria que indica si $X_1$ y $X_2$ son similares ($y = 0$) o
+  diferentes ($y = 1$).
+- $m$: Es un margen que define la distancia mínima deseada entre ejemplos disímiles.
+- $\text{dist}(X_1, X_2)$: Es típicamente la distancia euclidiana.
+
+En este método, si los ejemplos son similares ($y = 0$), la pérdida se calcula como la
+distancia al cuadrado, forzando a los puntos similares a estar más cerca en el espacio
+embebido. Por otro lado, si los ejemplos son diferentes ($y = 1$), se busca que la
+distancia entre ellos sea al menos igual al margen $m$. Si ya están suficientemente
+alejados, la pérdida se reduce a cero.
+
+El **InfoNCE Loss** (_Noise-Contrastive Estimation_) es otra función de pérdida
+utilizada comúnmente, especialmente en modelos como **SimCLR**. Este método maximiza la
+similitud de un dato ancla con sus pares positivos y minimiza la similitud con pares
+negativos en el mismo lote de datos. La fórmula es:
+
+$$
+L = -\frac{1}{N} \sum_{i=1}^N \log \frac{\exp(\text{sim}(z_i, z_i^+)/\tau)}{\sum_{j=1}^K \exp(\text{sim}(z_i, z_j^-)/\tau)},
+$$
+
+donde:
+
+- $z_i$: Es el _embedding_ del dato ancla.
+- $z_i^+$: Es el _embedding_ del par positivo.
+- $z_j^-$: Representa los _embeddings_ de los pares negativos.
+- $\text{sim}(\cdot, \cdot)$: Es una función de similitud, como el producto escalar o la
+  similitud coseno.
+- $\tau$: Es una constante de temperatura que controla la distribución de las
+  probabilidades.
+
+**InfoNCE Loss** maximiza la probabilidad de que el ancla esté cerca de su par positivo
+en comparación con los pares negativos dentro de un mismo lote. Esto fomenta que el
+modelo aprenda representaciones significativas y distintivas para diferentes clases o
+categorías.
+
+### 9.4. Limitaciones del Aprendizaje Contrastivo
+
+- **Dependencia de transformaciones adecuadas**: Se requieren técnicas específicas (como
+  _resizes_, _crops_, ajustes de color, _CutMix_, y _MixUp_) para mejorar la robustez
+  del modelo.
+- **Necesidad de un gran número de épocas**: El rendimiento depende del tamaño del lote
+  y el número de iteraciones para obtener suficientes pares negativos efectivos.
+
+### 9.5. Few-Shot Learning
+
+<p align="center">
+  <img src={require("../../../static/img/blogs/meta-learning/few-shot-learning.png").default}/>
+  <br />
+  <em>Ejemplo de uso de Few-Shot Learning de 3-ways y 3-shots</em>
+</p>
+
+El **Few-Shot Learning (FSL)** se centra en entrenar modelos que logren un alto
+rendimiento con un número muy limitado de ejemplos etiquetados por clase. Este enfoque
+es esencial en situaciones donde la recopilación de datos es complicada o costosa, como
+en aplicaciones médicas o donde se requiere la privacidad de los datos.
+
+El FSL se organiza en torno a dos conjuntos principales:
+
+- **_Support Set_**: Es el conjunto de datos de entrenamiento específico para una tarea,
+  compuesto por unas pocas muestras etiquetadas que el modelo utiliza para aprender a
+  clasificar.
+- **_Query Set_**: Es el conjunto de datos de prueba utilizado para evaluar el
+  rendimiento del modelo en la misma tarea.
+
+El aprendizaje few-shot se describe según dos parámetros importantes:
+
+- **_K-shot Learning_**: Se refiere al número $K$ de ejemplos disponibles por clase en
+  el _support set_. Por ejemplo, en un escenario de 1-shot learning, hay solo un ejemplo
+  por clase, mientras que en 5-shot learning hay cinco ejemplos por clase.
+- **_N-way Classification_**: Indica el número $N$ de clases diferentes en la tarea. Por
+  ejemplo, un problema de 5-way classification implica clasificar entre cinco posibles
+  categorías.
+
+Existen dos tipos de modelos en este regimen:
+
+- **Modelos no parametrizados**: Métodos como _k-Nearest Neighbors (k-NN)_ son simples y
+  eficaces cuando se dispone de pocos datos. Sin embargo, su eficacia depende de tener
+  _embeddings_ de alta calidad que representen bien las relaciones entre los datos.
+- **Modelos parametrizados**: Redes neuronales profundas o métodos similares se utilizan
+  para generar _embeddings_ que capturan las características relevantes de los datos en
+  un espacio de menor dimensionalidad, reduciendo problemas como la maldición de la
+  dimensionalidad. Estos modelos se entrenan para producir representaciones invariantes
+  a transformaciones y adecuadas para métodos como _k-NN_.
+
+### 9.6. Modelos basados en reconstrucción
+
+Los modelos basados en reconstrucción, como los **Autoencoders**, se utilizan para
+aprender representaciones compactas de los datos mediante la reconstrucción de las
+entradas originales a partir de una versión comprimida (el _embedding_). Sin embargo, en
+el contexto de _few-shot learning_, estos modelos enfrentan desafíos significativos. Una
+de las principales limitaciones es la tendencia a la **memorización**, lo que significa
+que los modelos pueden recordar ejemplos específicos sin capturar adecuadamente las
+características generales necesarias para la generalización.
+
+Para mejorar el rendimiento de los autoencoders en _few-shot learning_, se implementan
+varias estrategias:
+
+- **Introducción de ruido**: Agregar ruido a los datos de entrada durante el
+  entrenamiento (como en los _Denoising Autoencoders_) fuerza al modelo a aprender
+  representaciones más robustas, en lugar de memorizar ejemplos específicos.
+- **Imponer esparsidad (_sparsity_)**: Se introducen restricciones en la representación
+  comprimida, como imponer esparsidad, para que solo las características más esenciales
+  se mantengan activas. Esto ayuda a evitar que el modelo dependa de demasiados detalles
+  irrelevantes.
+- **Decoders de menor capacidad**: Utilizar decoders con menor capacidad obliga al
+  encoder a aprender representaciones más útiles, ya que el decoder no puede compensar
+  la falta de información simplemente "recordando" detalles específicos de las entradas.
+
+Estas mejoras buscan que los autoencoders sean más eficaces en contextos de datos
+limitados, obligando al modelo a generalizar mejor y a crear representaciones más
+informativas. Sin embargo, incluso con estas mejoras, los autoencoders pueden no ser
+ideales para todas las aplicaciones de _few-shot learning_, y a menudo se prefieren
+enfoques más sofisticados que exploten mejor las relaciones en pocos ejemplos.
