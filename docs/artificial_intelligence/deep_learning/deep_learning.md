@@ -664,7 +664,7 @@ Finalmente, las capas más profundas integran la información previa y logran re
 entidades completas, como rostros, palabras o categorías semánticas. Cuanto mayor es la
 profundidad de la red, mayor es la capacidad para modelar patrones de alta complejidad.
 
-### 4.1. Parámetros y Hiperparámetros
+### 4.1. Parámetros e hiperparámetros
 
 En el entrenamiento de redes neuronales profundas resulta esencial distinguir entre
 parámetros e hiperparámetros. Los **parámetros** incluyen los pesos y sesgos de la red,
@@ -712,7 +712,7 @@ diferentes. La función de coste se define para cada muestra individual, pero cu
 calcula sobre todo el conjunto de entrenamiento y se promedia, se denomina función de
 pérdida.
 
-### 4.3. Propagación hacia atrás y optimización en redes neuronales profundas
+### 4.3. Propagación hacia atrás y optimización
 
 En las redes neuronales profundas, no solo se requiere calcular la propagación hacia
 delante, sino también actualizar de manera sistemática los parámetros que definen el
@@ -875,140 +875,336 @@ print("RMSprop:", rmsprop(theta_init, grad))
 print("Adam:", adam(theta_init, grad))
 ```
 
-HE CORREGIDO HASTA AQUI
+### 4.4. División del conjuntos de datos
 
-### División de conjuntos de datos
+En el entrenamiento de modelos de aprendizaje automático y, en particular, de redes
+neuronales profundas, la gestión adecuada de los datos constituye un paso fundamental
+para garantizar un proceso de optimización eficiente y una evaluación rigurosa del
+rendimiento.
 
-Un paso fundamental en el diseño de experimentos con redes neuronales profundas es la
-correcta gestión de los datos. Estos se dividen habitualmente en tres subconjuntos:
+Como se mencionó anteriormente, uno de los enfoques empleados para agilizar el descenso
+del gradiente es el descenso de gradiente estocástico. Esta técnica permite aplicar el
+algoritmo de optimización no sobre la totalidad del conjunto de entrenamiento, sino
+sobre subconjuntos de datos. Al evaluar el gradiente en un lote reducido, se obtiene
+información temprana sobre el progreso de la optimización sin necesidad de procesar
+todas las muestras, lo que facilita un aprendizaje más rápido y actualizaciones de los
+parámetros del modelo con mayor frecuencia.
 
-1. **Conjunto de entrenamiento**, utilizado para ajustar los parámetros internos de la
-   red.
-2. **Conjunto de validación**, formado por ejemplos no vistos durante el entrenamiento y
-   empleado para verificar la capacidad de generalización del modelo, evitando así el
-   sobreajuste.
-3. **Conjunto de prueba**, reservado para una evaluación objetiva y final del modelo una
-   vez completado el entrenamiento.
+El uso de lotes resulta especialmente ventajoso en entornos con GPU, ya que estas
+permiten almacenar los datos en memoria gráfica y ejecutar cálculos de manera altamente
+paralelizada. El tamaño de los lotes depende principalmente de la capacidad de memoria
+disponible, siendo comunes valores como 32, 64, 128 o superiores. Aunque frecuentemente
+se prefieren potencias de dos, esta elección no conlleva necesariamente una mejora en la
+eficiencia, por lo que pueden emplearse otros valores sin detrimento del rendimiento. En
+general, se tiende a utilizar lotes tan grandes como lo permita la memoria, aunque el
+tamaño seleccionado puede afectar las métricas de evaluación del modelo. Por ejemplo, en
+arquitecturas basadas en _autoencoders_, se observa un mejor desempeño con lotes
+pequeños, ya que esto limita la tendencia de la red a memorizar patrones específicos. En
+contraste, en tareas supervisadas de clasificación de imágenes o en metodologías
+contrastivas, los lotes más grandes suelen ser beneficiosos, ya que permiten calcular un
+mayor número de métricas de distancia entre pares de muestras y construir matrices de
+similitud más robustas, mejorando así la calidad de las representaciones aprendidas.
 
-El tamaño de cada subconjunto depende de la cantidad de datos disponible. En contextos
-con pocos datos, suele aplicarse una partición del 70 % para entrenamiento y 30 % para
-prueba. Con bases de datos más extensas, resulta común asignar 60 % al entrenamiento, 20
-% a la validación y 20 % a la prueba. Es imprescindible que los conjuntos de validación
-y prueba procedan de la misma distribución que los datos de entrenamiento para
-garantizar una evaluación justa y representativa.
+En contextos de aprendizaje auto-supervisado, el modo en que se agrupan las muestras en
+lotes afecta directamente tanto a las funciones de coste como al proceso de
+optimización. Esto se debe a que muchas de estas funciones se basan en medidas de
+distancia entre elementos de un mismo lote. La inclusión de un mayor número de muestras
+similares o variadas dentro de un lote puede modificar sustancialmente las estadísticas
+empleadas en el aprendizaje, especialmente cuando se aplican técnicas de normalización
+por lotes o por capas.
 
-### Sesgo y Varianza
+Incluso en modelos de lenguaje de gran escala se ha observado que la forma de dividir
+los datos en lotes repercute en la salida final del modelo. A pesar de que las capas de
+estos modelos son deterministas y que parámetros como la temperatura de muestreo podrían
+sugerir resultados estables, en la práctica se generan salidas distintas para una misma
+entrada. Parte de esta variabilidad se explica no solo por errores numéricos o de
+redondeo, sino también por la manera en que se conforman los mini-lotes y las
+distribuciones de las muestras que los componen.
 
-El análisis de sesgo y varianza permite comprender los errores de los modelos. Un
-**sesgo alto** indica subajuste, es decir, la incapacidad del modelo para capturar la
-relación subyacente en los datos. Una **varianza alta** refleja sobreajuste, lo que
-implica que el modelo se adapta en exceso a los datos de entrenamiento sin lograr
-generalizar. Para reducir el sesgo se recomienda aumentar la capacidad del modelo
-mediante redes más grandes, mayor tiempo de entrenamiento o arquitecturas alternativas.
-Para disminuir la varianza resultan útiles estrategias como incrementar la cantidad de
-datos, aplicar regularización o modificar la arquitectura.
+De manera clásica, durante el desarrollo de modelos de aprendizaje automático los
+conjuntos de datos se dividen en tres subconjuntos principales:
 
-### Regularización
+1. **Conjunto de entrenamiento**: Se emplea para ajustar los parámetros internos del
+   modelo mediante el proceso de optimización. Puede contener o no etiquetas.
+2. **Conjunto de validación**: Formado por ejemplos no utilizados en el entrenamiento
+   directo. Su función es evaluar la capacidad de generalización del modelo y guiar la
+   selección de hiperparámetros, reduciendo el riesgo de sobreajuste.
+3. **Conjunto de prueba**: Reservado para la evaluación final y objetiva del modelo una
+   vez completado el entrenamiento y optimizados los hiperparámetros.
 
-La regularización constituye un conjunto de técnicas destinadas a mejorar la
-generalización del modelo y reducir el sobreajuste. Entre las más relevantes destacan:
+La proporción destinada a cada subconjunto depende de la cantidad de datos disponibles.
+Con bases de datos pequeñas, se suele aplicar una partición del 70 % para entrenamiento
+y 30 % para prueba. En bases de datos más extensas, resulta común asignar un 60 % al
+entrenamiento, 20 % a la validación y 20 % a la prueba. Es esencial que los subconjuntos
+de validación y prueba sigan la misma distribución que los datos de entrenamiento, ya
+que una discrepancia significativa puede generar degradaciones en las métricas de
+evaluación.
 
-- **Regularización L2 (ridge)**, que penaliza los pesos grandes, estabilizando el
-  proceso de aprendizaje.
-- **Regularización L1 (lasso)**, que favorece soluciones más simples al inducir que
-  muchos pesos sean exactamente cero.
-- **Dropout**, que desconecta aleatoriamente un subconjunto de neuronas durante el
-  entrenamiento, obligando a la red a generar representaciones más robustas.
-- **Aumentación de datos**, que consiste en crear ejemplos artificiales mediante
-  transformaciones como rotaciones, traslaciones o cambios de iluminación.
-- **Detención temprana (early stopping)**, que interrumpe el entrenamiento cuando el
-  error en el conjunto de validación deja de mejorar.
-- **Normalización de entradas**, que escala las características para acelerar la
-  convergencia y mejorar la estabilidad del aprendizaje.
+En entornos de producción este problema es frecuente, dado que las distribuciones de los
+datos suelen variar con el tiempo. Por ejemplo, en sistemas de telecomunicaciones, los
+patrones de uso de los usuarios pueden cambiar drásticamente entre diferentes épocas del
+año, lo que ocasiona desviaciones entre los datos de entrenamiento y los datos reales en
+producción. Para detectar y cuantificar estas desviaciones se utilizan métricas como la
+divergencia de Kullback-Leibler, la divergencia de Jensen-Shannon u otras medidas de
+distancia entre distribuciones. Asimismo, técnicas como el análisis de entropía, los
+_autoencoders_ o el Análisis de Componentes Principales (PCA) permiten medir errores de
+reconstrucción y establecer umbrales (por ejemplo, basados en percentiles) para
+identificar muestras fuera de distribución.
 
-### Desvanecimiento y explosión de gradientes
+La detección de datos fuera de distribución constituye una línea de investigación activa
+dentro del aprendizaje profundo, con aplicaciones en el aprendizaje activo, el _meta
+learning_ y la mitigación del olvido catastrófico. Estas metodologías buscan adaptar los
+modelos a nuevos datos de producción no observados previamente, ampliando su
+conocimiento sin necesidad de reentrenarlos por completo. En ciertos casos, se investiga
+la posibilidad de incorporar nuevos datos sin requerir acceso a los datos originales, lo
+que resulta especialmente relevante en contextos donde estos ya no están disponibles. Un
+ejemplo claro se encuentra en las telecomunicaciones, donde la transición de tecnologías
+como 4G a 5G exige reutilizar modelos entrenados con datos de la generación anterior,
+pese a que estos no puedan recuperarse, lo que demanda estrategias capaces de transferir
+conocimiento sin perder la información previa.
 
-Uno de los principales problemas en redes neuronales profundas es el **desvanecimiento**
-o la **explosión** de gradientes. En estos casos, los gradientes disminuyen o crecen de
-manera exponencial a medida que se propagan hacia atrás, lo que dificulta o imposibilita
-el aprendizaje. Para mitigar este fenómeno se aplican varias estrategias: inicialización
-adecuada de los pesos (como Xavier o He), normalización de los datos de entrada para
-asegurar media cero y varianza unitaria, y la utilización de funciones de activación más
-estables como ReLU y sus variantes.
+### 4.5. Sesgo y varianza
 
-### Optimización
+El análisis de sesgo y varianza constituye una herramienta fundamental para comprender
+las fuentes de error en los modelos de aprendizaje automático. Ambos conceptos permiten
+diagnosticar si un modelo está fallando por su incapacidad para representar
+correctamente el problema subyacente o por su exceso de adaptación a los datos
+disponibles.
 
-El entrenamiento eficiente de redes profundas requiere algoritmos de optimización
-capaces de manejar grandes volúmenes de datos. El **descenso de gradiente con
-minilotes** constituye el método más habitual, ya que equilibra la estabilidad del
-descenso de gradiente batch y la rapidez del descenso estocástico. El tamaño del
-minilote suele oscilar entre 32 y 128 ejemplos.
+El **sesgo** se define como la diferencia sistemática entre las predicciones del modelo
+y los valores reales. Un sesgo alto indica la presencia de subajuste, lo que significa
+que el modelo no logra capturar de manera adecuada la complejidad de la relación
+existente en los datos. En este caso, las predicciones tienden a ser demasiado simples o
+alejadas de la realidad, aun cuando se disponga de una gran cantidad de datos de
+entrenamiento.
 
-Entre las variantes más utilizadas se encuentran:
+Por otro lado, la **varianza** mide la sensibilidad del modelo frente a pequeñas
+variaciones en los datos de entrenamiento. Una varianza alta refleja la existencia de
+sobreajuste, fenómeno en el que el modelo se ajusta excesivamente a los ejemplos
+utilizados en el entrenamiento, incorporando incluso el ruido presente en ellos, lo que
+impide una correcta generalización hacia datos nuevos.
 
-- **Momentum**, que acumula información de gradientes pasados y suaviza las
-  oscilaciones.
-- **RMSprop**, que ajusta la tasa de aprendizaje de manera adaptativa según la magnitud
-  de los gradientes.
-- **Adam**, que combina las ventajas de Momentum y RMSprop, siendo uno de los métodos
-  más empleados.
-- **Decaimiento de la tasa de aprendizaje**, que consiste en reducir progresivamente la
-  tasa para alcanzar una convergencia más fina.
+La reducción del sesgo suele requerir un aumento en la capacidad de representación del
+modelo. Esto puede lograrse mediante arquitecturas más profundas o complejas, el
+incremento del número de parámetros, un mayor tiempo de entrenamiento o la adopción de
+algoritmos alternativos que permitan capturar de manera más fiel las dependencias de los
+datos. En contraste, para disminuir la varianza se recurre a estrategias orientadas a
+mejorar la capacidad de generalización, tales como el incremento de la cantidad y
+diversidad de datos de entrenamiento, la aplicación de técnicas de regularización (como
+dropout, penalizaciones de norma $L_1$ o $L_2$), así como ajustes en la arquitectura y
+en los hiperparámetros del modelo.
 
-### Normalización en redes neuronales
+En la práctica, el análisis de sesgo y varianza se complementa con la noción de **techo
+de referencia humano**, empleado para evaluar modelos cuyo desempeño se compara con el
+nivel de expertos humanos en una tarea específica. En este marco, se introduce el
+concepto de **sesgo evitable**, entendido como la diferencia entre el error mínimo
+alcanzable por un ser humano y el error observado en el modelo. A su vez, la
+**varianza** se cuantifica como la diferencia entre el error en el conjunto de
+entrenamiento y el error en el conjunto de validación.
 
-La normalización de activaciones facilita el entrenamiento y mejora la estabilidad del
-modelo. La **Batch Normalization** normaliza las activaciones dentro de cada minilote,
-acelerando el aprendizaje y simplificando el ajuste de hiperparámetros. La **Layer
-Normalization**, en cambio, se aplica a nivel de capa y resulta especialmente eficaz en
-arquitecturas secuenciales como los transformadores.
+### 4.6. Métodos de regularización y normalización
 
-### Estrategia en aprendizaje automático
+La regularización y la normalización son técnicas fundamentales para mejorar la
+capacidad de generalización de los modelos de aprendizaje profundo y reducir el riesgo
+de sobreajuste. Ambas estrategias buscan limitar la dependencia excesiva del modelo
+respecto a los datos de entrenamiento, promoviendo representaciones más robustas y
+estables que permitan un rendimiento consistente en datos no vistos.
 
-No todas las mejoras aportan el mismo impacto al rendimiento del modelo. En muchos
-casos, añadir más datos o modificar la arquitectura produce beneficios mayores que
-ajustes menores en los hiperparámetros. Por ello, resulta esencial definir métricas
-claras que orienten el proceso de decisión.
+Entre las técnicas de regularización más utilizadas destacan:
 
-Las métricas más utilizadas incluyen:
+- **Regularización L2 (ridge)**: Añade una penalización proporcional al cuadrado de los
+  pesos del modelo. Esta restricción evita que los parámetros adquieran valores
+  demasiado grandes, estabiliza la optimización y favorece soluciones más suaves y
+  generalizables.
 
-- **Precisión (precision)**, que mide la proporción de verdaderos positivos entre todas
-  las predicciones positivas.
-- **Recall**, que cuantifica la proporción de verdaderos positivos sobre el total de
-  positivos reales.
-- **F1-score**, que representa la media armónica entre precisión y recall.
+- **Regularización L1 (lasso)**: Penaliza la magnitud absoluta de los pesos, induciendo
+  que muchos de ellos se reduzcan a cero. Esto simplifica el modelo al conservar
+  únicamente las variables más relevantes, actuando además como un método de selección
+  de características.
 
-Estas métricas se complementan con indicadores de eficiencia como el tiempo de ejecución
-o el consumo de memoria, lo que permite valorar no solo la exactitud del modelo, sino
-también su viabilidad práctica.
+- **Dropout**: Desactiva aleatoriamente un subconjunto de neuronas durante el
+  entrenamiento, impidiendo que las unidades desarrollen dependencias excesivas entre
+  sí. Esto obliga a la red a generar representaciones redundantes y más robustas.
+  Durante la inferencia, todas las neuronas se utilizan, con los pesos ajustados de
+  forma apropiada.
 
-### Comparación con el rendimiento humano
+- **Aumentación de datos (data augmentation)**: Crea ejemplos adicionales a partir de
+  transformaciones aplicadas a los datos originales, como rotaciones, traslaciones,
+  cambios de escala o variaciones de iluminación. Esta técnica incrementa la diversidad
+  del conjunto de entrenamiento y hace que el modelo sea menos sensible a variaciones
+  irrelevantes.
 
-En numerosos contextos, el desempeño de los modelos de aprendizaje profundo se compara
-con el nivel humano, lo que establece un **techo de referencia**. El **sesgo evitable**
-corresponde a la diferencia entre el error humano y el error del modelo, mientras que la
-**varianza** se define como la diferencia entre el error en entrenamiento y en
-validación. Para reducir el sesgo suele ser necesario incrementar la capacidad del
-modelo, entrenar más tiempo o utilizar algoritmos más sofisticados. Para reducir la
-varianza se recurre al aumento de datos, la regularización y el ajuste cuidadoso de los
-hiperparámetros.
+- **Detención temprana (early stopping)**: Supervisa el rendimiento del modelo sobre el
+  conjunto de validación y detiene el entrenamiento cuando el error deja de mejorar,
+  evitando que la red se ajuste demasiado a las particularidades del conjunto de
+  entrenamiento.
 
-### Aprendizaje por transferencia y multitarea
+- **Normalización de entradas**: Escala y centra las características de los datos para
+  garantizar magnitudes comparables, acelerando la convergencia, mejorando la
+  estabilidad numérica y evitando que ciertos parámetros dominen el aprendizaje.
 
-El **aprendizaje por transferencia** consiste en aprovechar el conocimiento adquirido
-por un modelo previamente entrenado en una tarea para aplicarlo en otra. Cuando los
-datos son escasos, se suele reajustar únicamente las últimas capas del modelo. Si la
-cantidad de datos es considerable, resulta viable ajustar toda la red mediante
-**fine-tuning**.
+En complemento a la regularización, las técnicas de **normalización de activaciones**
+resultan esenciales para estabilizar el entrenamiento y acelerar la convergencia.
+Durante la optimización, las activaciones pueden variar significativamente entre capas,
+lo que genera inestabilidad y dificulta el ajuste de los parámetros. La normalización
+busca mantener distribuciones equilibradas de las activaciones a lo largo de la red.
 
-El **aprendizaje multitarea** permite que una única red aborde de manera simultánea
-diferentes problemas compartiendo representaciones internas. Un ejemplo paradigmático se
-observa en conducción autónoma, donde un mismo modelo puede detectar peatones, reconocer
-señales de tráfico, identificar carriles y planificar trayectorias.
+- **_Batch Normalization_**: Normaliza las activaciones de cada capa utilizando la media
+  y la varianza calculadas sobre los ejemplos de un mini-lote. Esto reduce el problema
+  del _internal covariate shift_, acelera el aprendizaje, permite tasas de aprendizaje
+  más altas y simplifica el ajuste de hiperparámetros. Sin embargo, su efectividad
+  depende del tamaño y la composición de los lotes, siendo menos adecuada en lotes
+  pequeños o en datos con distribuciones muy variables.
 
-De este modo, las redes neuronales profundas no solo representan un avance en la
-capacidad de aprendizaje automático, sino que también ofrecen una flexibilidad y
-escalabilidad sin precedentes para abordar problemas complejos en diversos dominios.
+- **_Layer Normalization_**: Normaliza las activaciones a nivel de capa, calculando
+  estadísticas por muestra en lugar de por mini-lote. Es especialmente útil en
+  arquitecturas secuenciales, como los transformadores, y en escenarios de entrenamiento
+  distribuido, ya que no requiere compartir estadísticas entre lotes, facilitando la
+  paralelización y la escalabilidad. A diferencia de _Batch Normalization_, proporciona
+  mayor estabilidad en situaciones donde la composición de los lotes puede variar
+  significativamente.
+
+### 4.7. Desvanecimiento y explosión de gradientes
+
+Uno de los principales desafíos en el entrenamiento de redes neuronales profundas es el
+fenómeno conocido como desvanecimiento o explosión de gradientes. Ambos problemas se
+presentan durante el proceso de _backpropagation_, cuando los gradientes de los
+parámetros (es decir, las derivadas parciales de la función de pérdida respecto a los
+pesos) tienden a disminuir hasta valores cercanos a cero o, por el contrario, a crecer
+de manera exponencial. Esta inestabilidad dificulta o incluso imposibilita el
+aprendizaje, ya que los parámetros no se actualizan de manera adecuada. En la práctica,
+este comportamiento puede provocar que la función de pérdida devenga en valores **NaN**
+(_Not a Number_), interrumpiendo el proceso de optimización.
+
+El desvanecimiento de gradientes ocurre cuando los valores derivados se reducen
+progresivamente en cada capa durante el proceso de _backpropagation_. Esto provoca que
+las capas más cercanas a la entrada reciban señales de error muy débiles, limitando la
+capacidad del modelo para aprender representaciones jerárquicas profundas. Por otro
+lado, la explosión de gradientes se manifiesta cuando los valores derivados aumentan
+exponencialmente a medida que se propagan hacia atrás, generando actualizaciones de
+parámetros excesivamente grandes y conduciendo a un entrenamiento inestable o
+divergente.
+
+Diversos factores contribuyen a la aparición de estos problemas, destacando
+especialmente el tipo de **inicialización de pesos**, la elección de las **funciones de
+activación** y la **profundidad de la red**. En arquitecturas recurrentes tradicionales,
+como las redes neuronales recurrentes simples (RNN) o incluso las LSTM, el cálculo
+iterativo de múltiples derivadas sobre secuencias largas amplifica la tendencia a sufrir
+desvanecimiento o explosión. Esto se debe, en gran medida, al uso de funciones de
+activación como la tangente hiperbólica o la sigmoide, cuyos rangos limitados y simetría
+alrededor de valores fijos provocan que los gradientes se saturen en los extremos,
+reduciendo la señal útil para el aprendizaje.
+
+Para mitigar estos fenómenos se emplean diversas estrategias:
+
+- **Inicialización adecuada de los pesos**: Métodos como Xavier o He ajustan la escala
+  inicial de los parámetros según la cantidad de neuronas por capa, evitando que los
+  gradientes crezcan o decrezcan de manera descontrolada desde el inicio del
+  entrenamiento.
+
+- **Normalización de los datos de entrada**: Escalar las características de entrada para
+  que tengan media cero y varianza unitaria contribuye a estabilizar el flujo de
+  gradientes durante la retropropagación.
+
+- **Funciones de activación más estables**: El uso de activaciones como ReLU y sus
+  variantes (Leaky ReLU, ELU, entre otras) reduce la saturación observada en funciones
+  como la sigmoide o la tangente hiperbólica, favoreciendo gradientes más consistentes.
+
+- **Clipado de gradientes**: Consiste en limitar el rango de valores que pueden alcanzar
+  los gradientes durante la retropropagación. Cuando los gradientes exceden un umbral
+  predefinido, se ajustan a dicho límite, evitando actualizaciones excesivas. Es común
+  emplear intervalos como $\[-1, 1]\$, aunque también existen variantes dinámicas que
+  adaptan este rango según el estado del entrenamiento.
+
+- **Diseño arquitectónico específico**: La introducción de mecanismos de memoria y
+  compuertas en redes como LSTM o GRU permite manejar dependencias de largo plazo,
+  reduciendo los problemas de desvanecimiento de gradientes. Más recientemente, los
+  Transformers han reemplazado en gran medida a las RNN en el procesamiento de
+  secuencias reduciendo estas limitaciones.
+
+### 4.8. Estrategia en el proceso de optimización
+
+El diseño de una estrategia adecuada en el desarrollo de modelos de aprendizaje
+automático resulta crucial para alcanzar un rendimiento óptimo y garantizar la utilidad
+práctica de los sistemas. No todas las mejoras introducidas durante el proceso de
+construcción del modelo tienen el mismo impacto en su desempeño. En muchos casos,
+incrementar la cantidad y diversidad de datos disponibles o modificar de manera
+sustancial la arquitectura de la red genera beneficios mucho mayores que ajustes menores
+sobre los hiperparámetros. Por este motivo, se requiere establecer métricas claras y
+bien definidas que orienten las decisiones y permitan evaluar de manera objetiva cada
+iteración del proceso.
+
+Las métricas de evaluación dependen directamente del tipo de aprendizaje empleado
+(supervisado, no supervisado o por refuerzo), aunque comparten el objetivo común de
+cuantificar la calidad de las predicciones. En aprendizaje supervisado de clasificación,
+destacan medidas como la **precisión**, que expresa la proporción de verdaderos
+positivos entre todas las predicciones positivas, el **recall** o sensibilidad, que
+calcula la proporción de verdaderos positivos sobre el total de casos positivos reales,
+y la **puntuación F1**, definida como la media armónica entre la precisión y el recall,
+que equilibra ambas perspectivas.
+
+Más allá de las métricas de exactitud, es indispensable considerar indicadores de
+**eficiencia computacional**, tales como el tiempo de entrenamiento, la latencia en la
+inferencia, el consumo de memoria y la escalabilidad del modelo. Estas métricas permiten
+valorar no solo el grado de acierto, sino también la viabilidad práctica de la solución
+en contextos de producción. Asimismo, en entornos empresariales resulta común integrar
+indicadores de **impacto económico y de experiencia de usuario**, como el retorno de
+inversión, la satisfacción percibida, la calidad de las respuestas o los tiempos de
+espera, de manera que el rendimiento técnico se vincule con objetivos estratégicos.
+
+Para implementar una estrategia de aprendizaje coherente y sostenible, se recomienda
+emplear plataformas especializadas en la gestión de experimentos. Estas herramientas
+permiten registrar y organizar de forma sistemática todos los artefactos generados
+durante el desarrollo del modelo, incluidos los parámetros de configuración, el número
+de capas, las funciones de activación utilizadas, la arquitectura adoptada y las
+métricas obtenidas en cada ejecución. De este modo, se garantiza la **replicabilidad de
+los experimentos**, se facilita la **comparación justa entre diferentes
+configuraciones** y se optimiza la toma de decisiones. Entre las plataformas más
+utilizadas se encuentran **MLflow**, **Weights & Biases (wandb)** y soluciones
+similares, que proporcionan entornos integrados para el seguimiento, análisis y
+visualización de experimentos de aprendizaje automático.
+
+### 4.9. Aprendizaje por transferencia y multitarea
+
+Además de las arquitecturas tradicionales, en el campo del aprendizaje profundo se han
+desarrollado enfoques que no constituyen arquitecturas en sí mismas, sino **paradigmas
+de aprendizaje** que buscan aprovechar de manera más eficiente los recursos
+computacionales y los datos disponibles. Entre los más relevantes se encuentran el
+**aprendizaje por transferencia** y el **aprendizaje multitarea**, ambos orientados a
+mejorar la capacidad de generalización de los modelos y a reducir el coste de
+entrenamiento.
+
+El **aprendizaje por transferencia** consiste en reutilizar el conocimiento adquirido
+por un modelo previamente entrenado en una tarea determinada para aplicarlo en otra
+tarea relacionada. Por ejemplo, un modelo entrenado para clasificar imágenes en un
+dominio amplio (como el conjunto de datos ImageNet) puede transferirse a un modelo más
+específico, encargado de identificar defectos en piezas industriales o clasificar tipos
+de cultivos a partir de imágenes satelitales. En este contexto, la similitud entre las
+tareas es un requisito fundamental. No resulta viable transferir directamente el
+conocimiento de un modelo entrenado en visión por computadora a uno diseñado para
+procesar texto, ya que las representaciones internas aprendidas difieren por completo.
+
+El grado de reutilización depende en gran medida de la disponibilidad de datos en la
+nueva tarea. Cuando los datos son escasos, suele reajustarse únicamente la parte final
+de la red, por ejemplo, las últimas capas densas de un clasificador. Mientras que el
+resto de la arquitectura se congela, preservando así las representaciones generales
+previamente aprendidas. En cambio, cuando se dispone de una cantidad suficiente de
+datos, es posible aplicar un ajuste fino o **_fine-tuning_**, que consiste en reentrenar
+toda la red para adaptar gradualmente los parámetros a las particularidades del nuevo
+dominio.
+
+El **aprendizaje multitarea**, por su parte, persigue que un mismo modelo sea capaz de
+resolver de manera simultánea múltiples problemas relacionados. La idea central es que
+al compartir representaciones internas entre diferentes tareas, la red aprende
+descriptores más generales y robustos que benefician a todas ellas. Un ejemplo
+paradigmático se encuentra en la conducción autónoma, un único modelo puede segmentar
+imágenes para identificar peatones, carreteras y vehículos, clasificar señales de
+tráfico, y, al mismo tiempo, predecir trayectorias de otros automóviles o del propio
+vehículo. En este escenario, el entrenamiento implica optimizar distintas funciones de
+coste (una para la segmentación, otra para la clasificación y otra para la predicción de
+movimientos) que se combinan en un proceso conjunto de descenso del gradiente.
+
+ME HE QUEDADO AQUI CORRIGIENDO
 
 ## 5. Arquitecturas de Deep Learning
 
