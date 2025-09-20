@@ -1204,437 +1204,628 @@ vehículo. En este escenario, el entrenamiento implica optimizar distintas funci
 coste (una para la segmentación, otra para la clasificación y otra para la predicción de
 movimientos) que se combinan en un proceso conjunto de descenso del gradiente.
 
-ME HE QUEDADO AQUI CORRIGIENDO
+## 5. Arquitecturas de Deep Learning: Redes Neuronales Convolucionales
 
-## 5. Arquitecturas de Deep Learning
-
-## 1. Redes Neuronales Convolucionales y la Visión Computacional
+### 5.1. Redes Neuronales Convolucionales y su Aplicación en Visión Computacional
 
 La visión computacional constituye uno de los campos más dinámicos y transformadores de
-la inteligencia artificial. Gracias a ella se han desarrollado aplicaciones que van
-desde la conducción autónoma hasta el reconocimiento facial o la clasificación
-automática de imágenes. Incluso sus fundamentos han inspirado avances en dominios
-aparentemente distintos, como el procesamiento del lenguaje y el reconocimiento de voz.
-
-El principal desafío al trabajar con imágenes radica en la enorme cantidad de datos que
-contienen. Una simple fotografía de 64 × 64 píxeles en color, con tres canales RGB,
-representa un vector de **12.288 valores**. Alimentar directamente este volumen de datos
-en una red neuronal tradicional implicaría crear capas iniciales con decenas de miles de
-neuronas, lo que resulta inviable a medida que las resoluciones crecen, tanto por coste
-computacional como por riesgo de sobreajuste.
-
-La solución se encuentra en la **convolución**. Esta operación aplica pequeños filtros
-(_kernels_) sobre la imagen para detectar patrones locales como bordes, esquinas o
-texturas. Al desplazarse por la imagen, cada filtro genera un **mapa de
-características** que refleja el grado de coincidencia con las distintas regiones.
-Ejemplos clásicos son los filtros de detección de bordes verticales u horizontales, así
-como los operadores Sobel o Scharr. Sin embargo, la gran ventaja de las redes
-convolucionales es que estos filtros no se fijan manualmente: sus valores se aprenden
-mediante retropropagación, lo que permite descubrir patrones mucho más complejos y
-específicos para cada tarea.
-
-### Conceptos clave en la convolución
-
-El uso de convoluciones introduce varios elementos fundamentales:
-
-- **Relleno (padding):** añade bordes artificiales para evitar la pérdida de información
-  en los márgenes y mantener el tamaño de la entrada.
-- **Desplazamiento (stride):** determina cuántos píxeles avanza el filtro en cada paso.
-  Un stride mayor reduce el tamaño de la salida y, por ende, el número de cálculos.
-- **Filtros en tres dimensiones:** en imágenes a color, los filtros no son simples
-  matrices, sino cubos que recorren simultáneamente los tres canales de la imagen.
-
-Lo notable es que el número de parámetros de una capa convolucional depende del tamaño y
-número de filtros, y no del tamaño de la imagen. Por ejemplo, 10 filtros de 3 × 3 × 3
-suman únicamente 280 parámetros, cifra muy reducida frente a los millones de conexiones
-de una red totalmente conectada.
-
-### Capas de agrupamiento
-
-Tras la convolución suele aplicarse una etapa de **agrupamiento (_pooling_)**, que
-reduce las dimensiones intermedias y aporta robustez frente a pequeñas variaciones. La
-técnica más habitual es el **max pooling**, que selecciona el valor máximo en cada
-región, priorizando la presencia de una característica por encima de su posición exacta.
-También existe el **average pooling**, que utiliza el valor medio, aunque se emplea con
-menor frecuencia.
-
-### Flujo en redes convolucionales
-
-A medida que se avanza en la red, el tamaño espacial de las representaciones disminuye y
-el número de canales aumenta, lo que permite capturar patrones cada vez más abstractos.
-Finalmente, se añaden capas totalmente conectadas que integran la información extraída
-para generar la predicción final: clasificar, reconocer o identificar un objeto.
-
-### Ventajas de las convoluciones
-
-Las convoluciones resultan efectivas por dos motivos principales:
-
-1. **Reducción drástica de parámetros**, lo que simplifica el entrenamiento.
-2. **Compartición de parámetros**, ya que un patrón aprendido en una región puede
-   aplicarse en cualquier otra, favoreciendo la generalización.
-
-Gracias a estas propiedades, las redes convolucionales han revolucionado la manera en
-que las máquinas interpretan imágenes, alcanzando una capacidad de análisis visual que
-en algunos aspectos rivaliza con la percepción humana.
-
-## 2. Redes Neuronales Residuales y Nuevas Arquitecturas
-
-El aumento en profundidad de las redes trae consigo un problema: a partir de cierto
-punto, en lugar de mejorar, su rendimiento se degrada. Esto ocurre por fenómenos de
-**gradientes que desaparecen o explotan**, lo que impide que la red aprenda de manera
-efectiva.
-
-### Redes residuales (ResNet)
-
-La solución llegó con las **redes residuales (ResNet)**, que introducen **conexiones de
-atajo** (_skip connections_). Estas permiten transmitir activaciones de una capa a otra
-más profunda, como si se tendieran puentes dentro de la red. Así, cada bloque residual
-aprende no solo una transformación, sino también la diferencia (_residuo_) respecto a su
-entrada. Este diseño posibilitó entrenar redes muy profundas, estableciendo un hito en
-la visión computacional.
-
-### Redes Inception
-
-Otra innovación fue la **arquitectura Inception**, utilizada en modelos como GoogLeNet.
-Su principio es aplicar en paralelo filtros de distintos tamaños (1×1, 3×3, 5×5) y una
-operación de pooling, concatenando los resultados. Esto permite capturar información a
-diferentes escalas. Para reducir el coste computacional, se introdujeron convoluciones
-de 1×1 que actúan como cuellos de botella, disminuyendo la dimensionalidad antes de
-aplicar filtros más grandes.
-
-### MobileNet y arquitecturas ligeras
-
-Con el auge de los dispositivos móviles surgió la necesidad de modelos más eficientes.
-Así aparecieron las **MobileNet**, que se basan en **convoluciones separables en
-profundidad**. El proceso se divide en:
-
-1. **Convolución en profundidad:** cada filtro se aplica de forma independiente a un
-   canal.
-2. **Convolución puntual (1×1):** combina los resultados de todos los canales.
-
-Este enfoque reduce enormemente el coste computacional. La segunda versión,
-**MobileNetV2**, incorporó conexiones residuales y capas de expansión mediante filtros
-1×1 para mejorar la capacidad de representación.
-
-MobileNet permite ajustar su arquitectura según tres parámetros:
-
-- **Ancho:** número de filtros por capa.
-- **Resolución de entrada:** tamaño de la imagen procesada.
-- **Profundidad:** número de capas totales.
-
-De esta forma, la red puede adaptarse a distintos escenarios, desde aplicaciones en
-tiempo real en móviles hasta entornos con gran capacidad de cómputo.
-
-## 3. Detección de Objetos en Visión Computacional
-
-En aplicaciones como la conducción autónoma no basta con clasificar una imagen: es
-necesario identificar **qué objetos hay y dónde están**. Aquí entra la **detección de
-objetos**, que combina **clasificación** y **localización** mediante recuadros
-delimitadores (_bounding boxes_).
-
-### Clasificación con localización
-
-En el caso más simple, se entrena un modelo para detectar un único objeto por imagen,
-prediciendo:
-
-1. La probabilidad de presencia de un objeto.
-2. Las coordenadas del recuadro.
-3. La clase correspondiente.
-
-### Detección de múltiples objetos
-
-Para escenarios más complejos se emplean modelos capaces de detectar varios objetos en
-una misma escena. Una estrategia consiste en dividir la imagen en una **malla de
-celdas**, donde cada celda predice la clase y coordenadas de los objetos que contienen
-su centro.
-
-El algoritmo **YOLO (You Only Look Once)** implementa este enfoque aplicando la red
-convolucional a toda la imagen de una sola vez, lo que permite detecciones en tiempo
-real.
-
-### Métricas y optimización
-
-- **Intersección sobre unión (IoU):** mide la calidad de una predicción comparando el
-  solapamiento entre la caja predicha y la real.
-- **Supresión de no máximos (NMS):** elimina predicciones redundantes manteniendo solo
-  la más confiable.
-- **Cajas de anclaje (anchor boxes):** permiten a cada celda predecir múltiples objetos
-  con diferentes proporciones y tamaños. Se seleccionan habitualmente mediante
-  algoritmos de agrupamiento como _k-means_.
-
-### Variantes del problema
-
-- **Detección de puntos de referencia:** en lugar de cajas, se predicen coordenadas
-  específicas, como rasgos faciales o articulaciones.
-- **Métodos basados en regiones:** generan propuestas de posibles áreas de interés que
-  luego son clasificadas, logrando mayor precisión aunque a costa de mayor tiempo de
-  cómputo.
-
-La detección de objetos es, por tanto, un paso clave hacia aplicaciones prácticas
-avanzadas, combinando precisión y eficiencia en escenarios del mundo real.
-
-## 4. Segmentación Semántica y la Arquitectura U-Net
-
-La **segmentación semántica** lleva la visión por computadora a un nivel más detallado:
-asignar a cada píxel una clase específica. El resultado es un mapa que representa con
-precisión la forma de cada objeto, útil en áreas como la medicina, la agricultura o la
-robótica.
-
-### Convolución transpuesta
-
-Para reconstruir la resolución original de la imagen se utiliza la **convolución
-transpuesta**, que invierte el proceso de la convolución tradicional, expandiendo
-progresivamente el tamaño espacial de la representación.
-
-### U-Net
-
-La **U-Net**, diseñada inicialmente para aplicaciones médicas, combina dos etapas:
-
-- **Compresión:** reduce la resolución y aumenta los canales para extraer
-  características abstractas.
-- **Expansión:** recupera la resolución original mediante convoluciones transpuestas.
-
-Para evitar la pérdida de detalles espaciales, se introducen **conexiones de omisión**,
-que transfieren información de las capas iniciales a las correspondientes capas de
-expansión. Esto permite segmentar con alta precisión bordes y contornos.
-
-### Salidas posibles
-
-Según el problema, la salida de la red puede variar: desde un único recuadro, hasta
-múltiples coordenadas (por ejemplo, 2·n para _n_ puntos de referencia) o una máscara
-completa de segmentación. En todos los casos, la segmentación semántica ofrece una
-comprensión más rica y precisa de la imagen que la simple clasificación o detección.
-
-## 5. One-Shot Learning y el Reconocimiento de Imágenes
-
-Los modelos de visión suelen requerir grandes volúmenes de datos para aprender. Sin
-embargo, en muchos casos solo se dispone de unos pocos ejemplos por clase. Este desafío
-se aborda con el **One-Shot Learning** (aprendizaje con una sola muestra) o **Few-Shot
-Learning** (con pocas muestras).
-
-### Funciones de similitud y redes siamesas
-
-La clave está en aprender un **espacio de representación** donde las imágenes similares
-estén próximas y las distintas alejadas. Para medir la proximidad se utilizan métricas
-como la distancia euclidiana.
-
-Las **redes siamesas** procesan en paralelo dos imágenes con la misma red convolucional
-compartiendo parámetros. El resultado son vectores de características que pueden
-compararse directamente para decidir si pertenecen a la misma clase.
-
-### Triplet Loss
-
-El entrenamiento también puede organizarse mediante la **pérdida triple (triplet
-loss)**, que utiliza un trío de imágenes:
-
-- **Anchor:** muestra de referencia.
-- **Positiva:** misma clase que el anchor.
-- **Negativa:** clase distinta.
-
-El objetivo es acercar las imágenes positivas al anchor y alejar las negativas, creando
-representaciones robustas y discriminativas.
-
-### Aprendizaje contrastivo y autosupervisado
-
-El **aprendizaje autosupervisado** ha potenciado aún más estas técnicas mediante la
-**pérdida contrastiva**, que aproxima pares de imágenes similares y aleja las distintas.
-Esto puede hacerse sin etiquetas, generando versiones transformadas de la misma imagen
-como pares positivos. Cuando se dispone de etiquetas, se utilizan imágenes de la misma
-clase como positivas y de clases diferentes como negativas.
-
-### Aplicaciones
-
-El One-Shot Learning se aplica en múltiples áreas: reconocimiento facial, clasificación
-de enfermedades raras en medicina o identificación de especies poco comunes. En lugar de
-entrenar un clasificador rígido, el modelo aprende un espacio de representaciones donde
-las distancias codifican similitud, lo que permite generalizar con muy pocos datos.
-
-# 6. Modelos Secuenciales y Redes Recurrentes
-
-Muchos problemas en inteligencia artificial implican datos **secuenciales**, es decir,
-información organizada en un orden temporal o lógico. Ejemplos incluyen reconocimiento
-de voz, generación de música, análisis de sentimientos en texto, secuencias de ADN o
-traducción automática. Para abordarlos, se utilizan **modelos secuenciales**, que
-procesan los datos considerando su orden y dependencia temporal.
-
-## 6.1 Representación de secuencias
-
-En tareas de lenguaje natural, las palabras deben transformarse en representaciones
-comprensibles para un modelo. Este proceso, llamado **tokenización**, convierte cada
-palabra en un índice único dentro de un diccionario y, posteriormente, en un vector que
-codifica su información.
-
-Se emplean tokens especiales para palabras desconocidas y, en generación de texto, un
-token de **fin de secuencia** para indicar el cierre de la frase. Las longitudes de las
-secuencias de entrada y salida pueden diferir, por lo que se manejan variables
-específicas que reflejan estos tamaños.
-
-## 6.2 Redes Neuronales Recurrentes (RNN)
-
-Las **RNNs** introducen la capacidad de “recordar” información previa, reutilizando la
-salida de un paso anterior como entrada en el siguiente. En cada instante, la red
-combina la entrada actual con el estado oculto anterior para producir un nuevo estado y
-una salida. Los parámetros se comparten a lo largo de la secuencia, permitiendo que la
-predicción en un momento dado considere toda la información previa.
-
-### Limitaciones
-
-En la práctica, las RNN enfrentan dos problemas principales:
-
-1. **Desvanecimiento de gradientes:** los gradientes se vuelven extremadamente pequeños,
-   dificultando el aprendizaje de dependencias largas.
-2. **Explosión de gradientes:** los gradientes crecen descontroladamente, afectando la
-   estabilidad del entrenamiento.
-
-## 6.3 Extensiones de las RNN
-
-Para superar estas limitaciones, se desarrollaron variantes más robustas:
-
-- **RNN bidireccionales:** procesan la secuencia en ambas direcciones, integrando
-  información pasada y futura.
-- **LSTM (Long Short-Term Memory):** incorporan una celda de memoria y puertas que
-  controlan qué información se guarda, se olvida y se utiliza, capturando dependencias a
-  largo plazo.
-- **GRU (Gated Recurrent Unit):** versión simplificada de las LSTM, eficiente en
-  recursos y con rendimiento comparable en muchos casos.
-
-## 6.4 Modelos de lenguaje y predicción de secuencias
-
-Los **modelos de lenguaje** asignan probabilidades a secuencias de palabras, prediciendo
-la siguiente palabra dada una historia de texto. Se entrenan con grandes corpus para
-aprender no solo asociaciones entre palabras, sino también patrones gramaticales y
-contextuales. Estas redes habilitan aplicaciones como asistentes virtuales, análisis de
-emociones y descifrado de secuencias genéticas.
-
-## 7. Representación de Palabras y la Revolución de los Transformers
-
-En el **procesamiento de lenguaje natural (NLP)**, una idea clave es la de los **word
-embeddings**, vectores que representan palabras en un espacio continuo donde las
-relaciones semánticas se reflejan en la geometría. Este enfoque supera al **one-hot
-encoding**, que carecía de información semántica, y permite capturar similitudes,
-analogías y relaciones complejas entre palabras.
-
-### 7.1 Aprendizaje de embeddings
-
-- **Word2Vec:** aprende a predecir palabras a partir de su contexto mediante ventanas de
-  texto, utilizando técnicas como _negative sampling_ para reforzar relaciones
-  relevantes.
-- **GloVe:** combina coocurrencias globales de palabras con factorización de matrices,
-  integrando información local y estadística global del corpus.
+la inteligencia artificial. A través de ella se han desarrollado aplicaciones que
+abarcan desde la conducción autónoma hasta el reconocimiento facial, la clasificación
+automática de imágenes y la segmentación de objetos en entornos complejos. La relevancia
+de este ámbito es tal que sus fundamentos han trascendido el análisis de imágenes,
+inspirando avances en disciplinas distintas, como el procesamiento del lenguaje natural
+o el reconocimiento de voz.
+
+El principio subyacente que permite esta transferencia de conocimiento es la existencia
+de una estructura espacio-temporal en los datos. En el caso de las imágenes, esta
+estructura se refleja en la disposición relativa de los píxeles. Si se logra transformar
+otros tipos de datos en representaciones visuales que conserven dicha organización, es
+posible aplicar arquitecturas convolucionales de manera eficaz. Un ejemplo de este
+enfoque se observa en la conversión de series temporales en imágenes mediante técnicas
+como los _Gramian Angular Fields_. Este método transforma la serie temporal en
+coordenadas polares y genera una matriz de ángulos que produce una imagen con
+información espacio-temporal equivalente a la contenida en la secuencia original. De
+modo similar, las señales de audio pueden convertirse en espectrogramas de tipo _Mel_,
+lo que permite aprovechar las propiedades de las redes convolucionales para tareas de
+clasificación, identificación o análisis acústico.
+
+El principal desafío al trabajar con imágenes radica en la elevada cantidad de
+información que contienen. Considérese, por ejemplo, una imagen en color de 64 × 64
+píxeles. Dado que cada píxel posee tres componentes de color (rojo, verde y azul), la
+representación requiere tres matrices de 64 × 64 valores, lo que equivale a **12.288
+entradas** para la red neuronal. Introducir directamente esta cantidad de datos en una
+arquitectura tradicional obligaría a disponer de capas iniciales con decenas de miles de
+neuronas, lo que genera un coste computacional muy alto y un elevado riesgo de
+sobreajuste a medida que la resolución de las imágenes aumenta.
+
+La solución a este problema se encuentra en la operación de **convolución**. Este
+procedimiento aplica filtros, también denominados _kernels_, que recorren la imagen en
+busca de patrones característicos como bordes, esquinas o texturas. El resultado de cada
+aplicación es un **mapa de características**, que cuantifica la presencia del patrón
+detectado en diferentes regiones de la imagen. Una propiedad fundamental de este
+mecanismo es la **invarianza al desplazamiento**, que permite reconocer un mismo patrón
+independientemente de su ubicación. Es importante señalar que esta propiedad se
+manifiesta de manera estricta únicamente cuando la convolución se realiza con un tamaño
+de paso igual a uno.
+
+Los filtros que aprende una red convolucional pueden compararse con operadores clásicos
+de detección de bordes, como Sobel o Scharr, capaces de identificar direcciones
+verticales u horizontales. Sin embargo, la principal ventaja de las redes
+convolucionales es que los filtros no se definen manualmente, sino que sus valores se
+aprenden automáticamente mediante el algoritmo de _backpropagation_. Gracias a ello, el
+modelo adquiere la capacidad de descubrir patrones mucho más complejos y adaptados a la
+tarea específica.
+
+A medida que la información avanza a través de las capas convolucionales, el tamaño
+espacial de las representaciones disminuye mientras que el número de canales se
+incrementa. Este proceso permite capturar progresivamente patrones de mayor nivel de
+abstracción, que van desde contornos simples hasta estructuras semánticamente
+significativas. Finalmente, las capas totalmente conectadas integran la información
+extraída para producir la predicción final, que puede consistir en clasificar una
+imagen, reconocer un objeto o identificar un rostro.
+
+### 5.2. Conceptos Fundamentales de la Convolución
+
+El uso de convoluciones en redes neuronales introduce una serie de elementos esenciales
+que determinan el comportamiento y la eficacia del modelo. Uno de ellos es el **relleno
+(_padding_)**, que consiste en añadir bordes artificiales alrededor de la imagen para
+evitar la pérdida de información en los márgenes y mantener las dimensiones originales
+de la entrada. Este procedimiento resulta necesario porque, a medida que se aplican
+operaciones de convolución, las dimensiones de las representaciones intermedias tienden
+a reducirse respecto a la imagen inicial. El relleno garantiza que el tamaño de salida
+coincida con el de entrada, lo que permite preservar información espacial en las etapas
+iniciales del procesamiento.
+
+Otro concepto clave es el **desplazamiento (_stride_)**, que define el número de píxeles
+que el filtro avanza en cada paso al recorrer la imagen. Un valor de _stride_ mayor
+reduce las dimensiones de la salida y, en consecuencia, disminuye el número de cálculos
+necesarios. Cuando el tamaño del _stride_ coincide con el del filtro, el proceso es
+equivalente a dividir la imagen en fragmentos independientes (_patches_), lo que aísla
+secciones completas y permite analizarlas de manera separada.
+
+En el caso de imágenes en color, los filtros no se limitan a ser matrices
+bidimensionales, sino que se extienden a **tres dimensiones** para recorrer
+simultáneamente los canales rojo, verde y azul. Este aspecto resulta especialmente
+relevante porque el número de parámetros de una capa convolucional depende únicamente
+del tamaño y la cantidad de filtros, y no de las dimensiones de la imagen de entrada. De
+este modo, se logra una gran eficiencia en comparación con las redes totalmente
+conectadas. Por ejemplo, una capa con 10 filtros de 3 × 3 × 3 requiere solo **280
+parámetros**, cifra muy reducida frente a los millones de conexiones que implicaría una
+arquitectura densa de tamaño equivalente.
+
+No obstante, conviene señalar que, al introducir variaciones como _stride_, _padding_ o
+capas densas posteriores, se puede perder parcialmente la **invarianza al
+desplazamiento** que caracteriza a la convolución estándar con _stride_ igual a uno. En
+consecuencia, una misma imagen trasladada circularmente hacia la izquierda o la derecha
+no siempre genera representaciones idénticas a las de la imagen original.
+
+Las convoluciones resultan efectivas por dos motivos principales: en primer lugar,
+permiten una **reducción drástica del número de parámetros**, lo que simplifica el
+entrenamiento y reduce el riesgo de sobreajuste; en segundo lugar, implementan la
+**compartición de parámetros**, ya que un patrón aprendido en una región de la imagen
+puede aplicarse en cualquier otra, lo que favorece la capacidad de generalización del
+modelo.
+
+Tras la convolución, suele aplicarse una etapa de **agrupamiento (_pooling_)**,
+destinada a reducir las dimensiones intermedias y aportar robustez frente a pequeñas
+variaciones espaciales. Esta operación contribuye, en muchos casos, a recuperar
+parcialmente la invarianza al desplazamiento. La técnica más extendida es el **max
+pooling**, que selecciona el valor máximo dentro de cada región, priorizando la
+detección de la presencia de una característica por encima de su ubicación exacta. Otra
+variante frecuente es el **average pooling**, que sustituye cada región por el valor
+promedio de sus elementos, ofreciendo una representación más suavizada de la
+información.
+
+### 5.3. Redes Neuronales Residuales, Arquitecturas Inception y Modelos Móviles
+
+El incremento en la profundidad de las redes neuronales ha permitido avances
+significativos en la visión computacional. Sin embargo, este aumento también genera un
+problema conocido: a partir de cierto punto, el rendimiento no mejora, sino que se
+degrada. La causa principal radica en fenómenos como la desaparición o explosión de
+gradientes, que dificultan el ajuste de los parámetros durante el entrenamiento y
+limitan la capacidad de la red para aprender de manera efectiva.
+
+La solución a este desafío surgió con la introducción de las **redes residuales
+(ResNet)**. Estas arquitecturas incorporan **conexiones de atajo (_skip connections_)**,
+que transmiten directamente las activaciones de una capa hacia otra más profunda, como
+si se establecieran puentes dentro de la red. En consecuencia, cada bloque residual no
+aprende únicamente una transformación completa, sino la diferencia (_residuo_) entre la
+entrada y la salida esperada. Este diseño facilita el flujo de gradientes, permite
+entrenar redes mucho más profundas y marcó un hito en el desarrollo de la visión
+computacional, siendo la base de numerosos modelos posteriores.
+
+Otra innovación relevante fue la **arquitectura Inception**, implementada en modelos
+como **GoogLeNet**. Su principio fundamental consiste en aplicar en paralelo filtros de
+distintos tamaños (1×1, 3×3 y 5×5), junto con una operación de _pooling_, y concatenar
+los resultados obtenidos. Esta estrategia permite capturar información a diferentes
+escalas espaciales, favoreciendo la detección de patrones tanto locales como globales.
+Para controlar el coste computacional asociado a este diseño, se introdujeron
+convoluciones de 1×1 que actúan como cuellos de botella, reduciendo la dimensionalidad
+de los datos antes de aplicar filtros más grandes. De este modo, la arquitectura logra
+un equilibrio entre expresividad y eficiencia.
+
+Con la expansión de los dispositivos móviles y las aplicaciones en tiempo real, surgió
+la necesidad de arquitecturas más livianas y rápidas. En este contexto aparecieron las
+**MobileNet**, basadas en el concepto de **convoluciones separables en profundidad**.
+Este enfoque divide el proceso en dos etapas:
+
+1. **Convolución en profundidad (_depthwise convolution_):** cada filtro se aplica de
+   manera independiente a un canal de la entrada.
+2. **Convolución puntual (1×1, _pointwise convolution_):** combina los resultados de
+   todos los canales para generar una representación integrada.
+
+Gracias a esta separación, se logra una reducción drástica en el número de operaciones y
+parámetros, lo que convierte a MobileNet en una arquitectura altamente eficiente.
+
+La segunda generación, **MobileNetV2**, incorporó **conexiones residuales** junto con
+**capas de expansión** mediante filtros 1×1, que permiten aumentar la capacidad de
+representación sin comprometer la eficiencia. Esta combinación potenció el rendimiento
+del modelo, manteniendo al mismo tiempo su idoneidad para dispositivos con recursos
+limitados.
+
+MobileNet ofrece, además, la posibilidad de ajustar su arquitectura en función de tres
+parámetros principales:
+
+- **Ancho:** número de filtros por capa, que controla la capacidad del modelo.
+- **Resolución de entrada:** tamaño de la imagen procesada, que impacta directamente en
+  el coste computacional.
+- **Profundidad:** número total de capas, que determina el nivel de abstracción
+  alcanzado.
+
+Gracias a esta flexibilidad, la arquitectura puede adaptarse a distintos escenarios,
+desde aplicaciones en tiempo real en teléfonos móviles hasta entornos con gran capacidad
+de cómputo, logrando un balance entre precisión y eficiencia.
+
+### 5.4. Detección de Objetos en Visión Computacional
+
+En muchas aplicaciones de la visión computacional, como la conducción autónoma o la
+vigilancia inteligente, no basta con clasificar una imagen en su conjunto. Es
+imprescindible identificar **qué objetos aparecen en la escena y en qué lugar se
+encuentran**. Este desafío se aborda mediante la **detección de objetos**, un problema
+que combina simultáneamente la **clasificación** y la **localización** de los elementos
+presentes a través de recuadros delimitadores (_bounding boxes_).
+
+En el caso más simple, se entrena un modelo para detectar un único objeto en cada
+imagen. Este modelo debe predecir tres aspectos fundamentales:
+
+1. La probabilidad de presencia del objeto.
+2. Las coordenadas del recuadro delimitador.
+3. La clase a la que pertenece el objeto detectado.
+
+Sin embargo, la mayoría de escenarios reales presentan múltiples objetos de diferentes
+clases y tamaños. Para abordar esta complejidad, una estrategia habitual consiste en
+dividir la imagen en una **malla de celdas**, donde cada celda se encarga de predecir la
+presencia de objetos cuyo centro se encuentra en su interior, junto con las coordenadas
+y la categoría correspondiente.
+
+Uno de los algoritmos más influyentes en este ámbito es **YOLO (_You Only Look Once_)**,
+que aplica la red convolucional a toda la imagen de manera simultánea. Gracias a este
+diseño, el modelo puede realizar detecciones en tiempo real, lo que lo convierte en una
+solución idónea para aplicaciones prácticas donde la velocidad es un requisito crítico.
+
+El desempeño de los modelos de detección se evalúa y optimiza mediante diferentes
+métricas y técnicas:
+
+- **Intersección sobre Unión (IoU):** mide la calidad de la predicción comparando el
+  grado de solapamiento entre la caja predicha y la caja real. Un valor más alto de IoU
+  indica una localización más precisa.
+- **Supresión de No Máximos (NMS):** elimina predicciones redundantes en torno a un
+  mismo objeto, conservando únicamente la más confiable.
+- **Cajas de Anclaje (_anchor boxes_):** permiten que cada celda prediga múltiples
+  objetos con distintas proporciones y escalas. Estas cajas se definen habitualmente a
+  partir de algoritmos de agrupamiento, como _k-means_, que identifican formas y tamaños
+  más representativos en los datos de entrenamiento.
+
+Además de la detección convencional basada en recuadros, existen variantes del problema
+orientadas a tareas más específicas. Entre ellas destacan:
+
+- **Detección de puntos de referencia:** en lugar de delimitar áreas rectangulares, se
+  predicen coordenadas concretas, como las posiciones de rasgos faciales o
+  articulaciones en el cuerpo humano.
+- **Métodos basados en regiones:** generan propuestas de posibles áreas de interés en la
+  imagen, que posteriormente se clasifican. Este enfoque suele lograr mayor precisión,
+  aunque con un coste computacional más elevado.
+
+En conjunto, la detección de objetos constituye un componente esencial para el
+desarrollo de sistemas avanzados de visión artificial. Su capacidad para equilibrar
+precisión y eficiencia la convierte en una herramienta clave para aplicaciones en
+entornos dinámicos y del mundo real, donde tanto la rapidez como la exactitud resultan
+indispensables.
+
+### 5.5. Segmentación Semántica, Convoluciones Transpuestas y la Arquitectura U-Net
+
+La **segmentación semántica** constituye una de las tareas más avanzadas de la visión
+computacional, ya que no se limita a identificar qué objetos aparecen en una imagen,
+sino que asigna una **clase específica a cada píxel**. El resultado es un mapa detallado
+que representa con precisión la forma y extensión de cada objeto presente en la escena.
+Esta técnica resulta fundamental en campos como la medicina, donde se emplea para
+delimitar órganos o tumores en imágenes médicas; en la agricultura, para el análisis de
+cultivos; y en la robótica, para la percepción precisa del entorno.
+
+Para alcanzar este nivel de detalle, es necesario reconstruir la resolución espacial
+original de la imagen a partir de representaciones comprimidas obtenidas en las etapas
+iniciales de la red. Esta tarea se logra mediante la **convolución transpuesta**,
+también conocida como _deconvolución_. A diferencia de la convolución tradicional, que
+reduce progresivamente las dimensiones espaciales, la convolución transpuesta expande
+dichas dimensiones, incrementando la resolución hasta aproximarse a la escala original
+de la entrada.
+
+Un hito en este ámbito lo constituye la **arquitectura U-Net**, diseñada inicialmente
+para aplicaciones médicas, pero posteriormente adoptada en numerosos contextos. Esta
+arquitectura se estructura en dos fases principales:
+
+- **Etapa de compresión (_encoder_):** reduce la resolución de la imagen y aumenta el
+  número de canales, con el objetivo de extraer representaciones cada vez más abstractas
+  y ricas en información semántica.
+- **Etapa de expansión (_decoder_):** recupera la resolución original mediante
+  convoluciones transpuestas, reconstruyendo la información espacial a partir de las
+  características extraídas.
+
+Para mitigar la pérdida de detalles espaciales ocasionada por la compresión, U-Net
+incorpora **conexiones de omisión (_skip connections_)**, que transfieren información
+directamente desde las capas de compresión a las capas de expansión correspondientes.
+Gracias a estas conexiones, la red conserva detalles finos de bordes y contornos,
+alcanzando segmentaciones de alta precisión.
+
+La salida de una arquitectura de segmentación puede variar según el problema abordado.
+En casos simples, puede consistir en un único recuadro; en otros, en un conjunto de
+coordenadas (por ejemplo, 2·n para la localización de _n_ puntos de referencia); y en
+aplicaciones más complejas, en una máscara completa de segmentación que clasifica cada
+píxel de manera independiente.
+
+En todos los escenarios, la segmentación semántica proporciona una comprensión de la
+imagen mucho más rica y detallada que la obtenida mediante tareas de clasificación o
+detección de objetos, consolidándose como una herramienta esencial para aplicaciones que
+requieren precisión espacial a nivel de píxel.
+
+### 5.6. One-Shot Learning y el Reconocimiento de Imágenes
+
+Los modelos de visión por computador suelen requerir grandes volúmenes de datos para
+alcanzar un entrenamiento eficaz. Sin embargo, en numerosos escenarios prácticos solo se
+dispone de un número muy reducido de ejemplos por clase. Este desafío se aborda mediante
+técnicas como el **One-Shot Learning** (aprendizaje con una sola muestra) o el
+**Few-Shot Learning** (aprendizaje con pocas muestras), que buscan dotar a los sistemas
+de la capacidad de generalizar a partir de datos escasos.
+
+El principio fundamental de estos enfoques consiste en aprender un **espacio de
+representación** en el que las imágenes similares se ubiquen próximas entre sí, mientras
+que las correspondientes a clases distintas aparezcan más alejadas. La proximidad o
+distancia entre representaciones puede evaluarse con métricas como la **distancia
+euclidiana**, aunque también se emplean otras funciones de similitud más sofisticadas
+según el problema.
+
+Una de las arquitecturas más representativas en este ámbito son las **redes siamesas**,
+que procesan en paralelo dos imágenes mediante una misma red convolucional que comparte
+parámetros. El resultado son vectores de características que pueden compararse
+directamente para decidir si ambas imágenes pertenecen o no a la misma clase. Este
+diseño permite que la red aprenda relaciones de similitud sin necesidad de entrenar un
+clasificador rígido para cada categoría.
+
+Otra estrategia ampliamente utilizada en este contexto es la basada en la **pérdida
+triple (_triplet loss_)**, que organiza el entrenamiento a partir de tríos de imágenes:
+
+- **Anchor:** la imagen de referencia.
+- **Positiva:** una imagen de la misma clase que el _anchor_.
+- **Negativa:** una imagen de una clase distinta.
+
+El objetivo de esta función de pérdida es reducir la distancia entre el _anchor_ y la
+muestra positiva, al tiempo que incrementa la distancia entre el _anchor_ y la negativa.
+Este mecanismo genera representaciones más robustas y discriminativas, capaces de
+capturar similitudes profundas entre las imágenes.
+
+Las aplicaciones del One-Shot Learning son amplias y de gran relevancia. En el
+**reconocimiento facial**, por ejemplo, permite identificar personas a partir de una
+sola fotografía de referencia. En el ámbito médico se emplea para la **clasificación de
+enfermedades raras**, donde es difícil disponer de grandes bases de datos. Asimismo,
+resulta útil en la **identificación de especies poco comunes** en biología o en tareas
+de clasificación en las que los datos disponibles son limitados.
+
+A diferencia de los modelos tradicionales, que requieren entrenar un clasificador
+específico para cada clase, el One-Shot Learning se centra en la construcción de un
+espacio de representaciones en el que las distancias codifican similitud. Esta
+característica lo convierte en un enfoque especialmente poderoso para generalizar con
+muy pocos ejemplos, ofreciendo soluciones eficaces en contextos donde los datos son
+escasos o costosos de obtener.
+
+### 5.7. Aprendizaje Contrastivo y Autosupervisado
+
+El **aprendizaje autosupervisado** ha adquirido un papel central en la visión por
+computador, al permitir el entrenamiento de modelos robustos sin necesidad de contar con
+grandes volúmenes de datos etiquetados. Este enfoque se apoya en la generación
+automática de señales de supervisión a partir de los propios datos, lo que reduce de
+manera significativa la dependencia de anotaciones manuales.
+
+Una de las estrategias más influyentes dentro de este paradigma es la basada en la
+**pérdida contrastiva**. Su objetivo consiste en aprender un espacio de representación
+en el que las imágenes similares se ubiquen próximas y las distintas se alejen. Para
+ello, se construyen pares de datos que se emplean en el proceso de optimización.
+
+En ausencia de etiquetas, los **pares positivos** pueden generarse mediante
+transformaciones de una misma imagen, tales como rotaciones, cambios de escala, recortes
+aleatorios o variaciones de color. De esta forma, el modelo aprende que diferentes
+vistas de un mismo contenido deben compartir una representación cercana. Por el
+contrario, las **imágenes distintas** se consideran pares negativos, lo que obliga a que
+sus representaciones se sitúen más alejadas en el espacio aprendido.
+
+Cuando se dispone de etiquetas, el mecanismo se extiende de manera natural: las imágenes
+que pertenecen a una misma clase se consideran positivas, mientras que aquellas de
+clases diferentes actúan como negativas. De este modo, la pérdida contrastiva puede
+aprovechar tanto datos no etiquetados como anotados, incrementando la flexibilidad del
+entrenamiento.
+
+El aprendizaje contrastivo constituye, por tanto, un pilar del aprendizaje
+autosupervisado moderno, al proporcionar representaciones discriminativas y
+generalizables. Estas representaciones no solo son útiles para tareas de clasificación o
+reconocimiento, sino que también se transfieren con éxito a otros escenarios como la
+segmentación, la detección de objetos o el aprendizaje con pocas muestras, consolidando
+este enfoque como una de las tendencias más influyentes en la inteligencia artificial
+actual.
+
+## 6. Arquitecturas de Deep Learning: Modelos Secuenciales y Redes Recurrentes
+
+Muchos problemas en inteligencia artificial se caracterizan por involucrar datos
+**secuenciales**, es decir, información organizada en un orden temporal o lógico.
+Ejemplos destacados incluyen el reconocimiento de voz, la generación de música, el
+análisis de sentimientos en texto, la interpretación de secuencias de ADN o la
+traducción automática de idiomas. A diferencia de las imágenes, donde la información
+espacial es clave, en las secuencias la dependencia entre elementos previos y
+posteriores resulta esencial. Para abordar este tipo de problemas se emplean los
+**modelos secuenciales**, cuya función es procesar los datos respetando su orden y
+capturando las dependencias que existen a lo largo de la secuencia.
+
+### 6.1. Representación de Secuencias
+
+En el procesamiento del lenguaje natural, las palabras deben transformarse en
+representaciones que puedan ser interpretadas por un modelo. Este procedimiento se
+denomina **tokenización**. Consiste en asignar a cada palabra un índice único dentro de
+un diccionario y, posteriormente, transformarla en un vector que codifica su
+información.
+
+El proceso de tokenización contempla también el uso de **tokens especiales**. Entre
+ellos se incluyen:
+
+- Un token reservado para representar palabras desconocidas o no registradas en el
+  vocabulario.
+- Un token de **fin de secuencia**, empleado en tareas de generación de texto para
+  señalar el cierre de la frase.
+
+Las secuencias de entrada y salida no siempre poseen la misma longitud, lo que obliga a
+gestionar variables específicas que reflejen estos tamaños y permitan al modelo
+adaptarse a diferentes contextos. Este tratamiento cuidadoso de la representación
+resulta esencial para que los modelos secuenciales puedan captar correctamente la
+estructura y el significado del lenguaje, así como de cualquier otro tipo de datos
+organizados en secuencia.
+
+### 6.2. Redes Neuronales Recurrentes (RNN)
+
+Las **redes neuronales recurrentes (RNN)** constituyen una extensión de las redes
+tradicionales diseñada para procesar datos secuenciales. Su principal característica es
+la capacidad de **recordar información previa**, ya que reutilizan la salida de un paso
+anterior como parte de la entrada en el siguiente. En cada instante temporal, la red
+combina la entrada actual con el estado oculto anterior para generar un nuevo estado
+oculto y producir una salida.
+
+Este mecanismo permite que los parámetros se compartan a lo largo de la secuencia, lo
+que no solo reduce el número de variables que deben aprenderse, sino que también
+posibilita que la predicción en un momento dado tenga en cuenta el contexto acumulado de
+los pasos previos. Gracias a esta propiedad, las RNN resultan adecuadas para tareas
+donde el orden de los elementos y las dependencias temporales son fundamentales, como en
+la traducción automática, el modelado del lenguaje o el análisis de series temporales.
+
+No obstante, en la práctica las RNN se enfrentan a dos problemas significativos:
+
+1. **Desvanecimiento de gradientes:** durante el entrenamiento, los gradientes asociados
+   a pasos muy lejanos en la secuencia tienden a volverse extremadamente pequeños, lo
+   que dificulta que el modelo aprenda dependencias a largo plazo.
+2. **Explosión de gradientes:** en algunos casos, los gradientes crecen de manera
+   descontrolada, afectando la estabilidad del entrenamiento e impidiendo la
+   convergencia del modelo.
+
+Para superar estas limitaciones, se desarrollaron variantes más sofisticadas y robustas:
+
+- **RNN bidireccionales:** procesan la secuencia tanto en la dirección hacia adelante
+  como hacia atrás, integrando simultáneamente información del pasado y del futuro, lo
+  que resulta especialmente útil en tareas donde el contexto completo de la secuencia es
+  relevante.
+- **LSTM (_Long Short-Term Memory_):** introducen una estructura de **celdas de
+  memoria** acompañada de **puertas de control** que regulan qué información se
+  conserva, cuál se descarta y cuál se utiliza en cada paso. Esta arquitectura permite
+  capturar dependencias a largo plazo de manera eficaz, mitigando el problema del
+  desvanecimiento de gradientes.
+- **GRU (_Gated Recurrent Unit_):** constituyen una variante simplificada de las LSTM.
+  Mantienen el uso de puertas para controlar el flujo de información, pero con una
+  estructura más ligera y eficiente en términos computacionales, alcanzando un
+  rendimiento comparable en muchos contextos sin requerir tanta capacidad de cómputo.
+
+Gracias a estas innovaciones, las RNN y sus variantes han tenido un impacto decisivo en
+el procesamiento de secuencias, consolidándose como herramientas clave para múltiples
+aplicaciones de la inteligencia artificial antes del auge de los modelos basados en
+atención.
+
+### 6.3. Modelos de Lenguaje y Predicción de Secuencias
+
+Los **modelos de lenguaje** son sistemas diseñados para asignar probabilidades a
+secuencias de palabras, permitiendo predecir la siguiente palabra en un texto dado el
+contexto previo. Su entrenamiento se realiza a partir de grandes corpus, con el objetivo
+de que el modelo aprenda no solo asociaciones entre palabras, sino también patrones
+gramaticales, sintácticos y contextuales. Este aprendizaje habilita una amplia variedad
+de aplicaciones, tales como asistentes virtuales, análisis de emociones en texto,
+generación automática de contenido y descifrado o interpretación de secuencias
+genéticas, donde la dependencia entre elementos consecutivos es crucial.
+
+### 6.4. Representación de Palabras y la Revolución de los Transformers
+
+En el **procesamiento del lenguaje natural (NLP)**, un concepto central es el de los
+**word embeddings**, que son vectores densos que representan palabras en un espacio
+continuo. En este espacio, las relaciones semánticas entre palabras se reflejan en la
+geometría: palabras con significados similares se ubican cerca, y las analogías pueden
+representarse mediante operaciones vectoriales. Este enfoque supera al **one-hot
+encoding**, que asigna a cada palabra un vector binario sin reflejar relaciones
+semánticas ni similitudes contextuales.
+
+El aprendizaje de embeddings puede realizarse mediante diferentes técnicas:
+
+- **Word2Vec:** entrena modelos para predecir palabras a partir de su contexto en
+  ventanas de texto, utilizando estrategias como _negative sampling_ para reforzar la
+  relevancia de las relaciones semánticas aprendidas.
+- **GloVe:** combina información de coocurrencia global de palabras con factorización de
+  matrices, integrando tanto la información local de contexto como la estadística global
+  del corpus, lo que permite generar representaciones más consistentes y ricas
+  semánticamente.
 
 Estas representaciones pueden preentrenarse en grandes corpus y transferirse a tareas
-específicas, aunque también reflejan **sesgos presentes en los datos**, que pueden
-mitigarse mediante técnicas de neutralización.
+específicas, lo que facilita la generalización y reduce la necesidad de datos
+etiquetados en contextos concretos. Sin embargo, es importante señalar que los
+embeddings también reflejan **sesgos presentes en los datos de entrenamiento**, los
+cuales pueden afectar el comportamiento de los modelos. Estos sesgos pueden
+identificarse y mitigarse mediante técnicas de neutralización o ajuste
+post-entrenamiento, garantizando que las aplicaciones resultantes sean más justas y
+confiables.
 
-## 7.2 Mecanismo de atención
+El desarrollo de embeddings sentó las bases para la **revolución de los Transformers**,
+que introducen mecanismos de atención capaces de modelar dependencias a largo plazo de
+manera eficiente, desplazando gradualmente a las arquitecturas recurrentes tradicionales
+en muchas tareas de NLP y secuencias en general.
 
-La **atención** permite a los modelos centrarse en las partes relevantes de la entrada
-según la tarea. Se implementa mediante tres vectores:
+### 6.5. Mecanismo de Atención
 
-- **Query (Q):** lo que se busca.
-- **Key (K):** la información disponible.
-- **Value (V):** contenido asociado.
+El **mecanismo de atención** constituye un componente fundamental en las arquitecturas
+modernas de procesamiento de secuencias, ya que permite al modelo centrarse en las
+partes más relevantes de la entrada según la tarea a realizar. Este mecanismo se
+implementa a través de tres vectores:
 
-El modelo compara Q con K, asigna pesos y genera representaciones contextuales a partir
-de V.
+- **Query (Q):** representa lo que se está buscando o la información a destacar en un
+  momento determinado.
+- **Key (K):** codifica la información disponible que puede ser relevante para la
+  consulta.
+- **Value (V):** contiene el contenido asociado que se utilizará para construir la
+  representación final.
 
-## 7.3 Transformers
+El funcionamiento consiste en comparar la _Query_ con cada _Key_ para calcular un
+conjunto de pesos que reflejan la relevancia relativa de cada elemento. A continuación,
+estos pesos se aplican a los _Values_ correspondientes, generando representaciones
+contextuales que integran la información más significativa para la tarea específica.
+Este enfoque permite al modelo enfocarse dinámicamente en diferentes partes de la
+secuencia, mejorando la capacidad de capturar dependencias a largo plazo y relaciones
+complejas.
 
-Los **Transformers**, introducidos en _Attention is All You Need_, eliminan las RNN y
-permiten procesar secuencias de forma paralela. Su arquitectura se compone de:
+### 6.6. Transformers
 
-- **Encoder:** procesa la secuencia de entrada.
-- **Decoder:** genera la secuencia de salida.
+Los **Transformers**, introducidos en el artículo _Attention is All You Need_,
+revolucionaron el procesamiento de secuencias al eliminar la necesidad de recurrir a
+RNN, permitiendo un procesamiento **paralelo** de los datos. La arquitectura se organiza
+en dos componentes principales:
 
-Cada bloque combina **autoatención** y redes totalmente conectadas. Dado que no procesan
-secuencias de manera temporal, se incorporan **positional encodings** para conservar
-información de orden.
+- **Encoder:** procesa la secuencia de entrada y genera representaciones internas
+  enriquecidas.
+- **Decoder:** utiliza estas representaciones para generar la secuencia de salida de
+  manera autoregresiva o condicional según la tarea.
 
-El **multi-head attention** permite observar relaciones desde múltiples perspectivas
-simultáneamente, enriqueciendo la representación. Los Transformers escalan
-eficientemente, capturan dependencias complejas y se han extendido más allá del NLP a
-visión computacional, bioinformática y aprendizaje por refuerzo.
+Cada bloque del Transformer combina mecanismos de **autoatención** y redes totalmente
+conectadas, lo que permite capturar relaciones complejas dentro de la secuencia. Dado
+que los Transformers no procesan los elementos de manera secuencial, se incorporan
+**positional encodings** para preservar información sobre el orden de los elementos,
+garantizando que la red pueda distinguir entre distintas posiciones en la secuencia.
 
-# 8. Redes Neuronales de Grafos
+El **multi-head attention** constituye una extensión clave del mecanismo de atención, ya
+que permite al modelo observar relaciones desde múltiples perspectivas simultáneamente.
+Esto enriquece la representación al capturar distintos tipos de dependencias y patrones
+contextuales en paralelo.
 
-Los grafos son estructuras flexibles y poderosas para representar información compleja,
-compuestas por **nodos** (o vértices) y **aristas** (o conexiones) que describen las
-relaciones entre los elementos. Esta formalización simple permite modelar fenómenos muy
-diversos, desde redes sociales y moléculas hasta sistemas de telecomunicaciones,
-imágenes y texto.
+Gracias a estas innovaciones, los Transformers escalan de manera eficiente a secuencias
+largas, capturan dependencias complejas y se han extendido más allá del **procesamiento
+de lenguaje natural** hacia dominios como la **visión computacional**, la
+**bioinformática** y el **aprendizaje por refuerzo**, consolidándose como una de las
+arquitecturas más versátiles y poderosas en el aprendizaje profundo actual.
+
+## 8. Arquitecturas de Deep Learning: Redes Neuronales de Grafos
+
+Los grafos constituyen una estructura flexible y poderosa para representar información
+compleja. Están formados por **nodos** (o vértices) y **aristas** (o conexiones) que
+describen las relaciones existentes entre los elementos. Esta formalización permite
+modelar fenómenos muy diversos, desde redes sociales y moléculas hasta sistemas de
+telecomunicaciones, imágenes y texto, ofreciendo un marco unificado para el análisis de
+datos estructurados y relacionales.
 
 Las **Redes Neuronales de Grafos (GNN, Graph Neural Networks)** están diseñadas para
 procesar directamente estas estructuras, extrayendo representaciones cada vez más ricas
-de los nodos y del grafo en su conjunto, de manera similar a cómo las redes
-convolucionales trabajan sobre imágenes.
+de los nodos y del grafo en su conjunto, de manera análoga a cómo las redes
+convolucionales procesan imágenes.
 
-## 8.1 Representación de nodos y flujo de información
+### 8.1. Representación de Nodos y Flujo de Información
 
-Cada nodo de un grafo se representa mediante un **vector de características**. Durante
-sucesivas iteraciones, este vector se actualiza combinando la información propia del
-nodo con la de sus vecinos, enriqueciendo así su representación con el contexto del
-grafo.
+Cada nodo de un grafo se representa mediante un **vector de características** que
+codifica su información individual. Durante sucesivas iteraciones, este vector se
+actualiza combinando la información propia del nodo con la de sus vecinos, enriqueciendo
+así su representación con el contexto del grafo.
 
 Dado que los grafos no poseen un orden natural de nodos o conexiones, las operaciones de
-agregación (como suma o promedio) deben ser **conmutativas**, garantizando que el
-resultado sea independiente del orden en que se procesan los vecinos.
+agregación —como suma, promedio o máximo— deben ser **conmutativas**, garantizando que
+el resultado no dependa del orden en que se procesen los vecinos. Con cada iteración,
+los nodos adquieren representaciones que integran tanto sus propiedades individuales
+como las de su entorno inmediato, permitiendo al modelo capturar dependencias locales y
+globales de manera eficiente.
 
-Con cada iteración, los nodos adquieren representaciones que integran tanto sus
-propiedades individuales como las de su entorno inmediato.
+### 8.2. Representación de la Estructura del Grafo
 
-## 8.2 Representación de la estructura del grafo
+La topología de un grafo puede representarse mediante distintas estructuras de datos:
 
-La topología de un grafo puede representarse mediante:
-
-- **Matriz de adyacencia:** indica la presencia o ausencia de aristas entre nodos. Es
-  sencilla, pero su eficiencia depende del orden de los nodos y puede ser costosa en
-  grafos grandes.
+- **Matriz de adyacencia:** indica la presencia o ausencia de aristas entre nodos. Su
+  implementación es sencilla, pero su eficiencia depende del orden de los nodos y puede
+  resultar costosa en grafos de gran tamaño.
 - **Listas de adyacencia:** enumeran explícitamente las conexiones de cada nodo,
-  ofreciendo mayor flexibilidad y eficiencia.
+  ofreciendo mayor flexibilidad y eficiencia en el manejo de grafos dispersos.
 
 En la práctica, estas representaciones se traducen en tensores que almacenan tanto las
-características de los nodos como las relaciones que los unen.
+características de los nodos como las relaciones que los unen, constituyendo la base
+para las operaciones de propagación y actualización de las GNN.
 
-## 8.3 Tareas sobre grafos
+### 8.3. Tareas sobre Grafos
 
-Las GNN permiten abordar problemas a diferentes niveles:
+Las GNN permiten abordar problemas a diferentes niveles de granularidad:
 
 - **Nivel de grafo:** predicción de propiedades globales, como la clasificación de
-  moléculas o la determinación del sentimiento de un texto completo.
+  moléculas, la estimación de propiedades químicas o el análisis de sentimiento de un
+  texto completo.
 - **Nivel de nodo:** identificación de roles o categorías de nodos, útil en segmentación
-  de imágenes o detección de usuarios influyentes en redes sociales.
-- **Nivel de arista:** predicción de existencia o valor de conexiones, como en
-  recomendaciones de amistad o enlaces en grafos de conocimiento.
+  de imágenes, detección de usuarios influyentes en redes sociales o categorización de
+  palabras en grafos semánticos.
+- **Nivel de arista:** predicción de la existencia o el valor de conexiones, aplicable
+  en sistemas de recomendación, detección de enlaces en grafos de conocimiento o
+  relaciones biológicas entre moléculas.
 
-## 8.4 Arquitecturas y variantes
+### 8.4. Arquitecturas y Variantes
 
-Entre las arquitecturas más destacadas se incluyen:
+Entre las arquitecturas más destacadas se encuentran:
 
 - **Graph Convolutional Networks (GCN):** cada nodo se actualiza a partir de la
-  información de sus vecinos, de manera análoga a las convoluciones en imágenes.
-- **Graph Attention Networks (GAT):** incorporan un mecanismo de atención que permite
-  ponderar la importancia relativa de cada vecino, mejorando la capacidad de la red para
-  diferenciar relaciones críticas de otras menos relevantes.
+  información agregada de sus vecinos, de manera análoga a las convoluciones en
+  imágenes, permitiendo capturar patrones locales y globales en el grafo.
+- **Graph Attention Networks (GAT):** incorporan un mecanismo de atención que pondera la
+  relevancia relativa de cada vecino, mejorando la capacidad de la red para diferenciar
+  relaciones críticas de otras menos importantes.
 
 El flujo de información en una GNN se basa en el **intercambio de mensajes** entre
-nodos. En grafos muy grandes, este proceso puede resultar costoso; por ello, se
-introducen mecanismos como el **nodo maestro (masternode)**, que centraliza la
-propagación de información global sin necesidad de mantener conexiones exhaustivas.
+nodos. En grafos muy grandes, este proceso puede resultar costoso, por lo que se
+introducen mecanismos como el **nodo maestro (_masternode_)**, que centraliza la
+propagación de información global sin necesidad de mantener conexiones exhaustivas entre
+todos los nodos.
 
-## 8.5 Aplicaciones
+### 8.5. Aplicaciones
 
-Los grafos ofrecen un marco unificado para múltiples dominios:
+Los grafos ofrecen un marco unificado para abordar problemas en múltiples dominios:
 
-- **Visión por computadora:** una imagen puede representarse como nodos (píxeles o
-  superpíxeles) conectados según proximidad o similitud.
+- **Visión por computadora:** una imagen puede representarse como un grafo de nodos,
+  donde cada nodo corresponde a un píxel o superpíxel, conectados según proximidad o
+  similitud.
 - **Lenguaje natural:** palabras de una oración o documento pueden organizarse como
-  nodos en grafos secuenciales o semánticos.
-- **Biología y química:** moléculas y proteínas se describen naturalmente como grafos de
-  átomos y enlaces.
+  nodos en grafos secuenciales o semánticos, capturando relaciones contextuales y
+  sintácticas.
+- **Biología y química:** moléculas, proteínas o redes metabólicas se describen
+  naturalmente como grafos de átomos y enlaces, permitiendo predecir propiedades
+  químicas o interacciones biológicas.
 
 En todos estos contextos, las GNN optimizan las representaciones de nodos, aristas y del
 grafo completo, preservando la estructura intrínseca y capturando patrones complejos que
-serían difíciles de detectar con modelos tradicionales.
-
-$$
-$$
+serían difíciles de detectar mediante modelos tradicionales, consolidándose como una
+herramienta esencial en el aprendizaje profundo aplicado a datos estructurados.
