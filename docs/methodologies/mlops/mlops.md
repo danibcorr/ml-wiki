@@ -88,7 +88,6 @@ abordar las siguientes áreas clave:
 1. **Definición del proyecto**: En esta etapa se identifican las necesidades del usuario
    y los objetivos del producto, además de evaluar la viabilidad técnica y financiera.
    Los pasos esenciales incluyen:
-
    - **Identificación de problemas y métricas clave**: Métricas como precisión, latencia
      y ROI (Retorno de Inversión) son fundamentales para medir el éxito del proyecto.
    - **Propuesta de valor**: Se define cómo el producto resolverá problemas específicos y
@@ -100,7 +99,6 @@ abordar las siguientes áreas clave:
 
 2. **Datos**: El manejo de datos es la base de cualquier sistema de ML. Incluye los
    siguientes procesos:
-
    - **Recopilación y organización**: Los datos pueden provenir de bases de datos,
      archivos o servicios web. En proyectos complejos, el almacenamiento en la nube es
      una opción ideal.
@@ -117,7 +115,6 @@ abordar las siguientes áreas clave:
 
 3. **Modelado**: El modelado implica seleccionar, entrenar y validar modelos de ML. Las
    principales actividades incluyen:
-
    - **Desarrollo iterativo**: Se comienza con soluciones base y se incrementa la
      complejidad según sea necesario.
    - **Optimización**: Herramientas como Ray permiten el entrenamiento distribuido en
