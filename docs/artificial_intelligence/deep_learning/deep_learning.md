@@ -13,17 +13,17 @@ toc_max_heading_level: 3
 - [Deep Learning for Coders with Fastai and PyTorch: AI Applications Without a PhD](https://course.fast.ai/Resources/book.html)
 - [Standford](https://youtube.com/playlist?list=PLoROMvodv4rNjRoawgt72BBNwL2V7doGI&si=TXQ-EA7J7sAwfKEQ).
 
-## 1. Introducción al _Deep Learning_
+## 1. Introducción al aprendizaje profundo
 
-Antes de abordar el campo del _Deep Learning_, es fundamental comprender un concepto
-esencial que, aunque pueda parecer evidente, no siempre resulta fácil de definir: la
-**inteligencia**. Esta puede entenderse como la capacidad de procesar información y
-emplearla en la toma de decisiones futuras. A partir de esta noción surge la
-**Inteligencia Artificial (IA)**, disciplina cuyo objetivo es desarrollar técnicas y
-algoritmos que permitan a las máquinas emular ciertos comportamientos humanos. En
-términos generales, la IA busca que los sistemas puedan utilizar la información
-disponible para realizar predicciones, adaptarse a distintos contextos y resolver
-problemas de manera autónoma.
+Antes de abordar el campo del aprendizaje profundo o _Deep Learning_, es fundamental
+comprender un concepto esencial que, aunque pueda parecer evidente, no siempre resulta
+fácil de definir: la **inteligencia**. Esta puede entenderse como la capacidad de
+procesar información y emplearla en la toma de decisiones futuras. A partir de esta
+noción surge la **Inteligencia Artificial (IA)**, disciplina cuyo objetivo es
+desarrollar técnicas y algoritmos que permitan a las máquinas emular ciertos
+comportamientos humanos. En términos generales, la IA busca que los sistemas puedan
+utilizar la información disponible para realizar predicciones, adaptarse a distintos
+contextos y resolver problemas de manera autónoma.
 
 Dentro de la IA se encuentra un subcampo crucial: el **aprendizaje automático o _Machine
 Learning_**. Su propósito es permitir que un ordenador aprenda de la experiencia sin
@@ -85,7 +85,7 @@ lineal**, un componente crucial que permite a la red capturar relaciones complej
 van más allá de las simples combinaciones lineales y definir un rango coherente para la
 salida.
 
-### 1.3. Arquitecturas de redes y tipos de datos
+### 1.3. Tipos de arquitecturas y datos
 
 El _Deep Learning_ se adapta a distintos tipos de problemas mediante arquitecturas
 especializadas, lo que permite extraer información más relevante de los datos y
@@ -110,7 +110,7 @@ Al analizar los datos, es importante distinguir entre:
   Learning_ sobresale en estos contextos debido a su capacidad para interpretar y
   extraer patrones complejos de grandes volúmenes de información no estructurada.
 
-### 1.4. Factores que impulsan el desarrollo del Deep Learning
+### 1.4. Factores que impulsan su desarrollo
 
 El auge del _Deep Learning_ en la última década se explica por la confluencia de tres
 factores principales. En primer lugar, la **disponibilidad masiva de datos**, favorecida
@@ -131,7 +131,7 @@ liberan modelos de código abierto, parámetros de entrenamiento e incluso los d
 utilizados, facilitando así la investigación y el desarrollo de nuevas aplicaciones
 basadas en inteligencia artificial.
 
-## 2. Regresión Lineal y Regresión Logística
+## 2. Regresión lineal y logística
 
 El entrenamiento de una neurona o de una red neuronal se fundamenta en dos procesos
 esenciales: la **propagación hacia adelante (_forward propagation_)** y la **propagación
@@ -210,7 +210,7 @@ positiva, es decir, que efectivamente contenga un gato. Esta representación per
 interpretar las salidas del modelo de forma probabilística y establecer umbrales para la
 clasificación binaria de manera consistente y flexible.
 
-### 2.2. Función de pérdida y función de coste
+### 2.2. Función de pérdida y coste
 
 El objetivo del modelo es ajustar los parámetros $w$ y $b$ de manera que las
 predicciones $\hat{y}$ se aproximen lo más posible a los valores reales $y$. Para
@@ -309,7 +309,7 @@ vectorización simplifica la implementación, reduce el tiempo de entrenamiento 
 aprovecha de manera eficiente la capacidad de cálculo de las GPUs, lo que resulta
 crucial en aplicaciones de Deep Learning con grandes volúmenes de datos.
 
-### 2.4. Implementación de la regresión logística en Python
+### 2.4. Implementación de la regresión logística
 
 A continuación se muestra una implementación básica de regresión logística empleando
 Python y la librería NumPy. Este ejemplo abarca desde la inicialización de los
@@ -403,7 +403,7 @@ plt.title("Reducción del coste durante el entrenamiento")
 plt.show()
 ```
 
-## 3. Redes Neuronales y funciones de activación
+## 3. Redes neuronales y funciones de activación
 
 ### 3.1. Generalización y sobreajuste
 
@@ -499,7 +499,7 @@ valores esperado en la salida:
 - **Regresión:** activación lineal, permitiendo que la salida adopte cualquier valor
   real.
 
-### 3.4. Implementación de una red neuronal con ReLU y sigmoide
+### 3.4. Implementación de una red neuronal
 
 El siguiente ejemplo implementa una red neuronal de dos capas para un conjunto de datos
 sintético. Este código ilustra de manera práctica cómo construir, entrenar y evaluar una
@@ -624,7 +624,7 @@ acc = np.mean(Y_pred == Y) * 100
 print(f"Precisión final: {acc:.2f}%")
 ```
 
-## 4. Introducción a las Redes Neuronales Profundas
+## 4. Introducción a las redes neuronales profundas
 
 Las redes neuronales profundas constituyen una extensión de las redes neuronales
 artificiales tradicionales y parten de los mismos fundamentos ya estudiados. Su
@@ -817,7 +817,7 @@ Los valores recomendados son $\beta_1 = 0.9$, $\beta_2 = 0.999$ y $\epsilon = 10
 Este optimizador se utiliza ampliamente debido a su rapidez, estabilidad y robustez
 frente a configuraciones no óptimas de hiperparámetros.
 
-#### 4.3.1. Implementación práctica de optimizadores
+#### 4.3.1. Implementación de optimizadores
 
 A modo de ilustración, se presenta una implementación de los principales optimizadores
 aplicada a la función de prueba $f(\theta) = \theta^2$, cuyo mínimo global se encuentra
@@ -1114,7 +1114,7 @@ Para mitigar estos fenómenos se emplean diversas estrategias:
 - **Clipado de gradientes**: Consiste en limitar el rango de valores que pueden alcanzar
   los gradientes durante la retropropagación. Cuando los gradientes exceden un umbral
   predefinido, se ajustan a dicho límite, evitando actualizaciones excesivas. Es común
-  emplear intervalos como $\[-1, 1]\$, aunque también existen variantes dinámicas que
+  emplear intervalos como $\[-1, 1]$, aunque también existen variantes dinámicas que
   adaptan este rango según el estado del entrenamiento.
 
 - **Diseño arquitectónico específico**: La introducción de mecanismos de memoria y
@@ -1205,9 +1205,9 @@ vehículo. En este escenario, el entrenamiento implica optimizar distintas funci
 coste (una para la segmentación, otra para la clasificación y otra para la predicción de
 movimientos) que se combinan en un proceso conjunto de descenso del gradiente.
 
-## 5. Arquitecturas de Deep Learning, Redes Neuronales Convolucionales (CNN)
+## 5. Arquitecturas de aprendizaje profundo, redes neuronales convolucionales
 
-### 5.1. Procesamiento visual humano
+### 5.1. Procesamiento visual humano y su analogía con las redes neuronales convolucinales
 
 El procesamiento visual humano es un proceso jerárquico que transforma la información
 lumínica captada por los ojos en representaciones visuales complejas y significativas.
@@ -1216,12 +1216,12 @@ de la luz hasta el análisis de formas y objetos en áreas corticales especializ
 
 La luz ingresa al ojo a través de la córnea y atraviesa el cristalino, el cual actúa
 como una lente convexa que invierte la imagen proyectándola sobre la retina, ubicada en
-la parte posterior del globo ocular. En la retina, los fotorreceptores —conos y
-bastones— convierten la energía lumínica en señales eléctricas, iniciando así la
+la parte posterior del globo ocular. En la retina, los fotorreceptores (conos y
+bastones) convierten la energía lumínica en señales eléctricas, iniciando así la
 codificación neuronal de la información visual.
 
 Estas señales se transmiten por el nervio óptico de cada ojo hasta el quiasma óptico,
-donde ocurre un cruce parcial de la información visual: los campos visuales izquierdos
+donde ocurre un cruce parcial de la información visual, los campos visuales izquierdos
 de ambos ojos se dirigen al hemisferio derecho, mientras que los campos visuales
 derechos se proyectan al hemisferio izquierdo. Esta organización permite la percepción
 binocular y contribuye a la percepción de profundidad.
@@ -1229,9 +1229,8 @@ binocular y contribuye a la percepción de profundidad.
 Posteriormente, las señales continúan a través del tracto óptico hasta el núcleo
 geniculado lateral (LGN) del tálamo, que funciona como estación de relevo y organiza la
 información entrante. El LGN está compuesto por capas diferenciadas que procesan señales
-provenientes de distintos tipos de células ganglionares —magnocelulares y
-parvocelulares—, permitiendo un preprocesamiento especializado que facilita el análisis
-visual posterior.
+provenientes de distintos tipos de células ganglionares, permitiendo un preprocesamiento
+especializado que facilita el análisis visual posterior.
 
 Desde el LGN, las señales visuales se transmiten mediante las radiaciones ópticas hacia
 la corteza visual primaria (V1), localizada en el lóbulo occipital. La V1 se organiza de
@@ -1240,31 +1239,30 @@ cortical específica. En esta región, las neuronas responden a patrones visuale
 mediante campos receptivos, que representan pequeñas regiones del espacio visual a las
 que responden selectivamente.
 
-En la corteza visual primaria se distinguen tres tipos principales de células: células
-simples, que responden a bordes con orientación específica; células complejas, que
-detectan bordes o movimientos en rangos más amplios; y células hipercomplejas, que
+En la corteza visual primaria se distinguen tres tipos principales de células. Células
+simples, que responden a bordes con orientación específica, células complejas, que
+detectan bordes o movimientos en rangos más amplios, y células hipercomplejas, que
 reaccionan ante combinaciones más sofisticadas, como esquinas o terminaciones de líneas.
 El procesamiento continúa en áreas corticales posteriores (V2, V4, IT), donde se
 analizan características más complejas, incluyendo texturas, formas tridimensionales,
 rostros y objetos completos.
 
-### 5.2. Analogía entre el Sistema Visual Humano y las Redes Neuronales Convolucionales
+Las redes neuronales convolucionales, también conocidas como **_Convolutional Neural
+Networks_ (CNNs)**, son modelos computacionales diseñados para procesar datos visuales
+de manera eficiente, inspirados directamente en la arquitectura del sistema visual
+humano, especialmente en la corteza visual primaria. En este contexto, se establecen
+correspondencias claras entre las estructuras biológicas y los componentes de una red
+convolucional:
 
-Las redes neuronales convolucionales (CNNs) son modelos computacionales diseñados para
-procesar datos visuales de manera eficiente, inspirados directamente en la arquitectura
-del sistema visual humano, especialmente en la corteza visual primaria. En este
-contexto, se establecen correspondencias claras entre las estructuras biológicas y los
-componentes de una CNN:
-
-| Sistema Visual Humano                      | Redes Convolucionales (CNNs)                             |
-| ------------------------------------------ | -------------------------------------------------------- |
-| Retina                                     | Imagen de entrada                                        |
-| Nervio óptico / Quiasma óptico             | Preprocesamiento y alineación de la información visual   |
-| LGN (núcleo geniculado lateral)            | División en canales o filtros por tipo de característica |
-| Corteza visual (V1, V2, V4, IT)            | Capas convolucionales jerárquicas                        |
-| Células simples, complejas, hipercomplejas | Filtros convolucionales de bajo, medio y alto nivel      |
-| Campos receptivos                          | Regiones locales (_receptive fields_) de los kernels     |
-| Percepción jerárquica                      | Aprendizaje progresivo de características visuales       |
+| Sistema Visual Humano                      | Redes Convolucionales (CNNs)                                     |
+| ------------------------------------------ | ---------------------------------------------------------------- |
+| Retina                                     | Imagen de entrada                                                |
+| Nervio óptico / Quiasma óptico             | Preprocesamiento y alineación de la información visual           |
+| LGN (núcleo geniculado lateral)            | División en canales o filtros por tipo de característica         |
+| Corteza visual (V1, V2, V4, IT)            | Capas convolucionales jerárquicas                                |
+| Células simples, complejas, hipercomplejas | Filtros convolucionales de bajo, medio y alto nivel              |
+| Campos receptivos                          | Regiones locales (_receptive fields_) de los filtros (_kernels_) |
+| Percepción jerárquica                      | Aprendizaje progresivo de características visuales               |
 
 En las CNNs, cada unidad procesa únicamente una región limitada de la imagen, análoga a
 los campos receptivos de las neuronas en V1. Los filtros convolucionales permiten
@@ -1276,7 +1274,7 @@ técnicas como el _max pooling_ reducen la dimensionalidad de manera selectiva,
 conservando información relevante, similar al resumen jerárquico que realiza el cerebro
 al procesar escenas visuales complejas.
 
-### 5.3. Campo Receptivo y Jerarquía de Procesamiento Visual
+### 5.2. Campo receptivo y jerarquía de procesamiento visual
 
 El campo receptivo se define como la región del campo visual que influye directamente en
 la actividad de una neurona específica. En las etapas iniciales del procesamiento
@@ -1290,7 +1288,7 @@ de varios campos receptivos previos permite formar unidades con campos más ampl
 5×5 o 7×7 píxeles. Esta organización favorece la abstracción progresiva y la
 especialización en el análisis visual.
 
-### 5.4. Conceptos Fundamentales de la Convolución
+### 5.3. Conceptos fundamentales de la convolución
 
 La visión computacional constituye uno de los campos más dinámicos y transformadores de
 la inteligencia artificial. A través de ella se han desarrollado aplicaciones que
@@ -1316,7 +1314,7 @@ clasificación, identificación o análisis acústico.
 El principal desafío al trabajar con imágenes radica en la elevada cantidad de
 información que contienen. Considérese, por ejemplo, una imagen en color de 64 × 64
 píxeles. Dado que cada píxel posee tres componentes de color (rojo, verde y azul), la
-representación requiere tres matrices de 64 × 64 valores, lo que equivale a **12.288
+representación requiere tres matrices de 64 × 64 valores, lo que equivale a **12288
 entradas** para la red neuronal. Introducir directamente esta cantidad de datos en una
 arquitectura tradicional obligaría a disponer de capas iniciales con decenas de miles de
 neuronas, lo que genera un coste computacional muy alto y un elevado riesgo de
@@ -1348,7 +1346,7 @@ significativas. Finalmente, las capas totalmente conectadas integran la informac
 extraída para producir la predicción final, que puede consistir en clasificar una
 imagen, reconocer un objeto o identificar un rostro.
 
-### 5.5. Arquitectura Básica de una CNN
+### 5.4. Componentes de una capa convolucional
 
 El uso de convoluciones en redes neuronales introduce una serie de elementos esenciales
 que determinan el comportamiento y la eficacia del modelo. Uno de ellos es el **relleno
@@ -1368,24 +1366,24 @@ equivalente a dividir la imagen en fragmentos independientes (_patches_), lo que
 secciones completas y permite analizarlas de manera separada.
 
 En el caso de imágenes en color, los filtros no se limitan a ser matrices
-bidimensionales, sino que se extienden a **tres dimensiones** para recorrer
-simultáneamente los canales rojo, verde y azul. Este aspecto resulta especialmente
-relevante porque el número de parámetros de una capa convolucional depende únicamente
-del tamaño y la cantidad de filtros, y no de las dimensiones de la imagen de entrada. De
-este modo, se logra una gran eficiencia en comparación con las redes totalmente
-conectadas. Por ejemplo, una capa con 10 filtros de 3 × 3 × 3 requiere solo **280
-parámetros**, cifra muy reducida frente a los millones de conexiones que implicaría una
-arquitectura densa de tamaño equivalente.
+bidimensionales, sino que se extienden a tres dimensiones para recorrer simultáneamente
+los canales rojo, verde y azul. Este aspecto resulta especialmente relevante porque el
+número de parámetros de una capa convolucional depende únicamente del tamaño y la
+cantidad de filtros, y no de las dimensiones de la imagen de entrada. De este modo, se
+logra una gran eficiencia en comparación con las redes totalmente conectadas. Por
+ejemplo, una capa con 10 filtros de 3 × 3 × 3 requiere solo 280 parámetros, cifra muy
+reducida frente a los millones de conexiones que implicaría una arquitectura densa de
+tamaño equivalente.
 
 No obstante, conviene señalar que, al introducir variaciones como _stride_, _padding_ o
-capas densas posteriores, se puede perder parcialmente la **invarianza al
-desplazamiento** que caracteriza a la convolución estándar con _stride_ igual a uno. En
-consecuencia, una misma imagen trasladada circularmente hacia la izquierda o la derecha
-no siempre genera representaciones idénticas a las de la imagen original.
+capas densas posteriores, se puede perder parcialmente la invarianza al desplazamiento
+que caracteriza a la convolución estándar con _stride_ igual a uno. En consecuencia, una
+misma imagen trasladada circularmente hacia la izquierda o la derecha no siempre genera
+representaciones idénticas a las de la imagen original.
 
-Las convoluciones resultan efectivas por dos motivos principales: en primer lugar,
+Las convoluciones resultan efectivas por dos motivos principales. En primer lugar,
 permiten una **reducción drástica del número de parámetros**, lo que simplifica el
-entrenamiento y reduce el riesgo de sobreajuste; en segundo lugar, implementan la
+entrenamiento y reduce el riesgo de sobreajuste. En segundo lugar, implementan la
 **compartición de parámetros**, ya que un patrón aprendido en una región de la imagen
 puede aplicarse en cualquier otra, lo que favorece la capacidad de generalización del
 modelo.
@@ -1393,18 +1391,18 @@ modelo.
 Tras la convolución, suele aplicarse una etapa de **agrupamiento (_pooling_)**,
 destinada a reducir las dimensiones intermedias y aportar robustez frente a pequeñas
 variaciones espaciales. Esta operación contribuye, en muchos casos, a recuperar
-parcialmente la invarianza al desplazamiento. La técnica más extendida es el **max
-pooling**, que selecciona el valor máximo dentro de cada región, priorizando la
+parcialmente la invarianza al desplazamiento. La técnica más extendida es el **_max
+pooling_**, que selecciona el valor máximo dentro de cada región, priorizando la
 detección de la presencia de una característica por encima de su ubicación exacta. Otra
-variante frecuente es el **average pooling**, que sustituye cada región por el valor
+variante frecuente es el **_average pooling_**, que sustituye cada región por el valor
 promedio de sus elementos, ofreciendo una representación más suavizada de la
 información.
 
-### 5.6. Redes Neuronales Residuales, Arquitecturas Inception y Modelos Móviles
+### 5.5. Redes neuronales residuales, arquitecturas _Inception_ y modelos móviles
 
 El incremento en la profundidad de las redes neuronales ha permitido avances
 significativos en la visión computacional. Sin embargo, este aumento también genera un
-problema conocido: a partir de cierto punto, el rendimiento no mejora, sino que se
+problema conocido. A partir de cierto punto, el rendimiento no mejora, sino que se
 degrada. La causa principal radica en fenómenos como la desaparición o explosión de
 gradientes, que dificultan el ajuste de los parámetros durante el entrenamiento y
 limitan la capacidad de la red para aprender de manera efectiva.
@@ -1433,9 +1431,9 @@ la necesidad de arquitecturas más livianas y rápidas. En este contexto apareci
 **MobileNet**, basadas en el concepto de **convoluciones separables en profundidad**.
 Este enfoque divide el proceso en dos etapas:
 
-1. **Convolución en profundidad (_depthwise convolution_):** cada filtro se aplica de
+1. **Convolución en profundidad (_depthwise convolution_):** Cada filtro se aplica de
    manera independiente a un canal de la entrada.
-2. **Convolución puntual (1×1, _pointwise convolution_):** combina los resultados de
+2. **Convolución puntual (1×1, _pointwise convolution_):** Combina los resultados de
    todos los canales para generar una representación integrada.
 
 Gracias a esta separación, se logra una reducción drástica en el número de operaciones y
@@ -1443,24 +1441,9 @@ parámetros, lo que convierte a MobileNet en una arquitectura altamente eficient
 
 La segunda generación, **MobileNetV2**, incorporó **conexiones residuales** junto con
 **capas de expansión** mediante filtros 1×1, que permiten aumentar la capacidad de
-representación sin comprometer la eficiencia. Esta combinación potenció el rendimiento
-del modelo, manteniendo al mismo tiempo su idoneidad para dispositivos con recursos
-limitados.
+representación sin comprometer la eficiencia.
 
-MobileNet ofrece, además, la posibilidad de ajustar su arquitectura en función de tres
-parámetros principales:
-
-- **Ancho:** número de filtros por capa, que controla la capacidad del modelo.
-- **Resolución de entrada:** tamaño de la imagen procesada, que impacta directamente en
-  el coste computacional.
-- **Profundidad:** número total de capas, que determina el nivel de abstracción
-  alcanzado.
-
-Gracias a esta flexibilidad, la arquitectura puede adaptarse a distintos escenarios,
-desde aplicaciones en tiempo real en teléfonos móviles hasta entornos con gran capacidad
-de cómputo, logrando un balance entre precisión y eficiencia.
-
-### 5.7. Detección de Objetos en Visión Computacional
+### 5.6. Detección de objetos
 
 En muchas aplicaciones de la visión computacional, como la conducción autónoma o la
 vigilancia inteligente, no basta con clasificar una imagen en su conjunto. Es
@@ -1490,12 +1473,12 @@ solución idónea para aplicaciones prácticas donde la velocidad es un requisit
 El desempeño de los modelos de detección se evalúa y optimiza mediante diferentes
 métricas y técnicas:
 
-- **Intersección sobre Unión (IoU):** mide la calidad de la predicción comparando el
+- **Intersección sobre Unión (IoU):** Mide la calidad de la predicción comparando el
   grado de solapamiento entre la caja predicha y la caja real. Un valor más alto de IoU
   indica una localización más precisa.
-- **Supresión de No Máximos (NMS):** elimina predicciones redundantes en torno a un
+- **Supresión de No Máximos (NMS):** Elimina predicciones redundantes en torno a un
   mismo objeto, conservando únicamente la más confiable.
-- **Cajas de Anclaje (_anchor boxes_):** permiten que cada celda prediga múltiples
+- **Cajas de Anclaje (_anchor boxes_):** Permiten que cada celda prediga múltiples
   objetos con distintas proporciones y escalas. Estas cajas se definen habitualmente a
   partir de algoritmos de agrupamiento, como _k-means_, que identifican formas y tamaños
   más representativos en los datos de entrenamiento.
@@ -1503,28 +1486,22 @@ métricas y técnicas:
 Además de la detección convencional basada en recuadros, existen variantes del problema
 orientadas a tareas más específicas. Entre ellas destacan:
 
-- **Detección de puntos de referencia:** en lugar de delimitar áreas rectangulares, se
+- **Detección de puntos de referencia:** En lugar de delimitar áreas rectangulares, se
   predicen coordenadas concretas, como las posiciones de rasgos faciales o
   articulaciones en el cuerpo humano.
-- **Métodos basados en regiones:** generan propuestas de posibles áreas de interés en la
+- **Métodos basados en regiones:** Generan propuestas de posibles áreas de interés en la
   imagen, que posteriormente se clasifican. Este enfoque suele lograr mayor precisión,
   aunque con un coste computacional más elevado.
 
-En conjunto, la detección de objetos constituye un componente esencial para el
-desarrollo de sistemas avanzados de visión artificial. Su capacidad para equilibrar
-precisión y eficiencia la convierte en una herramienta clave para aplicaciones en
-entornos dinámicos y del mundo real, donde tanto la rapidez como la exactitud resultan
-indispensables.
-
-### 5.8. Segmentación Semántica, Convoluciones Transpuestas y la Arquitectura U-Net
+### 5.7. Segmentación semántica, convoluciones transpuestas y la arquitectura U-Net
 
 La **segmentación semántica** constituye una de las tareas más avanzadas de la visión
 computacional, ya que no se limita a identificar qué objetos aparecen en una imagen,
 sino que asigna una **clase específica a cada píxel**. El resultado es un mapa detallado
 que representa con precisión la forma y extensión de cada objeto presente en la escena.
 Esta técnica resulta fundamental en campos como la medicina, donde se emplea para
-delimitar órganos o tumores en imágenes médicas; en la agricultura, para el análisis de
-cultivos; y en la robótica, para la percepción precisa del entorno.
+delimitar órganos o tumores en imágenes médicas, en la agricultura, para el análisis de
+cultivos, y en la robótica, para la percepción precisa del entorno.
 
 Para alcanzar este nivel de detalle, es necesario reconstruir la resolución espacial
 original de la imagen a partir de representaciones comprimidas obtenidas en las etapas
@@ -1538,10 +1515,10 @@ Un hito en este ámbito lo constituye la **arquitectura U-Net**, diseñada inici
 para aplicaciones médicas, pero posteriormente adoptada en numerosos contextos. Esta
 arquitectura se estructura en dos fases principales:
 
-- **Etapa de compresión (_encoder_):** reduce la resolución de la imagen y aumenta el
+- **Etapa de compresión (_encoder_):** Reduce la resolución de la imagen y aumenta el
   número de canales, con el objetivo de extraer representaciones cada vez más abstractas
   y ricas en información semántica.
-- **Etapa de expansión (_decoder_):** recupera la resolución original mediante
+- **Etapa de expansión (_decoder_):** Recupera la resolución original mediante
   convoluciones transpuestas, reconstruyendo la información espacial a partir de las
   características extraídas.
 
@@ -1552,24 +1529,19 @@ Gracias a estas conexiones, la red conserva detalles finos de bordes y contornos
 alcanzando segmentaciones de alta precisión.
 
 La salida de una arquitectura de segmentación puede variar según el problema abordado.
-En casos simples, puede consistir en un único recuadro; en otros, en un conjunto de
-coordenadas (por ejemplo, 2·n para la localización de _n_ puntos de referencia); y en
+En casos simples, puede consistir en un único recuadro, en otros, en un conjunto de
+coordenadas (por ejemplo, 2·n para la localización de _n_ puntos de referencia), y en
 aplicaciones más complejas, en una máscara completa de segmentación que clasifica cada
 píxel de manera independiente.
 
-En todos los escenarios, la segmentación semántica proporciona una comprensión de la
-imagen mucho más rica y detallada que la obtenida mediante tareas de clasificación o
-detección de objetos, consolidándose como una herramienta esencial para aplicaciones que
-requieren precisión espacial a nivel de píxel.
-
-### 5.9. One-Shot Learning
+### 5.8. _One-Shot Learning_
 
 El cerebro humano posee una notable capacidad para reconocer objetos a partir de muy
 pocos ejemplos, fenómeno conocido como _few-shot_ o _one-shot learning_. Esta habilidad
-se sustenta en dos mecanismos principales: primero, la generación de representaciones
+se sustenta en dos mecanismos principales. Primero, la generación de representaciones
 jerárquicas generalizables, que no dependen de la memorización exacta de píxeles, sino
 de la extracción de características abstractas como formas, colores, movimientos y
-estructuras espaciales; estas representaciones se construyen progresivamente a lo largo
+estructuras espaciales. Estas representaciones se construyen progresivamente a lo largo
 de la jerarquía cortical, de V1 a IT, donde las regiones superiores codifican objetos
 completos y conceptos visuales. Segundo, la asociación de estas representaciones con
 memoria y significado, mediante la interacción con áreas como la corteza prefrontal, el
@@ -1580,9 +1552,9 @@ tamaño o estilo visual.
 Los modelos de visión por computador suelen requerir grandes volúmenes de datos para
 alcanzar un entrenamiento eficaz. Sin embargo, en numerosos escenarios prácticos solo se
 dispone de un número muy reducido de ejemplos por clase. Este desafío se aborda mediante
-técnicas como el **One-Shot Learning** (aprendizaje con una sola muestra) o el
-**Few-Shot Learning** (aprendizaje con pocas muestras), que buscan dotar a los sistemas
-de la capacidad de generalizar a partir de datos escasos.
+técnicas como el **_One-Shot Learning_** (aprendizaje con una sola muestra) o el
+**_Few-Shot Learning_** (aprendizaje con pocas muestras), que buscan dotar a los
+sistemas de la capacidad de generalizar a partir de datos escasos.
 
 El principio fundamental de estos enfoques consiste en aprender un **espacio de
 representación** en el que las imágenes similares se ubiquen próximas entre sí, mientras
@@ -1601,64 +1573,174 @@ clasificador rígido para cada categoría.
 Otra estrategia ampliamente utilizada en este contexto es la basada en la **pérdida
 triple (_triplet loss_)**, que organiza el entrenamiento a partir de tríos de imágenes:
 
-- **Anchor:** la imagen de referencia.
-- **Positiva:** una imagen de la misma clase que el _anchor_.
-- **Negativa:** una imagen de una clase distinta.
+- **Anchor:** La imagen de referencia.
+- **Positiva:** Una imagen de la misma clase que el _anchor_.
+- **Negativa:** Una imagen de una clase distinta.
 
 El objetivo de esta función de pérdida es reducir la distancia entre el _anchor_ y la
 muestra positiva, al tiempo que incrementa la distancia entre el _anchor_ y la negativa.
 Este mecanismo genera representaciones más robustas y discriminativas, capaces de
 capturar similitudes profundas entre las imágenes.
 
-Las aplicaciones del One-Shot Learning son amplias y de gran relevancia. En el
-**reconocimiento facial**, por ejemplo, permite identificar personas a partir de una
-sola fotografía de referencia. En el ámbito médico se emplea para la **clasificación de
+Las aplicaciones del _One-Shot Learning_ son amplias y de gran relevancia. En el
+reconocimiento facial, por ejemplo, permite identificar personas a partir de una sola
+fotografía de referencia. En el ámbito médico se emplea para la **clasificación de
 enfermedades raras**, donde es difícil disponer de grandes bases de datos. Asimismo,
-resulta útil en la **identificación de especies poco comunes** en biología o en tareas
-de clasificación en las que los datos disponibles son limitados.
+resulta útil en la identificación de especies poco comunes en biología o en tareas de
+clasificación en las que los datos disponibles son limitados.
 
-A diferencia de los modelos tradicionales, que requieren entrenar un clasificador
-específico para cada clase, el One-Shot Learning se centra en la construcción de un
-espacio de representaciones en el que las distancias codifican similitud. Esta
-característica lo convierte en un enfoque especialmente poderoso para generalizar con
-muy pocos ejemplos, ofreciendo soluciones eficaces en contextos donde los datos son
-escasos o costosos de obtener.
+### 5.9. Aprendizaje contrastivo y autosupervisado
 
-### 5.10. Aprendizaje Contrastivo y Autosupervisado
-
-El **aprendizaje autosupervisado** ha adquirido un papel central en la visión por
-computador, al permitir el entrenamiento de modelos robustos sin necesidad de contar con
-grandes volúmenes de datos etiquetados. Este enfoque se apoya en la generación
+El **aprendizaje autosupervisado** ocupa un lugar central en el ámbito de la visión por
+computador, ya que permite entrenar modelos robustos sin la necesidad de disponer de
+grandes volúmenes de datos etiquetados. Este enfoque se fundamenta en la generación
 automática de señales de supervisión a partir de los propios datos, lo que reduce de
-manera significativa la dependencia de anotaciones manuales.
+manera significativa la dependencia de procesos de anotación manual.
 
-Una de las estrategias más influyentes dentro de este paradigma es la basada en la
-**pérdida contrastiva**. Su objetivo consiste en aprender un espacio de representación
-en el que las imágenes similares se ubiquen próximas y las distintas se alejen. Para
-ello, se construyen pares de datos que se emplean en el proceso de optimización.
+Dentro de este paradigma, una de las estrategias más influyentes es la que emplea la
+**pérdida contrastiva**. Su propósito es aprender un espacio de representación en el que
+las imágenes similares se ubiquen próximas entre sí, mientras que aquellas que difieren
+se sitúen a mayor distancia. Para lograrlo, se construyen pares de datos que se utilizan
+durante el proceso de optimización.
 
-En ausencia de etiquetas, los **pares positivos** pueden generarse mediante
-transformaciones de una misma imagen, tales como rotaciones, cambios de escala, recortes
-aleatorios o variaciones de color. De esta forma, el modelo aprende que diferentes
-vistas de un mismo contenido deben compartir una representación cercana. Por el
-contrario, las **imágenes distintas** se consideran pares negativos, lo que obliga a que
-sus representaciones se sitúen más alejadas en el espacio aprendido.
+En escenarios sin etiquetas, los **pares positivos** se generan mediante
+transformaciones aplicadas a una misma imagen, tales como rotaciones, cambios de escala,
+recortes aleatorios o modificaciones en el color. De este modo, el modelo aprende que
+diferentes vistas de un mismo contenido deben compartir una representación cercana. Por
+el contrario, las **imágenes distintas** se consideran pares negativos, lo que obliga al
+modelo a situar sus representaciones en regiones alejadas del espacio embebido.
 
-Cuando se dispone de etiquetas, el mecanismo se extiende de manera natural: las imágenes
-que pertenecen a una misma clase se consideran positivas, mientras que aquellas de
-clases diferentes actúan como negativas. De este modo, la pérdida contrastiva puede
-aprovechar tanto datos no etiquetados como anotados, incrementando la flexibilidad del
-entrenamiento.
+<p align="center">
+  <img src={require("../../../static/img/blogs/meta-learning/contrastive-learning-example.png").default}/>
+  <br />
+  <em>Ejemplo de aprendizaje contrastivo</em>
+</p>
 
-El aprendizaje contrastivo constituye, por tanto, un pilar del aprendizaje
-autosupervisado moderno, al proporcionar representaciones discriminativas y
-generalizables. Estas representaciones no solo son útiles para tareas de clasificación o
-reconocimiento, sino que también se transfieren con éxito a otros escenarios como la
-segmentación, la detección de objetos o el aprendizaje con pocas muestras, consolidando
-este enfoque como una de las tendencias más influyentes en la inteligencia artificial
-actual.
+El **aprendizaje contrastivo** no se corresponde de manera directa con el
+_meta-learning_, aunque contribuye a mejorar la calidad de las representaciones
+aprendidas por los modelos de aprendizaje profundo. Su objetivo principal consiste en
+agrupar en el espacio embebido las representaciones de datos similares y separar de
+manera efectiva aquellas que pertenecen a clases distintas. En aplicaciones de visión
+computacional, este principio se materializa mediante transformaciones de los datos que
+permiten al modelo reconocer que ciertas variaciones no alteran la esencia de la
+información original. Esto incrementa la comprensión semántica y refuerza la capacidad
+del modelo para generalizar ante datos fuera de distribución.
 
-## 6. Arquitecturas de Deep Learning: Modelos Secuenciales y Redes Recurrentes
+El proceso de entrenamiento contrastivo constituye una metodología clave para obtener
+representaciones efectivas y discriminativas a partir de datos no etiquetados. Dicho
+proceso incluye varias etapas esenciales que, combinadas con técnicas de _fine-tuning_ y
+_transfer learning_, optimizan el rendimiento de los modelos:
+
+1. **Obtención de un conjunto de datos no etiquetados**: Se establece la base sobre la
+   cual el modelo aprende de manera automática las características más relevantes.
+2. **Generación de _embeddings_**: Se emplea un modelo preentrenado, como una red
+   neuronal profunda ajustada previamente con grandes volúmenes de datos, por ejemplo
+   ResNet en visión computacional. Este modelo transforma las entradas en
+   representaciones de menor dimensionalidad que preservan la información esencial, como
+   bordes, texturas o patrones semánticos.
+3. **Optimización mediante _fine-tuning_**: Se ajustan los parámetros del modelo
+   utilizando medidas de distancia entre _embeddings_, como la **distancia euclidiana**
+   o la **similitud de coseno**. El objetivo es minimizar la **pérdida contrastiva**,
+   que busca reducir la distancia entre representaciones de datos similares y aumentar
+   la separación respecto de las representaciones de datos distintos. Entre las
+   funciones de pérdida más empleadas destacan la **Triplet Loss**, que considera un
+   ancla, un par positivo y un par negativo, y la **InfoNCE Loss**, ampliamente
+   utilizada en entornos no supervisados. Un aspecto crítico consiste en evitar el
+   colapso de las representaciones, situación en la que todos los _embeddings_ se
+   vuelven indistinguibles. Para prevenirlo, se introducen márgenes o restricciones que
+   aseguran diferencias suficientes entre clases.
+4. **Iteración y ajuste manual**: Una vez entrenado el modelo, se revisan las muestras
+   que generan mayores pérdidas. En casos necesarios, estas muestras se etiquetan
+   manualmente, lo que refina el desempeño del modelo. Este ciclo iterativo favorece una
+   mejora progresiva de las predicciones y reduce la necesidad de intervención humana
+   con el tiempo.
+
+Este proceso se apoya en los principios del **_transfer learning_**, que permiten
+reutilizar el conocimiento aprendido en una tarea fuente $T_a$ para mejorar el desempeño
+en una tarea objetivo $T_b$. En lugar de comenzar el entrenamiento desde cero, se
+aprovechan las características generales aprendidas en la tarea inicial, lo que reduce
+la carga computacional y acelera el entrenamiento. Incluso cuando las distribuciones de
+datos en $T_a$ y $T_b$ difieren, dichas características resultan útiles al encapsular
+información fundamental como bordes, texturas o relaciones semánticas. En determinados
+casos, el ajuste fino no se limita a la capa final del modelo. Estudios como el
+**Surgical Fine-Tuning** demuestran que refinar de manera selectiva las capas
+intermedias puede incrementar significativamente la precisión.
+
+El aprendizaje contrastivo se ha convertido en un componente esencial para mejorar la
+calidad de las representaciones en múltiples dominios, especialmente en visión
+computacional y procesamiento del lenguaje natural. A continuación, se describen algunas
+de las funciones de pérdida más utilizadas.
+
+<p align="center">
+  <img src={require("../../../static/img/blogs/meta-learning/triplet-loss-example.png").default}/>
+  <br />
+  <em>Ejemplo de Triplet Loss</em>
+</p>
+
+La **Triplet Loss** se fundamenta en tres elementos principales:
+
+- **Ancla ($X$)**: Una muestra de datos que sirve como referencia.
+- **Par positivo ($X^+$)**: Una muestra similar al ancla, ya sea porque pertenece a la
+  misma clase o porque corresponde a una transformación de esta.
+- **Par negativo ($X^-$)**: Una muestra distinta al ancla, normalmente perteneciente a
+  otra clase.
+
+El objetivo de la Triplet Loss es minimizar la distancia entre el ancla y el par
+positivo, a la vez que se maximiza la distancia entre el ancla y el par negativo.
+Matemáticamente, se expresa como:
+
+$$
+L = \min_{\theta}\left(\max\left(0, \text{dist}(X, X^+) - \text{dist}(X, X^-) + \text{margen}\right)\right),
+$$
+
+donde $\text{dist}(\cdot, \cdot)$ corresponde a una función de distancia, como la
+euclidiana o la similitud coseno, y el **margen** es un valor positivo que determina
+cuánto mayor debe ser la separación entre el ancla y el par negativo respecto de la
+distancia entre el ancla y el par positivo. Esta condición evita el colapso de las
+representaciones, garantizando que los pares negativos permanezcan adecuadamente
+diferenciados de los positivos.
+
+La **Contrastive Loss** constituye otra función central en este campo, aunque se aplica
+a pares de datos en lugar de tríos. Su formulación es:
+
+$$
+L = (1 - y) \frac{1}{2} \left( \text{dist}(X_1, X_2) \right)^2 + y \frac{1}{2} \left( \max(0, m - \text{dist}(X_1, X_2)) \right)^2,
+$$
+
+donde $y$ indica si $X_1$ y $X_2$ son similares ($y = 0$) o distintos ($y =
+1$), $m$
+representa el margen mínimo deseado entre ejemplos diferentes, y $\text{dist}(X_1, X_2)$
+suele calcularse con la distancia euclidiana. En este caso, los ejemplos similares se
+obligan a aproximarse en el espacio embebido, mientras que los diferentes deben
+separarse al menos una distancia equivalente al margen $m$.
+
+Finalmente, la **InfoNCE Loss** (_Noise-Contrastive Estimation_) se utiliza de manera
+destacada en arquitecturas como **SimCLR**. Su objetivo es maximizar la similitud entre
+un dato ancla y su par positivo, mientras se minimiza la similitud con los pares
+negativos presentes en el mismo lote de datos. La fórmula se define como:
+
+$$
+L = -\frac{1}{N} \sum_{i=1}^N \log \frac{\exp(\text{sim}(z_i, z_i^+)/\tau)}{\sum_{j=1}^K \exp(\text{sim}(z_i, z_j^-)/\tau)},
+$$
+
+donde $z_i$ corresponde al _embedding_ del ancla, $z_i^+$ al _embedding_ del par
+positivo, $z_j^-$ a los _embeddings_ de los pares negativos, $\text{sim}(\cdot,
+\cdot)$ a
+una medida de similitud como el producto escalar o la similitud coseno, y $\tau$ a una
+constante de temperatura que ajusta la distribución de probabilidades. Este mecanismo
+fomenta la generación de representaciones ricas y diferenciadas, adecuadas para tareas
+de clasificación o transferencia.
+
+#### Limitaciones del aprendizaje contrastivo
+
+- **Dependencia de transformaciones adecuadas**: El rendimiento requiere el diseño
+  cuidadoso de técnicas de aumento de datos, como _resizes_, _crops_, modificaciones de
+  color, _CutMix_ o _MixUp_, que mejoren la robustez del modelo.
+- **Necesidad de un gran número de épocas**: El desempeño depende tanto del tamaño de
+  los lotes como del número de iteraciones necesarias para obtener suficientes pares
+  negativos efectivos.
+
+## 6. Arquitecturas de aprendizaje profundo, modelos secuenciales
 
 Muchos problemas en inteligencia artificial se caracterizan por involucrar datos
 **secuenciales**, es decir, información organizada en un orden temporal o lógico.
@@ -1666,11 +1748,11 @@ Ejemplos destacados incluyen el reconocimiento de voz, la generación de música
 análisis de sentimientos en texto, la interpretación de secuencias de ADN o la
 traducción automática de idiomas. A diferencia de las imágenes, donde la información
 espacial es clave, en las secuencias la dependencia entre elementos previos y
-posteriores resulta esencial. Para abordar este tipo de problemas se emplean los
-**modelos secuenciales**, cuya función es procesar los datos respetando su orden y
-capturando las dependencias que existen a lo largo de la secuencia.
+posteriores resulta esencial. Para abordar este tipo de problemas se emplean los modelos
+secuenciales, cuya función es procesar los datos respetando su orden y capturando las
+dependencias que existen a lo largo de la secuencia.
 
-### 6.1. Representación de Secuencias
+### 6.1. Representación de secuencias
 
 En el procesamiento del lenguaje natural, las palabras deben transformarse en
 representaciones que puedan ser interpretadas por un modelo. Este procedimiento se
@@ -1693,14 +1775,14 @@ resulta esencial para que los modelos secuenciales puedan captar correctamente l
 estructura y el significado del lenguaje, así como de cualquier otro tipo de datos
 organizados en secuencia.
 
-### 6.2. Redes Neuronales Recurrentes (RNN)
+### 6.2. Redes neuronales recurrentes
 
-Las **redes neuronales recurrentes (RNN)** constituyen una extensión de las redes
-tradicionales diseñada para procesar datos secuenciales. Su principal característica es
-la capacidad de **recordar información previa**, ya que reutilizan la salida de un paso
-anterior como parte de la entrada en el siguiente. En cada instante temporal, la red
-combina la entrada actual con el estado oculto anterior para generar un nuevo estado
-oculto y producir una salida.
+Las **redes neuronales recurrentes (_Recurrent Neural Networks_, RNN)** constituyen una
+extensión de las redes tradicionales diseñada para procesar datos secuenciales. Su
+principal característica es la capacidad de **recordar información previa**, ya que
+reutilizan la salida de un paso anterior como parte de la entrada en el siguiente. En
+cada instante temporal, la red combina la entrada actual con el estado oculto anterior
+para generar un nuevo estado oculto y producir una salida.
 
 Este mecanismo permite que los parámetros se compartan a lo largo de la secuencia, lo
 que no solo reduce el número de variables que deben aprenderse, sino que también
@@ -1711,35 +1793,30 @@ la traducción automática, el modelado del lenguaje o el análisis de series te
 
 No obstante, en la práctica las RNN se enfrentan a dos problemas significativos:
 
-1. **Desvanecimiento de gradientes:** durante el entrenamiento, los gradientes asociados
+1. **Desvanecimiento de gradientes:** Durante el entrenamiento, los gradientes asociados
    a pasos muy lejanos en la secuencia tienden a volverse extremadamente pequeños, lo
    que dificulta que el modelo aprenda dependencias a largo plazo.
-2. **Explosión de gradientes:** en algunos casos, los gradientes crecen de manera
+2. **Explosión de gradientes:** En algunos casos, los gradientes crecen de manera
    descontrolada, afectando la estabilidad del entrenamiento e impidiendo la
    convergencia del modelo.
 
 Para superar estas limitaciones, se desarrollaron variantes más sofisticadas y robustas:
 
-- **RNN bidireccionales:** procesan la secuencia tanto en la dirección hacia adelante
+- **RNN bidireccionales:** Procesan la secuencia tanto en la dirección hacia adelante
   como hacia atrás, integrando simultáneamente información del pasado y del futuro, lo
   que resulta especialmente útil en tareas donde el contexto completo de la secuencia es
   relevante.
-- **LSTM (_Long Short-Term Memory_):** introducen una estructura de **celdas de
+- **LSTM (_Long Short-Term Memory_):** Introducen una estructura de **celdas de
   memoria** acompañada de **puertas de control** que regulan qué información se
   conserva, cuál se descarta y cuál se utiliza en cada paso. Esta arquitectura permite
   capturar dependencias a largo plazo de manera eficaz, mitigando el problema del
   desvanecimiento de gradientes.
-- **GRU (_Gated Recurrent Unit_):** constituyen una variante simplificada de las LSTM.
+- **GRU (_Gated Recurrent Unit_):** Constituyen una variante simplificada de las LSTM.
   Mantienen el uso de puertas para controlar el flujo de información, pero con una
   estructura más ligera y eficiente en términos computacionales, alcanzando un
   rendimiento comparable en muchos contextos sin requerir tanta capacidad de cómputo.
 
-Gracias a estas innovaciones, las RNN y sus variantes han tenido un impacto decisivo en
-el procesamiento de secuencias, consolidándose como herramientas clave para múltiples
-aplicaciones de la inteligencia artificial antes del auge de los modelos basados en
-atención.
-
-### 6.3. Modelos de Lenguaje y Predicción de Secuencias
+### 6.3. Modelos de lenguaje y predicción de secuencias
 
 Los **modelos de lenguaje** son sistemas diseñados para asignar probabilidades a
 secuencias de palabras, permitiendo predecir la siguiente palabra en un texto dado el
@@ -1750,22 +1827,22 @@ de aplicaciones, tales como asistentes virtuales, análisis de emociones en text
 generación automática de contenido y descifrado o interpretación de secuencias
 genéticas, donde la dependencia entre elementos consecutivos es crucial.
 
-### 6.4. Representación de Palabras y la Revolución de los Transformers
+### 6.4. Representación de palabras y la revolución de los Transformers
 
-En el **procesamiento del lenguaje natural (NLP)**, un concepto central es el de los
-**word embeddings**, que son vectores densos que representan palabras en un espacio
-continuo. En este espacio, las relaciones semánticas entre palabras se reflejan en la
-geometría: palabras con significados similares se ubican cerca, y las analogías pueden
-representarse mediante operaciones vectoriales. Este enfoque supera al **one-hot
-encoding**, que asigna a cada palabra un vector binario sin reflejar relaciones
-semánticas ni similitudes contextuales.
+En el **procesamiento del lenguaje natural (_Natural Language Processing_, NLP)**, un
+concepto central es el de los **_word embeddings_**, que son vectores densos que
+representan palabras en un espacio continuo. En este espacio, las relaciones semánticas
+entre palabras se reflejan en la geometría, donde palabras con significados similares se
+ubican cerca, y las analogías pueden representarse mediante operaciones vectoriales.
+Este enfoque supera al **_one-hot encoding_**, que asigna a cada palabra un vector
+binario sin reflejar relaciones semánticas ni similitudes contextuales.
 
 El aprendizaje de embeddings puede realizarse mediante diferentes técnicas:
 
-- **Word2Vec:** entrena modelos para predecir palabras a partir de su contexto en
+- **Word2Vec:** Entrena modelos para predecir palabras a partir de su contexto en
   ventanas de texto, utilizando estrategias como _negative sampling_ para reforzar la
   relevancia de las relaciones semánticas aprendidas.
-- **GloVe:** combina información de coocurrencia global de palabras con factorización de
+- **GloVe:** Combina información de coocurrencia global de palabras con factorización de
   matrices, integrando tanto la información local de contexto como la estadística global
   del corpus, lo que permite generar representaciones más consistentes y ricas
   semánticamente.
@@ -1784,18 +1861,18 @@ que introducen mecanismos de atención capaces de modelar dependencias a largo p
 manera eficiente, desplazando gradualmente a las arquitecturas recurrentes tradicionales
 en muchas tareas de NLP y secuencias en general.
 
-### 6.5. Mecanismo de Atención
+### 6.5. Mecanismo de atención
 
-El **mecanismo de atención** constituye un componente fundamental en las arquitecturas
+El mecanismo de atención constituye un componente fundamental en las arquitecturas
 modernas de procesamiento de secuencias, ya que permite al modelo centrarse en las
 partes más relevantes de la entrada según la tarea a realizar. Este mecanismo se
 implementa a través de tres vectores:
 
-- **Query (Q):** representa lo que se está buscando o la información a destacar en un
+- **Query (Q):** Representa lo que se está buscando o la información a destacar en un
   momento determinado.
-- **Key (K):** codifica la información disponible que puede ser relevante para la
+- **Key (K):** Codifica la información disponible que puede ser relevante para la
   consulta.
-- **Value (V):** contiene el contenido asociado que se utilizará para construir la
+- **Value (V):** Contiene el contenido asociado que se utilizará para construir la
   representación final.
 
 El funcionamiento consiste en comparar la _Query_ con cada _Key_ para calcular un
@@ -1808,34 +1885,35 @@ complejas.
 
 ### 6.6. Transformers
 
-Los **Transformers**, introducidos en el artículo _Attention is All You Need_,
+Los Transformers, introducidos en el artículo _Attention is All You Need_,
 revolucionaron el procesamiento de secuencias al eliminar la necesidad de recurrir a
-RNN, permitiendo un procesamiento **paralelo** de los datos. La arquitectura se organiza
-en dos componentes principales:
+RNN, permitiendo un procesamiento paralelo de los datos. La arquitectura se organiza en
+dos componentes principales:
 
-- **Encoder:** procesa la secuencia de entrada y genera representaciones internas
+- **Encoder:** Procesa la secuencia de entrada y genera representaciones internas
   enriquecidas.
-- **Decoder:** utiliza estas representaciones para generar la secuencia de salida de
+- **Decoder:** Utiliza estas representaciones para generar la secuencia de salida de
   manera autoregresiva o condicional según la tarea.
 
-Cada bloque del Transformer combina mecanismos de **autoatención** y redes totalmente
-conectadas, lo que permite capturar relaciones complejas dentro de la secuencia. Dado
-que los Transformers no procesan los elementos de manera secuencial, se incorporan
-**positional encodings** para preservar información sobre el orden de los elementos,
-garantizando que la red pueda distinguir entre distintas posiciones en la secuencia.
+Cada bloque del Transformer combina mecanismos de **autoatención (_self attention_)** y
+redes totalmente conectadas, lo que permite capturar relaciones complejas dentro de la
+secuencia. Dado que los Transformers no procesan los elementos de manera secuencial, se
+incorporan **_positional encodings_** para preservar información sobre el orden de los
+elementos, garantizando que la red pueda distinguir entre distintas posiciones en la
+secuencia.
 
-El **multi-head attention** constituye una extensión clave del mecanismo de atención, ya
-que permite al modelo observar relaciones desde múltiples perspectivas simultáneamente.
-Esto enriquece la representación al capturar distintos tipos de dependencias y patrones
-contextuales en paralelo.
+El **m*ulti-head attention*** constituye una extensión clave del mecanismo de atención,
+ya que permite al modelo observar relaciones desde múltiples perspectivas
+simultáneamente. Esto enriquece la representación al capturar distintos tipos de
+dependencias y patrones contextuales en paralelo.
 
 Gracias a estas innovaciones, los Transformers escalan de manera eficiente a secuencias
-largas, capturan dependencias complejas y se han extendido más allá del **procesamiento
-de lenguaje natural** hacia dominios como la **visión computacional**, la
-**bioinformática** y el **aprendizaje por refuerzo**, consolidándose como una de las
-arquitecturas más versátiles y poderosas en el aprendizaje profundo actual.
+largas, capturan dependencias complejas y se han extendido más allá del procesamiento de
+lenguaje natural hacia dominios como la visión computacional, la bioinformática y el
+aprendizaje por refuerzo, consolidándose como una de las arquitecturas más versátiles y
+poderosas en el aprendizaje profundo actual.
 
-## 8. Arquitecturas de Deep Learning: Redes Neuronales de Grafos
+## 8. Arquitecturas de aprendizaje profundo, redes neuronales de grafos
 
 Los grafos constituyen una estructura flexible y poderosa para representar información
 compleja. Están formados por **nodos** (o vértices) y **aristas** (o conexiones) que
@@ -1844,61 +1922,61 @@ modelar fenómenos muy diversos, desde redes sociales y moléculas hasta sistema
 telecomunicaciones, imágenes y texto, ofreciendo un marco unificado para el análisis de
 datos estructurados y relacionales.
 
-Las **Redes Neuronales de Grafos (GNN, Graph Neural Networks)** están diseñadas para
+Las **Redes Neuronales de Grafos (_Graph Neural Networks_, GNN)** están diseñadas para
 procesar directamente estas estructuras, extrayendo representaciones cada vez más ricas
 de los nodos y del grafo en su conjunto, de manera análoga a cómo las redes
 convolucionales procesan imágenes.
 
-### 8.1. Representación de Nodos y Flujo de Información
+### 8.1. Representación de nodos y flujo de información
 
-Cada nodo de un grafo se representa mediante un **vector de características** que
-codifica su información individual. Durante sucesivas iteraciones, este vector se
-actualiza combinando la información propia del nodo con la de sus vecinos, enriqueciendo
-así su representación con el contexto del grafo.
+Cada nodo de un grafo se representa mediante un vector de características que codifica
+su información individual. Durante sucesivas iteraciones, este vector se actualiza
+combinando la información propia del nodo con la de sus vecinos, enriqueciendo así su
+representación con el contexto del grafo.
 
 Dado que los grafos no poseen un orden natural de nodos o conexiones, las operaciones de
-agregación —como suma, promedio o máximo— deben ser **conmutativas**, garantizando que
-el resultado no dependa del orden en que se procesen los vecinos. Con cada iteración,
-los nodos adquieren representaciones que integran tanto sus propiedades individuales
-como las de su entorno inmediato, permitiendo al modelo capturar dependencias locales y
+agregación, como suma, promedio o máximo, deben ser conmutativas, garantizando que el
+resultado no dependa del orden en que se procesen los vecinos. Con cada iteración, los
+nodos adquieren representaciones que integran tanto sus propiedades individuales como
+las de su entorno inmediato, permitiendo al modelo capturar dependencias locales y
 globales de manera eficiente.
 
-### 8.2. Representación de la Estructura del Grafo
+### 8.2. Representación de la estructura del grafo
 
 La topología de un grafo puede representarse mediante distintas estructuras de datos:
 
-- **Matriz de adyacencia:** indica la presencia o ausencia de aristas entre nodos. Su
+- **Matriz de adyacencia:** Indica la presencia o ausencia de aristas entre nodos. Su
   implementación es sencilla, pero su eficiencia depende del orden de los nodos y puede
   resultar costosa en grafos de gran tamaño.
-- **Listas de adyacencia:** enumeran explícitamente las conexiones de cada nodo,
+- **Listas de adyacencia:** Enumeran explícitamente las conexiones de cada nodo,
   ofreciendo mayor flexibilidad y eficiencia en el manejo de grafos dispersos.
 
 En la práctica, estas representaciones se traducen en tensores que almacenan tanto las
 características de los nodos como las relaciones que los unen, constituyendo la base
 para las operaciones de propagación y actualización de las GNN.
 
-### 8.3. Tareas sobre Grafos
+### 8.3. Tareas sobre grafos
 
 Las GNN permiten abordar problemas a diferentes niveles de granularidad:
 
-- **Nivel de grafo:** predicción de propiedades globales, como la clasificación de
+- **Nivel de grafo:** Predicción de propiedades globales, como la clasificación de
   moléculas, la estimación de propiedades químicas o el análisis de sentimiento de un
   texto completo.
-- **Nivel de nodo:** identificación de roles o categorías de nodos, útil en segmentación
+- **Nivel de nodo:** Identificación de roles o categorías de nodos, útil en segmentación
   de imágenes, detección de usuarios influyentes en redes sociales o categorización de
   palabras en grafos semánticos.
-- **Nivel de arista:** predicción de la existencia o el valor de conexiones, aplicable
+- **Nivel de arista:** Predicción de la existencia o el valor de conexiones, aplicable
   en sistemas de recomendación, detección de enlaces en grafos de conocimiento o
   relaciones biológicas entre moléculas.
 
-### 8.4. Arquitecturas y Variantes
+### 8.4. Arquitecturas y variantes
 
 Entre las arquitecturas más destacadas se encuentran:
 
-- **Graph Convolutional Networks (GCN):** cada nodo se actualiza a partir de la
+- **Graph Convolutional Networks (GCN):** Cada nodo se actualiza a partir de la
   información agregada de sus vecinos, de manera análoga a las convoluciones en
   imágenes, permitiendo capturar patrones locales y globales en el grafo.
-- **Graph Attention Networks (GAT):** incorporan un mecanismo de atención que pondera la
+- **Graph Attention Networks (GAT):** Incorporan un mecanismo de atención que pondera la
   relevancia relativa de cada vecino, mejorando la capacidad de la red para diferenciar
   relaciones críticas de otras menos importantes.
 
@@ -1912,22 +1990,17 @@ todos los nodos.
 
 Los grafos ofrecen un marco unificado para abordar problemas en múltiples dominios:
 
-- **Visión por computadora:** una imagen puede representarse como un grafo de nodos,
+- **Visión por computadora:** Una imagen puede representarse como un grafo de nodos,
   donde cada nodo corresponde a un píxel o superpíxel, conectados según proximidad o
   similitud.
-- **Lenguaje natural:** palabras de una oración o documento pueden organizarse como
+- **Lenguaje natural:** Palabras de una oración o documento pueden organizarse como
   nodos en grafos secuenciales o semánticos, capturando relaciones contextuales y
   sintácticas.
-- **Biología y química:** moléculas, proteínas o redes metabólicas se describen
+- **Biología y química:** Moléculas, proteínas o redes metabólicas se describen
   naturalmente como grafos de átomos y enlaces, permitiendo predecir propiedades
   químicas o interacciones biológicas.
 
-En todos estos contextos, las GNN optimizan las representaciones de nodos, aristas y del
-grafo completo, preservando la estructura intrínseca y capturando patrones complejos que
-serían difíciles de detectar mediante modelos tradicionales, consolidándose como una
-herramienta esencial en el aprendizaje profundo aplicado a datos estructurados.
-
-## 9. Multi-Task Learning y Meta learning
+## 9. Paradigmas de aprendizaje, _Multi-task learning_ y _meta learning_
 
 <p align="center">
   <img src={require("../../../static/img/blogs/meta-learning/multi-task.png").default} height="350"/>
@@ -1935,22 +2008,20 @@ herramienta esencial en el aprendizaje profundo aplicado a datos estructurados.
   <em>Diagrama de una arquitectura Multi-Task</em>
 </p>
 
-El **Multi-Task Learning (MTL)** se refiere a la capacidad de un modelo para realizar
+El **_Multi-Task Learning_ (MTL)** se refiere a la capacidad de un modelo para realizar
 múltiples tareas relacionadas de forma simultánea, utilizando una estructura compartida
-que permite adaptar parámetros y salidas según el entorno.
-
-Este enfoque busca optimizar recursos y mejorar la capacidad de generalización del
-modelo en escenarios dinámicos, transfiriendo conocimiento entre tareas y minimizando la
-necesidad de ajustes específicos. Un ejemplo de aplicación es el aprendizaje por
-refuerzo.
+que permite adaptar parámetros y salidas según el entorno. Este enfoque busca optimizar
+recursos y mejorar la capacidad de generalización del modelo en escenarios dinámicos,
+transfiriendo conocimiento entre tareas y minimizando la necesidad de ajustes
+específicos.
 
 <p align="center">
   <img src={require("../../../static/img/blogs/meta-learning/meta-learning.png").default} height="350"/>
   <br />
-  <em>Diagrama sobre el uso de Meta-Learning</em>
+  <em>Diagrama sobre el uso de *Meta-Learning*</em>
 </p>
 
-El **Meta-Learning** se enfoca en dotar a los modelos de la habilidad de identificar y
+El _Meta-Learning_ se enfoca en dotar a los modelos de la habilidad de identificar y
 aprovechar patrones subyacentes en los datos, lo que les permite adaptarse rápidamente a
 nuevos problemas o entornos con un mínimo de información.
 
@@ -1964,7 +2035,7 @@ etiquetados es significativamente menor que la de datos no etiquetados. El uso d
 paradigma de _Meta-Learning_ permite extraer patrones de datos etiquetados y aplicarlos
 a datos no etiquetados, detectando variaciones y cambios en las distribuciones.
 
-### 9.1. Parámetros en Multi-Task Learning
+### 9.1. Parámetros en _Multi-Task Learning_
 
 Al desarrollar modelos para _multi-task learning_, es crucial definir ciertos
 parámetros:
@@ -1993,7 +2064,7 @@ $$
 \min_{\theta} \sum_{i=1}^{T} w_i \cdot L_i(\theta, D_i).
 $$
 
-### 9.2. Estrategias para Multi-Tasking
+### 9.2. Estrategias para _Multi-Tasking_
 
 Las principales estrategias para abordar múltiples tareas incluyen:
 
@@ -2007,177 +2078,15 @@ Las principales estrategias para abordar múltiples tareas incluyen:
    - **Condicionales multiplicativos**: Ajustan los _embeddings_ mediante factores
      multiplicativos según la tarea.
 
-### 9.3. Aprendizaje Contrastivo
-
-<p align="center">
-  <img src={require("../../../static/img/blogs/meta-learning/contrastive-learning-example.png").default}/>
-  <br />
-  <em>Ejemplo de Aprendizaje Contrastivo</em>
-</p>
-
-El **Aprendizaje Contrastivo** es una técnica que, aunque no es exactamente lo mismo que
-el _meta-learning_, contribuye a la mejora de las representaciones en los modelos de
-aprendizaje profundo. Su objetivo principal es agrupar representaciones de datos
-similares y alejar aquellas que pertenecen a clases diferentes en el espacio embebido
-del modelo.
-
-Por ejemplo, en aplicaciones de visión computacional, se utilizan transformaciones de
-los datos para que el modelo aprenda a reconocer que ciertas variaciones no alteran la
-esencia de la información original, mejorando la comprensión semántica y robusteciendo
-el modelo ante datos fuera de distribución.
-
-El proceso de entrenamiento contrastivo es una metodología clave para obtener
-representaciones efectivas y discriminativas a partir de datos no etiquetados. Este
-enfoque involucra varias etapas esenciales que, junto con técnicas de _fine-tuning_ y
-_transfer learning_, optimizan el rendimiento del modelo.
-
-1. El primer paso es la **obtención de un conjunto de datos no etiquetados**, que
-   proporciona la base sobre la cual el modelo aprenderá automáticamente las
-   características más relevantes.
-
-2. A continuación, se procede con la **generación de _embeddings_**. Aquí, se emplea un
-   modelo preentrenado, como una red neuronal profunda previamente ajustada en tareas
-   generales con gran cantidad de datos, por ejemplo, ResNet en el ámbito de la visión
-   computacional. Este modelo preentrenado ayuda a transformar los datos de entrada en
-   representaciones de menor dimensionalidad que capturan las características más
-   importantes de los datos originales, facilitando su estudio.
-
-3. La fase de **optimización mediante _fine-tuning_** es crucial para refinar las
-   representaciones. El objetivo es ajustar los parámetros del modelo usando métodos de
-   cálculo de distancias entre _embeddings_, como la **distancia euclidiana** o la
-   **similitud de coseno**. La idea es minimizar la **pérdida contrastiva**, que busca
-   maximizar la cercanía de las representaciones de datos similares y, al mismo tiempo,
-   aumentar la separación de las representaciones de datos distintos. Esto se logra
-   utilizando funciones de pérdida específicas, como la **Triplet Loss**, que optimiza
-   la distancia entre un ancla, un par positivo, y un par negativo; o la **InfoNCE
-   Loss**, que es especialmente útil en escenarios no supervisados. Sin embargo, es
-   esencial evitar el colapso de las representaciones, un problema donde todos los
-   _embeddings_ se vuelven indistinguibles. Para prevenirlo, se deben asegurar
-   diferencias suficientes entre las clases.
-
-4. Después de entrenar el modelo, se entra en la etapa de **iteración y ajuste manual**.
-   Aquí, las muestras con mayores pérdidas se revisan y, si es necesario, se realiza un
-   etiquetado manual. Esto refina aún más el modelo, permitiendo un ciclo iterativo en
-   el que las predicciones mejoran progresivamente y la necesidad de intervención humana
-   se reduce con el tiempo.
-
-Este proceso de ajuste se basa en gran medida en los principios de **_Transfer
-Learning_**, que permiten reutilizar el conocimiento de una tarea fuente $T_a$ para
-mejorar el desempeño en una tarea objetivo $T_b$.
-
-En lugar de empezar desde cero, se aprovechan las características generales ya
-aprendidas por el modelo preentrenado, lo que reduce la carga computacional y acelera el
-entrenamiento. Incluso si las distribuciones de datos de las tareas $T_a$ y $T_b$ son
-diferentes, estas características siguen siendo valiosas, ya que encapsulan información
-esencial, como bordes y texturas en imágenes o relaciones semánticas en datos textuales.
-
-En algunos casos, el _fine-tuning_ no se limita a ajustar únicamente la capa final del
-modelo. Estudios como el _Surgical Fine-Tuning_ han demostrado que afinar selectivamente
-las capas intermedias puede mejorar significativamente la precisión.
-
-El aprendizaje contrastivo se ha vuelto fundamental en la mejora de las representaciones
-en diversos dominios, especialmente en visión computacional y procesamiento del lenguaje
-natural. A continuación, detallamos algunos de los métodos más utilizados.
-
-<p align="center">
-  <img src={require("../../../static/img/blogs/meta-learning/triplet-loss-example.png").default}/>
-  <br />
-  <em>Ejemplo de Triplet Loss</em>
-</p>
-
-La **Triplet Loss** se basa en tres componentes principales:
-
-- **Ancla ($X$)**: Una muestra de datos que sirve como referencia.
-- **Par positivo ($X^+$)**: Una muestra que es similar al ancla (pertenece a la misma
-  clase o es un dato transformado del ancla).
-- **Par negativo ($X^-$)**: Una muestra que es distinta al ancla (pertenece a una clase
-  diferente).
-
-La idea detrás de Triplet Loss es minimizar la distancia entre el ancla y el par
-positivo, mientras se maximiza la distancia entre el ancla y el par negativo. Esto se
-define matemáticamente como
-
-$$
-L = \min_{\theta}\left(\max\left(0, \text{dist}(X, X^+) - \text{dist}(X, X^-) + \text{margen}\right)\right),
-$$
-
-donde:
-
-- $\text{dist}(\cdot, \cdot)$: Es una función de distancia, como la **distancia
-  euclidiana** o la **similitud del coseno**.
-- **margen**: Un valor positivo que define cuánto mayor debe ser la distancia entre el
-  ancla y el par negativo en comparación con la distancia entre el ancla y el par
-  positivo.
-
-La función de pérdida se activa cuando $\text{dist}(X, X^+)$ no es significativamente
-menor que $\text{dist}(X, X^-)$ más el margen. Este margen actúa como un umbral para
-garantizar que los pares negativos estén adecuadamente separados de los pares positivos,
-evitando el colapso de las representaciones. Sin el margen, las distancias podrían
-converger sin crear diferencias útiles en las representaciones.
-
-Otra función de pérdida clave en el aprendizaje contrastivo es la **Contrastive Loss**,
-que se usa en pares de datos (en lugar de tríos). Aquí, el objetivo es minimizar la
-distancia entre datos similares y maximizarla para datos diferentes. La fórmula se
-expresa como:
-
-$$
-L = (1 - y) \frac{1}{2} \left( \text{dist}(X_1, X_2) \right)^2 + y \frac{1}{2} \left( \max(0, m - \text{dist}(X_1, X_2)) \right)^2,
-$$
-
-donde:
-
-- $y$: Es una etiqueta binaria que indica si $X_1$ y $X_2$ son similares ($y = 0$) o
-  diferentes ($y = 1$).
-- $m$: Es un margen que define la distancia mínima deseada entre ejemplos disímiles.
-- $\text{dist}(X_1, X_2)$: Es típicamente la distancia euclidiana.
-
-En este método, si los ejemplos son similares ($y = 0$), la pérdida se calcula como la
-distancia al cuadrado, forzando a los puntos similares a estar más cerca en el espacio
-embebido. Por otro lado, si los ejemplos son diferentes ($y = 1$), se busca que la
-distancia entre ellos sea al menos igual al margen $m$. Si ya están suficientemente
-alejados, la pérdida se reduce a cero.
-
-El **InfoNCE Loss** (_Noise-Contrastive Estimation_) es otra función de pérdida
-utilizada comúnmente, especialmente en modelos como **SimCLR**. Este método maximiza la
-similitud de un dato ancla con sus pares positivos y minimiza la similitud con pares
-negativos en el mismo lote de datos. La fórmula es:
-
-$$
-L = -\frac{1}{N} \sum_{i=1}^N \log \frac{\exp(\text{sim}(z_i, z_i^+)/\tau)}{\sum_{j=1}^K \exp(\text{sim}(z_i, z_j^-)/\tau)},
-$$
-
-donde:
-
-- $z_i$: Es el _embedding_ del dato ancla.
-- $z_i^+$: Es el _embedding_ del par positivo.
-- $z_j^-$: Representa los _embeddings_ de los pares negativos.
-- $\text{sim}(\cdot, \cdot)$: Es una función de similitud, como el producto escalar o la
-  similitud coseno.
-- $\tau$: Es una constante de temperatura que controla la distribución de las
-  probabilidades.
-
-**InfoNCE Loss** maximiza la probabilidad de que el ancla esté cerca de su par positivo
-en comparación con los pares negativos dentro de un mismo lote. Esto fomenta que el
-modelo aprenda representaciones significativas y distintivas para diferentes clases o
-categorías.
-
-### 9.4. Limitaciones del Aprendizaje Contrastivo
-
-- **Dependencia de transformaciones adecuadas**: Se requieren técnicas específicas (como
-  _resizes_, _crops_, ajustes de color, _CutMix_, y _MixUp_) para mejorar la robustez
-  del modelo.
-- **Necesidad de un gran número de épocas**: El rendimiento depende del tamaño del lote
-  y el número de iteraciones para obtener suficientes pares negativos efectivos.
-
-### 9.5. Few-Shot Learning
+### 9.3. _Few-Shot Learning_
 
 <p align="center">
   <img src={require("../../../static/img/blogs/meta-learning/few-shot-learning.png").default}/>
   <br />
-  <em>Ejemplo de uso de Few-Shot Learning de 3-ways y 3-shots</em>
+  <em>Ejemplo de uso de *Few-Shot Learning* de *3-ways* y *3-shots*</em>
 </p>
 
-El **Few-Shot Learning (FSL)** se centra en entrenar modelos que logren un alto
+El **_Few-Shot Learning_ (FSL)** se centra en entrenar modelos que logren un alto
 rendimiento con un número muy limitado de ejemplos etiquetados por clase. Este enfoque
 es esencial en situaciones donde la recopilación de datos es complicada o costosa, como
 en aplicaciones médicas o donde se requiere la privacidad de los datos.
@@ -2209,33 +2118,3 @@ Existen dos tipos de modelos en este regimen:
   un espacio de menor dimensionalidad, reduciendo problemas como la maldición de la
   dimensionalidad. Estos modelos se entrenan para producir representaciones invariantes
   a transformaciones y adecuadas para métodos como _k-NN_.
-
-### 9.6. Modelos basados en reconstrucción
-
-Los modelos basados en reconstrucción, como los **Autoencoders**, se utilizan para
-aprender representaciones compactas de los datos mediante la reconstrucción de las
-entradas originales a partir de una versión comprimida (el _embedding_). Sin embargo, en
-el contexto de _few-shot learning_, estos modelos enfrentan desafíos significativos. Una
-de las principales limitaciones es la tendencia a la **memorización**, lo que significa
-que los modelos pueden recordar ejemplos específicos sin capturar adecuadamente las
-características generales necesarias para la generalización.
-
-Para mejorar el rendimiento de los autoencoders en _few-shot learning_, se implementan
-varias estrategias:
-
-- **Introducción de ruido**: Agregar ruido a los datos de entrada durante el
-  entrenamiento (como en los _Denoising Autoencoders_) fuerza al modelo a aprender
-  representaciones más robustas, en lugar de memorizar ejemplos específicos.
-- **Imponer esparsidad (_sparsity_)**: Se introducen restricciones en la representación
-  comprimida, como imponer esparsidad, para que solo las características más esenciales
-  se mantengan activas. Esto ayuda a evitar que el modelo dependa de demasiados detalles
-  irrelevantes.
-- **Decoders de menor capacidad**: Utilizar decoders con menor capacidad obliga al
-  encoder a aprender representaciones más útiles, ya que el decoder no puede compensar
-  la falta de información simplemente "recordando" detalles específicos de las entradas.
-
-Estas mejoras buscan que los autoencoders sean más eficaces en contextos de datos
-limitados, obligando al modelo a generalizar mejor y a crear representaciones más
-informativas. Sin embargo, incluso con estas mejoras, los autoencoders pueden no ser
-ideales para todas las aplicaciones de _few-shot learning_, y a menudo se prefieren
-enfoques más sofisticados que exploten mejor las relaciones en pocos ejemplos.
