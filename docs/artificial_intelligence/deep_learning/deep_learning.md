@@ -15,121 +15,209 @@ toc_max_heading_level: 3
 
 ## 1. Introducción al aprendizaje profundo
 
-Antes de abordar el campo del aprendizaje profundo o _Deep Learning_, es fundamental
-comprender un concepto esencial que, aunque pueda parecer evidente, no siempre resulta
-fácil de definir: la **inteligencia**. Esta puede entenderse como la capacidad de
-procesar información y emplearla en la toma de decisiones futuras. A partir de esta
-noción surge la **Inteligencia Artificial (IA)**, disciplina cuyo objetivo es
-desarrollar técnicas y algoritmos que permitan a las máquinas emular ciertos
-comportamientos humanos. En términos generales, la IA busca que los sistemas puedan
-utilizar la información disponible para realizar predicciones, adaptarse a distintos
-contextos y resolver problemas de manera autónoma.
+Antes de abordar el aprendizaje profundo (_Deep Learning_), resulta fundamental
+comprender el concepto de inteligencia, una noción que, aunque aparentemente sencilla,
+es compleja de definir de manera precisa. En términos generales, la inteligencia se
+entiende como la capacidad de procesar información y utilizarla para tomar decisiones
+futuras con el objetivo de alcanzar metas específicas. Este entendimiento da origen al
+campo de la Inteligencia Artificial (IA), disciplina que se enfoca en desarrollar
+técnicas y algoritmos capaces de emular ciertos aspectos del comportamiento humano. La
+IA busca que los sistemas puedan procesar la información recibida, adaptarse a distintos
+contextos y realizar predicciones con el propósito de resolver problemas de manera
+autónoma, minimizando la intervención humana.
 
-Dentro de la IA se encuentra un subcampo crucial: el **aprendizaje automático o _Machine
-Learning_**. Su propósito es permitir que un ordenador aprenda de la experiencia sin
-necesidad de recibir instrucciones explícitas. En lugar de programar paso a paso cada
-acción, se diseñan algoritmos capaces de identificar patrones en los datos, de modo que
-el sistema mejore su rendimiento de forma automática a medida que acumula ejemplos. Este
-enfoque representa un cambio significativo respecto a la programación tradicional, ya
-que el sistema aprende a generalizar a partir de los datos, en lugar de ejecutar reglas
-predefinidas.
+Dentro de la IA, un subcampo central es el **aprendizaje automático (_Machine
+Learning_)**, cuyo propósito es permitir que una máquina aprenda de la experiencia sin
+requerir instrucciones explícitas para cada tarea. En lugar de programar cada paso de
+manera detallada, se diseñan algoritmos capaces de identificar patrones en los datos
+proporcionados, de modo que el rendimiento del sistema mejore de forma progresiva
+conforme acumula ejemplos y optimiza su objetivo, que consiste en medir el grado de
+aproximación a la meta deseada. Este enfoque representa un cambio significativo respecto
+a la programación tradicional, ya que permite al sistema generalizar a partir de los
+datos, en lugar de limitarse a ejecutar reglas predefinidas.
 
-Un nivel más especializado es el **_Deep Learning_**, que utiliza **redes neuronales
-artificiales** para extraer patrones complejos a partir de datos sin procesar. Estas
-redes, inspiradas en la estructura y funcionamiento del cerebro humano, aprenden
-representaciones jerárquicas de la información, lo que les permite captar relaciones
-complejas entre variables. Gracias a esta capacidad, el _Deep Learning_ resulta
-especialmente eficaz en tareas como el reconocimiento de imágenes, el procesamiento del
-lenguaje natural, el análisis de audio y otros problemas que involucran grandes
-volúmenes de datos no estructurados.
+El **aprendizaje profundo (_Deep Learning_)** constituye un nivel más avanzado dentro
+del aprendizaje automático y se basa en el uso de **redes neuronales artificiales**
+capaces de identificar patrones complejos en los datos. Estas redes, inspiradas en la
+estructura y funcionamiento del cerebro humano, aprenden representaciones jerárquicas de
+la información, lo que les permite capturar relaciones de gran complejidad entre
+variables. Gracias a esta capacidad, el _Deep Learning_ ha demostrado una eficacia
+destacada en tareas como el reconocimiento de imágenes, el procesamiento de lenguaje
+natural, el análisis de audio y el manejo de grandes volúmenes de datos no
+estructurados.
 
-### 1.1. Predicción de precios de viviendas mediante regresión lineal
+### 1.1. Escalabilidad y leyes de crecimiento en el aprendizaje profundo
 
-Para ilustrar estos conceptos, consideremos un ejemplo sencillo: estimar el precio de
-una vivienda. Si representamos gráficamente el tamaño de la casa frente a su precio, se
-observa generalmente una tendencia positiva: a mayor tamaño, mayor precio. Un modelo
-matemático básico para capturar esta relación es la **regresión lineal**, que ajusta una
-recta a los datos. Sin embargo, esta solución presenta limitaciones: por ejemplo, una
-línea puede asignar valores negativos a viviendas muy pequeñas, lo cual no tiene
-sentido. Para corregirlo, se introducen funciones que restringen los resultados a un
-rango de valores válidos.
+Un aspecto fundamental del aprendizaje profundo es el estudio de las **leyes de escalado
+neuronal (_neural scaling laws_)**, que describen patrones observados empíricamente en
+el rendimiento de los modelos a medida que se incrementan los recursos. Estas leyes
+muestran que al aumentar de manera sistemática el tamaño de los conjuntos de
+entrenamiento y el número de parámetros de un modelo, se obtiene, de forma predecible,
+una mejora en la precisión y eficiencia de sus predicciones. El escalado no se limita
+únicamente a la ampliación de datos y modelos, también implica la optimización de los
+cálculos para reducir el consumo computacional sin comprometer la calidad del modelo, lo
+cual resulta especialmente relevante en entornos con recursos limitados, como
+dispositivos móviles o sistemas de Internet de las Cosas (IoT).
 
-Este proceso se puede entender mediante el funcionamiento de una **neurona o
-perceptrón**. La neurona recibe como entrada el tamaño de la vivienda, realiza un
-cálculo lineal a partir de ejemplos recopilados y aplica una función que descarta
-valores inválidos, generando como salida una estimación coherente del precio. No
-obstante, el valor de una vivienda depende de múltiples factores adicionales, como el
-número de dormitorios, la ubicación o la calidad del vecindario. Incorporar varias
-características complica el modelo, ya que se incrementan las dimensiones de los datos,
-y la simple regresión lineal deja de ser suficiente. En estos casos, es necesario
-combinar múltiples regresiones lineales organizadas en **capas**, formando arquitecturas
-más complejas.
+La aplicación de estas leyes de escalado conduce al desarrollo de **redes más profundas
+y con un mayor número de neuronas**, lo que a su vez ha impulsado la creación de
+**modelos de gran escala**, entre los que destacan los **modelos de lenguaje de gran
+tamaño (_Large Language Models, LLMs_)**.
 
-En una arquitectura de _Deep Learning_, se distingue una **capa de entrada**, que recibe
-las características iniciales, una o varias **capas ocultas**, donde se combinan y
-transforman dichas características, y una **capa de salida**, que genera la predicción
+### 1.2. Memoria implícita y modelos fundacionales
+
+Las redes neuronales poseen la capacidad de aproximar distribuciones de probabilidad a
+partir de los datos de entrada. En los modelos actuales, caracterizados por su gran
+tamaño y complejidad, esta capacidad alcanza un nivel en el que la red puede llegar a
+memorizar parte de los datos de entrenamiento. Aunque no exista un mecanismo de memoria
+explícito en la arquitectura o el código del modelo, la información queda codificada en
+los parámetros, funcionando de manera efectiva como un sistema de almacenamiento
+implícito.
+
+En este contexto surge la distinción entre datos dentro de distribución y fuera de
+distribución. Los primeros corresponden a ejemplos similares a los utilizados durante el
+entrenamiento, mientras que los segundos se refieren a datos que difieren
+significativamente de los conjuntos de entrenamiento. Sin embargo, debido a que los
+modelos actuales se entrenan con conjuntos cada vez más amplios y heterogéneos, esta
+separación se vuelve menos clara. Este aspecto continúa siendo un área activa de
+investigación, ya que involucra factores como la epistemología del aprendizaje
+automático, la capacidad de entrenamiento y optimización en producción, y fenómenos como
+el olvido catastrófico, en el que la incorporación de nuevo conocimiento puede provocar
+la pérdida de información previamente aprendida.
+
+La tendencia actual apunta hacia el desarrollo de modelos más generalistas, capaces de
+abarcar múltiples dominios. Esto ha dado lugar a los **modelos fundacionales**, que
+constituyen la base de los grandes modelos de lenguaje y pueden adaptarse a tareas
+específicas mediante técnicas como el ajuste fino (_fine-tuning_), aplicado en áreas
+como finanzas, salud o educación. Otra técnica relevante es la cuantización, que reduce
+la precisión numérica de los parámetros del modelo para disminuir el consumo de memoria
+y acelerar los cálculos, facilitando su implementación en sistemas embebidos y equipos
+domésticos.
+
+### 1.3. El aprendizaje como problema de optimización
+
+El proceso de aprendizaje en redes neuronales puede entenderse como un problema de
+optimización. Un modelo se define a partir de un conjunto de parámetros, que representan
+grados de libertad, y cuyo valor se ajusta durante el entrenamiento. Estos modelos
+suelen denominarse **diferenciables**, ya que permiten calcular derivadas parciales de
+una **función de coste** con respecto a sus parámetros. Esta propiedad resulta
+fundamental, pues posibilita la aplicación de técnicas de optimización como el
+**descenso del gradiente** y la **diferenciación automática**, pilares del aprendizaje
+profundo moderno.
+
+La diferenciabilidad, sin embargo, impone restricciones sobre los tipos de datos que
+pueden procesarse directamente. Por ejemplo, los caracteres o los enteros no pueden
+emplearse de forma inmediata, ya que constituyen representaciones discretas y
+discontinuas. Por ello, se requiere aplicar procesos que transformen los datos en
+representaciones numéricas adecuadas, como vectores o tensores, compatibles con las
+operaciones diferenciales del modelo.
+
+### 1.4. Tensores como estructura fundamental
+
+En el aprendizaje profundo, los **tensores** constituyen la estructura de datos
+fundamental. Un tensor puede definirse como un arreglo de objetos de $N$ dimensiones.
+Los tensores permiten organizar de manera estructurada la información de entrada, los
+parámetros del modelo y los resultados intermedios generados durante el procesamiento.
+
+Los tensores presentan distintos niveles de dimensionalidad:
+
+- Un **escalar** corresponde a un tensor de dimensión cero.
+- Un **vector** es un tensor unidimensional.
+- Una **matriz** constituye un tensor bidimensional.
+- Los arreglos de dimensiones superiores se emplean en problemas más complejos, como el
+  procesamiento de imágenes o vídeos.
+
+Por ejemplo, una imagen en color de 84 × 84 píxeles con tres canales (RGB), procesada en
+lotes, se representa mediante un tensor de rango 4. En este caso, las dimensiones
+corresponden al número de ejemplos del lote, la altura de la imagen, su anchura y el
+número de canales. De esta manera, el **rango de un tensor** indica el número de
+dimensiones en las que se extienden los datos, proporcionando una estructura flexible y
+eficiente para el manejo de información compleja en redes neuronales.
+
+### 1.5. Ejemplo introductorio, predicción de precios de viviendas
+
+Para ilustrar el funcionamiento básico de estos modelos, puede considerarse el problema
+de estimar el precio de una vivienda. Si se grafica el tamaño de la casa frente a su
+precio, suele observarse una tendencia positiva: a mayor tamaño, mayor precio. Una forma
+de capturar esta relación es mediante la **regresión lineal**, que ajusta una recta a
+los datos. Sin embargo, este enfoque presenta limitaciones, como la posibilidad de
+asignar valores negativos a viviendas muy pequeñas, lo cual carece de sentido práctico.
+Para resolverlo, se incorporan funciones que restringen los resultados a intervalos
+válidos.
+
+Este procedimiento puede comprenderse mejor mediante la analogía de una **neurona
+artificial o perceptrón**. La neurona recibe el tamaño de la vivienda como entrada,
+aplica un cálculo lineal basado en ejemplos de entrenamiento y utiliza una función de
+activación que filtra valores inválidos, produciendo una estimación coherente del
+precio. No obstante, el valor de una vivienda depende de múltiples factores adicionales,
+como el número de dormitorios, la ubicación o la calidad del vecindario. La
+incorporación de estas características incrementa la dimensionalidad de los datos, de
+modo que la simple regresión lineal se vuelve insuficiente. En este caso, resulta
+necesario combinar múltiples perceptrones organizados en **capas**, lo que da lugar a
+arquitecturas de mayor complejidad.
+
+En las arquitecturas de _Deep Learning_ se distinguen tres tipos de capas: la **capa de
+entrada**, que recibe las características iniciales; las **capas ocultas**, que procesan
+y transforman dichas características; y la **capa de salida**, que genera la predicción
 final.
 
-### 1.2. Elementos esenciales de una neurona artificial
+### 1.6. Elementos fundamentales de una neurona artificial
 
-Cada neurona asigna un **peso** a cada característica, lo que refleja su importancia
-relativa en el resultado frente a las demás variables. Además, incorpora un **sesgo**,
-un valor adicional que permite ajustar la función de salida y proporciona mayor
-flexibilidad al modelo, modulando la propensión de la neurona a activarse o desactivarse
-según los datos de entrada. Tanto los pesos como el sesgo se inicializan de forma
-aleatoria y se ajustan progresivamente durante el proceso de **entrenamiento**,
-optimizando el rendimiento del modelo.
+Cada neurona artificial asigna un **peso** a cada característica, que indica la
+importancia relativa de esa variable en el resultado. Además, incluye un **sesgo**,
+valor adicional que permite ajustar la función de salida y otorga mayor flexibilidad al
+modelo, modulando la activación de la neurona en función de los datos de entrada. Tanto
+los pesos como el sesgo se inicializan de manera aleatoria y se ajustan progresivamente
+durante el entrenamiento, optimizando así el rendimiento del sistema.
 
-El resultado de cada neurona pasa posteriormente por una **función de activación no
-lineal**, un componente crucial que permite a la red capturar relaciones complejas que
-van más allá de las simples combinaciones lineales y definir un rango coherente para la
-salida.
+El resultado lineal de cada neurona pasa por una **función de activación no lineal**,
+componente esencial que otorga a la red la capacidad de capturar relaciones complejas
+entre variables y de definir intervalos coherentes para las salidas.
 
-### 1.3. Tipos de arquitecturas y datos
+### 1.7. Arquitecturas y tipos de datos en aprendizaje profundo
 
-El _Deep Learning_ se adapta a distintos tipos de problemas mediante arquitecturas
-especializadas, lo que permite extraer información más relevante de los datos y
-comprender mejor los patrones subyacentes. Entre las principales arquitecturas se
-encuentran:
+El aprendizaje profundo se adapta a diferentes problemas mediante el uso de
+arquitecturas especializadas, que permiten extraer información relevante según el tipo
+de datos analizados. Entre las principales arquitecturas destacan:
 
-- **Redes neuronales densas o totalmente conectadas**, adecuadas para datos tabulares.
-- **Redes convolucionales (CNN, _Convolutional Neural Networks_)**, diseñadas para
-  analizar imágenes y vídeos mediante la detección de patrones espaciales.
-- **Redes recurrentes (RNN, _Recurrent Neural Networks_)** y sus variantes modernas,
-  idóneas para procesar secuencias como texto, series temporales o audio.
-- **Modelos multimodales**, capaces de integrar simultáneamente información de
-  diferentes fuentes, como texto, imágenes y sonido.
+- **Redes neuronales densas o totalmente conectadas**, utilizadas principalmente en el
+  análisis de datos tabulares.
+- **Redes convolucionales (_Convolutional Neural Networks, CNN_)**, diseñadas para el
+  procesamiento de imágenes y vídeos, donde se requiere detectar patrones espaciales.
+- **Redes recurrentes (_Recurrent Neural Networks, RNN_)** y sus variantes modernas,
+  empleadas en el tratamiento de secuencias como texto, series temporales o audio.
+- **Modelos multimodales**, capaces de integrar información proveniente de distintas
+  fuentes, como texto, imágenes y sonido.
 
-Al analizar los datos, es importante distinguir entre:
+En este contexto, es necesario distinguir entre:
 
-- **Datos estructurados**, organizados en tablas con filas y columnas, típicos de bases
-  de datos tradicionales. En estos casos, a menudo es suficiente aplicar algoritmos de
-  aprendizaje automático más simples en lugar de recurrir a _Deep Learning_.
-- **Datos no estructurados**, como imágenes, grabaciones de voz o documentos de texto
-  libre, que requieren arquitecturas más avanzadas para su procesamiento. El _Deep
-  Learning_ sobresale en estos contextos debido a su capacidad para interpretar y
-  extraer patrones complejos de grandes volúmenes de información no estructurada.
+- **Datos estructurados**, organizados en tablas de filas y columnas, característicos de
+  las bases de datos tradicionales. Para este tipo de datos suelen bastar algoritmos de
+  aprendizaje automático clásicos.
+- **Datos no estructurados**, como imágenes, grabaciones de voz o documentos en lenguaje
+  natural, que requieren arquitecturas avanzadas para su procesamiento. El _Deep
+  Learning_ se muestra especialmente eficaz en estos casos, pues permite extraer
+  patrones complejos a partir de grandes volúmenes de información.
 
-### 1.4. Factores que impulsan su desarrollo
+### 1.8. Factores que impulsan el desarrollo del aprendizaje profundo
 
-El auge del _Deep Learning_ en la última década se explica por la confluencia de tres
-factores principales. En primer lugar, la **disponibilidad masiva de datos**, favorecida
-por la digitalización y la conectividad global, proporciona la materia prima necesaria
-para entrenar modelos complejos. En segundo lugar, los **avances en hardware
-especializado**, como GPUs y TPUs, permiten entrenar modelos de gran escala en tiempos
-razonables. Empresas como NVIDIA han desarrollado GPUs optimizadas para el cálculo
-matricial requerido en el aprendizaje profundo, complementadas con librerías como CUDA.
-Además, se observa una tendencia hacia arquitecturas diseñadas específicamente para
-inteligencia artificial, como NPU y TPUs, integradas en dispositivos móviles y
-embebidos, que permiten ejecutar modelos de manera eficiente, privada y sin conexión a
-Internet.
+El auge del _Deep Learning_ en la última década responde a la convergencia de tres
+factores principales. En primer lugar, la disponibilidad masiva de datos, resultado de
+la digitalización y la conectividad global, proporciona el material necesario para
+entrenar modelos cada vez más complejos. En segundo lugar, los **avances en hardware
+especializado**, como las GPUs y TPUs, han permitido entrenar modelos de gran escala en
+tiempos razonables. Empresas como NVIDIA han desarrollado GPUs optimizadas para cálculos
+matriciales, complementadas con librerías como CUDA. Más recientemente, han surgido
+arquitecturas específicas para inteligencia artificial, como las NPUs, que se integran
+en dispositivos móviles y sistemas embebidos, facilitando la ejecución eficiente y
+privada de modelos sin necesidad de conexión a Internet.
 
-El tercer factor son las **mejoras en algoritmos y técnicas de optimización**, que han
-permitido abordar problemas antes inabordables. La combinación de estos factores ha
-democratizado el uso del _Deep Learning_, promoviendo la aparición de startups que
-liberan modelos de código abierto, parámetros de entrenamiento e incluso los datos
-utilizados, facilitando así la investigación y el desarrollo de nuevas aplicaciones
-basadas en inteligencia artificial.
+El tercer factor son las innovaciones en algoritmos y técnicas de optimización, que han
+ampliado el alcance de problemas abordables. La combinación de estos elementos ha
+democratizado el uso del _Deep Learning_, fomentando la aparición de comunidades y
+startups que publican modelos de código abierto, parámetros de entrenamiento y conjuntos
+de datos, lo que impulsa la investigación y el desarrollo de nuevas aplicaciones basadas
+en inteligencia artificial.
 
 ## 2. Regresión lineal y logística
 
