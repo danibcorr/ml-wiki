@@ -112,27 +112,60 @@ discontinuas. Por ello, se requiere aplicar procesos que transformen los datos e
 representaciones numéricas adecuadas, como vectores o tensores, compatibles con las
 operaciones diferenciales del modelo.
 
-### 1.4. Tensores como estructura fundamental
+### 1.4. Los tensores como estructura fundamental
 
-En el aprendizaje profundo, los **tensores** constituyen la estructura de datos
-fundamental. Un tensor puede definirse como un arreglo de objetos de $N$ dimensiones.
-Los tensores permiten organizar de manera estructurada la información de entrada, los
-parámetros del modelo y los resultados intermedios generados durante el procesamiento.
+En el ámbito del aprendizaje profundo, los **tensores** constituyen la estructura de
+datos fundamental, ya que permiten representar, almacenar y manipular de manera
+eficiente la información que circula a lo largo de un modelo. Un tensor se define como
+un arreglo de objetos organizado en $N$ dimensiones, lo que lo convierte en una
+herramienta versátil para manejar desde datos de entrada hasta parámetros del modelo y
+resultados intermedios generados durante el procesamiento.
 
-Los tensores presentan distintos niveles de dimensionalidad:
+La elección de los tensores como estructura central no es arbitraria, sino que responde
+a su idoneidad para ser implementados en sistemas de cómputo masivamente paralelos, como
+las **unidades de procesamiento gráfico (GPU)** o las **unidades de procesamiento
+tensorial (TPU)**. Estas arquitecturas están especialmente diseñadas para ejecutar de
+manera simultánea miles de operaciones matemáticas, lo que resulta esencial en el
+entrenamiento de redes neuronales de gran escala.
+
+Un tensor se describe a partir de dos elementos clave: el **tipo de datos** que contiene
+y la **precisión numérica** utilizada en los cálculos. Los valores que alberga suelen
+ser numéricos, ya sean enteros o números en coma flotante, con distintos niveles de
+precisión como 16, 32 o 64 bits. La elección de la precisión depende en gran medida del
+contexto de aplicación. Por ejemplo, en tareas de clasificación de imágenes entre gatos
+y perros, los errores derivados de una menor precisión suelen ser tolerables. En cambio,
+en aplicaciones críticas como la simulación aeroespacial o el control de sistemas de
+navegación de cohetes, se requiere un mayor rigor en los cálculos numéricos para
+garantizar resultados exactos y seguros.
+
+Desde el punto de vista operativo, los tensores funcionan de manera similar a los
+arreglos o _arrays_, lo que permite realizar operaciones como el **indexado** y la
+extracción de subconjuntos de datos. Esta capacidad resulta esencial para manipular
+porciones específicas de información sin necesidad de procesar el tensor completo, lo
+que optimiza tanto la eficiencia como la flexibilidad en su manejo.
+
+En cuanto a su dimensionalidad, los tensores presentan diferentes niveles, los cuales se
+clasifican de la siguiente manera:
 
 - Un **escalar** corresponde a un tensor de dimensión cero.
-- Un **vector** es un tensor unidimensional.
+- Un **vector** se define como un tensor unidimensional.
 - Una **matriz** constituye un tensor bidimensional.
-- Los arreglos de dimensiones superiores se emplean en problemas más complejos, como el
-  procesamiento de imágenes o vídeos.
+- Los **tensores de orden superior**, con tres o más dimensiones, se utilizan para
+  representar datos más complejos, como secuencias temporales, imágenes o vídeos.
 
-Por ejemplo, una imagen en color de 84 × 84 píxeles con tres canales (RGB), procesada en
-lotes, se representa mediante un tensor de rango 4. En este caso, las dimensiones
-corresponden al número de ejemplos del lote, la altura de la imagen, su anchura y el
-número de canales. De esta manera, el **rango de un tensor** indica el número de
-dimensiones en las que se extienden los datos, proporcionando una estructura flexible y
-eficiente para el manejo de información compleja en redes neuronales.
+Un ejemplo ilustrativo lo constituye una imagen en color de 84 × 84 píxeles con tres
+canales (RGB), procesada en lotes. En este caso, la representación corresponde a un
+tensor de rango 4, cuyas dimensiones reflejan: el número de ejemplos en el lote, la
+altura de la imagen, su anchura y el número de canales. De manera general, el **rango de
+un tensor** indica el número de dimensiones en que se estructuran los datos,
+proporcionando así una representación flexible y eficiente para el manejo de información
+de alta complejidad en redes neuronales.
+
+En la notación matemática utilizada en publicaciones académicas, se establece una
+convención tipográfica para distinguir claramente los distintos niveles de datos: los
+**escalares** suelen expresarse en minúscula, los **vectores** en minúscula y en
+negrita, y las **matrices** en mayúscula y en negrita. Esta diferenciación contribuye a
+la claridad y rigurosidad en la exposición formal de los modelos.
 
 ### 1.5. Ejemplo introductorio, predicción de precios de viviendas
 
@@ -219,6 +252,133 @@ startups que publican modelos de código abierto, parámetros de entrenamiento y
 de datos, lo que impulsa la investigación y el desarrollo de nuevas aplicaciones basadas
 en inteligencia artificial.
 
+## 2. Conceptos básicos de matemáticas
+
+El tensor, como se ha explicado anteriormente, constituye la unidad de procesamiento
+fundamental en las librerías de cálculo utilizadas en aprendizaje profundo. Su
+relevancia no solo radica en el aspecto computacional, sino también en las múltiples
+implicaciones matemáticas que conlleva. En efecto, la mayoría de los modelos de
+aprendizaje profundo se construyen a partir de composiciones de funciones elementales,
+como sumas y multiplicaciones, combinadas con funciones adicionales de carácter no
+lineal. Dado que los datos procesados se representan en forma de tensores, estos pueden
+entenderse como arreglos de $N$ dimensiones, que abarcan desde escalares y vectores
+hasta matrices y estructuras de mayor orden.
+
+### 2.1. Operaciones básicas con vectores
+
+Los **vectores** constituyen ejemplos de tensores unidimensionales y se denotan
+habitualmente como $x \sim (d)$, donde $d$ representa su dimensión. En el ámbito del
+álgebra lineal, resulta esencial distinguir entre **vectores columna** y **vectores
+fila**, denotados respectivamente por $x$ y $x^\top$. Esta distinción, aunque
+teóricamente clara, presenta ciertas complicaciones prácticas en la implementación
+informática. En efecto, mientras que un vector fila o columna se representa como un
+tensor bidimensional de dimensiones $(1, d)$ o $(d, 1)$, un vector simple corresponde a
+un tensor unidimensional de dimensión $(d)$. Esta diferencia es relevante porque la
+mayoría de los entornos de programación aplican reglas de **broadcasting** para realizar
+operaciones entre tensores, lo que exige el uso de funciones específicas. Por ejemplo,
+en librerías como NumPy se emplea la función `expand_dims` para incrementar la
+dimensionalidad de un vector en el eje requerido, facilitando así operaciones de
+compatibilidad entre tensores.
+
+Cuando se dispone de dos vectores del mismo tamaño, como $x$ y $y$, es posible
+combinarlos linealmente mediante parámetros escalares $a$ y $b$, generando un nuevo
+vector $z$:
+
+$$
+z = ax + by.
+$$
+
+Desde una perspectiva geométrica, en un espacio euclidiano de dos dimensiones, la suma
+de dos vectores $u$ y $v$ puede visualizarse como la diagonal del paralelogramo que
+forman. La longitud o magnitud de un vector en dicho espacio se mide a través de la
+**norma euclidiana** o **norma $L_2$**, definida como:
+
+$$
+||x|| = \sqrt{\sum_{i} x_i^2}.
+$$
+
+Esta norma refleja la distancia de un vector respecto al origen del sistema de
+coordenadas.
+
+Otra operación de gran relevancia con los vectores es el **producto escalar** o
+**producto punto**. Este consiste en multiplicar los elementos correspondientes de dos
+vectores y sumar los resultados:
+
+$$
+x \cdot y = \sum_{i} x_i \cdot y_i.
+$$
+
+El resultado es un **escalar** que, además de su utilidad algebraica, posee una
+interpretación geométrica. En particular, permite medir el ángulo entre dos vectores y,
+por ende, su grado de similitud direccional. La relación se formaliza mediante la
+siguiente expresión:
+
+$$
+\cos(\theta) = \frac{x \cdot y}{||x|| \space ||y||}.
+$$
+
+El valor obtenido se encuentra en el intervalo $[-1, 1]$ y proporciona información sobre
+la correlación entre los vectores:
+
+- Si $\cos(\theta) = -1$, los vectores son opuestos, lo que indica una correlación
+  negativa perfecta.
+- Si $\cos(\theta) = 0$, los vectores son ortogonales o perpendiculares, lo que implica
+  ausencia de relación.
+- Si $\cos(\theta) = 1$, los vectores apuntan en la misma dirección, mostrando máxima
+  similitud.
+
+Este concepto se conoce como **similitud del coseno**, y resulta fundamental en tareas
+de agrupamiento y representación en el espacio latente de los modelos de aprendizaje
+profundo. Al normalizar los vectores para que su norma sea uno, se obtiene una
+representación en una **esfera unitaria**, donde la magnitud de los vectores deja de
+importar y solo prevalece su dirección. Esto permite que vectores lejanos en magnitud
+pero próximos en dirección sean considerados parte de un mismo grupo, lo que resulta
+especialmente útil en técnicas de clustering y análisis de similitud.
+
+### 2.2. Operaciones básicas con matrices
+
+Las **matrices** constituyen estructuras matemáticas que almacenan elementos del mismo
+tipo, organizados en un arreglo bidimensional como mínimo. Una matriz puede considerarse
+como un conjunto ordenado de vectores dispuestos en filas y columnas, lo que facilita la
+representación y el procesamiento de datos en diversas aplicaciones.
+
+Supóngase que se dispone de una matriz $X$ de tamaño $A \times B$ y otra matriz $Y$ de
+tamaño $B \times C$. En este caso, es posible realizar el **producto matricial** entre
+ambas, obteniéndose como resultado una nueva matriz $Z$ de tamaño $A \times C$. Para que
+esta operación sea posible, debe cumplirse que el **número de columnas de la primera
+matriz ($B$)** coincida con el **número de filas de la segunda matriz ($B$)**. La
+dimensión final del producto se determina por el número de filas de la primera matriz
+($A$) y el número de columnas de la segunda matriz ($C$).
+
+Esta propiedad resulta de gran importancia en el contexto del aprendizaje profundo, dado
+que muchas operaciones realizadas por una neurona implican precisamente un **producto
+matricial**. En dicho proceso, los **datos de entrada** se representan como una matriz y
+se multiplican por otra matriz que contiene los **pesos del modelo**, los cuales
+constituyen sus parámetros ajustables. De este modo, en lugar de trabajar únicamente con
+vectores de entrada, se generaliza el procedimiento al álgebra matricial, que permite
+procesar de manera simultánea múltiples datos.
+
+Además del producto matricial, una operación estrechamente relacionada es la **matriz
+transpuesta**, denotada por $X^\top$. La transposición de una matriz consiste en
+intercambiar sus filas por columnas, lo que resulta esencial en numerosas operaciones.
+Por ejemplo, si se consideran **representaciones vectoriales** de datos de entrada
+(comúnmente llamadas _embeddings_), estas pueden organizarse en una matriz
+$X \in \mathbb{R}^{N \times d}$, donde $N$ corresponde al número de embeddings y $d$ a
+la dimensión de cada uno. Al multiplicar la matriz $X$ por su transpuesta $X^\top$, se
+obtiene una matriz cuadrada de tamaño $N \times N$ que refleja las **similitudes entre
+vectores**. En particular, si los embeddings están normalizados con norma unitaria, este
+producto resulta equivalente a calcular la **similitud del coseno** entre todos los
+pares de vectores. En tal caso, la diagonal principal de la matriz contiene únicamente
+unos, ya que cada vector presenta similitud máxima consigo mismo.
+
+Otro tipo de operación relevante con matrices es el **producto de Hadamard**, el cual
+consiste en una multiplicación elemento a elemento entre dos matrices del mismo tamaño.
+Este tipo de producto se utiliza en diversas aplicaciones, entre ellas los mecanismos de
+**enmascaramiento**, donde se busca anular ciertos valores de la matriz para que no
+contribuyan al cálculo de los gradientes durante el entrenamiento. De esta manera, el
+modelo puede ignorar de forma selectiva determinadas partes de la información de
+entrada, evitando que influyan en el proceso de aprendizaje.
+
 ## 2. Regresión lineal y logística
 
 El entrenamiento de una neurona o de una red neuronal se fundamenta en dos procesos
@@ -253,7 +413,7 @@ matrices que corresponden a los canales de color rojo, verde y azul. Cada matriz
 dimensiones 64×64, lo que da un total de valores por imagen de:
 
 $$
-64 \times 64 \times 3 = 12288
+64 \times 64 \times 3 = 12288.
 $$
 
 Para introducir esta información en un modelo de red neuronal, se aplica la técnica de
@@ -274,20 +434,20 @@ Para abordar este problema se utiliza la **regresión logística**, un algoritmo
 supervisado diseñado específicamente para tareas con etiquetas binarias (ceros y unos).
 Su funcionamiento es similar al de la regresión lineal, con la diferencia clave de que
 la salida se transforma mediante la **función sigmoide**, que restringe el resultado a
-un valor entre 0 y 1, interpretable como probabilidad y definida como
+un valor entre 0 y 1, interpretable como probabilidad y definida como:
 
 $$
 \sigma(z) = \frac{1}{1 + e^{-z}},
 $$
 
-donde
+donde:
 
 $$
 z = w^T x + b.
 $$
 
 En esta ecuación, $w$ representa los **pesos**, $b$ el **sesgo** y $x$ el vector de
-características de entrada. La predicción final del modelo se expresa como
+características de entrada. La predicción final del modelo se expresa como:
 
 $$
 \hat{y} = \sigma(w^T x + b),
@@ -309,21 +469,21 @@ evaluar y guiar este ajuste se utilizan dos métricas fundamentales:
   del conjunto de entrenamiento.
 
 En regresión logística, la función de pérdida utilizada es la **función de pérdida
-logística o log-loss**, definida como
+logística o log-loss**, definida como:
 
 $$
 \mathcal{L}(\hat{y}, y) = - \big( y \cdot \log(\hat{y}) + (1-y)\cdot \log(1-\hat{y}) \big).
 $$
 
 Esta función penaliza de manera más adecuada los errores en problemas de clasificación
-binaria en comparación con el error cuadrático medio, que se define como
+binaria en comparación con el error cuadrático medio, que se define como:
 
 $$
 \text{MSE} = \frac{1}{M} \sum_{i=1}^{M} (\hat{y}^{(i)} - y^{(i)})^2.
 $$
 
 La **función de coste** asociada a la regresión logística se obtiene como el promedio de
-las pérdidas de todos los ejemplos, representada como
+las pérdidas de todos los ejemplos, representada como:
 
 $$
 J(w, b) = \frac{1}{M} \sum_{i=1}^{M} \mathcal{L}(\hat{y}^{(i)}, y^{(i)}).
@@ -335,67 +495,128 @@ proporcionando gradientes más consistentes durante el entrenamiento.
 
 ### 2.3. Descenso del gradiente
 
-El entrenamiento de un modelo de regresión logística tiene como objetivo encontrar los
-valores de $w$ y $b$ que minimicen la función de coste $J(w, b)$. Para ello se emplea el
-descenso del gradiente, un algoritmo iterativo que ajusta los parámetros en la dirección
-que produce la mayor reducción del error.
+El **descenso del gradiente** constituye uno de los algoritmos fundamentales para el
+entrenamiento de modelos en aprendizaje automático. Su objetivo es encontrar los valores
+de los parámetros que minimizan una determinada función de coste, garantizando que las
+predicciones del modelo se ajusten lo mejor posible a los datos observados.
 
-Si recordamos, la función de coste en regresión logística se define como
+En el caso de la **regresión logística**, el problema consiste en estimar los parámetros
+$w$ y $b$ que minimicen la función de coste $J(w, b)$. Esta se define a partir de la
+función de pérdida logarítmica, ampliamente utilizada en problemas de clasificación
+binaria:
+
+[ J(w, b) = \frac{1}{M} \sum*{i=1}^{M} \mathcal{L}(\hat{y}^{(i)}, y^{(i)}) =
+-\frac{1}{M} \sum*{i=1}^{M} \Big[ y^{(i)} \log(\hat{y}^{(i)}) + (1-y^{(i)})
+\log(1-\hat{y}^{(i)}) \Big], ]
+
+donde:
+
+- $M$ es el número total de ejemplos.
+- $\hat{y}^{(i)} = \sigma(w^T x^{(i)} + b)$ corresponde a la predicción del modelo para
+  el ejemplo $i$.
+- $x^{(i)}$ es el vector de características del ejemplo $i$.
+- $y^{(i)}$ es la etiqueta real asociada al ejemplo.
+- $\sigma(z)$ representa la función sigmoide, que mapea cualquier valor real al
+  intervalo $(0, 1)$.
+
+Para reducir $J(w, b)$, se calculan las **derivadas parciales** respecto a los
+parámetros del modelo, lo que proporciona la dirección del gradiente:
+
+[ \frac{\partial J}{\partial w} = dw = \frac{1}{M} \sum_{i=1}^{M} (\hat{y}^{(i)} -
+y^{(i)}) x^{(i)}, ]
+
+[ \frac{\partial J}{\partial b} = db = \frac{1}{M} \sum_{i=1}^{M} (\hat{y}^{(i)} -
+y^{(i)}). ]
+
+Estos términos indican cómo deben modificarse $w$ y $b$ para disminuir el error.
+
+El procedimiento iterativo del descenso del gradiente sigue las siguientes fases:
+
+1. **Inicialización de parámetros**: Se asignan valores iniciales, normalmente pequeños,
+   ya sean ceros o aleatorios.
+2. **Propagación hacia adelante**: Se calculan las predicciones $\hat{y}$ a partir de
+   los datos de entrada $X$ y se evalúa la función de pérdida $\mathcal{L}(\hat{y}, y)$
+   y la función de coste $J(w, b)$.
+3. **Propagación hacia atrás**: Se calculan las derivadas parciales $dw$ y $db$.
+4. **Actualización de parámetros**: Se ajustan los valores de los parámetros utilizando
+   la regla:
+
+[ w := w - \alpha \cdot dw, \quad b := b - \alpha \cdot db, ]
+
+donde $\alpha$ es la **tasa de aprendizaje**, que controla el tamaño del paso dado en
+cada iteración.
+
+Cada actualización desplaza los parámetros en la dirección opuesta al gradiente,
+garantizando una reducción progresiva de la función de coste. El proceso se repite hasta
+que el modelo alcanza un **mínimo adecuado** de $J(w, b)$, lo que se traduce en
+predicciones más precisas.
+
+En aplicaciones prácticas, este algoritmo se implementa de manera **vectorizada**, lo
+que permite ejecutar operaciones matriciales sobre todos los ejemplos de entrenamiento
+en paralelo. Esto no solo simplifica el código, sino que además aprovecha la capacidad
+de cómputo de las GPUs, lo que resulta esencial en el entrenamiento de modelos de Deep
+Learning con grandes volúmenes de datos.
+
+Como demostración, considérese la función bidimensional:
 
 $$
-J(w, b) = \frac{1}{M} \sum_{i=1}^{M} \mathcal{L}(\hat{y}^{(i)}, y^{(i)})
-= -\frac{1}{M} \sum_{i=1}^{M} \Big[ y^{(i)} \log(\hat{y}^{(i)}) + (1-y^{(i)}) \log(1-\hat{y}^{(i)}) \Big],
+f(x) = \sin(x_1)\cos(x_2) + \sin(0.5x_1)\cos(0.5x_2), \quad x \in [0, 10].
 $$
 
-donde $M$ es el número total de ejemplos, $\hat{y}^{(i)} = \sigma(w^T x^{(i)} + b)$ es
-la predicción para el ejemplo $i$, $x^{(i)}$ es el vector de características, $y^{(i)}$
-es la etiqueta real y $\sigma(z)$ es la función sigmoide.
+El objetivo es aplicar el descenso del gradiente sobre esta función, calculando de
+manera explícita las derivadas parciales respecto a $x_1$ y $x_2$, e implementando el
+algoritmo en **Python** con la librería NumPy. A continuación, se muestra el código:
 
-Para minimizar $J(w, b)$ se calculan las derivadas parciales respecto a cada parámetro,
-lo que permite estimar la pendiente de la función de coste en un punto dado. Estas
-derivadas se expresan como
+```python
+import numpy as np
+import matplotlib.pyplot as plt
 
-$$
-\frac{\partial J}{\partial w} = dw = \frac{1}{M} \sum_{i=1}^{M} (\hat{y}^{(i)} - y^{(i)}) x^{(i)},
-$$
+# Definición de la función
+def function(input: np.ndarray) -> np.ndarray:
+    assert input.shape[-1] == 2, "La entrada debe contener 2 elementos"
+    return np.sin(input[:, 0]) * np.cos(input[:, 1]) + np.sin(0.5 * input[:, 0]) * np.cos(0.5 * input[:, 1])
 
-$$
-\frac{\partial J}{\partial b} = db = \frac{1}{M} \sum_{i=1}^{M} (\hat{y}^{(i)} - y^{(i)}),
-$$
+# Cálculo del gradiente (derivadas parciales)
+def gradiente(input: np.ndarray) -> np.ndarray:
+    assert input.shape[-1] == 2, "La entrada debe contener 2 elementos"
 
-y representan la dirección en la que deben modificarse los parámetros $w$ y $b$ para
-reducir el error.
+    df_x1 = np.cos(input[:, 0]) * np.cos(input[:, 1]) + 0.5 * np.cos(0.5 * input[:, 0]) * np.cos(0.5 * input[:, 1])
+    df_x2 = -np.sin(input[:, 0]) * np.sin(input[:, 1]) - 0.5 * np.sin(0.5 * input[:, 0]) * np.sin(0.5 * input[:, 1])
 
-El procedimiento iterativo comienza con la inicialización de los parámetros con valores
-pequeños, ya sea ceros o aleatorios. A continuación, se realiza la propagación hacia
-adelante para calcular las predicciones $\hat{y}$ a partir de los datos de entrada $X$ y
-se evalúa la función de pérdida $\mathcal{L}(\hat{y}, y)$ y la función de coste
-$J(w, b)$ sobre el conjunto de entrenamiento. Posteriormente se aplica la propagación
-hacia atrás para calcular las derivadas parciales $dw$ y $db$, que se utilizan para
-actualizar los parámetros mediante la regla
+    return np.stack([df_x1, df_x2], axis=1)
 
-$$
-w := w - \alpha \cdot dw,
-$$
+# Algoritmo de descenso del gradiente
+def descenso_gradiente(num_puntos: int = 10, num_iteraciones: int = 30, learning_rate: float = 1e-3):
+    dim = 2
+    X = np.random.rand(num_puntos, dim) * 10  # Inicialización en el dominio [0,10]
+    trayectorias = [X.copy()]
 
-$$
-\quad b := b - \alpha \cdot db,
-$$
+    for _ in range(num_iteraciones):
+        X = X - learning_rate * gradiente(input=X)
+        trayectorias.append(X.copy())
 
-donde $\alpha$ es la tasa de aprendizaje que regula el tamaño del paso en cada
-iteración.
+    return np.array(trayectorias)
 
-Cada actualización mueve los parámetros en la dirección opuesta al gradiente, asegurando
-la reducción del valor de la función de coste. Este proceso se repite de manera
-iterativa hasta que el modelo converge a un mínimo adecuado de $J(w, b)$, momento en el
-cual las actualizaciones se vuelven insignificantes y las predicciones alcanzan la
-precisión deseada.
+# Ejecución del descenso del gradiente
+trayectoria = descenso_gradiente(num_puntos=5, num_iteraciones=30)
 
-En la práctica, estos cálculos se implementan mediante vectorización, utilizando
-operaciones matriciales que permiten procesar todos los ejemplos simultáneamente. La
-vectorización simplifica la implementación, reduce el tiempo de entrenamiento y
-aprovecha de manera eficiente la capacidad de cálculo de las GPUs, lo que resulta
-crucial en aplicaciones de Deep Learning con grandes volúmenes de datos.
+# Visualización de trayectorias en el espacio 2D
+for i in range(trayectoria.shape[1]):
+    plt.plot(trayectoria[:, i, 0], trayectoria[:, i, 1], marker="o")
+
+plt.xlabel("x1")
+plt.ylabel("x2")
+plt.title("Trayectorias del descenso del gradiente")
+plt.show()
+```
+
+En esta simulación se aprecia que los puntos iniciales evolucionan siguiendo
+trayectorias determinadas por el gradiente de la función. En cada iteración, las
+posiciones se actualizan desplazándose en la dirección opuesta a la pendiente local, lo
+que permite avanzar hacia valores más bajos de la función objetivo. Este comportamiento
+ilustra de manera visual y clara el principio esencial del descenso del gradiente,
+consistente en ajustar los parámetros de forma progresiva hasta aproximarse a un mínimo
+de la función.
 
 ### 2.4. Implementación de la regresión logística
 
@@ -552,7 +773,7 @@ En las **capas ocultas**, se emplean funciones de activación como:
   acelera el entrenamiento y evita problemas de gradientes muy pequeños. No obstante,
   puede provocar **neuronas muertas**, que siempre devuelven cero. Para mitigar este
   efecto se utilizan variantes como _Leaky ReLU_, que mantiene un pequeño gradiente para
-  valores negativos. Se representa como
+  valores negativos. Se representa :
 
       $$
       f(x) = \max(0, x).
@@ -560,7 +781,7 @@ En las **capas ocultas**, se emplean funciones de activación como:
 
 - **Sigmoide**: Transforma los valores en el rango $[0,1]$. Se utiliza en redes
   recurrentes, aunque presenta el problema de **gradientes que desaparecen** en los
-  extremos. Se representa como
+  extremos. Se representa como:
 
       $$
       \sigma(x) = \frac{1}{1 + e^{-x}}
@@ -2139,7 +2360,7 @@ parámetros:
   - $L_i$: Función de pérdida asociada con la tarea $T_i$.
 
 El objetivo general es minimizar la pérdida total del modelo a lo largo de todas las
-tareas. Esto se puede formular como
+tareas. Esto se puede formular como:
 
 $$
 \min_{\theta} \sum_{i=1}^{T} L_i(\theta, D_i),
