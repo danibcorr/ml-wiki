@@ -37,7 +37,7 @@
     "@docusaurus/module-type-aliases": "^3.8.1",
     "@docusaurus/tsconfig": "^3.8.1",
     "@tsconfig/docusaurus": "^2.0.3",
-    "@types/react": "^19.1.13",
+    "@types/react": "^19.1.15",
     "css-loader": "^7.1.2",
     "prettier": "^3.6.2",
     "style-loader": "^4.0.0",
