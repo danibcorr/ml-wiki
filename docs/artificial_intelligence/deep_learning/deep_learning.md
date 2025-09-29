@@ -402,39 +402,64 @@ dos posibles clases.
 
 ### 2.1. Detección de gatos en imágenes mediante regresión logística
 
-Un ejemplo representativo de clasificación binaria se encuentra en la detección de
-objetos en imágenes, como identificar si una imagen contiene un gato. En este escenario,
-cada ejemplo se etiqueta de manera binaria, **1** si la imagen contiene un gato y **0**
-si no. Aunque este problema puede ampliarse a clasificación multiclase, para fines
-ilustrativos se considera únicamente la clasificación binaria.
+En lugar de programar manualmente una aplicación que identifique un gato frente a otros
+tipos de animales, se plantea un enfoque basado en **aprendizaje automático**. En este
+escenario, se construye un conjunto de datos compuesto por múltiples ejemplos de
+imágenes de gatos y de otros animales. Este conjunto permite al modelo aprender
+automáticamente a distinguir un gato de otros animales a partir de patrones en los
+datos, sin necesidad de instrucciones explícitas para cada caso. El objetivo principal
+consiste en **modelar la distribución de los datos**, lo que facilita la comparación
+entre distintas distribuciones y la creación de sistemas de aprendizaje supervisado. En
+estos sistemas, cada ejemplo se asocia a una etiqueta que indica si pertenece a la clase
+“gato” o a otra clase, permitiendo así que el modelo aprenda la relación entre las
+características de las imágenes y su clasificación correspondiente.
 
-Cada imagen se representa con dimensiones de 64×64 píxeles y formato RGB, generando tres
-matrices que corresponden a los canales de color rojo, verde y azul. Cada matriz tiene
-dimensiones 64×64, lo que da un total de valores por imagen de:
+Los modelos de aprendizaje supervisado pueden aplicarse a diferentes tipos de tareas:
+clasificación binaria, clasificación multiclase, regresión para la predicción de valores
+continuos y aprendizaje de representaciones internas de los datos. Estas
+representaciones, conocidas como **espacios embebidos**, son transformaciones de los
+datos de entrada originales a un espacio vectorial donde se preservan propiedades
+relevantes para el modelo. En este espacio, los vectores generados permiten comparar
+similitudes entre distintos ejemplos mediante métricas como la **similitud del coseno**,
+lo que resulta útil para tareas como clustering y búsqueda por similitud.
+
+En la práctica, gracias a la disponibilidad de grandes volúmenes de datos etiquetados,
+los sistemas supervisados son los más utilizados. Cada muestra se considera
+**independientemente distribuida**, y el modelo se diseña para aproximarse a patrones
+estables en los datos. Esto garantiza que el conjunto de datos represente de manera
+adecuada la variabilidad de los ejemplos posibles y que las representaciones aprendidas
+sean consistentes y útiles para tareas posteriores.
+
+Un ejemplo representativo de clasificación binaria es la detección de gatos en imágenes.
+En este caso, cada imagen se etiqueta de manera binaria: **1** si contiene un gato y
+**0** si no. Aunque el problema puede extenderse a clasificación multiclase, se utiliza
+la clasificación binaria para fines ilustrativos.
+
+Cada imagen se representa mediante $64 \times 64$ píxeles en formato RGB, generando tres
+matrices correspondientes a los canales de color rojo, verde y azul. Cada matriz tiene
+dimensiones $64 \times 64$, por lo que el número total de valores por imagen es:
 
 $$
 64 \times 64 \times 3 = 12288.
 $$
 
 Para introducir esta información en un modelo de red neuronal, se aplica la técnica de
-**aplanamiento (_flatten_)**, que transforma las tres matrices en un único vector
-columna de dimensión $12288 × 1$, manteniendo toda la información relevante de los
-píxeles.
+**aplanamiento (_flatten_)**, que convierte las tres matrices en un único vector columna
+de dimensión $12288 \times 1$, conservando toda la información relevante de los píxeles.
+Las etiquetas asociadas a cada imagen indican la clase correspondiente; por ejemplo, una
+imagen denominada `gato.png` recibe la etiqueta **1**, mientras que una imagen sin gato
+recibe **0**. La existencia de etiquetas convierte a este problema en un caso típico de
+**aprendizaje supervisado**.
 
-Las etiquetas indican al modelo la clase correspondiente de cada ejemplo. Por ejemplo,
-una imagen denominada `gato.png` recibe la etiqueta **1**, mientras que otra que no
-contenga un gato recibe **0**. Dado que cada imagen está acompañada de su etiqueta, este
-escenario corresponde a lo que se denomina como **aprendizaje supervisado**.
-
-Si se dispone de $M$ ejemplos, la matriz de características `X` tendrá dimensión
-`(n, M)`, donde $n = 12288$, y el vector de etiquetas `Y` tendrá dimensión `(1, M)`,
+Si se dispone de **M ejemplos**, la matriz de características $X$ tendrá dimensión
+$(n, M)$, donde $n = 12,288$, y el vector de etiquetas $Y$ tendrá dimensión $(1, M)$,
 conteniendo únicamente valores binarios.
 
-Para abordar este problema se utiliza la **regresión logística**, un algoritmo
-supervisado diseñado específicamente para tareas con etiquetas binarias (ceros y unos).
-Su funcionamiento es similar al de la regresión lineal, con la diferencia clave de que
-la salida se transforma mediante la **función sigmoide**, que restringe el resultado a
-un valor entre 0 y 1, interpretable como probabilidad y definida como:
+Para resolver este problema se utiliza **regresión logística**, un algoritmo supervisado
+diseñado para tareas con etiquetas binarias. Su funcionamiento es similar al de la
+regresión lineal, con la diferencia de que la salida se transforma mediante la **función
+sigmoide**, que restringe el resultado a un valor entre 0 y 1, interpretable como
+probabilidad. La función sigmoide se define como:
 
 $$
 \sigma(z) = \frac{1}{1 + e^{-z}},
@@ -454,44 +479,59 @@ $$
 $$
 
 donde $\hat{y}$ corresponde a la probabilidad de que la imagen pertenezca a la clase
-positiva, es decir, que efectivamente contenga un gato. Esta representación permite
-interpretar las salidas del modelo de forma probabilística y establecer umbrales para la
-clasificación binaria de manera consistente y flexible.
+positiva, es decir, que contenga un gato. Esta representación permite interpretar las
+salidas del modelo de manera probabilística y establecer umbrales adecuados para la
+clasificación binaria, garantizando consistencia y flexibilidad en la toma de
+decisiones.
 
-### 2.2. Función de pérdida y coste
+### 2.2. Función de pérdida y función de coste
 
-El objetivo del modelo es ajustar los parámetros $w$ y $b$ de manera que las
-predicciones $\hat{y}$ se aproximen lo más posible a los valores reales $y$. Para
-evaluar y guiar este ajuste se utilizan dos métricas fundamentales:
+Una vez obtenidos los datos, es necesario formalizar el proceso mediante el cual el
+modelo aproxima las predicciones al resultado deseado. Para ello, se utiliza la
+**función de pérdida**, un escalar diferenciable cuyo valor refleja el rendimiento del
+modelo. Durante el entrenamiento, el objetivo es minimizar esta función de pérdida,
+reduciendo así el error entre las predicciones del modelo y los valores reales. Este
+enfoque permite plantear el entrenamiento como un **problema de optimización**, que se
+resuelve mediante técnicas como el **descenso del gradiente**. El ajuste de los
+parámetros del modelo, como los pesos (w) y el sesgo (b), busca encontrar el conjunto
+óptimo que minimice la discrepancia entre las predicciones y las etiquetas reales.
 
-- **Función de pérdida**, que cuantifica el error en un único ejemplo individual.
-- **Función de coste**, que representa el promedio de las pérdidas de todos los ejemplos
-  del conjunto de entrenamiento.
+La función de pérdida cuantifica el error para un **único ejemplo**, mientras que la
+**función de coste** representa el promedio de estas pérdidas sobre todo el conjunto de
+entrenamiento. En el aprendizaje supervisado, el modelo genera una predicción ($\hat{y}$)
+a partir de un ejemplo de entrada, que se compara con la etiqueta real ($y$) para calcular
+la pérdida. Este procedimiento se repite para todas las muestras del conjunto de datos,
+y el promedio de estas pérdidas define la función de coste, que guía el ajuste de los
+parámetros durante el entrenamiento.
 
-En regresión logística, la función de pérdida utilizada es la **función de pérdida
-logística o log-loss**, definida como:
+En **regresión logística**, la función de pérdida empleada es la **función logística o
+log-loss**, definida como:
 
 $$
 \mathcal{L}(\hat{y}, y) = - \big( y \cdot \log(\hat{y}) + (1-y)\cdot \log(1-\hat{y}) \big).
 $$
 
-Esta función penaliza de manera más adecuada los errores en problemas de clasificación
-binaria en comparación con el error cuadrático medio, que se define como:
+Esta función penaliza de manera efectiva los errores en problemas de clasificación
+binaria y resulta más adecuada que el **error cuadrático medio (MSE)**, que se expresa
+como:
 
 $$
 \text{MSE} = \frac{1}{M} \sum_{i=1}^{M} (\hat{y}^{(i)} - y^{(i)})^2.
 $$
 
 La **función de coste** asociada a la regresión logística se obtiene como el promedio de
-las pérdidas de todos los ejemplos, representada como:
+las pérdidas de todos los ejemplos del conjunto de entrenamiento:
 
 $$
 J(w, b) = \frac{1}{M} \sum_{i=1}^{M} \mathcal{L}(\hat{y}^{(i)}, y^{(i)}).
 $$
 
-Esta formulación basada en log-loss evita problemas de múltiples mínimos locales y
-garantiza una optimización más estable y eficiente en tareas de clasificación binaria,
-proporcionando gradientes más consistentes durante el entrenamiento.
+Esta formulación basada en log-loss permite evitar problemas de múltiples mínimos
+locales y proporciona gradientes más consistentes durante el entrenamiento, garantizando
+una optimización estable y eficiente en tareas de clasificación binaria. La función de
+coste se convierte así en la métrica central para evaluar y guiar el ajuste de los
+parámetros del modelo, asegurando que las predicciones se aproximen progresivamente a
+los valores reales a medida que avanza el entrenamiento.
 
 ### 2.3. Descenso del gradiente
 
@@ -505,9 +545,10 @@ $w$ y $b$ que minimicen la función de coste $J(w, b)$. Esta se define a partir 
 función de pérdida logarítmica, ampliamente utilizada en problemas de clasificación
 binaria:
 
-[ J(w, b) = \frac{1}{M} \sum*{i=1}^{M} \mathcal{L}(\hat{y}^{(i)}, y^{(i)}) =
--\frac{1}{M} \sum*{i=1}^{M} \Big[ y^{(i)} \log(\hat{y}^{(i)}) + (1-y^{(i)})
-\log(1-\hat{y}^{(i)}) \Big], ]
+$$
+J(w, b) = \frac{1}{M} \sum_{i=1}^{M} \mathcal{L}(\hat{y}^{(i)}, y^{(i)})
+= -\frac{1}{M} \sum_{i=1}^{M} \Big[ y^{(i)} \log(\hat{y}^{(i)}) + (1-y^{(i)}) \log(1-\hat{y}^{(i)}) \Big],
+$$
 
 donde:
 
@@ -522,11 +563,15 @@ donde:
 Para reducir $J(w, b)$, se calculan las **derivadas parciales** respecto a los
 parámetros del modelo, lo que proporciona la dirección del gradiente:
 
-[ \frac{\partial J}{\partial w} = dw = \frac{1}{M} \sum_{i=1}^{M} (\hat{y}^{(i)} -
-y^{(i)}) x^{(i)}, ]
+$$
+\frac{\partial J}{\partial w} = dw = \frac{1}{M} \sum_{i=1}^{M} (\hat{y}^{(i)} -
+y^{(i)}) x^{(i)},
+$$
 
-[ \frac{\partial J}{\partial b} = db = \frac{1}{M} \sum_{i=1}^{M} (\hat{y}^{(i)} -
-y^{(i)}). ]
+$$
+\frac{\partial J}{\partial b} = db = \frac{1}{M} \sum_{i=1}^{M} (\hat{y}^{(i)} -
+y^{(i)}).
+$$
 
 Estos términos indican cómo deben modificarse $w$ y $b$ para disminuir el error.
 
@@ -541,7 +586,7 @@ El procedimiento iterativo del descenso del gradiente sigue las siguientes fases
 4. **Actualización de parámetros**: Se ajustan los valores de los parámetros utilizando
    la regla:
 
-[ w := w - \alpha \cdot dw, \quad b := b - \alpha \cdot db, ]
+$$ w := w - \alpha \cdot dw, \quad b := b - \alpha \cdot db, $$
 
 donde $\alpha$ es la **tasa de aprendizaje**, que controla el tamaño del paso dado en
 cada iteración.
@@ -775,17 +820,17 @@ En las **capas ocultas**, se emplean funciones de activación como:
   efecto se utilizan variantes como _Leaky ReLU_, que mantiene un pequeño gradiente para
   valores negativos. Se representa :
 
-      $$
-      f(x) = \max(0, x).
-      $$
+  $$
+  f(x) = \max(0, x).
+  $$
 
 - **Sigmoide**: Transforma los valores en el rango $[0,1]$. Se utiliza en redes
   recurrentes, aunque presenta el problema de **gradientes que desaparecen** en los
   extremos. Se representa como:
 
-      $$
-      \sigma(x) = \frac{1}{1 + e^{-x}}
-      $$
+  $$
+  \sigma(x) = \frac{1}{1 + e^{-x}}
+  $$
 
 - **Tangente hiperbólica (tanh)**: Normaliza las salidas en el rango $[-1, 1]$. Suele
   preferirse frente a la sigmoide en capas ocultas porque sus activaciones tienen media
@@ -1423,7 +1468,7 @@ Para mitigar estos fenómenos se emplean diversas estrategias:
 - **Clipado de gradientes**: Consiste en limitar el rango de valores que pueden alcanzar
   los gradientes durante la retropropagación. Cuando los gradientes exceden un umbral
   predefinido, se ajustan a dicho límite, evitando actualizaciones excesivas. Es común
-  emplear intervalos como $\[-1, 1]$, aunque también existen variantes dinámicas que
+  emplear intervalos como $[-1, 1]$, aunque también existen variantes dinámicas que
   adaptan este rango según el estado del entrenamiento.
 
 - **Diseño arquitectónico específico**: La introducción de mecanismos de memoria y
