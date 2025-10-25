@@ -12,7 +12,6 @@ const config = {
   url: `https://${organizationName}.github.io`,
   baseUrl: `/${projectName}/`,
   onBrokenLinks: "warn",
-  onBrokenMarkdownLinks: "warn",
   favicon: "img/logo.ico",
   trailingSlash: true,
   organizationName,
