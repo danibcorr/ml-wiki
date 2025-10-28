@@ -379,7 +379,7 @@ contribuyan al cálculo de los gradientes durante el entrenamiento. De esta mane
 modelo puede ignorar de forma selectiva determinadas partes de la información de
 entrada, evitando que influyan en el proceso de aprendizaje.
 
-## 2. Regresión lineal y logística
+## 3. Regresión lineal y logística
 
 El entrenamiento de una neurona o de una red neuronal se fundamenta en dos procesos
 esenciales: la **propagación hacia adelante (_forward propagation_)** y la **propagación
@@ -400,7 +400,7 @@ Con estos mecanismos en mente, es útil analizar un caso clásico de aprendizaje
 automático: la **clasificación binaria**, que consiste en asignar a cada ejemplo una de
 dos posibles clases.
 
-### 2.1. Detección de gatos en imágenes mediante regresión logística
+### 3.1. Detección de gatos en imágenes mediante regresión logística
 
 En lugar de programar manualmente una aplicación que identifique un gato frente a otros
 tipos de animales, se plantea un enfoque basado en **aprendizaje automático**. En este
@@ -484,7 +484,7 @@ salidas del modelo de manera probabilística y establecer umbrales adecuados par
 clasificación binaria, garantizando consistencia y flexibilidad en la toma de
 decisiones.
 
-### 2.2. Función de pérdida y función de coste
+### 3.2. Función de pérdida y función de coste
 
 Una vez obtenidos los datos, es necesario formalizar el proceso mediante el cual el
 modelo aproxima las predicciones al resultado deseado. Para ello, se utiliza la
@@ -498,11 +498,11 @@ parámetros del modelo, como los pesos (w) y el sesgo (b), busca encontrar el co
 
 La función de pérdida cuantifica el error para un **único ejemplo**, mientras que la
 **función de coste** representa el promedio de estas pérdidas sobre todo el conjunto de
-entrenamiento. En el aprendizaje supervisado, el modelo genera una predicción ($\hat{y}$)
-a partir de un ejemplo de entrada, que se compara con la etiqueta real ($y$) para calcular
-la pérdida. Este procedimiento se repite para todas las muestras del conjunto de datos,
-y el promedio de estas pérdidas define la función de coste, que guía el ajuste de los
-parámetros durante el entrenamiento.
+entrenamiento. En el aprendizaje supervisado, el modelo genera una predicción
+($\hat{y}$) a partir de un ejemplo de entrada, que se compara con la etiqueta real ($y$)
+para calcular la pérdida. Este procedimiento se repite para todas las muestras del
+conjunto de datos, y el promedio de estas pérdidas define la función de coste, que guía
+el ajuste de los parámetros durante el entrenamiento.
 
 En **regresión logística**, la función de pérdida empleada es la **función logística o
 log-loss**, definida como:
@@ -533,7 +533,7 @@ coste se convierte así en la métrica central para evaluar y guiar el ajuste de
 parámetros del modelo, asegurando que las predicciones se aproximen progresivamente a
 los valores reales a medida que avanza el entrenamiento.
 
-### 2.3. Descenso del gradiente
+### 3.3. Descenso del gradiente
 
 El **descenso del gradiente** constituye uno de los algoritmos fundamentales para el
 entrenamiento de modelos en aprendizaje automático. Su objetivo es encontrar los valores
@@ -663,7 +663,7 @@ ilustra de manera visual y clara el principio esencial del descenso del gradient
 consistente en ajustar los parámetros de forma progresiva hasta aproximarse a un mínimo
 de la función.
 
-### 2.4. Implementación de la regresión logística
+### 3.4. Implementación de la regresión logística
 
 A continuación se muestra una implementación básica de regresión logística empleando
 Python y la librería NumPy. Este ejemplo abarca desde la inicialización de los
@@ -756,6 +756,335 @@ plt.ylabel("Coste")
 plt.title("Reducción del coste durante el entrenamiento")
 plt.show()
 ```
+
+### 3.X. OTRAS ANOTACIONES QUE TENGO QUE INCLUIR DE ALGUNA FORMA
+
+### Modelos Diferenciables, Funciones de Pérdida y Calibración en Aprendizaje Profundo
+
+Los **modelos diferenciables** constituyen la base del aprendizaje profundo. Estos
+modelos pueden entenderse como composiciones de transformaciones lineales seguidas de
+funciones no lineales diferenciables, lo que permite el uso del **cálculo diferencial**
+para optimizar sus parámetros mediante métodos basados en gradientes.
+
+#### 1. Modelos Lineales y Diferenciables
+
+Un **modelo lineal** puede expresarse como:
+
+$$
+\hat{y} = \mathbf{w}^\top \mathbf{x} + b
+$$
+
+donde:
+
+- ( \mathbf{x} \in \mathbb{R}^n ) es el vector de entrada,
+- ( \mathbf{w} \in \mathbb{R}^n ) son los pesos del modelo,
+- ( b \in \mathbb{R} ) es el sesgo o término independiente, y
+- ( \hat{y} \in \mathbb{R} ) es la salida predicha.
+
+Cuando la salida no está restringida, el modelo se utiliza en **tareas de regresión**.
+En cambio, si la salida pertenece a un conjunto discreto de clases ( $\mathcal{C} = {1,
+2, \dots, M} $), se trata de un problema de **clasificación**. En el caso particular de (
+M = 2 ), se tiene una **clasificación binaria**.
+
+En los **modelos diferenciables** del aprendizaje profundo, la estructura general es una
+composición de funciones lineales y no lineales:
+
+$$
+f(\mathbf{x}) = f_L \circ f_{L-1} \circ \dots \circ f_1 (\mathbf{x})
+$$
+
+donde cada capa realiza una transformación del tipo:
+
+$$
+f_\ell(\mathbf{x}) = \sigma_\ell(\mathbf{W}*\ell \mathbf{x} + \mathbf{b}*\ell)
+$$
+
+siendo ( \sigma\_\ell(\cdot) ) una función de activación diferenciable (por ejemplo,
+ReLU, Sigmoide o Tanh).
+
+---
+
+#### 2. Funciones de Pérdida en Regresión
+
+El objetivo del entrenamiento es encontrar los parámetros ( \mathbf{w} ) y ( b ) que
+minimicen una **función de pérdida** ( \mathcal{L} ), la cual mide la discrepancia entre
+las predicciones ( \hat{y}\_i ) y los valores verdaderos ( y_i ).
+
+La **pérdida cuadrática media (MSE)** se define como:
+
+$$
+\mathcal{L}*{\text{MSE}} = \frac{1}{N} \sum*{i=1}^N (y_i - \hat{y}_i)^2
+$$
+
+Esta función penaliza más fuertemente los errores grandes, pero puede verse afectada por
+valores atípicos.
+
+Una alternativa es la **pérdida absoluta media (MAE)**:
+
+$$
+\mathcal{L}*{\text{MAE}} = \frac{1}{N} \sum*{i=1}^N |y_i - \hat{y}_i|
+$$
+
+que es más robusta frente a valores extremos, aunque su derivada no está definida en (
+y_i = \hat{y}\_i ).
+
+La **pérdida de Huber** combina ambas aproximaciones mediante un parámetro ( \delta > 0
+):
+
+$$
+\mathcal{L}_{\text{Huber}} =
+\begin{cases}
+\frac{1}{2}(y_i - \hat{y}_i)^2, & \text{si } |y_i - \hat{y}_i| \leq \delta \
+\delta , (|y_i - \hat{y}_i| - \frac{1}{2}\delta), & \text{en otro caso}
+\end{cases}
+$$
+
+La pérdida de Huber es diferenciable en todos los puntos excepto en el límite ( |y_i -
+\hat{y}\_i| = \delta ), aunque en la práctica esto no causa inestabilidad numérica
+debido a la precisión finita de los cálculos.
+
+---
+
+#### 3. Optimización y Regularización
+
+En la regresión lineal, una solución analítica para los pesos puede obtenerse mediante
+la **pseudoinversa de Moore–Penrose**:
+
+$$
+\mathbf{w} = (\mathbf{X}^\top \mathbf{X})^{-1} \mathbf{X}^\top \mathbf{y}
+$$
+
+donde ( $\mathbf{X} \in \mathbb{R}^{N \times n} $) representa la matriz de datos de
+entrada y ( $\mathbf{y} \in \mathbb{R}^N $) los valores objetivo. No obstante, este método
+puede ser inestable si ( $\mathbf{X}^\top \mathbf{X}$ ) es casi singular.
+
+Para mejorar la estabilidad y controlar la magnitud de los pesos, se introduce un
+término de **regularización**:
+
+- **Regularización L2 (Ridge Regression):**
+
+$$
+\mathcal{L}*{\text{Ridge}} = \frac{1}{N} \sum*{i=1}^N (y_i - \hat{y}_i)^2 + \lambda |\mathbf{w}|_2^2
+$$
+
+- **Regularización L1 (Lasso Regression):**
+
+$$
+\mathcal{L}*{\text{Lasso}} = \frac{1}{N} \sum*{i=1}^N (y_i - \hat{y}_i)^2 + \lambda |\mathbf{w}|_1
+$$
+
+La regularización L2 favorece pesos pequeños y estables, mientras que la L1 promueve
+**esparsidad**, es decir, que algunos pesos sean exactamente cero.
+
+---
+
+#### 4. Función Softmax y Clasificación Multiclase
+
+En clasificación, la capa de salida suele aplicar la **función Softmax** a los logits (
+$z_i$ ), definidos como:
+
+$$
+z_i = \mathbf{w}_i^\top \mathbf{x} + b_i
+$$
+
+La función Softmax transforma estos valores en una distribución de probabilidad:
+
+$$
+p_i = \text{Softmax}(z_i) = \frac{e^{z_i / T}}{\sum_{j=1}^M e^{z_j / T}}
+$$
+
+donde ( T > 0 ) es el **parámetro de temperatura**.
+
+- Cuando ( T ) es grande, la distribución ( $p_i$ ) se aproxima a una **distribución
+  uniforme**, reflejando mayor incertidumbre.
+- Cuando ( T ) tiende a cero, la distribución se **concentra** en la clase más probable,
+  haciendo el modelo más determinista.
+
+El resultado final de la predicción se obtiene mediante:
+
+$$
+\hat{y} = \arg\max_i , p_i
+$$
+
+Para evitar que el modelo sea excesivamente confiado, se puede emplear la técnica de
+**label smoothing**, que modifica las etiquetas verdaderas ( $y_i$ ) según:
+
+$$
+y_i' = (1 - \varepsilon) y_i + \frac{\varepsilon}{M}
+$$
+
+donde ( \varepsilon \in [0,1] ) controla el grado de suavizado.
+
+---
+
+#### 5. Entropía Cruzada y Divergencia KL
+
+La **función de pérdida por entropía cruzada** mide la discrepancia entre las
+distribuciones verdadera y predicha:
+
+$$
+\mathcal{L}*{\text{CE}} = - \sum*{i=1}^M y_i \log(p_i)
+$$
+
+Minimizar esta función equivale a **maximizar la probabilidad asignada a la clase
+correcta**. Además, la entropía cruzada puede interpretarse como:
+
+$$
+\mathcal{L}*{\text{CE}} = H(\mathbf{y}, \mathbf{p}) = H(\mathbf{y}) + D*{KL}(\mathbf{y} ,||, \mathbf{p})
+$$
+
+donde:
+
+- ( H(\mathbf{y}) ) es la entropía de las etiquetas verdaderas, y
+- ( $D\_{KL}(\mathbf{y} ,||, \mathbf{p})$ ) es la **divergencia de Kullback–Leibler**,
+  definida como:
+
+$$
+D_{KL}(\mathbf{y} ,||, \mathbf{p}) = \sum_{i=1}^M y_i \log \frac{y_i}{p_i}
+$$
+
+Minimizar la entropía cruzada implica reducir la divergencia entre las distribuciones de
+salida y las etiquetas verdaderas.
+
+---
+
+#### 6. Incertidumbre, Calibración y Pérdida Focal
+
+Aunque la función Softmax produce valores en el rango ([0,1]) que suman 1, estos **no
+reflejan necesariamente la verdadera incertidumbre del modelo**. Una probabilidad alta
+no garantiza una predicción confiable. La **calibración del modelo** busca alinear las
+probabilidades predichas con las frecuencias empíricas observadas.
+
+Un modelo calibrado cumple que:
+
+$$
+P(Y = k \mid \hat{P}(Y = k) = p) = p
+$$
+
+para cualquier clase ( k ) y probabilidad ( p ).
+
+La calibración puede mejorarse ajustando la temperatura ( T ) o mediante funciones de
+pérdida alternativas como la **pérdida focal (Focal Loss)**, propuesta por Lin et al.
+(2017), definida como:
+
+$$
+\mathcal{L}_{\text{Focal}} = - (1 - p_t)^\gamma \log(p_t)
+$$
+
+donde:
+
+- ( p_t ) es la probabilidad predicha de la clase verdadera,
+- ( $\gamma \ge 0$ ) es un parámetro de enfoque que **amplifica el peso de los ejemplos
+  difíciles** y reduce el de los ejemplos fáciles.
+
+El **proceso de calibración de un modelo de clasificación** tiene como objetivo alinear las **probabilidades predichas por el modelo** con la **frecuencia real de aciertos**, de manera que si el modelo asigna una probabilidad (p) a un evento, este evento ocurra aproximadamente con frecuencia (p). A continuación, se describe con rigor técnico cómo se realiza este proceso:
+
+---
+
+### 1. Definición formal del problema de calibración
+
+Sea un modelo de clasificación que produce probabilidades predichas ( \hat{p}\_i = P(Y = k \mid X = x_i) ) para cada clase (k). Idealmente, el modelo está calibrado si:
+
+$$
+P(Y = k \mid \hat{p}_i = p) = p, \quad \forall p \in [0,1]
+$$
+
+Esto significa que, para todos los ejemplos a los que el modelo asigna una probabilidad (p), aproximadamente un ($100 \cdot p%$) de ellos pertenece realmente a la clase (k).
+
+---
+
+### 2. Métodos clásicos de calibración
+
+#### 2.1. Escalado de temperatura (Temperature Scaling)
+
+El **escalado de temperatura** es un método simple y muy utilizado para redes neuronales. Consiste en ajustar un único parámetro (T > 0) que escala los logits antes de aplicar Softmax:
+
+$$
+p_i = \text{Softmax}\left(\frac{z_i}{T}\right)
+$$
+
+- Si (T = 1), no hay ajuste.
+- Si (T > 1), la distribución de probabilidades se vuelve más uniforme (menos confiada).
+- Si (T < 1), la distribución se concentra más en la clase de mayor logit (más confiada).
+
+El parámetro (T) se optimiza sobre un **conjunto de validación** minimizando la **entropía cruzada** entre las probabilidades ajustadas y las etiquetas verdaderas:
+
+$$
+T^* = \arg \min_{T > 0} \frac{1}{N_{\text{val}}} \sum_{i=1}^{N_{\text{val}}} -y_i \log \text{Softmax}(z_i / T)
+$$
+
+Este procedimiento no cambia la clase predicha (argmax) pero ajusta la **confianza del modelo**, logrando mejor calibración.
+
+---
+
+#### 2.2. Platt Scaling
+
+Para problemas de **clasificación binaria**, el método de **Platt Scaling** ajusta los logits mediante una función sigmoide paramétrica:
+
+$$
+\hat{p}_i = \frac{1}{1 + \exp(A z_i + B)}
+$$
+
+donde (A) y (B) son parámetros entrenados sobre un conjunto de validación para minimizar la entropía cruzada. Generaliza el escalado de temperatura al incluir un desplazamiento lineal ((B)).
+
+---
+
+#### 2.3. Isotonic Regression
+
+El **regression isotónica** es un método no paramétrico que ajusta las probabilidades predichas ( \hat{p}\_i ) usando una función **monótonamente creciente** (f):
+
+$$
+p_i^{\text{cal}} = f(\hat{p}_i)
+$$
+
+El objetivo es minimizar la desviación entre las probabilidades ajustadas y las observaciones reales:
+
+$$
+f^* = \arg \min_f \sum_{i=1}^{N_{\text{val}}} (y_i - f(\hat{p}_i))^2
+$$
+
+Este método es más flexible que el escalado de temperatura, pero requiere más datos de validación para evitar sobreajuste.
+
+---
+
+### 3. Evaluación de la calibración
+
+Para medir qué tan calibrado está un modelo, se utilizan métricas como:
+
+- **Expected Calibration Error (ECE):**
+
+$$
+\text{ECE} = \sum_{m=1}^M \frac{|B_m|}{N} \Big| \text{acc}(B_m) - \text{conf}(B_m) \Big|
+$$
+
+donde:
+
+- (B_m) es el conjunto de predicciones en el bin (m) de confianza,
+
+- (|B_m|) es el número de ejemplos en ese bin,
+
+- (\text{acc}(B_m)) es la precisión observada en el bin,
+
+- (\text{conf}(B_m)) es la confianza media en el bin.
+
+- **Maximum Calibration Error (MCE):**
+
+$$
+\text{MCE} = \max_{m} \Big| \text{acc}(B_m) - \text{conf}(B_m) \Big|
+$$
+
+Estas métricas cuantifican la discrepancia entre la confianza predicha y la precisión real.
+
+---
+
+### 4. Flujo de calibración típico
+
+1. **Entrenar el modelo** sobre el conjunto de entrenamiento.
+2. **Obtener logits o probabilidades** sobre un conjunto de validación separado.
+3. **Aplicar un método de calibración** (temperature scaling, Platt, isotonic).
+4. **Optimizar los parámetros del calibrador** minimizando entropía cruzada o error cuadrático entre probabilidades predichas y etiquetas verdaderas.
+5. **Evaluar la calibración** usando métricas como ECE o MCE.
+6. **Usar el calibrador final** para ajustar las probabilidades del conjunto de prueba o en producción.
 
 ## 3. Redes neuronales y funciones de activación
 

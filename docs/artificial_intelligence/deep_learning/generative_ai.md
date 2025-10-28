@@ -150,11 +150,65 @@ utiliza como entrada en el tiempo $$t+1$$. Esta característica permite mantener
 coherencia en la generación de texto, ya que cada paso de predicción toma en cuenta lo
 generado previamente.
 
----
+# Anotaciones de otro curso
 
-En resumen, los modelos de lenguaje de gran escala, fundamentados en la arquitectura
-Transformer, han revolucionado el procesamiento del lenguaje natural y la inteligencia
-artificial generativa. Su capacidad para aprender de grandes cantidades de datos y
-adaptarse a tareas específicas mediante técnicas de ajuste fino ha abierto un amplio
-abanico de aplicaciones, desde la generación automática de contenido hasta la comprensión
-semántica y contextual del lenguaje.
+# Representación de Datos y Arquitecturas de Modelos de Lenguaje
+
+## 1. Representación de la entrada y embeddings
+
+El objetivo principal de los modelos de inteligencia artificial y aprendizaje profundo consiste en transformar los datos de entrada en representaciones más ricas y diferenciadas. Esta transformación permite separar y agrupar la información en diferentes clústeres, utilizando funciones lineales y no lineales. A medida que las arquitecturas se profundizan, la representación de la entrada se vuelve más representativa y detallada, capturando relaciones semánticas complejas.
+
+En el caso del lenguaje, los datos de entrada suelen ser palabras, que se transforman en identificadores asociados a vectores numéricos conocidos como **embeddings**. Estos embeddings permiten representar palabras de manera continua en un espacio vectorial, capturando similitudes semánticas. Sin embargo, los enfoques tradicionales presentan limitaciones: palabras nuevas o no presentes en el vocabulario original no pueden ser representadas directamente, y errores ortográficos o variantes culturales pueden generar inconsistencias.
+
+Para solucionar estas limitaciones surge la **tokenización**, que consiste en dividir las entradas en unidades menores denominadas **tokens**. La tokenización puede ser realizada mediante diferentes técnicas, como la codificación por pares de bytes (Byte Pair Encoding, BPE), que permite una división inteligente de los datos para extraer información semántica y contextual. Posteriormente, estos tokens se representan como tensores, los cuales constituyen la entrada para las capas de procesamiento del modelo.
+
+## 2. Procesamiento de tokens mediante redes densas y transformers
+
+Cada token se procesa de manera paralela mediante **redes neuronales completamente conectadas (Feed-Forward Networks, FFN)**. La paralelización se logra mediante la compartición de pesos, una ventaja distintiva de los **transformers** frente a arquitecturas previas como las **RNN** o **LSTM**, que procesan secuencias de manera secuencial y carecen de esta eficiencia computacional.
+
+Tras la proyección de los tokens en vectores de mayor dimensión mediante funciones lineales y no lineales, los modelos aplican mecanismos de **autoatención**. Este mecanismo evalúa la relación de cada token con todos los demás de la secuencia, generando un promedio ponderado basado en la importancia de cada token. La función de activación **softmax** se utiliza para convertir estos pesos en probabilidades normalizadas. En términos matemáticos, la autoatención se organiza a partir de tres tipos de tensores diferenciados:
+
+- **Keys (K)**: vectores que representan las entradas.
+- **Queries (Q)**: vectores de consulta, que corresponden al input que evalúa la relación con las keys.
+- **Values (V)**: vectores que contienen la información asociada a cada key.
+
+Estos tensores pueden visualizarse como una tabla de consulta (lookup table), inicializados de manera aleatoria y optimizados durante el entrenamiento. La utilización de **cachés KV** permite almacenar matrices de atención, evitando el recálculo repetido y optimizando el rendimiento.
+
+### 2.1 Embeddings posicionales
+
+Aunque los mecanismos de autoatención son invariantes a las permutaciones de tokens, el orden de los elementos es fundamental en el lenguaje y en otras modalidades como la visión computacional. Para preservar la información posicional se incorporan **embeddings posicionales**, que pueden ser aprendibles o basados en técnicas como **RoPE (Rotary Positional Encoding)**, permitiendo representar la posición de manera continua y diferenciada.
+
+## 3. Arquitecturas de modelos de lenguaje
+
+Existen diferentes tipos de arquitecturas en los modelos de lenguaje, según la tarea y el tipo de entrenamiento:
+
+- **Modelos de lenguaje enmascarados**: Utilizan tokens de máscara en la entrada para predecir la palabra oculta. Se calcula la **entropía cruzada** entre la predicción y el valor real. Estas arquitecturas emplean únicamente el encoder del transformer. Ejemplos representativos incluyen **BERT** y **RoBERTa**, óptimos para tareas de clasificación y comprensión de texto.
+- **Modelos autoregresivos**: La salida del modelo se retroalimenta como entrada para predecir el siguiente token, aplicando entropía cruzada. Son **causales**, ya que enmascaran los tokens futuros durante el entrenamiento. Ejemplos destacados son los modelos **GPT**, ampliamente utilizados en generación de texto.
+- **Modelos encoder-decoder**: Combinan ambas estructuras, siendo ideales para tareas de traducción o generación condicional de secuencias. Estas arquitecturas son más complejas de entrenar y escalar, pero permiten una mayor versatilidad generativa.
+
+### 3.1 Tokens especiales
+
+Los modelos incorporan tokens específicos para diversas funciones:
+
+- **[CLS]**: Indica la representación global de la secuencia, utilizada en tareas de clasificación o comparación entre secuencias.
+- **[PAD]**: Rellena secuencias hasta la longitud máxima permitida por el modelo.
+- **Máscara**: Utilizada en modelos enmascarados para predecir tokens ocultos.
+
+## 4. Aprendizaje y técnicas de entrenamiento
+
+El entrenamiento de modelos de lenguaje incluye varias fases:
+
+- **Pre-training**: Entrenamiento inicial sobre grandes corpus, generalmente basado en predicción de tokens siguientes o enmascarados.
+- **Post-training / Fine-tuning**: Ajuste fino sobre tareas específicas, alineamiento de instrucciones o especialización en dominios particulares. Este proceso puede incluir **aprendizaje por refuerzo**, optimizando el comportamiento del modelo y mejorando la seguridad y precisión de las respuestas.
+
+### 4.1 Técnicas de prompting
+
+Para aumentar la probabilidad de obtener respuestas correctas o coherentes, se utilizan diversas estrategias de **prompting**:
+
+- **Few-shot learning**: Se proporcionan ejemplos previos en la entrada para contextualizar la tarea.
+- **Cadenas de razonamiento**: Descomponen problemas complejos en pasos secuenciales, facilitando la resolución lógica. También se suelen utilizar modelos de recompensa, utilizando datasets con respuestas que se complementan con otro modelo basado en el desarrollo completo de pasos, entonces el modelo principal se entrena para incrementar el grado de recompensa del modelo que genera la recompensa.
+- **Retrieve and Augmented Generation (RAG)**: Combina modelos generativos con sistemas de recuperación de información para fundamentar las respuestas en datos externos.
+
+## 5. Modelos multimodales
+
+Los sistemas multimodales permiten procesar diferentes tipos de datos (texto, imágenes, audio, música) mediante una tokenización unificada. Cada tipo de dato se representa como tokens y se proyecta en un espacio embedido común, permitiendo que elementos con significado similar estén cercanos en dicho espacio. Estas arquitecturas favorecen la integración de información diversa y la generación de respuestas coherentes basadas en múltiples fuentes de entrada. Existen modelos multimodales desde cero, que procesan todos los tipos de datos con un único modelo, o enfoques modulares que encadenan modelos especializados.
