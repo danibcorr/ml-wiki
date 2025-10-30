@@ -13,244 +13,473 @@ toc_max_heading_level: 3
 - [Deep Learning for Coders with Fastai and PyTorch: AI Applications Without a PhD](https://course.fast.ai/Resources/book.html)
 - [Standford](https://youtube.com/playlist?list=PLoROMvodv4rNjRoawgt72BBNwL2V7doGI&si=TXQ-EA7J7sAwfKEQ).
 
-## 1. Introducción al aprendizaje profundo
+## 1. Introducción al Aprendizaje Profundo
 
-Antes de abordar el aprendizaje profundo (_Deep Learning_), resulta fundamental
-comprender el concepto de inteligencia, una noción que, aunque aparentemente sencilla,
-es compleja de definir de manera precisa. En términos generales, la inteligencia se
-entiende como la capacidad de procesar información y utilizarla para tomar decisiones
-futuras con el objetivo de alcanzar metas específicas. Este entendimiento da origen al
-campo de la Inteligencia Artificial (IA), disciplina que se enfoca en desarrollar
-técnicas y algoritmos capaces de emular ciertos aspectos del comportamiento humano. La
-IA busca que los sistemas puedan procesar la información recibida, adaptarse a distintos
-contextos y realizar predicciones con el propósito de resolver problemas de manera
-autónoma, minimizando la intervención humana.
+Antes de abordar el estudio del **aprendizaje profundo (_Deep Learning_)**, resulta
+esencial comprender el concepto de **inteligencia**, una noción que, aunque
+aparentemente simple, presenta una notable complejidad cuando se intenta definir con
+precisión.
 
-Dentro de la IA, un subcampo central es el **aprendizaje automático (_Machine
-Learning_)**, cuyo propósito es permitir que una máquina aprenda de la experiencia sin
-requerir instrucciones explícitas para cada tarea. En lugar de programar cada paso de
-manera detallada, se diseñan algoritmos capaces de identificar patrones en los datos
-proporcionados, de modo que el rendimiento del sistema mejore de forma progresiva
-conforme acumula ejemplos y optimiza su objetivo, que consiste en medir el grado de
-aproximación a la meta deseada. Este enfoque representa un cambio significativo respecto
-a la programación tradicional, ya que permite al sistema generalizar a partir de los
-datos, en lugar de limitarse a ejecutar reglas predefinidas.
+En términos generales, la inteligencia puede entenderse como la **capacidad de procesar
+información y utilizarla para tomar decisiones orientadas al logro de objetivos
+específicos**. Este concepto constituye el fundamento del campo de la **Inteligencia
+Artificial (IA)**, disciplina que se dedica al desarrollo de técnicas y algoritmos
+capaces de reproducir ciertos aspectos del comportamiento humano. En otras palabras, la
+IA busca emular la inteligencia mediante sistemas computacionales, permitiendo que las
+máquinas procesen información, se adapten a diversos contextos y realicen predicciones
+para resolver problemas de manera autónoma, minimizando la intervención humana.
 
-El **aprendizaje profundo (_Deep Learning_)** constituye un nivel más avanzado dentro
-del aprendizaje automático y se basa en el uso de **redes neuronales artificiales**
-capaces de identificar patrones complejos en los datos. Estas redes, inspiradas en la
-estructura y funcionamiento del cerebro humano, aprenden representaciones jerárquicas de
-la información, lo que les permite capturar relaciones de gran complejidad entre
-variables. Gracias a esta capacidad, el _Deep Learning_ ha demostrado una eficacia
-destacada en tareas como el reconocimiento de imágenes, el procesamiento de lenguaje
-natural, el análisis de audio y el manejo de grandes volúmenes de datos no
-estructurados.
+Dentro de la IA, se encuentra un subcampo fundamental, el **aprendizaje automático
+(_Machine Learning_)**, cuyo propósito es permitir que las máquinas **aprendan a partir
+de la experiencia** sin necesidad de recibir instrucciones explícitas para cada tarea.
+En lugar de programar manualmente cada paso del proceso, se diseñan algoritmos que
+**identifican patrones en los datos**, ajustando sus parámetros internos con el objetivo
+de mejorar progresivamente su rendimiento a medida que acumulan ejemplos. Este proceso
+de aprendizaje se guía mediante una **función objetivo**, la cual mide el grado de
+aproximación del sistema a la meta deseada.
 
-### 1.1. Escalabilidad y leyes de crecimiento en el aprendizaje profundo
+El investigador Andrej Karpathy ha descrito este paradigma como “software 2.0”, en
+contraposición al enfoque tradicional de programación. En el “software 1.0”, el
+programador define de forma explícita las reglas y procedimientos que el sistema debe
+ejecutar. En cambio, en el “software 2.0”, el programador proporciona **ejemplos,
+recompensas o etiquetas** que guían el proceso de optimización del algoritmo,
+permitiendo que el propio sistema descubra de manera implícita las reglas necesarias
+para cumplir la tarea. Este cambio de paradigma marca una transición desde la
+programación manual hacia el aprendizaje basado en datos, donde el sistema adquiere la
+capacidad de generalizar más allá de los ejemplos concretos proporcionados durante el
+entrenamiento.
 
-Un aspecto fundamental del aprendizaje profundo es el estudio de las **leyes de escalado
-neuronal (_neural scaling laws_)**, que describen patrones observados empíricamente en
-el rendimiento de los modelos a medida que se incrementan los recursos. Estas leyes
-muestran que al aumentar de manera sistemática el tamaño de los conjuntos de
-entrenamiento y el número de parámetros de un modelo, se obtiene, de forma predecible,
-una mejora en la precisión y eficiencia de sus predicciones. El escalado no se limita
-únicamente a la ampliación de datos y modelos, también implica la optimización de los
-cálculos para reducir el consumo computacional sin comprometer la calidad del modelo, lo
-cual resulta especialmente relevante en entornos con recursos limitados, como
-dispositivos móviles o sistemas de Internet de las Cosas (IoT).
+El aprendizaje profundo (_Deep Learning_) representa una evolución dentro del
+aprendizaje automático. Su principal característica radica en el uso de **redes
+neuronales artificiales** como núcleo del proceso de aprendizaje. Estas redes,
+inspiradas en la estructura y el funcionamiento del cerebro biológico humano, están
+compuestas por múltiples capas de procesamiento que permiten **aprender representaciones
+jerárquicas de la información**.
 
-La aplicación de estas leyes de escalado conduce al desarrollo de **redes más profundas
-y con un mayor número de neuronas**, lo que a su vez ha impulsado la creación de
-**modelos de gran escala**, entre los que destacan los **modelos de lenguaje de gran
-tamaño (_Large Language Models, LLMs_)**.
+Gracias a esta arquitectura, el aprendizaje profundo puede capturar relaciones complejas
+y no lineales entre variables, lo que le confiere una capacidad sobresaliente para
+reconocer patrones de alta complejidad. Como resultado, el _Deep Learning_ ha demostrado
+un rendimiento excepcional en tareas que antes se consideraban exclusivas del
+razonamiento humano, tales como el reconocimiento de imágenes, el procesamiento del
+lenguaje natural, el análisis de audio y la interpretación de grandes volúmenes de datos
+no estructurados.
 
-### 1.2. Memoria implícita y modelos fundacionales
+### 1.1. Escalabilidad y Leyes de Crecimiento en el Aprendizaje Profundo
 
-Las redes neuronales poseen la capacidad de aproximar distribuciones de probabilidad a
-partir de los datos de entrada. En los modelos actuales, caracterizados por su gran
-tamaño y complejidad, esta capacidad alcanza un nivel en el que la red puede llegar a
-memorizar parte de los datos de entrenamiento. Aunque no exista un mecanismo de memoria
-explícito en la arquitectura o el código del modelo, la información queda codificada en
-los parámetros, funcionando de manera efectiva como un sistema de almacenamiento
-implícito.
+Un aspecto esencial en la evolución del aprendizaje profundo es el estudio de las
+**leyes de escalado neuronal (_Neural Scaling Laws_)**, las cuales describen
+comportamientos empíricamente observables en el rendimiento de los modelos a medida que
+se incrementan los recursos disponibles. Estas leyes establecen que, al aumentar de
+forma sistemática el tamaño de los conjuntos de datos, la capacidad computacional y el
+número de parámetros de un modelo, se obtiene una mejora predecible y sostenida en la
+precisión y eficiencia de las predicciones.
 
-En este contexto surge la distinción entre datos dentro de distribución y fuera de
-distribución. Los primeros corresponden a ejemplos similares a los utilizados durante el
-entrenamiento, mientras que los segundos se refieren a datos que difieren
-significativamente de los conjuntos de entrenamiento. Sin embargo, debido a que los
-modelos actuales se entrenan con conjuntos cada vez más amplios y heterogéneos, esta
-separación se vuelve menos clara. Este aspecto continúa siendo un área activa de
-investigación, ya que involucra factores como la epistemología del aprendizaje
-automático, la capacidad de entrenamiento y optimización en producción, y fenómenos como
-el olvido catastrófico, en el que la incorporación de nuevo conocimiento puede provocar
-la pérdida de información previamente aprendida.
+Este fenómeno ha guiado gran parte de la estrategia de desarrollo en la industria
+tecnológica contemporánea. Empresas líderes como Google, Meta, OpenAI y otras
+organizaciones han adoptado el principio del escalado como un eje fundamental de su
+investigación y desarrollo, apostando por la creación de modelos cada vez más grandes y
+sofisticados. La aplicación práctica de estas leyes ha dado lugar a la construcción de
+redes neuronales más profundas y con un mayor número de neuronas, lo que ha impulsado la
+aparición de los denominados **modelos de gran escala**, entre los que destacan los
+**modelos de lenguaje de gran tamaño (_Large Language Models, LLMs_)**. Estos modelos,
+entrenados con cantidades masivas de datos y recursos computacionales, han demostrado
+una capacidad notable para generalizar conocimientos, generar texto coherente, responder
+preguntas complejas y adaptarse a una amplia variedad de tareas cognitivas.
 
-La tendencia actual apunta hacia el desarrollo de modelos más generalistas, capaces de
-abarcar múltiples dominios. Esto ha dado lugar a los **modelos fundacionales**, que
-constituyen la base de los grandes modelos de lenguaje y pueden adaptarse a tareas
-específicas mediante técnicas como el ajuste fino (_fine-tuning_), aplicado en áreas
-como finanzas, salud o educación. Otra técnica relevante es la cuantización, que reduce
-la precisión numérica de los parámetros del modelo para disminuir el consumo de memoria
-y acelerar los cálculos, facilitando su implementación en sistemas embebidos y equipos
-domésticos.
+No obstante, la escalabilidad no se limita únicamente al aumento de los datos y
+parámetros. En paralelo, existe una tendencia creciente en la investigación que busca
+optimizar la eficiencia computacional sin sacrificar la calidad del modelo. Esta línea
+de trabajo resulta especialmente relevante en entornos donde los recursos son limitados,
+como los dispositivos móviles, los sistemas embebidos o las plataformas de Internet de
+las Cosas (IoT).
 
-### 1.3. El aprendizaje como problema de optimización
+Para abordar estas limitaciones, se desarrollan múltiples estrategias, entre ellas:
 
-El proceso de aprendizaje en redes neuronales puede entenderse como un problema de
-optimización. Un modelo se define a partir de un conjunto de parámetros, que representan
-grados de libertad, y cuyo valor se ajusta durante el entrenamiento. Estos modelos
-suelen denominarse **diferenciables**, ya que permiten calcular derivadas parciales de
-una **función de coste** con respecto a sus parámetros. Esta propiedad resulta
-fundamental, pues posibilita la aplicación de técnicas de optimización como el
-**descenso del gradiente** y la **diferenciación automática**, pilares del aprendizaje
-profundo moderno.
+- **Arquitecturas especializadas:** Diseños de redes más ligeras y eficientes, adaptadas
+  a las restricciones de hardware.
+- **Optimización a nivel de hardware:** Uso de unidades de procesamiento específicas,
+  como GPU, TPU o NPU, capaces de acelerar las operaciones matriciales y reducir el
+  consumo energético.
+- **Compilación a lenguajes de bajo nivel:** Traducción del modelo a representaciones
+  más próximas al hardware para mejorar el rendimiento.
+- **Optimización interna de arquitecturas existentes:** Ajustes en los procedimientos de
+  entrenamiento e inferencia que reducen la redundancia computacional.
 
-La diferenciabilidad, sin embargo, impone restricciones sobre los tipos de datos que
-pueden procesarse directamente. Por ejemplo, los caracteres o los enteros no pueden
-emplearse de forma inmediata, ya que constituyen representaciones discretas y
-discontinuas. Por ello, se requiere aplicar procesos que transformen los datos en
-representaciones numéricas adecuadas, como vectores o tensores, compatibles con las
-operaciones diferenciales del modelo.
+En conjunto, estas estrategias permiten democratizar el acceso y uso del aprendizaje
+profundo, posibilitando su ejecución incluso en equipos de consumo general y promoviendo
+su integración en una amplia gama de aplicaciones cotidianas. De este modo, el campo
+avanza no solo hacia modelos más grandes y potentes, sino también hacia sistemas más
+eficientes, accesibles y sostenibles desde el punto de vista energético y económico.
 
-### 1.4. Los tensores como estructura fundamental
+### 1.2. Memoria Implícita y Modelos Fundacionales
+
+Las redes neuronales artificiales poseen la capacidad de aproximar distribuciones de
+probabilidad a partir de los datos de entrada. En esencia, su propósito es construir una
+**función parametrizada** que permita comprender, representar y generalizar el
+comportamiento de los datos observados.
+
+En los modelos actuales, esta capacidad alcanza niveles en los que la red puede llegar a
+memorizar parte de los datos de entrenamiento. Aunque las arquitecturas contemporáneas
+no suelen incorporar mecanismos explícitos de memoria, como una base de datos interna o
+una estructura dedicada al almacenamiento, la información queda codificada en los
+propios parámetros del modelo. Estos parámetros pueden entenderse como los **grados de
+libertad** de la función que relaciona las entradas con las salidas, y constituyen la
+base del conocimiento adquirido. Este fenómeno se manifiesta en la activación
+diferencial de neuronas ante determinados contextos, lo que sugiere que la red conserva
+rastros de información previa y los utiliza de manera efectiva para procesar nuevas
+entradas.
+
+Aunque esta memoria no sea explícita, existen líneas de investigación que buscan
+extender o complementar este comportamiento con mecanismos dedicados. En algunos casos,
+se exploran estructuras que incorporan memoria persistente, como las redes recurrentes o
+los _Transformers_ con mecanismos de atención prolongada. En otros, se utilizan recursos
+_hardware_, como la memoria caché o el almacenamiento intermedio en disco, para
+gestionar información temporal durante los procesos de entrenamiento e inferencia. Estas
+aproximaciones buscan aumentar la capacidad de los modelos para manejar secuencias
+largas, retener información contextual de manera más eficiente y facilitar un
+aprendizaje más continuo y adaptativo.
+
+La existencia de esta memoria implícita plantea, además, una distinción fundamental
+entre los **datos dentro de distribución (_in-distribution_)** y los **datos fuera de
+distribución (_out-of-distribution_)**. Los primeros se refieren a ejemplos similares a
+los utilizados durante el entrenamiento, en los cuales el modelo optimiza su función
+objetivo hasta alcanzar la **convergencia**, es decir, hasta que los ajustes en los
+parámetros dejan de producir mejoras significativas en el desempeño. Los segundos, en
+cambio, corresponden a entradas que difieren significativamente del conjunto de
+entrenamiento, lo que puede provocar fallos, respuestas erróneas o predicciones con alta
+incertidumbre. Por ejemplo, un modelo entrenado exclusivamente para reconocer perros
+podría no ser capaz de identificar correctamente un gato, ya que este pertenece a una
+distribución distinta de patrones visuales y características. Sin embargo, debido a que
+los conjuntos de datos empleados actualmente son cada vez más amplios, diversos y
+heterogéneos, esta separación entre ambos tipos de datos tiende a desdibujarse. La
+capacidad de los modelos para generalizar más allá de su distribución de entrenamiento
+constituye un área activa de investigación.
+
+En este contexto, el estudio de la **capacidad de generalización** de los modelos
+adquiere un papel central. Los avances recientes han explorado estrategias que permiten
+mejorar la inferencia y la estimación de incertidumbre, elementos fundamentales para
+construir sistemas confiables. Entre estas estrategias destacan el uso de técnicas de
+cálculo en tiempo de inferencia (_test-time computation_), que permiten al modelo
+dedicar más recursos computacionales a problemas complejos en el momento de la
+predicción, las redes neuronales bayesianas, que incorporan distribuciones de
+probabilidad sobre los parámetros en lugar de valores fijos, y el **Monte Carlo
+Dropout**, una técnica que simula múltiples predicciones mediante la desactivación
+aleatoria de neuronas durante la inferencia. Estas aproximaciones posibilitan la
+creación de **intervalos de confianza** para las predicciones, otorgando a los modelos
+una mayor robustez frente a datos desconocidos y una capacidad más matizada para
+expresar el grado de seguridad de sus respuestas.
+
+Paralelamente, se investiga el fenómeno del **olvido catastrófico (_catastrophic
+forgetting_)**, que describe la tendencia de las redes neuronales a perder información
+previamente aprendida cuando incorporan nuevo conocimiento. Este problema representa uno
+de los mayores desafíos del **aprendizaje continuo (_continual learning_)**, un
+paradigma en el que se busca que el modelo sea capaz de actualizarse de manera
+progresiva sin olvidar su conocimiento previo. La solución a este desafío requiere el
+desarrollo de mecanismos que equilibren la plasticidad (la capacidad de aprender nueva
+información) con la estabilidad (la preservación del conocimiento existente).
+
+La evolución de estas ideas conduce al desarrollo de los **modelos fundacionales
+(_foundation models_)**, que se conciben como sistemas de aprendizaje generalista
+capaces de adaptarse a múltiples dominios y tareas. Estos modelos no están diseñados
+para una tarea específica, sino que aprenden representaciones amplias y abstractas del
+mundo que pueden reutilizarse en diversos contextos. A partir de una base preentrenada
+sobre grandes volúmenes de datos, es posible **ajustarlos finamente (_fine-tuning_)**
+para resolver tareas concretas sin necesidad de entrenarlos desde cero.
+
+El impacto de los modelos fundacionales se observa claramente en el auge de los
+**grandes modelos de lenguaje (_Large Language Models_, LLMs)**, como ChatGPT, Claude o
+Gemini, que han demostrado grandes capacidades para generar y "razonar" sobre texto en
+lenguaje natural. Estos modelos no solo procesan y reproducen patrones lingüísticos,
+sino que exhiben capacidades emergentes, como el razonamiento en cadena, la resolución
+de problemas matemáticos o la comprensión de instrucciones complejas, que no fueron
+programadas explícitamente durante su entrenamiento.
+
+### 1.3. El Aprendizaje como Problema de Optimización
+
+El proceso de aprendizaje en redes neuronales debe entenderse, desde una perspectiva
+formal, como un **problema de optimización matemática**. En este marco, un modelo se
+define a partir de un conjunto de parámetros ajustables que determinan su
+comportamiento. Estos parámetros representan el conocimiento adquirido durante el
+entrenamiento y se actualizan progresivamente con el objetivo de **minimizar una función
+que mide el error del modelo** respecto a los datos observados.
+
+Las redes neuronales se consideran **modelos diferenciables** porque su mecanismo de
+aprendizaje se basa en la capacidad de **calcular derivadas parciales** de una **función
+de coste** (también denominada **función de pérdida**) con respecto a sus parámetros.
+Esta función cuantifica la discrepancia entre las predicciones generadas por el modelo y
+los valores reales, actuando como una medida de su rendimiento. Los parámetros
+aprendibles son, por tanto, aquellas variables internas que se modifican iterativamente
+para reducir dicha discrepancia y mejorar la capacidad predictiva del sistema.
+
+El proceso de aprendizaje es **iterativo y dinámico**. Consiste en un ciclo continuo de
+cálculo, actualización y evaluación que se repite hasta alcanzar un criterio de parada
+determinado. Este criterio puede definirse en función del número de iteraciones, de la
+estabilidad alcanzada por la función de coste o de la satisfacción de una métrica de
+desempeño preestablecida. En la práctica, este procedimiento se implementa mediante
+algoritmos de optimización, entre los que destaca el **descenso del gradiente**, que
+ajusta los parámetros en la dirección que más reduce la pérdida. Existen además
+variantes adaptativas, que mejoran la eficiencia del proceso y aceleran la convergencia
+en arquitecturas complejas.
+
+Una herramienta fundamental que posibilita este proceso es la **diferenciación
+automática**, la cual permite calcular de manera eficiente las derivadas necesarias para
+actualizar los parámetros del modelo. Gracias a esta técnica, es posible entrenar redes
+profundas sin requerir una derivación manual de las expresiones analíticas. La
+diferenciación automática constituye, por tanto, uno de los pilares que han hecho viable
+la expansión moderna del aprendizaje profundo.
+
+No obstante, el carácter diferenciable del modelo impone ciertas restricciones sobre los
+tipos de datos que pueden procesarse directamente. Las derivadas sólo son aplicables a
+funciones continuas, por lo que representaciones discretas (como caracteres, palabras o
+números enteros) no pueden utilizarse tal cual en los cálculos diferenciales. Para
+hacerlos compatibles, los datos deben transformarse en representaciones numéricas
+continuas, generalmente en forma de **vectores o tensores**, que permitan aplicar las
+operaciones matemáticas requeridas durante el entrenamiento.
+
+Este proceso de conversión se denomina **_embedding_**, y su función no se limita
+únicamente a permitir el procesamiento diferencial, sino también a **capturar las
+relaciones semánticas, estructurales y contextuales entre los elementos de los datos**.
+Por ejemplo, en el caso del lenguaje natural, los _embeddings_ permiten representar
+palabras o frases de modo que aquellas con significados similares se encuentren próximas
+en el **espacio vectorial**, que constituye el espacio matemático multidimensional
+creado por el propio modelo. Este espacio permite al sistema establecer y mapear las
+relaciones semánticas entre los datos de manera cuantitativa, facilitando operaciones
+como la comparación de similitudes, la búsqueda de analogías o la agrupación de
+conceptos relacionados. De este modo, los _embeddings_ transforman información simbólica
+en representaciones geométricas que preservan y codifican el significado subyacente de
+los datos originales.
+
+A medida que el modelo optimiza su función de coste, desarrolla internamente una forma
+de **entender y codificar la información** que refleja la estructura subyacente de los
+datos. Cuanto mejor sea la capacidad del modelo para comprimir la información sin perder
+significado, más eficaz será su desempeño. La compresión eficiente implica que el modelo
+ha aprendido a distinguir entre la información relevante y la irrelevante, capturando
+sólo aquellos patrones que resultan esenciales para la tarea. Este principio de
+compresión es, en última instancia, una manifestación del aprendizaje mismo: la
+habilidad de mapear, abstraer y recuperar información compleja sin necesidad de
+conservar todos los detalles explícitos.
+
+### 1.4. Los Tensores como Estructura Fundamental
 
 En el ámbito del aprendizaje profundo, los **tensores** constituyen la estructura de
-datos fundamental, ya que permiten representar, almacenar y manipular de manera
-eficiente la información que circula a lo largo de un modelo. Un tensor se define como
-un arreglo de objetos organizado en $N$ dimensiones, lo que lo convierte en una
-herramienta versátil para manejar desde datos de entrada hasta parámetros del modelo y
-resultados intermedios generados durante el procesamiento.
+datos esencial sobre la cual se construye y ejecuta la totalidad del proceso de cómputo.
+Un tensor puede definirse formalmente como una colección ordenada de elementos numéricos
+organizados en un espacio de $N$ dimensiones, que permite representar, almacenar y
+manipular información de manera eficiente dentro de un modelo de red neuronal.
 
-La elección de los tensores como estructura central no es arbitraria, sino que responde
-a su idoneidad para ser implementados en sistemas de cómputo masivamente paralelos, como
-las **unidades de procesamiento gráfico (GPU)** o las **unidades de procesamiento
-tensorial (TPU)**. Estas arquitecturas están especialmente diseñadas para ejecutar de
-manera simultánea miles de operaciones matemáticas, lo que resulta esencial en el
-entrenamiento de redes neuronales de gran escala.
+Su principal ventaja radica en su compatibilidad con sistemas de cómputo masivamente
+paralelos, como las unidades de procesamiento gráfico (GPU) o las unidades de
+procesamiento tensorial (TPU). Estas arquitecturas están diseñadas para ejecutar de
+forma simultánea miles de operaciones matemáticas, lo cual resulta indispensable para el
+entrenamiento y la inferencia en redes neuronales de gran escala, donde la eficiencia
+computacional y el manejo óptimo de los recursos son factores determinantes.
 
-Un tensor se describe a partir de dos elementos clave: el **tipo de datos** que contiene
-y la **precisión numérica** utilizada en los cálculos. Los valores que alberga suelen
-ser numéricos, ya sean enteros o números en coma flotante, con distintos niveles de
-precisión como 16, 32 o 64 bits. La elección de la precisión depende en gran medida del
-contexto de aplicación. Por ejemplo, en tareas de clasificación de imágenes entre gatos
-y perros, los errores derivados de una menor precisión suelen ser tolerables. En cambio,
-en aplicaciones críticas como la simulación aeroespacial o el control de sistemas de
-navegación de cohetes, se requiere un mayor rigor en los cálculos numéricos para
-garantizar resultados exactos y seguros.
+Cada tensor se describe a partir de dos componentes fundamentales: el tipo de datos que
+contiene y la precisión numérica empleada en los cálculos. Los valores almacenados
+suelen ser numéricos, representados comúnmente como enteros o números en coma flotante.
+En la práctica, los modelos de aprendizaje profundo suelen utilizar tensores de 32 bits
+(precisión simple), aunque es frecuente aplicar técnicas de **cuantización** que reducen
+la precisión a 16, 8 o incluso 4 bits, especialmente una vez completada la fase de
+entrenamiento. Estas reducciones, sin embargo, dependen de las capacidades del hardware,
+ya que no todas las arquitecturas soportan operaciones de baja precisión con la misma
+eficiencia o estabilidad numérica.
 
-Desde el punto de vista operativo, los tensores funcionan de manera similar a los
-arreglos o _arrays_, lo que permite realizar operaciones como el **indexado** y la
-extracción de subconjuntos de datos. Esta capacidad resulta esencial para manipular
-porciones específicas de información sin necesidad de procesar el tensor completo, lo
-que optimiza tanto la eficiencia como la flexibilidad en su manejo.
+Bibliotecas especializadas como **PyTorch**, **TensorFlow** o **Keras** facilitan estos
+procesos mediante instrucciones de alto nivel. La elección del nivel de precisión
+implica un compromiso entre exactitud y eficiencia. En aplicaciones donde los errores
+mínimos son tolerables, como la clasificación de imágenes comunes, puede optarse por una
+menor precisión para reducir el consumo energético y acelerar el entrenamiento. En
+cambio, en entornos donde la seguridad y la fiabilidad son crítica, se requiere una
+precisión numérica más alta que garantice la estabilidad y exactitud de los resultados.
+Por tanto, existe una relación directa entre la precisión numérica, el error acumulado y
+el costo computacional, de modo que optimizar este equilibrio constituye uno de los
+aspectos clave del diseño de modelos eficientes.
 
-En cuanto a su dimensionalidad, los tensores presentan diferentes niveles, los cuales se
-clasifican de la siguiente manera:
+Desde el punto de vista operativo, los tensores funcionan de manera análoga a los
+**_arrays_** de los lenguajes de programación tradicionales, permitiendo realizar
+operaciones como indexación, segmentación o extracción de subconjuntos de datos. Estas
+operaciones son esenciales, ya que posibilitan el procesamiento de partes específicas de
+un conjunto de información sin necesidad de manipular el tensor completo.
 
-- Un **escalar** corresponde a un tensor de dimensión cero.
-- Un **vector** se define como un tensor unidimensional.
-- Una **matriz** constituye un tensor bidimensional.
-- Los **tensores de orden superior**, con tres o más dimensiones, se utilizan para
-  representar datos más complejos, como secuencias temporales, imágenes o vídeos.
+La dimensionalidad es una de las características más importantes de los tensores, pues
+determina la forma en que los datos se estructuran internamente. Según su número de
+dimensiones, pueden clasificarse del siguiente modo:
+
+- Un **escalar** corresponde a un tensor de dimensión cero y representa un único valor
+  numérico.
+- Un **vector** es un tensor unidimensional que almacena una secuencia ordenada de
+  valores.
+- Una **matriz** constituye un tensor bidimensional que organiza los datos en filas y
+  columnas.
+- Los **tensores de orden superior**, con tres o más dimensiones, permiten representar
+  estructuras de datos más complejas, como secuencias temporales, imágenes, vídeos o
+  volúmenes tridimensionales.
 
 Un ejemplo ilustrativo lo constituye una imagen en color de 84 × 84 píxeles con tres
-canales (RGB), procesada en lotes. En este caso, la representación corresponde a un
-tensor de rango 4, cuyas dimensiones reflejan: el número de ejemplos en el lote, la
-altura de la imagen, su anchura y el número de canales. De manera general, el **rango de
-un tensor** indica el número de dimensiones en que se estructuran los datos,
-proporcionando así una representación flexible y eficiente para el manejo de información
-de alta complejidad en redes neuronales.
+canales (rojo, verde y azul) procesada en lotes durante el entrenamiento. En este caso,
+la representación corresponde a un tensor de rango 4, cuyas dimensiones reflejan: el
+número de ejemplos en el lote, la altura y la anchura de la imagen, y el número de
+canales de color.
 
-En la notación matemática utilizada en publicaciones académicas, se establece una
-convención tipográfica para distinguir claramente los distintos niveles de datos: los
-**escalares** suelen expresarse en minúscula, los **vectores** en minúscula y en
-negrita, y las **matrices** en mayúscula y en negrita. Esta diferenciación contribuye a
-la claridad y rigurosidad en la exposición formal de los modelos.
+### 1.5. Elementos Fundamentales de una Neurona Artificial
 
-### 1.5. Ejemplo introductorio, predicción de precios de viviendas
+Para ilustrar el funcionamiento básico de este tipo de modelos, puede considerarse el
+problema de estimar el precio de una vivienda. Si se representa gráficamente el tamaño
+de la casa frente a su precio, se observa una tendencia creciente positiva: a mayor
+tamaño de la vivienda, mayor precio. Una forma de capturar esta relación es mediante la
+**regresión lineal**, que consiste en ajustar una línea recta que describe la relación
+entre ambas variables. Esta línea se caracteriza por dos parámetros fundamentales: su
+posición vertical, determinada por el término independiente, y su pendiente, que define
+la tasa de cambio del precio respecto al tamaño. Sin embargo, este enfoque presenta
+limitaciones importantes. Por ejemplo, al extrapolar la línea recta hacia valores muy
+pequeños de tamaño, el modelo podría asignar precios negativos a viviendas
+extremadamente reducidas, lo cual carece de sentido práctico. Para resolver este
+problema, se incorporan funciones que restringen los resultados a intervalos válidos de
+salidas, garantizando que las predicciones mantengan coherencia con la realidad física
+del problema.
 
-Para ilustrar el funcionamiento básico de estos modelos, puede considerarse el problema
-de estimar el precio de una vivienda. Si se grafica el tamaño de la casa frente a su
-precio, suele observarse una tendencia positiva: a mayor tamaño, mayor precio. Una forma
-de capturar esta relación es mediante la **regresión lineal**, que ajusta una recta a
-los datos. Sin embargo, este enfoque presenta limitaciones, como la posibilidad de
-asignar valores negativos a viviendas muy pequeñas, lo cual carece de sentido práctico.
-Para resolverlo, se incorporan funciones que restringen los resultados a intervalos
-válidos.
+Este procedimiento puede comprenderse mejor mediante la analogía de una neurona
+artificial, también conocida como perceptrón. La neurona recibe el tamaño de la vivienda
+como entrada y aplica un cálculo lineal parametrizado, cuyos parámetros se han obtenido
+a partir de ejemplos de entrenamiento. Posteriormente, utiliza una función de activación
+que filtra valores inválidos, produciendo una estimación coherente del precio dentro de
+un rango válido. Por ejemplo, la función puede garantizar que la salida sea siempre
+positiva, evitando precios negativos. De este modo, la neurona artificial transforma la
+entrada mediante una combinación de operaciones lineales y no lineales, ajustándose
+progresivamente a los patrones presentes en los datos.
 
-Este procedimiento puede comprenderse mejor mediante la analogía de una **neurona
-artificial o perceptrón**. La neurona recibe el tamaño de la vivienda como entrada,
-aplica un cálculo lineal basado en ejemplos de entrenamiento y utiliza una función de
-activación que filtra valores inválidos, produciendo una estimación coherente del
-precio. No obstante, el valor de una vivienda depende de múltiples factores adicionales,
-como el número de dormitorios, la ubicación o la calidad del vecindario. La
-incorporación de estas características incrementa la dimensionalidad de los datos, de
-modo que la simple regresión lineal se vuelve insuficiente. En este caso, resulta
-necesario combinar múltiples perceptrones organizados en **capas**, lo que da lugar a
-arquitecturas de mayor complejidad.
+No obstante, el valor de una vivienda depende de múltiples factores adicionales, como el
+número de dormitorios, el número de baños, la ubicación geográfica, la proximidad a
+servicios públicos, la calidad del vecindario o el estado de conservación de la
+propiedad. La incorporación de estas características incrementa la **dimensionalidad**
+de los datos, es decir, el número de variables o dimensiones necesarias para describir
+cada ejemplo. En este escenario, la simple regresión lineal se vuelve insuficiente,
+puesto que una única línea recta solo es capaz de relacionar linealmente dos variables.
+Para abordar problemas de mayor complejidad, resulta necesario combinar múltiples
+perceptrones organizados en **capas**, lo que da lugar a arquitecturas que permiten
+modelar no solo relaciones lineales individuales entre pares de variables, sino también
+combinaciones complejas de múltiples parámetros de entrada. Además, estas arquitecturas
+posibilitan que las neuronas de capas sucesivas procesen y combinen las representaciones
+generadas por capas anteriores, construyendo progresivamente abstracciones de mayor
+nivel que capturan patrones sofisticados en los datos.
 
-En las arquitecturas de _Deep Learning_ se distinguen tres tipos de capas: la **capa de
-entrada**, que recibe las características iniciales; las **capas ocultas**, que procesan
-y transforman dichas características; y la **capa de salida**, que genera la predicción
-final.
+En las arquitecturas de **_Deep Learning_** se distinguen tres tipos de capas
+fundamentales. La **capa de entrada** recibe las características iniciales del problema,
+es decir, los datos de entrada tras aplicar las transformaciones oportunas para obtener
+valores numéricos que el modelo pueda procesar. Las **capas ocultas** (_hidden layers_)
+se sitúan entre la entrada y la salida, y su función consiste en procesar y transformar
+progresivamente dichas características, extrayendo representaciones intermedias cada vez
+más abstractas y relevantes para la tarea en cuestión. Finalmente, la **capa de salida**
+genera la predicción final del modelo, que en el ejemplo de las viviendas correspondería
+al precio estimado. La profundidad de la red, determinada por el número de capas
+ocultas, influye directamente en su capacidad para aprender relaciones complejas y no
+lineales entre las variables.
 
-### 1.6. Elementos fundamentales de una neurona artificial
+Cada neurona artificial asigna un **peso** a cada característica de entrada, indicando
+la importancia relativa de esa variable en el resultado final. Estos pesos determinan
+cuánto contribuye cada entrada a la activación de la neurona. Además, cada neurona
+incluye un **sesgo** (_bias_), un valor adicional que permite ajustar la función de
+salida y otorga mayor flexibilidad al modelo. El sesgo modula la activación de la
+neurona en función de los datos de entrada, desplazando efectivamente el umbral a partir
+del cual la neurona se activa. Tanto los pesos como el sesgo se inicializan de manera
+aleatoria al comienzo del entrenamiento y se ajustan progresivamente mediante algoritmos
+de optimización, como el descenso del gradiente, optimizando así el rendimiento del
+sistema. Estos constituyen los parámetros aprendibles de los modelos de inteligencia
+artificial, cuya configuración final determina el comportamiento y las capacidades del
+modelo entrenado.
 
-Cada neurona artificial asigna un **peso** a cada característica, que indica la
-importancia relativa de esa variable en el resultado. Además, incluye un **sesgo**,
-valor adicional que permite ajustar la función de salida y otorga mayor flexibilidad al
-modelo, modulando la activación de la neurona en función de los datos de entrada. Tanto
-los pesos como el sesgo se inicializan de manera aleatoria y se ajustan progresivamente
-durante el entrenamiento, optimizando así el rendimiento del sistema.
+El resultado de la combinación lineal de las entradas ponderadas por los pesos, sumado
+al sesgo, pasa posteriormente por una función de activación no lineal. Este componente
+es esencial, ya que otorga a la red la capacidad de capturar relaciones complejas y no
+lineales entre variables, superando las limitaciones de los modelos puramente lineales.
+Sin funciones de activación no lineales, una red neuronal multicapa se comportaría
+simplemente como un modelo lineal, independientemente de su profundidad. Además, la
+función de activación permite definir intervalos coherentes para las salidas.
 
-El resultado lineal de cada neurona pasa por una **función de activación no lineal**,
-componente esencial que otorga a la red la capacidad de capturar relaciones complejas
-entre variables y de definir intervalos coherentes para las salidas.
-
-### 1.7. Arquitecturas y tipos de datos en aprendizaje profundo
+### 1.6. Arquitecturas y Tipos de Datos en Aprendizaje Profundo
 
 El aprendizaje profundo se adapta a diferentes problemas mediante el uso de
-arquitecturas especializadas, que permiten extraer información relevante según el tipo
-de datos analizados. Entre las principales arquitecturas destacan:
+arquitecturas especializadas, diseñadas para extraer información relevante según la
+naturaleza y estructura del tipo de datos analizados. Cada arquitectura incorpora
+componentes y operaciones específicas que explotan las características intrínsecas de
+los datos, permitiendo al modelo capturar patrones de manera más eficiente y efectiva.
+Entre las principales arquitecturas destacan:
 
-- **Redes neuronales densas o totalmente conectadas**, utilizadas principalmente en el
-  análisis de datos tabulares.
-- **Redes convolucionales (_Convolutional Neural Networks, CNN_)**, diseñadas para el
-  procesamiento de imágenes y vídeos, donde se requiere detectar patrones espaciales.
-- **Redes recurrentes (_Recurrent Neural Networks, RNN_)** y sus variantes modernas,
-  empleadas en el tratamiento de secuencias como texto, series temporales o audio.
-- **Modelos multimodales**, capaces de integrar información proveniente de distintas
-  fuentes, como texto, imágenes y sonido.
+- **Redes neuronales densas o totalmente conectadas (_Fully Connected Networks_, FCN)**:
+  Constituyen la arquitectura más básica y general, en la que cada neurona de una capa
+  está conectada con todas las neuronas de la capa siguiente. Estas redes pueden
+  procesar, por lo general, cualquier tipo de datos, siempre que estos se presenten en
+  forma vectorial unidimensional, es decir, aplanados (_flattened_). Aunque versátiles,
+  presentan limitaciones al trabajar con datos de alta dimensionalidad o con estructuras
+  espaciales o temporales complejas, debido al elevado número de parámetros que
+  requieren y a su incapacidad para explotar eficientemente dichas estructuras.
 
-En este contexto, es necesario distinguir entre:
+- **Redes convolucionales (_Convolutional Neural Networks_, CNN)**: Diseñadas
+  específicamente para el procesamiento de datos que poseen estructura espacial o
+  espacio-temporal, como imágenes y vídeos. Las CNN utilizan operaciones de convolución
+  que aplican filtros deslizantes sobre los datos de entrada, detectando patrones
+  locales como bordes, texturas o formas geométricas en las primeras capas, y
+  progresivamente características más abstractas y complejas en capas más profundas.
+  Esta arquitectura explota la localidad espacial y la invariancia traslacional,
+  reduciendo significativamente el número de parámetros en comparación con redes densas
+  equivalentes, y facilitando la generalización del modelo a diferentes posiciones
+  dentro de la imagen.
 
-- **Datos estructurados**, organizados en tablas de filas y columnas, característicos de
-  las bases de datos tradicionales. Para este tipo de datos suelen bastar algoritmos de
-  aprendizaje automático clásicos.
-- **Datos no estructurados**, como imágenes, grabaciones de voz o documentos en lenguaje
-  natural, que requieren arquitecturas avanzadas para su procesamiento. El _Deep
-  Learning_ se muestra especialmente eficaz en estos casos, pues permite extraer
-  patrones complejos a partir de grandes volúmenes de información.
+- **Redes recurrentes (_Recurrent Neural Networks_, RNN)** y sus variantes modernas,
+  como las LSTM (_Long Short-Term Memory_) y GRU (_Gated Recurrent Units_): Empleadas en
+  el tratamiento de secuencias, donde el orden temporal de los datos es primordial.
+  Estas arquitecturas son especialmente adecuadas para procesar texto, series
+  temporales, señales de audio o cualquier tipo de datos secuenciales. Las RNN
+  incorporan conexiones recurrentes que permiten a la red mantener un estado interno o
+  memoria que captura información de elementos anteriores de la secuencia, posibilitando
+  la modelización de dependencias temporales.
 
-### 1.8. Factores que impulsan el desarrollo del aprendizaje profundo
+- **Modelos basados en _Transformers_**: Representan una evolución significativa en el
+  procesamiento de secuencias, basándose en mecanismos de atención que permiten al
+  modelo ponderar la importancia de diferentes elementos de la entrada de manera
+  dinámica y contextual. Los _Transformers_ han demostrado ser altamente efectivos para
+  tareas de procesamiento de lenguaje natural y han sido adoptados también en otros
+  dominios como la visión por computador.
 
-El auge del _Deep Learning_ en la última década responde a la convergencia de tres
-factores principales. En primer lugar, la disponibilidad masiva de datos, resultado de
-la digitalización y la conectividad global, proporciona el material necesario para
-entrenar modelos cada vez más complejos. En segundo lugar, los **avances en hardware
-especializado**, como las GPUs y TPUs, han permitido entrenar modelos de gran escala en
-tiempos razonables. Empresas como NVIDIA han desarrollado GPUs optimizadas para cálculos
-matriciales, complementadas con librerías como CUDA. Más recientemente, han surgido
-arquitecturas específicas para inteligencia artificial, como las NPUs, que se integran
-en dispositivos móviles y sistemas embebidos, facilitando la ejecución eficiente y
-privada de modelos sin necesidad de conexión a Internet.
+- **Modelos multimodales**: Capaces de integrar y procesar información proveniente de
+  distintas fuentes o modalidades, como texto, imágenes, audio y vídeo. Estos modelos se
+  basan en la idea de representar todos los datos de entrada, independientemente de su
+  formato original, como **representaciones embebidas** (_embeddings_) en un espacio
+  vectorial común. Este espacio, creado y aprendido por el modelo durante el
+  entrenamiento, permite establecer relaciones semánticas entre elementos de diferentes
+  modalidades, facilitando que conceptos similares (expresados en formatos distintos) se
+  encuentren próximos en dicho espacio. Este proceso de conversión se conoce actualmente
+  como **tokenización**, y consiste en la creación de **_tokens_**, representaciones
+  vectoriales aprendibles y entendibles por el modelo que encapsulan unidades
+  significativas de información. Un único modelo final puede entonces procesar estos
+  _tokens_ de manera unificada, independientemente de su origen modal, permitiendo
+  tareas complejas como la generación de descripciones textuales a partir de imágenes,
+  la búsqueda multimodal o la traducción entre diferentes tipos de contenido.
 
-El tercer factor son las innovaciones en algoritmos y técnicas de optimización, que han
-ampliado el alcance de problemas abordables. La combinación de estos elementos ha
-democratizado el uso del _Deep Learning_, fomentando la aparición de comunidades y
-startups que publican modelos de código abierto, parámetros de entrenamiento y conjuntos
-de datos, lo que impulsa la investigación y el desarrollo de nuevas aplicaciones basadas
-en inteligencia artificial.
+En este contexto, resulta necesario distinguir entre diferentes tipos de datos según su
+estructura y formato:
+
+- **Datos estructurados**: Organizados en tablas de filas y columnas, donde cada fila
+  representa una observación o ejemplo, y cada columna corresponde a una característica
+  o variable con un significado bien definido. Este formato es característico de las
+  bases de datos relacionales tradicionales y de las hojas de cálculo. Para este tipo de
+  datos, suelen bastar algoritmos de aprendizaje automático clásicos, como árboles de
+  decisión o regresión logística, que pueden alcanzar rendimientos competitivos sin
+  requerir la complejidad arquitectónica del aprendizaje profundo. No obstante, las
+  redes neuronales también pueden aplicarse a datos estructurados, especialmente cuando
+  existen interacciones complejas entre variables o cuando se combinan con datos no
+  estructurados en modelos híbridos.
+
+- **Datos no estructurados**: Carecen de una organización tabular predefinida y
+  presentan formatos heterogéneos y complejos. Ejemplos incluyen imágenes, grabaciones
+  de voz, documentos en lenguaje natural, vídeos o señales biomédicas. Estos datos
+  requieren arquitecturas avanzadas de aprendizaje profundo para su procesamiento
+  efectivo, pues contienen patrones intrincados, relaciones jerárquicas y dependencias
+  contextuales que no pueden ser fácilmente capturadas por algoritmos tradicionales. El
+  _Deep Learning_ se muestra especialmente eficaz en estos casos, permitiendo extraer
+  automáticamente representaciones significativas y patrones complejos a partir de
+  grandes volúmenes de información, sin necesidad de ingeniería manual de
+  características.
 
 ## 2. Conceptos básicos de matemáticas
 
@@ -783,8 +1012,8 @@ donde:
 
 Cuando la salida no está restringida, el modelo se utiliza en **tareas de regresión**.
 En cambio, si la salida pertenece a un conjunto discreto de clases ( $\mathcal{C} = {1,
-2, \dots, M} $), se trata de un problema de **clasificación**. En el caso particular de (
-M = 2 ), se tiene una **clasificación binaria**.
+2, \dots, M} $), se trata de un problema de **clasificación**. En el caso particular de
+( M = 2 ), se tiene una **clasificación binaria**.
 
 En los **modelos diferenciables** del aprendizaje profundo, la estructura general es una
 composición de funciones lineales y no lineales:
@@ -854,9 +1083,11 @@ $$
 \mathbf{w} = (\mathbf{X}^\top \mathbf{X})^{-1} \mathbf{X}^\top \mathbf{y}
 $$
 
-donde ( $\mathbf{X} \in \mathbb{R}^{N \times n} $) representa la matriz de datos de
+donde (
+$\mathbf{X} \in \mathbb{R}^{N \times n} $) representa la matriz de datos de
 entrada y ( $\mathbf{y} \in \mathbb{R}^N $) los valores objetivo. No obstante, este método
-puede ser inestable si ( $\mathbf{X}^\top \mathbf{X}$ ) es casi singular.
+puede ser inestable si ( $\mathbf{X}^\top \mathbf{X}$
+) es casi singular.
 
 Para mejorar la estabilidad y controlar la magnitud de los pesos, se introduce un
 término de **regularización**:
@@ -977,19 +1208,25 @@ donde:
 - ( $\gamma \ge 0$ ) es un parámetro de enfoque que **amplifica el peso de los ejemplos
   difíciles** y reduce el de los ejemplos fáciles.
 
-El **proceso de calibración de un modelo de clasificación** tiene como objetivo alinear las **probabilidades predichas por el modelo** con la **frecuencia real de aciertos**, de manera que si el modelo asigna una probabilidad (p) a un evento, este evento ocurra aproximadamente con frecuencia (p). A continuación, se describe con rigor técnico cómo se realiza este proceso:
+El **proceso de calibración de un modelo de clasificación** tiene como objetivo alinear
+las **probabilidades predichas por el modelo** con la **frecuencia real de aciertos**,
+de manera que si el modelo asigna una probabilidad (p) a un evento, este evento ocurra
+aproximadamente con frecuencia (p). A continuación, se describe con rigor técnico cómo
+se realiza este proceso:
 
 ---
 
 ### 1. Definición formal del problema de calibración
 
-Sea un modelo de clasificación que produce probabilidades predichas ( \hat{p}\_i = P(Y = k \mid X = x_i) ) para cada clase (k). Idealmente, el modelo está calibrado si:
+Sea un modelo de clasificación que produce probabilidades predichas ( \hat{p}\_i = P(Y =
+k \mid X = x_i) ) para cada clase (k). Idealmente, el modelo está calibrado si:
 
 $$
 P(Y = k \mid \hat{p}_i = p) = p, \quad \forall p \in [0,1]
 $$
 
-Esto significa que, para todos los ejemplos a los que el modelo asigna una probabilidad (p), aproximadamente un ($100 \cdot p%$) de ellos pertenece realmente a la clase (k).
+Esto significa que, para todos los ejemplos a los que el modelo asigna una probabilidad
+(p), aproximadamente un ($100 \cdot p%$) de ellos pertenece realmente a la clase (k).
 
 ---
 
@@ -997,7 +1234,9 @@ Esto significa que, para todos los ejemplos a los que el modelo asigna una proba
 
 #### 2.1. Escalado de temperatura (Temperature Scaling)
 
-El **escalado de temperatura** es un método simple y muy utilizado para redes neuronales. Consiste en ajustar un único parámetro (T > 0) que escala los logits antes de aplicar Softmax:
+El **escalado de temperatura** es un método simple y muy utilizado para redes
+neuronales. Consiste en ajustar un único parámetro (T > 0) que escala los logits antes
+de aplicar Softmax:
 
 $$
 p_i = \text{Softmax}\left(\frac{z_i}{T}\right)
@@ -1005,45 +1244,54 @@ $$
 
 - Si (T = 1), no hay ajuste.
 - Si (T > 1), la distribución de probabilidades se vuelve más uniforme (menos confiada).
-- Si (T < 1), la distribución se concentra más en la clase de mayor logit (más confiada).
+- Si (T < 1), la distribución se concentra más en la clase de mayor logit (más
+  confiada).
 
-El parámetro (T) se optimiza sobre un **conjunto de validación** minimizando la **entropía cruzada** entre las probabilidades ajustadas y las etiquetas verdaderas:
+El parámetro (T) se optimiza sobre un **conjunto de validación** minimizando la
+**entropía cruzada** entre las probabilidades ajustadas y las etiquetas verdaderas:
 
 $$
 T^* = \arg \min_{T > 0} \frac{1}{N_{\text{val}}} \sum_{i=1}^{N_{\text{val}}} -y_i \log \text{Softmax}(z_i / T)
 $$
 
-Este procedimiento no cambia la clase predicha (argmax) pero ajusta la **confianza del modelo**, logrando mejor calibración.
+Este procedimiento no cambia la clase predicha (argmax) pero ajusta la **confianza del
+modelo**, logrando mejor calibración.
 
 ---
 
 #### 2.2. Platt Scaling
 
-Para problemas de **clasificación binaria**, el método de **Platt Scaling** ajusta los logits mediante una función sigmoide paramétrica:
+Para problemas de **clasificación binaria**, el método de **Platt Scaling** ajusta los
+logits mediante una función sigmoide paramétrica:
 
 $$
 \hat{p}_i = \frac{1}{1 + \exp(A z_i + B)}
 $$
 
-donde (A) y (B) son parámetros entrenados sobre un conjunto de validación para minimizar la entropía cruzada. Generaliza el escalado de temperatura al incluir un desplazamiento lineal ((B)).
+donde (A) y (B) son parámetros entrenados sobre un conjunto de validación para minimizar
+la entropía cruzada. Generaliza el escalado de temperatura al incluir un desplazamiento
+lineal ((B)).
 
 ---
 
 #### 2.3. Isotonic Regression
 
-El **regression isotónica** es un método no paramétrico que ajusta las probabilidades predichas ( \hat{p}\_i ) usando una función **monótonamente creciente** (f):
+El **regression isotónica** es un método no paramétrico que ajusta las probabilidades
+predichas ( \hat{p}\_i ) usando una función **monótonamente creciente** (f):
 
 $$
 p_i^{\text{cal}} = f(\hat{p}_i)
 $$
 
-El objetivo es minimizar la desviación entre las probabilidades ajustadas y las observaciones reales:
+El objetivo es minimizar la desviación entre las probabilidades ajustadas y las
+observaciones reales:
 
 $$
 f^* = \arg \min_f \sum_{i=1}^{N_{\text{val}}} (y_i - f(\hat{p}_i))^2
 $$
 
-Este método es más flexible que el escalado de temperatura, pero requiere más datos de validación para evitar sobreajuste.
+Este método es más flexible que el escalado de temperatura, pero requiere más datos de
+validación para evitar sobreajuste.
 
 ---
 
@@ -1073,7 +1321,8 @@ $$
 \text{MCE} = \max_{m} \Big| \text{acc}(B_m) - \text{conf}(B_m) \Big|
 $$
 
-Estas métricas cuantifican la discrepancia entre la confianza predicha y la precisión real.
+Estas métricas cuantifican la discrepancia entre la confianza predicha y la precisión
+real.
 
 ---
 
@@ -1082,9 +1331,11 @@ Estas métricas cuantifican la discrepancia entre la confianza predicha y la pre
 1. **Entrenar el modelo** sobre el conjunto de entrenamiento.
 2. **Obtener logits o probabilidades** sobre un conjunto de validación separado.
 3. **Aplicar un método de calibración** (temperature scaling, Platt, isotonic).
-4. **Optimizar los parámetros del calibrador** minimizando entropía cruzada o error cuadrático entre probabilidades predichas y etiquetas verdaderas.
+4. **Optimizar los parámetros del calibrador** minimizando entropía cruzada o error
+   cuadrático entre probabilidades predichas y etiquetas verdaderas.
 5. **Evaluar la calibración** usando métricas como ECE o MCE.
-6. **Usar el calibrador final** para ajustar las probabilidades del conjunto de prueba o en producción.
+6. **Usar el calibrador final** para ajustar las probabilidades del conjunto de prueba o
+   en producción.
 
 ## 3. Redes neuronales y funciones de activación
 
