@@ -479,134 +479,428 @@ estructura y formato:
   _Deep Learning_ se muestra especialmente eficaz en estos casos, permitiendo extraer
   automáticamente representaciones significativas y patrones complejos a partir de
   grandes volúmenes de información, sin necesidad de ingeniería manual de
-  características.
+  características. Perfecto. A continuación te presento la **versión extendida
+  completa** del módulo **2. Conceptos básicos de matemáticas**, con todas las secciones
+  integradas, cohesionadas y redactadas con el mismo tono formal, técnico y didáctico.
+  Se han añadido las subsecciones 2.4 a 2.9 siguiendo la línea académica del material
+  original, reforzando la narrativa y manteniendo la progresión natural hacia los
+  fundamentos de _Deep Learning_.
 
-## 2. Conceptos básicos de matemáticas
+## 2. Conceptos Básicos de Matemáticas
 
-El tensor, como se ha explicado anteriormente, constituye la unidad de procesamiento
-fundamental en las librerías de cálculo utilizadas en aprendizaje profundo. Su
-relevancia no solo radica en el aspecto computacional, sino también en las múltiples
-implicaciones matemáticas que conlleva. En efecto, la mayoría de los modelos de
-aprendizaje profundo se construyen a partir de composiciones de funciones elementales,
-como sumas y multiplicaciones, combinadas con funciones adicionales de carácter no
-lineal. Dado que los datos procesados se representan en forma de tensores, estos pueden
-entenderse como arreglos de $N$ dimensiones, que abarcan desde escalares y vectores
-hasta matrices y estructuras de mayor orden.
+En el ámbito del aprendizaje profundo, el tensor constituye la unidad de procesamiento
+fundamental dentro de las bibliotecas de cálculo numérico. La mayoría de los modelos se
+construyen mediante la composición de funciones elementales, tales como sumas,
+multiplicaciones y transformaciones no lineales. Estas operaciones permiten representar
+relaciones complejas entre los datos y, por tanto, son esenciales para el funcionamiento
+de los modelos de inteligencia artificial.
 
-### 2.1. Operaciones básicas con vectores
+Toda la información que un modelo procesa se expresa en forma de tensores, los cuales
+pueden entenderse como **_arrays_ multidimensionales** que abarcan desde los escalares
+(orden 0) y vectores (orden 1), hasta matrices (orden 2) y estructuras de orden
+superior. En consecuencia, muchas de las operaciones habituales aplicables sobre
+_arrays_ pueden ejecutarse directamente sobre tensores, lo que facilita la manipulación
+de los datos.
 
-Los **vectores** constituyen ejemplos de tensores unidimensionales y se denotan
-habitualmente como $x \sim (d)$, donde $d$ representa su dimensión. En el ámbito del
-álgebra lineal, resulta esencial distinguir entre **vectores columna** y **vectores
-fila**, denotados respectivamente por $x$ y $x^\top$. Esta distinción, aunque
-teóricamente clara, presenta ciertas complicaciones prácticas en la implementación
-informática. En efecto, mientras que un vector fila o columna se representa como un
-tensor bidimensional de dimensiones $(1, d)$ o $(d, 1)$, un vector simple corresponde a
-un tensor unidimensional de dimensión $(d)$. Esta diferencia es relevante porque la
-mayoría de los entornos de programación aplican reglas de **broadcasting** para realizar
-operaciones entre tensores, lo que exige el uso de funciones específicas. Por ejemplo,
-en librerías como NumPy se emplea la función `expand_dims` para incrementar la
-dimensionalidad de un vector en el eje requerido, facilitando así operaciones de
-compatibilidad entre tensores.
+Para ilustrar estos conceptos se empleará **PyTorch**, una biblioteca de código abierto
+para _Deep Learning_ reconocida por su flexibilidad, su ecosistema de herramientas
+complementarias y su amplia adopción tanto en el ámbito académico como en el industrial.
+PyTorch permite definir, entrenar y desplegar modelos de redes neuronales de manera
+eficiente, ofreciendo una interfaz altamente integrada con el lenguaje de programación
+Python, lo que la hace especialmente accesible para investigadores y desarrolladores.
 
-Cuando se dispone de dos vectores del mismo tamaño, como $x$ y $y$, es posible
-combinarlos linealmente mediante parámetros escalares $a$ y $b$, generando un nuevo
-vector $z$:
+Aunque existen otras alternativas consolidadas, como **TensorFlow**, **JAX** y
+**Keras**, PyTorch destaca por su creciente popularidad y por su estrecha vinculación
+con la Linux Foundation, lo que garantiza un desarrollo sostenido y un soporte
+comunitario cada vez mayor. Además, múltiples proyectos de terceros, como **Ray**,
+utilizado para la creación de sistemas distribuidos de entrenamiento de modelos, también
+forman parte del ecosistema de la Linux Foundation. Este entorno colaborativo impulsa la
+innovación y asegura un soporte activo tanto por parte de empresas tecnológicas
+reconocidas como de la comunidad de código abierto.
+
+Una de las principales ventajas de PyTorch es su sintaxis intuitiva y expresiva, que
+sigue de forma natural los principios del estilo “**pythónico**”, es decir, un diseño
+limpio y legible que favorece la comprensión del código.
+
+Independientemente de la biblioteca elegida, los principios matemáticos y conceptuales
+que sustentan el aprendizaje profundo son los mismos. Las diferencias radican
+principalmente en la sintaxis y en las implementaciones específicas de cada entorno,
+pero la base teórica y las operaciones fundamentales definidas sobre tensores permanecen
+invariantes.
+
+### 2.1. Operaciones Vectoriales
+
+Los vectores constituyen tensores unidimensionales, habitualmente representados como
+$x \sim (d)$, donde $d$ indica la dimensión del tensor. En el contexto del álgebra
+lineal, y también en el ámbito de la inteligencia artificial, resulta fundamental
+distinguir entre vectores columna y vectores fila, denotados respectivamente por $x$ y
+$x^\top$. En esta notación, el superíndice del segundo símbolo representa la
+**transpuesta** del vector, operación que intercambia filas por columnas. Un vector
+columna puede considerarse como un tensor bidimensional de forma $(d, 1)$, mientras que
+un vector fila posee forma $(1, d)$.
+
+Esta distinción es particularmente relevante en entornos de programación, donde las
+operaciones entre tensores deben cumplir las reglas de **_broadcasting_**, las cuales
+determinan cómo se alinean las dimensiones durante las operaciones aritméticas. En
+PyTorch, cuando las dimensiones de los tensores son incompatibles, puede ser necesario
+utilizar funciones como `squeeze()`, `unsqueeze()` o `view()` para ajustar su
+estructura. Dado que la biblioteca se actualiza con frecuencia, resulta imposible
+abarcar todas las posibles modificaciones y nuevas funcionalidades. Por ello, se
+recomienda consultar la documentación oficial o realizar búsquedas específicas sobre las
+funciones mencionadas para obtener información actualizada.
+
+Si se disponen dos vectores del mismo tamaño, $x$ y $y$, es posible combinarlos
+linealmente mediante coeficientes escalares $a$ y $b$, generando un nuevo vector $z$,
+tal que:
 
 $$
-z = ax + by.
+z = a x + b y.
 $$
 
-Desde una perspectiva geométrica, en un espacio euclidiano de dos dimensiones, la suma
-de dos vectores $u$ y $v$ puede visualizarse como la diagonal del paralelogramo que
-forman. La longitud o magnitud de un vector en dicho espacio se mide a través de la
-**norma euclidiana** o **norma $L_2$**, definida como:
+Desde una perspectiva geométrica, en un espacio euclidiano bidimensional, la suma de
+vectores puede interpretarse como la **diagonal del paralelogramo** definido por ambos
+vectores. La magnitud o longitud de un vector se mide mediante la **norma euclidiana** o
+**norma $L_2$**, definida como:
 
 $$
-||x|| = \sqrt{\sum_{i} x_i^2}.
+||x|| = \sqrt{\sum_i x_i^2}.
 $$
 
-Esta norma refleja la distancia de un vector respecto al origen del sistema de
-coordenadas.
+Esta norma representa la distancia del vector al origen del sistema de coordenadas y
+constituye una medida fundamental en la evaluación de magnitudes y distancias.
 
-Otra operación de gran relevancia con los vectores es el **producto escalar** o
-**producto punto**. Este consiste en multiplicar los elementos correspondientes de dos
-vectores y sumar los resultados:
-
-$$
-x \cdot y = \sum_{i} x_i \cdot y_i.
-$$
-
-El resultado es un **escalar** que, además de su utilidad algebraica, posee una
-interpretación geométrica. En particular, permite medir el ángulo entre dos vectores y,
-por ende, su grado de similitud direccional. La relación se formaliza mediante la
-siguiente expresión:
+Otra operación esencial es el **producto escalar** (o **producto punto**), definido
+como:
 
 $$
-\cos(\theta) = \frac{x \cdot y}{||x|| \space ||y||}.
+x \cdot y = \sum_i x_i \cdot y_i,
 $$
 
-El valor obtenido se encuentra en el intervalo $[-1, 1]$ y proporciona información sobre
-la correlación entre los vectores:
+cuyo resultado es un escalar con una interpretación geométrica directa: permite
+determinar el **ángulo entre dos vectores** y, en consecuencia, su **similitud
+direccional**. Esta relación se expresa mediante la siguiente ecuación:
 
-- Si $\cos(\theta) = -1$, los vectores son opuestos, lo que indica una correlación
-  negativa perfecta.
-- Si $\cos(\theta) = 0$, los vectores son ortogonales o perpendiculares, lo que implica
-  ausencia de relación.
-- Si $\cos(\theta) = 1$, los vectores apuntan en la misma dirección, mostrando máxima
-  similitud.
+$$
+\cos(\theta) = \frac{x \cdot y}{||x|| , ||y||}.
+$$
 
-Este concepto se conoce como **similitud del coseno**, y resulta fundamental en tareas
-de agrupamiento y representación en el espacio latente de los modelos de aprendizaje
-profundo. Al normalizar los vectores para que su norma sea uno, se obtiene una
-representación en una **esfera unitaria**, donde la magnitud de los vectores deja de
-importar y solo prevalece su dirección. Esto permite que vectores lejanos en magnitud
-pero próximos en dirección sean considerados parte de un mismo grupo, lo que resulta
-especialmente útil en técnicas de clustering y análisis de similitud.
+De acuerdo con este principio:
 
-### 2.2. Operaciones básicas con matrices
+- Si $\cos(\theta) = 1$, los vectores apuntan en la misma dirección.
+- Si $\cos(\theta) = 0$, los vectores son ortogonales, es decir, forman un ángulo de 90
+  grados entre sí.
+- Si $\cos(\theta) = -1$, los vectores son opuestos, con un ángulo de 180 grados entre
+  ambos.
 
-Las **matrices** constituyen estructuras matemáticas que almacenan elementos del mismo
-tipo, organizados en un arreglo bidimensional como mínimo. Una matriz puede considerarse
-como un conjunto ordenado de vectores dispuestos en filas y columnas, lo que facilita la
-representación y el procesamiento de datos en diversas aplicaciones.
+Esta medida se conoce como **similitud del coseno** y desempeña un papel fundamental en
+tareas de **agrupamiento (_clustering_)**, búsqueda semántica y **representaciones
+latentes**.
 
-Supóngase que se dispone de una matriz $X$ de tamaño $A \times B$ y otra matriz $Y$ de
-tamaño $B \times C$. En este caso, es posible realizar el **producto matricial** entre
-ambas, obteniéndose como resultado una nueva matriz $Z$ de tamaño $A \times C$. Para que
-esta operación sea posible, debe cumplirse que el **número de columnas de la primera
-matriz ($B$)** coincida con el **número de filas de la segunda matriz ($B$)**. La
-dimensión final del producto se determina por el número de filas de la primera matriz
-($A$) y el número de columnas de la segunda matriz ($C$).
+Este principio tiene una aplicación directa en los **_word embeddings_**,
+representaciones vectoriales del lenguaje en las que cada palabra se codifica como un
+punto dentro de un espacio semántico de alta dimensionalidad. Modelos como GPT-2 y GPT-3
+utilizan representaciones de entre 768 y más de 12000 dimensiones, lo que permite
+capturar relaciones semánticas y sintácticas a través de simples operaciones
+vectoriales.
 
-Esta propiedad resulta de gran importancia en el contexto del aprendizaje profundo, dado
-que muchas operaciones realizadas por una neurona implican precisamente un **producto
-matricial**. En dicho proceso, los **datos de entrada** se representan como una matriz y
-se multiplican por otra matriz que contiene los **pesos del modelo**, los cuales
-constituyen sus parámetros ajustables. De este modo, en lugar de trabajar únicamente con
-vectores de entrada, se generaliza el procedimiento al álgebra matricial, que permite
-procesar de manera simultánea múltiples datos.
+A continuación, se presenta un ejemplo de implementación de la similitud del coseno
+utilizando Python con la biblioteca **NumPy**:
 
-Además del producto matricial, una operación estrechamente relacionada es la **matriz
-transpuesta**, denotada por $X^\top$. La transposición de una matriz consiste en
-intercambiar sus filas por columnas, lo que resulta esencial en numerosas operaciones.
-Por ejemplo, si se consideran **representaciones vectoriales** de datos de entrada
-(comúnmente llamadas _embeddings_), estas pueden organizarse en una matriz
-$X \in \mathbb{R}^{N \times d}$, donde $N$ corresponde al número de embeddings y $d$ a
-la dimensión de cada uno. Al multiplicar la matriz $X$ por su transpuesta $X^\top$, se
-obtiene una matriz cuadrada de tamaño $N \times N$ que refleja las **similitudes entre
-vectores**. En particular, si los embeddings están normalizados con norma unitaria, este
-producto resulta equivalente a calcular la **similitud del coseno** entre todos los
-pares de vectores. En tal caso, la diagonal principal de la matriz contiene únicamente
-unos, ya que cada vector presenta similitud máxima consigo mismo.
+```python
+import numpy as np
 
-Otro tipo de operación relevante con matrices es el **producto de Hadamard**, el cual
-consiste en una multiplicación elemento a elemento entre dos matrices del mismo tamaño.
-Este tipo de producto se utiliza en diversas aplicaciones, entre ellas los mecanismos de
-**enmascaramiento**, donde se busca anular ciertos valores de la matriz para que no
-contribuyan al cálculo de los gradientes durante el entrenamiento. De esta manera, el
-modelo puede ignorar de forma selectiva determinadas partes de la información de
-entrada, evitando que influyan en el proceso de aprendizaje.
+def normalizar_matriz(matriz: np.ndarray) -> np.ndarray:
+    return matriz / np.expand_dims(np.sqrt(np.sum(np.power(matriz, 2), axis=1)), axis=-1)
+
+def cosine_similarity(matriz: np.ndarray) -> np.ndarray:
+    return matriz @ matriz.T
+
+X = np.array([
+    [1, 2, 3],
+    [4, 5, 6],
+    [1, 0, 0],
+    [0, 1, 0]
+], dtype=float)
+
+X_normalized = normalizar_matriz(X)
+similarity_matrix = cosine_similarity(X_normalized)
+print(similarity_matrix)
+```
+
+El siguiente código muestra el mismo procedimiento utilizando **PyTorch**:
+
+```python
+import torch
+import torch.nn.functional as F
+
+X = torch.tensor([
+    [1., 2., 3.],
+    [4., 5., 6.],
+    [1., 0., 0.],
+    [0., 1., 0.]
+])
+
+# Normalización
+X_norm = F.normalize(X, p=2, dim=1)
+
+# Cálculo de la matriz de similitud
+similarity = X_norm @ X_norm.T
+print(similarity)
+```
+
+El resultado obtenido en ambos casos es una matriz de tamaño $N \times N$ que contiene
+los valores de similitud entre cada par de vectores. En la diagonal principal aparecen
+valores iguales a 1, ya que cada vector presenta similitud máxima consigo mismo.
+
+### 2.2. Operaciones Matriciales
+
+Una matriz es un arreglo bidimensional que organiza los datos en filas y columnas, por
+lo que puede entenderse como una **colección ordenada de vectores**. Matemáticamente,
+una matriz $X \in \mathbb{R}^{A \times B}$ está compuesta por $A$ filas y $B$ columnas,
+donde cada elemento $x_{ij}$ representa el valor ubicado en la fila $i$ y la columna
+$j$.
+
+Si se dispone de una matriz $X \in \mathbb{R}^{A \times B}$ y otra
+$Y \in \mathbb{R}^{B \times C}$, su **producto matricial** se define como:
+
+$$
+Z = X Y,
+$$
+
+donde $Z \in \mathbb{R}^{A \times C}$. Esta operación es válida únicamente cuando el
+número de columnas de $X$ coincide con el número de filas de $Y$. En términos
+algebraicos, cada elemento de la matriz resultante se calcula como:
+
+$$
+Z_{ij} = \sum_{k=1}^{B} X_{ik} \cdot Y_{kj}.
+$$
+
+El producto matricial es una de las operaciones más utilizadas en el aprendizaje
+profundo, ya que permite procesar simultáneamente grandes volúmenes de información. En
+el contexto de una capa neuronal, los datos de entrada suelen representarse mediante una
+matriz donde cada fila corresponde a una muestra y cada columna a una característica. Al
+multiplicar esta matriz por otra que contiene los pesos del modelo, se obtiene una
+transformación lineal de las entradas, a la cual se suma posteriormente un vector de
+sesgo.
+
+Además del producto matricial convencional, existen otras operaciones de gran relevancia
+en el cálculo numérico y el aprendizaje profundo. Una de ellas es el **producto de
+Hadamard**, también conocido como multiplicación elemento a elemento. A diferencia del
+producto matricial, esta operación se realiza exclusivamente entre matrices del mismo
+tamaño y se define como:
+
+$$
+Z_{ij} = X_{ij} \cdot Y_{ij}.
+$$
+
+El producto de Hadamard se emplea en múltiples contextos, entre los cuales destaca su
+uso en **mecanismos de enmascaramiento** (_masking_) durante el entrenamiento de
+modelos. Esta técnica permite ignorar valores específicos de un tensor para impedir que
+influyan en el cálculo de los gradientes o en la propagación de errores. Dicha propiedad
+es esencial en arquitecturas modernas como **_Transformers_**, donde se aplica para
+restringir la atención a determinadas posiciones o para manejar secuencias de longitud
+variable sin afectar el aprendizaje global del modelo.
+
+### 2.3. Operaciones con tensores en PyTorch [ME HE QUEDADO AQUI REVISANDO]
+
+La biblioteca **PyTorch** proporciona un conjunto extenso y eficiente de herramientas
+para la creación, manipulación y transformación de tensores, que son la estructura de
+datos fundamental en el aprendizaje profundo. Los tensores generalizan los conceptos de
+escalares, vectores y matrices hacia dimensiones superiores, permitiendo representar
+datos complejos de forma multidimensional.
+
+A continuación, se presentan ejemplos prácticos y comentados que ilustran las
+operaciones más comunes con tensores en PyTorch.
+
+#### **Creación de tensores**
+
+PyTorch ofrece múltiples formas de crear tensores: a partir de listas, mediante
+inicialización aleatoria o con valores fijos.
+
+```python
+import torch
+
+# Tensores básicos
+escalar = torch.tensor(7)
+vector = torch.tensor([1, 2, 3])
+matriz = torch.tensor([[1, 2, 3], [4, 5, 6]])
+
+# Tensores aleatorios y de valores fijos
+tensor_aleatorio = torch.rand((2, 3))
+ceros = torch.zeros((2, 3))
+unos = torch.ones((2, 3))
+rango = torch.arange(0, 10, 2)
+
+print("Escalar:", escalar)
+print("Vector:", vector)
+print("Matriz:\n", matriz)
+print("Tensor aleatorio:\n", tensor_aleatorio)
+print("Tensor de ceros:\n", ceros)
+print("Tensor de unos:\n", unos)
+print("Rango:", rango)
+```
+
+---
+
+#### **Propiedades de los tensores**
+
+Cada tensor contiene información sobre su tipo de datos, dimensiones y dispositivo de
+almacenamiento (CPU o GPU).
+
+```python
+tensor = torch.rand((2, 3, 4))
+print("Tipo de dato:", tensor.dtype)
+print("Forma:", tensor.shape)
+print("Dispositivo:", tensor.device)
+print("Número de elementos:", tensor.numel())
+```
+
+---
+
+#### **Operaciones de agregación**
+
+Las operaciones de agregación permiten resumir la información contenida en un tensor.
+
+```python
+tensor = torch.tensor([[1., 2., 3.], [4., 5., 6.]])
+
+print("Suma total:", tensor.sum())
+print("Promedio:", tensor.mean())
+print("Máximo por columna:", tensor.max(dim=0))
+print("Promedio por fila:", tensor.mean(dim=1))
+```
+
+El parámetro `dim` indica el eje sobre el cual se realiza la operación:
+
+- `dim=0` actúa sobre las **filas** (por columnas).
+- `dim=1` actúa sobre las **columnas** (por filas).
+
+---
+
+#### **Redimensionamiento y manipulación de forma**
+
+Las funciones `view()`, `reshape()`, `unsqueeze()` y `squeeze()` permiten modificar la
+forma del tensor sin alterar los datos subyacentes.
+
+```python
+x = torch.arange(1, 7)
+print("Tensor original:", x)
+
+# Cambiar forma
+x_reshaped = x.view(2, 3)
+print("Tensor 2x3:\n", x_reshaped)
+
+# Añadir dimensión
+x_unsqueezed = x.unsqueeze(0)
+print("Tensor con nueva dimensión:", x_unsqueezed.shape)
+
+# Eliminar dimensión
+x_squeezed = x_unsqueezed.squeeze()
+print("Tensor tras eliminar dimensión:", x_squeezed.shape)
+```
+
+---
+
+#### **Permutación de ejes**
+
+Las operaciones `permute()` y `transpose()` permiten reordenar las dimensiones del
+tensor, lo cual es especialmente útil en el procesamiento de imágenes o secuencias.
+
+```python
+tensor = torch.rand((2, 3, 4))
+print("Forma original:", tensor.shape)
+
+# Transposición (intercambio de dos dimensiones)
+tensor_T = tensor.transpose(1, 2)
+print("Forma tras transpose:", tensor_T.shape)
+
+# Permutación general de ejes
+tensor_P = tensor.permute(2, 0, 1)
+print("Forma tras permute:", tensor_P.shape)
+```
+
+---
+
+#### **Concatenación y apilamiento**
+
+Las funciones `torch.cat()` y `torch.stack()` permiten combinar múltiples tensores.
+
+```python
+a = torch.tensor([[1, 2], [3, 4]])
+b = torch.tensor([[5, 6], [7, 8]])
+
+# Concatenación (mismo número de filas)
+cat_0 = torch.cat((a, b), dim=0)
+cat_1 = torch.cat((a, b), dim=1)
+
+# Apilamiento (nueva dimensión)
+stacked = torch.stack((a, b), dim=0)
+
+print("Concatenación por filas:\n", cat_0)
+print("Concatenación por columnas:\n", cat_1)
+print("Apilamiento (nueva dimensión):\n", stacked)
+```
+
+---
+
+#### **Operaciones aritméticas y funcionales**
+
+PyTorch implementa una gran cantidad de operaciones vectorizadas, lo que permite
+realizar cálculos sin necesidad de bucles explícitos.
+
+```python
+x = torch.tensor([1., 2., 3.])
+y = torch.tensor([4., 5., 6.])
+
+print("Suma:", x + y)
+print("Producto elemento a elemento:", x * y)
+print("Exponencial:", torch.exp(x))
+print("Raíz cuadrada:", torch.sqrt(y))
+print("Seno:", torch.sin(x))
+```
+
+---
+
+#### **Funciones estadísticas y de análisis**
+
+Estas operaciones resultan útiles para inspeccionar distribuciones de datos o normalizar
+tensores antes del entrenamiento.
+
+```python
+tensor = torch.randn((3, 4))  # Distribución normal
+print("Tensor aleatorio:\n", tensor)
+print("Media:", tensor.mean())
+print("Desviación estándar:", tensor.std())
+print("Valor mínimo:", tensor.min())
+print("Índice del máximo:", tensor.argmax())
+```
+
+---
+
+#### **Interoperabilidad con NumPy**
+
+PyTorch permite una conversión directa entre tensores y arreglos de NumPy, lo que
+facilita su integración con bibliotecas de análisis y visualización.
+
+```python
+import numpy as np
+
+# Tensor a NumPy
+tensor = torch.tensor([[1, 2], [3, 4]])
+array = tensor.numpy()
+print("Tensor a NumPy:\n", array)
+
+# NumPy a Tensor
+nuevo_tensor = torch.from_numpy(array)
+print("NumPy a Tensor:\n", nuevo_tensor)
+```
+
+---
+
+Estos ejemplos ilustran el carácter **modular, flexible y expresivo** de PyTorch, lo que
+facilita tanto la experimentación en entornos de investigación como la implementación de
+sistemas de producción. El dominio de estas operaciones constituye un paso esencial para
+el trabajo efectivo con redes neuronales y modelos de aprendizaje profundo.
 
 ## 3. Regresión lineal y logística
 
@@ -891,6 +1185,30 @@ que permite avanzar hacia valores más bajos de la función objetivo. Este compo
 ilustra de manera visual y clara el principio esencial del descenso del gradiente,
 consistente en ajustar los parámetros de forma progresiva hasta aproximarse a un mínimo
 de la función.
+
+El sistema **`autograd`** de PyTorch permite calcular derivadas automáticamente sobre
+operaciones tensoriales. Esta funcionalidad es la base de la **retropropagación**
+(_backpropagation_), utilizada para ajustar los parámetros de las redes neuronales.
+
+Cada tensor puede llevar asociada la propiedad `requires_grad=True`. PyTorch construye
+un **grafo computacional dinámico** que registra las operaciones aplicadas sobre los
+tensores y, al invocar `backward()`, calcula sus derivadas mediante la regla de la
+cadena.
+
+```python
+import torch
+
+x = torch.tensor([2.0, 3.0], requires_grad=True)
+y = x**2 + 2*x + 1
+z = y.sum()
+z.backward()
+
+print(x.grad)  # Derivadas parciales de z respecto a x
+```
+
+También pueden deshabilitarse los gradientes cuando no se necesitan, por ejemplo durante
+la inferencia, utilizando el contexto `with torch.no_grad():`, lo que mejora el
+rendimiento y reduce el consumo de memoria.
 
 ### 3.4. Implementación de la regresión logística
 
