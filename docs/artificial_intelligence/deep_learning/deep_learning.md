@@ -701,21 +701,25 @@ es esencial en arquitecturas modernas como **_Transformers_**, donde se aplica p
 restringir la atención a determinadas posiciones o para manejar secuencias de longitud
 variable sin afectar el aprendizaje global del modelo.
 
-### 2.3. Operaciones con tensores en PyTorch [ME HE QUEDADO AQUI REVISANDO]
+### 2.3. Operaciones con tensores en PyTorch
 
-La biblioteca **PyTorch** proporciona un conjunto extenso y eficiente de herramientas
-para la creación, manipulación y transformación de tensores, que son la estructura de
-datos fundamental en el aprendizaje profundo. Los tensores generalizan los conceptos de
-escalares, vectores y matrices hacia dimensiones superiores, permitiendo representar
-datos complejos de forma multidimensional.
+La biblioteca PyTorch proporciona un conjunto amplio, eficiente y flexible de
+herramientas para la creación, manipulación y transformación de tensores, que
+constituyen la estructura de datos fundamental en el aprendizaje profundo. Los tensores
+generalizan los conceptos de escalares, vectores y matrices hacia dimensiones
+superiores, lo que permite representar datos complejos de manera multidimensional y
+realizar operaciones matemáticas de forma vectorizada y optimizada.
 
 A continuación, se presentan ejemplos prácticos y comentados que ilustran las
-operaciones más comunes con tensores en PyTorch.
+operaciones más comunes con tensores en PyTorch. Estas operaciones son esenciales para
+comprender el funcionamiento interno del código empleado en la creación de modelos de
+aprendizaje profundo. En la práctica, muchas arquitecturas modernas o modificaciones de
+arquitecturas existentes surgen a partir de pequeñas variaciones en la manipulación de
+tensores, ya sea mediante la selección de elementos específicos (_slicing_), la
+optimización de cálculos o el uso de estrategias que reduzcan el coste computacional.
 
-#### **Creación de tensores**
-
-PyTorch ofrece múltiples formas de crear tensores: a partir de listas, mediante
-inicialización aleatoria o con valores fijos.
+Para crear tensores, es posible hacerlo a partir de listas, mediante inicialización
+aleatoria o con valores fijos, por ejemplo:
 
 ```python
 import torch
@@ -740,12 +744,12 @@ print("Tensor de unos:\n", unos)
 print("Rango:", rango)
 ```
 
----
-
-#### **Propiedades de los tensores**
-
-Cada tensor contiene información sobre su tipo de datos, dimensiones y dispositivo de
-almacenamiento (CPU o GPU).
+Cada tensor contiene información sobre su **tipo de dato**, sus **dimensiones** y el
+**dispositivo de almacenamiento** (CPU o GPU). El tipo de dato (`dtype`) determina la
+precisión numérica del tensor, a mayor precisión, mayor será el rango de valores
+posibles, pero también el consumo de memoria. El dispositivo (`device`) es relevante
+porque un tensor ubicado en la GPU no puede ser manipulado directamente desde la CPU,
+por lo que es necesario transferirlo o copiarlo según sea necesario. Por ejemplo:
 
 ```python
 tensor = torch.rand((2, 3, 4))
@@ -755,11 +759,11 @@ print("Dispositivo:", tensor.device)
 print("Número de elementos:", tensor.numel())
 ```
 
----
-
-#### **Operaciones de agregación**
-
 Las operaciones de agregación permiten resumir la información contenida en un tensor.
+Algunas de las más comunes son la suma, la media o la obtención del valor máximo o
+mínimo. El parámetro `dim` indica el eje sobre el cual se aplica la operación, donde
+`dim=0` actúa sobre las filas (por columnas), mientras que `dim=1` actúa sobre las
+columnas (por filas).
 
 ```python
 tensor = torch.tensor([[1., 2., 3.], [4., 5., 6.]])
@@ -770,17 +774,10 @@ print("Máximo por columna:", tensor.max(dim=0))
 print("Promedio por fila:", tensor.mean(dim=1))
 ```
 
-El parámetro `dim` indica el eje sobre el cual se realiza la operación:
-
-- `dim=0` actúa sobre las **filas** (por columnas).
-- `dim=1` actúa sobre las **columnas** (por filas).
-
----
-
-#### **Redimensionamiento y manipulación de forma**
-
-Las funciones `view()`, `reshape()`, `unsqueeze()` y `squeeze()` permiten modificar la
-forma del tensor sin alterar los datos subyacentes.
+Otras funciones, como `view()`, `reshape()`, `unsqueeze()` y `squeeze()`, permiten
+modificar la forma del tensor sin alterar sus datos subyacentes. Estas operaciones son
+fundamentales para adaptar las dimensiones de los tensores según las necesidades de las
+redes neuronales.
 
 ```python
 x = torch.arange(1, 7)
@@ -799,12 +796,9 @@ x_squeezed = x_unsqueezed.squeeze()
 print("Tensor tras eliminar dimensión:", x_squeezed.shape)
 ```
 
----
-
-#### **Permutación de ejes**
-
-Las operaciones `permute()` y `transpose()` permiten reordenar las dimensiones del
-tensor, lo cual es especialmente útil en el procesamiento de imágenes o secuencias.
+Las funciones `permute()` y `transpose()` permiten reordenar las dimensiones de un
+tensor, lo cual es especialmente útil en el procesamiento de imágenes o secuencias, por
+ejemplo, al desplazar canales de color o mapas de características.
 
 ```python
 tensor = torch.rand((2, 3, 4))
@@ -819,11 +813,9 @@ tensor_P = tensor.permute(2, 0, 1)
 print("Forma tras permute:", tensor_P.shape)
 ```
 
----
-
-#### **Concatenación y apilamiento**
-
-Las funciones `torch.cat()` y `torch.stack()` permiten combinar múltiples tensores.
+También es posible combinar tensores mediante funciones como `torch.cat()` y
+`torch.stack()`. La primera une tensores existentes a lo largo de un eje específico,
+mientras que la segunda crea una nueva dimensión para apilarlos.
 
 ```python
 a = torch.tensor([[1, 2], [3, 4]])
@@ -841,12 +833,10 @@ print("Concatenación por columnas:\n", cat_1)
 print("Apilamiento (nueva dimensión):\n", stacked)
 ```
 
----
-
-#### **Operaciones aritméticas y funcionales**
-
-PyTorch implementa una gran cantidad de operaciones vectorizadas, lo que permite
-realizar cálculos sin necesidad de bucles explícitos.
+PyTorch implementa una gran cantidad de **operaciones vectorizadas**, que permiten
+realizar cálculos sin recurrir a bucles explícitos. Este enfoque no solo mejora la
+legibilidad del código, sino que también aprovecha las optimizaciones internas del
+framework y del hardware subyacente, como las implementaciones en CUDA para GPU.
 
 ```python
 x = torch.tensor([1., 2., 3.])
@@ -859,12 +849,9 @@ print("Raíz cuadrada:", torch.sqrt(y))
 print("Seno:", torch.sin(x))
 ```
 
----
-
-#### **Funciones estadísticas y de análisis**
-
-Estas operaciones resultan útiles para inspeccionar distribuciones de datos o normalizar
-tensores antes del entrenamiento.
+Estas operaciones resultan especialmente útiles para inspeccionar distribuciones de
+datos o normalizar tensores antes del entrenamiento, tareas que contribuyen a
+estabilizar el aprendizaje de los modelos.
 
 ```python
 tensor = torch.randn((3, 4))  # Distribución normal
@@ -875,12 +862,10 @@ print("Valor mínimo:", tensor.min())
 print("Índice del máximo:", tensor.argmax())
 ```
 
----
-
-#### **Interoperabilidad con NumPy**
-
-PyTorch permite una conversión directa entre tensores y arreglos de NumPy, lo que
-facilita su integración con bibliotecas de análisis y visualización.
+Finalmente, PyTorch permite una **conversión directa entre tensores y arreglos de
+NumPy**, lo que facilita su integración con bibliotecas de análisis y visualización.
+Esta interoperabilidad permite combinar el poder de cálculo de PyTorch con la
+versatilidad de ecosistemas como NumPy, Matplotlib o Pandas.
 
 ```python
 import numpy as np
@@ -895,94 +880,163 @@ nuevo_tensor = torch.from_numpy(array)
 print("NumPy a Tensor:\n", nuevo_tensor)
 ```
 
----
-
-Estos ejemplos ilustran el carácter **modular, flexible y expresivo** de PyTorch, lo que
-facilita tanto la experimentación en entornos de investigación como la implementación de
-sistemas de producción. El dominio de estas operaciones constituye un paso esencial para
-el trabajo efectivo con redes neuronales y modelos de aprendizaje profundo.
+En conjunto, estas operaciones proporcionan una visión integral de las capacidades de
+PyTorch en la manipulación de tensores, mostrando su versatilidad, eficiencia y
+facilidad de integración con otros entornos de análisis. En capítulos posteriores, se
+emplearán estos fundamentos para la construcción de modelos de aprendizaje profundo
+basados en esta biblioteca.
 
 ## 3. Regresión lineal y logística
 
-El entrenamiento de una neurona o de una red neuronal se fundamenta en dos procesos
-esenciales: la **propagación hacia adelante (_forward propagation_)** y la **propagación
-hacia atrás (_backpropagation_)**.
+Los modelos de regresión lineal y logística constituyen la base conceptual del
+aprendizaje profundo. También se conocen como modelos diferenciables, ya que su
+estructura está compuesta por transformaciones lineales seguidas de funciones no
+lineales que son derivables, lo que permite aplicar el cálculo diferencial para
+optimizar sus parámetros mediante métodos basados en gradientes. Este principio es el
+fundamento de todas las arquitecturas de redes neuronales modernas.
+
+El entrenamiento de una neurona, o de una red neuronal, se apoya en dos procesos
+fundamentales: la **propagación hacia adelante (_forward propagation_)** y la
+**propagación hacia atrás (_backpropagation_)**.
 
 La propagación hacia adelante consiste en calcular la predicción del modelo a partir de
 los datos de entrada. En este proceso, los datos ingresan por la capa de entrada y
-atraviesan las distintas capas de la red, generando una representación que permite al
-modelo estimar la salida.
+atraviesan las distintas capas de la red, aplicando sucesivas combinaciones lineales y
+no lineales hasta obtener una salida numérica. El resultado que produce el modelo antes
+de aplicar una función de activación final se conoce como **_logit_**. Este valor
+representa una proyección numérica de los datos de entrada en el espacio interno del
+modelo, resultado de las múltiples transformaciones que la red realiza. Posteriormente,
+el modelo compara esta salida con el valor real esperado y calcula una tasa de error o
+función de pérdida, la cual mide qué tan precisa ha sido la representación aprendida por
+el modelo.
 
-Por su parte, la propagación hacia atrás se encarga de ajustar los parámetros internos
-del modelo (pesos y sesgos) con el objetivo de minimizar el error de predicción. Durante
-este proceso, los gradientes fluyen desde la salida hacia la entrada, permitiendo la
-actualización progresiva de los parámetros en cada iteración para mejorar la precisión
-del modelo.
+Por otro lado, la propagación hacia atrás es el proceso mediante el cual el modelo
+ajusta sus parámetros internos (pesos y sesgos) con el objetivo de minimizar el error
+obtenido en la propagación hacia adelante. En este proceso, los gradientes (las
+derivadas parciales de la función de pérdida respecto a cada parámetro) se propagan
+desde la salida hasta las capas iniciales del modelo. Dichos gradientes indican cómo
+deben modificarse los pesos y sesgos para reducir el error en las siguientes
+iteraciones, permitiendo así un aprendizaje progresivo y dirigido por el descenso del
+gradiente.
 
-Con estos mecanismos en mente, es útil analizar un caso clásico de aprendizaje
-automático: la **clasificación binaria**, que consiste en asignar a cada ejemplo una de
-dos posibles clases.
+Un modelo lineal puede expresarse matemáticamente como:
+
+$$
+\hat{y} = \mathbf{w}^\top \mathbf{x} + b
+$$
+
+donde:
+
+- ( \mathbf{x} \in \mathbb{R}^n ): Es el vector de entrada.
+- ( \mathbf{w} \in \mathbb{R}^n ): Es el vector de pesos del modelo.
+- ( b \in \mathbb{R} ): Es el sesgo o término independiente.
+- ( \hat{y} \in \mathbb{R} ): Es la salida predicha por el modelo.
+
+Cuando la salida ( \hat{y} ) no está restringida a un rango específico, el modelo se
+utiliza en tareas de regresión, donde el objetivo es predecir valores continuos. En este
+contexto, la salida puede tomar cualquier valor real, positivo o negativo.
+
+Sin embargo, cuando la salida está asociada a un conjunto discreto de clases (
+\mathcal{C} = {1, 2, \dots, M} ), el modelo aborda un problema de clasificación. En
+estos casos, la representación numérica (_logits_) generada por el modelo se transforma
+en probabilidades mediante una función no lineal, generalmente una función sigmoide para
+clasificación binaria o una función _softmax_ para clasificación multiclase.
+
+En la clasificación binaria ($M = 2$), el modelo aprende a distinguir entre dos posibles
+categorías (por ejemplo, “positivo” y “negativo”, o “clase 0” y “clase 1”). En cambio,
+en los problemas multiclase, el modelo puede asignar cada entrada a una de varias
+categorías posibles, como en la clasificación de imágenes por tipo de objeto o raza de
+perro. Además, existen escenarios de clasificación multietiqueta, donde una misma
+entrada puede pertenecer simultáneamente a varias clases. Un ejemplo típico se da en los
+sistemas de visión artificial para conducción autónoma, en los cuales una sola imagen
+puede contener múltiples elementos etiquetables, como peatones, vehículos y señales de
+tráfico.
+
+En los modelos diferenciables del aprendizaje profundo, la estructura general se puede
+describir como una composición de funciones lineales y no lineales:
+
+$$
+f(\mathbf{x}) = f_L \circ f_{L-1} \circ \dots \circ f_1 (\mathbf{x}),
+$$
+
+donde cada capa aplica una transformación de la forma:
+
+$$
+f_\ell(\mathbf{x}) = \sigma_\ell(\mathbf{W}*\ell \mathbf{x} + \mathbf{b}*\ell).
+$$
+
+En esta formulación, ($\mathbf{W}_\ell$) y ($\mathbf{b}_\ell$) representan los pesos y
+sesgos de la capa ($\ell$), respectivamente, mientras que ($\sigma\_\ell(\cdot)$) es una
+función de activación diferenciable. Esta función introduce no linealidad al modelo y
+permite restringir o normalizar el rango de valores de salida, lo que dota al modelo de
+la capacidad de aproximar relaciones complejas y no lineales entre los datos de entrada
+y salida.
+
+De este modo, tanto la regresión lineal como la regresión logística pueden entenderse
+como los bloques fundamentales sobre los cuales se construyen las redes neuronales
+modernas, sirviendo como la base conceptual de arquitecturas mucho más complejas que
+veremos en los capítulos posteriores.
 
 ### 3.1. Detección de gatos en imágenes mediante regresión logística
 
-En lugar de programar manualmente una aplicación que identifique un gato frente a otros
-tipos de animales, se plantea un enfoque basado en **aprendizaje automático**. En este
-escenario, se construye un conjunto de datos compuesto por múltiples ejemplos de
-imágenes de gatos y de otros animales. Este conjunto permite al modelo aprender
-automáticamente a distinguir un gato de otros animales a partir de patrones en los
-datos, sin necesidad de instrucciones explícitas para cada caso. El objetivo principal
-consiste en **modelar la distribución de los datos**, lo que facilita la comparación
-entre distintas distribuciones y la creación de sistemas de aprendizaje supervisado. En
-estos sistemas, cada ejemplo se asocia a una etiqueta que indica si pertenece a la clase
-“gato” o a otra clase, permitiendo así que el modelo aprenda la relación entre las
-características de las imágenes y su clasificación correspondiente.
+En lugar de desarrollar manualmente una aplicación con reglas explícitas para
+identificar si una imagen contiene un gato u otro tipo de animal, se puede adoptar un
+enfoque basado en aprendizaje automático. En este contexto, se construye un conjunto de
+datos compuesto por múltiples ejemplos de imágenes etiquetadas, algunas con gatos y
+otras sin ellos. Este conjunto permite que el modelo aprenda automáticamente a
+distinguir un gato de otros animales a partir de los patrones estadísticos presentes en
+los datos, sin requerir instrucciones específicas para cada caso.
 
-Los modelos de aprendizaje supervisado pueden aplicarse a diferentes tipos de tareas:
-clasificación binaria, clasificación multiclase, regresión para la predicción de valores
-continuos y aprendizaje de representaciones internas de los datos. Estas
-representaciones, conocidas como **espacios embebidos**, son transformaciones de los
-datos de entrada originales a un espacio vectorial donde se preservan propiedades
-relevantes para el modelo. En este espacio, los vectores generados permiten comparar
-similitudes entre distintos ejemplos mediante métricas como la **similitud del coseno**,
-lo que resulta útil para tareas como clustering y búsqueda por similitud.
+El objetivo principal de este proceso es modelar la distribución de los datos de manera
+que el sistema sea capaz de identificar diferencias entre las distintas clases. En un
+escenario de aprendizaje supervisado, cada ejemplo del conjunto de datos se asocia con
+una etiqueta que indica si pertenece o no a la clase “gato”. El modelo aprende,
+entonces, la relación entre las características de las imágenes y su respectiva
+clasificación.
 
-En la práctica, gracias a la disponibilidad de grandes volúmenes de datos etiquetados,
-los sistemas supervisados son los más utilizados. Cada muestra se considera
-**independientemente distribuida**, y el modelo se diseña para aproximarse a patrones
-estables en los datos. Esto garantiza que el conjunto de datos represente de manera
-adecuada la variabilidad de los ejemplos posibles y que las representaciones aprendidas
-sean consistentes y útiles para tareas posteriores.
+Durante este proceso, las etiquetas se representan mediante valores numéricos. Cada
+clase tiene asignado un identificador único. Este identificador puede gestionarse
+mediante un diccionario, en el que la clave representa el identificador numérico y el
+valor corresponde al nombre de la clase. Una vez que el modelo produce sus predicciones,
+se selecciona la clase con el valor más alto y se traduce nuevamente al nombre de la
+clase utilizando dicho diccionario. Por ejemplo, si el modelo predice que el índice más
+alto corresponde al identificador `1`, el sistema puede mapear este valor a la clase
+`"gato"`.
 
-Un ejemplo representativo de clasificación binaria es la detección de gatos en imágenes.
-En este caso, cada imagen se etiqueta de manera binaria: **1** si contiene un gato y
-**0** si no. Aunque el problema puede extenderse a clasificación multiclase, se utiliza
-la clasificación binaria para fines ilustrativos.
+Gracias a la disponibilidad de grandes volúmenes de datos etiquetados, los sistemas
+supervisados se han convertido en los más empleados en la práctica. Cada muestra del
+conjunto de datos se considera independiente e idénticamente distribuida (i.i.d.), lo
+que significa que cada ejemplo es representativo y estadísticamente consistente con la
+distribución global de los datos. Este supuesto garantiza que el modelo pueda aprender
+patrones estables y generalizables, de modo que las representaciones internas que genera
+(también conocidas como espacios embebidos o espacios de representación) resulten
+estructuradas y separables, permitiendo agrupar ejemplos similares en regiones cercanas
+del espacio de características.
 
-Cada imagen se representa mediante $64 \times 64$ píxeles en formato RGB, generando tres
-matrices correspondientes a los canales de color rojo, verde y azul. Cada matriz tiene
-dimensiones $64 \times 64$, por lo que el número total de valores por imagen es:
+Siguiendo con el ejemplo de la clasificación de gatos, cada imagen de entrada se
+representa mediante un conjunto de píxeles con tres canales de color (rojo, verde y
+azul). Si cada canal tiene una resolución de (64 \times 64) píxeles, por ejemplo, el
+número total de valores por imagen es:
 
 $$
-64 \times 64 \times 3 = 12288.
+64 \times 64 \times 3 = 12,288.
 $$
 
-Para introducir esta información en un modelo de red neuronal, se aplica la técnica de
-**aplanamiento (_flatten_)**, que convierte las tres matrices en un único vector columna
-de dimensión $12288 \times 1$, conservando toda la información relevante de los píxeles.
-Las etiquetas asociadas a cada imagen indican la clase correspondiente; por ejemplo, una
-imagen denominada `gato.png` recibe la etiqueta **1**, mientras que una imagen sin gato
-recibe **0**. La existencia de etiquetas convierte a este problema en un caso típico de
-**aprendizaje supervisado**.
+Para que esta información pueda ser procesada por un modelo de red neuronal, las tres
+matrices de color se **aplanan (_flatten_)**, convirtiéndose en un único vector columna
+de dimensión (12,288 \times 1). Este vector conserva la información de los píxeles, pero
+la reorganiza en una estructura unidimensional apta para cálculos matriciales. Cada
+imagen se asocia a una etiqueta binaria: **1** si contiene un gato, y **0** si no.
 
-Si se dispone de **M ejemplos**, la matriz de características $X$ tendrá dimensión
-$(n, M)$, donde $n = 12,288$, y el vector de etiquetas $Y$ tendrá dimensión $(1, M)$,
-conteniendo únicamente valores binarios.
+Si se dispone de $M$ ejemplos, la matriz de características $X$ tendrá dimensión
+$(n, M)$, donde $n = 12,288$, mientras que el vector de etiquetas $Y$ tendrá dimensión
+$(1, M)$ y contendrá los valores binarios correspondientes a cada muestra.
 
-Para resolver este problema se utiliza **regresión logística**, un algoritmo supervisado
-diseñado para tareas con etiquetas binarias. Su funcionamiento es similar al de la
-regresión lineal, con la diferencia de que la salida se transforma mediante la **función
-sigmoide**, que restringe el resultado a un valor entre 0 y 1, interpretable como
-probabilidad. La función sigmoide se define como:
+Para resolver este problema, se emplea la regresión logística, un algoritmo de
+aprendizaje supervisado diseñado específicamente para tareas de clasificación binaria.
+Su funcionamiento es similar al de la regresión lineal, pero incorpora una **función de
+activación sigmoide** que transforma la salida del modelo en un valor comprendido entre
+0 y 1, interpretable como una probabilidad. La función sigmoide se define como:
 
 $$
 \sigma(z) = \frac{1}{1 + e^{-z}},
@@ -991,41 +1045,52 @@ $$
 donde:
 
 $$
-z = w^T x + b.
+z = \mathbf{w}^\top \mathbf{x} + b.
 $$
 
-En esta ecuación, $w$ representa los **pesos**, $b$ el **sesgo** y $x$ el vector de
-características de entrada. La predicción final del modelo se expresa como:
+En esta formulación, $\mathbf{w}$ representa el vector de pesos, $b$ el término de
+sesgo, y $\mathbf{x}$ el vector de características de la imagen. La predicción final del
+modelo se expresa como:
 
 $$
-\hat{y} = \sigma(w^T x + b),
+\hat{y} = \sigma(\mathbf{w}^\top \mathbf{x} + b),
 $$
 
-donde $\hat{y}$ corresponde a la probabilidad de que la imagen pertenezca a la clase
-positiva, es decir, que contenga un gato. Esta representación permite interpretar las
-salidas del modelo de manera probabilística y establecer umbrales adecuados para la
-clasificación binaria, garantizando consistencia y flexibilidad en la toma de
-decisiones.
+donde $\hat{y}$ indica la probabilidad de que la imagen pertenezca a la clase positiva
+(es decir, que contenga un gato). Si el valor de $\hat{y}$ supera un determinado umbral
+de decisión (por ejemplo, 0.5), la imagen se clasifica como perteneciente a la clase
+“gato”, en caso contrario, se clasifica como “no gato”.
 
-### 3.2. Función de pérdida y función de coste
+### 3.2. Función de pérdida y función de coste [ME HE QUEDADO AQUI]
 
 Una vez obtenidos los datos, es necesario formalizar el proceso mediante el cual el
 modelo aproxima las predicciones al resultado deseado. Para ello, se utiliza la
 **función de pérdida**, un escalar diferenciable cuyo valor refleja el rendimiento del
 modelo. Durante el entrenamiento, el objetivo es minimizar esta función de pérdida,
-reduciendo así el error entre las predicciones del modelo y los valores reales. Este
-enfoque permite plantear el entrenamiento como un **problema de optimización**, que se
-resuelve mediante técnicas como el **descenso del gradiente**. El ajuste de los
-parámetros del modelo, como los pesos (w) y el sesgo (b), busca encontrar el conjunto
-óptimo que minimice la discrepancia entre las predicciones y las etiquetas reales.
-
-La función de pérdida cuantifica el error para un **único ejemplo**, mientras que la
+reduciendo así el error entre las predicciones del modelo y los valores reales, en otros
+casos, donde no contamos con etiquetas como puede ser en el aprendizaje, no supervisado,
+pues al final se optimizan otro tipo de métricas como puede ser la distancia entre
+muestras el error cuadratico medio, por ejemplo entre reconstrucciones de imágenes y la
+imagen original o similares. Este enfoque permite plantear el entrenamiento como un
+**problema de optimización**, que se resuelve mediante técnicas como el **descenso del
+gradiente**, aunque existen dame otro tipo de métodos de optimización, sin embargo, este
+es el más destacado, no? Porque al final con cómputo datos se pueden obtener soluciones
+considerables. El ajuste de los parámetros del modelo, como los pesos (w) y el sesgo
+(b), busca encontrar el conjunto óptimo que minimice la discrepancia entre las
+predicciones y las etiquetas reales. La principal diferencia entre uno u otro, es qué La
+función de pérdida cuantifica el error para un **único ejemplo**, mientras que la
 **función de coste** representa el promedio de estas pérdidas sobre todo el conjunto de
-entrenamiento. En el aprendizaje supervisado, el modelo genera una predicción
-($\hat{y}$) a partir de un ejemplo de entrada, que se compara con la etiqueta real ($y$)
-para calcular la pérdida. Este procedimiento se repite para todas las muestras del
-conjunto de datos, y el promedio de estas pérdidas define la función de coste, que guía
-el ajuste de los parámetros durante el entrenamiento.
+entrenamiento.
+
+En el aprendizaje supervisado, el modelo genera una predicción ($\hat{y}$) a partir de
+un ejemplo de entrada, que se compara con la etiqueta real ($y$) para calcular la
+pérdida. Este procedimiento se repite para todas las muestras del conjunto de datos, y
+el promedio de estas pérdidas define la función de coste, que guía el ajuste de los
+parámetros durante el entrenamiento.
+
+El objetivo del entrenamiento es encontrar los parámetros ( \mathbf{w} ) y ( b ) que
+minimicen una **función de pérdida** ( \mathcal{L} ), la cual mide la discrepancia entre
+las predicciones ( \hat{y}\_i ) y los valores verdaderos ( y_i ).
 
 En **regresión logística**, la función de pérdida empleada es la **función logística o
 log-loss**, definida como:
@@ -1033,6 +1098,26 @@ log-loss**, definida como:
 $$
 \mathcal{L}(\hat{y}, y) = - \big( y \cdot \log(\hat{y}) + (1-y)\cdot \log(1-\hat{y}) \big).
 $$
+
+En el caso de la **regresión logística**, el problema consiste en estimar los parámetros
+$w$ y $b$ que minimicen la función de coste $J(w, b)$. Esta se define a partir de la
+función de pérdida logarítmica, ampliamente utilizada en problemas de clasificación
+binaria:
+
+$$
+J(w, b) = \frac{1}{M} \sum_{i=1}^{M} \mathcal{L}(\hat{y}^{(i)}, y^{(i)})
+= -\frac{1}{M} \sum_{i=1}^{M} \Big[ y^{(i)} \log(\hat{y}^{(i)}) + (1-y^{(i)}) \log(1-\hat{y}^{(i)}) \Big],
+$$
+
+donde:
+
+- $M$ es el número total de ejemplos.
+- $\hat{y}^{(i)} = \sigma(w^T x^{(i)} + b)$ corresponde a la predicción del modelo para
+  el ejemplo $i$.
+- $x^{(i)}$ es el vector de características del ejemplo $i$.
+- $y^{(i)}$ es la etiqueta real asociada al ejemplo.
+- $\sigma(z)$ representa la función sigmoide, que mapea cualquier valor real al
+  intervalo $(0, 1)$.
 
 Esta función penaliza de manera efectiva los errores en problemas de clasificación
 binaria y resulta más adecuada que el **error cuadrático medio (MSE)**, que se expresa
@@ -1056,6 +1141,39 @@ coste se convierte así en la métrica central para evaluar y guiar el ajuste de
 parámetros del modelo, asegurando que las predicciones se aproximen progresivamente a
 los valores reales a medida que avanza el entrenamiento.
 
+Otras métricas utilizadas en el proceso de optimización en uno de los hoteles, mensaje
+profundo, pues son La **pérdida cuadrática media (MSE)** se define como:
+
+$$
+\mathcal{L}*{\text{MSE}} = \frac{1}{N} \sum*{i=1}^N (y_i - \hat{y}_i)^2
+$$
+
+Esta función penaliza más fuertemente los errores grandes, pero puede verse afectada por
+valores atípicos. Para ello se plantea como Una alternativa es la **pérdida absoluta
+media (MAE)**:
+
+$$
+\mathcal{L}*{\text{MAE}} = \frac{1}{N} \sum*{i=1}^N |y_i - \hat{y}_i|
+$$
+
+que es más robusta frente a valores extremos, aunque su derivada no está definida en (
+y_i = \hat{y}\_i ).
+
+Y luego, por último, tenemos La **pérdida de Huber** combina ambas aproximaciones
+mediante un parámetro ( \delta > 0 ):
+
+$$
+\mathcal{L}_{\text{Huber}} =
+\begin{cases}
+\frac{1}{2}(y_i - \hat{y}_i)^2, & \text{si } |y_i - \hat{y}_i| \leq \delta \
+\delta , (|y_i - \hat{y}_i| - \frac{1}{2}\delta), & \text{en otro caso}
+\end{cases}
+$$
+
+La pérdida de Huber es diferenciable en todos los puntos excepto en el límite ( |y_i -
+\hat{y}\_i| = \delta ), aunque en la práctica esto no causa inestabilidad numérica
+debido a la precisión finita de los cálculos.
+
 ### 3.3. Descenso del gradiente
 
 El **descenso del gradiente** constituye uno de los algoritmos fundamentales para el
@@ -1063,25 +1181,15 @@ entrenamiento de modelos en aprendizaje automático. Su objetivo es encontrar lo
 de los parámetros que minimizan una determinada función de coste, garantizando que las
 predicciones del modelo se ajusten lo mejor posible a los datos observados.
 
-En el caso de la **regresión logística**, el problema consiste en estimar los parámetros
-$w$ y $b$ que minimicen la función de coste $J(w, b)$. Esta se define a partir de la
-función de pérdida logarítmica, ampliamente utilizada en problemas de clasificación
-binaria:
+Si recordamos para el ejemplo de la red regresión logística En el caso de la **regresión
+logística**, el problema consiste en estimar los parámetros $w$ y $b$ que minimicen la
+función de coste $J(w, b)$. Esta se define a partir de la función de pérdida
+logarítmica, ampliamente utilizada en problemas de clasificación binaria:
 
 $$
 J(w, b) = \frac{1}{M} \sum_{i=1}^{M} \mathcal{L}(\hat{y}^{(i)}, y^{(i)})
 = -\frac{1}{M} \sum_{i=1}^{M} \Big[ y^{(i)} \log(\hat{y}^{(i)}) + (1-y^{(i)}) \log(1-\hat{y}^{(i)}) \Big],
 $$
-
-donde:
-
-- $M$ es el número total de ejemplos.
-- $\hat{y}^{(i)} = \sigma(w^T x^{(i)} + b)$ corresponde a la predicción del modelo para
-  el ejemplo $i$.
-- $x^{(i)}$ es el vector de características del ejemplo $i$.
-- $y^{(i)}$ es la etiqueta real asociada al ejemplo.
-- $\sigma(z)$ representa la función sigmoide, que mapea cualquier valor real al
-  intervalo $(0, 1)$.
 
 Para reducir $J(w, b)$, se calculan las **derivadas parciales** respecto a los
 parámetros del modelo, lo que proporciona la dirección del gradiente:
@@ -1096,9 +1204,8 @@ $$
 y^{(i)}).
 $$
 
-Estos términos indican cómo deben modificarse $w$ y $b$ para disminuir el error.
-
-El procedimiento iterativo del descenso del gradiente sigue las siguientes fases:
+Estos términos indican cómo deben modificarse $w$ y $b$ para disminuir el error. El
+procedimiento iterativo del descenso del gradiente sigue las siguientes fases:
 
 1. **Inicialización de parámetros**: Se asignan valores iniciales, normalmente pequeños,
    ya sean ceros o aleatorios.
@@ -1178,22 +1285,24 @@ plt.title("Trayectorias del descenso del gradiente")
 plt.show()
 ```
 
-En esta simulación se aprecia que los puntos iniciales evolucionan siguiendo
-trayectorias determinadas por el gradiente de la función. En cada iteración, las
-posiciones se actualizan desplazándose en la dirección opuesta a la pendiente local, lo
-que permite avanzar hacia valores más bajos de la función objetivo. Este comportamiento
-ilustra de manera visual y clara el principio esencial del descenso del gradiente,
-consistente en ajustar los parámetros de forma progresiva hasta aproximarse a un mínimo
-de la función.
+Si ejecutamos el código anterior en nuestro entorno, veremos que en esta simulación En
+esta simulación se aprecia que los puntos iniciales evolucionan siguiendo trayectorias
+determinadas por el gradiente de la función. En cada iteración, las posiciones se
+actualizan desplazándose en la dirección opuesta a la pendiente local, lo que permite
+avanzar hacia valores más bajos de la función objetivo. Este comportamiento ilustra de
+manera visual y clara el principio esencial del descenso del gradiente, consistente en
+ajustar los parámetros de forma progresiva hasta aproximarse a un mínimo de la función.
 
 El sistema **`autograd`** de PyTorch permite calcular derivadas automáticamente sobre
 operaciones tensoriales. Esta funcionalidad es la base de la **retropropagación**
 (_backpropagation_), utilizada para ajustar los parámetros de las redes neuronales.
 
-Cada tensor puede llevar asociada la propiedad `requires_grad=True`. PyTorch construye
-un **grafo computacional dinámico** que registra las operaciones aplicadas sobre los
-tensores y, al invocar `backward()`, calcula sus derivadas mediante la regla de la
-cadena.
+Cada tensor puede llevar asociada la propiedad `requires_grad=True`, que lo que hace es
+indicar si el tensor requiere gradientes, es decir, si van a tener parámetro, desaprendí
+bless, y si se van a tener en cuenta en el grafo computacional que crea durante el
+entrenamiento. PyTorch construye un **grafo computacional dinámico** que registra las
+operaciones aplicadas sobre los tensores y, al invocar `backward()`, calcula sus
+derivadas mediante la regla de la cadena.
 
 ```python
 import torch
@@ -1207,8 +1316,279 @@ print(x.grad)  # Derivadas parciales de z respecto a x
 ```
 
 También pueden deshabilitarse los gradientes cuando no se necesitan, por ejemplo durante
-la inferencia, utilizando el contexto `with torch.no_grad():`, lo que mejora el
-rendimiento y reduce el consumo de memoria.
+la inferencia, utilizando el contexto `with torch.no_grad():` o utilizando el
+inferece_mode, que es incluso más eficiente, lo que mejora el rendimiento y reduce el
+consumo de memoria.
+
+### 3.4. Optimización y Regularización incluso
+
+En la regresión lineal, una solución analítica para los pesos puede obtenerse mediante
+la **pseudoinversa de Moore–Penrose**, porque muchas veces calcular la inversa no es
+factible, sobre todo por precisión numérica:
+
+$$
+\mathbf{w} = (\mathbf{X}^\top \mathbf{X})^{-1} \mathbf{X}^\top \mathbf{y},
+$$
+
+donde (
+$\mathbf{X} \in \mathbb{R}^{N \times n} $) representa la matriz de datos de
+entrada y ( $\mathbf{y} \in \mathbb{R}^N $) los valores objetivo. No obstante, este método
+puede ser inestable si ( $\mathbf{X}^\top \mathbf{X}$
+) es casi singular, que sea singular significa qué.
+
+Para mejorar la estabilidad y controlar la magnitud de los pesos, se introduce un
+término de **regularización**:
+
+Regularización L2 (Ridge Regression) La regularización L2 favorece pesos pequeños y
+estables, lo que evita es hacer que durante el entrenamiento los pesos tienden a
+incrementarse mucho eso lo que hace es que produzca cambios muy bruscos entonces la
+regularización L2 permite hacer que los entrenamientos sean mucho más estables sea mucho
+más Smooth más suaves
+
+$$
+\mathcal{L}*{\text{Ridge}} = \frac{1}{N} \sum*{i=1}^N (y_i - \hat{y}_i)^2 + \lambda |\mathbf{w}|_2^2
+$$
+
+Regularización L1 (Lasso Regression):** mientras que la L1 promueve **esparsidad\*\*, es
+decir, que algunos pesos sean exactamente cero, por ejemplo, esto se utiliza mucho
+cuando quieres añadir mecanismos de Espar ciudad que no se llama a Siri yo no sé
+representadas y en español en realidad pero no sé una palabra que significa sparsity en
+ingles, entonces eso es lo que haces como matar más neuronas, lo que estás haciendo es
+que el modelo intente comprimir más información de los datos de entrada por ejemplo esto
+se puede utilizar mucho en mecanismos basados en auto en covers auto codificadores creo
+que hacen es tener un dato de entrada lo transforma una representación en bebida,
+comprensible para el modelo y pretenden descomprimir que al final es una representación
+comprimida de los datos de entrada y lo que se pretende es con esa versión comprimida
+recuperar la información original con la menor pérdida posible, pues lo que se tiende a
+hacer por ejemplo existen este tipo de auto codificadores Basados en esparcida que bueno
+que lo que te permite es tener una mejor comprensión o qué neuronas se activan más o
+menos para ciertos tipos de datos de entrada por ejemplo Anthropic o Cloud. Al final ha
+conseguido tener una mayor represión explica habilidad de los modelos de lenguaje que
+tienen utilizaba este tipo de arquitecturas
+
+$$
+\mathcal{L}*{\text{Lasso}} = \frac{1}{N} \sum*{i=1}^N (y_i - \hat{y}_i)^2 + \lambda |\mathbf{w}|_1
+$$
+
+### 3.5. Función Softmax y Clasificación Multiclase
+
+En sistemas de clasificación con múltiples clases a predecir, la capa de salida del
+modelo suele apliccon múltiples clases a predecirar la **función Softmax** a los logits
+( $z_i$ ), definidos como:
+
+$$
+z_i = \mathbf{w}_i^\top \mathbf{x} + b_i
+$$
+
+La función Softmax transforma estos valores en una distribución de probabilidad:
+
+$$
+p_i = \text{Softmax}(z_i) = \frac{e^{z_i / T}}{\sum_{j=1}^M e^{z_j / T}}
+$$
+
+donde ( T > 0 ) es el **parámetro de temperatura**.
+
+- Cuando ( T ) es grande, la distribución ( $p_i$ ) se aproxima a una **distribución
+  uniforme**, reflejando mayor incertidumbre, porque al final lo que estás haciendo es
+  repartir las probabilidades, más o menos por igual para todos los posibles sucesos.
+- Cuando ( T ) tiende a cero, la distribución se **concentra** en la clase más probable,
+  haciendo el modelo más determinista.
+
+El resultado final de la predicción se puede realizar como hemos dicho anteriormente
+eligiendo del tensor de salida, resultante con las probabilidades, pues elige el índice
+que tiene el valor de probabilidad más alto. Por ejemplo, entonces generalmente ese
+índice del tensor suele representar así solo utilizar como identificador de la clase
+entonces suponiendo que tenemos un tensor de cuatro elementos y el de mayor probabilidad
+es el elemento que está en la posición con el índice dos que sería el tercer elemento si
+el tensor M ya que empieza con el índice cero pues por ejemplo se cogería ese índice
+tres e índice dos que diga y tendría a lo mejor una representación con una clase por
+ejemplo, matemáticamente, esto se expresa como obtiene mediante:
+
+$$
+\hat{y} = \arg\max_i , p_i.
+$$
+
+Para evitar que el modelo sea excesivamente confiado, se puede emplear la técnica de
+**label smoothing**, que modifica las etiquetas verdaderas ( $y_i$ ) según añadiendo un
+parámetro adicional que permite suavizar suavizar al final, lo que haces es esto solo
+eso te sirve si se utiliza el método de one hot encoding que consiste en convertir los
+ascensores de las etiquetas en personas con todos a unos a todos a aceros y colocar un
+uno en el índice de la etiqueta correcta. Entonces como todo está acero y la etiqueta
+correcta es una araña al hacer suavizado de las etiquetas lo que estás haciendo, es
+decir el modelo que no estés tan seguro de que el dato de entrada que le vas a insertar
+sea realmente al 100 × 100 perteneciente a esa clase entonces hace que sea mucho menos
+restrictivo o mucho más estricto en la selección de etiquetas durante las predicciones.
+
+$$
+y_i' = (1 - \varepsilon) y_i + \frac{\varepsilon}{M},
+$$
+
+donde ( \varepsilon \in [0,1] ) controla el grado de suavizado.
+
+Luego también podemos utilizar otro tipo de procedimientos para las funciones de
+pérdida, sistemas de clasificación, por ejemplo como es La **función de pérdida por
+entropía cruzada** mide la discrepancia entre las distribuciones verdadera y predicha,
+al final, lo que hacen es medir la la distancia, por así decirlo, o la diferencia que
+existe entre dos distribuciones entre la distribución de los datos originales, lo que
+predice el modelo y lo que se pretende es evitar la divergencia que existe entre ambos:
+
+$$
+\mathcal{L}*{\text{CE}} = - \sum*{i=1}^M y_i \log(p_i)
+$$
+
+Minimizar esta función equivale a **maximizar la probabilidad asignada a la clase
+correcta**. Además, la entropía cruzada puede interpretarse como:
+
+$$
+\mathcal{L}*{\text{CE}} = H(\mathbf{y}, \mathbf{p}) = H(\mathbf{y}) + D*{KL}(\mathbf{y} ,||, \mathbf{p})
+$$
+
+donde:
+
+- ( H(\mathbf{y}) ) es la entropía de las etiquetas verdaderas, y
+- ( $D\_{KL}(\mathbf{y} ,||, \mathbf{p})$ ) es la **divergencia de Kullback–Leibler**,
+  definida como:
+
+$$
+D_{KL}(\mathbf{y} ,||, \mathbf{p}) = \sum_{i=1}^M y_i \log \frac{y_i}{p_i}
+$$
+
+Minimizar la entropía cruzada implica reducir la divergencia entre las distribuciones de
+salida y las etiquetas verdaderas.
+
+### 3.6. Incertidumbre, Calibración y Pérdida Focal
+
+Aunque la función Softmax produce valores en el rango ([0,1]) que suman 1, estos **no
+reflejan necesariamente la verdadera incertidumbre del modelo**. Una probabilidad alta
+no garantiza una predicción confiable. La **calibración del modelo** busca alinear las
+probabilidades predichas con las frecuencias empíricas observadas.
+
+Un modelo calibrado cumple que:
+
+$$
+P(Y = k \mid \hat{P}(Y = k) = p) = p
+$$
+
+para cualquier clase ( k ) y probabilidad ( p ).
+
+La calibración puede mejorarse ajustando la temperatura ( T ) o mediante funciones de
+pérdida alternativas como la **pérdida focal (Focal Loss)**, propuesta por Lin et al.
+(2017), definida como:
+
+$$
+\mathcal{L}_{\text{Focal}} = - (1 - p_t)^\gamma \log(p_t)
+$$
+
+donde:
+
+- ( p_t ) es la probabilidad predicha de la clase verdadera,
+- ( $\gamma \ge 0$ ) es un parámetro de enfoque que **amplifica el peso de los ejemplos
+  difíciles** y reduce el de los ejemplos fáciles.
+
+El **proceso de calibración de un modelo de clasificación** tiene como objetivo alinear
+las **probabilidades predichas por el modelo** con la **frecuencia real de aciertos**,
+de manera que si el modelo asigna una probabilidad (p) a un evento, este evento ocurra
+aproximadamente con frecuencia (p). A continuación, se describe con rigor técnico cómo
+se realiza este proceso:
+
+Sea un modelo de clasificación que produce probabilidades predichas ( \hat{p}\_i = P(Y =
+k \mid X = x_i) ) para cada clase (k). Idealmente, el modelo está calibrado si:
+
+$$
+P(Y = k \mid \hat{p}_i = p) = p, \quad \forall p \in [0,1]
+$$
+
+Esto significa que, para todos los ejemplos a los que el modelo asigna una probabilidad
+(p), aproximadamente un ($100 \cdot p%$) de ellos pertenece realmente a la clase (k).
+
+El **escalado de temperatura** es un método simple y muy utilizado para redes
+neuronales. Consiste en ajustar un único parámetro (T > 0) que escala los logits antes
+de aplicar Softmax:
+
+$$
+p_i = \text{Softmax}\left(\frac{z_i}{T}\right)
+$$
+
+- Si (T = 1), no hay ajuste.
+- Si (T > 1), la distribución de probabilidades se vuelve más uniforme (menos confiada).
+- Si (T < 1), la distribución se concentra más en la clase de mayor logit (más
+  confiada).
+
+El parámetro (T) se optimiza sobre un **conjunto de validación** minimizando la
+**entropía cruzada** entre las probabilidades ajustadas y las etiquetas verdaderas:
+
+$$
+T^* = \arg \min_{T > 0} \frac{1}{N_{\text{val}}} \sum_{i=1}^{N_{\text{val}}} -y_i \log \text{Softmax}(z_i / T)
+$$
+
+Este procedimiento no cambia la clase predicha (argmax) pero ajusta la **confianza del
+modelo**, logrando mejor calibración.
+
+Para problemas de **clasificación binaria**, el método de **Platt Scaling** ajusta los
+logits mediante una función sigmoide paramétrica:
+
+$$
+\hat{p}_i = \frac{1}{1 + \exp(A z_i + B)}
+$$
+
+donde (A) y (B) son parámetros entrenados sobre un conjunto de validación para minimizar
+la entropía cruzada. Generaliza el escalado de temperatura al incluir un desplazamiento
+lineal ((B)).
+
+El **regression isotónica** es un método no paramétrico que ajusta las probabilidades
+predichas ( \hat{p}\_i ) usando una función **monótonamente creciente** (f):
+
+$$
+p_i^{\text{cal}} = f(\hat{p}_i)
+$$
+
+El objetivo es minimizar la desviación entre las probabilidades ajustadas y las
+observaciones reales:
+
+$$
+f^* = \arg \min_f \sum_{i=1}^{N_{\text{val}}} (y_i - f(\hat{p}_i))^2
+$$
+
+Este método es más flexible que el escalado de temperatura, pero requiere más datos de
+validación para evitar sobreajuste.
+
+Para medir qué tan calibrado está un modelo, se utilizan métricas como:
+
+- **Expected Calibration Error (ECE):**
+
+$$
+\text{ECE} = \sum_{m=1}^M \frac{|B_m|}{N} \Big| \text{acc}(B_m) - \text{conf}(B_m) \Big|
+$$
+
+donde:
+
+- (B_m) es el conjunto de predicciones en el bin (m) de confianza,
+
+- (|B_m|) es el número de ejemplos en ese bin,
+
+- (\text{acc}(B_m)) es la precisión observada en el bin,
+
+- (\text{conf}(B_m)) es la confianza media en el bin.
+
+- **Maximum Calibration Error (MCE):**
+
+$$
+\text{MCE} = \max_{m} \Big| \text{acc}(B_m) - \text{conf}(B_m) \Big|
+$$
+
+Estas métricas cuantifican la discrepancia entre la confianza predicha y la precisión
+real.
+
+Flujo de calibración típico
+
+1. **Entrenar el modelo** sobre el conjunto de entrenamiento.
+2. **Obtener logits o probabilidades** sobre un conjunto de validación separado.
+3. **Aplicar un método de calibración** (temperature scaling, Platt, isotonic).
+4. **Optimizar los parámetros del calibrador** minimizando entropía cruzada o error
+   cuadrático entre probabilidades predichas y etiquetas verdaderas.
+5. **Evaluar la calibración** usando métricas como ECE o MCE.
+6. **Usar el calibrador final** para ajustar las probabilidades del conjunto de prueba o
+   en producción.
 
 ### 3.4. Implementación de la regresión logística
 
@@ -1303,357 +1683,6 @@ plt.ylabel("Coste")
 plt.title("Reducción del coste durante el entrenamiento")
 plt.show()
 ```
-
-### 3.X. OTRAS ANOTACIONES QUE TENGO QUE INCLUIR DE ALGUNA FORMA
-
-### Modelos Diferenciables, Funciones de Pérdida y Calibración en Aprendizaje Profundo
-
-Los **modelos diferenciables** constituyen la base del aprendizaje profundo. Estos
-modelos pueden entenderse como composiciones de transformaciones lineales seguidas de
-funciones no lineales diferenciables, lo que permite el uso del **cálculo diferencial**
-para optimizar sus parámetros mediante métodos basados en gradientes.
-
-#### 1. Modelos Lineales y Diferenciables
-
-Un **modelo lineal** puede expresarse como:
-
-$$
-\hat{y} = \mathbf{w}^\top \mathbf{x} + b
-$$
-
-donde:
-
-- ( \mathbf{x} \in \mathbb{R}^n ) es el vector de entrada,
-- ( \mathbf{w} \in \mathbb{R}^n ) son los pesos del modelo,
-- ( b \in \mathbb{R} ) es el sesgo o término independiente, y
-- ( \hat{y} \in \mathbb{R} ) es la salida predicha.
-
-Cuando la salida no está restringida, el modelo se utiliza en **tareas de regresión**.
-En cambio, si la salida pertenece a un conjunto discreto de clases ( $\mathcal{C} = {1,
-2, \dots, M} $), se trata de un problema de **clasificación**. En el caso particular de
-( M = 2 ), se tiene una **clasificación binaria**.
-
-En los **modelos diferenciables** del aprendizaje profundo, la estructura general es una
-composición de funciones lineales y no lineales:
-
-$$
-f(\mathbf{x}) = f_L \circ f_{L-1} \circ \dots \circ f_1 (\mathbf{x})
-$$
-
-donde cada capa realiza una transformación del tipo:
-
-$$
-f_\ell(\mathbf{x}) = \sigma_\ell(\mathbf{W}*\ell \mathbf{x} + \mathbf{b}*\ell)
-$$
-
-siendo ( \sigma\_\ell(\cdot) ) una función de activación diferenciable (por ejemplo,
-ReLU, Sigmoide o Tanh).
-
----
-
-#### 2. Funciones de Pérdida en Regresión
-
-El objetivo del entrenamiento es encontrar los parámetros ( \mathbf{w} ) y ( b ) que
-minimicen una **función de pérdida** ( \mathcal{L} ), la cual mide la discrepancia entre
-las predicciones ( \hat{y}\_i ) y los valores verdaderos ( y_i ).
-
-La **pérdida cuadrática media (MSE)** se define como:
-
-$$
-\mathcal{L}*{\text{MSE}} = \frac{1}{N} \sum*{i=1}^N (y_i - \hat{y}_i)^2
-$$
-
-Esta función penaliza más fuertemente los errores grandes, pero puede verse afectada por
-valores atípicos.
-
-Una alternativa es la **pérdida absoluta media (MAE)**:
-
-$$
-\mathcal{L}*{\text{MAE}} = \frac{1}{N} \sum*{i=1}^N |y_i - \hat{y}_i|
-$$
-
-que es más robusta frente a valores extremos, aunque su derivada no está definida en (
-y_i = \hat{y}\_i ).
-
-La **pérdida de Huber** combina ambas aproximaciones mediante un parámetro ( \delta > 0
-):
-
-$$
-\mathcal{L}_{\text{Huber}} =
-\begin{cases}
-\frac{1}{2}(y_i - \hat{y}_i)^2, & \text{si } |y_i - \hat{y}_i| \leq \delta \
-\delta , (|y_i - \hat{y}_i| - \frac{1}{2}\delta), & \text{en otro caso}
-\end{cases}
-$$
-
-La pérdida de Huber es diferenciable en todos los puntos excepto en el límite ( |y_i -
-\hat{y}\_i| = \delta ), aunque en la práctica esto no causa inestabilidad numérica
-debido a la precisión finita de los cálculos.
-
----
-
-#### 3. Optimización y Regularización
-
-En la regresión lineal, una solución analítica para los pesos puede obtenerse mediante
-la **pseudoinversa de Moore–Penrose**:
-
-$$
-\mathbf{w} = (\mathbf{X}^\top \mathbf{X})^{-1} \mathbf{X}^\top \mathbf{y}
-$$
-
-donde (
-$\mathbf{X} \in \mathbb{R}^{N \times n} $) representa la matriz de datos de
-entrada y ( $\mathbf{y} \in \mathbb{R}^N $) los valores objetivo. No obstante, este método
-puede ser inestable si ( $\mathbf{X}^\top \mathbf{X}$
-) es casi singular.
-
-Para mejorar la estabilidad y controlar la magnitud de los pesos, se introduce un
-término de **regularización**:
-
-- **Regularización L2 (Ridge Regression):**
-
-$$
-\mathcal{L}*{\text{Ridge}} = \frac{1}{N} \sum*{i=1}^N (y_i - \hat{y}_i)^2 + \lambda |\mathbf{w}|_2^2
-$$
-
-- **Regularización L1 (Lasso Regression):**
-
-$$
-\mathcal{L}*{\text{Lasso}} = \frac{1}{N} \sum*{i=1}^N (y_i - \hat{y}_i)^2 + \lambda |\mathbf{w}|_1
-$$
-
-La regularización L2 favorece pesos pequeños y estables, mientras que la L1 promueve
-**esparsidad**, es decir, que algunos pesos sean exactamente cero.
-
----
-
-#### 4. Función Softmax y Clasificación Multiclase
-
-En clasificación, la capa de salida suele aplicar la **función Softmax** a los logits (
-$z_i$ ), definidos como:
-
-$$
-z_i = \mathbf{w}_i^\top \mathbf{x} + b_i
-$$
-
-La función Softmax transforma estos valores en una distribución de probabilidad:
-
-$$
-p_i = \text{Softmax}(z_i) = \frac{e^{z_i / T}}{\sum_{j=1}^M e^{z_j / T}}
-$$
-
-donde ( T > 0 ) es el **parámetro de temperatura**.
-
-- Cuando ( T ) es grande, la distribución ( $p_i$ ) se aproxima a una **distribución
-  uniforme**, reflejando mayor incertidumbre.
-- Cuando ( T ) tiende a cero, la distribución se **concentra** en la clase más probable,
-  haciendo el modelo más determinista.
-
-El resultado final de la predicción se obtiene mediante:
-
-$$
-\hat{y} = \arg\max_i , p_i
-$$
-
-Para evitar que el modelo sea excesivamente confiado, se puede emplear la técnica de
-**label smoothing**, que modifica las etiquetas verdaderas ( $y_i$ ) según:
-
-$$
-y_i' = (1 - \varepsilon) y_i + \frac{\varepsilon}{M}
-$$
-
-donde ( \varepsilon \in [0,1] ) controla el grado de suavizado.
-
----
-
-#### 5. Entropía Cruzada y Divergencia KL
-
-La **función de pérdida por entropía cruzada** mide la discrepancia entre las
-distribuciones verdadera y predicha:
-
-$$
-\mathcal{L}*{\text{CE}} = - \sum*{i=1}^M y_i \log(p_i)
-$$
-
-Minimizar esta función equivale a **maximizar la probabilidad asignada a la clase
-correcta**. Además, la entropía cruzada puede interpretarse como:
-
-$$
-\mathcal{L}*{\text{CE}} = H(\mathbf{y}, \mathbf{p}) = H(\mathbf{y}) + D*{KL}(\mathbf{y} ,||, \mathbf{p})
-$$
-
-donde:
-
-- ( H(\mathbf{y}) ) es la entropía de las etiquetas verdaderas, y
-- ( $D\_{KL}(\mathbf{y} ,||, \mathbf{p})$ ) es la **divergencia de Kullback–Leibler**,
-  definida como:
-
-$$
-D_{KL}(\mathbf{y} ,||, \mathbf{p}) = \sum_{i=1}^M y_i \log \frac{y_i}{p_i}
-$$
-
-Minimizar la entropía cruzada implica reducir la divergencia entre las distribuciones de
-salida y las etiquetas verdaderas.
-
----
-
-#### 6. Incertidumbre, Calibración y Pérdida Focal
-
-Aunque la función Softmax produce valores en el rango ([0,1]) que suman 1, estos **no
-reflejan necesariamente la verdadera incertidumbre del modelo**. Una probabilidad alta
-no garantiza una predicción confiable. La **calibración del modelo** busca alinear las
-probabilidades predichas con las frecuencias empíricas observadas.
-
-Un modelo calibrado cumple que:
-
-$$
-P(Y = k \mid \hat{P}(Y = k) = p) = p
-$$
-
-para cualquier clase ( k ) y probabilidad ( p ).
-
-La calibración puede mejorarse ajustando la temperatura ( T ) o mediante funciones de
-pérdida alternativas como la **pérdida focal (Focal Loss)**, propuesta por Lin et al.
-(2017), definida como:
-
-$$
-\mathcal{L}_{\text{Focal}} = - (1 - p_t)^\gamma \log(p_t)
-$$
-
-donde:
-
-- ( p_t ) es la probabilidad predicha de la clase verdadera,
-- ( $\gamma \ge 0$ ) es un parámetro de enfoque que **amplifica el peso de los ejemplos
-  difíciles** y reduce el de los ejemplos fáciles.
-
-El **proceso de calibración de un modelo de clasificación** tiene como objetivo alinear
-las **probabilidades predichas por el modelo** con la **frecuencia real de aciertos**,
-de manera que si el modelo asigna una probabilidad (p) a un evento, este evento ocurra
-aproximadamente con frecuencia (p). A continuación, se describe con rigor técnico cómo
-se realiza este proceso:
-
----
-
-### 1. Definición formal del problema de calibración
-
-Sea un modelo de clasificación que produce probabilidades predichas ( \hat{p}\_i = P(Y =
-k \mid X = x_i) ) para cada clase (k). Idealmente, el modelo está calibrado si:
-
-$$
-P(Y = k \mid \hat{p}_i = p) = p, \quad \forall p \in [0,1]
-$$
-
-Esto significa que, para todos los ejemplos a los que el modelo asigna una probabilidad
-(p), aproximadamente un ($100 \cdot p%$) de ellos pertenece realmente a la clase (k).
-
----
-
-### 2. Métodos clásicos de calibración
-
-#### 2.1. Escalado de temperatura (Temperature Scaling)
-
-El **escalado de temperatura** es un método simple y muy utilizado para redes
-neuronales. Consiste en ajustar un único parámetro (T > 0) que escala los logits antes
-de aplicar Softmax:
-
-$$
-p_i = \text{Softmax}\left(\frac{z_i}{T}\right)
-$$
-
-- Si (T = 1), no hay ajuste.
-- Si (T > 1), la distribución de probabilidades se vuelve más uniforme (menos confiada).
-- Si (T < 1), la distribución se concentra más en la clase de mayor logit (más
-  confiada).
-
-El parámetro (T) se optimiza sobre un **conjunto de validación** minimizando la
-**entropía cruzada** entre las probabilidades ajustadas y las etiquetas verdaderas:
-
-$$
-T^* = \arg \min_{T > 0} \frac{1}{N_{\text{val}}} \sum_{i=1}^{N_{\text{val}}} -y_i \log \text{Softmax}(z_i / T)
-$$
-
-Este procedimiento no cambia la clase predicha (argmax) pero ajusta la **confianza del
-modelo**, logrando mejor calibración.
-
----
-
-#### 2.2. Platt Scaling
-
-Para problemas de **clasificación binaria**, el método de **Platt Scaling** ajusta los
-logits mediante una función sigmoide paramétrica:
-
-$$
-\hat{p}_i = \frac{1}{1 + \exp(A z_i + B)}
-$$
-
-donde (A) y (B) son parámetros entrenados sobre un conjunto de validación para minimizar
-la entropía cruzada. Generaliza el escalado de temperatura al incluir un desplazamiento
-lineal ((B)).
-
----
-
-#### 2.3. Isotonic Regression
-
-El **regression isotónica** es un método no paramétrico que ajusta las probabilidades
-predichas ( \hat{p}\_i ) usando una función **monótonamente creciente** (f):
-
-$$
-p_i^{\text{cal}} = f(\hat{p}_i)
-$$
-
-El objetivo es minimizar la desviación entre las probabilidades ajustadas y las
-observaciones reales:
-
-$$
-f^* = \arg \min_f \sum_{i=1}^{N_{\text{val}}} (y_i - f(\hat{p}_i))^2
-$$
-
-Este método es más flexible que el escalado de temperatura, pero requiere más datos de
-validación para evitar sobreajuste.
-
----
-
-### 3. Evaluación de la calibración
-
-Para medir qué tan calibrado está un modelo, se utilizan métricas como:
-
-- **Expected Calibration Error (ECE):**
-
-$$
-\text{ECE} = \sum_{m=1}^M \frac{|B_m|}{N} \Big| \text{acc}(B_m) - \text{conf}(B_m) \Big|
-$$
-
-donde:
-
-- (B_m) es el conjunto de predicciones en el bin (m) de confianza,
-
-- (|B_m|) es el número de ejemplos en ese bin,
-
-- (\text{acc}(B_m)) es la precisión observada en el bin,
-
-- (\text{conf}(B_m)) es la confianza media en el bin.
-
-- **Maximum Calibration Error (MCE):**
-
-$$
-\text{MCE} = \max_{m} \Big| \text{acc}(B_m) - \text{conf}(B_m) \Big|
-$$
-
-Estas métricas cuantifican la discrepancia entre la confianza predicha y la precisión
-real.
-
----
-
-### 4. Flujo de calibración típico
-
-1. **Entrenar el modelo** sobre el conjunto de entrenamiento.
-2. **Obtener logits o probabilidades** sobre un conjunto de validación separado.
-3. **Aplicar un método de calibración** (temperature scaling, Platt, isotonic).
-4. **Optimizar los parámetros del calibrador** minimizando entropía cruzada o error
-   cuadrático entre probabilidades predichas y etiquetas verdaderas.
-5. **Evaluar la calibración** usando métricas como ECE o MCE.
-6. **Usar el calibrador final** para ajustar las probabilidades del conjunto de prueba o
-   en producción.
 
 ## 3. Redes neuronales y funciones de activación
 
