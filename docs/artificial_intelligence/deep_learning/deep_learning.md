@@ -1193,8 +1193,11 @@ ajustar los parámetros de las redes neuronales profundas. Cada tensor en PyTorc
 llevar asociada la propiedad `requires_grad=True`, que indica si debe participar en el
 cálculo de gradientes. PyTorch construye un grafo computacional dinámico que registra
 las operaciones realizadas sobre los tensores, y al invocar el método `backward()`,
-aplica la regla de la cadena para calcular las derivadas necesarias. Un ejemplo simple
-de su funcionamiento es el siguiente:
+aplica la regla de la cadena para calcular las derivadas necesarias. El algoritmo de
+propagación hacia atrás también se conoce como el modo automático inverso, de
+diferenciación en sistemas de la computación con ciencias de la computación.
+
+Un ejemplo simple de su funcionamiento es el siguiente:
 
 ```python
 import torch
@@ -1917,6 +1920,21 @@ Finalmente, las capas más profundas integran la información previa y logran re
 entidades completas, como rostros, palabras o categorías semánticas. Cuanto mayor es la
 profundidad de la red, mayor es la capacidad para modelar patrones de alta complejidad.
 
+La principal motivación, utilizar funciones no lineales es que al final la regresión
+lineal está limitada a poder combinar características de forma lineal, ya que no puede
+crear relaciones entre características que no sean lineales. Un ejemplo muy común es el
+de la puerta Xor donde a pesar de tener solo cuatro posibles combinaciones entre parejas
+de dos valores, valorar el valor B, no se puede realizar mediante separaciones lineales
+se necesitan realizar combinaciones no lineales al final una X sobres si es 00 es 0601
+es uno si es 10 es uno y si es 11 0
+
+Existe un teorema universal vale que es la aproximación universal de las redes
+neuronales, y es que dice que múltiples capas sucesivas conectadas entre sí con una
+determinada profundidad o anchura donde la profundidad sería el número de capas que
+tiene la red y la anchura es el número de neuronas que tienes por capa con una cierta
+función no lineal se puede llegar a aproximar cualquier función sin embargo esto es +1
+teorema no practico.
+
 ### 4.1. De neuronas a redes neuronales
 
 Una **neurona artificial** se puede representar de manera similar a una regresión
@@ -1937,11 +1955,41 @@ diferentes tipos de capas:
 - Las **capas ocultas**, situadas entre la capa de entrada y la de salida, transforman
   progresivamente la información. Se denominan "ocultas" porque sus valores no se
   observan directamente, sino que únicamente se percibe su efecto en la salida final.
+  Añadir capas ocultas hace que el problema de optimización de las redes neuronales al
+  final se han no convexas que sea no conversa significa que puede tener múltiples
+  mínimos. Hay que optimizar porque al final lo que se pretende en el proceso de
+  entrenamiento u optimización de los modelos es alcanzar el mínimo error que maximice
+  una cierta recompensa, entonces dependiendo de el número de capas que se añaden y la
+  cantidad de parámetros que tenga la red, es decir, a mayor número de grados de
+  libertad de la red, más no convexa es la función que tiene que optimizar, por lo que
+  pequeños cambios en la inicialización de los parámetros, puede alterar el resultado de
+  la red.
 
 El cálculo de la salida de una red neuronal consiste en aplicar repetidamente la
 operación de combinación lineal seguida de activación. La complejidad del aprendizaje
 profundo aumenta con el número de capas y conexiones, incrementando la capacidad de
 representación del modelo, pero también dificultando su interpretación.
+
+Un concepto muy importante es la de composición que al final consiste en coger partes
+que son mucho más complejas y que sean partes recursivas, es decir, qué pasos de temas
+uno dependen de pasos anteriores, donde cada parte puede ser expresada de manera simple
+con operaciones mucho más manejables este es el principal funcionamiento de la
+composición de capas en redes neuronales, donde al final el funcionamiento de una
+neurona o una red neuronal puede ser descompuestas como múltiples operaciones para
+metalizadas una detrás de otra, esto se representa de la siguiente manera: f (x) = ( f2
+◦ f1)(x) where f2 ◦ f1 is the composition of the two functions: ( f2 ◦ f1)(x) = f2(
+f1(x)), al final podemos combinar tantas operaciones, siempre que esa función no cambien
+el tipo de dato de los pasos anteriores, es decir que se conserve el tipo de datos. En
+la principal cambio que se produce son los cambios de parámetros o ajuste de parámetros
+en cada una de esas funciones al final cada una de esas funciones es como una capa del
+modelo entonces al final están parametrizado de manera diferente a que tienen una
+relación entre las diferentes funciones y se irán ajustando, pues dependiendo una de las
+otras. Suponiendo que por ejemplo tenemos dos funciones lineales, dando una función y
+depende de la función lineal anterior H. Al final al ese parámetro de H de la función
+anterior es el parámetro dependiente que viene multiplicado por el bar por la matriz de
+pesos de la siguiente función lineal a la que se le añade el sexo entonces al realizar
+estas operaciones. Al final tienden a colapsar en una única función lineal. Por ello hay
+que utilizar funciones no lineales para romper con este colapso.
 
 ### 4.2. Parámetros e hiperparámetros
 
@@ -1962,7 +2010,10 @@ que el modelo aprenda relaciones complejas entre los datos. Sin funciones de act
 una red neuronal se reduce a una combinación lineal de las entradas, comportándose de
 manera similar a métodos clásicos no basados en redes neuronales. La elección de la
 función de activación es fundamental y depende del tipo de capa y del problema a
-resolver.
+resolver. La salidas de la función parametrizar de la neurona o red neuronal, pues se
+conocerán como los Logits donde realizaremos una pequeña distinción entre la salidas pre
+activa pre activación o Post activación, que son la salidas de la neurona renombró anal,
+antes de aplicar, la no linealidad o la linealidad de la función de activación.
 
 En las **capas ocultas**, se emplean funciones de activación como:
 
@@ -2218,6 +2269,58 @@ como 4G a 5G exige reutilizar modelos entrenados con datos de la generación ant
 pese a que estos no puedan recuperarse, lo que demanda estrategias capaces de transferir
 conocimiento sin perder la información previa.
 
+Para agilizar el proceso de aprendizaje, se utilizan los mini lotes en el descenso del
+gradiente estocástico, ya que es lo que te permite es tener una primera idea de la
+función de pérdida o de costa en una parte reducida del conjunto de datos, sin tener que
+esperar a procesar todos los datos en si esto es muy beneficioso, porque podemos hacer
+Optimizaciones en pasos más pequeños que van a hacer una contribución global una vez
+visualizado todos los datos sin embargo, utilizar tamaños de lotes o utilizar lotes
+pequeños se tienen que asumir que los elementos son completamente diferenciados y únicos
+unos de otros, lo que se conoce como i.i.d que si mano recuerdo, significa en
+distribuciones independientes e identificables, .al final realizar el proceso de
+aprendizaje por mini lotes, es como realizar una aproximación por Montecarlo, de la
+función de pérdida o de coste, teniendo en cuenta todos los datos al completo del
+conjunto de datos y esto es lo mismo para los gradientes, es decir, que calcular los
+gradientes o la función de pérdida en la parte reducida del conjunto de datos, puede ser
+lo suficientemente significativo para actualizar los parámetros de todos los datos de la
+red, porque tengo una contribución global sin embargo, decir qué tamaños de lotes es
+decir que la cantidad de elementos que hay en un lote que es pequeñito, eso supone que
+existe una mayor varianza entre los diferentes datos o elementos de diferentes lotes, y
+cuanto mayor es el número de elementos en un lote, pues menor será esa varianza, al
+final eso se traduce en cómo de suave se optimiza la función de pérdida dependiendo
+también mucho del tipo de arquitectura, modelo tipo de aprendizaje, tipo de datos, etc.
+pero utilizar una cantidad de elementos en un lote. Al final actúa como un hiper
+parámetros por ejemplo en autoencoders suelen ser bastante sensibles a la cantidad de
+elementos por lote y se suelen utilizar menor cantidad de elementos porque tienden a
+memorizar más. Luego las funciones de costes suelen ser más sensibles a la cantidad de
+elementos. Suelen quedarse estancado es conforme, se aumenta el número de elementos,
+etc. aunque también es una de las medidas que se suelen utilizar para elegir la cantidad
+de elementos de un lote. Es lo máximo que ocupe en la memoria de la GPu. Lo que se
+tiende a hacer es coger el set de entrenamiento. Al final se aplica un Shuffle aleatorio
+de estos datos y se empiezan a hacer indexación de los datos por ejemplo si el vamos a
+coger lotes de 32 ejemplos pues coges y las primeras 32 muestras para que formen parte
+de un lote, luego los siguientes 32 ejemplos a los 32 anteriores, pues van para otro
+lote y así sucesivamente esto es entrena con el descenso de gradiente estocástico y una
+vez visualizado todos los lotes lo que se vuelve a hacer es coger ese conjunto de datos
+original y se puede se vuelve a hacer un shuffle y se vuelve a obtener los lotes
+aleatorios. Esta división de los lotes se pueden repartir entre múltiples nodos o GP V,
+y es lo que se conoce como la paralización de datos. Normalmente lo que se tiene es el
+conjunto de datos en memoria y se hace un Split, una división de cada uno de los lotes a
+las diferentes GPS, entonces cada GPT procesa de manera independiente cada uno de estos
+lotes, calculo los gradientes para esos lotes y posteriormente se esperan a que todos
+los nodos calculen esos lotes, es decir, se hace una paralización de datos de manera
+síncrona. Una vez calculados los gradientes se recopilan. Todos se agregan, se hace
+algún tipo de operación de Broadcast para ajustarlos el formato y se actualizan los
+parámetros globales de la red.
+
+A modo de ejemplo aqui tenemos una implementacion utilizando pytorch:
+
+```python
+from torch.utils.data import DataLoader
+dataloader = DataLoader(dataset, shuffle=True, batch_size=32)
+for xb, yb in dataloader:
+```
+
 ### 4.6. Sesgo y varianza
 
 El análisis de sesgo y varianza constituye una herramienta fundamental para comprender
@@ -2386,6 +2489,91 @@ datos, es posible aplicar un ajuste fino o **_fine-tuning_**, que consiste en re
 toda la red para adaptar gradualmente los parámetros a las particularidades del nuevo
 dominio.
 
+## 5. Diferenciacion automatica
+
+# Diferenciación Numérica, Simbólica y Automática: Una Explicación Integrada
+
+La diferenciación numérica, simbólica y automática constituye un conjunto de enfoques
+complementarios para obtener derivadas de funciones. Cada método se fundamenta en
+principios distintos y presenta características particulares que determinan su
+precisión, su coste computacional y su aplicabilidad. Comprender sus diferencias
+requiere analizar cómo opera cada técnica, qué tipo de información utiliza y qué
+compromisos establece entre exactitud y eficiencia.
+
+## 1. Diferenciación Numérica
+
+La diferenciación numérica aproxima la derivada a partir de valores concretos de la
+función, sin manipular expresiones algebraicas ni reglas simbólicas. Se basa
+directamente en la definición de derivada y sustituye el límite por un incremento finito
+\( h \) suficientemente pequeño. Esta aproximación adopta diversas formulaciones, entre
+las cuales la más simple es la diferencia hacia adelante:
+
+\[ f'(x) \approx \frac{f(x+h) - f(x)}{h}. \]
+
+Una versión más precisa es la diferencia centrada, que utiliza dos evaluaciones de la
+función y presenta un error de orden \( O(h^2) \):
+
+\[ f'(x) \approx \frac{f(x+h) - f(x-h)}{2h}. \]
+
+El método opera exclusivamente con números y produce resultados aproximados cuya calidad
+depende de la elección de \( h \). Si \( h \) es demasiado grande, la aproximación se
+degrada; si es demasiado pequeño, emergen errores de redondeo asociados a la aritmética
+de coma flotante. Además, cada derivada requiere varias evaluaciones de la función, lo
+que vuelve esta técnica poco viable para problemas con grandes cantidades de variables,
+como los modelos de aprendizaje profundo. Por ello se emplea sobre todo con fines de
+validación o en contextos de baja dimensionalidad.
+
+Para ilustrarlo, considérese la derivada de \( \sin(x) \) en \( x=1 \). Con \( h =
+10^{-5} \), la diferencia hacia adelante produce un valor aproximado cercano a 0.5,
+notablemente alejado de \( \cos(1) \approx 0.5403 \). En cambio, la diferencia centrada
+ofrece un resultado mucho más cercano al valor exacto, del orden de 0.5400. Este
+contraste refleja la sensibilidad del método a su formulación y a la elección de \( h
+\).
+
+## 2. Diferenciación Simbólica
+
+La diferenciación simbólica opera directamente sobre la expresión matemática de la
+función y utiliza reglas formales de derivación para obtener una fórmula exacta. Dado un
+ejemplo como
+
+\[ f(x) = a \sin(x) + bx\sin(x), \]
+
+un sistema simbólico desarrolla la derivada aplicando la regla del producto y la
+derivada del seno, lo que conduce a
+
+\[ f'(x) = a\cos(x) + b\sin(x) + bx\cos(x). \]
+
+Este enfoque trabaja con símbolos en lugar de valores numéricos y permite obtener
+derivadas sin aproximaciones. Sin embargo, al manipular expresiones complejas puede
+generar fórmulas extremadamente grandes, fenómeno conocido como _expression swell_. Esta
+explosión combinatoria limita su aplicación en programas extensos o en funciones
+definidas de forma procedimental.
+
+## 3. Diferenciación Automática
+
+La diferenciación automática (AD) se sitúa conceptualmente entre los dos métodos
+anteriores. No se basa en aproximaciones numéricas ni en transformaciones simbólicas
+exhaustivas, sino en la evaluación sistemática de la estructura computacional de la
+función. Aplica las reglas del cálculo diferencial durante la ejecución del programa y
+propaga derivadas elementales a través de las operaciones que lo componen.
+
+El resultado es exacto hasta los límites de la precisión de máquina, sin incurrir en
+errores de aproximación como en la diferenciación numérica ni en crecimiento explosivo
+de expresiones como en la simbólica. Además, su coste computacional es muy reducido. En
+modo directo, el coste es proporcional al número de variables; en modo inverso,
+utilizado en aprendizaje automático para implementar _backpropagation_, el coste es
+comparable al de evaluar la propia función. Esta eficiencia explica su papel central en
+la optimización de modelos contemporáneos.
+
+## 4. Comparación de los Métodos
+
+Aunque los tres enfoques comparten el objetivo de obtener derivadas, sus fundamentos y
+resultados difieren. La diferenciación numérica utiliza exclusivamente números y
+proporciona aproximaciones; la diferenciación simbólica manipula expresiones y produce
+resultados exactos; la diferenciación automática combina precisión numérica y eficiencia
+computacional sin generar fórmulas complejas. De este modo, la diferenciación automática
+recoge ventajas de ambos extremos, pero no puede considerarse idéntica a ninguno.
+
 ## 5. Redes neuronales convolucionales
 
 ### 5.1. Procesamiento visual humano y su analogía con las redes neuronales convolucinales
@@ -2477,7 +2665,14 @@ abarcan desde la conducción autónoma hasta el reconocimiento facial, la clasif
 automática de imágenes y la segmentación de objetos en entornos complejos. La relevancia
 de este ámbito es tal que sus fundamentos han trascendido el análisis de imágenes,
 inspirando avances en disciplinas distintas, como el procesamiento del lenguaje natural
-o el reconocimiento de voz.
+o el reconocimiento de voz. Pueden trabajar con datos secuenciales de cualquier tipo,
+utilizando dos características que son fundamentales, la capacidad de localización y el
+compartimiento de parámetros, esperemos que esto es lo que permite a las como los genes
+a la operación, como tal tener cierta en varianza a la traslación de la ventana, que es
+el propio kernel o filtro o matriz de pesos que aprende la capa de como lo son, aunque
+en realidad, esta propiedad se rompe cuando se combinan con otras operaciones, que
+veremos más adelante como mecanismos de pooling, que rompen con Line varianza a los
+desplazamientos.
 
 El principio subyacente que permite esta transferencia de conocimiento es la existencia
 de una estructura espacio-temporal en los datos. En el caso de las imágenes, esta
@@ -2527,6 +2722,17 @@ significativas. Finalmente, las capas totalmente conectadas integran la informac
 extraída para producir la predicción final, que puede consistir en clasificar una
 imagen, reconocer un objeto o identificar un rostro.
 
+En sistemas de procesamiento de imágenes al final también aparecen nuevos conceptos como
+la influencia que tiene 1 px en relación con el resto de píxeles de una imagen donde la
+influencia de 1 px suele con bueno con respecto a sus vecinos o con respecto al resto de
+píxeles de la imagen suele reducirse con el incremento de la distancia, es decir, que la
+mayor distancia entre píxeles menor correlación habrá entre ellos y por tanto menos
+importancia puede existir. Esto es importante en mecanismos actuales donde se utilizan
+por ejemplo mecanismos de atención para ver la importancia que tiene una serie de
+píxeles vecinos en un determinado píxel y con ello poder tener un mejor entendimiento de
+la semántica de la imagen. Por tanto, podemos decir que las imágenes tienen cierta
+localidad.
+
 ### 5.4. Componentes de una capa convolucional
 
 El uso de convoluciones en redes neuronales introduce una serie de elementos esenciales
@@ -2544,7 +2750,22 @@ que el filtro avanza en cada paso al recorrer la imagen. Un valor de _stride_ ma
 reduce las dimensiones de la salida y, en consecuencia, disminuye el número de cálculos
 necesarios. Cuando el tamaño del _stride_ coincide con el del filtro, el proceso es
 equivalente a dividir la imagen en fragmentos independientes (_patches_), lo que aísla
-secciones completas y permite analizarlas de manera separada.
+secciones completas y permite analizarlas de manera separada. The definition is only
+valid for pixels which are at least k steps away from the borders of the image: we will
+ignore this point for now and return to it later. Each patch is of shape (s, s, c),
+where s = 2k + 1, since we consider k pixels in each direction along with the central
+pixel. For reasons that will be clarified later on, we call s the filter size or kernel
+size. Consider a generic layer H = f (X ) taking as input a tensor of shape (h, w, c)
+and returning a tensor of shape (h, w, c′). If the output for a given pixel only depends
+on a patch of predetermined size, we say that the layer is local. Este concepto de los
+fragmentos independientes o los patches es lo que ha dado arquitecturas basa más
+avanzadas basadas en Transformers, donde lo que se hace es una descomposición en sus
+matrices de una imagen donde cada su matriz es una representación numérica de un tensor
+lo que pierde información de la semántica de la imagen, convirtiéndose en un toquen y
+eso es lo que se basa en arquitecturas como VIT. Podemos realizar este tipo de
+arquitecturas también utilizando combo lución es con tamaño de paso igual al tamaño del
+kernel y con ello podemos realizar subdirecciones de la imagen en sus matrices de manera
+eficiente.
 
 En el caso de imágenes en color, los filtros no se limitan a ser matrices
 bidimensionales, sino que se extienden a tres dimensiones para recorrer simultáneamente
@@ -2578,6 +2799,28 @@ detección de la presencia de una característica por encima de su ubicación ex
 variante frecuente es el **_average pooling_**, que sustituye cada región por el valor
 promedio de sus elementos, ofreciendo una representación más suavizada de la
 información.
+
+Podríamos utilizar los datos de entrada de manera aplanada, es decir, de una manera
+vector izada, en vez de utilizar como lociones para poder utilizar redes neuronales
+completamente conectabas y sin embargo, esto es una manera bastante mala, porque se
+pierden propiedades importantes de las capas anteriores que es lo que se conoce como la
+Composability, por eso, en la gran mayoría de arquitecturas modernas que se basan en la
+combo lución, ya no usan las capas finales para las predicciones o es bastante raro
+utilizar mecanismos de aplanamiento de los tensores para pasar de tensores en cuatro
+dimensiones, teniendo en cuenta el lote y se utilizan mecanismos como global Average
+pooling, porque son invariantes a los desplazamientos en comparación a utilizar redes
+neuronales, completamente conectados permite tener una mejor información a nivel local y
+global de cada uno de los mapas de características aprendidos de la red convolucional es
+decir, que tiene en cuenta información espacial, no la rompe. Además utilizar además
+permite reducir la cantidad de parámetros que tiene la red porque al final cuando tienes
+una imagen la plana si utilizas múltiples redes neuronales pues tienes que tener vas a
+tener una conexión de cada uno de los píxeles con la siguiente neurona entonces al final
+si tú tienes una imagen de 24 × 24 px vas a tener esa cantidad total de píxeles que
+están conectadas a una única neurona donde cada conexión es una matriz de pesos y sesgos
+si a eso se le suma que todos esos píxeles tienen que conectarse con todas las neuronas,
+una misma capa el número de parámetros incrementa y se hace ineficiente. Al final para
+cada píxel y cada canal de la salida sería una combinación ponderada de todos los
+canales y todos los píxeles en la entrada de la imagen.
 
 ### 5.5. Evolución de las arquitecturas
 

@@ -2,7 +2,8 @@
 sidebar_position: 1
 authors:
   - name: Daniel Bazo Correa
-description: Creación y gestión de entornos virtuales de Python con VENV, Anaconda y Poetry
+description:
+  Creación y gestión de entornos virtuales de Python con VENV, Anaconda y Poetry
 title: Gestión de entornos en Python
 toc_max_heading_level: 3
 ---
@@ -464,3 +465,25 @@ Para utilizar un entorno virtual dentro de **Jupyter**, es necesario seguir esto
       ```
    </TabItem>
 </Tabs>
+
+## 3. uv
+
+pues ahora hablaremos en particular de uv ya que es una de las librerías o gestores
+entorno y gestores de paquetes y dependencias de Python más utilizados en la actualidad
+al final como habíamos hablado antes pues se tiene que instalar uv mediante la terminal
+ya que te permite crear bueno, ya que permite ser instalado como un paquete o como nadie
+tener en el sistema y dependerá del sistema operativo utilizado. Al final la la idea es
+tener un entorno para cada uno de los proyectos que vayamos a realizar y que cada
+entorno de ese proyecto instale las dependencias únicas de ese proyecto, con el fin de
+evitar conflictos de versiones.
+
+Operaciones de uv:
+
+uv python list: versiones de python disponibles
+
+uv python install version
+uv run
+uv init
+uv add
+uv sync
+uv tree uv venv
