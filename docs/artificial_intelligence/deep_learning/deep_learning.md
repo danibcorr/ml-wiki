@@ -2657,6 +2657,27 @@ de varios campos receptivos previos permite formar unidades con campos más ampl
 5×5 o 7×7 píxeles. Esta organización favorece la abstracción progresiva y la
 especialización en el análisis visual.
 
+Podremos simular el campo receptivo en la redes, convolucionales definiendo ceros en la
+matrices de pesos de aquella región de píxeles que están fuera de la región de interés
+es decir, si tú tienes una imagen y tiene sus matrices tienes o tienes 1 px tienes una
+cierta relación con tus píxeles vecinos entonces para eliminar la dependencia de ciertos
+píxeles vecinos con respecto al píxel que estás evaluando ahora pues lo que haces es
+colocar un cero en la matriz de pesos porque estás haciendo una suma ponderada o una
+composición ponderada de la importancia de todos los píxeles que hay con respecto al
+píxel que estás evaluando ahora entonces si colocas un cero pues eliminas esa
+importancia al final esto se puede ver como un grafo conectado donde cada píxel es un es
+un nudo y cada nodo de o sea cada píxel está relacionado con el resto de píxeles, que es
+el resto de nuevos del brazo, cuyos enlaces o cuyas conexiones se realizan dependiendo
+de la importancia que tengan unos píxeles con respecto al otro al final es un grafo que
+está completamente conectado, es decir cada píxel tiene cierta relación con el resto de
+píxeles, pero que el enlace a la importancia pues dependerá un poco de la distancia que
+tenga.
+
+Hence, the receptive field increases linearly in the number of convolutional layers.
+This motivates our notion of locality: even if a single layer is limited in its
+receptive field by the kernel size, a sufficiently large stack of them results in a
+global receptive field.
+
 ### 5.3. Conceptos fundamentales de la convolución
 
 La visión computacional constituye uno de los campos más dinámicos y transformadores de
@@ -2733,6 +2754,30 @@ píxeles vecinos en un determinado píxel y con ello poder tener un mejor entend
 la semántica de la imagen. Por tanto, podemos decir que las imágenes tienen cierta
 localidad.
 
+From the point of view of signal processing, equation (E.7.7) corresponds to a filtering
+operation on the input signal X through a set of finite impulse response (FIR) filters
+[Unc15], implemented via a discrete convolution (apart from a sign change). Each filter
+here corresponds to a slice W:,:,:,i of the weight matrix. In standard signal
+processing, these filters can be manually designed to perform specific operations on the
+image. In convolutional layers, instead, these filters are initialized randomly and
+trained via gradient descent. We consider the design of convolutional models built on
+convolutional layers in the next section. An interesting aspect of convolutional layers
+is that the output maintains a kind of “spatial consistency” and it can be plotted: we
+call a slice H:,:,i of the output an activation map of the layer, representing how much
+the specific filter was “activated” on each input region. We will consider in more
+detail the exploration of these maps in the next volume.
+
+Las capas como los finales en realidad si pueden procesar datos de entrada de cualquier
+dimensión porque no dependen del tamaño de la entrada. Sin embargo, la práctica suele
+ser bastante complicado procesar esto porque al final no podemos pasar de una manera
+actualizada tensores que tengan diferentes tamaños y luego también aparecen problemas
+como el olvido catastrófico porque al final estás entrenando con distribuciones de datos
+que son completamente diferentes porque varían la el tamaño. Al final si utilizas
+imágenes y tienen diferencias de tamaño pues intervienen diferentes tipos de texturas
+patrones también puede haber diferentes cambios en la relaciones de los píxeles vecinos.
+Pueden verse alterado las componentes de alta frecuencia que pueden alterar el
+comportamiento de la arquitectura.
+
 ### 5.4. Componentes de una capa convolucional
 
 El uso de convoluciones en redes neuronales introduce una serie de elementos esenciales
@@ -2798,7 +2843,20 @@ pooling_**, que selecciona el valor máximo dentro de cada región, priorizando 
 detección de la presencia de una característica por encima de su ubicación exacta. Otra
 variante frecuente es el **_average pooling_**, que sustituye cada región por el valor
 promedio de sus elementos, ofreciendo una representación más suavizada de la
-información.
+información. Los mecanismos de Poulin como mecanismos globales al final de eliminan o
+destruyen la información espacial. Para ello se implementaron técnicas parciales como el
+Max Pulín, que permite reducir la resolución espacial a la mitad manteniendo el número
+de canales intacto al final lo que se hace es que por cada uno de los canales o mapas de
+características que sean o que se tienen durante el proceso de entrenamiento para cada
+capa, pues se coge y se elige los valores máximos, dependiendo del tamaño del filtro de
+este mecanismo de Pooling por ejemplo, si tenemos una imagen de 4x4 y tenemos un
+mecanismo de Max bullying de 2 × 2 pues al final cogeremos sus matrices de esa imagen de
+4x4 de 2 × 2, o sea que cogeremos como mucho cuatro elementos de esos cuatro elementos
+que se cogen de la imagen, pues elige el valor máximo y ese es el valor resultante, y
+así se hace con todos los píxeles de una imagen de 4x4, dependiendo también del
+desplazamiento que se tenga del Stride dónde podemos utilizar pasos de uno o pasos de
+dos dependiendo también si queremos tener en cuenta o mantener cierta localidad o
+relación entre los píxeles.
 
 Podríamos utilizar los datos de entrada de manera aplanada, es decir, de una manera
 vector izada, en vez de utilizar como lociones para poder utilizar redes neuronales
@@ -2820,7 +2878,56 @@ están conectadas a una única neurona donde cada conexión es una matriz de pes
 si a eso se le suma que todos esos píxeles tienen que conectarse con todas las neuronas,
 una misma capa el número de parámetros incrementa y se hace ineficiente. Al final para
 cada píxel y cada canal de la salida sería una combinación ponderada de todos los
-canales y todos los píxeles en la entrada de la imagen.
+canales y todos los píxeles en la entrada de la imagen. Esa X varianza en la traslación,
+pues se origina gracias al compartimiento de pesos, entre los diferentes filtros que
+aprende la comvolucion, al final lo que aprendes en la parte de una imagen, se traslada
+a otra parte de la imagen, hay como una transferencia del conocimiento.
+
+Este mecanismo es muy eficiente, porque al al final el proceso de las capas como lución
+Álex no dependen del tamaño de la imagen de entrada, sino que depende de el tamaño del
+filtro, que se va a utilizar para el aprendizaje y del número de canales que se van a
+utilizar, es decir, el número de filtros que quieres aprender para cada uno de los
+filtros utilizados.
+
+También las capas combo lución Álex no suelen utilizarse durante toda la arquitectura o
+creación de los modelos. Normalmente se utilizan dos partes una parte que se conoce como
+el Backbone que sería como el esqueleto del modelo y luego tenemos la parte utilizada
+para clasificación regresión o para la tarea que subyace no hay problema entonces
+utilizamos estas técnicas de combo lución principalmente para extraer características de
+los datos de entrada y luego utilizamos las capas finales para realizar la tarea en
+cuestión. Esta capa final utilizada para la tarea se conoce como la cabeza de la
+arquitectura del modelo y consiste básicamente en utilizar redes neuronales
+completamente conectadas. Lo que se hace es pasar de mapas de características obtenidos
+de la convolucion donde personalmente suelo utilizar global a Break bullying que
+consiste en realizar el promedio global de los valores de cada mapa de características
+para tener un único valor por cada uno de las capas que se obtienen al final lo que
+significa que si tenemos por ejemplo al final de la arquitectura, mapas de
+características de 3 × 3 y 64 mapas, pues tendremos un tensor un único tensor que
+dependerá del tamaño del lote y de eso 64 mapas de características, un valor por cada
+mapa y eso se puede conectar a una red neuronal y se reduce la cantidad de conexiones o
+número de parámetros, si utilizásemos técnicas de aplanamiento, además de no perder
+información espacial.
+
+### 5.5. Operaciones convolucion
+
+First, consider a convolutional layer with k = 0, i.e., a so-called 1 × 1 convolution.
+This corresponds to updating each pixel’s embedding by a weighted sum of its channels,
+disregarding all other pixels: Hi jz = cX t=1 Wz t Xi j t It is a useful operation for,
+e.g., modifying the channel dimension esto se conoce como point-wise convolution.
+
+Second, consider an “orthogonal” variant to 1 × 1 convolutions, in which we combine
+pixels in a small neighborhood, but disregarding all channels except one: Hi jc = 2k+1X
+i′=1 2k+1X j′=1 Wi′, j′,c Xi′+t(i), j′+t( j),c where t(•) is the offset defined in
+(E.7.6). In this case we have a rank-3 weight matrix W of shape (s, s, c), and each
+output channel H:,:,c is updated by considering only the corresponding input channel
+X:,:,c . This is called a depthwise convolution, and it can be generalized by
+considering groups of channels, in which case it is called a groupwise convolution (with
+the depthwise convolution being the extreme case of a group size equal to 1).
+
+We can also combine the two ideas and have a convolution block made of alternating 1 × 1
+convolutions (to mix the channels) and depthwise convolutions (to mix the pixels). This
+is called a depthwise separable convolution and it is common in CNNs targeted for
+low-power devices como mobilenet.
 
 ### 5.5. Evolución de las arquitecturas
 
@@ -3163,6 +3270,43 @@ Limitaciones del aprendizaje contrastivo
 - **Necesidad de un gran número de épocas**: El desempeño depende tanto del tamaño de
   los lotes como del número de iteraciones necesarias para obtener suficientes pares
   negativos efectivos.
+
+## 5.x. Convolucion en otro tipo de datos
+
+Las convulsiones también pueden ser aplicadas en otros tipos de datos no solo en
+imágenes llegue al final son muy buenas sobre todo relacionando información espacio
+temporal ejemplo cambios que hace que existen en la cierta dimensión. .Por ejemplo,
+podemos utilizar combo lución es en series temporales utilizando con volúmenes en una
+única dimensión. Luego también podemos utilizar combo lución es en sonido porque al
+final el sonido puede ser interpretado en componentes de frecuencia por ejemplo
+utilizando especto gramas Mel utilizando la transformada discreta no la transformada de
+furia entonces al final está representando el sonido como una imagen que evoluciona con
+la frecuencia y el tiempo. Luego también podemos representar el vídeo con combo lución
+es porque al final un vídeo es una representación sucesiva de imágenes durante el tiempo
+entonces al final tendremos cuatro dimensiones que es el alto el ancho y el profundo de
+la imagen y te lo el tiempo que es la duración del vídeo que es la cantidad de imágenes
+por unidad de tiempo que se van a transmitir.
+
+We also note that the dimensions in these examples can be roughly categorized as either
+“spatial dimensions” (e.g., images) or “temporal dimensions” (e.g., audio resolution).
+While images can be considered symmetric along their spatial axes (in many cases, an
+image flipped along the width is another valid image), time is asymmetric: an audio
+sample inverted on its temporal axis is in general invalid, and an inverted time series
+represents a series evolving from the future towards its past.
+
+También podemos interpretar frases o palabras para dividirlas en parte su secuencia de
+unidades más pequeñas lo que se conoce hoy en día como toquen que esto al final es muy
+conocido en los modelos de lenguaje como por ejemplo cha GPT, donde al final se coge una
+palabra se divide por ejemplo tiene una oración frase texto lo que sea y se divide en
+palabras por ejemplo o se puede también dividir en una secuencia de letras o en
+múltiples palabras lo que sea esta división al final depende mucho del tipo de
+arquitectura y de la decisión de las personas durante la creación de este tipo de
+modelos, pero cada una de esas subdivisiones del texto se denomina toquen, que es como
+la unidad mínima de representación de una palabra que luego se representa mediante un
+sensor conocido como representación en bebida del modelo, entonces al final lo que
+tienes es una representación de una palabra, que es un toquen o una representación que
+conoce el modelo este es el funcionamiento básico de los modelos de lenguaje, lo que se
+conoce como el procesamiento natural del lenguaje.
 
 ## 6. Modelos secuenciales
 
