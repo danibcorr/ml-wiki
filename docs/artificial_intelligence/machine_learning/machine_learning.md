@@ -68,6 +68,8 @@ datos nuevos. Este problema se conoce como el **compromiso entre sesgo y varianz
 (**_bias-variance tradeoff_**), y su mitigación es esencial para obtener modelos que
 generalicen correctamente.
 
+ La imposibilidad de un algoritmo de aprendizaje automático de capturar la relación real de los datos, se conoce como sesgo y la diferencia de ajuste entre el CD entrenamiento y otras, como el de validación y lo pruebas se conoce como varianza lo ideal es tener un bajo sesgo para modelar con mayor exactitud, la distribución de los datos en la baja varianza, para que el resultado de las predicciones sea consistente para diferentes conjuntos de datos.
+
 ### 1.3. Tipos de datos
 
 #### 1.3.1. Variables dependientes e independientes
@@ -921,6 +923,15 @@ reales, organizándolos en cuatro categorías:
 La diagonal principal de la matriz (TP y TN) refleja la tasa de aciertos del modelo;
 valores más elevados indican un mejor desempeño.
 
+#### 6.1.2.ROC y AUC
+
+Rock permite recopilar información sobre la sensibilidad, lo que se conoce como el recall y la especificidad, lo que se conoce como especificidad. Si tenemos una gráfica en un plano en dos dimensiones con rangos de valores comprendidos entre cero y uno en ambos de sus ejes el eje X y llegáis y trazamos una línea recta que es lineal. Esa línea recta es la separación que existe entre un clasificador aleatorio, es decir, que tiene una proporción Gual de falsos positivos que de verdaderos positivos donde el donde los valores que están por encima de esa diagonal principal son modelos mejores más cercanos a la perfección y por debajo de esa diagonal, pues es un rendimiento malo aleatorio.
+
+El eje x es el False Positive Rate y el eje y es el True positive rate, que un modelo sea mejor que otro dependerá del ratio de falsos positivos o verdaderos positivos dependiendo de lo que sea más importante.
+
+AUC, area under the curve, mide el área bajo la curva de ROC a mayor valor mejor. sE UTILIZA PARA COMPARAR MODELOS, CON DIFERENTES roc.
+
+Tambien podemos sustituir FPR por precision, que es la proporcion de resultados positivos correctamente clasificados. Mas utilizado cuando el conjunto de datos no esta balanceado, ya que es una medida mas equilibrada.
 ### 6.2. Regresión
 
 ## 7. Métodos para la reducción de la dimensionalidad
