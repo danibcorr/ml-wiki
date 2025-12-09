@@ -1,5 +1,4 @@
 name: ML Wiki CI/CD
-
 on:
   push:
     branches: ["*"]
@@ -10,7 +9,6 @@ jobs:
   build:
     name: Build Web
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v6
@@ -29,7 +27,10 @@ jobs:
           path: |
             ~/.npm
             node_modules
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+            .docusaurus
+          key:
+            ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}-${{
+            hashFiles('config/**') }}
           restore-keys: |
             ${{ runner.os }}-npm-
 
@@ -56,17 +57,13 @@ jobs:
     name: Deploy Web to GitHub Pages
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: build
-
     permissions:
       pages: write
       id-token: write
-
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     runs-on: ubuntu-latest
-
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
