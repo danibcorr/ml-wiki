@@ -1384,7 +1384,9 @@ donde $\lambda$ es un hiperparámetro que controla la intensidad de la penalizac
 Cuanto mayor sea su valor, más fuerte será la restricción sobre los pesos. La
 regularización L2 produce modelos más suaves y estables, ya que evita oscilaciones
 excesivas en los parámetros y contribuye a que el proceso de entrenamiento sea más
-controlado.
+controlado. Por tanto lo que produce son cambios menos abruptos a la salida para
+pequeñas desviaciones en la entrada, esto también se conoce como decaimento de los
+pesos.
 
 Por otro lado, la regularización L1 incorpora un término basado en la suma de los
 valores absolutos de los pesos:
@@ -1398,7 +1400,9 @@ a ser exactamente cero, lo que induce esparsidad en el modelo. En la práctica, 
 significa que ciertos parámetros se eliminan completamente, dando lugar a modelos más
 simples y con menos variables efectivamente activas. Este comportamiento convierte a la
 regularización L1 en una herramienta útil para selección de características, ya que
-identifica de manera implícita las variables más relevantes para la predicción.
+identifica de manera implícita las variables más relevantes para la predicción. Sin
+embargo la regularización L1 es menos comun porque no interactua bien con la
+non-convexity the problemas de optimizacion y el usp del descenso del gradiente.
 
 La regularización y la normalización son técnicas fundamentales para mejorar la
 capacidad de generalización de los modelos de aprendizaje profundo y reducir el riesgo
@@ -1422,7 +1426,18 @@ Entre las técnicas de regularización más utilizadas destacan:
   entrenamiento, impidiendo que las unidades desarrollen dependencias excesivas entre
   sí. Esto obliga a la red a generar representaciones redundantes y más robustas.
   Durante la inferencia, todas las neuronas se utilizan, con los pesos ajustados de
-  forma apropiada.
+  forma apropiada. While dropout can improve the performance, the output y is now a
+  random variable with respect to the sampling of the different masks inside the dropout
+  layers, which is undesirable after training. For example, two forward passes of the
+  network can return two different outputs, and some draws (e.g., with a very large
+  number of zeroes) can be suboptimal. Hence, we require some strategy to replace the
+  forward pass with a deterministic operation. We can approximate the expected value via
+  Monte Carlo sampling (Appendix A) by repeatedly sampling masks values and averaging.
+  The output is still stochastic, but with a proper choice of k, the variance can be
+  contained. In addition, the outputs of the different forward passes can provide a
+  measure of uncertainty over the prediction. However, performing multiple forward
+  passes can be expensive. A simpler (and more common) option is to replace the random
+  variables layer-by-layer, which is a reasonable approximation.
 
 - **Aumentación de datos (data augmentation)**: Crea ejemplos adicionales a partir de
   transformaciones aplicadas a los datos originales, como rotaciones, traslaciones,
@@ -2505,8 +2520,8 @@ compromisos establece entre exactitud y eficiencia.
 La diferenciación numérica aproxima la derivada a partir de valores concretos de la
 función, sin manipular expresiones algebraicas ni reglas simbólicas. Se basa
 directamente en la definición de derivada y sustituye el límite por un incremento finito
-$h$ suficientemente pequeño. Esta aproximación adopta diversas formulaciones, entre
-las cuales la más simple es la diferencia hacia adelante:
+$h$ suficientemente pequeño. Esta aproximación adopta diversas formulaciones, entre las
+cuales la más simple es la diferencia hacia adelante:
 
 $$f'(x) \approx \frac{f(x+h) - f(x)}{h}.$$
 
@@ -2516,19 +2531,19 @@ función y presenta un error de orden $O(h^2)$:
 $$f'(x) \approx \frac{f(x+h) - f(x-h)}{2h}.$$
 
 El método opera exclusivamente con números y produce resultados aproximados cuya calidad
-depende de la elección de $h$. Si $h$ es demasiado grande, la aproximación se
-degrada; si es demasiado pequeño, emergen errores de redondeo asociados a la aritmética
-de coma flotante. Además, cada derivada requiere varias evaluaciones de la función, lo
-que vuelve esta técnica poco viable para problemas con grandes cantidades de variables,
-como los modelos de aprendizaje profundo. Por ello se emplea sobre todo con fines de
+depende de la elección de $h$. Si $h$ es demasiado grande, la aproximación se degrada;
+si es demasiado pequeño, emergen errores de redondeo asociados a la aritmética de coma
+flotante. Además, cada derivada requiere varias evaluaciones de la función, lo que
+vuelve esta técnica poco viable para problemas con grandes cantidades de variables, como
+los modelos de aprendizaje profundo. Por ello se emplea sobre todo con fines de
 validación o en contextos de baja dimensionalidad.
 
 Para ilustrarlo, considérese la derivada de $\sin(x)$ en $x=1$. Con $h =
-10^{-5}$, la diferencia hacia adelante produce un valor aproximado cercano a 0.5,
-notablemente alejado de $\cos(1) \approx 0.5403$. En cambio, la diferencia centrada
-ofrece un resultado mucho más cercano al valor exacto, del orden de 0.5400. Este
-contraste refleja la sensibilidad del método a su formulación y a la elección de $h
-\).
+10^{-5}$, la
+diferencia hacia adelante produce un valor aproximado cercano a 0.5, notablemente
+alejado de $\cos(1) \approx 0.5403$. En cambio, la diferencia centrada ofrece un
+resultado mucho más cercano al valor exacto, del orden de 0.5400. Este contraste refleja
+la sensibilidad del método a su formulación y a la elección de $h \).
 
 ## 2. Diferenciación Simbólica
 
@@ -2945,7 +2960,13 @@ si se establecieran puentes dentro de la red. En consecuencia, cada bloque resid
 aprende únicamente una transformación completa, sino la diferencia (_residuo_) entre la
 entrada y la salida esperada. Este diseño facilita el flujo de gradientes, permite
 entrenar redes mucho más profundas y marcó un hito en el desarrollo de la visión
-computacional, siendo la base de numerosos modelos posteriores.
+computacional, siendo la base de numerosos modelos posteriores. Las redes residuales
+pueden verse como la suma de múltiples caminos de la red donde la entrada pasa por un
+procesoen el que permanece sin ser alterado a la par que recibe una transformacion o por
+combinaciones de multiples transformaciones, este numero de caminos crece
+exponencialmente con el numero de bloques residuales, al final estos caminos pueden ser
+vistos como pequeños modelos que realizan que comparten informacion entre si mediante
+weight-sharing.
 
 Otra innovación relevante fue la **arquitectura Inception**, implementada en modelos
 como **GoogLeNet**. Su principio fundamental consiste en aplicar en paralelo filtros de
@@ -3295,18 +3316,48 @@ sample inverted on its temporal axis is in general invalid, and an inverted time
 represents a series evolving from the future towards its past.
 
 También podemos interpretar frases o palabras para dividirlas en parte su secuencia de
-unidades más pequeñas lo que se conoce hoy en día como toquen que esto al final es muy
-conocido en los modelos de lenguaje como por ejemplo cha GPT, donde al final se coge una
-palabra se divide por ejemplo tiene una oración frase texto lo que sea y se divide en
-palabras por ejemplo o se puede también dividir en una secuencia de letras o en
-múltiples palabras lo que sea esta división al final depende mucho del tipo de
-arquitectura y de la decisión de las personas durante la creación de este tipo de
-modelos, pero cada una de esas subdivisiones del texto se denomina toquen, que es como
-la unidad mínima de representación de una palabra que luego se representa mediante un
-sensor conocido como representación en bebida del modelo, entonces al final lo que
-tienes es una representación de una palabra, que es un toquen o una representación que
-conoce el modelo este es el funcionamiento básico de los modelos de lenguaje, lo que se
-conoce como el procesamiento natural del lenguaje.
+unidades más pequeñas lo que se conoce hoy en día como toquen, donde podemos interpretar
+un caracter como token, una palabra o algo intermedio entre una palabra y un caracter,
+algunos de estos tokens pueden hacer referencia a palabras completas, sistemas de
+puntuacion, simbolos especiales, etc, incluso hoy en dia se tiende a tokenizar
+emojis/emoticonos o similares porque pueden llegar a ayudar en el contexto del texto,
+muy utilizado por ejemplo en poder detectar el estado de la persona/sentimiento del
+texto cuando se escribió, que esto al final es muy conocido en los modelos de lenguaje
+como por ejemplo cha GPT, donde al final se coge una palabra se divide por ejemplo tiene
+una oración frase texto lo que sea y se divide en palabras por ejemplo o se puede
+también dividir en una secuencia de letras o en múltiples palabras lo que sea esta
+división al final depende mucho del tipo de arquitectura y de la decisión de las
+personas durante la creación de este tipo de modelos, pero cada una de esas
+subdivisiones del texto se denomina toquen, que es como la unidad mínima de
+representación de una palabra que luego se representa mediante un sensor conocido como
+representación en bebida del modelo, entonces al final lo que tienes es una
+representación de una palabra, que es un toquen o una representación que conoce el
+modelo este es el funcionamiento básico de los modelos de lenguaje, lo que se conoce
+como el procesamiento natural del lenguaje. Incluso muchas empresas como OpenAI tienen
+publicados de forma abierta sus tokenizadores que cuentan con una cantidad de
+vocabulario que permite convertir nuestro corpus de datos de texto en tokens, que
+posteriormente son representados a represetanciones embebidas del modelo utilizando 2
+posibles tecnicas, o utilizar modelos preentrenados que realicen la conversion de los
+tokens a embedding y otra es introducir el entrenamiento de los embedings en conjunto
+con el resto de la red. Utilizar otro tipo de tecnicas como one hot encoding no son tan
+eficientes debido a la gran cantidad de ceros que generan produciendo vectores sparse
+que pueden llegar a sufrir la maldicion de la dimensionalidad al realizar operaciones
+vectoriales entre embeddings, ya que este tipo de operaciones permiten obtener otro tipo
+de embeddings que tienen una represetacion directa de palabras, por ejemplo conseguir la
+misma palabra en otro genero, en mayuscula o minuscula, tener palabras antonimas,
+sinonimos, etc.
+
+En general en el texto como las secuencias de palabras suelen ser grandes es decir
+tenemos palabras con muchas números de caracteres la combo lución puede quedarse
+limitada en capturar todo el contexto en información de los textos entonces empiezan a
+perder información o contexto entonces lo que se pueda utilizar la convulsión utilizando
+dilataciones que consiste en hacer un solo tener en cuenta el campo receptivo reducido
+de un par de tapas de características anteriores por ejemplo convulsiones con dilatación
+igual a uno es igual a una convulsión estándar mientras que utilizar dilatación es igual
+a dos pues significa que de cada 2 px que yo tengo información solo me quedo con uno de
+ellos y el campo receptivo de ve reducido, sin embargo, esto no reduce la cantidad de
+hiper parámetros del modelo. Al final sigues teniendo la misma información de los
+vecinos, este tipo de convoluciones se ha usado en WaveNet para la generación de audio.
 
 ## 6. Modelos secuenciales
 
@@ -3319,6 +3370,19 @@ espacial es clave, en las secuencias la dependencia entre elementos previos y
 posteriores resulta esencial. Para abordar este tipo de problemas se emplean los modelos
 secuenciales, cuya función es procesar los datos respetando su orden y capturando las
 dependencias que existen a lo largo de la secuencia.
+
+Creo que es importante en el contexto de los modelos secuenciales definir el concepto de
+los modelos causales, A layer H = f (X) is causal if Hi = f (X:i ), i.e., the output
+value corresponding to the i -th element of the sequence depends only on elements “from
+its past”. A model composed only of causal layers will, of course, be causal itself. For
+example, a convolutional layer with kernel size 1 is causal, since each element is
+processed considering only itself. However, a convolutional layer with kernel size 3 is
+not causal, since it is processed considering in addition one element to the left and
+one element to the right. We can convert any convolution into a causal variant by
+partially zero masking the weights corresponding to non-causal connections. Veremos que
+este es uno de los métodos utilizado en modelos como los Transformers en la parte del
+decodificador, que es la parte que funciona como un modelo autoregresivo y es gracias al
+enmascarado que podemos hacer eso.
 
 ### 6.1. Representación de secuencias
 

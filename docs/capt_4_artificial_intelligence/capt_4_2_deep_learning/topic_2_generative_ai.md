@@ -7,6 +7,31 @@ title: IA Generativa
 toc_max_heading_level: 3
 ---
 
+Los modelos auto regresivos son la forma más simple del modelo generativos, los modelos
+auto regresivos al final basadas en los modelos grandes de lenguaje, lo que hacen es
+generar nuevos, tocáis a partir de de toques anteriores y son el fundamento o la base de
+las arquitecturas multimodales. Los modelos generativos son o están en marcado
+naturalmente en el contexto de las probabilidades. Al final si imaginamos que tenemos un
+espacio de todas las secuencias posibles lo que tenemos es la probabilidad de X, siendo
+X perteneciente al conjunto del espacio de todas las posibilidades de secuencias
+entonces X es una secuencia que pertenece a ese espacio completo. Entonces al final
+estos modelos generativos su tarea principal es modelar nuevos datos a partir de la
+distribución de la probabilidad de X donde al final lo que tenemos es que la
+probabilidad de X es igual al producto de las probabilidades de todas las secuencias
+sucesivas anteriores es decir, que si yo tengo una secuencia y y + 1 e y + 2 la
+secuencia predecir de Imas tres depende de la probabilidad de la secuencia y y + 1 + 2.
+A este tipo de modelos se les llama a generativos, porque al final permiten generar
+nuevos puntos, es decir, nuevas muestras a partir de esta distribución de probabilidades
+si lo que estamos haciendo es predecir una etiqueta dado un dato de entrada son modelos
+discriminatívoos. Isam peleamos siempre el toquen que tienen mayor probabilidad. Como
+habíamos comentado anteriormente, al utilizar la función softmax podemos introducir un
+parámetro de temperatura, que controla cómo de estricta o uniforme es la distribución de
+probabilidades entre las distintas secuencias posibles. Cuando la temperatura es alta,
+la distribución de probabilidad se vuelve más uniforme, de modo que el modelo es más
+aleatorio y explora más. En cambio, cuando la temperatura es baja, la distribución se
+concentra en las opciones más probables, haciendo que el modelo sea más determinista y
+menos “creativo”.
+
 ### 6.6. Modelos de Lenguaje de Gran Escala (LLMs)
 
 Los modelos de lenguaje forman parte del campo del aprendizaje profundo. Aunque los
