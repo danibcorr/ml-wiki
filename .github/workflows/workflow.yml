@@ -1,5 +1,4 @@
 name: ML Wiki CI/CD
-
 on:
   push:
     branches: ["*"]
@@ -12,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
@@ -20,21 +19,26 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: 22.x
-          cache: yarn
+          cache: npm
 
       - name: Cache Node Modules
         uses: actions/cache@v4
         with:
-          path: ~/.cache/yarn
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          path: |
+            ~/.npm
+            node_modules
+            .docusaurus
+          key:
+            ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}-${{
+            hashFiles('config/**') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-npm-
 
-      - name: Install yarn Dependencies
-        run: yarn install --frozen-lockfile
+      - name: Install Dependencies
+        run: npm ci
 
       - name: Build Website
-        run: yarn build
+        run: npm run build
 
       - name: Validate Build Output
         run: |
@@ -53,15 +57,12 @@ jobs:
     name: Deploy Web to GitHub Pages
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: build
-
     permissions:
       pages: write
       id-token: write
-
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages

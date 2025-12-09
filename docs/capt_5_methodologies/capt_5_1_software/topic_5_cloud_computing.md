@@ -1,0 +1,21 @@
+---
+sidebar_position: 9
+authors:
+  - name: Daniel Bazo Correa
+description: Cloud computing.
+title: Cloud computing.
+toc_max_heading_level: 3
+---
+
+pues al final la computación en la nube, lo que permite es proporcionar recursos bajo
+demanda ya sean redes, servicio de almacenamiento todo utilizando Internet. Inicialmente
+es menos costoso, existe menor fricción y será permitir la colaboración como
+características, pues es bajo demanda lo que se conoce como autoservicio sin
+intervención humana tiene un acceso amplio a la red, es decir, que es accesible
+independientemente del dispositivo con conexión a Internet y es Resource Pouring, es
+decir, que hace una gestión dinámica de recursos donde se paga por lo que se usa y es
+elástico, es decir que es escalable. Al final aquí se utiliza tecnología como servicio
+donde tenemos nubes públicas, nubes, privadas y Y nubes híbridas, que al final es el lo
+que se conoce como el tipo de modelo de despliegue de la nube, y luego tenemos modelos
+de servicios donde existe el la infraestructura como servicio, la plataforma como
+servicio o el software como servicio.
