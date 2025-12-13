@@ -1067,3 +1067,178 @@ $$\text{Especificidad} = \frac{TN}{TN + FP}$$
 Un valor alto indica que el modelo discrimina adecuadamente las instancias negativas.
 Ambas métricas se pueden expresar en porcentaje multiplicando por cien, lo que facilita
 la interpretación de los resultados.
+
+Por ejemplo, si tenemos un algoritmo de **regresión logística** donde estamos
+prediciendo: **tiene enfermedad cardíaca** y **no tiene enfermedad cardíaca**, con una
+**matriz de confusión de 2 × 2**, donde el primer valor es **145**, luego **25**, que
+corresponderían a la primera fila (primera y segunda columna), y luego **30** y **100**
+para los elementos de la primera y segunda columna de la segunda fila, tendríamos la
+siguiente matriz:
+
+|                        | Predice enfermedad | Predice no enfermedad |
+| ---------------------- | ------------------ | --------------------- |
+| **Enfermedad real**    | 145 (TP)           | 25 (FN)               |
+| **No enfermedad real** | 30 (FP)            | 100 (TN)              |
+
+El **recall** (o sensibilidad) se calcula como:
+
+$$
+Recall = \frac{TP}{TP + FN}
+$$
+
+Sustituyendo los valores:
+
+$$
+Recall = \frac{145}{145 + 25} = \frac{145}{170} = 0.8529 \; (85.29\%)
+$$
+
+La **especificidad** se calcula como:
+
+$$
+Specificity = \frac{TN}{TN + FP}
+$$
+
+Sustituyendo los valores:
+
+$$
+Specificity = \frac{100}{100 + 30} = \frac{100}{130} = 0.7692 \; (76.92\%)
+$$
+
+De ahí tendríamos que el **85.29%** de los pacientes que presentan enfermedad han sido
+clasificados correctamente y el **76.92%** de los pacientes que no presentan enfermedad
+han sido clasificados correctamente. Esto nos permitiría compararlos directamente con
+las métricas obtenidas de otros modelos como un **árbol de decisión**, donde por ejemplo
+podríamos elegir la regresión logística si detectar pacientes **sin enfermedad** es más
+importante, o elegir el árbol de decisión si detectar pacientes **con enfermedad** es
+más importante. Esto al final es una **matriz de confusión**, que para matrices de
+confusión de mayor tamaño se interpreta de la misma forma, pero calculando la
+**sensibilidad (recall)** y la **especificidad** para cada categoría. Supongamos una
+matriz de confusión con **3 clases A, B y C**, con los siguientes valores numéricos
+inventados:
+
+| Real \ Predicho | A   | B   | C   |
+| --------------- | --- | --- | --- |
+| **A**           | 50  | 5   | 10  |
+| **B**           | 8   | 45  | 7   |
+| **C**           | 6   | 9   | 40  |
+
+En esta matriz:
+
+- Los valores de la **diagonal principal** representan las clasificaciones correctas.
+- Las filas representan la **clase real**.
+- Las columnas representan la **clase predicha**.
+
+---
+
+### Cálculo del Recall (Sensibilidad)
+
+El recall mide qué proporción de elementos de una clase real ha sido correctamente
+clasificada.
+
+#### Recall de la clase A
+
+$$
+Recall_A = \frac{A_{AA}}{A_{AA} + A_{BA} + A_{CA}}
+$$
+
+Sustituyendo valores:
+
+$$
+Recall_A = \frac{50}{50 + 8 + 6} = \frac{50}{64} = 0.7813 \; (78.13\%)
+$$
+
+#### Recall de la clase B
+
+$$
+Recall_B = \frac{A_{BB}}{A_{BB} + A_{AB} + A_{CB}}
+$$
+
+$$
+Recall_B = \frac{45}{45 + 5 + 9} = \frac{45}{59} = 0.7627 \; (76.27\%)
+$$
+
+#### Recall de la clase C
+
+$$
+Recall_C = \frac{A_{CC}}{A_{CC} + A_{AC} + A_{BC}}
+$$
+
+$$
+Recall_C = \frac{40}{40 + 10 + 7} = \frac{40}{57} = 0.7018 \; (70.18\%)
+$$
+
+---
+
+### Cálculo de la Especificidad
+
+La **especificidad** mide qué proporción de elementos que **no pertenecen** a una clase
+han sido correctamente clasificados como no pertenecientes a dicha clase.
+
+La fórmula general es:
+
+$$
+Specificity_X = \frac{TN_X}{TN_X + FP_X}
+$$
+
+---
+
+#### Especificidad de la clase A
+
+- **FP_A**: valores predichos como A pero que no son A  
+  $FP_A = 8 + 6 = 14$
+- **TN_A**: todos los valores que no están ni en la fila A ni en la columna A
+
+$$
+TN_A = 45 + 7 + 9 + 40 = 101
+$$
+
+$$
+Specificity_A = \frac{101}{101 + 14} = \frac{101}{115} = 0.8783 \; (87.83\%)
+$$
+
+---
+
+#### Especificidad de la clase B
+
+- **FP_B**: $5 + 9 = 14$
+- **TN_B**:
+
+$$
+TN_B = 50 + 10 + 6 + 40 = 106
+$$
+
+$$
+Specificity_B = \frac{106}{106 + 14} = \frac{106}{120} = 0.8833 \; (88.33\%)
+$$
+
+---
+
+#### Especificidad de la clase C
+
+- **FP_C**: $10 + 7 = 17$
+- **TN_C**:
+
+$$
+TN_C = 50 + 5 + 8 + 45 = 108
+$$
+
+$$
+Specificity_C = \frac{108}{108 + 17} = \frac{108}{125} = 0.8640 \; (86.40\%)
+$$
+
+---
+
+En resumen, para matrices de confusión multiclase, el **recall** se calcula utilizando
+la **columna de la clase de interés**, mientras que la **especificidad** se obtiene
+considerando todos los valores que no pertenecen a dicha clase, lo que permite evaluar
+el rendimiento del modelo para cada categoría de forma individual.
+
+Al final, el **recall** es el elemento de la **diagonal principal** de la columna $X$
+dividido entre la suma del elemento diagonal de la columna $X$ más el resto de los
+elementos de esa columna. Esto nos permite obtener los **verdaderos positivos**, que son
+los valores predichos como $X$ y que realmente pertenecen a $X$.
+
+Para obtener los **verdaderos negativos**, se deben considerar todas las columnas
+diferentes de $X$ y todas las filas diferentes de $X$. Para los **falsos positivos**, se
+observa únicamente la fila de $X$ y se excluye la columna de $X$, ya que representan los
+valores predichos como $X$ pero que en realidad pertenecen a otra clase.
