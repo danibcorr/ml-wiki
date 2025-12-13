@@ -28,8 +28,7 @@ jobs:
             ~/.npm
             node_modules
             .docusaurus
-          key:
-            ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}-${{
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}-${{
             hashFiles('config/**') }}
           restore-keys: |
             ${{ runner.os }}-npm-
