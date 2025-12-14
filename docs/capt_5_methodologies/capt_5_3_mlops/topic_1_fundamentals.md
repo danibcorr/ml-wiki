@@ -13,8 +13,8 @@ Actualmente, no es la mejor opción para tu aprendizaje, ya que no está termina
 utilizando este espacio para probar que todo funciona correctamente y para planificar
 cómo estructurar el contenido final.
 
-Te agradezco mucho tu paciencia y comprensión. Soy solo una persona trabajando en esto, y
-a veces no me da tiempo para todo. ¡Espero pronto tener algo genial para ti!
+Te agradezco mucho tu paciencia y comprensión. Soy solo una persona trabajando en esto,
+y a veces no me da tiempo para todo. ¡Espero pronto tener algo genial para ti!
 
 :::
 
@@ -45,11 +45,11 @@ modelos sean eficaces, escalables y sostenibles.
 
 Un sistema de MLOps se compone de diversos elementos. En su núcleo está el modelo o
 algoritmo, que representa la solución entrenada en datos. Este modelo opera sobre una
-infraestructura que puede variar desde servicios en la nube hasta servidores locales o en
-los propios dispositivos (_on edge_), dependiendo de las necesidades. Una API o interfaz
-es esencial para procesar solicitudes y devolver predicciones, mientras que la gestión de
-predicciones y la monitorización aseguran la calidad, fiabilidad y rendimiento en tiempo
-real.
+infraestructura que puede variar desde servicios en la nube hasta servidores locales o
+en los propios dispositivos (_on edge_), dependiendo de las necesidades. Una API o
+interfaz es esencial para procesar solicitudes y devolver predicciones, mientras que la
+gestión de predicciones y la monitorización aseguran la calidad, fiabilidad y
+rendimiento en tiempo real.
 
 ## 2. Los desafíos de MLOps
 
@@ -57,8 +57,9 @@ Uno de los principales desafíos en la adopción de metodologías de MLOps es la
 definición tanto del problema como de la posible solución. Además, es fundamental
 implementar tecnologías que puedan comunicarse eficazmente entre sí, permitiendo la
 creación de sistemas y procesos automatizados que agilicen la recopilación, el
-tratamiento, el análisis y el uso de los datos. Este enfoque requiere una infraestructura
-sólida, cuyo diseño y construcción demandan tiempo y conocimientos especializados.
+tratamiento, el análisis y el uso de los datos. Este enfoque requiere una
+infraestructura sólida, cuyo diseño y construcción demandan tiempo y conocimientos
+especializados.
 
 Una vez establecida la infraestructura necesaria para integrar los diferentes
 componentes, surgen nuevos retos en la etapa de puesta en producción.
@@ -90,8 +91,8 @@ abordar las siguientes áreas clave:
    Los pasos esenciales incluyen:
    - **Identificación de problemas y métricas clave**: Métricas como precisión, latencia
      y ROI (Retorno de Inversión) son fundamentales para medir el éxito del proyecto.
-   - **Propuesta de valor**: Se define cómo el producto resolverá problemas específicos y
-     generará beneficios para los usuarios.
+   - **Propuesta de valor**: Se define cómo el producto resolverá problemas específicos
+     y generará beneficios para los usuarios.
    - **Factibilidad**: Se evalúan los recursos necesarios (humanos, tecnológicos y
      financieros) para implementar la solución.
    - **Planificación**: Se establecen cronogramas y se asignan recursos para el
@@ -110,8 +111,8 @@ abordar las siguientes áreas clave:
    - **Manejo de desequilibrios**: Técnicas como el sobremuestreo o submuestreo
      equilibran clases desbalanceadas, asegurando que los datos sean representativos.
    - **División en conjuntos**: Los datos se dividen en conjuntos de entrenamiento,
-     validación y prueba, manteniendo distribuciones similares para evitar problemas como
-     el sobreajuste.
+     validación y prueba, manteniendo distribuciones similares para evitar problemas
+     como el sobreajuste.
 
 3. **Modelado**: El modelado implica seleccionar, entrenar y validar modelos de ML. Las
    principales actividades incluyen:
@@ -142,8 +143,8 @@ hasta la entrega de predicciones, tomando en cuenta:
 
 - **Carga de trabajo ML**: Definición de fuentes de datos, etiquetado y selección de
   características.
-- **Inferencia**: Elección entre inferencia en lotes o en tiempo real, dependiendo de los
-  requisitos del sistema.
+- **Inferencia**: Elección entre inferencia en lotes o en tiempo real, dependiendo de
+  los requisitos del sistema.
 - **Impacto real**: Garantizar que el sistema genere valor tangible y que su rendimiento
   mejore continuamente.
 
@@ -159,27 +160,34 @@ el mínimo impacto:
   modelo, lo que permite monitorear su desempeño y hacer ajustes según sea necesario.
 - **Rollback**: Esta estrategia permite revertir rápidamente al modelo anterior en caso
   de que el nuevo no cumpla con las expectativas o falle.
-- **Canary deployment**: En esta técnica, se asigna inicialmente un pequeño porcentaje de
-  tráfico al nuevo modelo, incrementándolo gradualmente si demuestra ser eficaz y
+- **Canary deployment**: En esta técnica, se asigna inicialmente un pequeño porcentaje
+  de tráfico al nuevo modelo, incrementándolo gradualmente si demuestra ser eficaz y
   estable.
 - **Blue-green deployment**: Utiliza dos entornos paralelos (uno activo y otro de
-  prueba), lo que facilita la implementación de cambios y una rápida recuperación en caso
-  de problemas.
+  prueba), lo que facilita la implementación de cambios y una rápida recuperación en
+  caso de problemas.
 
 ### 2.3. Consideraciones de desarrollo
 
 El desarrollo de modelos de ML puede seguir dos enfoques principales:
-**_model-centric_**, enfocado en optimizar algoritmos, y **_data-centric_**, que prioriza
-la mejora de la calidad de los datos, lo cual es esencial para garantizar un buen
-rendimiento en producción.
+**_model-centric_**, enfocado en optimizar algoritmos, y **_data-centric_**, que
+prioriza la mejora de la calidad de los datos, lo cual es esencial para garantizar un
+buen rendimiento en producción.
 
 Es crucial realizar un _sanity check_ inicial para validar las hipótesis del modelo,
 establecer líneas base robustas y emplear herramientas de versionado como **MLFlow** o
 **DVC** para rastrear de manera efectiva modelos, datos y resultados.
 
-El mantenimiento continuo de los modelos requiere una supervisión constante para detectar
-**_drifts_** (desviaciones en el comportamiento del modelo) y **datos OOD** (fuera de
-distribución), así como la recolección de métricas clave para evaluar su rendimiento.
-Además, es fundamental equilibrar adecuadamente los conjuntos de datos y mantener la
-consistencia en las divisiones para entrenamiento, validación y prueba, garantizando que
-el modelo sea fiable y escalable a largo plazo.
+El mantenimiento continuo de los modelos requiere una supervisión constante para
+detectar **_drifts_** (desviaciones en el comportamiento del modelo) y **datos OOD**
+(fuera de distribución), así como la recolección de métricas clave para evaluar su
+rendimiento. Además, es fundamental equilibrar adecuadamente los conjuntos de datos y
+mantener la consistencia en las divisiones para entrenamiento, validación y prueba,
+garantizando que el modelo sea fiable y escalable a largo plazo.
+
+## Otras notas
+
+cómo pasar desde un negocio a problemas de ciencia de datos pues primero lo que hay que
+definir es una serie de hipótesis discutirlas y ver cuál es la que más se ajusta ocurre
+en la realidad cada hipótesis tendrá diferentes soluciones y luego definida la hipótesis
+hay que definir los objetivos, la idea ejecutarlo y establecer métricas.

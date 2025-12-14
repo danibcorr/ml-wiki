@@ -12,6 +12,7 @@ toc_max_heading_level: 3
 - [Git](https://git-scm.com/)
 - [Git Hooks](https://githooks.com/)
 - [Learning Git: A Hands-On and Visual Guide to the Basics of Git](https://www.oreilly.com/library/view/learning-git/9781098133900/)
+- [Ship / Show / Ask, A modern branching strategy](https://martinfowler.com/articles/ship-show-ask.html)
 
 ## 1. Introducción
 
@@ -140,51 +141,65 @@ fundamentales y ejemplos de su uso:
 
 ### 3.2. Comandos para el control de versiones local
 
-Un comando de Git está compuesto por tres partes: el comando en sí de Git (`git`), el
-subcomando que indica la acción específica, y opcionalmente, opciones y argumentos. Por
-ejemplo:
+Un comando de Git se compone de tres elementos fundamentales: el comando principal
+(`git`), el subcomando que define la acción concreta que se desea realizar y, de forma
+opcional, una serie de opciones y argumentos que ajustan su comportamiento. Por ejemplo:
 
 ```
 git commit -m "Esto es un commit"
 ```
 
-En el comando anterior, `git commit` es el comando de Git, `-m` es la opción relacionada
-con el comando, y `"Esto es un commit"` es el argumento que forma parte de la opción del
-comando `git commit`.
+En este caso, `git commit` define la acción de confirmar cambios, `-m` es una opción que
+permite añadir un mensaje descriptivo y `"Esto es un commit"` es el argumento asociado a
+dicha opción. Comprender esta estructura resulta clave para interpretar correctamente la
+documentación de Git y para utilizar los comandos de forma precisa.
 
-A continuación se presentan algunos de los comandos más utilizados para la gestión del
-control de versiones de manera local en un repositorio Git:
+A continuación se describen los comandos más relevantes para la gestión del control de
+versiones en un repositorio Git a nivel local. Se incluyen tanto los comandos básicos
+como otros menos evidentes, pero esenciales para mantener un repositorio limpio,
+coherente y alineado con su estado remoto.
 
-| Comando            | Función                                                                                                                                                                                                                                    | Ejemplo de uso                                                                                                                                      |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **git init**       | Inicializa un repositorio local utilizando la carpeta actual, creando una carpeta oculta `.git` en la raíz con toda la configuración necesaria para el control de versiones. Por defecto, la rama principal que se crea es la rama `main`. | `git init` - Inicializa un repositorio en el directorio actual.                                                                                     |
-| **git remote**     | Permite conectar un repositorio local con un repositorio remoto.                                                                                                                                                                           | `git remote add origin url_repo` - Este comando establece una relación con el repositorio remoto con _shortname_ `origin` y la URL del repositorio. |
-| **git clone**      | Clona un repositorio existente en una ubicación local.                                                                                                                                                                                     | `git clone https://github.com/usuario/repositorio.git` - Clona el repositorio desde la URL indicada.                                                |
-| **git add**        | Prepara archivos para su confirmación. Es importante señalar que git add no mueve un fichero del _Working Directory_ al _Staging Area_, sino que copia los ficheros.                                                                       | `git add archivo.txt` - Añade `archivo.txt` al área de preparación (_staging_).                                                                     |
-| **git commit**     | Confirma los cambios en el repositorio local.                                                                                                                                                                                              | `git commit -m "Mensaje del commit"` - Confirma los cambios con el mensaje `Mensaje del commit`.                                                    |
-| **git reset HEAD** | Revierte la preparación de archivos que estaban listos para ser confirmados.                                                                                                                                                               | `git reset HEAD archivo.txt` - Deshace la preparación de `archivo.txt`.                                                                             |
-| **git commit**     | Modifica la última confirmación, permitiendo cambiar el mensaje o añadir archivos adicionales.                                                                                                                                             | `git commit -m "Mensaje corregido"` - Modifica el mensaje del último commit.                                                                        |
-| **git status**     | Muestra el estado actual de los archivos en el repositorio.                                                                                                                                                                                | `git status` - Muestra los archivos modificados, no preparados o pendientes de confirmación.                                                        |
-| **git checkout**   | Cambia entre ramas o descarta cambios en archivos específicos. También es posible utilizar git switch para cambiar de rama.                                                                                                                | `git checkout rama-nueva` - Cambia a la rama `rama-nueva`.<br />`git checkout -- archivo.txt` - Deshace los cambios en `archivo.txt`.               |
-| **git branch**     | Gestiona las ramas del repositorio local.                                                                                                                                                                                                  | `git branch` - Lista las ramas existentes en el repositorio.<br />`git branch rama-nueva` - Crea una nueva rama llamada `rama-nueva`.               |
-| **git merge**      | Fusiona una rama con la rama actual.                                                                                                                                                                                                       | `git merge rama-nueva` - Fusiona la rama `rama-nueva` con la rama en la que se encuentra actualmente.                                               |
-| **git fetch**      | Descarga los cambios desde el repositorio remoto, pero no los fusiona.                                                                                                                                                                     | `git fetch origin` - Descarga los cambios del repositorio remoto llamado `origin`, pero no los aplica.                                              |
-| **git pull**       | Descarga y fusiona los cambios del repositorio remoto con la rama actual.                                                                                                                                                                  | `git pull origin main` - Descarga y fusiona los cambios de la rama `main` del repositorio remoto `origin`.                                          |
-| **git push**       | Sube los cambios confirmados a un repositorio remoto.                                                                                                                                                                                      | `git push origin main` - Sube los cambios locales confirmados a la rama `main` del repositorio remoto `origin`.                                     |
-| **git log**        | Muestra el historial de confirmaciones del repositorio en orden cronológico.                                                                                                                                                               | `git log` - Muestra el historial de commits.<br />`git log --oneline` - Muestra el historial de commits de manera resumida.                         |
-| **git diff**       | Muestra las diferencias entre los archivos modificados y los confirmados.                                                                                                                                                                  | `git diff` - Muestra las diferencias entre los archivos modificados en el área de trabajo.                                                          |
-| **git stash**      | Almacena temporalmente los cambios no confirmados para limpiarlos del área de trabajo.                                                                                                                                                     | `git stash` - Guarda los cambios en un área temporal.<br />`git stash pop` - Recupera los cambios guardados en el stash.                            |
-| **git rm**         | Elimina archivos del repositorio y del área de preparación.                                                                                                                                                                                | `git rm archivo.txt` - Elimina el archivo `archivo.txt` del repositorio y del área de trabajo.                                                      |
+| Comando                | Función                                                                                                                                                                                                           | Ejemplo de uso                                                                                             |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| **git init**           | Inicializa un repositorio Git en el directorio actual, creando la carpeta oculta `.git` que contiene toda la información necesaria para el control de versiones. Por defecto, la rama principal creada es `main`. | `git init` inicializa un repositorio en la carpeta actual.                                                 |
+| **git remote**         | Gestiona las conexiones entre el repositorio local y uno o varios repositorios remotos. Permite añadir, eliminar o listar repositorios remotos.                                                                   | `git remote add origin url_repo` asocia el repositorio remoto con el alias `origin`.                       |
+| **git clone**          | Crea una copia local completa de un repositorio existente, incluyendo su historial de commits y ramas.                                                                                                            | `git clone https://github.com/usuario/repositorio.git` clona el repositorio indicado.                      |
+| **git add**            | Añade cambios al área de preparación (_staging area_). Git no mueve los archivos, sino que registra una instantánea de su estado actual.                                                                          | `git add archivo.txt` prepara el archivo para el próximo commit.                                           |
+| **git commit**         | Registra de forma permanente los cambios preparados en el historial del repositorio local.                                                                                                                        | `git commit -m "Mensaje del commit"` crea un commit con un mensaje descriptivo.                            |
+| **git commit --amend** | Modifica el último commit, permitiendo cambiar el mensaje o añadir nuevos cambios al mismo commit. Resulta útil para corregir errores recientes.                                                                  | `git commit --amend` reabre el último commit para modificarlo.                                             |
+| **git reset HEAD**     | Revierte la preparación de archivos que habían sido añadidos al área de preparación, sin perder los cambios en el directorio de trabajo.                                                                          | `git reset HEAD archivo.txt` saca el archivo del área de preparación.                                      |
+| **git status**         | Muestra el estado actual del repositorio, indicando qué archivos han sido modificados, cuáles están preparados y cuáles no están siendo seguidos.                                                                 | `git status` muestra un resumen del estado del repositorio.                                                |
+| **git checkout**       | Permite cambiar entre ramas o restaurar archivos a su último estado confirmado. En versiones recientes de Git, se recomienda `git switch` para cambiar de rama.                                                   | `git checkout rama-nueva` cambia a otra rama.<br />`git checkout -- archivo.txt` descarta cambios locales. |
+| **git branch**         | Gestiona las ramas locales, permitiendo listarlas, crearlas o eliminarlas.                                                                                                                                        | `git branch` lista las ramas.<br />`git branch rama-nueva` crea una nueva rama.                            |
+| **git merge**          | Fusiona los cambios de una rama en la rama actual, integrando sus commits en el historial.                                                                                                                        | `git merge rama-nueva` fusiona `rama-nueva` en la rama actual.                                             |
+| **git fetch**          | Descarga información actualizada del repositorio remoto sin modificar la rama local ni el directorio de trabajo. Permite inspeccionar cambios antes de integrarlos.                                               | `git fetch origin` descarga los cambios del remoto `origin`.                                               |
+| **git fetch --prune**  | Descarga los cambios del repositorio remoto y elimina las referencias locales a ramas remotas que ya no existen. Es fundamental para evitar acumulación de ramas obsoletas.                                       | `git fetch --prune` limpia referencias a ramas remotas eliminadas.                                         |
+| **git pull**           | Combina `git fetch` y `git merge` en un solo comando, descargando y fusionando los cambios del repositorio remoto con la rama actual.                                                                             | `git pull origin main` actualiza la rama local `main`.                                                     |
+| **git push**           | Envía los commits locales al repositorio remoto, haciendo públicos los cambios confirmados.                                                                                                                       | `git push origin main` sube los commits a la rama `main` remota.                                           |
+| **git log**            | Muestra el historial de commits del repositorio, permitiendo analizar la evolución del proyecto.                                                                                                                  | `git log` muestra el historial completo.<br />`git log --oneline` muestra un resumen compacto.             |
+| **git diff**           | Muestra las diferencias entre archivos en distintos estados, como entre el directorio de trabajo y el último commit o entre commits concretos.                                                                    | `git diff` muestra los cambios no confirmados.                                                             |
+| **git stash**          | Guarda temporalmente los cambios no confirmados y limpia el directorio de trabajo, permitiendo cambiar de contexto sin perder trabajo.                                                                            | `git stash` guarda los cambios.<br />`git stash pop` los recupera.                                         |
+| **git rm**             | Elimina archivos del repositorio y del área de preparación, registrando la eliminación para el próximo commit.                                                                                                    | `git rm archivo.txt` elimina el archivo del control de versiones.                                          |
+| **git rebase**         | Reaplica commits sobre una base distinta, manteniendo un historial lineal. Es especialmente útil para actualizar ramas con respecto a la rama principal.                                                          | `git rebase main` reaplica los commits actuales sobre `main`.                                              |
+| **git clean**          | Elimina archivos no rastreados del directorio de trabajo. Debe usarse con precaución, ya que borra archivos de forma permanente.                                                                                  | `git clean -f` elimina archivos no rastreados.                                                             |
+
+La correcta combinación de estos comandos permite mantener un repositorio local
+ordenado, sincronizado con el remoto y con un historial de cambios comprensible, lo cual
+resulta esencial para el trabajo colaborativo y para reducir conflictos en equipos de
+desarrollo.
 
 ### 3.3. Configuración básica de Git
 
-Antes de trabajar con GitHub o GitLab, es necesario configurar el entorno de Git local.
-Esto incluye establecer la identidad y configurar la autenticación con las plataformas.
+Antes de comenzar a trabajar con plataformas como GitHub o GitLab, es imprescindible
+configurar correctamente el entorno local de Git. Esta configuración incluye, entre
+otros aspectos, la identidad del autor de los commits y ciertos parámetros de
+comportamiento global.
 
-Con `git config --global --list` se pueden listar todas las variables en la
-configuración global de Git y sus valores. Esta configuración es necesaria para
-establecer el usuario y el correo electrónico al que estarán asociados todos los commits
-realizados.
+Mediante el comando `git config --global --list` es posible consultar todas las
+variables definidas en la configuración global de Git junto con sus valores. Esta
+configuración se utiliza, entre otros fines, para establecer el nombre de usuario y la
+dirección de correo electrónico que quedarán asociados a cada commit, garantizando la
+trazabilidad y la autoría de los cambios dentro del historial del repositorio.
 
 #### 3.3.1. Configurar nombre de usuario y correo
 
@@ -342,6 +357,78 @@ Sin embargo, presenta las siguientes desventajas:
   requieren un seguimiento detallado de los cambios, y para equipos que prefieren un
   enfoque más estructurado. Es ideal para proyectos donde la estabilidad y la
   planificación a largo plazo son prioritarias.
+
+### 4.6. Ship / Show / Ask
+
+Uno de los problemas recurrentes en el desarrollo de software moderno reside en el
+crecimiento progresivo de código, el aumento de su complejidad y la consiguiente pérdida
+de visibilidad por parte del resto de los miembros del equipo. Esta situación provoca
+que la incorporación de nuevas funcionalidades en las ramas de producción se vea
+limitada o, en muchos casos, que la responsabilidad del control de calidad recaiga casi
+exclusivamente en las herramientas de integración y despliegue continuo (CI/CD),
+reduciendo la interacción humana en el proceso de revisión.
+
+En este contexto surge la estrategia **Ship / Show / Ask**, una propuesta relativamente
+reciente que redefine la forma de trabajar con ramas y solicitudes de integración en
+Git. Este enfoque, propuesto por Rouan Wilsenach, se articula en tres modalidades
+claramente diferenciadas que buscan equilibrar velocidad, calidad y comunicación dentro
+del equipo, adaptándose al nivel de riesgo y de incertidumbre de cada cambio.
+
+El enfoque **Ship** se basa en la realización de cambios pequeños, acotados y de bajo
+riesgo que pueden integrarse directamente en la rama principal sin necesidad de abrir
+una _Pull Request_ ni solicitar la revisión explícita de otros miembros del equipo. Este
+tipo de cambios suele apoyarse en patrones ya establecidos dentro del proyecto y se
+considera seguro cuando existe un alto grado de confianza en la calidad del código y en
+los estándares compartidos por el equipo. Resulta especialmente adecuado cuando se añade
+una funcionalidad siguiendo un patrón existente, se corrige un error menor y poco
+relevante, se actualiza documentación o se mejora el código a partir de comentarios
+previos. En estos casos, la rapidez prima sobre la discusión.
+
+La modalidad **Show** introduce un punto intermedio entre la integración directa y la
+revisión formal. En este caso, se crea una _Pull Request_ desde una rama distinta de la
+principal, pero dicha solicitud no requiere aprobación obligatoria para ser integrada.
+El cambio pasa por los mecanismos habituales de CI/CD y se incorpora rápidamente a la
+base de código, pero al mismo tiempo se genera un espacio explícito para la revisión, el
+aprendizaje y la conversación. El equipo es notificado de la existencia de la _Pull
+Request_, lo que permite que otros desarrolladores revisen el enfoque adoptado, planteen
+preguntas o sugieran mejoras. Este enfoque es especialmente útil cuando se busca
+retroalimentación sobre cómo mejorar una solución, cuando se introduce un nuevo patrón,
+se realiza una refactorización relevante o se corrige un error interesante desde el
+punto de vista técnico. De este modo, se favorece el aprendizaje colectivo sin frenar el
+flujo de entrega.
+
+Por último, el enfoque **Ask** representa el modelo más tradicional y deliberativo.
+Consiste en abrir una _Pull Request_ que sí requiere la aprobación explícita de uno o
+varios miembros del equipo antes de ser integrada. Este modelo se reserva para
+situaciones de mayor incertidumbre o riesgo, como propuestas experimentales, nuevos
+enfoques arquitectónicos o soluciones que aún no están completamente maduras. En estos
+casos, el objetivo principal es fomentar la discusión abierta, validar decisiones
+técnicas y construir consenso. Resulta adecuado cuando se plantean dudas sobre la
+viabilidad de una solución, se exploran alternativas, se solicita ayuda para mejorar una
+implementación o simplemente se deja el trabajo pendiente de revisión para una
+integración posterior.
+
+Independientemente de la modalidad elegida, una de las reglas fundamentales que subyacen
+a esta estrategia es que las ramas no deben tener una vida prolongada y deben mantenerse
+alineadas con la rama principal mediante _rebases_ frecuentes. Las ramas que divergen
+durante demasiado tiempo incrementan el riesgo de conflictos al integrarse, dificultan
+la comprensión del estado real del proyecto y suelen generar frustración innecesaria en
+el equipo.
+
+El propio autor destaca que, cuando se entregan funcionalidades siguiendo patrones
+consolidados y existe un alto nivel de confianza y estándares de calidad compartidos, el
+equipo tenderá a utilizar más el enfoque **Ship**. En cambio, cuando los miembros aún se
+están conociendo, el dominio del problema es nuevo o se están explorando soluciones
+desconocidas, surge una mayor necesidad de comunicación, lo que incrementa el uso de
+**Show** y **Ask**. Esto pone de manifiesto que la comunicación efectiva y el trabajo
+colaborativo son pilares fundamentales de la ingeniería de software.
+
+Desde una perspectiva crítica, esta estrategia resulta especialmente adecuada para
+equipos pequeños, generalmente de no más de cuatro o cinco personas, en los que existe
+una comunicación fluida, un conocimiento compartido del dominio y del código, y normas
+bien definidas sobre qué tipo de cambios pueden integrarse directamente en la rama
+principal y cuáles requieren una discusión colectiva. En estos contextos, el enfoque
+**Ship / Show / Ask** permite trabajar de forma ágil sin sacrificar la calidad.
 
 ## 5. Git Hooks
 

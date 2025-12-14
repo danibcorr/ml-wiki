@@ -2896,7 +2896,9 @@ cada píxel y cada canal de la salida sería una combinación ponderada de todos
 canales y todos los píxeles en la entrada de la imagen. Esa X varianza en la traslación,
 pues se origina gracias al compartimiento de pesos, entre los diferentes filtros que
 aprende la comvolucion, al final lo que aprendes en la parte de una imagen, se traslada
-a otra parte de la imagen, hay como una transferencia del conocimiento.
+a otra parte de la imagen, hay como una transferencia del conocimiento. Sin embargo,
+mecanismos como global Average polling realiza una agregación uniforme de las entidades,
+lo que genera una geometría pobre en los en la representaciones en vivirás el modelo.
 
 Este mecanismo es muy eficiente, porque al al final el proceso de las capas como lución
 Álex no dependen del tamaño de la imagen de entrada, sino que depende de el tamaño del
@@ -3292,6 +3294,27 @@ Limitaciones del aprendizaje contrastivo
   los lotes como del número de iteraciones necesarias para obtener suficientes pares
   negativos efectivos.
 
+En sistemas de edición de imágenes pueden presentar una complejidad, presentando
+múltiples, patrones, etiquetas, posibles, etc. hacer una representación en bebida de
+múltiples atributos. En una sola red provoca lo que se conoce Entanglement donde las
+características finas que es la parte que define una imagen no son fáciles de separar lo
+que les hacen, no identificables. Esto es algo que se ve mucho en el aprendizaje
+contractivo porque lo que va a intentar al final es realizar modificaciones de la
+representación en mi vida de los datos de entrada entonces puede llegar a un punto que
+sea representaciones de muestras que son diferentes pero que deberían estar dentro del
+mismo cluster del mismo grupo pueden llegar a ser muy similares entonces en la práctica
+en la representación del espacio y latente del modelo, lo que se verían serían líneas o
+puntos de datos que realizan estructuras geométricas lineales, no como si fuesen arcos o
+una línea recta donde se muestra o se ven que un punto y se solapan con otros y eso es
+porque han empezado a perder el modelo. La capacidad de poder diferenciar diferenciar
+ese grano fino de las imágenes considera que no son relevantes y que esas muestras son
+iguales entonces al final lo que lo que se genera es un colapso de las representaciones
+en bebidas el modelo. Esto también ocurre con los filtros que aprenden las redes como
+los finales o cualquier tipo de pesos que aprenden la redes neuronales en generales
+donde con mayor número de filtros o de parámetros muchos de esos parámetros, pueden
+empezar a aprender cosas similares y empiezan a colapsar que significa que empiezan a
+aprender la o tienen características muy similares unas de otras.
+
 ## 5.x. Convolucion en otro tipo de datos
 
 Las convulsiones también pueden ser aplicadas en otros tipos de datos no solo en
@@ -3358,6 +3381,37 @@ a dos pues significa que de cada 2 px que yo tengo información solo me quedo co
 ellos y el campo receptivo de ve reducido, sin embargo, esto no reduce la cantidad de
 hiper parámetros del modelo. Al final sigues teniendo la misma información de los
 vecinos, este tipo de convoluciones se ha usado en WaveNet para la generación de audio.
+
+## 5.X. Otras técnicas del procesamiento de imágenes
+
+Podemos utilizar histogramas de ecualizacion, que permite extender el histograma de
+colores para hacer un reparto entre los diferentes bins de un histograma, también
+podemos utilizar otras técnicas como CLAHE, que permite dividir la imagen en ventanas,
+también conocido como patches Y ecualizarles de forma independiente, pero aumentando el
+ruido porque al final lo que hacen es perder información a nivel global se centra mucho
+más a nivel local. Lo que podemos utilizar son clips en clave que permite limitar esta
+cantidad de ruido que es lo del CL. CLAHE viene de Clip Limit Histogram Equalization.
+
+Podemos combinar todos estos procesos explicados anteriormente de las capas como los
+finales para crear sistemas o Pipeline, que te permitan recopilar datos que no están
+curados de Internet, por ejemplo para ampliar nuestro conjunto de datos o si por ejemplo
+tenemos una representación en bebida de gatos que nosotros conocemos hemos etiquetado y
+hemos entrenado un modelo para ello lo que podemos hacer es por ejemplo utilizar
+sistemas para eliminar duplicados de imágenes vale y luego podemos coger y aplicar
+sistemas de búsqueda de de la similitud entre representaciones en bebidas con imágenes
+que desconocemos para poder ampliar el nuestro conjunto de datos o poder eliminar
+imágenes que no sean apropiadas o similares. Por ejemplo, este tipo de sistemas son muy
+utilizados en el estado del arte en computación visual, algunos ejemplos ocurren con
+arquitecturas que han rpesentado Meta como Dino v1 y v2. Estos modelos al final han
+aprendido de manera auto supervisada, utilizando representaciones de imágenes de datos
+de entrada que han sufrido algún tipo de alteración, por ejemplo Dino uno que se le
+pasan datos con recortes al estudiante y el maestro con visiones enteras, lo que permite
+conseguir un efecto de representación de lo que a la global luego también utilizan
+diferentes tipos de sistemas como por ejemplo SimCLR que recae en lo mismo utilizan
+recortes que es una buena forma de tener información semántica de los datos y por
+ejemplo utilizan para eliminar esos duplicados con eso al final pues lo que haces es
+reducir la cantidad de imágenes y reducir la el coste en almacenamiento, lo que
+consigues refinar el conjunto de datos.
 
 ## 6. Modelos secuenciales
 

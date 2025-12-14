@@ -78,3 +78,4 @@ dendritas basales depende más en la contribución de la salida de las neuronas,
 tanto, la redes neuronales artificiales modelan la integración basal local, más
 plasticidad, dependiente del error de salida, pero no modelan la señales apicales, ni la
 plasticidad dependiente del contexto global o vecindarios neuronales.
+

@@ -866,7 +866,36 @@ soluciones más complejas que ofrezcan un mayor retorno de inversión (ROI).
 
 ### 4.1. Regresión lineal
 
-### 4.2. Descenso del gradiente
+En los modelos lineales, lo que hacemos es ajustar una linea, utilizando least square
+para hacer un fit de los datos, vamos que nos quedamos con la linea donde el valor de
+SSR sea minimo, mejor ajuste modelo a los datos. Calculamos la R2 y tambien podemos
+calcular los p-values para R2. Calcular promedi tamaño, obtener linea promedio si lo
+aplanamos todos podemos visualizar el residuo para ver como se ajusta la linea ajustada
+a los datos y los valores reales para ver la variabiliadad, podemos calcular la varianza
+que seria la SS media que es el punto X menos la media todo al cuadrado y dividido por
+el numero de puntos, podemos calcular el promedio que es el tamaño para obtener la niña
+promedio. Luego también podemos realizar el cálculo de la varianza que es el SS promedio
+dividido entre N que indica el grado de dispersión que tenemos luego la R cuadrado que
+es la barra la media de la varianza menos la varianza del ajuste dividido de la media de
+la varianza. Por ejemplo, si la R cuadrado es 0.6 yo significa que es el 60 %, que
+decimos que X por ejemplo no pues explica el 60 % de la variación de las muestras.
+
+En los modelos lineales podemos introducir más parámetros no solo dos pero si esos
+parámetros adicionales empeoran el ajuste del modelo a los datos, dichos parámetros
+serán multiplicados por el modelo por cero o para no tenerlos en cuenta.
+
+### 4.2. DesceQue sea estocástico implica que se elige de forma aleatoria un punto por paso ya que hacerlo para todo sería costoso computacional mente aunque realmente se toma un subconjunto llamado lote. Esto también permite reducir la posibilidad de quedarnos en un mínimo local.nso del gradiente
+
+Es un proceso reiterativo para minimizar una función de pérdida, un dato o coste que es
+la media respecto a todos los puntos para ello que se hace es el punto de partida
+aleatoria de la función. Luego se calcula la derivada que es el gradiente de la función
+en ese punto, con la derivada que podemos conocer la pendiente de la función de dicho
+punto, si la derivada es positiva la función aumenta en dicha dirección y el algoritmo
+se moverá en la dirección opuesta y si es negativo vamos en esa dirección. Que sea
+estocástico implica que se elige de forma aleatoria un punto por paso ya que hacerlo
+para todo sería costoso computacional mente aunque realmente se toma un subconjunto
+llamado lote. Esto también permite reducir la posibilidad de quedarnos en un mínimo
+local.
 
 ### 4.3. Regresión logística
 
@@ -925,13 +954,48 @@ decisión individuales.
 
 #### 5.1.1. Métodos basados en particiones
 
+un ejemplo de método de cluster bien basado en particiones es K-means, lo que hace es
+una inicialización de cada puntos suponiendo el centro y de de los clusters luego
+calcula la distancia del resto de puntos del conjunto de datos al centro y de y realiza
+una asociación al centro y luego los datos asociados a un centro idea se promedian para
+calcular la nueva posición del centro vida y este proceso se repite hasta un número de
+pasos determinado o cuando no ya no se producen cambios en el centro.
+
+El centro del cluster se representa con la letra mu si Aika igualados pues un centro y
+de muy uno y otro será mudos lo que se hace es para cada índice que empieza desde uno
+hasta M donde M sería la cantidad de cluster que vamos a considerar pues tengo el centro
+idea del cluster y que es el índice del uno hasta acá del centro y del cluster cercano
+al punto XV que es lo que hace es una asignación de puntos al centro edad y luego lo que
+calculamos es la mínima distancia que existe entre el punto y y la media del cluster K y
+se aplica la distancia euclídeo luego para cada valor de ca hasta llegar a acá se
+calcula la media beca que es la media de puntos asignados al cluster y luego se aplica
+la función de coste que es promediar la distancia euclidiana entre todas las muestras
+del conjunto de datos entonces en cada iteración de Camins la función de coste debería
+reducir y con ello podemos comparar el valor actual con el anterior para saber si el
+modelo converge o no. El número de grupo busca tiene que ser menor a M que es el número
+de muestras para buscar la mejor inicialización podemos inicializar Camins de forma
+aleatoria una vez convergida cada iteración. Se calcula la función de coste de cada
+iteración y nos quedamos con la iteración con menor coste, lo que permite evitar mínimos
+no óptimos algunos métodos para elegir K pues es el método del codo por ejemplo que es
+el punto donde crece más la función de coste es decir todo lo que haces es medir la
+función de coste para un número de clusters y te quedas con ese punto donde la
+convergencia es mayor, que es donde se produce un codo.
+
 #### 5.1.2. Métodos basados en jerarquías
+
+Ejemplo: Clustering jerárquico aglomerativo
 
 #### 5.1.3. Métodos basados en densidad
 
-#### 5.1.4. Métodos basados en modelos (p.ej. GMM)
+Ejemplo: DBSCAN
 
-#### 5.1.5. Métodos basados en grafos (p.ej. Spectral)
+#### 5.1.4. Métodos basados en modelos
+
+Ejemplo: Gaussian Mixture Models (GMM)
+
+#### 5.1.5. Métodos basados en grafos
+
+Ejemplo: Spectral Clustering
 
 ### 5.2. Mecanismos en la elección de grupos
 
@@ -1242,3 +1306,41 @@ Para obtener los **verdaderos negativos**, se deben considerar todas las columna
 diferentes de $X$ y todas las filas diferentes de $X$. Para los **falsos positivos**, se
 observa únicamente la fila de $X$ y se excluye la columna de $X$, ya que representan los
 valores predichos como $X$ pero que en realidad pertenecen a otra clase.
+
+## X. Sistermas de deteccion de anomalias
+
+la premisa está en que se entrenan contratos no anómalos estos sistemas de anomalías.
+Por ejemplo podemos utilizar este imágenes basados en la densidad que consiste en
+calcular la probabilidad de que un dato esté o sea visto en el conjunto de datos donde
+se tiene el centro de un conjunto de datos y se va a calcula la baja, probabilidad o
+alta probabilidad de que está basado en la distancia con respecto al centro entre dos
+características por ejemplo y lo que se hace es establecer un umbral de probabilidad.
+También podemos aplicar métodos basados en distribuciones normales o cauciones, donde lo
+que hacemos es modelar la media de la varianza para cada parámetro a partir de una
+distribución Gaussiana.
+
+También sería bueno incluir datos anómalos en el set de validación. Aquí va muy bien
+utilizar validación cruzada.
+
+Detector de anomalías con Versus el aprendizaje supervisado el detector de anomalías
+muchos tipos de posibles anomalías que desconocemos y que son diferentes a los vistos.
+No hacemos la suposición de que los datos nuevos que nos llegan están dentro de la misma
+distribución un clasificado supervisado por ejemplo tiene muchos positivos y negativos y
+se espera que las muestras a futuro sigan una distribución similar, pero puede darse el
+caso de que las características no tengan una forma gaussiana entonces hay que aplicar
+transformaciones.
+
+Algunas transformaciones escoger los datos de entrada y aplicar el logaritmo de los
+datos en logaritmo +1 constante C o el organismo de una función exponencial de los datos
+donde por ejemplo se llame pues son valores que deberíamos probar para hacer que
+nuestros datos tengan una distribución normal existe lo que se conoce como flujos de
+normalizadores, que son modelos generativos invertibles que transforma en una
+distribución de datos compleja a una conocida como la distribución normal preservando la
+dimensión alidada de los datos. Con ellos podemos detectar anomalías.
+
+## X. Sistemas de recomendacion
+
+podríamos tener un conjunto de usuarios con puntuaciones de películas, pero puede que
+ciertos usuarios no hayan visto todas las películas entonces podríamos estimar la
+puntuación de las películas no vistas utilizando algoritmos como la colaboración, el
+filtrado por colaborativo por filtrado basado en el contenido.
