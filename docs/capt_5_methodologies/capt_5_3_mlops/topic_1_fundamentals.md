@@ -1194,3 +1194,59 @@ patron de variabilidad o existencia de diferentes patrones.
 - Herramiento desarrollo de APIs: Ratman.
 
 - Libro: Kubernetes in production. Best Practices by Aly Saleh and Huat Korshogl.
+
+- Velocidad: velocidad. a la que se acumulan los datos, o se van generando, generalmente
+  en un ciclo que no termina.
+
+- Volumen: es la escala de los datos.
+
+- Varieté: es la diversidad de los datos, tipo de dato, procedencia o procesos.
+
+- Veracité: es la calidad y fiabilidad de los datos.
+
+- Valore: valor que aportan los datos.
+
+Algunas de las herramientas utilizadas para trabajar con datos estructurados,
+semi-structurados, etc. son:
+
+- Apache Hadoop: conjunto de herramientas que permiten procesar y programar de manera
+  distribuida datos.
+
+- Apache Hive: es un data warehouse (sistema que permite recopilar, almacenar, gestionar
+  grandes volúmenes de datos provenientes de diversas fuentes) para técnicas (query y
+  análisis).
+
+- Apache Spark: un framework para análisis distribuido para datos complejos y en tiempo
+  real.
+
+Hadoop (Analizar y procesar big data)
+
+Perúnte almacenamiento distribuido de grandes cantidades de datos entre clusters de
+ordenadores.
+
+HDFS (Hadoop Distributed File System) es un sistema de almacenamiento para big data que
+se ejecuta en varias equipos básicos conectados a través de una red.
+
+Proporciona almacenamiento escalable y viable para grandes cantidades de datos sobre los
+clusters de modos, permite la paralización, ofrece redundancia (availability).
+
+Hive
+
+- No es óptimo para pequeños clientes.
+- Más basado en la lectura.
+- Apropiado para ETZ, reporting y análisis de datos.
+
+Spark
+
+- Propósito general.
+- # In-memory processing.
+- Propósito compartido con varios programas/languages.
+
+Data mining process (Iterativa)
+
+1. Goal set → Identificar premissas, lances
+2. Select data → Identificar premissas, lances de dados
+3. Reprocess → Limpar, adicionar dados
+4. Transform → Determinar, realizar, adicionar, etc.
+5. Data mine → Analisar métodos, algoritmos, etc.
+6. Evaluate → Evaluar, resultados.
