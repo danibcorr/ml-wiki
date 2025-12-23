@@ -206,7 +206,7 @@ seguridad y autenticidad en cada frase.
 
 ## 4. LinkedIn
 
-### 4.1. LinkedIn como complemento del CV
+### 4.1. LinkedIn como complemento
 
 LinkedIn no es simplemente un **currículum digital**, sino una plataforma integral:
 vitrina profesional, espacio de _networking_ y motor de búsqueda de empleo.

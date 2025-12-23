@@ -280,3 +280,50 @@ funcion
 ```
 
 ::::
+
+## 3. Ejemplos de automatización
+
+En el desarrollo de proyectos en Python, la automatización de tareas mediante **Bash**
+resulta fundamental para garantizar la reproducibilidad y eficiencia del entorno. A
+continuación, se presenta un ejemplo de script que ilustra cómo preparar un entorno de
+desarrollo, instalando herramientas necesarias y dependencias tanto del sistema como de
+Python:
+
+```bash
+#!/bin/bash
+set -e
+
+# Verificación e instalación de la herramienta "uv"
+echo "Checking for uv..."
+if ! command -v uv &> /dev/null; then
+    echo "Installing uv..."
+    curl -LsSf https://astral.sh/uv/install.sh | sh > /dev/null 2>&1
+    echo "✅ uv installed."
+else
+    echo "✅ uv already installed."
+fi
+
+# Instalación de dependencias del sistema
+echo "Installing system dependencies..."
+sudo apt-get update > /dev/null 2>&1
+sudo apt-get install -y build-essential > /dev/null 2>&1
+echo "✅ System dependencies installed."
+
+# Instalación de dependencias de Python a través de Makefile
+echo "Installing Python dependencies with Makefile..."
+make install > /dev/null 2>&1
+
+echo "✅ Devcontainer setup complete."
+```
+
+Este script ejecuta de manera secuencial y automatizada varias operaciones clave para
+configurar un entorno de desarrollo. Primero, verifica si la herramienta `uv` está
+instalada y, en caso contrario, procede a su instalación de forma silenciosa. La
+ejecución silenciosa se logra mediante `> /dev/null 2>&1`, que descarta tanto la salida
+estándar como los mensajes de error, evitando que aparezcan en la terminal.
+Posteriormente, el script actualiza el sistema e instala paquetes esenciales mediante
+`apt-get`, también de manera silenciosa. Finalmente, instala las dependencias de Python
+definidas en un archivo `Makefile`, asegurando que el entorno de desarrollo quede
+completamente configurado. Este enfoque automatizado reduce la intervención manual,
+minimiza la probabilidad de errores y facilita la replicación del entorno en distintos
+sistemas, garantizando consistencia y eficiencia en los proyectos.

@@ -24,7 +24,7 @@ toc_max_heading_level: 3
 que implica que su código fuente es público y accesible, permitiendo a cualquier persona
 examinarlo, modificarlo, contribuir a su desarrollo o crear su propia distribución. El
 núcleo central, conocido como **_kernel_**, fue desarrollado inicialmente por Linus
-Torvalds y publicado en 1991.
+Torvalds.
 
 Lo que habitualmente se denomina Linux corresponde, en realidad, a la combinación del
 _kernel_ con las utilidades del proyecto **GNU**, que aportan las herramientas
@@ -148,6 +148,12 @@ según su tamaño y complejidad.
 El acceso remoto a otros equipos se realiza habitualmente mediante el protocolo **SSH**,
 que permite establecer sesiones seguras desde la línea de comandos, integrando de manera
 fluida la administración de sistemas locales y remotos.
+
+Resulta impracticable enumerar todos los comandos de Linux junto con sus múltiples
+opciones, debido a la gran cantidad y diversidad que presentan. Por esta razón, es
+posible utilizar la opción `--help` de cualquier comando para obtener información
+detallada sobre su uso, incluyendo las opciones disponibles y una breve descripción de
+su funcionalidad.
 
 | Comando   | Función resumida                                                                      | Ejemplo de uso                          |
 | --------- | ------------------------------------------------------------------------------------- | --------------------------------------- |

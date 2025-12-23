@@ -25,7 +25,8 @@ toc_max_heading_level: 3
 **Git** es un sistema de control de versiones distribuido que permite gestionar el
 historial de cambios en proyectos de software. Facilita la colaboración entre
 desarrolladores, el seguimiento de modificaciones en el código y la administración de
-distintas versiones del código a lo largo del tiempo.
+distintas versiones del código a lo largo del tiempo. Al igual que el _kernel_ de Linux,
+fue desarrollado inicialmente por Linus Torvalds.
 
 Plataformas como **GitHub** o **GitLab** utilizan Git para facilitar la gestión de
 proyectos y la colaboración en línea, ofreciendo interfaces gráficas y funcionalidades
@@ -143,7 +144,9 @@ fundamentales y ejemplos de su uso:
 
 Un comando de Git se compone de tres elementos fundamentales: el comando principal
 (`git`), el subcomando que define la acción concreta que se desea realizar y, de forma
-opcional, una serie de opciones y argumentos que ajustan su comportamiento. Por ejemplo:
+opcional, una serie de opciones y argumentos que ajustan su comportamiento.
+
+:::tip Ejemplo
 
 ```
 git commit -m "Esto es un commit"
@@ -151,13 +154,12 @@ git commit -m "Esto es un commit"
 
 En este caso, `git commit` define la acción de confirmar cambios, `-m` es una opción que
 permite añadir un mensaje descriptivo y `"Esto es un commit"` es el argumento asociado a
-dicha opción. Comprender esta estructura resulta clave para interpretar correctamente la
-documentación de Git y para utilizar los comandos de forma precisa.
+dicha opción.
+
+:::
 
 A continuación se describen los comandos más relevantes para la gestión del control de
-versiones en un repositorio Git a nivel local. Se incluyen tanto los comandos básicos
-como otros menos evidentes, pero esenciales para mantener un repositorio limpio,
-coherente y alineado con su estado remoto.
+versiones en un repositorio Git a nivel local.
 
 | Comando                | Función                                                                                                                                                                                                           | Ejemplo de uso                                                                                             |
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
@@ -182,11 +184,6 @@ coherente y alineado con su estado remoto.
 | **git rm**             | Elimina archivos del repositorio y del área de preparación, registrando la eliminación para el próximo commit.                                                                                                    | `git rm archivo.txt` elimina el archivo del control de versiones.                                          |
 | **git rebase**         | Reaplica commits sobre una base distinta, manteniendo un historial lineal. Es especialmente útil para actualizar ramas con respecto a la rama principal.                                                          | `git rebase main` reaplica los commits actuales sobre `main`.                                              |
 | **git clean**          | Elimina archivos no rastreados del directorio de trabajo. Debe usarse con precaución, ya que borra archivos de forma permanente.                                                                                  | `git clean -f` elimina archivos no rastreados.                                                             |
-
-La correcta combinación de estos comandos permite mantener un repositorio local
-ordenado, sincronizado con el remoto y con un historial de cambios comprensible, lo cual
-resulta esencial para el trabajo colaborativo y para reducir conflictos en equipos de
-desarrollo.
 
 ### 3.3. Configuración básica de Git
 
@@ -459,6 +456,17 @@ chmod +x pre-commit
 Una vez ubicados en el directorio correcto y con los permisos necesarios, Git ejecutará
 automáticamente estos scripts cuando ocurra el evento correspondiente.
 
+Al desarrollar y administrar Git Hooks, es esencial seguir ciertas pautas que aseguren
+su eficacia y mantengan un flujo de trabajo ordenado. En primer lugar, los hooks deben
+ser rápidos y confiables, de manera que su ejecución no interfiera con la productividad
+del equipo ni genere demoras en los procesos habituales de desarrollo. Asimismo, resulta
+fundamental proporcionar documentación clara dentro de los scripts mediante comentarios
+explicativos, lo que facilita su comprensión, mantenimiento y eventual modificación por
+parte de otros desarrolladores. Finalmente, se recomienda evitar que los hooks realicen
+cambios automáticos en el código sin la aprobación explícita del desarrollador, ya que
+estas modificaciones pueden provocar conflictos, errores inesperados o dificultades en
+la integración del código.
+
 ### 5.2. Tipos de Git Hooks y ejemplos
 
 #### 5.2.1. pre-commit
@@ -656,17 +664,6 @@ pm2 restart mi-aplicacion
 ```
 
 :::
-
-### 5.3. Recomendaciones para Git Hooks
-
-Al escribir y gestionar Git Hooks, es recomendable seguir estas pautas:
-
-- **Rapidez y fiabilidad**: Los _hooks_ deben ser rápidos para no ralentizar el flujo de
-  trabajo y deben ejecutarse de manera confiable.
-- **Documentación clara**: Es fundamental incluir comentarios en los scripts para
-  facilitar su comprensión y mantenimiento.
-- **Evitar modificaciones automáticas no deseadas**: Los _hooks_ no deben alterar el
-  código sin la aprobación del desarrollador, ya que esto podría generar conflictos.
 
 ## 6. Casos de uso prácticos en Git
 

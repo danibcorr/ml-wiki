@@ -21,44 +21,42 @@ toc_max_heading_level: 4
 </p>
 
 **Python** es un lenguaje de programación de alto nivel, interpretado y de propósito
-general, creado por Guido van Rossum y lanzado en 1991. Se caracteriza por su sintaxis
-clara y legible, lo que facilita el aprendizaje y la escritura de código. Además, cuenta
-con una amplia comunidad de desarrolladores y una gran cantidad de bibliotecas y
-frameworks que permiten desarrollar proyectos diversos, como aplicaciones web, análisis
-de datos y aprendizaje automático.
+general, desarrollado por Guido van Rossum. Su sintaxis se caracteriza
+por ser clara y legible, lo que facilita tanto el aprendizaje como la escritura de
+código eficiente y comprensible. Python cuenta con una amplia comunidad de
+desarrolladores y un ecosistema robusto de bibliotecas y frameworks que permiten abordar
+una gran diversidad de proyectos, incluyendo aplicaciones web, análisis de datos,
+automatización de tareas y aprendizaje automático.
 
 ## 2. Instalación
 
-### 2.1. Miniconda y los Jupyter Notebooks
+### 2.1. Jupyter Notebooks
 
-**Miniconda** es una versión ligera de **Conda** que incluye únicamente lo esencial:
-Conda, Python y algunos paquetes básicos. Su función principal es facilitar la creación
-de entornos virtuales para aislar dependencias y evitar conflictos entre versiones de
-paquetes. La instalación de Miniconda se debe realizar siguiendo las instrucciones
-oficiales disponibles en la [página de Miniconda](https://docs.anaconda.com/miniconda/).
+Para experimentar y desarrollar en Python, se recomienda utilizar **Jupyter Notebooks**,
+una herramienta interactiva que integra código, texto y visualizaciones en un único
+documento. Entre sus principales ventajas destacan:
 
-Para trabajar con Python en entornos de pruebas se suele emplear **Jupyter Notebooks**,
-una herramienta interactiva que combina código, visualizaciones y texto en un único
-documento. Las ventajas principales de los Jupyter Notebooks incluyen:
-
-- **Interactividad**: Permite ejecutar bloques de código de forma independiente,
-  facilitando la experimentación y la prueba de ideas.
-- **Documentación integrada**: Soporta texto en formato Markdown, permitiendo documentar
-  el código junto a su ejecución.
-- **Visualización**: Permite integrar gráficos y visualizaciones de bibliotecas como
-  **Matplotlib** o **Seaborn** directamente en el documento.
+- **Interactividad**: Permite ejecutar bloques de código de manera independiente, lo que
+  facilita la prueba de ideas y la depuración paso a paso.
+- **Documentación integrada**: Soporta texto en formato Markdown, permitiendo incluir
+  explicaciones y notas directamente junto al código.
+- **Visualización**: Facilita la incorporación de gráficos y visualizaciones mediante
+  bibliotecas como **Matplotlib** o **Seaborn**, mostrando los resultados de manera
+  inmediata dentro del mismo documento.
 
 ### 2.2. Creación y configuración del entorno
 
-Una vez instalado Miniconda, es necesario crear un entorno virtual configurando la
-versión de Python y los paquetes necesarios para cada proyecto. Para ello, puedes seguir
-los pasos del
-[apartado de herramientas, gestión de entornos en Python](./topic_1_environments.md).
+Antes de comenzar a programar en Python, es recomendable crear un entorno virtual que
+permita aislar la versión de Python y los paquetes específicos de cada proyecto. Esto
+evita conflictos entre dependencias y garantiza la reproducibilidad del entorno de
+desarrollo. Para obtener instrucciones detalladas sobre la configuración de entornos
+virtuales y la gestión de paquetes en Python, se puede consultar el
+[apartado de herramientas y gestión de entornos en Python](./topic_1_environments.md).
 
 ### 2.3. Comandos útiles para la terminal
 
-A continuación, se listan algunos comandos útiles para la terminal en Linux, junto con su
-función:
+A continuación, se listan algunos comandos útiles para la terminal en Linux, junto con
+su función:
 
 | Comando                | Función                                                 |
 | ---------------------- | ------------------------------------------------------- |
@@ -173,8 +171,8 @@ Al crear variables en Python, se deben seguir ciertas reglas:
 - Es recomendable utilizar nombres de variables en minúsculas.
 
 **Python es un lenguaje de tipificación dinámica**, por lo que no es necesario declarar
-explícitamente el tipo de dato, ya que este se asigna automáticamente según el valor. Por
-ejemplo:
+explícitamente el tipo de dato, ya que este se asigna automáticamente según el valor.
+Por ejemplo:
 
 ```python
 mis_perros = 2
@@ -251,9 +249,9 @@ recibir la entrada del usuario.
 
 ### 3.7. Cadenas de texto (Strings)
 
-Un **string** es una secuencia de caracteres que puede contener letras, números, símbolos
-o espacios. A cotinuación se muestra un ejemplo básico de string junto con el uso del
-indexado:
+Un **string** es una secuencia de caracteres que puede contener letras, números,
+símbolos o espacios. A cotinuación se muestra un ejemplo básico de string junto con el
+uso del indexado:
 
 ```python
 frase = "Hola buenas"
@@ -288,10 +286,10 @@ frase = "Hola buenas"
 frase[0] = "h"  # Esto producirá un error
 ```
 
-Este código genera un error de tipo `TypeError` porque no se puede modificar directamente
-un carácter de un string existente. Para modificar un string, es necesario crear uno
-nuevo combinando partes del string original. Por ejemplo, para cambiar la primera letra
-de `"Hola buenas"` por una minúscula:
+Este código genera un error de tipo `TypeError` porque no se puede modificar
+directamente un carácter de un string existente. Para modificar un string, es necesario
+crear uno nuevo combinando partes del string original. Por ejemplo, para cambiar la
+primera letra de `"Hola buenas"` por una minúscula:
 
 ```python
 frase = "Hola buenas"
@@ -303,8 +301,9 @@ nueva_frase = "h" + frase[1:]
 print(nueva_frase)
 ```
 
-En este ejemplo, se construye una nueva cadena concatenando `"h"` con el resto del string
-original (`frase[1:]`), que devuelve el string desde el segundo carácter en adelante.
+En este ejemplo, se construye una nueva cadena concatenando `"h"` con el resto del
+string original (`frase[1:]`), que devuelve el string desde el segundo carácter en
+adelante.
 
 #### 3.7.1. Métodos
 
@@ -362,8 +361,8 @@ else:
     # Código a ejecutar si la condición es falsa
 ```
 
-Para manejar múltiples condiciones, se utiliza la instrucción `elif`, que permite evaluar
-varias condiciones de forma secuencial:
+Para manejar múltiples condiciones, se utiliza la instrucción `elif`, que permite
+evaluar varias condiciones de forma secuencial:
 
 ```python
 if primera_condicion:
@@ -396,8 +395,8 @@ bloque `else`.
 ### 3.9. Bucles
 
 Los bucles en Python permiten ejecutar un bloque de código repetidamente, facilitando la
-automatización de tareas repetitivas al recorrer secuencias de elementos o al evaluar una
-condición.
+automatización de tareas repetitivas al recorrer secuencias de elementos o al evaluar
+una condición.
 
 #### 3.9.1. Bucle `for`
 
@@ -591,13 +590,13 @@ Archivo 2 __name__ establecido a: two79
 Archivo 2 ejecutado como importado a otro módulo
 ```
 
-En este caso, `one79.py` muestra que `__name__` es `"__main__"` porque se está ejecutando
-directamente. `two79.py`, que se importa dentro de `one79.py`, muestra que `__name__` es
-`"two79"`.
+En este caso, `one79.py` muestra que `__name__` es `"__main__"` porque se está
+ejecutando directamente. `two79.py`, que se importa dentro de `one79.py`, muestra que
+`__name__` es `"two79"`.
 
 Es una buena práctica definir una función `main()` que contenga el código principal a
-ejecutar. Esto hace que el código sea más organizado y facilita la reutilización. Aquí se
-muestra cómo se puede definir y usar `main()`:
+ejecutar. Esto hace que el código sea más organizado y facilita la reutilización. Aquí
+se muestra cómo se puede definir y usar `main()`:
 
 ```python
 # one79.py
@@ -617,17 +616,17 @@ importaciones.
 
 ## 4. Estructuras de datos
 
-En Python, las estructuras de datos son fundamentales para almacenar y manipular datos de
-manera eficiente. A continuación, exploraremos algunas de las estructuras de datos más
-comunes.
+En Python, las estructuras de datos son fundamentales para almacenar y manipular datos
+de manera eficiente. A continuación, exploraremos algunas de las estructuras de datos
+más comunes.
 
 ### 4.1. Listas
 
-Las listas en Python son estructuras de datos que permiten almacenar secuencias ordenadas
-y mutables de elementos. A diferencia de otros lenguajes, las listas en Python pueden
-contener elementos de diferentes tipos. Además, su tamaño es dinámico, lo que significa
-que puede cambiar durante la ejecución del programa. La indexación comienza en 0, y los
-índices negativos permiten acceder a los elementos desde el final de la lista.
+Las listas en Python son estructuras de datos que permiten almacenar secuencias
+ordenadas y mutables de elementos. A diferencia de otros lenguajes, las listas en Python
+pueden contener elementos de diferentes tipos. Además, su tamaño es dinámico, lo que
+significa que puede cambiar durante la ejecución del programa. La indexación comienza en
+0, y los índices negativos permiten acceder a los elementos desde el final de la lista.
 
 Para definir una lista, basta con usar corchetes y separar los elementos por comas. A
 continuación se muestra un ejemplo donde cada elemento es un string:
@@ -732,8 +731,8 @@ la tercera fila y tercera columna.
 
 ### 4.2. Tuplas
 
-Las **tuplas** en Python son secuencias ordenadas e **inmutables**, lo que significa que,
-a diferencia de las listas, sus elementos no pueden ser modificados después de su
+Las **tuplas** en Python son secuencias ordenadas e **inmutables**, lo que significa
+que, a diferencia de las listas, sus elementos no pueden ser modificados después de su
 creación. Las tuplas son útiles cuando se necesita garantizar que los datos no cambien a
 lo largo del programa. Además, son más rápidas de procesar que las listas.
 
@@ -747,7 +746,8 @@ print(f"Coordenada completa {coordenadas}")
 print(f"Primera coordenada {coordenadas[0]} y segunda coordenada {coordenadas[1]}")
 ```
 
-También es posible combinar tuplas con otras estructuras de datos, como listas de tuplas:
+También es posible combinar tuplas con otras estructuras de datos, como listas de
+tuplas:
 
 ```python
 lista_tuplas = [(1, 2), (3, 4), (5, 6)]
@@ -765,10 +765,10 @@ A pesar de ser inmutables, las tuplas tienen algunos métodos útiles:
 
 ### 4.3. Sets
 
-Los **sets** en Python son colecciones **desordenadas** de elementos únicos. A diferencia
-de las listas y tuplas, los sets no permiten duplicados, lo que los convierte en una
-herramienta útil para eliminar valores repetidos o para realizar operaciones matemáticas
-como uniones e intersecciones.
+Los **sets** en Python son colecciones **desordenadas** de elementos únicos. A
+diferencia de las listas y tuplas, los sets no permiten duplicados, lo que los convierte
+en una herramienta útil para eliminar valores repetidos o para realizar operaciones
+matemáticas como uniones e intersecciones.
 
 Un set se puede definir usando llaves `{}` o con la función `set()`:
 
@@ -892,8 +892,8 @@ formas en Python, ofreciendo soluciones adecuadas para una gran variedad de prob
 ## 5. Métodos y funciones
 
 En Python, los métodos y las funciones son herramientas esenciales para la programación
-modular y la reutilización del código. A continuación, se exploran en detalle los métodos
-y las funciones, sus diferencias y cómo usarlos.
+modular y la reutilización del código. A continuación, se exploran en detalle los
+métodos y las funciones, sus diferencias y cómo usarlos.
 
 ### 5.1. Métodos
 
@@ -954,8 +954,8 @@ están asociados a objetos, las funciones no están vinculadas a ningún tipo de
 particular.
 
 Para definir una función, se utiliza la palabra clave `def`, seguida del nombre de la
-función y paréntesis con posibles parámetros. El bloque de código dentro de la función se
-indenta.
+función y paréntesis con posibles parámetros. El bloque de código dentro de la función
+se indenta.
 
 A continuación, se muestra Aquí tienes un ejemplo de cómo definir y usar una función en
 Python:
@@ -1065,8 +1065,9 @@ print(f"El mejor trabajador es {mejor} que ha trabajado un total de {maximo} hor
 
 ##### Funciones que llaman a otras funciones
 
-En este ejemplo, se muestra un juego simple donde las funciones llaman a otras funciones.
-Se utiliza la función `shuffle()` de Python, que reordena una lista de manera aleatoria:
+En este ejemplo, se muestra un juego simple donde las funciones llaman a otras
+funciones. Se utiliza la función `shuffle()` de Python, que reordena una lista de manera
+aleatoria:
 
 ```python
 # El juego de la bolita
@@ -1178,8 +1179,8 @@ def mifuncion(a, b, c = 0):
 
 #### 5.3.1. Funciones con \*Args
 
-Aquí es donde **`*args`** resulta útil. Nos permite configurar la función para aceptar un
-número arbitrario de argumentos:
+Aquí es donde **`*args`** resulta útil. Nos permite configurar la función para aceptar
+un número arbitrario de argumentos:
 
 ```python
 def mifuncion(*args):
@@ -1292,12 +1293,13 @@ concisas. Para operaciones más complejas, es recomendable definir una función 
 
 ### 5.5. Decoradores
 
-Los decoradores en Python son una herramienta poderosa que permite "decorar" una función,
-es decir, modificar su comportamiento sin alterar su código fuente. Esto es útil cuando
-queremos añadir funcionalidades a una función existente sin modificar su definición.
+Los decoradores en Python son una herramienta poderosa que permite "decorar" una
+función, es decir, modificar su comportamiento sin alterar su código fuente. Esto es
+útil cuando queremos añadir funcionalidades a una función existente sin modificar su
+definición.
 
-Los decoradores tienen muchas aplicaciones. Por ejemplo, se utilizan en el desarrollo web
-con frameworks como Flask para añadir comportamientos a las funciones de ruta, como
+Los decoradores tienen muchas aplicaciones. Por ejemplo, se utilizan en el desarrollo
+web con frameworks como Flask para añadir comportamientos a las funciones de ruta, como
 requerir que un usuario esté autenticado para acceder a ciertas páginas. También se
 utilizan para crear _loggers_, que registran cuándo se llaman a ciertas funciones y con
 qué argumentos, lo cual es útil para depurar y entender el flujo de ejecución de un
@@ -1349,15 +1351,16 @@ funcion_necesita_decorador()
 
 En este ejemplo, `nuevo_decorador` es un decorador que añade dos líneas de impresión
 antes y después de la ejecución de la función original. La sintaxis `@nuevo_decorador`
-antes de la definición de `funcion_necesita_decorador` es lo que aplica el decorador a la
-función.
+antes de la definición de `funcion_necesita_decorador` es lo que aplica el decorador a
+la función.
 
 ### 5.6. Generadores
 
 Los generadores en Python son una forma eficiente de crear iteradores. A diferencia de
 las funciones normales, los generadores utilizan la palabra clave `yield` en lugar de
-`return`. Esto permite que los generadores produzcan valores de uno en uno, y solo cuando
-se necesitan, en lugar de calcular todos los valores a la vez y almacenarlos en memoria.
+`return`. Esto permite que los generadores produzcan valores de uno en uno, y solo
+cuando se necesitan, en lugar de calcular todos los valores a la vez y almacenarlos en
+memoria.
 
 Una función generadora es una función que utiliza la palabra clave `yield`. Cuando se
 llama a una función generadora, en lugar de ejecutar todo el cuerpo de la función y
@@ -1380,9 +1383,9 @@ datos que no caben en memoria. En lugar de generar todos los datos a la vez, los
 generadores los producen de uno en uno, solo cuando se necesitan. Esto puede mejorar
 significativamente el rendimiento de nuestro programa.
 
-La función `iter()` en Python convierte un objeto iterable en un iterador. Esto significa
-que podemos utilizar la función `next()` en el objeto para acceder a sus elementos uno a
-uno. Aquí tienes un ejemplo:
+La función `iter()` en Python convierte un objeto iterable en un iterador. Esto
+significa que podemos utilizar la función `next()` en el objeto para acceder a sus
+elementos uno a uno. Aquí tienes un ejemplo:
 
 ```python
 s = "hello"
@@ -1452,9 +1455,9 @@ stmt2 = 'func_dos(100)'
 print(timeit.timeit(stmt2, setup2, number=100000))
 ```
 
-Es importante mencionar que Jupyter permite utilizar **funciones mágicas** (las funciones
-mágicas de Jupyter se activan con dos signos de porcentaje al comienzo del bloque de
-código), una de ellas es la función _timeit_:
+Es importante mencionar que Jupyter permite utilizar **funciones mágicas** (las
+funciones mágicas de Jupyter se activan con dos signos de porcentaje al comienzo del
+bloque de código), una de ellas es la función _timeit_:
 
 ```python
 %%timeit
@@ -1463,8 +1466,8 @@ func_uno(100)
 
 ### 5.8. Declaraciones anidadas y alcance del código (Scope)
 
-En Python, es crucial entender cómo se manejan las variables que creamos. Estas variables
-se almacenan en lo que se conoce como un "alcance" o "scope", que determina la
+En Python, es crucial entender cómo se manejan las variables que creamos. Estas
+variables se almacenan en lo que se conoce como un "alcance" o "scope", que determina la
 visibilidad de la variable a otras partes del código.
 
 Por ejemplo:
@@ -1482,8 +1485,8 @@ print(printer())  # Devuelve 50
 ```
 
 En este ejemplo, la reasignación de `x` dentro de la función `printer()` no afecta a la
-asignación global de `x`. Esto se debe a la regla de alcance (scope) en Python, que sigue
-la regla LEGB:
+asignación global de `x`. Esto se debe a la regla de alcance (scope) en Python, que
+sigue la regla LEGB:
 
 - **L, Local** — Nombres asignados de alguna manera dentro de una función (`def` o
   `lambda`) y que no se declaran globales en esa función.
@@ -1521,11 +1524,11 @@ En este ejemplo, la función `hola()` mostrará primero la variable local "Carli
 comentamos la asignación local, cogerá la variable de encierro local "Daniel". Y si
 también comentamos esa asignación, cogerá la variable global "Esto es un string global".
 
-Ahora, veamos qué sucede cuando reasignamos una variable global dentro de una función. Si
-hacemos una reasignación dentro de la función, por el alcance (scope), el valor de
-reasignación solo se mantiene dentro de la función. Una vez que salimos de ella, el valor
-de la variable vuelve a ser el valor que se le asignó al principio. Para cambiar esto,
-podemos usar la palabra clave `global`, como en el siguiente ejemplo:
+Ahora, veamos qué sucede cuando reasignamos una variable global dentro de una función.
+Si hacemos una reasignación dentro de la función, por el alcance (scope), el valor de
+reasignación solo se mantiene dentro de la función. Una vez que salimos de ella, el
+valor de la variable vuelve a ser el valor que se le asignó al principio. Para cambiar
+esto, podemos usar la palabra clave `global`, como en el siguiente ejemplo:
 
 ```python
 x = 50
@@ -1550,8 +1553,8 @@ sin siquiera saberlo.
 
 La **Programación Orientada a Objetos (POO)** es un paradigma que organiza el código en
 torno a **objetos** en lugar de funciones y lógica. Estos objetos combinan **datos**
-(atributos) y **funciones** (métodos) que actúan sobre los datos. Este enfoque permite la
-reutilización, modularidad y escalabilidad del código.
+(atributos) y **funciones** (métodos) que actúan sobre los datos. Este enfoque permite
+la reutilización, modularidad y escalabilidad del código.
 
 La **POO** en Python es una herramienta poderosa que facilita la creación de código
 limpio, estructurado y modular. Al usar clases, herencia y polimorfismo, puedes
@@ -1559,9 +1562,10 @@ desarrollar programas flexibles y fáciles de mantener.
 
 ### 6.1. Clases y objetos
 
-Una **clase** es un molde o plantilla para crear objetos, que son instancias de la clase.
-Los objetos tienen **atributos** (características) y **métodos** (comportamientos). A
-continuación, se muestra un ejemplo básico de una clase y cómo se crea un objeto:
+Una **clase** es un molde o plantilla para crear objetos, que son instancias de la
+clase. Los objetos tienen **atributos** (características) y **métodos**
+(comportamientos). A continuación, se muestra un ejemplo básico de una clase y cómo se
+crea un objeto:
 
 ```python
 class NombreDeClase():
@@ -1634,8 +1638,9 @@ if __name__ == '__main__':
     mi_perro.informacion()
 ```
 
-En este ejemplo, `especie` es un atributo de clase compartido por todas las instancias de
-`Perro`, mientras que `raza`, `nombre` y `edad` son atributos únicos para cada instancia.
+En este ejemplo, `especie` es un atributo de clase compartido por todas las instancias
+de `Perro`, mientras que `raza`, `nombre` y `edad` son atributos únicos para cada
+instancia.
 
 ### 6.3. Herencia y polimorfismo
 
@@ -1770,10 +1775,10 @@ print(Fore.RED + "Texto de prueba")
 
 ### 7.2. Uso de paquetes y librerías externas
 
-Un **módulo** es simplemente un archivo `.py` que contiene funciones, variables y clases.
-Un **paquete** es una colección de módulos organizados en una carpeta. El paquete debe
-contener un archivo `__init__.py`, el cual puede estar vacío, pero es necesario para que
-Python trate el directorio como un paquete.
+Un **módulo** es simplemente un archivo `.py` que contiene funciones, variables y
+clases. Un **paquete** es una colección de módulos organizados en una carpeta. El
+paquete debe contener un archivo `__init__.py`, el cual puede estar vacío, pero es
+necesario para que Python trate el directorio como un paquete.
 
 Ejemplo de cómo estructurar un proyecto con módulos y submódulos:
 
@@ -1808,8 +1813,8 @@ generales de Python (`dict`, `list`, `set`, y `tuple`).
 
 ##### 7.3.1.1. Counter
 
-`Counter` es una subclase de diccionario para contar elementos de manera rápida. Almacena
-los elementos como claves y su recuento como valores.
+`Counter` es una subclase de diccionario para contar elementos de manera rápida.
+Almacena los elementos como claves y su recuento como valores.
 
 ```python
 from collections import Counter
@@ -1973,9 +1978,9 @@ def eleccion_usuario():
 eleccion_usuario()
 ```
 
-En este ejemplo, la función `eleccion_usuario()` pide al usuario que introduzca un número
-entre 1 y 10. Si el valor introducido no es un número o si no está en el rango correcto,
-la función le pide al usuario que introduzca un nuevo valor.
+En este ejemplo, la función `eleccion_usuario()` pide al usuario que introduzca un
+número entre 1 y 10. Si el valor introducido no es un número o si no está en el rango
+correcto, la función le pide al usuario que introduzca un nuevo valor.
 
 Si quieres limpiar la consola cuando el usuario introduce valores incorrectos, puedes
 importar y usar la biblioteca `IPython.display` y usar la función `clear_output()`:
@@ -1999,7 +2004,8 @@ seguir con el código.
 
 Existen tres palabras clave para el manejo de errores en Python:
 
-- `try`: Este es el bloque de código que se intentará ejecutar (puede llevar a un error).
+- `try`: Este es el bloque de código que se intentará ejecutar (puede llevar a un
+  error).
 - `except`: Bloque de código que se ejecutará en caso de que haya un error en el bloque
   de prueba (`try`).
 - `finally`: Un bloque final de código que se ejecutará independientemente de si hubo un
@@ -2030,8 +2036,8 @@ finally:
     print("De todos modos seguí ejecutando el código")
 ```
 
-En este otro ejemplo, pediremos constantemente un dato al usuario hasta que introduzca un
-valor adecuado:
+En este otro ejemplo, pediremos constantemente un dato al usuario hasta que introduzca
+un valor adecuado:
 
 ```python
 def introducir_entero():
@@ -2060,8 +2066,8 @@ el apartado "Library → Exceptions".
 ### 8.3. Depurador de Python
 
 El depurador o **debugger** se emplea para identificar y corregir errores en el código.
-En lugar de utilizar `print()` para ver qué sucede a cada rato, podemos usar el depurador
-de Python, _pdb_. Por ejemplo:
+En lugar de utilizar `print()` para ver qué sucede a cada rato, podemos usar el
+depurador de Python, _pdb_. Por ejemplo:
 
 ```python
 import pdb
@@ -2136,9 +2142,9 @@ if __name__ == '__main__':
     unittest.main()
 ```
 
-En este ejemplo, `unittest` se utiliza para comprobar que la función `prueba` del archivo
-`cap85a.py` devuelve el resultado esperado. Si el resultado es el esperado, la prueba
-pasará. Si no, la prueba fallará y se mostrará un mensaje de error.
+En este ejemplo, `unittest` se utiliza para comprobar que la función `prueba` del
+archivo `cap85a.py` devuelve el resultado esperado. Si el resultado es el esperado, la
+prueba pasará. Si no, la prueba fallará y se mostrará un mensaje de error.
 
 ## 9. Trabajo con archivos y directorios
 
@@ -2194,8 +2200,8 @@ for empleado in empleado_fic:
 empleado_fic.close()
 ```
 
-Si leemos archivos directamente con métodos como `read()`, al leer de nuevo el fichero no
-aparecerá nada, para solucionarlo hay que usar:
+Si leemos archivos directamente con métodos como `read()`, al leer de nuevo el fichero
+no aparecerá nada, para solucionarlo hay que usar:
 
 - `nombre_fichero.seek(0)` → Permite poner el cursor al principio del fichero.
 

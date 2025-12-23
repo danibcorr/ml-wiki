@@ -11,7 +11,7 @@ toc_max_heading_level: 3
 
 - [Deep Learning Interview Prep Course](https://youtu.be/BAregq0sdyY?si=xsq-901fJqlug4WY)
 
-## Preguntas sobre Conceptos Básicos
+## Conceptos Básicos
 
 <details>
 <summary>
@@ -69,7 +69,7 @@ Pues se basa principalmente en el  descenso del gradiente, donde lo que se hace 
 Es el algoritmo que se utiliza en el proceso de entrenamiento de los modelos, y que consiste en calcular la derivada parciales de los parámetros aprendido a la neurona y actualizarlos con el fin de alcanzar un mínimo global o local, que permita llegar a un punto de optimización en el que poder conseguir o lograr un objetivo es objetivo se suele llamar función de costes de pérdida y lo que se pretende es minimizar el error.
 </details>
 
-## Preguntas sobre Optimización y Problemas de Gradiente
+## Optimización y Problemas de Gradiente
 
 <details>
 <summary>
@@ -141,7 +141,7 @@ Respuesta.
 Respuesta.
 </details>
 
-## Preguntas sobre Variantes de Optimización y Tamaño de Lote
+## Variantes de Optimización y Tamaño de Lote
 
 <details>
 <summary>
@@ -213,7 +213,7 @@ Respuesta.
 Respuesta.
 </details>
 
-## Preguntas sobre Normalización, Conexiones y Problemas de Gradiente
+## Normalización, Conexiones y Problemas de Gradiente
 
 <details>
 <summary>
@@ -285,7 +285,7 @@ Respuesta.
 Respuesta.
 </details>
 
-## Preguntas sobre Regularización y Modelos Generativos
+## Regularización y Modelos Generativos
 
 <details>
 <summary>
