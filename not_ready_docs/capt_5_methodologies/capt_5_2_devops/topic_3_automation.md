@@ -444,13 +444,14 @@ software, diferentes entornos (staging/producción) o compatibilidad con varios 
 operativos.
 
 # Otras
+
 - GitHub Actions (Integración GitHub).
 
 - Podemos utilizar múltiples S.O. (Linux, Mac, Windows) → Matrix.
 
 - Wondflow → pipeline múltiples pasos (Example: Wondflow → Merge → Test → ... → build → Deploy).
 
-- gitHub → Wondflow → Wondflow → Wondflow → Wondflow → Wondflow → WondFlow → WondFlow → WondFlow → WondFlow → WondFlow → Wondflow → WondFlow → WondFlow → WondFlow → Wondflow → Wondflow → WondFlow → WondFlow → Wondflow → WondFlow → Wondflow → WondFlow → WondFlow → Wondflow → Wondflow → Wondflow → Wondflow → WondFlwo → WondFlow → WondFlow → WondFlow → WondFlow → WondFlwo → WondFlow → WondFlow → WondFlow → WundFlow → WondFlow → WondFlow → WondFlow → WondFlow → WundFlow → WondFlwo → WondFlow → WondFlow → WondFlow →  WondFlow → WondFlow → WondFlow → WondFlow → WondFlow.
+- gitHub → Wondflow → Wondflow → Wondflow → Wondflow → Wondflow → WondFlow → WondFlow → WondFlow → WondFlow → WondFlow → Wondflow → WondFlow → WondFlow → WondFlow → Wondflow → Wondflow → WondFlow → WondFlow → Wondflow → WondFlow → Wondflow → WondFlow → WondFlow → Wondflow → Wondflow → Wondflow → Wondflow → WondFlwo → WondFlow → WondFlow → WondFlow → WondFlow → WondFlwo → WondFlow → WondFlow → WondFlow → WundFlow → WondFlow → WondFlow → WondFlow → WondFlow → WundFlow → WondFlwo → WondFlow → WondFlow → WondFlow → WondFlow → WondFlow → WondFlow → WondFlow → WondFlow.
 
 - name: number project.
 - para cuando "nacemos un trigger" del Wondflow.
@@ -473,12 +474,12 @@ Para probar múltiples estrategias podemos utilizar:
 - **stratégia**:  
   matrix
 
-- **os**: [Ubuntu latest, Windows - Latest]  
+- **os**: [Ubuntu latest, Windows - Latest]
 
 En un job, ahora variamos:
 
 - **fun - ou**:  
-  \[ \frac{1}{2} \matrix{ \matrix{ \matrix{ \matrix{ \matrix{ \matrix{ \matrix{ \dots } } } } } } \]
+  $$\frac{1}{2} \matrix{ \matrix{ \matrix{ \matrix{ \matrix{ \matrix{ \matrix{ \dots } } } } } } $$
 
 ## Jenkins
 

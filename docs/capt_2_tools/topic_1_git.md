@@ -667,3 +667,58 @@ Al escribir y gestionar Git Hooks, es recomendable seguir estas pautas:
   facilitar su comprensión y mantenimiento.
 - **Evitar modificaciones automáticas no deseadas**: Los _hooks_ no deben alterar el
   código sin la aprobación del desarrollador, ya que esto podría generar conflictos.
+
+## 6. Casos de uso prácticos en Git
+
+En el desarrollo con Git es habitual necesitar manipular la historia de commits o
+sincronizar el repositorio local con el remoto. A continuación se presentan soluciones
+claras y seguras para los escenarios más frecuentes.
+
+### 6.1 Gestionar commits no firmados
+
+Para garantizar la autenticidad de los commits, se pueden adoptar varias estrategias:
+
+**1. Reescribir y firmar todos los commits (recomendado)**  
+Si los commits son válidos pero carecen de firma, se pueden recrear firmados:
+
+```bash
+git rebase --root --exec 'git commit --amend --no-edit -S'
+git push --force-with-lease
+```
+
+**2. Eliminar commits no firmados conservando los firmados**
+
+```bash
+git log --pretty="%h %G?"   # Identifica commits no firmados (N)
+git checkout -b rama-limpia
+git rebase -i --root         # Elimina los commits N en el editor
+git push --force-with-lease origin rama-limpia
+```
+
+**3. Resetear la rama a un commit firmado específico**
+
+```bash
+git reset --hard <commit_firmado>
+git push --force-with-lease
+```
+
+### 6.2 Sincronizar el repositorio local con el remoto
+
+Para que la rama local sea idéntica a la remota, eliminando cambios locales y archivos
+no versionados:
+
+```bash
+git fetch origin && git reset --hard origin/main && git clean -fd
+```
+
+Si se desea borrar y recrear la rama local:
+
+```bash
+git checkout main
+git branch -D nombre-rama
+git checkout -b nombre-rama origin/nombre-rama
+```
+
+Estas estrategias permiten mantener la historia de commits organizada y sincronizar de
+manera segura el repositorio local con el remoto, evitando conflictos y pérdida de
+información.

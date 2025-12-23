@@ -960,29 +960,32 @@ decisión individuales.
    **toma la raíz**  
    **2da de pérdida**
 
-   \[ \text{MSE} = \frac{1}{n} \sum\_{i=1}^{n} (y_i - \hat{y}\_i)^2\]
+   $$\text{MSE} = \frac{1}{n} \sum\_{i=1}^{n} (y_i - \hat{y}\_i)^2$$
 
-2. **Calcula la desviación estándar**  
-   \[ \text{desv} = \sqrt{\frac{1}{n} \sum\_{i=1}^{n} (y_i - 2\hat{y}\_i +
-   \hat{y}\_i)^2}\]
+2. **Calcula la desviación estándar**
+
+   $$
+   \text{desv} = \sqrt{\frac{1}{n} \sum\_{i=1}^{n} (y_i - 2\hat{y}\_i +
+   \hat{y}\_i)^2}
+   $$
 
 3. **Calcula la desviación cuadrática**  
-   \[ \text{desv}^2 = \frac{1}{n} \sum\_{i=1}^{n} (y - 2\hat{y})^2\]
+   $$\text{desv}^2 = \frac{1}{n} \sum\_{i=1}^{n} (y - 2\hat{y})^2$$
 
 4. **Simplifica**  
-   \[ \text{Similarity} = \sqrt{G^2}\]
+   $$\text{Similarity} = \sqrt{G^2}$$
 
 5. **Regula la desviación cuadrática**  
-   \[ \text{regulación cuadrática}\]
+   $$\text{regulación cuadrática}$$
 
 6. **Hace que la función de pérdida**  
-   \[ \text{H} = \text{desv} \cdot \text{regulación cuadrática}\]
+   $$\text{H} = \text{desv} \cdot \text{regulación cuadrática}$$
 
 7. **Mide que la función de pérdida**  
-   \[ \text{Mide que la función de pérdida}\]
+   $$\text{Mide que la función de pérdida}$$
 
 8. **Mide que la función de desviación cuadrática**  
-    \[ \text{Mide que la función de desviación cuadrática}\] Otra guía de la "ganancia"
+    $$\text{Mide que la función de desviación cuadrática}$$ Otra guía de la "ganancia"
    que es la diferencia de  
    similaridad entre modos difíciles divisionales.
 
@@ -998,17 +1001,19 @@ alto, representados como el cuartil P
 0.1, 0.5, 0.9, respectivamente,  
 ocupando un rango del 80% de 0.9 a 0.4.
 
-\[L_q (y, \hat{y}) = \begin{cases} q \cdot (y - \hat{y}) & \text{si } y > \hat{y} \\
-(1 - q) \cdot (y - \hat{y}) & \text{si } y < \hat{y} \\ \text{quartil} \end{cases}\]
+$$
+L_q (y, \hat{y}) = \begin{cases} q \cdot (y - \hat{y}) & \text{si } y > \hat{y} \\
+(1 - q) \cdot (y - \hat{y}) & \text{si } y < \hat{y} \\ \text{quartil} \end{cases}
+$$
 
 → función de pérdida.
 
 ---
 
-### \(\frac{\partial L_q}{\partial y} =
+\frac{\partial L_q}{\partial y} =
 
 \begin{cases} q \cdot (-1) = -q & \text{si } y > \hat{y} \\ (1 - q) \cdot (1 - \hat{y})
-= 1 - q & \text{si } y < \hat{y} \end{cases}\]
+= 1 - q & \text{si } y < \hat{y} \end{cases}$$
 
 → Tanto la máxima casi como contable pues no es suave, la segunda  
 derivada.
@@ -1144,21 +1149,24 @@ balanceado, ya que es una medida mas equilibrada.
 
 - **Autoencoders**
 
-\[ g\_{\phi}(z|x) \] : estimar la probabilidad posterior, probabilística encoder.
+$$g\_{\phi}(z|x) $$ : estimar la probabilidad posterior, probabilística encoder.
 
-\[ p\_{\theta}(x|z) \] : probabilidad de generar la muestra de datos, verdadera dada el
+$$p\_{\theta}(x|z) $$ : probabilidad de generar la muestra de datos, verdadera dada el
 código latente, deseos probabilístico decoder.
 
-\[ g\_{\phi}(.) \] : encoder, parauentrizado con \(\phi\).
+$$g\_{\phi}(.) $$ : encoder, parauentrizado con \(\phi\).
 
-\[ g\_{\theta}(.) \] : decoder, parauentrizado con \(\theta\).
+$$g\_{\theta}(.) $$ : decoder, parauentrizado con \(\theta\).
 
-Encoder:  
-\[\begin{bmatrix} x \\ y*{\phi}(x) \end{bmatrix} \rightarrow \begin{bmatrix} z \\
+Encoder:
+
+$$
+\begin{bmatrix} x \\ y*{\phi}(x) \end{bmatrix} \rightarrow \begin{bmatrix} z \\
 y*{\theta}(z) \end{bmatrix} \rightarrow \begin{bmatrix} p*{\theta}(z) \\ y*{\phi}(x)
-\end{bmatrix}\]
+\end{bmatrix}
+$$
 
-\[ 1 \times x \times x^T \]
+$$1 \times x \times x^T $$
 
 - Tienden al overfitting. → Agregamos ruido gaussiano o eliminamos partes de la imagen
   de forma cstocástica. →  
@@ -1172,7 +1180,7 @@ y*{\theta}(z) \end{bmatrix} \rightarrow \begin{bmatrix} p*{\theta}(z) \\ y*{\phi
   Autoencoder: penalizada a la representación, el ser muy sensible a los datos de
   entrada.
 
-\[J*f(x) = \sum*{i,j} \left( \frac{\partial h_j(x)}{\partial x_i} \right)^2\]
+$$J*f(x) = \sum*{i,j} \left( \frac{\partial h_j(x)}{\partial x_i} \right)^2$$
 
 - La sensibilidad se rinde con la máxima flexibilidad de la matriz Jacobiana de las
   activaciones del encoder con respecto a la entrada.
@@ -1475,31 +1483,31 @@ función de densidad de probabilidad de un dato \( x \). Modela la distribución
 
 **Objetivo**: minimizar el negativo log-likelihood.
 
-\[X \sim p(x)\]
+$$X \sim p(x)$$
 
-\[f(x) : x \rightarrow z\]
+$$f(x) : x \rightarrow z$$
 
 **Función**: que mapea \( x \) a \( z \).
 
 **Donde**: \( f \) es biyectiva, es decir:
 
-\[f : x \rightarrow z\]
+$$f : x \rightarrow z$$
 
 \( x \) ha de tener el misma altura que \( x \).
 
 **Especie**: latente de igual dimensión.
 
-\[X \sim p(x)\]
+$$X \sim p(x)$$
 
-\[f^{-1}(x)\]
+$$f^{-1}(x)$$
 
 **Fluxo**:
 
-\[X \sim p(x)\]
+$$X \sim p(x)$$
 
 **Inversa**:
 
-\[f^{-1}(x)\]
+$$f^{-1}(x)$$
 
 **Cerra pondencia**:
 
@@ -1513,17 +1521,17 @@ función invertible \( f \), podemos determinar**:
 **\( p(x) \)** Por definición, el área bajo la curva para una  
 función de densidad de probabilidad es 1.
 
-\[\int*{x_1}^{x_2} P(x) \, dx = \int*{z_1}^{z_2} P(z) \, dz = 1\]
+$$\int*{x_1}^{x_2} P(x) \, dx = \int*{z_1}^{z_2} P(z) \, dz = 1$$
 
-\[P(x) \, dx = \int\_{z_1}^{z_2} P(z) \frac{dz}{dx}\]
+$$P(x) \, dx = \int\_{z_1}^{z_2} P(z) \frac{dz}{dx}$$
 
-\[P(x) = \int\_{z_1}^{z_2} P(z) \frac{dz}{\frac{dP}{dx}}\]
+$$P(x) = \int\_{z_1}^{z_2} P(z) \frac{dz}{\frac{dP}{dx}}$$
 
 Probabilidad de \( x \) en el espacio.
 
 Para un factorable minimizando el logaritmo.
 
-\[\log P(x) = \log P_2^{(x)} + \log \left| \frac{dP}{dx} \right|\]
+$$\log P(x) = \log P_2^{(x)} + \log \left| \frac{dP}{dx} \right|$$
 
 Reducimos hacer la función \( P \) más compleja,  
 con el modelo de la distribución de  
@@ -1531,7 +1539,7 @@ probabilidad de \( x \), pero más complejo de
 obtener \( P_2^{(z)} \). Pero, podemos unir múltiples  
 funciones \( P_2^{(z)} \) invertibles aprendibles para obtener
 
-\[z_0 \xrightarrow{(z_0)} z_k = x\]
+$$z_0 \xrightarrow{(z_0)} z_k = x$$
 
 Una función con una distribución Gaussiana,  
 a la que le aplicamos nuevas funciones  
@@ -1758,12 +1766,14 @@ Cada distribución:
 - Tenemos en realidad múltiples distribuciones:
   - Se deja como caja
 
-\[x \sim MDN\]
+$$x \sim MDN$$
 
-\[x \in C\]
+$$x \in C$$
 
-\[MDN = \left\{ \begin{array}{l} M_1, \sigma_1^2, \mu_1 \\ M_2, \sigma_2^2, \mu_2 \\
-\vdots \\ M_n, \sigma_n^2, \mu_n \end{array} \right\}\]
+$$
+MDN = \left\{ \begin{array}{l} M_1, \sigma_1^2, \mu_1 \\ M_2, \sigma_2^2, \mu_2 \\
+\vdots \\ M_n, \sigma_n^2, \mu_n \end{array} \right\}
+$$
 
 - \( \text{MDN} \sim \text{MDN} \sim \text{MDN} \sim \text{SDM} \sim \text{SDM} \sim
   \text{SDM} \sim \)
@@ -1783,27 +1793,31 @@ Cada distribución:
   - \( \text{MDN} \sim \text{MDN} \sim \text{Distribución} \)
   - \( \text{MD} \sim \text{MD} \sim \text{MD} \sim \text{MD} \)
 
-\[- \log(p(y|x)) = - \log \left( \sum\_{j=0}^{m} \exp(\log(n_j) + \log(p_j(x|y)))
-\right)\]
+$$
+- \log(p(y|x)) = - \log \left( \sum\_{j=0}^{m} \exp(\log(n_j) + \log(p_j(x|y)))
+\right)
+$$
 
-\[P(x) = P(N(\mu, \sigma^2)(x)) \quad \text{torch_distribution.Normal}(\mu, \sigma^2)\]
+$$P(x) = P(N(\mu, \sigma^2)(x)) \quad \text{torch_distribution.Normal}(\mu, \sigma^2)$$
 
-\[P(x) = P(N(\mu, \sigma^2)(x))\]
+$$P(x) = P(N(\mu, \sigma^2)(x))$$
 
-\[N(\mu, \sigma^2) \equiv \text{torch.distributions.Normal}(\mu, \sigma^2) = m\]
+$$N(\mu, \sigma^2) \equiv \text{torch.distributions.Normal}(\mu, \sigma^2) = m$$
 
-\[P(N(x)) \equiv m \cdot \log \text{prob}(x)\]
+$$P(N(x)) \equiv m \cdot \log \text{prob}(x)$$
 
-\[\log(N(x)) \equiv \text{torch.log}(N(x)) \to \text{torch.log}(N(x) + 1 \in
-\mathbb{R})\]
+$$
+\log(N(x)) \equiv \text{torch.log}(N(x)) \to \text{torch.log}(N(x) + 1 \in
+\mathbb{R})
+$$
 
-\[\log(\text{torch. logsumexp}(N(x) + 1 \in \mathbb{R}))\]
+$$\log(\text{torch. logsumexp}(N(x) + 1 \in \mathbb{R}))$$
 
-\[\text{torch.logsumexp}(N(x) + 1 \in \mathbb{R}) = m \cdot \log \text{prob}(x)\]
+$$\text{torch.logsumexp}(N(x) + 1 \in \mathbb{R}) = m \cdot \log \text{prob}(x)$$
 
-\[\text{torch.logsumexp}(N(x) + 1 \in \mathbb{R})\]
+$$\text{torch.logsumexp}(N(x) + 1 \in \mathbb{R})$$
 
-\[\text{torch.logsumexp}(N(x) + 1 \in \mathbb{R})\]
+$$\text{torch.logsumexp}(N(x) + 1 \in \mathbb{R})$$
 
 Casi este tipo de modelos, podemos considerar que la incertidumbre de las predicciones
 obtenidas,  
@@ -1839,9 +1853,12 @@ obtenidas,
 En vez de predecir un valor, unico como la regresión obtenemos la \( y \) o que define a
 cada distribución. Con ello, podemos estimar la incertidumbre.
 
-\[MON \quad \xrightarrow{N} \quad X (input) \rightarrow [NN] \rightarrow H (hidden,
-reproductión)\]  
-\[ \xrightarrow{mixtura Model} \]  
+$$
+MON \quad \xrightarrow{N} \quad X (input) \rightarrow [NN] \rightarrow H (hidden,
+reproductión)
+$$
+
+$$\xrightarrow{mixtura Model} $$  
 modela la PDF de \( P(X) \)
 
 ---
@@ -1857,8 +1874,8 @@ PDF con cierta precisión**
 **Mixture Model**  
 **GMM (Gaussian Mixture)**
 
-- Para la varianza usar la función de activación ELU: \[A(z) = \begin{cases} z & z > 0
-  \\ \alpha (e^z - 1) & z < 0 \end{cases}\] modificada ELU(z) + 1 + 1e^{-15}
+- Para la varianza usar la función de activación ELU: $$A(z) = \begin{cases} z & z > 0
+  \\ \alpha (e^z - 1) & z < 0 \end{cases}$$ modificada ELU(z) + 1 + 1e^{-15}
 
 - Evita que la función de operación crezca mucho y suprida los datos con alta variancia.
   → Inestable
@@ -1866,9 +1883,9 @@ PDF con cierta precisión**
 - ELU mantiene el comportamiento espacioso al reducir a un comportamiento lineal para
   valores más altos.
 
-\[ELU(z) + 1 \rightarrow \text{Movemos ELU a la zona de los positivos}\]
+$$ELU(z) + 1 \rightarrow \text{Movemos ELU a la zona de los positivos}$$
 
-\[ELU(z) + 1 + 1e^{-15} \rightarrow \text{El (optimo) para dar estabilidad}\]
+$$ELU(z) + 1 + 1e^{-15} \rightarrow \text{El (optimo) para dar estabilidad}$$
 
 - Para evitar cobro en los modelos y que ignore alguna componente (y, o, ...), teniendo
   mayor relevancia una distribución sobre otra podemos usar:
@@ -1878,14 +1895,14 @@ PDF con cierta precisión**
 
 - **Sufitir**: \( \text{Sofmax} \rightarrow \text{Gumbel Sofmax} \), \( \text{Ja que
   puede generar distribuciónes más agresivas (llegó a aparecer, poner un 0, en
-  componentes sin importancia) Sofmax es una suave}\]
+  componentes sin importancia) Sofmax es una suave}$$
 
 # Bateria: Intervención
 
 Ya tenemos el modelo, informamos un nuevo dato con el fin de conocer la componente
 (distribución) a la que pertenece. Queremos:
 
-\[p(h|x) \propto p(h) \cdot p(x|h) \quad (h, o z)\]
+$$p(h|x) \propto p(h) \cdot p(x|h) \quad (h, o z)$$
 
 proba dado x  
 probado dado h  

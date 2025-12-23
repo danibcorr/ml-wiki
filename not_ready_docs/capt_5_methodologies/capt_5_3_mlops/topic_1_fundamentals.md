@@ -755,9 +755,9 @@ de análisis de datos.
 
 **Paramentalización**
 
-Total Loss = \( \alpha \cdot \log_2(1 + \beta \cdot \log_2 \frac{\alpha}{\beta}) \)
+Total Loss = $$\alpha \cdot \log_2(1 + \beta \cdot \log_2 \frac{\alpha}{\beta})$$
 
-Total Score = \( \alpha \cdot Score_1 + \beta \cdot Score_2 \)
+Total Score = $$\alpha \cdot Score_1 + \beta \cdot Score_2$$
 
 Ajustable sin necesidad de reestructurar.
 

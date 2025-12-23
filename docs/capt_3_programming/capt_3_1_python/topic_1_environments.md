@@ -2,7 +2,8 @@
 sidebar_position: 1
 authors:
   - name: Daniel Bazo Correa
-description: Creación y gestión de entornos virtuales de Python con VENV, Anaconda y Poetry
+description:
+  Creación y gestión de entornos virtuales de Python con VENV, Anaconda y Poetry
 title: Gestión de entornos en Python
 toc_max_heading_level: 3
 ---
@@ -83,18 +84,41 @@ proyectos de Python. Permite, entre otras cosas:
 
 ### 1.4. uv
 
-[_uv_](https://github.com/astral-sh/uv) es una de las herramientas más recientes y
-rápidas para la gestión de entornos y dependencias en Python. Desarrollada por
-**Astral** (los creadores de Ruff), destaca por:
+`uv` es una de las herramientas más recientes y eficientes para la gestión de entornos
+virtuales y dependencias en Python. Su objetivo principal es simplificar y acelerar
+tareas que tradicionalmente requieren múltiples herramientas, como `pip`, `poetry` o
+`venv`. Desarrollada por **Astral**, los creadores de Ruff, `uv` se destaca por su
+rapidez y su integración directa con el flujo de trabajo moderno de proyectos Python.
 
-- Ser **extremadamente veloz** en comparación con `pip` y `poetry`, gracias al uso del
-  lenguaje de programación Rust.
-- Instalar y resolver dependencias en cuestión de milisegundos.
-- Usar un modelo similar a `cargo` (de Rust), con archivos `pyproject.toml`.
-- Gestionar entornos virtuales sin necesidad de configuraciones adicionales.
+La instalación de `uv` se realiza a través de la terminal y puede depender del sistema
+operativo utilizado. Una de sus principales ventajas es la posibilidad de crear un
+entorno virtual por proyecto, lo que permite instalar únicamente las dependencias
+necesarias para cada proyecto, evitando conflictos de versiones.
 
-uv busca reemplazar a `pip`, `pip-tools`, `poetry` y `venv` con una única solución
-rápida y moderna.
+#### 1.4.1. Operaciones básicas de `uv`
+
+- `uv python list` → Muestra las versiones de Python disponibles.
+- `uv python install <version>` → Instala una versión específica de Python.
+- `uv run` → Ejecuta scripts dentro del entorno virtual.
+- `uv init` → Inicializa un proyecto gestionado por `uv`.
+- `uv add` → Añade nuevas dependencias al proyecto.
+- `uv sync` → Sincroniza el entorno con las dependencias declaradas.
+- `uv tree` → Muestra la estructura de dependencias.
+- `uv venv` → Gestiona entornos virtuales automáticamente.
+
+#### 1.4.2. Ventajas de `uv`
+
+- **Velocidad extrema:** Utiliza Rust para instalar y resolver dependencias en
+  milisegundos, superando a `pip` y `poetry`.
+- **Modelo familiar:** Emplea un sistema similar a `cargo` de Rust, basado en archivos
+  `pyproject.toml`.
+- **Gestión automática de entornos:** No requiere configuraciones adicionales para crear
+  y mantener entornos virtuales.
+- **Solución unificada:** Reemplaza de forma eficiente a `pip`, `pip-tools`, `poetry` y
+  `venv` con una sola herramienta moderna.
+
+Para más información y documentación, se puede consultar el repositorio oficial de
+[_uv_](https://docs.astral.sh/uv/).
 
 ## 2. Utilidades para la gestión de entornos
 
@@ -464,25 +488,3 @@ Para utilizar un entorno virtual dentro de **Jupyter**, es necesario seguir esto
       ```
    </TabItem>
 </Tabs>
-
-## 3. uv
-
-pues ahora hablaremos en particular de uv ya que es una de las librerías o gestores
-entorno y gestores de paquetes y dependencias de Python más utilizados en la actualidad
-al final como habíamos hablado antes pues se tiene que instalar uv mediante la terminal
-ya que te permite crear bueno, ya que permite ser instalado como un paquete o como nadie
-tener en el sistema y dependerá del sistema operativo utilizado. Al final la la idea es
-tener un entorno para cada uno de los proyectos que vayamos a realizar y que cada
-entorno de ese proyecto instale las dependencias únicas de ese proyecto, con el fin de
-evitar conflictos de versiones.
-
-Operaciones de uv:
-
-uv python list: versiones de python disponibles
-
-uv python install version
-uv run
-uv init
-uv add
-uv sync
-uv tree uv venv
