@@ -866,7 +866,36 @@ soluciones más complejas que ofrezcan un mayor retorno de inversión (ROI).
 
 ### 4.1. Regresión lineal
 
-### 4.2. Descenso del gradiente
+En los modelos lineales, lo que hacemos es ajustar una linea, utilizando least square
+para hacer un fit de los datos, vamos que nos quedamos con la linea donde el valor de
+SSR sea minimo, mejor ajuste modelo a los datos. Calculamos la R2 y tambien podemos
+calcular los p-values para R2. Calcular promedi tamaño, obtener linea promedio si lo
+aplanamos todos podemos visualizar el residuo para ver como se ajusta la linea ajustada
+a los datos y los valores reales para ver la variabiliadad, podemos calcular la varianza
+que seria la SS media que es el punto X menos la media todo al cuadrado y dividido por
+el numero de puntos, podemos calcular el promedio que es el tamaño para obtener la niña
+promedio. Luego también podemos realizar el cálculo de la varianza que es el SS promedio
+dividido entre N que indica el grado de dispersión que tenemos luego la R cuadrado que
+es la barra la media de la varianza menos la varianza del ajuste dividido de la media de
+la varianza. Por ejemplo, si la R cuadrado es 0.6 yo significa que es el 60 %, que
+decimos que X por ejemplo no pues explica el 60 % de la variación de las muestras.
+
+En los modelos lineales podemos introducir más parámetros no solo dos pero si esos
+parámetros adicionales empeoran el ajuste del modelo a los datos, dichos parámetros
+serán multiplicados por el modelo por cero o para no tenerlos en cuenta.
+
+### 4.2. DesceQue sea estocástico implica que se elige de forma aleatoria un punto por paso ya que hacerlo para todo sería costoso computacional mente aunque realmente se toma un subconjunto llamado lote. Esto también permite reducir la posibilidad de quedarnos en un mínimo local.nso del gradiente
+
+Es un proceso reiterativo para minimizar una función de pérdida, un dato o coste que es
+la media respecto a todos los puntos para ello que se hace es el punto de partida
+aleatoria de la función. Luego se calcula la derivada que es el gradiente de la función
+en ese punto, con la derivada que podemos conocer la pendiente de la función de dicho
+punto, si la derivada es positiva la función aumenta en dicha dirección y el algoritmo
+se moverá en la dirección opuesta y si es negativo vamos en esa dirección. Que sea
+estocástico implica que se elige de forma aleatoria un punto por paso ya que hacerlo
+para todo sería costoso computacional mente aunque realmente se toma un subconjunto
+llamado lote. Esto también permite reducir la posibilidad de quedarnos en un mínimo
+local.
 
 ### 4.3. Regresión logística
 
@@ -919,19 +948,148 @@ decisión individuales.
 
 ### 4.6. Máquina de Vectores de Soporte
 
+### 4.7. XGBoost
+
+# XGBoost Regressor
+
+- Suele usar por defecto **loo → MSE**
+
+## Funciona:
+
+1. **Toma un grado de la función**  
+   **toma la raíz**  
+   **2da de pérdida**
+
+   $$\text{MSE} = \frac{1}{n} \sum\_{i=1}^{n} (y_i - \hat{y}\_i)^2$$
+
+2. **Calcula la desviación estándar**
+
+   $$
+   \text{desv} = \sqrt{\frac{1}{n} \sum\_{i=1}^{n} (y_i - 2\hat{y}\_i +
+   \hat{y}\_i)^2}
+   $$
+
+3. **Calcula la desviación cuadrática**  
+   $$\text{desv}^2 = \frac{1}{n} \sum\_{i=1}^{n} (y - 2\hat{y})^2$$
+
+4. **Simplifica**  
+   $$\text{Similarity} = \sqrt{G^2}$$
+
+5. **Regula la desviación cuadrática**  
+   $$\text{regulación cuadrática}$$
+
+6. **Hace que la función de pérdida**  
+   $$\text{H} = \text{desv} \cdot \text{regulación cuadrática}$$
+
+7. **Mide que la función de pérdida**  
+   $$\text{Mide que la función de pérdida}$$
+
+8. **Mide que la función de desviación cuadrática**  
+    $$\text{Mide que la función de desviación cuadrática}$$ Otra guía de la "ganancia"
+   que es la diferencia de  
+   similaridad entre modos difíciles divisionales.
+
+gana = Similarity, izq + Similarity der - Similarity, H  
+Se diga la división con mayor ganancia.
+
+---
+
+### Por cuartiles. martiles
+
+→ padecas obtener un rango de valores → obteniendo por ejemplo un valor bajo - medio y
+alto, representados como el cuartil P  
+0.1, 0.5, 0.9, respectivamente,  
+ocupando un rango del 80% de 0.9 a 0.4.
+
+$$
+L_q (y, \hat{y}) = \begin{cases} q \cdot (y - \hat{y}) & \text{si } y > \hat{y} \\
+(1 - q) \cdot (y - \hat{y}) & \text{si } y < \hat{y} \\ \text{quartil} \end{cases}
+$$
+
+→ función de pérdida.
+
+---
+
+\frac{\partial L_q}{\partial y} =
+
+\begin{cases} q \cdot (-1) = -q & \text{si } y > \hat{y} \\ (1 - q) \cdot (1 - \hat{y})
+= 1 - q & \text{si } y < \hat{y} \end{cases}$$
+
+→ Tanto la máxima casi como contable pues no es suave, la segunda  
+derivada.
+
+→ Sign. mundo el mismo paso de la similaridad y  
+ganancia.
+
+→ 45 (a (0.5) = mediana → unido borde de protección.
+
+1. valor del modelo: modelo del árbol: \( \alpha \)
+
+- \( HSE \rightarrow w = -\frac{\sum g_i}{\sum h_i + \lambda} \)
+
+- \( \text{cuantité del valor target de ese modelo} \)
+
+- \( \text{cuantité de ajuste} \)
+
+- \( \text{modelo} = \times 6 \text{Regresion ( objective = "reg: quantidade")} \)
+
+- \( \text{cuantité de ajuste - de ajuste} \)
+
+- \( \text{cuantité de ajuste - de ajuste - de ajuste} \)
+
+- \( \text{cuantité - de ajuste - de ajuste - de ajuste} \)
+
+- \( \text{Entrada: un modelo, por cantidad} \)
+-
+
 ## 5. Algoritmos de agrupación
 
 ### 5.1. Tipos de algoritmos de agrupación
 
 #### 5.1.1. Métodos basados en particiones
 
+un ejemplo de método de cluster bien basado en particiones es K-means, lo que hace es
+una inicialización de cada puntos suponiendo el centro y de de los clusters luego
+calcula la distancia del resto de puntos del conjunto de datos al centro y de y realiza
+una asociación al centro y luego los datos asociados a un centro idea se promedian para
+calcular la nueva posición del centro vida y este proceso se repite hasta un número de
+pasos determinado o cuando no ya no se producen cambios en el centro.
+
+El centro del cluster se representa con la letra mu si Aika igualados pues un centro y
+de muy uno y otro será mudos lo que se hace es para cada índice que empieza desde uno
+hasta M donde M sería la cantidad de cluster que vamos a considerar pues tengo el centro
+idea del cluster y que es el índice del uno hasta acá del centro y del cluster cercano
+al punto XV que es lo que hace es una asignación de puntos al centro edad y luego lo que
+calculamos es la mínima distancia que existe entre el punto y y la media del cluster K y
+se aplica la distancia euclídeo luego para cada valor de ca hasta llegar a acá se
+calcula la media beca que es la media de puntos asignados al cluster y luego se aplica
+la función de coste que es promediar la distancia euclidiana entre todas las muestras
+del conjunto de datos entonces en cada iteración de Camins la función de coste debería
+reducir y con ello podemos comparar el valor actual con el anterior para saber si el
+modelo converge o no. El número de grupo busca tiene que ser menor a M que es el número
+de muestras para buscar la mejor inicialización podemos inicializar Camins de forma
+aleatoria una vez convergida cada iteración. Se calcula la función de coste de cada
+iteración y nos quedamos con la iteración con menor coste, lo que permite evitar mínimos
+no óptimos algunos métodos para elegir K pues es el método del codo por ejemplo que es
+el punto donde crece más la función de coste es decir todo lo que haces es medir la
+función de coste para un número de clusters y te quedas con ese punto donde la
+convergencia es mayor, que es donde se produce un codo.
+
 #### 5.1.2. Métodos basados en jerarquías
+
+Ejemplo: Clustering jerárquico aglomerativo
 
 #### 5.1.3. Métodos basados en densidad
 
-#### 5.1.4. Métodos basados en modelos (p.ej. GMM)
+Ejemplo: DBSCAN
 
-#### 5.1.5. Métodos basados en grafos (p.ej. Spectral)
+#### 5.1.4. Métodos basados en modelos
+
+Ejemplo: Gaussian Mixture Models (GMM)
+
+#### 5.1.5. Métodos basados en grafos
+
+Ejemplo: Spectral Clustering
 
 ### 5.2. Mecanismos en la elección de grupos
 
@@ -988,6 +1146,45 @@ balanceado, ya que es una medida mas equilibrada.
 ### 7.3. UMAP
 
 ### 7.4. Auto Encoders
+
+- **Autoencoders**
+
+$$g\_{\phi}(z|x) $$ : estimar la probabilidad posterior, probabilística encoder.
+
+$$p\_{\theta}(x|z) $$ : probabilidad de generar la muestra de datos, verdadera dada el
+código latente, deseos probabilístico decoder.
+
+$$g\_{\phi}(.) $$ : encoder, parauentrizado con \(\phi\).
+
+$$g\_{\theta}(.) $$ : decoder, parauentrizado con \(\theta\).
+
+Encoder:
+
+$$
+\begin{bmatrix} x \\ y*{\phi}(x) \end{bmatrix} \rightarrow \begin{bmatrix} z \\
+y*{\theta}(z) \end{bmatrix} \rightarrow \begin{bmatrix} p*{\theta}(z) \\ y*{\phi}(x)
+\end{bmatrix}
+$$
+
+$$1 \times x \times x^T $$
+
+- Tienden al overfitting. → Agregamos ruido gaussiano o eliminamos partes de la imagen
+  de forma cstocástica. →  
+  DropOut (DropBlock ZLD) → Alora SpatialDropout
+
+- Spane: Autoencoder, penúteu/fuerzan al modelo a tener un uo reducido de neuronas
+  activadas al mismo tiempo. → k-spane AE, la espaciad solo se mantiene en las
+  activaciones k más activas. el resto se ponen a 0.
+
+- **Contractive**  
+  Autoencoder: penalizada a la representación, el ser muy sensible a los datos de
+  entrada.
+
+$$J*f(x) = \sum*{i,j} \left( \frac{\partial h_j(x)}{\partial x_i} \right)^2$$
+
+- La sensibilidad se rinde con la máxima flexibilidad de la matriz Jacobiana de las
+  activaciones del encoder con respecto a la entrada.
+-
 
 ## 8. Métodos para la imputación de datos
 
@@ -1067,3 +1264,691 @@ $$\text{Especificidad} = \frac{TN}{TN + FP}$$
 Un valor alto indica que el modelo discrimina adecuadamente las instancias negativas.
 Ambas métricas se pueden expresar en porcentaje multiplicando por cien, lo que facilita
 la interpretación de los resultados.
+
+Por ejemplo, si tenemos un algoritmo de **regresión logística** donde estamos
+prediciendo: **tiene enfermedad cardíaca** y **no tiene enfermedad cardíaca**, con una
+**matriz de confusión de 2 × 2**, donde el primer valor es **145**, luego **25**, que
+corresponderían a la primera fila (primera y segunda columna), y luego **30** y **100**
+para los elementos de la primera y segunda columna de la segunda fila, tendríamos la
+siguiente matriz:
+
+|                        | Predice enfermedad | Predice no enfermedad |
+| ---------------------- | ------------------ | --------------------- |
+| **Enfermedad real**    | 145 (TP)           | 25 (FN)               |
+| **No enfermedad real** | 30 (FP)            | 100 (TN)              |
+
+El **recall** (o sensibilidad) se calcula como:
+
+$$
+Recall = \frac{TP}{TP + FN}
+$$
+
+Sustituyendo los valores:
+
+$$
+Recall = \frac{145}{145 + 25} = \frac{145}{170} = 0.8529 \; (85.29\%)
+$$
+
+La **especificidad** se calcula como:
+
+$$
+Specificity = \frac{TN}{TN + FP}
+$$
+
+Sustituyendo los valores:
+
+$$
+Specificity = \frac{100}{100 + 30} = \frac{100}{130} = 0.7692 \; (76.92\%)
+$$
+
+De ahí tendríamos que el **85.29%** de los pacientes que presentan enfermedad han sido
+clasificados correctamente y el **76.92%** de los pacientes que no presentan enfermedad
+han sido clasificados correctamente. Esto nos permitiría compararlos directamente con
+las métricas obtenidas de otros modelos como un **árbol de decisión**, donde por ejemplo
+podríamos elegir la regresión logística si detectar pacientes **sin enfermedad** es más
+importante, o elegir el árbol de decisión si detectar pacientes **con enfermedad** es
+más importante. Esto al final es una **matriz de confusión**, que para matrices de
+confusión de mayor tamaño se interpreta de la misma forma, pero calculando la
+**sensibilidad (recall)** y la **especificidad** para cada categoría. Supongamos una
+matriz de confusión con **3 clases A, B y C**, con los siguientes valores numéricos
+inventados:
+
+| Real \ Predicho | A   | B   | C   |
+| --------------- | --- | --- | --- |
+| **A**           | 50  | 5   | 10  |
+| **B**           | 8   | 45  | 7   |
+| **C**           | 6   | 9   | 40  |
+
+En esta matriz:
+
+- Los valores de la **diagonal principal** representan las clasificaciones correctas.
+- Las filas representan la **clase real**.
+- Las columnas representan la **clase predicha**.
+
+---
+
+### Cálculo del Recall (Sensibilidad)
+
+El recall mide qué proporción de elementos de una clase real ha sido correctamente
+clasificada.
+
+#### Recall de la clase A
+
+$$
+Recall_A = \frac{A_{AA}}{A_{AA} + A_{BA} + A_{CA}}
+$$
+
+Sustituyendo valores:
+
+$$
+Recall_A = \frac{50}{50 + 8 + 6} = \frac{50}{64} = 0.7813 \; (78.13\%)
+$$
+
+#### Recall de la clase B
+
+$$
+Recall_B = \frac{A_{BB}}{A_{BB} + A_{AB} + A_{CB}}
+$$
+
+$$
+Recall_B = \frac{45}{45 + 5 + 9} = \frac{45}{59} = 0.7627 \; (76.27\%)
+$$
+
+#### Recall de la clase C
+
+$$
+Recall_C = \frac{A_{CC}}{A_{CC} + A_{AC} + A_{BC}}
+$$
+
+$$
+Recall_C = \frac{40}{40 + 10 + 7} = \frac{40}{57} = 0.7018 \; (70.18\%)
+$$
+
+---
+
+### Cálculo de la Especificidad
+
+La **especificidad** mide qué proporción de elementos que **no pertenecen** a una clase
+han sido correctamente clasificados como no pertenecientes a dicha clase.
+
+La fórmula general es:
+
+$$
+Specificity_X = \frac{TN_X}{TN_X + FP_X}
+$$
+
+---
+
+#### Especificidad de la clase A
+
+- **FP_A**: valores predichos como A pero que no son A  
+  $FP_A = 8 + 6 = 14$
+- **TN_A**: todos los valores que no están ni en la fila A ni en la columna A
+
+$$
+TN_A = 45 + 7 + 9 + 40 = 101
+$$
+
+$$
+Specificity_A = \frac{101}{101 + 14} = \frac{101}{115} = 0.8783 \; (87.83\%)
+$$
+
+---
+
+#### Especificidad de la clase B
+
+- **FP_B**: $5 + 9 = 14$
+- **TN_B**:
+
+$$
+TN_B = 50 + 10 + 6 + 40 = 106
+$$
+
+$$
+Specificity_B = \frac{106}{106 + 14} = \frac{106}{120} = 0.8833 \; (88.33\%)
+$$
+
+---
+
+#### Especificidad de la clase C
+
+- **FP_C**: $10 + 7 = 17$
+- **TN_C**:
+
+$$
+TN_C = 50 + 5 + 8 + 45 = 108
+$$
+
+$$
+Specificity_C = \frac{108}{108 + 17} = \frac{108}{125} = 0.8640 \; (86.40\%)
+$$
+
+---
+
+En resumen, para matrices de confusión multiclase, el **recall** se calcula utilizando
+la **columna de la clase de interés**, mientras que la **especificidad** se obtiene
+considerando todos los valores que no pertenecen a dicha clase, lo que permite evaluar
+el rendimiento del modelo para cada categoría de forma individual.
+
+Al final, el **recall** es el elemento de la **diagonal principal** de la columna $X$
+dividido entre la suma del elemento diagonal de la columna $X$ más el resto de los
+elementos de esa columna. Esto nos permite obtener los **verdaderos positivos**, que son
+los valores predichos como $X$ y que realmente pertenecen a $X$.
+
+Para obtener los **verdaderos negativos**, se deben considerar todas las columnas
+diferentes de $X$ y todas las filas diferentes de $X$. Para los **falsos positivos**, se
+observa únicamente la fila de $X$ y se excluye la columna de $X$, ya que representan los
+valores predichos como $X$ pero que en realidad pertenecen a otra clase.
+
+## X. Sistermas de deteccion de anomalias
+
+la premisa está en que se entrenan contratos no anómalos estos sistemas de anomalías.
+Por ejemplo podemos utilizar este imágenes basados en la densidad que consiste en
+calcular la probabilidad de que un dato esté o sea visto en el conjunto de datos donde
+se tiene el centro de un conjunto de datos y se va a calcula la baja, probabilidad o
+alta probabilidad de que está basado en la distancia con respecto al centro entre dos
+características por ejemplo y lo que se hace es establecer un umbral de probabilidad.
+También podemos aplicar métodos basados en distribuciones normales o cauciones, donde lo
+que hacemos es modelar la media de la varianza para cada parámetro a partir de una
+distribución Gaussiana.
+
+También sería bueno incluir datos anómalos en el set de validación. Aquí va muy bien
+utilizar validación cruzada.
+
+Detector de anomalías con Versus el aprendizaje supervisado el detector de anomalías
+muchos tipos de posibles anomalías que desconocemos y que son diferentes a los vistos.
+No hacemos la suposición de que los datos nuevos que nos llegan están dentro de la misma
+distribución un clasificado supervisado por ejemplo tiene muchos positivos y negativos y
+se espera que las muestras a futuro sigan una distribución similar, pero puede darse el
+caso de que las características no tengan una forma gaussiana entonces hay que aplicar
+transformaciones.
+
+Algunas transformaciones escoger los datos de entrada y aplicar el logaritmo de los
+datos en logaritmo +1 constante C o el organismo de una función exponencial de los datos
+donde por ejemplo se llame pues son valores que deberíamos probar para hacer que
+nuestros datos tengan una distribución normal existe lo que se conoce como flujos de
+normalizadores, que son modelos generativos invertibles que transforma en una
+distribución de datos compleja a una conocida como la distribución normal preservando la
+dimensión alidada de los datos. Con ellos podemos detectar anomalías.
+
+# Flow normalización
+
+**Enfoque**: en el modelado de imágenes.
+
+→ Flujo de normalización: son modelos linealidad.
+
+Se considera un modelo generativo pero a diferencia de un VAE o GAN, este apriete la
+función de densidad de probabilidad de un dato \( x \). Modela la distribución \( p(x)
+\) real.
+
+**Objetivo**: minimizar el negativo log-likelihood.
+
+$$X \sim p(x)$$
+
+$$f(x) : x \rightarrow z$$
+
+**Función**: que mapea \( x \) a \( z \).
+
+**Donde**: \( f \) es biyectiva, es decir:
+
+$$f : x \rightarrow z$$
+
+\( x \) ha de tener el misma altura que \( x \).
+
+**Especie**: latente de igual dimensión.
+
+$$X \sim p(x)$$
+
+$$f^{-1}(x)$$
+
+**Fluxo**:
+
+$$X \sim p(x)$$
+
+**Inversa**:
+
+$$f^{-1}(x)$$
+
+**Cerra pondencia**:
+
+**Para ello, utilizamos:**
+
+**Cerra regla del cambio de variables**:
+
+**Dada una distribución (prior) \( p(z) \), \( p(z) \), \( p(z) \), Gaussian, y una
+función invertible \( f \), podemos determinar**:
+
+**\( p(x) \)** Por definición, el área bajo la curva para una  
+función de densidad de probabilidad es 1.
+
+$$\int*{x_1}^{x_2} P(x) \, dx = \int*{z_1}^{z_2} P(z) \, dz = 1$$
+
+$$P(x) \, dx = \int\_{z_1}^{z_2} P(z) \frac{dz}{dx}$$
+
+$$P(x) = \int\_{z_1}^{z_2} P(z) \frac{dz}{\frac{dP}{dx}}$$
+
+Probabilidad de \( x \) en el espacio.
+
+Para un factorable minimizando el logaritmo.
+
+$$\log P(x) = \log P_2^{(x)} + \log \left| \frac{dP}{dx} \right|$$
+
+Reducimos hacer la función \( P \) más compleja,  
+con el modelo de la distribución de  
+probabilidad de \( x \), pero más complejo de  
+obtener \( P_2^{(z)} \). Pero, podemos unir múltiples  
+funciones \( P_2^{(z)} \) invertibles aprendibles para obtener
+
+$$z_0 \xrightarrow{(z_0)} z_k = x$$
+
+Una función con una distribución Gaussiana,  
+a la que le aplicamos nuevas funciones  
+invertibles.
+
+## X. Sistemas de recomendacion
+
+podríamos tener un conjunto de usuarios con puntuaciones de películas, pero puede que
+ciertos usuarios no hayan visto todas las películas entonces podríamos estimar la
+puntuación de las películas no vistas utilizando algoritmos como la colaboración, el
+filtrado por colaborativo por filtrado basado en el contenido.
+
+# Bayesian Neural Networks
+
+**Bayesian Neural Networks (BNNs)** represent a paradigm that integrates Bayesian
+inference into deep learning models. Unlike traditional neural networks, where
+parameters (weights and biases) are fixed values determined through optimization
+algorithms like backpropagation and gradient descent, BNNs model these parameters as
+probability distributions. This conceptual shift allows capturing the inherent
+uncertainty in both the model's parameters and its predictions, offering a more
+comprehensive understanding of the model's limitations and reliability.
+
+![image](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fjonascleveland.com%2Fwp-content%2Fuploads%2F2023%2F07%2FBayesian-Network-vs-Neural-Network.png&f=1&nofb=1&ipt=79ec39d4258da81fe61c9d9395d92f984259b951150c23451b0892cd578e92e4)
+
+## Theoretical Foundations of Bayesian Inference
+
+Bayesian inference is based on **Bayes' Theorem**, which provides a mathematical
+framework for updating beliefs about a model when new observations become available. To
+understand this concept, it's helpful to consider the process of human learning:
+initially, we have prior knowledge about a phenomenon, and when we observe new data, we
+update that knowledge to gain a more accurate understanding.
+
+Bayes' Theorem is mathematically expressed as:
+
+$$
+P(\theta | D) = \frac{P(D | \theta) P(\theta)}{P(D)}.
+$$
+
+This equation can be interpreted as a rule for updating knowledge, where each component
+represents a specific aspect of the learning process:
+
+- **$P(\theta)$ – Prior Knowledge (Prior Distribution)**: Represents the initial beliefs
+  about the model parameters before observing the data. For example, if we want to
+  predict a person's height, the prior might state that most heights lie between 1.50
+  and 2.00 meters, with an average around 1.70 meters.
+- **$P(D | \theta)$ – Data Compatibility (Likelihood)**: Measures how likely the
+  observed data are given a specific set of parameters. Continuing the previous example,
+  if the model parameters suggest an average height of 1.80 meters, the likelihood
+  evaluates how compatible the observed heights are with that prediction.
+- **$P(D)$ – Normalization (Evidence)**: Acts as a normalization factor ensuring that
+  the posterior distribution sums to one (since probabilities must lie between 0 and 1),
+  satisfying the properties of a valid probability distribution. This term represents
+  the total probability of observing the data under all possible parameter values.
+- **$P(\theta | D)$ – Updated Knowledge (Posterior Distribution)**: This is the final
+  result of the Bayesian process: the updated beliefs about the parameters after
+  considering both the prior knowledge and the observed data. The posterior distribution
+  combines prior information with empirical evidence to provide a more informed estimate
+  of the parameters.
+
+## Probabilistic Parameter Modeling in BNNs
+
+In a BNN, each weight and bias is represented by a **probability distribution**,
+typically a normal distribution with mean 0 and standard deviation 1, denoted as
+$\mathcal{N}(0, 1)$. The training process does not aim to estimate a single value for
+each parameter but rather to adjust the **posterior distribution** that best explains
+the observed data.
+
+This approach requires parameterizing the distributions through the mean and standard
+deviation, updating them iteratively during training. The goal is to learn a **posterior
+distribution $P(\theta | D)$** over the parameters $\theta$ given the data $D$, where:
+
+- The **prior distribution** $P(\theta)$ typically assumes a standard Gaussian form,
+  representing prior knowledge about the parameters.
+- The **posterior distribution** $P(\theta | D)$ is adjusted during training and can
+  differ significantly from the prior, shifting to reflect the knowledge gained from the
+  data.
+
+## Approximation Methods for the Posterior Distribution
+
+Since exact computation of the posterior distribution is computationally intractable in
+most practical cases, approximate inference techniques are employed:
+
+- **Variational Inference**: Approximates the posterior distribution with a simpler
+  distribution $q(\theta)$, optimizing the Kullback-Leibler (KL) divergence between
+  $q(\theta)$ and $P(\theta | D)$. This method offers computational efficiency and
+  scalability for large models, making it the most common choice in practical
+  applications.
+
+- **Markov Chain Monte Carlo (MCMC)**: Sampling-based methods that approximate the
+  posterior by generating multiple samples. Although computationally more expensive,
+  they provide more accurate approximations of the posterior and are useful when
+  precision is prioritized over efficiency.
+
+### ELBO Loss Function
+
+Optimization in Bayesian Neural Networks is fundamentally based on maximizing the
+Evidence Lower Bound (ELBO):
+
+$$
+\mathcal{L} = \mathbb{E}_{q(\theta)}[\log P(D | \theta)] - KL(q(\theta) || P(\theta)).
+$$
+
+This objective function balances two critical components that are essential for Bayesian
+learning. The first component, known as the likelihood term
+$\mathbb{E}_{q(\theta)}[\log P(D | \theta)]$, maximizes the probability of the observed
+data under the approximate distribution $q(\theta)$. This component ensures that the
+model maintains a good fit to the training data by encouraging the approximate posterior
+to assign high probability to parameter values that explain the observed data well.
+
+The second component, referred to as the regularization term
+$KL(q(\theta) || P(\theta))$, minimizes the Kullback-Leibler divergence between the
+approximate posterior distribution $q(\theta)$ and the prior distribution $P(\theta)$.
+This component acts as a regularizing force that prevents overfitting by maintaining the
+posterior distribution close to the prior when data is insufficient or ambiguous.
+
+The KL divergence is formulated differently depending on the type of distribution. For
+discrete distributions, the divergence is calculated as:
+
+$$
+KL(P || Q) = \sum_{x} P(x) \log \frac{P(x)}{Q(x)}.
+$$
+
+For continuous distributions, the divergence is expressed as an integral over the
+parameter space:
+
+$$
+KL(P || Q) = \int_{-\infty}^{\infty} p(x) \log \frac{p(x)}{q(x)} dx.
+$$
+
+This duality in formulation allows the Bayesian framework to be applied in both discrete
+and continuous spaces, providing flexibility in modeling different types of parametric
+uncertainty. The continuous formulation is particularly relevant for BNNs, where the
+parameters typically follow continuous distributions such as Gaussians, enabling the
+framework to capture smooth variations in parameter uncertainty across the continuous
+parameter space.
+
+## Inference and Uncertainty Quantification
+
+During the inference phase, a BNN generates predictions by repeatedly sampling from the
+weight distribution. This process typically involves multiple independent inferences
+(commonly between 50 and 1000 repetitions) for the same input, producing a set of
+predictions that allows:
+
+- Calculating the **mean** of the predictions as the final estimate.
+- Determining the **variance** or standard deviation as a quantitative measure of the
+  **associated uncertainty**.
+
+This ability to quantify uncertainty is the main advantage of BNNs, providing insight
+into the reliability of each individual prediction.
+
+## Applications and Comparative Advantages
+
+### Application Domains
+
+BNNs are particularly valuable in contexts where uncertainty quantification is critical:
+
+- **Biochemistry and drug discovery**: Risk and reliability assessment of new molecules.
+- **Medical diagnosis**: Probabilistic estimation of critical diagnoses where
+  uncertainty must be explicit.
+- **Finance**: Risk assessment based on probabilistic predictions.
+- **Robotics and reinforcement learning**: Adapting to dynamic environments under
+  uncertainty.
+- **Telecommunications**: Dynamic adjustment of network parameters considering
+  environmental variability.
+
+### Advantages over Deterministic Models
+
+BNNs offer several advantages over traditional neural networks:
+
+- **Formal uncertainty quantification**: Enables understanding of the model's
+  limitations on new inputs, providing crucial information for decision-making in
+  critical domains.
+- **Effective regularization**: Prior distributions and KL divergence terms act as
+  natural regularization mechanisms, significantly reducing the risk of overfitting.
+- **Improved performance with limited data**: Prior knowledge acts as a guide when
+  available data is scarce, improving the model's generalization.
+- **Greater interpretability**: Facilitates analysis of prediction reliability and
+  provides additional tools for informed decision-making, especially important in
+  high-risk applications.
+
+## Integration with Probabilistic Programming
+
+BNNs naturally integrate with **probabilistic programming**, a paradigm that allows
+complex statistical models to be described using declarative code. This integration
+significantly broadens their applicability and facilitates implementation in systems
+where explicit modeling of uncertainty is essential.
+
+The combination provides a unified framework for developing applications that require
+both the representational power of neural networks and the uncertainty modeling
+capabilities of Bayesian inference.
+
+## Mixture DEnsity mODELS
+
+- **MIXTURE DENSITY MODEL (MDN)**
+
+Obtener a la salida del modelo \( P(y|x) \), la salida del modelo será la descripción de
+la distribución que modela los datos un target dado los datos.
+
+Es una mezcla de distribuciones, guardadas.
+
+Cada distribución:
+
+- \( M_i \) media → centro
+- \( \sigma_i^2 \) varianza → ancho
+- \( w_i \) pesos → importancia/sequencia
+
+**Likelihood**
+
+\( KPIS \downarrow \)
+
+- \( Z \downarrow \)
+- \( N \downarrow \)
+
+\( MDN \)
+
+- \( \left\{ \begin{array}{l} M_i \\ \sigma_i^2 \\ w_i \end{array} \right\} \)
+- \( \sum w_i = 1 \)
+
+- Distribución
+- \( \sum w_i = 1 \)
+
+- Posterior Density
+
+- Tenemos en realidad múltiples distribuciones:
+  - Se deja como caja
+
+$$x \sim MDN$$
+
+$$x \in C$$
+
+$$
+MDN = \left\{ \begin{array}{l} M_1, \sigma_1^2, \mu_1 \\ M_2, \sigma_2^2, \mu_2 \\
+\vdots \\ M_n, \sigma_n^2, \mu_n \end{array} \right\}
+$$
+
+- \( \text{MDN} \sim \text{MDN} \sim \text{MDN} \sim \text{SDM} \sim \text{SDM} \sim
+  \text{SDM} \sim \)
+- \( \text{MDN} \sim \text{MDN} \sim \)
+
+- \( \text{MDN} \sim \text{MDN} \sim \)
+- \( \text{MDN} \sim \text{MDN} \sim \sigma_1^2, \sigma_2^2, \mu_1, \mu_2 \)
+
+- \( \text{MDN} \sim \text{MDN} \)
+
+- \( \text{MDN} \sim \text{MDN} \)
+- \( \text{MDN} \sim \text{MDN} \)
+- **Sofmax**
+
+- **Mixture Model**
+  - \( W_i \sim \text{Distribución} \)
+  - \( \text{MDN} \sim \text{MDN} \sim \text{Distribución} \)
+  - \( \text{MD} \sim \text{MD} \sim \text{MD} \sim \text{MD} \)
+
+$$
+- \log(p(y|x)) = - \log \left( \sum\_{j=0}^{m} \exp(\log(n_j) + \log(p_j(x|y)))
+\right)
+$$
+
+$$P(x) = P(N(\mu, \sigma^2)(x)) \quad \text{torch_distribution.Normal}(\mu, \sigma^2)$$
+
+$$P(x) = P(N(\mu, \sigma^2)(x))$$
+
+$$N(\mu, \sigma^2) \equiv \text{torch.distributions.Normal}(\mu, \sigma^2) = m$$
+
+$$P(N(x)) \equiv m \cdot \log \text{prob}(x)$$
+
+$$
+\log(N(x)) \equiv \text{torch.log}(N(x)) \to \text{torch.log}(N(x) + 1 \in
+\mathbb{R})
+$$
+
+$$\log(\text{torch. logsumexp}(N(x) + 1 \in \mathbb{R}))$$
+
+$$\text{torch.logsumexp}(N(x) + 1 \in \mathbb{R}) = m \cdot \log \text{prob}(x)$$
+
+$$\text{torch.logsumexp}(N(x) + 1 \in \mathbb{R})$$
+
+$$\text{torch.logsumexp}(N(x) + 1 \in \mathbb{R})$$
+
+Casi este tipo de modelos, podemos considerar que la incertidumbre de las predicciones
+obtenidas,  
+**Monte Carlo**  
+**Monte Carlo**
+
+- **Epistemia**: lo que el modelo no sabe
+- **Reducible**: con más datos / complejidad
+- **Aleatoria**: variabilidad en el entorno  
+  (p.ej.)  
+  Esto es lo que modelo  
+  **principalmente**  
+  **supremado**
+
+- **Paramentrización**: del  
+  **modelo**  
+  **input**
+
+---
+
+**Modelo**
+
+- **Epistemia** →  
+  \( y = f(x) \)  
+  (Relación directa con el modelo)
+
+- **Alcatena** →  
+  \( x = 1 \)  
+  (Relación directa con lo dado)
+
+---
+
+En vez de predecir un valor, unico como la regresión obtenemos la \( y \) o que define a
+cada distribución. Con ello, podemos estimar la incertidumbre.
+
+$$
+MON \quad \xrightarrow{N} \quad X (input) \rightarrow [NN] \rightarrow H (hidden,
+reproductión)
+$$
+
+$$\xrightarrow{mixtura Model} $$  
+modela la PDF de \( P(X) \)
+
+---
+
+**Vamos a tener una guanadora que que con ello podemos aproximar a la distribución de la
+PDF con cierta precisión**  
+**siendo una mezcla de coeficientes y parámetros.**
+
+---
+
+**MON**  
+**Parametrización una**  
+**Mixture Model**  
+**GMM (Gaussian Mixture)**
+
+- Para la varianza usar la función de activación ELU: $$A(z) = \begin{cases} z & z > 0
+  \\ \alpha (e^z - 1) & z < 0 \end{cases}$$ modificada ELU(z) + 1 + 1e^{-15}
+
+- Evita que la función de operación crezca mucho y suprida los datos con alta variancia.
+  → Inestable
+
+- ELU mantiene el comportamiento espacioso al reducir a un comportamiento lineal para
+  valores más altos.
+
+$$ELU(z) + 1 \rightarrow \text{Movemos ELU a la zona de los positivos}$$
+
+$$ELU(z) + 1 + 1e^{-15} \rightarrow \text{El (optimo) para dar estabilidad}$$
+
+- Para evitar cobro en los modelos y que ignore alguna componente (y, o, ...), teniendo
+  mayor relevancia una distribución sobre otra podemos usar:
+
+- **Weigtir reglamentario**: \( t_1, t_2 \)
+- **Bias inutilización a partir de pre-calcular el centro de cada gausiana**
+
+- **Sufitir**: \( \text{Sofmax} \rightarrow \text{Gumbel Sofmax} \), \( \text{Ja que
+  puede generar distribuciónes más agresivas (llegó a aparecer, poner un 0, en
+  componentes sin importancia) Sofmax es una suave}$$
+
+# Bateria: Intervención
+
+Ya tenemos el modelo, informamos un nuevo dato con el fin de conocer la componente
+(distribución) a la que pertenece. Queremos:
+
+$$p(h|x) \propto p(h) \cdot p(x|h) \quad (h, o z)$$
+
+proba dado x  
+probado dado h  
+de tener h  
+(embedding)  
+de tener x
+
+Si aparecen: Nada, podría ser:
+
+1. Logaritmo de un valor cercano a cero.
+2. Eficiencia con denominador.
+3. Exponential de un valor muy grande, que de NaN.
+
+Solución:
+
+1. Gradiente chipping
+2. Weight regularization
+3. Batalla Normal output layer
+
+Intervalles de calibración
+
+Rango de valores que con cierta probabilidad (calibración) cuente el verdadero valor de
+un parámetro desconocido. P.ej. un intervalo de calibración del 95% indica que al
+repetir un experimento varias veces aproximadamente el 95% de los intervalos calculados
+contienen el valor verdadero.
+
+# Anuncio 2
+
+- Tipicamente se anume que todos los valores (inputs) son igual de probables y que son
+  continuos.
+- La razón de valores no conocemos, por lo que no podemos calcular los valores de los
+  datos.
+- La razón de valores no conocemos, por lo que no podemos calcular los datos.
+- La razón de valores no conocemos, por lo que no podemos hacer la PDF?
+
+---
+
+# Procedimiento 2
+
+- Podemos obtener la media, varianza, percentiles.
+- Intervalos de confianza.
+- Si tenemos distribuciones en train,  
+  comparaciones visuales,  
+  comparativas de percatiles.
+
+---
+
+- **KL**
+- **Perteque**

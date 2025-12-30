@@ -443,6 +443,44 @@ Este enfoque es útil en proyectos que requieren pruebas en múltiples versiones
 software, diferentes entornos (staging/producción) o compatibilidad con varios sistemas
 operativos.
 
+# Otras
+
+- GitHub Actions (Integración GitHub).
+
+- Podemos utilizar múltiples S.O. (Linux, Mac, Windows) → Matrix.
+
+- Wondflow → pipeline múltiples pasos (Example: Wondflow → Merge → Test → ... → build → Deploy).
+
+- gitHub → Wondflow → Wondflow → Wondflow → Wondflow → Wondflow → WondFlow → WondFlow → WondFlow → WondFlow → WondFlow → Wondflow → WondFlow → WondFlow → WondFlow → Wondflow → Wondflow → WondFlow → WondFlow → Wondflow → WondFlow → Wondflow → WondFlow → WondFlow → Wondflow → Wondflow → Wondflow → Wondflow → WondFlwo → WondFlow → WondFlow → WondFlow → WondFlow → WondFlwo → WondFlow → WondFlow → WondFlow → WundFlow → WondFlow → WondFlow → WondFlow → WondFlow → WundFlow → WondFlwo → WondFlow → WondFlow → WondFlow → WondFlow → WondFlow → WondFlow → WondFlow → WondFlow.
+
+- name: number project.
+- para cuando "nacemos un trigger" del Wondflow.
+- trabajo a realizar.
+
+- Deudo de los jobs el run - ou es la máquina donde ejecutan el job (mirar documentación).
+- Deudo de los jobs tenemos los steps.
+- Deudo de los steps tenemos los uses para definir acciones ya existentes (mirar docu de cada acción).
+- o crear nuestra propia acción.
+
+- Al final cada job es ejecuto desde la raíz del rep (1).
+
+- Permisos es mejor dentro de cada acción job.
+- Cada job en un Wondflow se ejecuta en una máquina virtual.
+- En la que por defecto funciona un paralelo.
+- Salvo de otro (needs).
+
+Para probar múltiples estrategias podemos utilizar:
+
+- **stratégia**:  
+  matrix
+
+- **os**: [Ubuntu latest, Windows - Latest]
+
+En un job, ahora variamos:
+
+- **fun - ou**:  
+  $$\frac{1}{2} \matrix{ \matrix{ \matrix{ \matrix{ \matrix{ \matrix{ \matrix{ \dots } } } } } } $$
+
 ## Jenkins
 
 Jenkins permita escalar proyectos para llevarlos a producción de manera automática.

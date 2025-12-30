@@ -7,6 +7,10 @@ title: IA Generativa
 toc_max_heading_level: 3
 ---
 
+## Bibliografía
+
+- [AI Coffee Break with Letitia](https://youtu.be/BprirYymXrg?si=mGDHKjVny1aM-oBN)
+
 Los modelos auto regresivos son la forma más simple del modelo generativos, los modelos
 auto regresivos al final basadas en los modelos grandes de lenguaje, lo que hacen es
 generar nuevos, tocáis a partir de de toques anteriores y son el fundamento o la base de

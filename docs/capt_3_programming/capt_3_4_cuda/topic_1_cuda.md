@@ -791,14 +791,14 @@ import numpy as np
 
 @njit()
 def bucle(lista1, lista2, num_filas):
-    ## Inicializa una lista vacía para almacenar los resultados
+    # Inicializa una lista vacía para almacenar los resultados
     lista3 = []
 
-    ## Recorre cada fila
+    # Recorre cada fila
     for fila in range(num_filas):
-        ## Verifica si el valor en lista1 es mayor o igual a 1 y el valor en lista2 es menor o igual a 5
+        # Verifica si el valor en lista1 es mayor o igual a 1 y el valor en lista2 es menor o igual a 5
         if (lista1[fila] >= 1) and (lista2[fila] <= 5):
-            ## Calcula la media de los valores en lista1 y lista2 para esa fila y lo agrega a lista3
+            # Calcula la media de los valores en lista1 y lista2 para esa fila y lo agrega a lista3
             lista3.append(np.mean([lista1[fila], lista2[fila]]))
 
     return lista3
@@ -832,17 +832,17 @@ utilizando CuPy:
 ```python
 import cupy as cp
 
-## Crear matrices en la GPU
+# Crear matrices en la GPU
 a = cp.array([1, 2, 3, 4, 5])
 b = cp.array([6, 7, 8, 9, 10])
 
-## Realizar operaciones
+# Realizar operaciones
 c = a + b
 
-## Convertir de vuelta a NumPy si es necesario
+# Convertir de vuelta a NumPy si es necesario
 c_numpy = cp.asnumpy(c)
 
-print(c_numpy)  ## Resultado: [ 7  9 11 13 15]
+print(c_numpy)  # Resultado: [ 7  9 11 13 15]
 ```
 
 ### 4.3. Comparación entre Numba y CuPy

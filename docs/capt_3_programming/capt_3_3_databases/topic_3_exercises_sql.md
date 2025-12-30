@@ -7,11 +7,18 @@ title: Ejercicios SQL
 toc_max_heading_level: 3
 ---
 
-# Ejercicios básicos de SQL
+## Ejercicios básicos
 
-## Tabla de ejemplo
+A continuación se presenta un conjunto de tablas de ejemplo que pueden ser utilizadas
+para practicar consultas SQL fundamentales, tales como selección, agregación, joins y
+filtrado de datos.
 
-### job_posting_fact
+### Tablas de ejemplo
+
+`job_posting_fact`
+
+Esta tabla contiene información sobre ofertas de trabajo, incluyendo el título del
+puesto, salario promedio anual y ubicación.
 
 | job_id | job_title_short  | job_title               | salary_year_avg | job_location |
 | ------ | ---------------- | ----------------------- | --------------- | ------------ |
@@ -20,7 +27,10 @@ toc_max_heading_level: 3
 | 3      | Data Analyst     | Data Analyst            | 105,000         | Boston, MA   |
 | 4      | Business Analyst | Business Analyst        | 75,000          | Anywhere     |
 
-### invoices_fact
+`invoices_fact`
+
+Esta tabla registra facturas asociadas a proyectos, indicando las horas trabajadas y la
+tarifa por hora.
 
 | invoice_id | project_id | hours_spent | hours_rate |
 | ---------- | ---------- | ----------- | ---------- |
@@ -29,7 +39,9 @@ toc_max_heading_level: 3
 | 103        | 1          | 15          | 55         |
 | 104        | 3          | 25          | 65         |
 
-### skills_dim
+`skills_dim`
+
+Contiene el listado de habilidades disponibles, cada una con un identificador único.
 
 | skill_id | skills            |
 | -------- | ----------------- |
@@ -37,7 +49,10 @@ toc_max_heading_level: 3
 | 2        | Data Analysis     |
 | 3        | Business Analysis |
 
-### skills_job_dim
+`skills_job_dim`
+
+Relaciona las habilidades con los trabajos correspondientes, funcionando como una tabla
+de asociación en un modelo de datos tipo estrella.
 
 | skill_id | job_id |
 | -------- | ------ |
@@ -47,9 +62,11 @@ toc_max_heading_level: 3
 | 3        | 2      |
 | 3        | 4      |
 
-## Ejercicio 1: Obtener detalles de trabajos para 'Data Analyst' o 'Business Analyst'
+Estas tablas permiten realizar ejercicios prácticos de SQL, tales como consultar el
+salario promedio de ciertos roles, identificar qué habilidades están asociadas a cada
+trabajo o calcular el costo total de horas facturadas por proyecto.
 
-### Enunciado
+### Obtener detalles de trabajos para 'Data Analyst' o 'Business Analyst'
 
 Obtener detalles de trabajos para las posiciones de 'Data Analyst' o 'Business Analyst'.
 Para 'Data Analyst', solo quiero trabajos con salario > \$100k, y para 'Business
@@ -76,12 +93,10 @@ WHERE
 
 </details>
 
-## Ejercicio 2: Buscar roles de analista no senior
+### Buscar roles de analista no senior
 
-### Enunciado
-
-Buscar roles de 'Data Analyst' o 'Business Analyst' que no sean senior. Obtener el título
-del trabajo, la ubicación y el salario promedio anual.
+Buscar roles de 'Data Analyst' o 'Business Analyst' que no sean senior. Obtener el
+título del trabajo, la ubicación y el salario promedio anual.
 
 <details>
 <summary>Solución</summary>
@@ -101,9 +116,7 @@ WHERE
 
 </details>
 
-## Ejercicio 3: Calcular ganancias totales del mes actual por proyecto
-
-### Enunciado
+### Calcular ganancias totales del mes actual por proyecto
 
 Calcular las ganancias totales del mes actual por proyecto. Calcular un escenario donde
 la tarifa por hora aumenta en \$5.
@@ -126,9 +139,7 @@ ORDER BY
 
 </details>
 
-## Ejercicio 4: Encontrar el salario promedio y el número de ofertas de trabajo por habilidad
-
-### Enunciado
+### Encontrar el salario promedio y el número de ofertas de trabajo por habilidad
 
 Encontrar el salario promedio y el número de ofertas de trabajo para cada habilidad.
 

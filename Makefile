@@ -1,4 +1,5 @@
 .PHONY: setup-i18n dev build serve format install clean typecheck all
+
 .DEFAULT_GOAL := all
 
 setup-i18n:
