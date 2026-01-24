@@ -26,17 +26,16 @@ el Proyecto GNU y lanzado en 1989 como una versión mejorada del _Bourne shell_ 
 
 Se distingue por su eficiencia en la ejecución de comandos, su compatibilidad con
 _scripts_ de _shell_ y su versatilidad para la automatización de tareas y la
-administración de sistemas. Gracias a su flexibilidad y robustez, BASH se ha convertido
-en uno de los intérpretes de comandos más populares, siendo ampliamente utilizado tanto
-en entornos de desarrollo como en servidores.
+administración de sistemas.
 
 ## 2. Conceptos básicos
 
 ### 2.1. Ejemplo de programa base
 
 Un programa básico en BASH comienza con la línea `#!/bin/bash` (_shebang_), que indica
-al sistema qué intérprete debe usar para ejecutar los comandos del script. Es importante
-destacar que los scripts de BASH suelen tener la extensión `.sh`.
+al sistema qué intérprete debe usar para ejecutar los comandos del script.
+
+Es importante destacar que los scripts de BASH suelen tener la extensión `.sh`.
 
 :::note Nota
 
@@ -65,9 +64,8 @@ echo "Hola mundo"
 
 En Linux, cada archivo tiene **permisos** que determinan quién puede leerlo, escribirlo
 o ejecutarlo. Cuando creas un script (`script.sh`), normalmente **no tiene permisos de
-ejecución por defecto**, lo que significa que no se puede ejecutar directamente.
-
-Para permitir que el sistema lo ejecute como un programa, usamos:
+ejecución por defecto**, lo que significa que no se puede ejecutar directamente. Para
+permitir que el sistema lo ejecute como un programa, usamos:
 
 ```bash
 chmod +x script.sh
@@ -97,12 +95,17 @@ que representa la posición del argumento.
 
 ```bash
 #!/bin/bash
+
 echo "Hola $1"
 echo "Adiós $2"
 ```
 
 En este caso, el primer argumento se pasa como `$1`, el segundo como `$2`, y así
-sucesivamente. Además, `$0` siempre contiene el nombre del script.
+sucesivamente.
+
+:::note Nota
+
+`$0` siempre contiene el nombre del script.
 
 :::
 
@@ -115,6 +118,7 @@ previamente.
 
 ```bash
 #!/bin/bash
+
 nombre="Daniel"
 echo "Mi nombre es $nombre"
 ```
@@ -124,6 +128,7 @@ una variable:
 
 ```bash
 #!/bin/bash
+
 resultado=$(comando)
 ```
 
@@ -140,6 +145,7 @@ Para capturar entradas del usuario, se utiliza el comando `read`.
 
 ```bash
 #!/bin/bash
+
 echo "¿Cuál es tu nombre?"
 read nombre
 echo "Tu nombre es $nombre"
@@ -149,13 +155,14 @@ echo "Tu nombre es $nombre"
 
 ### 2.5. Operaciones aritméticas
 
-Las operaciones aritméticas en BASH se realizan dentro de `(( ))`, lo que permite
+Las operaciones aritméticas en BASH se realizan dentro de `$(( ))`, lo que permite
 evaluar expresiones matemáticas de manera sencilla.
 
 :::tip Ejemplo
 
 ```bash
 #!/bin/bash
+
 echo $((5 + 5))
 ```
 
@@ -163,11 +170,11 @@ echo $((5 + 5))
 
 Operaciones disponibles:
 
-- `+` - Suma
-- `-` - Resta
-- `*` - Multiplicación
-- `/` - División
-- `%` - Módulo
+- `+`: Suma.
+- `-`: Resta.
+- `*`: Multiplicación.
+- `/`: División.
+- `%`: Módulo (el resto de la división).
 
 ### 2.6. Condiciones
 
@@ -192,18 +199,18 @@ fi
 
 Operadores de comparación:
 
-- `==` - Igual a
-- `!=` - Distinto de
-- `>` - Mayor que
-- `<` - Menor que
-- `>=` - Mayor o igual que
-- `<=` - Menor o igual que
+- `==`: Igual a.
+- `!=`: Distinto de.
+- `>`: Mayor que.
+- `<`: Menor que.
+- `>=`: Mayor o igual que.
+- `<=`: Menor o igual que.
 
 Operadores booleanos:
 
-- `-a` o `&&` - Y (AND)
-- `-o` o `||` - O (OR)
-- `!` - No (NOT)
+- `-a` o `&&`: Y (AND).
+- `-o` o `||`: O (OR).
+- `!`: No (NOT).
 
 Es importante recordar que `-a` y `-o` se usan dentro de corchetes, mientras que `&&` y
 `||` se emplean fuera de ellos.
@@ -251,8 +258,8 @@ done
 
 Comandos adicionales:
 
-- `break` - Finaliza el bucle.
-- `continue` - Salta a la siguiente iteración del bucle.
+- `break`: Finaliza el bucle.
+- `continue`: Salta a la siguiente iteración del bucle.
 
 :::note Los bucles `for` son ideales cuando se conoce el número exacto de iteraciones,
 mientras que los bucles `while` se utilizan cuando la condición de salida depende de una
@@ -284,8 +291,9 @@ funcion
 ## 3. Ejemplos de automatización
 
 En el desarrollo de proyectos en Python, la automatización de tareas mediante **Bash**
-resulta fundamental para garantizar la reproducibilidad y eficiencia del entorno. A
-continuación, se presenta un ejemplo de script que ilustra cómo preparar un entorno de
+resulta fundamental para garantizar la reproducibilidad y eficiencia del entorno.
+
+A continuación, se presenta un ejemplo de script que ilustra cómo preparar un entorno de
 desarrollo, instalando herramientas necesarias y dependencias tanto del sistema como de
 Python:
 
@@ -317,13 +325,15 @@ echo "✅ Devcontainer setup complete."
 ```
 
 Este script ejecuta de manera secuencial y automatizada varias operaciones clave para
-configurar un entorno de desarrollo. Primero, verifica si la herramienta `uv` está
-instalada y, en caso contrario, procede a su instalación de forma silenciosa. La
-ejecución silenciosa se logra mediante `> /dev/null 2>&1`, que descarta tanto la salida
-estándar como los mensajes de error, evitando que aparezcan en la terminal.
+configurar un entorno de desarrollo.
+
+Primero, verifica si la herramienta `uv` está instalada y, en caso contrario, procede a
+su instalación de forma silenciosa. La ejecución silenciosa se logra mediante
+`> /dev/null 2>&1`, que descarta tanto la salida estándar como los mensajes de error,
+evitando que aparezcan en la terminal.
+
 Posteriormente, el script actualiza el sistema e instala paquetes esenciales mediante
-`apt-get`, también de manera silenciosa. Finalmente, instala las dependencias de Python
-definidas en un archivo `Makefile`, asegurando que el entorno de desarrollo quede
-completamente configurado. Este enfoque automatizado reduce la intervención manual,
-minimiza la probabilidad de errores y facilita la replicación del entorno en distintos
-sistemas, garantizando consistencia y eficiencia en los proyectos.
+`apt-get`, también de manera silenciosa.
+
+Finalmente, instala las dependencias de Python definidas en un archivo `Makefile`,
+asegurando que el entorno de desarrollo quede completamente configurado.
