@@ -1,11 +1,8 @@
 ---
-sidebar_position: 1
-authors:
-  - name: Daniel Bazo Correa
+authors: Daniel Bazo Correa
 description:
   Creación y gestión de entornos virtuales de Python con VENV, Anaconda y Poetry
 title: Gestión de entornos en Python
-toc_max_heading_level: 3
 ---
 
 ## Bibliografía
@@ -345,11 +342,11 @@ Cuando un proyecto necesita dependencias específicas, es útil usar un archivo
 
 1. **Crear un archivo `requirements.txt`** con los paquetes y versiones deseadas:
 
-      ```plaintext
-      numpy==1.21.0
-      pandas>=1.3.0
-      requests
-      ```
+   ```plaintext
+   numpy==1.21.0
+   pandas>=1.3.0
+   requests
+   ```
 
 2. **Instalar los paquetes desde el archivo**:
 

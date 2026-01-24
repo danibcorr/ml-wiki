@@ -1,11 +1,10 @@
 ---
-sidebar_position: 1
-authors:
-  - name: Daniel Bazo Correa
+authors: Daniel Bazo Correa
 description: Introducción al kernel de Linux y a los sistemas operativos basados en él.
 title: Linux
-toc_max_heading_level: 3
 ---
+
+[Descargar PDF](../assets/documents/Linux_Machine_Learning_Wiki.pdf){: .md-button .md-button--primary download="Linux-ML-Wiki.pdf" } [Descargar EPUB](../assets/documents/Linux_Machine_Learning_Wiki.pdf){: .md-button .md-button--primary download="Linux-ML-Wiki.pdf" }
 
 ## Bibliografía
 
@@ -62,7 +61,7 @@ _shell_ más extendida y estandarizada.
 Los comandos presentan una sintaxis clara basada en un nombre principal, opciones que
 modifican su comportamiento y argumentos que especifican el objetivo de la acción.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
     El comando `ls -l /home/usuario` combina el nombre principal `ls`, que lista los
     archivos y directorios, con la opción `-l`, que indica que la información se muestre en
@@ -102,7 +101,7 @@ Las secciones más comunes son las siguientes:
 Al consultar un manual, es posible especificar la sección deseada para acceder
 directamente a la información relevante.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
     `man 2 open` muestra la documentación de la llamada al sistema `open()`, mientras que
     `man 1 open` podría referirse a un comando de usuario llamado `open`.
@@ -255,7 +254,7 @@ tres caracteres, cada uno correspondiente al propietario, al grupo y a otros,
 respectivamente. Cada carácter indica si el permiso de lectura (`r`), escritura (`w`) o
 ejecución (`x`) está concedido o no.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
     Supongamos que al ejecutar `ls -l` obtenemos la siguiente salida:
 
@@ -297,7 +296,7 @@ a 4, la escritura a 2 y la ejecución a 1. La suma de estos valores determina el
 final para cada categoría. El comando recibe siempre tres dígitos, que representan, de
 izquierda a derecha, los permisos del propietario, del grupo y de otros.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
     Al aplicar `chmod 754 archivo`, el propietario obtiene todos los permisos, el grupo
     puede leer y ejecutar, y el resto de usuarios solo puede leer.
@@ -306,7 +305,7 @@ La **notación simbólica**, por su parte, utiliza letras para identificar a los
 (`u` para el propietario, `g` para el grupo, `o` para otros y `a` para todos) y
 operadores para añadir, quitar o asignar permisos.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
     - **Añadir permisos de ejecución a todos:** `chmod a+x backup.sh` En este caso, el
       operador `+` suma el permiso de ejecución (`x`) a todas las categorías (`a` de _all_).
@@ -328,7 +327,7 @@ los directorios, de permisos completos. El valor de `umask` indica qué permisos
 eliminarse automáticamente, de modo que cuanto más restrictiva sea la máscara, más
 limitados serán los permisos resultantes.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
     Supongamos que un usuario tiene configurada una **máscara `umask` de 022**:
 
@@ -355,7 +354,7 @@ recurso.
 `chown` permite modificar únicamente el usuario propietario, solo el grupo o ambos
 simultáneamente, y puede aplicarse de forma recursiva a directorios completos.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
     Supongamos que un administrador desea **cambiar el propietario y el grupo de un
     directorio** llamado `proyecto` un usuario llamado `ana`:
@@ -397,7 +396,7 @@ a grupos puede consultarse mediante `groups`, tanto para el usuario actual como 
 cualquier otro usuario del sistema, y modificarse añadiendo usuarios a grupos
 específicos, como `sudo`, para concederles capacidades administrativas controladas.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
     - **Creación interactiva de la cuenta:** `sudo adduser pedro` A diferencia de `useradd`,
       el comando `adduser` es un script de alto nivel que, de forma asistida, crea el
@@ -522,7 +521,7 @@ Los alias se configuran generalmente en archivos de inicialización de la shell,
 `~/.bashrc` o `~/.zshrc`, lo que asegura que estén disponibles de manera automática en
 cada nueva sesión.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
     Un alias como `alias ll='ls -alF'` convierte un comando largo y detallado en una
     instrucción breve y fácil de recordar.

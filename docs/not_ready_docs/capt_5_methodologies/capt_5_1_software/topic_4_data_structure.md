@@ -1,10 +1,9 @@
 ---
-sidebar_position: 4
+
 authors:
-  - name: Daniel Bazo Correa
+Daniel Bazo Correa
 description: Estructuras de datos y algoritmos de programación.
 title: Estructuras de datos y algoritmos
-toc_max_heading_level: 3
 ---
 
 ## Bibliografía
@@ -53,9 +52,9 @@ notación Big O se utiliza para representar el peor caso.
 En algoritmos que involucran múltiples estructuras de datos, la complejidad puede
 depender de más de un parámetro.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
-```python
+```py linenums="1"
 def funcion():
     for i in arrayA:
         ...
@@ -67,9 +66,9 @@ En este ejemplo, cada bucle tiene una complejidad de $O\left(N\right)$, pero com
 bucles operan en arrays diferentes, la complejidad total es $O\left(A + B\right)$, donde
 $A$ y $B$ son los tamaños de los arrays `arrayA` y `arrayB`, respectivamente.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
-```python
+```py linenums="1"
 def funcion():
     for i in arrayA:
         for j in arrayB:
@@ -103,7 +102,7 @@ indica que la lista está ordenada.
 
 tip Implementación
 
-```python
+```py linenums="1"
 def ordenacion_burbuja(lista: list[int]) -> list[int]:
 
     # Bucle externo que recorre toda la lista
@@ -139,7 +138,7 @@ completamente ordenada.
 
 tip Implementación
 
-```python
+```py linenums="1"
 def ordenacion_seleccion(lista: list[int]) -> list[int]:
 
     # Bucle externo que recorre toda la lista
@@ -179,7 +178,7 @@ elementos desordenados.
 
 tip Implementación
 
-```python
+```py linenums="1"
 def ordenacion_insercion(lista: list[int]) -> list[int]:
 
     # Bucle que recorre la lista desde el segundo elemento hasta el final
@@ -225,7 +224,7 @@ elementos.
 
 tip Implementación
 
-```python
+```py linenums="1"
 def busqueda_lineal(lista: list[int], valor_buscar: int) -> int:
 
     # Recorre la lista utilizando enumerate para obtener índice y valor
@@ -253,7 +252,7 @@ posibles ubicaciones a una sola. Este método requiere que la lista esté ordena
 
 tip Implementación
 
-```python
+```py linenums="1"
 def busqueda_binaria(lista: list[int], valor_buscar: int) -> int:
 
     # Ordena la lista de manera ascendente
@@ -299,7 +298,7 @@ Las pilas pueden tener un tamaño estático o dinámico.
 
 tip Implementación
 
-```python
+```py linenums="1"
 class Pila:
 
     def __init__(self, tam: int = None):
@@ -365,7 +364,7 @@ extremo y las de extracción en el otro.
 
 tip Implementación
 
-```python
+```py linenums="1"
 class Cola():
 
     def __init__(self, tam: int = None):
@@ -455,7 +454,7 @@ al siguiente nodo o a `None` si es el último nodo.
 
 tip Implementación
 
-```python
+```py linenums="1"
 class Nodo():
 
     def __init__(self, dato: int):
@@ -554,7 +553,7 @@ lista en ambos sentidos y facilita la eliminación de elementos.
 
 tip Implementación
 
-```python
+```py linenums="1"
 class Nodo():
 
     def __init__(self, dato: int):
@@ -661,7 +660,7 @@ inserción y eliminación cuando se conoce el nodo previo.
 
 tip Implementación
 
-```python
+```py linenums="1"
 class Nodo():
 
     def __init__(self, dato: int):
@@ -767,7 +766,7 @@ forma circular.
 
 tip Implementación
 
-```python
+```py linenums="1"
 class Nodo():
 
     def __init__(self, dato: int):
@@ -919,7 +918,7 @@ eficiente para organizar y buscar datos.
 
 tip Implementación
 
-```python
+```py linenums="1"
 class Nodo():
 
     def __init__(self, valor: int = None, padre: int = None, es_raiz: bool = False, es_izquierdo: bool = False, es_derecho: bool = False):

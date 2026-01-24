@@ -1,10 +1,7 @@
 ---
-sidebar_position: 1
-authors:
-  - name: Daniel Bazo Correa
+authors: Daniel Bazo Correa
 description: Control de versiones con Git.
 title: Git
-toc_max_heading_level: 3
 ---
 
 ## Bibliografía
@@ -212,15 +209,15 @@ Un comando de Git se compone de tres elementos fundamentales: el programa princi
 (`git`), el comando que define la acción concreta que se desea realizar y, de forma
 opcional, una serie de opciones y argumentos que ajustan su comportamiento.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
-```
-git commit -m "Esto es un commit"
-```
+    ```
+    git commit -m "Esto es un commit"
+    ```
 
-En este caso, `git commit` define la acción de confirmar cambios, `-m` es una opción que
-permite añadir un mensaje descriptivo y `"Esto es un commit"` es el argumento asociado a
-dicha opción.
+    En este caso, `git commit` define la acción de confirmar cambios, `-m` es una opción que
+    permite añadir un mensaje descriptivo y `"Esto es un commit"` es el argumento asociado a
+    dicha opción.
 
 A continuación se describen los comandos más relevantes para la gestión del control de
 versiones en un repositorio Git a nivel local.
@@ -454,136 +451,136 @@ Se ejecuta antes de realizar un _commit_. Es útil para verificar el formato del
 ejecutar pruebas unitarias, validar los mensajes de _commit_ o evitar errores
 ortográficos.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
-Verificación de estilo con Black en la rama `main`.
+    Verificación de estilo con Black en la rama `main`.
 
-```bash
-#!/bin/bash
-# Hook pre-commit para ejecutar Black solo en la rama main
+    ```bash
+    #!/bin/bash
+    # Hook pre-commit para ejecutar Black solo en la rama main
 
-# Obtener la rama actual
-branch_name=$(git rev-parse --abbrev-ref HEAD)
+    # Obtener la rama actual
+    branch_name=$(git rev-parse --abbrev-ref HEAD)
 
-# Verificar si estamos en la rama main
-if [ "$branch_name" != "main" ]; then
-    echo "No se ejecutará Black porque no estás en la rama 'main'."
-    exit 0
-fi
+    # Verificar si estamos en la rama main
+    if [ "$branch_name" != "main" ]; then
+        echo "No se ejecutará Black porque no estás en la rama 'main'."
+        exit 0
+    fi
 
-# Ejecutar Black en el directorio actual
-black . --check
+    # Ejecutar Black en el directorio actual
+    black . --check
 
-# Verificar el estado de la última operación
-if [ $? -ne 0 ]; then
-    echo "Errores de estilo detectados. Bloqueando el commit."
-    exit 1
-fi
+    # Verificar el estado de la última operación
+    if [ $? -ne 0 ]; then
+        echo "Errores de estilo detectados. Bloqueando el commit."
+        exit 1
+    fi
 
-echo "El commit se ha completado con éxito."
-```
+    echo "El commit se ha completado con éxito."
+    ```
 
 #### 5.2.2. `pre-push`
 
 Se ejecuta antes de enviar cambios a un repositorio remoto. Se emplea para evitar
 _pushes_ en ramas protegidas o para ejecutar pruebas antes de subir los cambios.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
-Instalación de dependencias y ejecución de pruebas con Poetry.
+    Instalación de dependencias y ejecución de pruebas con Poetry.
 
-```bash
-#!/bin/bash
-# Hook pre-push para actualizar pip, instalar Poetry, instalar dependencias y ejecutar pruebas
+    ```bash
+    #!/bin/bash
+    # Hook pre-push para actualizar pip, instalar Poetry, instalar dependencias y ejecutar pruebas
 
-# Actualizar pip
-echo "Actualizando pip..."
-python -m pip install --upgrade pip
+    # Actualizar pip
+    echo "Actualizando pip..."
+    python -m pip install --upgrade pip
 
-# Instalar Poetry si no está instalado
-if ! command -v poetry &> /dev/null; then
-    echo "Instalando Poetry..."
-    pip install poetry
-fi
+    # Instalar Poetry si no está instalado
+    if ! command -v poetry &> /dev/null; then
+        echo "Instalando Poetry..."
+        pip install poetry
+    fi
 
-# Verificar si Poetry se instaló correctamente
-if ! command -v poetry &> /dev/null; then
-    echo "Error: Poetry no se pudo instalar."
-    exit 1
-fi
+    # Verificar si Poetry se instaló correctamente
+    if ! command -v poetry &> /dev/null; then
+        echo "Error: Poetry no se pudo instalar."
+        exit 1
+    fi
 
-# Instalar dependencias de Poetry
-echo "Instalando dependencias de Poetry..."
-poetry install
+    # Instalar dependencias de Poetry
+    echo "Instalando dependencias de Poetry..."
+    poetry install
 
-# Ejecutar pruebas con Pytest
-echo "Ejecutando pruebas con Pytest..."
-poetry run pytest -v ./tests
+    # Ejecutar pruebas con Pytest
+    echo "Ejecutando pruebas con Pytest..."
+    poetry run pytest -v ./tests
 
-# Verificar el estado de las pruebas
-if [ $? -ne 0 ]; then
-    echo "Error: Las pruebas no han pasado. Bloqueando el push."
-    exit 1
-fi
+    # Verificar el estado de las pruebas
+    if [ $? -ne 0 ]; then
+        echo "Error: Las pruebas no han pasado. Bloqueando el push."
+        exit 1
+    fi
 
-echo "El push se ha completado con éxito."
-```
+    echo "El push se ha completado con éxito."
+    ```
 
 #### 5.2.3. `post-commit`
 
 Se ejecuta después de realizar un _commit_. Puede utilizarse para enviar notificaciones
 automáticas al equipo.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
-Notificación por correo tras un commit.
+    Notificación por correo tras un commit.
 
-```bash
-#!/bin/bash
-# Hook post-commit para enviar una notificación por correo
+    ```bash
+    #!/bin/bash
+    # Hook post-commit para enviar una notificación por correo
 
-# Obtener el mensaje del último commit
-commit_message=$(git log -1 --pretty=%B)
+    # Obtener el mensaje del último commit
+    commit_message=$(git log -1 --pretty=%B)
 
-# Enviar un correo electrónico (usando sendmail como ejemplo)
-echo "Nuevo commit realizado: $commit_message" | sendmail -v equipo@example.com
-```
+    # Enviar un correo electrónico (usando sendmail como ejemplo)
+    echo "Nuevo commit realizado: $commit_message" | sendmail -v equipo@example.com
+    ```
 
 #### 5.2.4. `post-merge`
 
 Se ejecuta después de completar un _merge_. Es útil para actualizar dependencias o
 regenerar documentación.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
-Actualización de dependencias con Poetry.
+    Actualización de dependencias con Poetry.
 
-```bash
-#!/bin/bash
-# Hook post-merge para actualizar dependencias con Poetry
+    ```bash
+    #!/bin/bash
+    # Hook post-merge para actualizar dependencias con Poetry
 
-# Verificar si Poetry está instalado
-if ! command -v poetry &> /dev/null; then
-    echo "Poetry no está instalado. Instalándolo..."
-    pip install poetry
-fi
+    # Verificar si Poetry está instalado
+    if ! command -v poetry &> /dev/null; then
+        echo "Poetry no está instalado. Instalándolo..."
+        pip install poetry
+    fi
 
-# Actualizar las dependencias
-echo "Actualizando dependencias de Poetry..."
-poetry update
+    # Actualizar las dependencias
+    echo "Actualizando dependencias de Poetry..."
+    poetry update
 
-# Ejecutar pruebas para verificar que todo funciona correctamente
-echo "Ejecutando pruebas con Pytest..."
-poetry run pytest -v ./tests
+    # Ejecutar pruebas para verificar que todo funciona correctamente
+    echo "Ejecutando pruebas con Pytest..."
+    poetry run pytest -v ./tests
 
-# Verificar el estado de las pruebas
-if [ $? -ne 0 ]; then
-    echo "Error: Las pruebas no han pasado. Verifica los errores."
-    exit 1
-fi
+    # Verificar el estado de las pruebas
+    if [ $? -ne 0 ]; then
+        echo "Error: Las pruebas no han pasado. Verifica los errores."
+        exit 1
+    fi
 
-echo "El post-merge se ha completado con éxito."
-```
+    echo "El post-merge se ha completado con éxito."
+    ```
 
 #### 5.2.5. `pre-receive` y `post-receive`
 
@@ -593,44 +590,44 @@ Estos _hooks_ se ejecutan en el servidor remoto al recibir cambios mediante _pus
   proyecto antes de aceptarlos.
 - **post-receive**: Se emplea para realizar despliegues automáticos en producción.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
-Bloquear _pushes_ con mensajes de _commit_ incorrectos.
+    Bloquear _pushes_ con mensajes de _commit_ incorrectos.
 
-```bash
-#!/bin/bash
-# Hook pre-receive para validar mensajes de commit
+    ```bash
+    #!/bin/bash
+    # Hook pre-receive para validar mensajes de commit
 
-while read oldrev newrev refname; do
-    for commit in $(git rev-list $oldrev..$newrev); do
-        commit_message=$(git log --format=%B -n 1 $commit)
-        if ! [[ $commit_message =~ ^\[JIRA-[0-9]+\] ]]; then
-            echo "El mensaje de commit '$commit_message' no cumple con el formato requerido."
-            exit 1
-        fi
+    while read oldrev newrev refname; do
+        for commit in $(git rev-list $oldrev..$newrev); do
+            commit_message=$(git log --format=%B -n 1 $commit)
+            if ! [[ $commit_message =~ ^\[JIRA-[0-9]+\] ]]; then
+                echo "El mensaje de commit '$commit_message' no cumple con el formato requerido."
+                exit 1
+            fi
+        done
     done
-done
-```
+    ```
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
-Despliegue automático tras recibir un _push_.
+    Despliegue automático tras recibir un _push_.
 
-```bash
-#!/bin/bash
-# Hook post-receive para desplegar automáticamente el código en producción
+    ```bash
+    #!/bin/bash
+    # Hook post-receive para desplegar automáticamente el código en producción
 
-echo "Desplegando cambios en producción..."
+    echo "Desplegando cambios en producción..."
 
-# Cambiar al directorio de producción
-cd /var/www/mi-aplicacion
+    # Cambiar al directorio de producción
+    cd /var/www/mi-aplicacion
 
-# Obtener la última versión del código
-git pull origin main
+    # Obtener la última versión del código
+    git pull origin main
 
-# Reiniciar el servidor web para aplicar cambios
-pm2 restart mi-aplicacion
-```
+    # Reiniciar el servidor web para aplicar cambios
+    pm2 restart mi-aplicacion
+    ```
 
 ## 6. Casos de uso prácticos en Git
 
@@ -642,29 +639,29 @@ claras y seguras para los escenarios más frecuentes.
 
 Para garantizar la autenticidad de los commits, se pueden adoptar varias estrategias:
 
-1. Reescribir y firmar todos los commits: Si los commits son válidos pero carecen de
-   firma, se pueden recrear firmados:
+1.  Reescribir y firmar todos los commits: Si los commits son válidos pero carecen de
+    firma, se pueden recrear firmados:
 
-   ```bash
-   git rebase --root --exec 'git commit --amend --no-edit -S'
-   git push --force-with-lease
-   ```
+    ```bash
+    git rebase --root --exec 'git commit --amend --no-edit -S'
+    git push --force-with-lease
+    ```
 
-2. Eliminar commits no firmados conservando los firmados:
+2.  Eliminar commits no firmados conservando los firmados:
 
-   ```bash
-   git log --pretty="%h %G?"   # Identifica commits no firmados (N)
-   git checkout -b rama-limpia
-   git rebase -i --root         # Elimina los commits N en el editor
-   git push --force-with-lease origin rama-limpia
-   ```
+    ```bash
+    git log --pretty="%h %G?"   # Identifica commits no firmados (N)
+    git checkout -b rama-limpia
+    git rebase -i --root         # Elimina los commits N en el editor
+    git push --force-with-lease origin rama-limpia
+    ```
 
-3. Resetear la rama a un commit firmado específico:
+3.  Resetear la rama a un commit firmado específico:
 
-   ```bash
-   git reset --hard <commit_firmado>
-   git push --force-with-lease
-   ```
+    ```bash
+    git reset --hard <commit_firmado>
+    git push --force-with-lease
+    ```
 
 ### 6.2 Sincronizar el repositorio local con el remoto
 

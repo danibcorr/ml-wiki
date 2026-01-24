@@ -1,10 +1,9 @@
 ---
-sidebar_position: 1
 authors:
-  - name: Daniel Bazo Correa
+Daniel Bazo Correa
 description: Crea tus propios scripts ejecutables con Bash.
 title: Bash
-toc_max_heading_level: 4
+
 ---
 
 ## Bibliografía
@@ -46,19 +45,19 @@ A continuación, se añaden las líneas de comandos que definen las acciones a r
 como mostrar un mensaje en la terminal, ejecutar otros scripts o realizar tareas
 específicas.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
-Supongamos que tenemos un script llamado `script.sh`. Para hacerlo ejecutable, primero
-debemos otorgarle permisos.
+    Supongamos que tenemos un script llamado `script.sh`. Para hacerlo ejecutable, primero
+    debemos otorgarle permisos.
 
-Primero, crearemos un _script_ básico, con nombre `script.sh`, para mostrar en la
-terminal un `Hola mundo`:
+    Primero, crearemos un _script_ básico, con nombre `script.sh`, para mostrar en la
+    terminal un `Hola mundo`:
 
-```bash
-#!/bin/bash
+    ```bash
+    #!/bin/bash
 
-echo "Hola mundo"
-```
+    echo "Hola mundo"
+    ```
 
 En Linux, cada archivo tiene **permisos** que determinan quién puede leerlo, escribirlo
 o ejecutarlo. Cuando creas un script (`script.sh`), normalmente **no tiene permisos de
@@ -87,74 +86,74 @@ directamente así:
 En BASH, los parámetros se pasan al script mediante el uso de `$`, seguido del número
 que representa la posición del argumento.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
-```bash
-#!/bin/bash
+    ```bash
+    #!/bin/bash
 
-echo "Hola $1"
-echo "Adiós $2"
-```
+    echo "Hola $1"
+    echo "Adiós $2"
+    ```
 
-En este caso, el primer argumento se pasa como `$1`, el segundo como `$2`, y así
-sucesivamente.
+    En este caso, el primer argumento se pasa como `$1`, el segundo como `$2`, y así
+    sucesivamente.
 
-note Nota
+    !!!note "Nota"
 
-`$0` siempre contiene el nombre del script.
+        `$0` siempre contiene el nombre del script.
 
 ### 2.3. Asignación de variables
 
 En BASH, las variables se asignan de manera sencilla, sin necesidad de declarar su tipo
 previamente.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
-```bash
-#!/bin/bash
+    ```bash
+    #!/bin/bash
 
-nombre="Daniel"
-echo "Mi nombre es $nombre"
-```
+    nombre="Daniel"
+    echo "Mi nombre es $nombre"
+    ```
 
-También es posible almacenar el resultado de la ejecución de un comando del sistema en
-una variable:
+    También es posible almacenar el resultado de la ejecución de un comando del sistema en
+    una variable:
 
-```bash
-#!/bin/bash
+    ```bash
+    #!/bin/bash
 
-resultado=$(comando)
-```
+    resultado=$(comando)
+    ```
 
-El uso de `$(comando)` permite capturar la salida de un comando y almacenarla en una
-variable, lo cual resulta útil para automatizar tareas y procesar información.
+    El uso de `$(comando)` permite capturar la salida de un comando y almacenarla en una
+    variable, lo cual resulta útil para automatizar tareas y procesar información.
 
 ### 2.4. Introducción de entradas del usuario
 
 Para capturar entradas del usuario, se utiliza el comando `read`.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
-```bash
-#!/bin/bash
+    ```bash
+    #!/bin/bash
 
-echo "¿Cuál es tu nombre?"
-read nombre
-echo "Tu nombre es $nombre"
-```
+    echo "¿Cuál es tu nombre?"
+    read nombre
+    echo "Tu nombre es $nombre"
+    ```
 
 ### 2.5. Operaciones aritméticas
 
 Las operaciones aritméticas en BASH se realizan dentro de `$(( ))`, lo que permite
 evaluar expresiones matemáticas de manera sencilla.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
-```bash
-#!/bin/bash
+    ```bash
+    #!/bin/bash
 
-echo $((5 + 5))
-```
+    echo $((5 + 5))
+    ```
 
 Operaciones disponibles:
 
@@ -169,19 +168,19 @@ Operaciones disponibles:
 En BASH, las condiciones se expresan utilizando el comando `if`, junto con los
 operadores de comparación y lógicos.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
-```bash
-#!/bin/bash
+    ```bash
+    #!/bin/bash
 
-if [ "$1" == "Dani" ] || [ "$1" == "Paco" ]; then
-    echo "Hola $1"
-elif [ "$1" == "Jorge" ]; then
-    echo "Bienvenido"
-else
-    echo "Intruso"
-fi
-```
+    if [ "$1" == "Dani" ] || [ "$1" == "Paco" ]; then
+        echo "Hola $1"
+    elif [ "$1" == "Jorge" ]; then
+        echo "Bienvenido"
+    else
+        echo "Intruso"
+    fi
+    ```
 
 Operadores de comparación:
 
@@ -211,30 +210,30 @@ del `if`.
 
 BASH soporta varios tipos de bucles. Un bucle `for` se define de la siguiente manera:
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
-```bash
-#!/bin/bash
+    ```bash
+    #!/bin/bash
 
-for i in 1 2 3; do
-    echo $i
-done
-```
+    for i in 1 2 3; do
+        echo $i
+    done
+    ```
 
 Un bucle `while` se usa cuando se necesita repetir una acción mientras se cumpla una
 condición específica:
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
-```bash
-#!/bin/bash
+    ```bash
+    #!/bin/bash
 
-i=1
-while [ $i -le 5 ]; do
-    echo $i
-    (( i++ ))
-done
-```
+    i=1
+    while [ $i -le 5 ]; do
+        echo $i
+        (( i++ ))
+    done
+    ```
 
 Comandos adicionales:
 
@@ -252,19 +251,17 @@ Definir funciones ayuda a hacer el código más modular, legible y fácil de man
 facilitando además la reutilización de bloques de código sin tener que escribirlos
 varias veces.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
-```bash
-#!/bin/bash
+    ```bash
+    #!/bin/bash
 
-function funcion() {
-    echo "Esta es una función de prueba"
-}
+    function funcion() {
+        echo "Esta es una función de prueba"
+    }
 
-funcion
-```
-
-:
+    funcion
+    ```
 
 ## 3. Ejemplos de automatización
 

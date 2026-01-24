@@ -1,10 +1,8 @@
 ---
-sidebar_position: 1
 authors:
-  - name: Daniel Bazo Correa
+Daniel Bazo Correa
 description: Fundamentos del Deep Learning.
 title: Deep Learning
-toc_max_heading_level: 3
 ---
 
 ## Bibliografía
@@ -517,7 +515,7 @@ vectoriales.
 A continuación, se presenta un ejemplo de implementación de la similitud del coseno
 utilizando Python con la biblioteca **NumPy**:
 
-```python
+```py linenums="1"
 import numpy as np
 
 def normalizar_matriz(matriz: np.ndarray) -> np.ndarray:
@@ -540,7 +538,7 @@ print(similarity_matrix)
 
 El siguiente código muestra el mismo procedimiento utilizando **PyTorch**:
 
-```python
+```py linenums="1"
 import torch
 import torch.nn.functional as F
 
@@ -632,7 +630,7 @@ optimización de cálculos o el uso de estrategias que reduzcan el coste computa
 Para crear tensores, es posible hacerlo a partir de listas, mediante inicialización
 aleatoria o con valores fijos, por ejemplo:
 
-```python
+```py linenums="1"
 import torch
 
 # Tensores básicos
@@ -662,7 +660,7 @@ posibles, pero también el consumo de memoria. El dispositivo (`device`) es rele
 porque un tensor ubicado en la GPU no puede ser manipulado directamente desde la CPU,
 por lo que es necesario transferirlo o copiarlo según sea necesario. Por ejemplo:
 
-```python
+```py linenums="1"
 tensor = torch.rand((2, 3, 4))
 print("Tipo de dato:", tensor.dtype)
 print("Forma:", tensor.shape)
@@ -676,7 +674,7 @@ mínimo. El parámetro `dim` indica el eje sobre el cual se aplica la operación
 `dim=0` actúa sobre las filas (por columnas), mientras que `dim=1` actúa sobre las
 columnas (por filas).
 
-```python
+```py linenums="1"
 tensor = torch.tensor([[1., 2., 3.], [4., 5., 6.]])
 
 print("Suma total:", tensor.sum())
@@ -690,7 +688,7 @@ modificar la forma del tensor sin alterar sus datos subyacentes. Estas operacion
 fundamentales para adaptar las dimensiones de los tensores según las necesidades de las
 redes neuronales.
 
-```python
+```py linenums="1"
 x = torch.arange(1, 7)
 print("Tensor original:", x)
 
@@ -711,7 +709,7 @@ Las funciones `permute()` y `transpose()` permiten reordenar las dimensiones de 
 tensor, lo cual es especialmente útil en el procesamiento de imágenes o secuencias, por
 ejemplo, al desplazar canales de color o mapas de características.
 
-```python
+```py linenums="1"
 tensor = torch.rand((2, 3, 4))
 print("Forma original:", tensor.shape)
 
@@ -728,7 +726,7 @@ También es posible combinar tensores mediante funciones como `torch.cat()` y
 `torch.stack()`. La primera une tensores existentes a lo largo de un eje específico,
 mientras que la segunda crea una nueva dimensión para apilarlos.
 
-```python
+```py linenums="1"
 a = torch.tensor([[1, 2], [3, 4]])
 b = torch.tensor([[5, 6], [7, 8]])
 
@@ -749,7 +747,7 @@ realizar cálculos sin recurrir a bucles explícitos. Este enfoque no solo mejor
 legibilidad del código, sino que también aprovecha las optimizaciones internas del
 framework y del hardware subyacente, como las implementaciones en CUDA para GPU.
 
-```python
+```py linenums="1"
 x = torch.tensor([1., 2., 3.])
 y = torch.tensor([4., 5., 6.])
 
@@ -764,7 +762,7 @@ Estas operaciones resultan especialmente útiles para inspeccionar distribucione
 datos o normalizar tensores antes del entrenamiento, tareas que contribuyen a
 estabilizar el aprendizaje de los modelos.
 
-```python
+```py linenums="1"
 tensor = torch.randn((3, 4))  # Distribución normal
 print("Tensor aleatorio:\n", tensor)
 print("Media:", tensor.mean())
@@ -778,7 +776,7 @@ NumPy**, lo que facilita su integración con bibliotecas de análisis y visualiz
 Esta interoperabilidad permite combinar el poder de cálculo de PyTorch con la
 versatilidad de ecosistemas como NumPy, Matplotlib o Pandas.
 
-```python
+```py linenums="1"
 import numpy as np
 
 # Tensor a NumPy
@@ -1134,7 +1132,7 @@ El objetivo consiste en aplicar el descenso del gradiente sobre esta función, c
 explícitamente las derivadas parciales respecto a $x_1$ y $x_2$, e implementando el
 algoritmo en Python mediante la biblioteca NumPy:
 
-```python
+```py linenums="1"
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -1199,7 +1197,7 @@ diferenciación en sistemas de la computación con ciencias de la computación.
 
 Un ejemplo simple de su funcionamiento es el siguiente:
 
-```python
+```py linenums="1"
 import torch
 
 x = torch.tensor([2.0, 3.0], requires_grad=True)
@@ -1293,7 +1291,7 @@ en $\theta=0$. En este ejemplo, todos los optimizadores parten de un valor inici
 $\theta=5$ y buscan reducir la función de pérdida. Aunque cada algoritmo sigue
 trayectorias distintas, todos tienden hacia el mínimo global en $\theta=0$.
 
-```python
+```py linenums="1"
 import numpy as np
 
 # Función de pérdida y gradiente
@@ -1729,7 +1727,7 @@ inicialización de parámetros, _forward propagation_, _backward propagation_, l
 actualización de los parámetros mediante descenso del gradiente y, finalmente, la
 generación de predicciones y la evaluación del modelo.
 
-```python
+```py linenums="1"
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -2081,7 +2079,7 @@ relación entre las características de entrada y la clase de salida, mostrando 
 combinación de forward y backward propagation permite ajustar los parámetros mediante
 optimización basada en gradientes.
 
-```python
+```py linenums="1"
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -2330,7 +2328,7 @@ parámetros globales de la red.
 
 A modo de ejemplo aqui tenemos una implementacion utilizando pytorch:
 
-```python
+```py linenums="1"
 from torch.utils.data import DataLoader
 dataloader = DataLoader(dataset, shuffle=True, batch_size=32)
 for xb, yb in dataloader:

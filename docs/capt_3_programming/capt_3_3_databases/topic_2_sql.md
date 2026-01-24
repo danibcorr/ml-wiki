@@ -1,10 +1,7 @@
 ---
-sidebar_position: 2
-authors:
-  - name: Daniel Bazo Correa
+authors: Daniel Bazo Correa
 description: Gestiona y manipula bases de datos de manera eficiente utilizando SQL.
 title: SQL
-toc_max_heading_level: 3
 ---
 
 ## Bibliografía
@@ -119,94 +116,94 @@ uso:
 
 - **SELECT**: Especifica las columnas que se desean recuperar de la base de datos.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
-  Para seleccionar columnas específicas:
+      Para seleccionar columnas específicas:
 
-  ```sql
-  SELECT
-    job_title_short,
-    job_location
-  FROM
-    job_posting_fact
-  ```
+      ```sql
+      SELECT
+        job_title_short,
+        job_location
+      FROM
+        job_posting_fact
+      ```
 
-  Para recuperar todas las columnas, utiliza `*`:
+      Para recuperar todas las columnas, utiliza `*`:
 
-  ```sql
-  SELECT *
-  FROM
-    job_posting_fact
-  ```
+      ```sql
+      SELECT *
+      FROM
+        job_posting_fact
+      ```
 
 - **FROM**: Indica la tabla de donde se extraen los datos.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
-  ```sql
-  SELECT
-    job_title_short,
-    job_location
-  FROM
-    job_posting_fact
-  ```
+      ```sql
+      SELECT
+        job_title_short,
+        job_location
+      FROM
+        job_posting_fact
+      ```
 
 - **WHERE**: Permite filtrar las filas según una condición específica.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
-  ```sql
-  SELECT
-    job_title_short,
-    job_location,
-    job_via,
-    salary_year_avg
-  FROM
-    job_posting_fact
-  WHERE
-    job_title_short = 'Machine Learning Engineer'
-  ```
+      ```sql
+      SELECT
+        job_title_short,
+        job_location,
+        job_via,
+        salary_year_avg
+      FROM
+        job_posting_fact
+      WHERE
+        job_title_short = 'Machine Learning Engineer'
+      ```
 
 - **ORDER BY**: Ordena las filas recuperadas. De manera predeterminada, el orden es
   ascendente; para orden descendente, se utiliza `DESC`.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
-  ```sql
-  SELECT
-    job_title_short,
-    job_location,
-    job_via,
-    salary_year_avg
-  FROM
-    job_posting_fact
-  ORDER BY
-    salary_year_avg DESC
-  ```
+      ```sql
+      SELECT
+        job_title_short,
+        job_location,
+        job_via,
+        salary_year_avg
+      FROM
+        job_posting_fact
+      ORDER BY
+        salary_year_avg DESC
+      ```
 
 - **LIMIT**: Restringe el número de filas devueltas por la consulta.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
-  ```sql
-  SELECT
-    job_title_short,
-    job_location
-  FROM
-    job_posting_fact
-  LIMIT 5
-  ```
+      ```sql
+      SELECT
+        job_title_short,
+        job_location
+      FROM
+        job_posting_fact
+      LIMIT 5
+      ```
 
 - **SELECT DISTINCT**: Recupera solo filas únicas, eliminando duplicados.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
-  ```sql
-  SELECT DISTINCT
-    salary_year_avg
-  FROM
-    job_posting_fact
-  ```
+      ```sql
+      SELECT DISTINCT
+        salary_year_avg
+      FROM
+        job_posting_fact
+      ```
 
 El orden correcto para estructurar una consulta SQL es el siguiente:
 
@@ -222,16 +219,16 @@ Las palabras clave no son sensibles a mayúsculas o minúsculas, aunque se suele
 en mayúsculas por convención. Se pueden añadir comentarios a las consultas SQL usando
 `--` para comentarios de una línea y `/* */` para comentarios de varias líneas.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
-```sql
--- Este es un comentario de una línea
+    ```sql
+    -- Este es un comentario de una línea
 
-/*
-Este es un comentario
-de varias líneas
-*/
-```
+    /*
+    Este es un comentario
+    de varias líneas
+    */
+    ```
 
 ### 2.3. Operadores y comparadores en SQL
 
@@ -241,98 +238,98 @@ comparaciones entre valores. A continuación se presentan algunos de los más co
 - `AND`: Combina condiciones en una cláusula `WHERE`. Todas las condiciones separadas
   por `AND` deben ser verdaderas para que la fila sea incluida en el resultado.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
-  ```sql
-  WHERE
-    condition1 AND condition2
-  ```
+      ```sql
+      WHERE
+        condition1 AND condition2
+      ```
 
 - `OR`: Combina condiciones en una cláusula `WHERE`. Al menos una de las condiciones
   separadas por `OR` debe ser verdadera para que la fila sea incluida en el resultado.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
-  ```sql
-  WHERE
-    condition1 OR condition2
-  ```
+      ```sql
+      WHERE
+        condition1 OR condition2
+      ```
 
 - `NOT` o `<>`: Niega una condición en una cláusula `WHERE`. Si la condición después de
   `NOT` es falsa, la fila es incluida en el resultado.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
-  ```sql
-  WHERE
-    NOT condition
-  ```
+      ```sql
+      WHERE
+        NOT condition
+      ```
 
 - `BETWEEN`: Selecciona valores dentro de un rango.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
-  ```sql
-  WHERE
-    column BETWEEN value1 AND value2
-  ```
+      ```sql
+      WHERE
+        column BETWEEN value1 AND value2
+      ```
 
 - `LIKE`: Busca un patrón específico en una columna usando caracteres comodín. `%`
   representa cero, uno o varios caracteres.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
-  ```sql
-  WHERE
-    column LIKE 'pattern%'
-  ```
+      ```sql
+      WHERE
+        column LIKE 'pattern%'
+      ```
 
 - `IN`: Comprueba si un valor está en una lista de valores especificados.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
-  ```sql
-  WHERE
-    column IN (value1, value2, value3)
-  ```
+      ```sql
+      WHERE
+        column IN (value1, value2, value3)
+      ```
 
 - `>`, `<`: Compara si un valor es mayor o menor que el especificado.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
-  ```sql
-  WHERE
-    column > value
-  ```
+      ```sql
+      WHERE
+        column > value
+      ```
 
 - `>=`, `<=`: Compara si un valor es mayor o igual, o menor o igual al especificado.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
-  ```sql
-  WHERE
-    column >= value
-  ```
+      ```sql
+      WHERE
+        column >= value
+      ```
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
-Por ejemplo, si se desea seleccionar los trabajos de 'Data Scientist' o 'Machine
-Learning Engineer' con un salario promedio anual entre 50000 y 100000, podríamos
-combinar los operadores `AND`, `OR` y `BETWEEN` para formar una condición compleja en la
-cláusula `WHERE`, obteniendo la siguiente consulta:
+    Por ejemplo, si se desea seleccionar los trabajos de 'Data Scientist' o 'Machine
+    Learning Engineer' con un salario promedio anual entre 50000 y 100000, podríamos
+    combinar los operadores `AND`, `OR` y `BETWEEN` para formar una condición compleja en la
+    cláusula `WHERE`, obteniendo la siguiente consulta:
 
-```sql
-SELECT
-  job_title_short,
-  job_location,
-  job_via,
-  salary_year_avg
-FROM
-  job_posting_fact
-WHERE
-  (job_title_short = 'Data Scientist' OR job_title_short = 'Machine Learning Engineer') AND
-  salary_year_avg BETWEEN 50000 AND 100000;
-```
+    ```sql
+    SELECT
+      job_title_short,
+      job_location,
+      job_via,
+      salary_year_avg
+    FROM
+      job_posting_fact
+    WHERE
+      (job_title_short = 'Data Scientist' OR job_title_short = 'Machine Learning Engineer') AND
+      salary_year_avg BETWEEN 50000 AND 100000;
+    ```
 
 ### 2.4. Comodines (_Wildcards_) en SQL
 
@@ -342,30 +339,30 @@ cadenas de texto. Se utilizan en combinación con el operador `LIKE` en una clá
 
 - `%`: Este comodín representa cero, uno o varios caracteres.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
-  Por ejemplo, si se desea buscar todos los trabajos que contengan la palabra 'Analyst'
-  en cualquier parte del título, se podría utilizar la siguiente consulta:
+      Por ejemplo, si se desea buscar todos los trabajos que contengan la palabra 'Analyst'
+      en cualquier parte del título, se podría utilizar la siguiente consulta:
 
-  ```sql
-  WHERE
-    job_title LIKE '%Analyst%'
-  ```
+      ```sql
+      WHERE
+        job_title LIKE '%Analyst%'
+      ```
 
 - `_`: Este comodín representa exactamente un carácter.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
-  Por ejemplo, si se desea buscar todos los trabajos cuyo título tenga exactamente 10
-  caracteres, se podría utilizar la siguiente consulta:
+      Por ejemplo, si se desea buscar todos los trabajos cuyo título tenga exactamente 10
+      caracteres, se podría utilizar la siguiente consulta:
 
-  ```sql
-  WHERE
-    job_title LIKE '__________'
-  ```
+      ```sql
+      WHERE
+        job_title LIKE '__________'
+      ```
 
-  En este caso, cada guión bajo `_` representa un carácter, y como hay 10 guiones bajos,
-  se buscarán los títulos de trabajo que tengan exactamente 10 caracteres.
+      En este caso, cada guión bajo `_` representa un carácter, y como hay 10 guiones bajos,
+      se buscarán los títulos de trabajo que tengan exactamente 10 caracteres.
 
 Es importante tener en cuenta que el uso de comodines puede hacer que las consultas sean
 más lentas, especialmente si se utiliza el comodín `%` al principio de un patrón, ya que
@@ -378,31 +375,31 @@ sean necesarios.
 Los alias asignan nombres temporales a columnas o tablas, facilitando la lectura de
 consultas.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
-```sql
-SELECT
-  job_title_short AS job_title
-FROM
-  job_posting_fact
-```
+    ```sql
+    SELECT
+      job_title_short AS job_title
+    FROM
+      job_posting_fact
+    ```
 
 ### 2.6. Operaciones
 
 SQL permite realizar operaciones aritméticas como suma, resta, multiplicación, división
 y módulo.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
-```sql
-SELECT
-  hours_spent,
-  hours_rate +  5 AS rate_hike
-FROM
-  job_posting_fact
-WHERE
-  rate_hike * hours_spent > 1000
-```
+    ```sql
+    SELECT
+      hours_spent,
+      hours_rate +  5 AS rate_hike
+    FROM
+      job_posting_fact
+    WHERE
+      rate_hike * hours_spent > 1000
+    ```
 
 En este caso, se está calculando un nuevo salario por hora (`rate_hike`) al sumar 5 al
 salario por hora actual (`hours_rate`). Luego, se filtran los resultados para mostrar
@@ -425,77 +422,77 @@ Estas funciones se pueden usar con las cláusulas `GROUP BY` y `HAVING`:
   agregación.
 - `HAVING`: Filtra grupos basados en el resultado de una función agregada.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
-```sql
-SELECT
-  -- Realizar la suma de todos los salarios
-  SUM(job_posting_fact.salary_year_avg) AS salary_sum,
+    ```sql
+    SELECT
+      -- Realizar la suma de todos los salarios
+      SUM(job_posting_fact.salary_year_avg) AS salary_sum,
 
-  -- Contar el número de filas que hay en la base de datos
-  COUNT(*) AS count_rows,
+      -- Contar el número de filas que hay en la base de datos
+      COUNT(*) AS count_rows,
 
-  -- Contar el número de trabajos diferentes
-  COUNT(DISTINCT job_posting_fact.job_title_short) AS tipo_trabajos,
+      -- Contar el número de trabajos diferentes
+      COUNT(DISTINCT job_posting_fact.job_title_short) AS tipo_trabajos,
 
-  -- Promedio del salario
-  AVG(job_posting_fact.salary_year_avg) AS salario_promedio
-FROM
-  job_posting_fact
-WHERE
-  -- Ahora podemos aplicar todos los filtros anteriores pero
-  -- solo en aquellos casos donde el título del trabajo contenga el
-  -- término Machine Learning
-  job_posting_fact.job_title LIKE '%Machine%Learning%'
-```
+      -- Promedio del salario
+      AVG(job_posting_fact.salary_year_avg) AS salario_promedio
+    FROM
+      job_posting_fact
+    WHERE
+      -- Ahora podemos aplicar todos los filtros anteriores pero
+      -- solo en aquellos casos donde el título del trabajo contenga el
+      -- término Machine Learning
+      job_posting_fact.job_title LIKE '%Machine%Learning%'
+    ```
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
-Otro ejemplo que muestra cómo se pueden usar estas funciones y cláusulas para obtener
-información más detallada sobre los trabajos:
+    Otro ejemplo que muestra cómo se pueden usar estas funciones y cláusulas para obtener
+    información más detallada sobre los trabajos:
 
-```sql
-SELECT
-  -- Nos quedamos con los tipos de trabajos
-  job_posting_fact.job_title_short as Trabajos,
+    ```sql
+    SELECT
+      -- Nos quedamos con los tipos de trabajos
+      job_posting_fact.job_title_short as Trabajos,
 
-  -- Obtenemos el salario mínimo para cada puesto
-  MIN(job_posting_fact.salary_year_avg) as MIN_SAL_YER,
+      -- Obtenemos el salario mínimo para cada puesto
+      MIN(job_posting_fact.salary_year_avg) as MIN_SAL_YER,
 
-  -- Obtenemos el salario máximo para cada puesto
-  MAX(job_posting_fact.salary_year_avg) as MAX_SAL_YER,
+      -- Obtenemos el salario máximo para cada puesto
+      MAX(job_posting_fact.salary_year_avg) as MAX_SAL_YER,
 
-  -- Obtenemos el salario promedio para cada puesto
-  AVG(job_posting_fact.salary_year_avg) as AVG_SAL_YER,
+      -- Obtenemos el salario promedio para cada puesto
+      AVG(job_posting_fact.salary_year_avg) as AVG_SAL_YER,
 
-  -- Contamos las veces que aparece un puesto de trabajo
-  COUNT(job_posting_fact.job_title_short) as JOB_COUNT
-FROM
-  job_posting_fact
-GROUP BY
-  -- Agrupamos los datos por el tipo de trabajo
-  Trabajos
-HAVING
-  -- Filtramos aquellos trabajos que no se repitan más de 100 veces
-  -- Es muy útil para en el caso de calcular media no haya grandes
-  -- desviaciones
-  JOB_COUNT > 100
-ORDER BY
-  -- Ordenamos las filas según el salario promedio anual
-  AVG_SAL_YER
-```
+      -- Contamos las veces que aparece un puesto de trabajo
+      COUNT(job_posting_fact.job_title_short) as JOB_COUNT
+    FROM
+      job_posting_fact
+    GROUP BY
+      -- Agrupamos los datos por el tipo de trabajo
+      Trabajos
+    HAVING
+      -- Filtramos aquellos trabajos que no se repitan más de 100 veces
+      -- Es muy útil para en el caso de calcular media no haya grandes
+      -- desviaciones
+      JOB_COUNT > 100
+    ORDER BY
+      -- Ordenamos las filas según el salario promedio anual
+      AVG_SAL_YER
+    ```
 
 ### 2.8. Valores NULL en SQL
 
 Los valores `NULL` en SQL representan la ausencia de información. Podemos filtrar estos
 valores utilizando la cláusula `IS NOT NULL` en una consulta `WHERE`.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
-```sql
-WHERE
-  salary_year_avg IS NOT NULL
-```
+    ```sql
+    WHERE
+      salary_year_avg IS NOT NULL
+    ```
 
 Otra estrategia es reemplazar los valores `NULL` con un valor calculado, como el
 promedio de los valores no nulos que pertenecen a la misma categoría. Por ejemplo, si
@@ -503,25 +500,25 @@ tenemos una tabla de ofertas de trabajo donde algunos registros tienen salarios
 publicados y otros no, podríamos rellenar los valores `NULL` con la media de los
 salarios de la misma categoría de trabajo.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
-```sql
-UPDATE empleados
-SET salario = (
-  SELECT AVG(salario)
-  FROM empleados AS e2
-  WHERE e2.trabajo = empleados.trabajo
-  AND e2.salario IS NOT NULL
-)
-WHERE salario IS NULL;
-```
+    ```sql
+    UPDATE empleados
+    SET salario = (
+      SELECT AVG(salario)
+      FROM empleados AS e2
+      WHERE e2.trabajo = empleados.trabajo
+      AND e2.salario IS NOT NULL
+    )
+    WHERE salario IS NULL;
+    ```
 
-Este código actualizará la columna `salario` de la tabla `empleados`, estableciendo los
-valores `NULL` al promedio de salario para cada tipo de trabajo. La subconsulta calcula
-el promedio de salario para cada tipo de trabajo, excluyendo los valores `NULL`. Ten en
-cuenta que este comando actualizará la tabla `empleados` en su lugar. Si no queremos
-modificar la tabla original, podrías crear una nueva tabla o vista con los valores
-`NULL` reemplazados.
+    Este código actualizará la columna `salario` de la tabla `empleados`, estableciendo los
+    valores `NULL` al promedio de salario para cada tipo de trabajo. La subconsulta calcula
+    el promedio de salario para cada tipo de trabajo, excluyendo los valores `NULL`. Ten en
+    cuenta que este comando actualizará la tabla `empleados` en su lugar. Si no queremos
+    modificar la tabla original, podrías crear una nueva tabla o vista con los valores
+    `NULL` reemplazados.
 
 ### 2.9. Joins en SQL
 
@@ -534,27 +531,27 @@ Existen cuatro tipos de `JOIN`:
 - `INNER JOIN`: Devuelve solo los datos que coinciden en ambas tablas.
 - `FULL JOIN`: Devuelve todos los datos de ambas tablas, coincidan o no.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
-Si dos tablas contienen un identificador común y queremos combinarlas para obtener los
-datos asociados a ese identificador, como el nombre de la empresa, podemos hacer lo
-siguiente:
+    Si dos tablas contienen un identificador común y queremos combinarlas para obtener los
+    datos asociados a ese identificador, como el nombre de la empresa, podemos hacer lo
+    siguiente:
 
-```sql
-SELECT
-  job_postings_fact.job_id,
-  company_dim.name as Empresa
-FROM
-  job_postings_fact
-LEFT JOIN company_dim ON job_postings_fact.company_id = company_dim.company_id
-```
+    ```sql
+    SELECT
+      job_postings_fact.job_id,
+      company_dim.name as Empresa
+    FROM
+      job_postings_fact
+    LEFT JOIN company_dim ON job_postings_fact.company_id = company_dim.company_id
+    ```
 
-En este caso, estamos utilizando un `LEFT JOIN` para combinar las tablas
-`job_postings_fact` y `company_dim` basándonos en la columna `company_id` que es común
-en ambas tablas. Como resultado, obtendremos una tabla que incluye el `job_id` y el
-nombre de la empresa (`Empresa`) para cada registro en `job_postings_fact`. Si un
-`job_id` en `job_postings_fact` no tiene una coincidencia en `company_dim`, el valor de
-`Empresa` será `NULL` para ese registro.
+    En este caso, estamos utilizando un `LEFT JOIN` para combinar las tablas
+    `job_postings_fact` y `company_dim` basándonos en la columna `company_id` que es común
+    en ambas tablas. Como resultado, obtendremos una tabla que incluye el `job_id` y el
+    nombre de la empresa (`Empresa`) para cada registro en `job_postings_fact`. Si un
+    `job_id` en `job_postings_fact` no tiene una coincidencia en `company_dim`, el valor de
+    `Empresa` será `NULL` para ese registro.
 
 ## 3. Conceptos avanzados
 
@@ -656,79 +653,79 @@ de datos más comunes son:
 
 - `INT`: Este tipo de datos se utiliza para almacenar números enteros.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
-  Si tenemos una tabla de `empleados` y queremos almacenar la `edad` de cada empleado,
-  puedes usar el tipo de datos `INT`.
+      Si tenemos una tabla de `empleados` y queremos almacenar la `edad` de cada empleado,
+      puedes usar el tipo de datos `INT`.
 
-  ```sql
-  CREATE TABLE empleados (
-    id INT,
-    nombre VARCHAR(100),
-    edad INT
-  );
-  ```
+      ```sql
+      CREATE TABLE empleados (
+        id INT,
+        nombre VARCHAR(100),
+        edad INT
+      );
+      ```
 
 - `VARCHAR` o `TEXT`: Estos tipos de datos se utilizan para almacenar cadenas de
   caracteres. `VARCHAR` requiere que especifiques una longitud máxima para los
   caracteres. `TEXT` se utiliza para cadenas de caracteres de longitud variable.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
-  Podemos usar `VARCHAR` para almacenar el `nombre` de los empleados.
+      Podemos usar `VARCHAR` para almacenar el `nombre` de los empleados.
 
-  ```sql
-  CREATE TABLE empleados (
-    id INT,
-    nombre VARCHAR(100),
-    edad INT
-  );
-  ```
+      ```sql
+      CREATE TABLE empleados (
+        id INT,
+        nombre VARCHAR(100),
+        edad INT
+      );
+      ```
 
 - `BOOLEAN`: Este tipo de datos se utiliza para almacenar valores booleanos, es decir,
   verdadero o falso (1 o 0).
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
-  Si queremos almacenar si un empleado ha completado una tarea, puedes usar el tipo de
-  datos `BOOLEAN`.
+      Si queremos almacenar si un empleado ha completado una tarea, puedes usar el tipo de
+      datos `BOOLEAN`.
 
-  ```sql
-  CREATE TABLE tareas (
-    id INT,
-    descripcion VARCHAR(255),
-    completada BOOLEAN
-  );
-  ```
+      ```sql
+      CREATE TABLE tareas (
+        id INT,
+        descripcion VARCHAR(255),
+        completada BOOLEAN
+      );
+      ```
 
 - `TIMESTAMP`: Este tipo de datos se utiliza para almacenar fechas y horas.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
-  Podemos usar `TIMESTAMP` para almacenar la `fecha_de_contratacion` de un empleado.
+      Podemos usar `TIMESTAMP` para almacenar la `fecha_de_contratacion` de un empleado.
 
-  ```sql
-  CREATE TABLE empleados (
-    id INT,
-    nombre VARCHAR(100),
-    fecha_de_contratacion TIMESTAMP
-  );
-  ```
+      ```sql
+      CREATE TABLE empleados (
+        id INT,
+        nombre VARCHAR(100),
+        fecha_de_contratacion TIMESTAMP
+      );
+      ```
 
 - `NUMERIC`: Este tipo de datos se utiliza para almacenar números decimales o de
   precisión exacta.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
-  Podemos usar `NUMERIC` para almacenar el `salario` de un empleado.
+      Podemos usar `NUMERIC` para almacenar el `salario` de un empleado.
 
-  ```sql
-  CREATE TABLE empleados (
-    id INT,
-    nombre VARCHAR(100),
-    salario NUMERIC(10, 2)
-  );
-  ```
+      ```sql
+      CREATE TABLE empleados (
+        id INT,
+        nombre VARCHAR(100),
+        salario NUMERIC(10, 2)
+      );
+      ```
 
   En el ejemplo anterior, `NUMERIC(10, 2)` significa que el salario puede tener hasta 10
   dígitos en total, de los cuales 2 son decimales.
@@ -739,94 +736,94 @@ Para manipular tablas en SQL, se utilizan las siguientes instrucciones:
 
 - `CREATE TABLE`: Crea nuevas tablas.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
-  ```sql
-  CREATE TABLE job_applied(
-    job_id INT,
-    application_sent_date DATE,
-    custom_resume BOOLEAN,
-    resume_file_name VARCHAR(255),
-    cover_letter_sent BOOLEAN,
-    cover_letter_file_name VARCHAR(255),
-    status VARCHAR(50)
-  );
-  ```
+      ```sql
+      CREATE TABLE job_applied(
+        job_id INT,
+        application_sent_date DATE,
+        custom_resume BOOLEAN,
+        resume_file_name VARCHAR(255),
+        cover_letter_sent BOOLEAN,
+        cover_letter_file_name VARCHAR(255),
+        status VARCHAR(50)
+      );
+      ```
 
   En el código anterior, `job_applied` es el nombre de la tabla y los parámetros dentro
   de los paréntesis son los nombres de las columnas con sus respectivos tipos de datos.
 
 - `INSERT INTO`: Añade datos a una tabla.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
-  ```sql
-  INSERT INTO job_applied(
-    job_id,
-    application_sent_date,
-    custom_resume,
-    resume_file_name,
-    cover_letter_sent,
-    cover_letter_file_name,
-    status
-  )
-  VALUES  (1,
-    '2024-02-01',
-    TRUE,
-    'CV_01.pdf',
-    true,
-    'cover_letter_01.pdf',
-    'submitted'),
-    (2,
-    '2024-03-01',
-    TRUE,
-    'CV_02.pdf',
-    true,
-    'cover_letter_02.pdf',
-    'submitted');
-  ```
+      ```sql
+      INSERT INTO job_applied(
+        job_id,
+        application_sent_date,
+        custom_resume,
+        resume_file_name,
+        cover_letter_sent,
+        cover_letter_file_name,
+        status
+      )
+      VALUES  (1,
+        '2024-02-01',
+        TRUE,
+        'CV_01.pdf',
+        true,
+        'cover_letter_01.pdf',
+        'submitted'),
+        (2,
+        '2024-03-01',
+        TRUE,
+        'CV_02.pdf',
+        true,
+        'cover_letter_02.pdf',
+        'submitted');
+      ```
 
 - `ALTER TABLE`: Modifica la estructura de una tabla existente.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
-  Podemos añadir una nueva columna a una tabla existente de la siguiente manera:
+      Podemos añadir una nueva columna a una tabla existente de la siguiente manera:
 
-  ```sql
-  ALTER TABLE empleados
-  ADD COLUMN email VARCHAR(255);
-  ```
+      ```sql
+      ALTER TABLE empleados
+      ADD COLUMN email VARCHAR(255);
+      ```
 
-  Aquí se añade una nueva columna llamada `email` a la tabla `empleados`. El tipo de
-  datos de la nueva columna es `VARCHAR(255)`.
+      Aquí se añade una nueva columna llamada `email` a la tabla `empleados`. El tipo de
+      datos de la nueva columna es `VARCHAR(255)`.
 
-  También podemos eliminar una columna existente de una tabla utilizando la instrucción
-  `ALTER TABLE`.
+      También podemos eliminar una columna existente de una tabla utilizando la instrucción
+      `ALTER TABLE`.
 
-  ```sql
-  ALTER TABLE empleados
-  DROP COLUMN email;
-  ```
+      ```sql
+      ALTER TABLE empleados
+      DROP COLUMN email;
+      ```
 
-  En este caso, se elimina la columna `email` de la tabla `empleados`.
+      En este caso, se elimina la columna `email` de la tabla `empleados`.
 
 - `DROP TABLE`: Elimina una tabla y sus datos.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
-  Si queremos eliminar la tabla `empleados`, puedes hacerlo de la siguiente manera:
+      Si queremos eliminar la tabla `empleados`, puedes hacerlo de la siguiente manera:
 
-  ```sql
-  DROP TABLE empleados;
-  ```
+      ```sql
+      DROP TABLE empleados;
+      ```
 
-  danger
+      !!!danger "Peligro"
 
-  Ten en cuenta que esta operación eliminará la tabla y todos los datos que contiene,
-  por lo que debes tener cuidado al utilizarla.
+          Ten en cuenta que esta operación eliminará la tabla y todos los datos que contiene,
+          por lo que debes tener cuidado al utilizarla.
 
-  Es una buena práctica hacer una copia de seguridad de tus datos antes de realizar
-  operaciones que puedan resultar en la pérdida de datos.
+          Es una buena práctica hacer una copia de seguridad de tus datos antes de realizar
+          operaciones que puedan resultar en la pérdida de datos.
 
 ### 3.4. Actualización de datos en SQL
 
@@ -850,7 +847,7 @@ WHERE condicion;
   actualizar. Si se omite la cláusula `WHERE`, todas las filas de la tabla se
   actualizarán, lo cual puede no ser lo deseado.
 
-!!! example "Ejemplo" Si tenemos una tabla llamada `empleados` y se desea aumentar el
+???+ example "Ejemplo" Si tenemos una tabla llamada `empleados` y se desea aumentar el
 salario de todos los empleados que tienen un salario inferior a 30000 en un 10%, se
 podría hacer de la siguiente manera:
 
@@ -875,7 +872,7 @@ En SQL, se pueden realizar varias operaciones en las columnas de una tabla:
 
 - **Renombrar columnas** utilizando `RENAME COLUMN`.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
   ```sql
   ALTER TABLE job_applied
@@ -884,7 +881,7 @@ En SQL, se pueden realizar varias operaciones en las columnas de una tabla:
 
 - **Cambiar el tipo de una columna** utilizando `TYPE`.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
   ```sql
   ALTER TABLE job_applied
@@ -893,7 +890,7 @@ En SQL, se pueden realizar varias operaciones en las columnas de una tabla:
 
 - **Eliminar una columna**utilizando `DROP COLUMN`.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
   ```sql
   ALTER TABLE job_applied
@@ -922,7 +919,7 @@ SQL ofrece varias funciones para operar con fechas y horas:
 
 - `::DATE`: Convierte un valor de fecha y hora a solo fecha.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
   ```sql
   SELECT fecha_hora::DATE FROM nombre_tabla;
@@ -930,7 +927,7 @@ SQL ofrece varias funciones para operar con fechas y horas:
 
 - `AT TIME ZONE`: Convierte una fecha y hora a una zona horaria específica.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
   ```sql
   SELECT NOW() AT TIME ZONE 'UTC';
@@ -938,7 +935,7 @@ SQL ofrece varias funciones para operar con fechas y horas:
 
 - `EXTRACT`: Obtiene partes específicas de una fecha.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
   Ejemplo para filtrar fechas de enero:
 
@@ -955,7 +952,7 @@ Las expresiones `CASE` en SQL se utilizan para crear diferentes resultados basad
 diferentes condiciones. Son similares a las declaraciones `if-then-else` en otros
 lenguajes de programación.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
 Si se desea clasificar los trabajos en función del salario, se podría utilizar la
 siguiente consulta:
@@ -978,7 +975,7 @@ función del salario promedio anual.
 Las subconsultas y los CTEs (_Common Table Expressions_) son técnicas avanzadas de SQL
 que permiten realizar consultas más complejas.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
 Si se desea obtener el salario promedio de los trabajos de 'Data Scientist', se podría
 utilizar una subconsulta de la siguiente manera:
@@ -998,7 +995,7 @@ Scientist', y la consulta principal calcula el salario promedio.
 Un CTE es similar a una subconsulta, pero se define antes de la consulta principal y se
 puede referenciar varias veces en la consulta.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
 ```sql
 WITH data_scientist_jobs AS (
@@ -1017,7 +1014,7 @@ y luego se utiliza en la consulta principal para calcular el salario promedio.
 
 La operación `UNION` combina los resultados de varias consultas `SELECT`.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
 Ejemplo para obtener títulos de trabajo únicos de 'Data Scientist' y 'Machine Learning
 Engineer':

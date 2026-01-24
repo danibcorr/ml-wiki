@@ -1,10 +1,9 @@
 ---
 sidebar_position: 9
 authors:
-  - name: Daniel Bazo Correa
+Daniel Bazo Correa
 description: Fundamentos de Software.
 title: Fundamentos de Software.
-toc_max_heading_level: 3
 ---
 
 ## Versionado de código, SemVer

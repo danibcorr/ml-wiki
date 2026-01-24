@@ -1,18 +1,17 @@
 ---
-sidebar_position: 2
+
 authors:
-  - name: Daniel Bazo Correa
+Daniel Bazo Correa
 description: Conoce las claves esenciales para crear código sostenible.
 title: Código sostenible
-toc_max_heading_level: 3
 ---
 
 ## 1. Código sostenible
 
 El desarrollo de un proyecto debe realizarse bajo una estructura de código clara y
 sostenible, utilizando herramientas y metodologías para garantizar su organización y
-limpieza. Estas prácticas son fundamentales durante el desarrollo, puesta en producción y
-evolución del proyecto.
+limpieza. Estas prácticas son fundamentales durante el desarrollo, puesta en producción
+y evolución del proyecto.
 
 ### 1.1. Estructura del proyecto
 
@@ -56,14 +55,14 @@ aplicar estas convenciones automáticamente en los proyectos.
 #### 1.2.1. Diseño del código
 
 - Se debe utilizar una indentación de 4 espacios, sin mezclar espacios y tabuladores.
-- La longitud máxima de las líneas es de 79 caracteres; para comentarios y docstrings, es
-  de 72 caracteres.
-- Las líneas largas deben dividirse usando paréntesis, corchetes o llaves para mejorar la
-  legibilidad.
+- La longitud máxima de las líneas es de 79 caracteres; para comentarios y docstrings,
+  es de 72 caracteres.
+- Las líneas largas deben dividirse usando paréntesis, corchetes o llaves para mejorar
+  la legibilidad.
 
 Ejemplo:
 
-```python
+```py linenums="1"
 def funcion_larga(parametro1, parametro2,
                   parametro3, parametro4):
     return parametro1 + parametro2 + parametro3 + parametro4
@@ -76,7 +75,7 @@ def funcion_larga(parametro1, parametro2,
   mantener la consistencia.
 - Para cadenas multilínea, se prefieren las comillas dobles.
 
-```python
+```py linenums="1"
 cadena_simple = 'Hola mundo'
 cadena_doble = "Hola mundo"
 cadena_multilinea = """
@@ -96,7 +95,7 @@ siguiente orden:
 
 Se recomienda utilizar importaciones absolutas.
 
-```python
+```py linenums="1"
 import os
 import sys
 
@@ -112,7 +111,7 @@ from local_module import local_function
 - Se debe agregar un espacio alrededor de operadores de asignación, comparación y
   booleanos.
 
-```python
+```py linenums="1"
 x = 5
 y = x + 1
 if x == y:
@@ -123,10 +122,10 @@ if x == y:
 
 - Los comentarios deben ser claros y concisos, utilizando oraciones completas para
   describir el propósito del código.
-- Los **docstrings** son obligatorios para módulos, funciones, clases y métodos públicos,
-  describiendo su funcionalidad y parámetros.
+- Los **docstrings** son obligatorios para módulos, funciones, clases y métodos
+  públicos, describiendo su funcionalidad y parámetros.
 
-```python
+```py linenums="1"
 def suma(a, b):
     """
     Suma dos números y devuelve el resultado.
@@ -151,7 +150,7 @@ def suma(a, b):
 - **Métodos y variables de instancia:** Como las funciones, con un guion bajo inicial
   para los elementos no públicos (ej. `_variable_interna`).
 
-```python
+```py linenums="1"
 class MiClase:
     MI_CONSTANTE = 42
 

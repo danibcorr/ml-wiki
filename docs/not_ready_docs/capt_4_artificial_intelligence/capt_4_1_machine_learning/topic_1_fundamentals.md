@@ -1,10 +1,8 @@
 ---
-sidebar_position: 1
 authors:
-  - name: Daniel Bazo Correa
+Daniel Bazo Correa
 description: Fundamentos del Machine Learning.
 title: Machine Learning
-toc_max_heading_level: 3
 ---
 
 ## 1. Introducción
@@ -141,7 +139,7 @@ Por ejemplo, el siguiente código establece semillas para las bibliotecas más u
 en Python para aprendizaje automático y profundo, garantizando la reproducibilidad de
 los experimentos:
 
-```python
+```py linenums="1"
 import random
 import numpy as np
 import tensorflow as tf
@@ -297,7 +295,7 @@ Esta distribución es útil en situaciones donde se realizan múltiples intentos
 independientes de un mismo experimento y se desea conocer la probabilidad de obtener un
 número específico de éxitos.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
 Supongamos que se lanza una moneda equilibrada (equiprobable, la probabilidad de tener
 cara es la misa que de tener cruz) 5 veces y se quiere calcular la probabilidad de
@@ -355,7 +353,7 @@ donde:
 Esta distribución es especialmente útil cuando se estudian eventos raros o poco
 frecuentes en un período de tiempo determinado.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
 Supongamos que una central telefónica recibe en promedio 10 llamadas por hora y se desea
 calcular la probabilidad de que en una hora lleguen exactamente 7 llamadas.
@@ -490,7 +488,7 @@ Algunas de sus propiedades fundamentales son:
 Estas propiedades permiten calcular probabilidades acumuladas y facilitan el análisis de
 distribuciones de probabilidad continuas.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
 Se desea calcular la probabilidad de que un valor se encuentre en el intervalo
 $[142.5,
@@ -504,7 +502,7 @@ $P(X \leq 155.7) - P(X \leq 142.5) \approx 0.5 - 0.02275 \approx 0.4772$
 
 Implementación en Python:
 
-```python
+```py linenums="1"
 from statistics import NormalDist
 
 # Se calcula la función de distribución acumulada (CDF) en los puntos de interés
@@ -1897,7 +1895,7 @@ Si aparecen: Nada, podría ser:
 2. Eficiencia con denominador.
 3. Exponential de un valor muy grande, que de NaN.
 
-Solución:
+??? info "Solución":
 
 1. Gradiente chipping
 2. Weight regularization

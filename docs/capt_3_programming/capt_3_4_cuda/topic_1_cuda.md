@@ -1,10 +1,7 @@
 ---
-sidebar_position: 1
-authors:
-  - name: Daniel Bazo Correa
+authors: Daniel Bazo Correa
 description: Conoce la plataforma de CUDA de NVIDIA para sus GPUs.
 title: CUDA
-toc_max_heading_level: 3
 ---
 
 ## Bibliografía
@@ -778,7 +775,7 @@ Numba ofrece varios decoradores para la compilación y optimización de funcione
 
 Los decoradores pueden combinarse para optimizar el rendimiento. Por ejemplo:
 
-```python
+```py linenums="1"
 @njit(parallel=True, fastmath=True)
 ```
 
@@ -790,7 +787,7 @@ maximizar la velocidad de ejecución.
 
 Ejemplo básico de uso de Numba con el decorador `@njit`:
 
-```python
+```py linenums="1"
 from numba import njit
 import numpy as np
 
@@ -834,7 +831,7 @@ CuPy ofrece una API similar a NumPy, facilitando la transición entre ambas bibl
 A continuación se presenta un ejemplo básico de cómo realizar cálculos en una GPU
 utilizando CuPy:
 
-```python
+```py linenums="1"
 import cupy as cp
 
 # Crear matrices en la GPU

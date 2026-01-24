@@ -1,10 +1,9 @@
 ---
 sidebar_position: 9
 authors:
-  - name: Daniel Bazo Correa
+Daniel Bazo Correa
 description: Crea y almacena tus artefactos en repositorios.
 title: Creacion de APIs
-toc_max_heading_level: 3
 ---
 
 ## API
@@ -57,7 +56,7 @@ dominios.
 sidebar_position: 10 authors:
 
 - name: Daniel Bazo Correa description: Exportación de modelos para inferencia con ONNX.
-  title: ONNX toc_max_heading_level: 3
+  title: ONNX
 
 ---
 
@@ -212,7 +211,7 @@ A continuación, se muestra un fragmento de código que inicializa una sesión d
 inferencia con un modelo ONNX, estableciendo un orden de prioridad en los EPs
 (preferencia por CUDA sobre CPU):
 
-```python
+```py linenums="1"
 import onnxruntime as ort
 
 session = ort.InferenceSession("modelo.onnx", providers=["CUDAExecutionProvider", "CPUExecutionProvider"])
@@ -223,7 +222,7 @@ resultados = session.run(None, inputs)
 También es posible modificar la prioridad de los EPs para utilizar solo el proveedor de
 CPU:
 
-```python
+```py linenums="1"
 session.set_providers(["CPUExecutionProvider"])
 ```
 
@@ -257,7 +256,7 @@ experimentaciones repetitivas.
 sidebar_position: 7 authors:
 
 - name: Daniel Bazo Correa description: Crea y almacena tus artefactos en repositorios.
-  title: Gestión y publicación de repositorios toc_max_heading_level: 3
+  title: Gestión y publicación de repositorios
 
 ---
 
@@ -271,7 +270,7 @@ prácticas de desarrollo.
 El primer paso es crear un archivo `setup.py` que contenga la configuración del paquete.
 A continuación, se muestra un ejemplo de configuración básica:
 
-```python
+```py linenums="1"
 import os
 from setuptools import setup, find_packages
 import codecs

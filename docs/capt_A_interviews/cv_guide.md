@@ -1,10 +1,9 @@
 ---
-sidebar_position: 2
+
 authors:
-  - name: Daniel Bazo Correa
+Daniel Bazo Correa
 description: Construcción de CV y guía de entrevistas de trabajo.
 title: Guía CV
-toc_max_heading_level: 3
 ---
 
 ## Bibliografía
@@ -71,7 +70,7 @@ principales son:
   - Logros más relevantes.
   - Palabras clave alineadas con el puesto.
 
-    !!! example "Ejemplo"
+    ???+ example "Ejemplo"
 
     Data Scientist con más de 5 años de experiencia en el desarrollo de modelos
     predictivos y análisis de datos masivos en telecomunicaciones. Experto en Python,
@@ -85,7 +84,7 @@ principales son:
   - Describir logros concretos y medibles en un máximo de dos líneas, aplicando la
     **fórmula XYZ**: _“Logré X, medido por Y, al hacer Z.”_
 
-    !!! example "Ejemplo"s
+    ???+ example "Ejemplo"s
     - Diseñé pipelines ETL en Python y SQL, mejorando la calidad de datos en un **35%**.
     - Implementé pipelines CI/CD, reduciendo tiempos de despliegue en **50%**.
     - Entrené modelos predictivos que incrementaron la precisión en un **25%**.
@@ -271,7 +270,7 @@ una con métodos específicos para estructurar la respuesta.
 Estas se basan en experiencias pasadas y buscan evaluar cómo se ha actuado en
 situaciones similares.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
 Háblame de una ocasión en la que tuviste que gestionar un miembro del equipo difícil.
 
@@ -280,7 +279,7 @@ Háblame de una ocasión en la que tuviste que gestionar un miembro del equipo d
 Plantean escenarios hipotéticos para evaluar la capacidad de reacción y toma de
 decisiones.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
 ¿Qué harías si cometieras un error que nadie más hubiera notado?
 
@@ -294,7 +293,7 @@ CARL:
 - **R**esultados: Muestra el impacto logrado con datos concretos.
 - **L**ección: Señala lo aprendido y cómo lo aplicarías en el futuro.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
 En un proyecto con plazos ajustados (Contexto), organicé reuniones diarias y reasigné
 tareas (Acción). Logramos entregar tres días antes de lo previsto (Resultado). Aprendí
@@ -308,7 +307,7 @@ Para preguntas hipotéticas, el método RCS ayuda a estructurar la respuesta:
 - **C**larificar: Solicita detalles adicionales si es necesario.
 - **S**tructure: Organiza tus ideas antes de responder.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
 Para confirmar, ¿preguntas cómo actuaría con un cliente que solicita algo imposible?
 (Replantear). ¿Se debe a limitaciones de recursos o a políticas internas? (Clarificar).
@@ -326,7 +325,7 @@ Se recomienda estructurar la respuesta en **Presente–Pasado–Futuro**:
 - **Pasado:** Menciona la experiencia más relevante.
 - **Futuro:** Explica cómo tu perfil encaja en el puesto.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
 Actualmente soy analista de datos y optimicé modelos predictivos que aumentaron la
 precisión en un 20%. Antes trabajé en consultoría estratégica, lo que me dio visión de
@@ -359,7 +358,7 @@ Una estructura efectiva es la regla del 50/30/20:
 - **Brechas largas o recientes:** Preparar una respuesta honesta y clara convierte la
   brecha en una oportunidad para mostrar desarrollo personal o profesional.
 
-!!! example "Ejemplo"s
+???+ example "Ejemplo"s
 
 - Personal: cuidado de un familiar → demuestra organización, resiliencia y capacidad
   multitarea.
@@ -382,7 +381,7 @@ transporte y coste de vida, ya que influyen en la valoración de la oferta.
 4. Argumenta con datos y referencias salariales, no con emociones.
 5. Mantén ética y gratitud, reforzando tu interés por el puesto.
 
-!!! example "Ejemplo"
+???+ example "Ejemplo"
 
 El promedio del sector es de 62.500 €. Con mis cuatro años de experiencia en \[área X],
 puedo aportar valor inmediato en \[reto específico]. ¿Sería posible ajustar la oferta

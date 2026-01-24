@@ -1,10 +1,9 @@
 ---
-sidebar_position: 4
+
 authors:
-  - name: Daniel Bazo Correa
+Daniel Bazo Correa
 description: Herramientas necesarias para DevOps.
 title: Docker
-toc_max_heading_level: 3
 ---
 
 ## Bibliografía
@@ -571,13 +570,13 @@ spec:
 
     spec:
       containers: # Lista de contenedores que se ejecutarán en cada pod
-        - name: my-frontend # Nombre del contenedor
+      my-frontend # Nombre del contenedor
           image: busybox # Imagen del contenedor que se utilizará
           args:
             - sleep
             - infinity # Argumentos que se pasarán al contenedor
           volumeMounts: # Puntos de montaje de los volúmenes en el contenedor
-            - name: data # Nombre del volumen
+          data # Nombre del volumen
               mountPath: "/data" # Ruta en la que se montará el volumen
 
   # Plantillas para las solicitudes de volumen persistente
@@ -652,7 +651,7 @@ metadata:
 # que se ejecutan dentro de un Pod, tienen la misma IP.
 spec:
   containers:
-    - name: nginx
+  nginx
       image: nginx:alpine
 ```
 
@@ -675,16 +674,16 @@ metadata:
   name: nginx
 spec:
   containers:
-    - name: nginx
+  nginx
       image: nginx:alpine
       env:
         # Variables de entorno, al igual que en Docker. Esto es específico
         # de cada contenedor.
-        - name: MI_VARIABLE
+      MI_VARIABLE
           value: "pelado"
-        - name: MI_OTRA_VARIABLE
+      MI_OTRA_VARIABLE
           value: "pelade"
-        - name: DD_AGENT_HOST
+      DD_AGENT_HOST
           valueFrom:
             fieldRef:
               # Obtener la IP del Host a partir de la API de Kubernetes.
@@ -753,7 +752,7 @@ spec:
         app: nginx
     spec:
       containers:
-        - name: nginx
+      nginx
           image: nginx:alpine
           ports:
             - containerPort: 80
@@ -791,7 +790,7 @@ spec:
         app: nginx
     spec:
       containers:
-        - name: nginx
+      nginx
           image: nginx:alpine
 ```
 

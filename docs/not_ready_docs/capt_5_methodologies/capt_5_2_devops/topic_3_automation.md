@@ -1,10 +1,9 @@
 ---
-sidebar_position: 2
+
 authors:
-  - name: Daniel Bazo Correa
+Daniel Bazo Correa
 description: Herramientas necesarias para DevOps.
 title: GitHub Actions
-toc_max_heading_level: 3
 ---
 
 ## Bibliografía
@@ -117,7 +116,7 @@ automatizar tareas dentro de un repositorio.
   **job** específico. Si varios jobs requieren los mismos permisos, es recomendable
   declararlos a nivel del workflow en lugar de repetirlos en cada job.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
   Definición de permisos a nivel de **workflow**
 
@@ -153,7 +152,7 @@ automatizar tareas dentro de un repositorio.
         contents: write
 
       steps:
-        - name: Checkout repository
+      Checkout repository
           uses: actions/checkout@v4
   ```
 
@@ -164,7 +163,7 @@ automatizar tareas dentro de un repositorio.
   máquina virtual. Se debe especificar un sistema operativo con `runs-on`, permitiendo
   elegir entre Linux, macOS y Windows.
 
-  !!! example "Ejemplo"
+  ???+ example "Ejemplo"
 
   ```yaml
   jobs:
@@ -183,7 +182,7 @@ GitHub Actions permite integrar acciones predefinidas disponibles en
 
 ### 2.2.2. Ejemplos de configuración de workflows
 
-!!! example "Ejemplo" básico
+???+ example "Ejemplo" básico
 
 El siguiente ejemplo muestra un workflow que se ejecuta cuando hay un `push` o un
 `pull_request` en la rama `main`.
@@ -205,7 +204,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+    Checkout repository
         uses: actions/checkout@v4
 ```
 
@@ -214,7 +213,7 @@ note Nota
 Se recomienda incluir la acción `checkout` al inicio del workflow para asegurarse de que
 el código más reciente esté disponible antes de ejecutar cualquier otra tarea.
 
-!!! example "Ejemplo" configuración de Python, Poetry y Flake8
+???+ example "Ejemplo" configuración de Python, Poetry y Flake8
 
 En este ejemplo, el workflow configura Python, administra dependencias con Poetry y
 valida el código con Flake8.
@@ -236,25 +235,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+    Checkout repository
         uses: actions/checkout@v4
 
-      - name: Instalar Python
+    Instalar Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.10"
 
-      - name: Instalar Poetry
+    Instalar Poetry
         uses: snok/install-poetry@v1
 
-      - name: Instalar dependencias con Poetry
+    Instalar dependencias con Poetry
         run: poetry install
 
-      - name: Verificar código con Flake8
+    Verificar código con Flake8
         run: poetry run flake8 src/
 ```
 
-!!! example "Ejemplo" uso de caché para optimización de **workflows**
+???+ example "Ejemplo" uso de caché para optimización de **workflows**
 
 Para mejorar el rendimiento, es posible utilizar caché para almacenar dependencias y
 evitar reinstalaciones innecesarias.
@@ -276,27 +275,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+    Checkout repository
         uses: actions/checkout@v4
 
-      - name: Instalar Python
+    Instalar Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.10"
 
-      - name: Instalar Poetry
+    Instalar Poetry
         uses: snok/install-poetry@v1
         with:
           virtualenvs-in-project: true
 
-      - name: Cargar caché de dependencias
+    Cargar caché de dependencias
         uses: actions/cache@v4
         id: cached-poetry-dependencies
         with:
           path: .venv
           key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
 
-      - name: Instalar dependencias con Poetry
+    Instalar dependencias con Poetry
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install
 ```
@@ -335,27 +334,27 @@ runs:
   using: composite
 
   steps:
-    - name: Checkout repository
+  Checkout repository
       uses: actions/checkout@v4
 
-    - name: Set up Python
+  Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: "3.10.7"
 
-    - name: Instalar Poetry
+  Instalar Poetry
       uses: snok/install-poetry@v1
       with:
         virtualenvs-in-project: true
 
-    - name: Cargar caché de dependencias
+  Cargar caché de dependencias
       uses: actions/cache@v4
       id: cached-poetry-dependencies
       with:
         path: .venv
         key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
 
-    - name: Instalar dependencias con Poetry
+  Instalar dependencias con Poetry
       if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
       run: poetry install
 ```

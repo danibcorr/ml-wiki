@@ -1,10 +1,8 @@
 ---
-sidebar_position: 4
-authors:
-  - name: Daniel Bazo Correa
+
+authors: Daniel Bazo Correa
 description: Ejercicios típicos de entrevistas de trabajo.
 title: Ejercicios Leetcode
-toc_max_heading_level: 3
 ---
 
 ## Bibliografía
@@ -21,56 +19,50 @@ may not use the same element twice.
 
 Example:
 
-```python
+```py linenums="1"
 nums = [2, 7, 11, 15]
 target = 9
 
 Because nums[0] + nums[1] = 2 + 7 = 9, return [0, 1]
 ```
 
-<details>
+??? info "Solución"
 
-<summary>
-Solución
-</summary>
+    ```py linenums="1"
+    def funcion1(lista: list[int], target: int) -> list[int]:
 
-```python
-def funcion1(lista: list[int], target: int) -> list[int]:
+        """
+        Esta funcion es O(N^2) en tiempo, y O(1) en espacio.
+        """
 
-    """
-    Esta funcion es O(N^2) en tiempo, y O(1) en espacio.
-    """
+        for i, vali in enumerate(lista):
 
-    for i, vali in enumerate(lista):
+            for j, valj in enumerate(lista[i:]):
 
-        for j, valj in enumerate(lista[i:]):
+                if valj + vali == target:
 
-            if valj + vali == target:
+                    return [i, j]
 
-                return [i, j]
+    def funcion2(lista: list[int], target: int) -> list[int]:
 
-def funcion2(lista: list[int], target: int) -> list[int]:
+        """
+        Esta funcion es O(N) en tiempo y O(N) en espacio.
+        """
 
-    """
-    Esta funcion es O(N) en tiempo y O(N) en espacio.
-    """
+        diccionario = {}
 
-    diccionario = {}
+        for i, valor in enumerate(lista):
 
-    for i, valor in enumerate(lista):
+            valor2 = target - valor
 
-        valor2 = target - valor
+            if valor2 in diccionario:
 
-        if valor2 in diccionario:
+                return [i, diccionario[valor2]]
 
-            return [i, diccionario[valor2]]
+            else:
 
-        else:
-
-            diccionario[valor] = i
-```
-
-</details>
+                diccionario[valor] = i
+    ```
 
 ### Best time to buy and sell stock
 
@@ -81,65 +73,59 @@ cannot sell a stock before you buy one.
 
 Example:
 
-```python
+```py linenums="1"
 nums = [7,1,5,3,6,4]
 output = 5
 
 Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6 -1 = 5. Not 7 - 1 = 6, as selling price needs to be larger than buying price.
 ```
 
-<details>
+??? info "Solución"
 
-<summary>
-Solución
-</summary>
+    ```py linenums="1"
+    def funcion(lista: list[int]) -> list[int]:
 
-```python
-def funcion(lista: list[int]) -> list[int]:
+        """
+        O(N^2)
+        """
 
-    """
-    O(N^2)
-    """
+        max = lista[0]
 
-    max = lista[0]
+        for i, vali in enumerate(lista):
 
-    for i, vali in enumerate(lista):
+            for j, valj in enumerate(lista[i:]):
 
-        for j, valj in enumerate(lista[i:]):
+                diff = valj - vali
 
-            diff = valj - vali
+                if diff > max:
 
-            if diff > max:
+                    max = diff
+                    tupla = (i, j + 1)
 
-                max = diff
-                tupla = (i, j + 1)
+        return [tupla, max]
 
-    return [tupla, max]
+    def funcion2(lista: list[int]) -> list[int]:
 
-def funcion2(lista: list[int]) -> list[int]:
+        """
+        O(N)
+        """
 
-    """
-    O(N)
-    """
+        ## Almacenamos indice, valor
+        tupla_max = (0, float('-inf'))
+        tupla_min = (0, float('inf'))
 
-    ## Almacenamos indice, valor
-    tupla_max = (0, float('-inf'))
-    tupla_min = (0, float('inf'))
+        for i, vali in enumerate(lista):
 
-    for i, vali in enumerate(lista):
+            if vali < tupla_min[-1]:
 
-        if vali < tupla_min[-1]:
+                tupla_min = (i, vali)
 
-            tupla_min = (i, vali)
+            elif vali > tupla_max[-1] and i > tupla_min[0]:
 
-        elif vali > tupla_max[-1] and i > tupla_min[0]:
+                tupla_max = (i, vali)
 
-            tupla_max = (i, vali)
-
-    return [tupla_max[0], tupla_min[0], tupla_max[-1] - tupla_min[-1]]
-```
-
-</details>
+        return [tupla_max[0], tupla_min[0], tupla_max[-1] - tupla_min[-1]]
+    ```
 
 ### Contains duplicate
 
@@ -148,97 +134,85 @@ array, and return false if every element is distinct.
 
 Example:
 
-```python
+```py linenums="1"
 nums = [1,2,3,1]
 output = true
 ```
 
-<details>
+??? info "Solución"
 
-<summary>
-Solución
-</summary>
+    ```py linenums="1"
+    def funcion(lista: list[int]) -> bool:
 
-```python
-def funcion(lista: list[int]) -> bool:
+        """
+        O(N^2)
+        """
 
-    """
-    O(N^2)
-    """
+        for i, vali in enumerate(lista):
 
-    for i, vali in enumerate(lista):
+            for j, valj in enumerate(lista[i + 1:]):
 
-        for j, valj in enumerate(lista[i + 1:]):
+                if vali == valj:
 
-            if vali == valj:
+                    return True
+
+        return False
+
+    def funcion2(lista: list[int]) -> bool:
+
+        """
+        O(N)
+        """
+
+        diccionario = {}
+
+        for i, vali in enumerate(lista):
+
+            if vali in diccionario:
 
                 return True
 
-    return False
+            else:
 
-def funcion2(lista: list[int]) -> bool:
+                diccionario[vali] = i
 
-    """
-    O(N)
-    """
-
-    diccionario = {}
-
-    for i, vali in enumerate(lista):
-
-        if vali in diccionario:
-
-            return True
-
-        else:
-
-            diccionario[vali] = i
-
-    return False
-```
-
-</details>
+        return False
+    ```
 
 ### Maximum subarray
 
-Given an integer array nums, fin the contiguous subarray (containing at least one number)
-which has the larges sum and return its sum
+Given an integer array nums, fin the contiguous subarray (containing at least one
+number) which has the larges sum and return its sum
 
 Example:
 
-```python
+```py linenums="1"
 nums = [-2,1,-3,4,-1,2,1,-5,4]
 output = 6
 Explanaation: [4,-1,2,1] has the largest sum = 6
 ```
 
-<details>
+??? info "Solución"
 
-<summary>
-Solución
-</summary>
+    ```py linenums="1"
+    def funcion(lista: list[int]) -> int:
 
-```python
-def funcion(lista: list[int]) -> int:
+        """
+        Maximo subarray
+        Kadane's algorithm O(N)
+        """
 
-    """
-    Maximo subarray
-    Kadane's algorithm O(N)
-    """
+        suma_act = lista[0]
+        suma_max = lista[0]
 
-    suma_act = lista[0]
-    suma_max = lista[0]
+        for i in range(1, len(lista)):
 
-    for i in range(1, len(lista)):
+            suma_act = max(lista[i], suma_act + lista[i])
 
-        suma_act = max(lista[i], suma_act + lista[i])
+            suma_max = max(suma_act, suma_max)
 
-        suma_max = max(suma_act, suma_max)
-
-    return suma_max
-```
-
-</details>
+        return suma_max
+    ```
 
 ## 2. Ejercicios medios
 
@@ -251,108 +225,102 @@ in O(N) time and without using the division operation.
 
 Example:
 
-```python
+```py linenums="1"
 nums = [1,2,3,4]
 output = [24,12,8,6]
 ```
 
-<details>
+??? info "Solución"
 
-<summary>
-Solucion
-</summary>
+    ```py linenums="1"
+    def funcion(lista: list[int]) -> bool:
 
-```python
-def funcion(lista: list[int]) -> bool:
+        """
+        O(N^2), suponiendo que no tenemos las restricciones que nos imponen
+        """
 
-    """
-    O(N^2), suponiendo que no tenemos las restricciones que nos imponen
-    """
-
-    producto = 1
-
-    for i, vali in enumerate(lista):
-
-        producto *= vali
-
-    res = []
-
-    for i, vali in enumerate(lista):
-
-        res.append(int(producto / vali))
-
-    return res
-
-def funcion2(lista: list[int]) -> bool:
-
-    """
-    O(N^2), sin utilizar la division
-    """
-
-    res = []
-
-    for i, vali in enumerate(lista):
-
-        if i == 0:
-
-            izq = []
-
-        else:
-
-            izq = lista[:i]
-
-        elif i == len(lista) - 1:
-
-            der = []
-
-        else:
-
-            der = lista[i + 1:]
-
-        new_lista = izq + der
         producto = 1
 
-        for i, val in enumerate(new_lista):
+        for i, vali in enumerate(lista):
 
-            producto *= val
+            producto *= vali
 
-        res.append(producto)
+        res = []
 
-    return res
+        for i, vali in enumerate(lista):
 
-def funcion3(lista: list[int]) -> bool:
+            res.append(int(producto / vali))
 
-    """
-    O(N)
-    """
+        return res
 
-    n = len(lista)
+    def funcion2(lista: list[int]) -> bool:
 
-    ## Inicializar las listas de productos a la izquierda y a la derecha
-    ## Inicialmente todos los valores son 1, se crean tantos elementos
-    ## como elementos tenga la lista original
+        """
+        O(N^2), sin utilizar la division
+        """
 
-    izq = [1] * n
-    der = [1] * n
+        res = []
 
-    ## Calcular el producto acumulativo a la izquierda de cada índice
-    for i in range(1, n):
+        for i, vali in enumerate(lista):
 
-        izq[i] = izq[i - 1] * lista[i - 1]
+            if i == 0:
 
-    ## Calcular el producto acumulativo a la derecha de cada índice
-    for i in reversed(range(n - 1)):
+                izq = []
 
-        der[i] = der[i + 1] * lista[i + 1]
+            else:
 
-    ## Calcular el producto de los elementos excepto el mismo
-    for i in range(n):
+                izq = lista[:i]
 
-        lista[i] = izq[i] * der[i]
+            elif i == len(lista) - 1:
 
-    return lista
-```
+                der = []
 
-</details>
+            else:
+
+                der = lista[i + 1:]
+
+            new_lista = izq + der
+            producto = 1
+
+            for i, val in enumerate(new_lista):
+
+                producto *= val
+
+            res.append(producto)
+
+        return res
+
+    def funcion3(lista: list[int]) -> bool:
+
+        """
+        O(N)
+        """
+
+        n = len(lista)
+
+        ## Inicializar las listas de productos a la izquierda y a la derecha
+        ## Inicialmente todos los valores son 1, se crean tantos elementos
+        ## como elementos tenga la lista original
+
+        izq = [1] * n
+        der = [1] * n
+
+        ## Calcular el producto acumulativo a la izquierda de cada índice
+        for i in range(1, n):
+
+            izq[i] = izq[i - 1] * lista[i - 1]
+
+        ## Calcular el producto acumulativo a la derecha de cada índice
+        for i in reversed(range(n - 1)):
+
+            der[i] = der[i + 1] * lista[i + 1]
+
+        ## Calcular el producto de los elementos excepto el mismo
+        for i in range(n):
+
+            lista[i] = izq[i] * der[i]
+
+        return lista
+    ```
 
 ## 3. Ejercicios difíciles

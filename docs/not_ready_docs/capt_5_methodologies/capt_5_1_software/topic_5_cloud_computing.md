@@ -1,10 +1,9 @@
 ---
 sidebar_position: 9
 authors:
-  - name: Daniel Bazo Correa
+Daniel Bazo Correa
 description: Cloud computing.
 title: Cloud computing.
-toc_max_heading_level: 3
 ---
 
 pues al final la computación en la nube, lo que permite es proporcionar recursos bajo
@@ -22,4 +21,9 @@ servicio o el software como servicio.
 
 ## Tipos de datos
 
-pues tenemos ficheros de texto generalmente los datos se separan con delimitadores como comas, tabuladores o cosas. Así luego tenemos el lenguaje XML, que es un lenguaje de marcado leíble por humanos y máquinas que puede parecerse a HTML y es independiente de la plataforma independiente del lenguaje. luego también tenemos el JSON que es un estándar abierto para transmitir datos estructurados sobre la web independiente del lenguaje es compatible con navegadores y muy usado en Apis.
+pues tenemos ficheros de texto generalmente los datos se separan con delimitadores como
+comas, tabuladores o cosas. Así luego tenemos el lenguaje XML, que es un lenguaje de
+marcado leíble por humanos y máquinas que puede parecerse a HTML y es independiente de
+la plataforma independiente del lenguaje. luego también tenemos el JSON que es un
+estándar abierto para transmitir datos estructurados sobre la web independiente del
+lenguaje es compatible con navegadores y muy usado en Apis.

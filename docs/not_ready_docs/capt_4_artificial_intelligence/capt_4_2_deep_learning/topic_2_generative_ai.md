@@ -1,10 +1,9 @@
 ---
-sidebar_position: 2
+
 authors:
-  - name: Daniel Bazo Correa
+Daniel Bazo Correa
 description: Fundamentos del Deep Learning.
 title: IA Generativa
-toc_max_heading_level: 3
 ---
 
 ## Bibliografía

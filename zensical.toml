@@ -1,11 +1,11 @@
 [project]
-site_name = "ML Wiki"
+site_name = "Machine Learning Wiki"
 site_description = "🏛️ Machine Learning Wiki en Español"
 site_author = "Daniel Bazo Correa"
 site_url = "https://danibcorr.github.io/ml-wiki/"
 repo_url = "https://github.com/danibcorr/ml-wiki"
 repo_name = "danibcorr/ml-wiki"
-copyright = "copyright &copy; 2026 Daniel Bazo Correa"
+copyright = "Copyright &copy; 2026 Daniel Bazo Correa"
 docs_dir = "docs"
 nav = [
     {"Inicio" = "index.md" },
@@ -38,9 +38,15 @@ nav = [
     ]}
 ]
 extra_css = ["css/custom.css"]
+extra_javascript = [
+    "javascripts/mathjax.js",
+    "https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"
+]
 
 [project.theme]
 language = "es"
+logo = "/assets/img/logo motivo dark.svg"
+favicon = "/assets/img/logo.ico"
 features = [
     "announce.dismiss",
     "content.code.annotate",
@@ -60,11 +66,13 @@ features = [
 ]
 
 [[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
 scheme = "default"
 toggle.icon = "lucide/sun"
 toggle.name = "Switch to dark mode"
 
 [[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
 scheme = "slate"
 toggle.icon = "lucide/moon"
 toggle.name = "Switch to light mode"
@@ -72,9 +80,15 @@ toggle.name = "Switch to light mode"
 [project.theme.icon]
 repo = "fontawesome/brands/github"
 
+[project.extra]
+homepage = "https://danibcorr.github.io/web/"
+
 [[project.extra.social]]
 icon = "fontawesome/brands/linkedin"
 link = "https://www.linkedin.com/in/danibcorr/"
+
+[project.markdown_extensions.pymdownx.arithmatex]
+generic = true
 
 [project.markdown_extensions.admonition]
 [project.markdown_extensions.pymdownx.details]
@@ -82,3 +96,10 @@ link = "https://www.linkedin.com/in/danibcorr/"
 [project.markdown_extensions.tables]
 [project.markdown_extensions.pymdownx.tabbed]
 alternate_style = true
+[project.markdown_extensions.pymdownx.highlight]
+anchor_linenums = true
+line_spans = "__span"
+pygments_lang_class = true
+[project.markdown_extensions.pymdownx.inlinehilite]
+[project.markdown_extensions.pymdownx.snippets]
+[project.markdown_extensions.attr_list]

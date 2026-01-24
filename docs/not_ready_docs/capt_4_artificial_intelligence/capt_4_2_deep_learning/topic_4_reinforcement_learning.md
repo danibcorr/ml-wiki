@@ -1,10 +1,9 @@
 ---
-sidebar_position: 4
+
 authors:
-  - name: Daniel Bazo Correa
+Daniel Bazo Correa
 description: Fundamentos del Deep Learning.
 title: Aprendizaje por Refuerzo
-toc_max_heading_level: 3
 ---
 
 # Aprendizaje por Refuerzo (Reinforcement Learning)

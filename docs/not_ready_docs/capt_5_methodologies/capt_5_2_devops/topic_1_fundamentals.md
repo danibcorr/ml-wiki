@@ -1,10 +1,8 @@
 ---
-sidebar_position: 1
 authors:
-  - name: Daniel Bazo Correa
+Daniel Bazo Correa
 description: Herramientas necesarias para DevOps.
 title: DevOps
-toc_max_heading_level: 3
 ---
 
 ## Bibliografía
