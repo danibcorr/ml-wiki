@@ -20,35 +20,31 @@ toc_max_heading_level: 3
   <em>Mascota de Linux</em>
 </p>
 
-**Linux** constituye una familia de sistemas operativos basados en software libre, lo
-que implica que su código fuente es público y accesible, permitiendo a cualquier persona
-examinarlo, modificarlo, contribuir a su desarrollo o crear su propia distribución. El
-núcleo central, conocido como **_kernel_**, fue desarrollado inicialmente por Linus
-Torvalds.
+**Linux** no es un sistema operativo, se trata de un **_kernel_** de software libre
+desarrollado inicialmente por Linus Torvalds. Esto implica que su código fuente es
+público y accesible, permitiendo a cualquier persona examinarlo, modificarlo, contribuir
+a su desarrollo o crear su propia distribución.
 
-Lo que habitualmente se denomina Linux corresponde, en realidad, a la combinación del
+Lo que habitualmente se denomina Linux corresponde en realidad a la combinación del
 _kernel_ con las utilidades del proyecto **GNU**, que aportan las herramientas
 esenciales del entorno de usuario, como compiladores, intérpretes de comandos y
 bibliotecas básicas. Por esta razón, la denominación más precisa y adecuada para
-referirse al sistema es **GNU/Linux**, reconociendo así la integración de ambos
-componentes fundamentales.
+referirse al sistema es **GNU/Linux**.
 
 Linux se caracteriza por ser una plataforma robusta, segura y altamente flexible, capaz
 de adaptarse tanto a entornos personales como a infraestructuras críticas, incluyendo
-servidores, sistemas embebidos y dispositivos de propósito específico. Esta versatilidad
-lo ha convertido en la base de los sistemas operativos más utilizados en entornos
-distribuidos, plataformas en la nube y, en general, cualquier infraestructura de
-servidor.
+servidores y sistemas embebidos. Esta versatilidad lo ha convertido en la base de los
+sistemas operativos más utilizados en entornos distribuidos y plataformas en la nube
+(sorpresa, Azure de Microsoft utiliza Linux).
 
 El modelo de desarrollo abierto de Linux, sustentado por una comunidad global de
 desarrolladores y usuarios, facilita una evolución constante, con mejoras continuas en
 rendimiento, estabilidad y seguridad. Esta diversidad se manifiesta en la existencia de
 múltiples distribuciones que integran el _kernel_ con diferentes herramientas, entornos
-gráficos y gestores de paquetes, adaptándose a necesidades técnicas variadas. Cuando
-estas componentes se combinan con configuraciones específicas y, en muchos casos, un
-entorno gráfico, se obtiene una **distribución**. Ejemplos representativos como Ubuntu,
-Debian, Fedora o Arch Linux ilustran cómo un mismo núcleo puede ajustarse a contextos de
-uso muy distintos.
+gráficos y gestores de paquetes. Cuando estas componentes se combinan con
+configuraciones específicas y, en muchos casos, un entorno gráfico, se obtiene una
+**distribución**. Ejemplos representativos como Ubuntu, Debian, Fedora o Arch Linux
+ilustran cómo un mismo núcleo puede ajustarse a contextos de uso muy distintos.
 
 ### 1.1. Interfaz de línea de comandos y shell
 
@@ -60,7 +56,7 @@ _shell_ más extendida y estandarizada.
 <p align="center">
   <img src={require("../../static/img/docs/shell-example.png").default} height="500"/>
   <br />
-  <em>Ejemplo de *shell*</em>
+  <em>Ejemplo de una ventana de una shell o terminal</em>
 </p>
 
 Los comandos presentan una sintaxis clara basada en un nombre principal, opciones que
@@ -78,10 +74,11 @@ directorio cuyo contenido se desea visualizar.
 El propio sistema facilita la consulta y el aprendizaje mediante documentación
 integrada. Herramientas como `man`, `help` o `type` permiten comprender el
 funcionamiento interno de los comandos y distinguir entre utilidades externas, funciones
-internas o alias definidos por el usuario. Los manuales se encuentran organizados en
-secciones que agrupan la información según su naturaleza o finalidad, lo que permite
-acceder de manera más precisa a la documentación requerida. Las secciones más comunes
-son las siguientes:
+internas o alias definidos por el usuario.
+
+Los manuales se encuentran organizados en secciones que agrupan la información según su
+naturaleza o finalidad, lo que permite acceder de manera más precisa a la documentación.
+Las secciones más comunes son las siguientes:
 
 1. **Comandos de usuario**: Incluye programas ejecutables y comandos que los usuarios
    pueden ejecutar desde la _shell_. Ejemplo: `ls`, `cp`.
@@ -110,9 +107,7 @@ directamente a la información relevante.
 :::tip Ejemplo
 
 `man 2 open` muestra la documentación de la llamada al sistema `open()`, mientras que
-`man 1 open` podría referirse a un comando de usuario llamado `open`. Esta organización
-permite diferenciar claramente entre distintos tipos de información que pueden compartir
-el mismo nombre.
+`man 1 open` podría referirse a un comando de usuario llamado `open`.
 
 :::
 
@@ -123,10 +118,12 @@ de ayuda o documentación externa.
 ### 1.2. Comandos básicos y uso habitual del sistema
 
 La interacción cotidiana con Linux se apoya en un conjunto de comandos fundamentales que
-permiten administrar el sistema, navegar por su estructura de archivos y manipular
-información. Entre ellos, `pwd` indica el directorio de trabajo actual, `ls` permite
-explorar el contenido de los directorios mostrando información detallada, permisos o
-archivos ocultos, y `cd` posibilita el desplazamiento entre directorios.
+permiten administrar el sistema, navegar por su estructura de archivos (directorios) y
+manipular información.
+
+Entre ellos, `pwd` indica el directorio de trabajo actual, `ls` permite explorar el
+contenido de los directorios mostrando información detallada, permisos o archivos
+ocultos, y `cd` posibilita el desplazamiento entre directorios.
 
 La creación de elementos básicos se realiza con `touch` para archivos y `mkdir` para
 directorios. La lectura de archivos puede efectuarse mediante `cat`, adecuada para
@@ -137,88 +134,94 @@ precaución debido a la irreversibilidad de sus efectos.
 
 La administración básica también incluye utilidades como `whoami` para identificar al
 usuario activo, `useradd` para crear cuentas, `man` para consultar la documentación
-integrada de cada comando y `wget` para la descarga de recursos desde la red. Linux
-incorpora además herramientas para la compresión de archivos, la comparación de
-contenidos y la búsqueda en el sistema, reforzando su orientación a la eficiencia y al
-control preciso del entorno. En particular, la combinación de navegación (`pwd`, `cd`,
-`ls`) y manipulación de archivos (`touch`, `mkdir`, `cp`, `mv`, `rm`) constituye la base
-del trabajo diario, mientras que `cat` y `less` facilitan la visualización de contenidos
-según su tamaño y complejidad.
+integrada de cada comando y `wget` para la descarga de recursos desde la red.
 
-El acceso remoto a otros equipos se realiza habitualmente mediante el protocolo **SSH**,
-que permite establecer sesiones seguras desde la línea de comandos, integrando de manera
-fluida la administración de sistemas locales y remotos.
+Además, uno de los flujos de trabajo que más se utilizan en entornos corporativos, o si
+tienes tu propio servidor en casa, es el acceso remoto a otros equipos. Este se realiza
+habitualmente mediante el protocolo **SSH (Secure Shell)**, que permite establecer
+sesiones seguras desde la línea de comandos, integrando de manera fluida la
+administración de sistemas locales y remotos.
 
 Resulta impracticable enumerar todos los comandos de Linux junto con sus múltiples
-opciones, debido a la gran cantidad y diversidad que presentan. Por esta razón, es
-posible utilizar la opción `--help` de cualquier comando para obtener información
+opciones debido a la gran cantidad y diversidad que presentan. Por esta razón, es
+posible utilizar la opción `--help` en cualquier comando para obtener información
 detallada sobre su uso, incluyendo las opciones disponibles y una breve descripción de
-su funcionalidad.
+su funcionalidad. También existe Google o tu LLM de confianza, pero quizás te lo pases
+mejor explorando en tu propio sistema, aunque mejor hazlo en una máquina virtual, por si
+acaso.
 
-| Comando   | Función resumida                                                                      | Ejemplo de uso                          |
-| --------- | ------------------------------------------------------------------------------------- | --------------------------------------- |
-| `pwd`     | Muestra el directorio de trabajo actual                                               | `pwd` → `/home/usuario`                 |
-| `ls`      | Lista el contenido de directorios, mostrando información detallada y archivos ocultos | `ls -la /home/usuario`                  |
-| `cd`      | Permite cambiar de directorio                                                         | `cd /var/log`                           |
-| `touch`   | Crea archivos vacíos                                                                  | `touch archivo.txt`                     |
-| `mkdir`   | Crea nuevos directorios                                                               | `mkdir proyecto`                        |
-| `cat`     | Muestra el contenido de archivos pequeños                                             | `cat archivo.txt`                       |
-| `less`    | Permite visualizar archivos largos de forma paginada                                  | `less archivo_grande.txt`               |
-| `cp`      | Copia archivos o directorios                                                          | `cp archivo.txt /home/usuario/backup/`  |
-| `mv`      | Mueve o renombra archivos o directorios                                               | `mv archivo.txt documento.txt`          |
-| `rm`      | Elimina archivos                                                                      | `rm archivo.txt`                        |
-| `rmdir`   | Elimina directorios vacíos                                                            | `rmdir carpeta_vacia`                   |
-| `whoami`  | Muestra el usuario activo                                                             | `whoami` → `usuario`                    |
-| `useradd` | Crea nuevas cuentas de usuario                                                        | `sudo useradd nuevo_usuario`            |
-| `passwd`  | Cambia la contraseña de un usuario                                                    | `passwd usuario`                        |
-| `man`     | Accede a la documentación integrada de comandos                                       | `man ls`                                |
-| `wget`    | Descarga archivos desde la red                                                        | `wget https://ejemplo.com/archivo.zip`  |
-| `ssh`     | Permite el acceso remoto seguro a otros equipos                                       | `ssh usuario@192.168.1.10`              |
-| `chmod`   | Modifica permisos de archivos y directorios                                           | `chmod 755 script.sh`                   |
-| `chown`   | Cambia el propietario de archivos o directorios                                       | `chown usuario:grupo archivo.txt`       |
-| `find`    | Busca archivos y directorios según criterios específicos                              | `find /home -name "*.txt"`              |
-| `grep`    | Busca cadenas de texto dentro de archivos                                             | `grep "error" log.txt`                  |
-| `tar`     | Comprime o descomprime archivos y directorios                                         | `tar -czvf backup.tar.gz /home/usuario` |
-| `df`      | Muestra el espacio disponible en sistemas de archivos                                 | `df -h`                                 |
-| `du`      | Muestra el tamaño de archivos y directorios                                           | `du -sh /home/usuario`                  |
-| `top`     | Muestra los procesos en ejecución y uso de recursos en tiempo real                    | `top`                                   |
-| `ps`      | Lista los procesos en ejecución                                                       | `ps aux`                                |
+| Comando   | Función resumida                                                                       | Ejemplo de uso                          |
+| --------- | -------------------------------------------------------------------------------------- | --------------------------------------- |
+| `pwd`     | Muestra el directorio de trabajo actual.                                               | `pwd`                                   |
+| `ls`      | Lista el contenido de directorios, mostrando información detallada y archivos ocultos. | `ls -la /home/usuario`                  |
+| `cd`      | Permite cambiar de directorio.                                                         | `cd /var/log`                           |
+| `touch`   | Crea archivos vacíos.                                                                  | `touch archivo.txt`                     |
+| `mkdir`   | Crea nuevos directorios.                                                               | `mkdir proyecto`                        |
+| `cat`     | Muestra el contenido de archivos pequeños.                                             | `cat archivo.txt`                       |
+| `less`    | Permite visualizar archivos largos de forma paginada.                                  | `less archivo_grande.txt`               |
+| `cp`      | Copia archivos o directorios.                                                          | `cp archivo.txt /home/usuario/backup/`  |
+| `mv`      | Mueve o renombra archivos o directorios.                                               | `mv archivo.txt documento.txt`          |
+| `rm`      | Elimina archivos.                                                                      | `rm archivo.txt`                        |
+| `rmdir`   | Elimina directorios vacíos.                                                            | `rmdir carpeta_vacia`                   |
+| `whoami`  | Muestra el usuario activo.                                                             | `whoami` → `usuario`                    |
+| `useradd` | Crea nuevas cuentas de usuario.                                                        | `sudo useradd nuevo_usuario`            |
+| `passwd`  | Cambia la contraseña de un usuario.                                                    | `passwd usuario`                        |
+| `man`     | Accede a la documentación integrada de comandos.                                       | `man ls`                                |
+| `wget`    | Descarga archivos desde la red.                                                        | `wget https://ejemplo.com/archivo.zip`  |
+| `ssh`     | Permite el acceso remoto seguro a otros equipos.                                       | `ssh usuario@192.168.1.10`              |
+| `chmod`   | Modifica permisos de archivos y directorios.                                           | `chmod 755 script.sh`                   |
+| `chown`   | Cambia el propietario de archivos o directorios.                                       | `chown usuario:grupo archivo.txt`       |
+| `find`    | Busca archivos y directorios según criterios específicos.                              | `find /home -name "*.txt"`              |
+| `grep`    | Busca cadenas de texto dentro de archivos.                                             | `grep "error" log.txt`                  |
+| `tar`     | Comprime o descomprime archivos y directorios.                                         | `tar -czvf backup.tar.gz /home/usuario` |
+| `df`      | Muestra el espacio disponible en sistemas de archivos.                                 | `df -h`                                 |
+| `du`      | Muestra el tamaño de archivos y directorios.                                           | `du -sh /home/usuario`                  |
+| `top`     | Muestra los procesos en ejecución y uso de recursos en tiempo real.                    | `top`                                   |
+| `ps`      | Lista los procesos en ejecución.                                                       | `ps aux`                                |
 
 ### 1.3. El sistema de archivos y su jerarquía
 
 Linux organiza su almacenamiento siguiendo una estructura jerárquica unificada en forma
-de árbol, cuyo origen se encuentra en el directorio raíz (`/`). A diferencia de otros
-sistemas operativos, no existen unidades identificadas por letras; todos los
-dispositivos de almacenamiento se incorporan a esta jerarquía mediante el proceso de
-montaje. Esta arquitectura proporciona coherencia y flexibilidad en la gestión del
-sistema.
+de árbol, cuyo origen se encuentra en el directorio raíz (`/`).
+
+A diferencia de otros sistemas operativos, no existen unidades identificadas por letras
+(no tienes tu disco local C como en Windows), todos los dispositivos de almacenamiento
+se incorporan a esta jerarquía mediante el proceso de montaje.
 
 <p align="center">
   <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.tecmint.com%2Fwp-content%2Fuploads%2F2012%2F07%2FLinux-File-System.jpg&f=1&nofb=1&ipt=b56b5b1d3ede73ff5f4eeeba1bd0c56bc7573349258800f0aca2cf57fa506845" height="300"/>
   <br />
-  <em>Jerarquía de archivos de Linux</em>
+  <em>Jerarquía de los directorios de Linux</em>
 </p>
 
-Dentro de esta estructura destacan directorios esenciales. `/boot` alberga los
-componentes necesarios para el arranque del sistema, incluido el kernel y el gestor
-GRUB. `/etc` concentra los archivos de configuración en formato de texto plano,
-determinando el comportamiento del sistema y sus servicios. `/bin` y `/sbin` contienen
-ejecutables imprescindibles para la operación básica y la administración del sistema.
-Los espacios de trabajo de los usuarios se localizan en `/home`, mientras que `/root` se
-reserva para el superusuario. Por su parte, `/var` almacena datos variables como
-registros, colas y bases de datos. Directorios como `/dev`, `/proc` y `/sys`
-proporcionan representaciones virtuales del hardware y del estado interno del kernel,
-permitiendo un acceso sistemático y controlado a los recursos del sistema.
+Dentro de esta estructura destacan directorios esenciales:
+
+- **/boot**: alberga los componentes necesarios para el arranque del sistema, incluido
+  el kernel y el gestor **GRUB** (un programa que aparece al iniciar Linux y permite
+  manejar el proceso de inicio, permitiéndote elegir el sistema operativo en caso de que
+  tengas varias particiones, por ejemplo).
+- **/etc**: concentra los archivos de configuración en formato de texto plano,
+  determinando el comportamiento del sistema y sus servicios.
+- **/bin** y **/sbin**: contienen ejecutables imprescindibles para la operación básica y
+  la administración del sistema.
+- **/home**: localiza los espacios de trabajo de los usuarios, mientras que **/root** se
+  reserva exclusivamente para el superusuario.
+- **/var**: almacena datos variables como registros (logs), colas y bases de datos.
+- **/dev**, **/proc** y **/sys**: proporcionan representaciones virtuales del hardware y
+  del estado interno del kernel, permitiendo un acceso sistemático y controlado a los
+  recursos del sistema.
 
 ## 2. Gestión de usuarios y grupos
 
-Linux se concibe como un sistema **multiusuario**, en el que la seguridad y el control
-de acceso se articulan mediante un modelo basado en usuarios, grupos y permisos. Este
-enfoque permite que múltiples personas trabajen simultáneamente en el mismo sistema sin
-interferir entre sí, garantizando al mismo tiempo la protección de los recursos y la
-estabilidad del entorno. Los permisos no se asignan únicamente a individuos, sino que se
-agrupan mediante **grupos**, que actúan como conjuntos de privilegios compartidos (como
-una plantilla de privilegios).
+Linux es un sistema **multiusuario**, en el que la seguridad y el control de acceso se
+articulan mediante un modelo basado en usuarios, grupos y permisos. Este enfoque permite
+que múltiples personas trabajen simultáneamente en el mismo sistema sin interferir entre
+sí, garantizando al mismo tiempo la protección de los recursos y la estabilidad del
+entorno.
+
+Los permisos no se asignan únicamente a individuos, sino que se agrupan mediante
+**grupos**, que actúan como conjuntos de privilegios compartidos (como una plantilla de
+privilegios).
 
 Cada usuario dispone de un **grupo primario**, asociado por defecto a los archivos que
 crea, y puede pertenecer a varios **grupos secundarios**, que amplían sus capacidades,
@@ -229,19 +232,20 @@ administrativas.
 
 Cada archivo o directorio define privilegios de **lectura**, **escritura** y
 **ejecución** para tres categorías claramente diferenciadas: el **propietario**, el
-**grupo** asociado y el resto de usuarios, denominados **otros**. Este esquema limita el
-acceso indebido a los recursos y reduce el impacto de errores humanos o posibles
-intrusiones. Por encima de estas restricciones se sitúa el **superusuario**,
-identificado como `root`, que posee control total sobre el sistema y puede ignorar el
-modelo de permisos convencional.
+**grupo** asociado y el resto de usuarios, denominados **otros**.
+
+Este esquema limita el acceso indebido a los recursos y reduce el impacto de errores
+humanos o posibles intrusiones. Por encima de estas restricciones se sitúa el
+**superusuario**, identificado como `root`, que posee control total sobre el sistema y
+puede ignorar el modelo de permisos convencional.
 
 La categoría de **otros** representa a cualquier usuario que no sea ni el propietario
-del archivo ni miembro del grupo asociado. El sistema evalúa los permisos siguiendo un
-orden de prioridad estricto: primero comprueba si el usuario es el propietario, en cuyo
-caso aplica los permisos correspondientes; si no lo es, verifica si pertenece al grupo;
-y solo si no cumple ninguna de estas condiciones, se aplican los permisos definidos para
-otros. Este comportamiento garantiza una interpretación coherente y predecible de los
-permisos en todo el sistema.
+del archivo ni miembro del grupo asociado.
+
+El sistema evalúa los permisos siguiendo un orden de prioridad estricto: primero
+comprueba si el usuario es el propietario, en cuyo caso aplica los permisos
+correspondientes; si no lo es, verifica si pertenece al grupo; y solo si no cumple
+ninguna de estas condiciones, se aplican los permisos definidos para otros.
 
 <p align="center">
   <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.purfe.com%2Fwp-content%2Fuploads%2F2021%2F02%2Ffile_permissions.jpg&f=1&nofb=1&ipt=a7ced098cac75da3129b35051830e66669b47212e2784e64a24446e2af131f4c" height="450"/>
@@ -289,12 +293,10 @@ permite la lectura, mientras que `rw-` permite lectura y escritura, pero no ejec
 
 :::
 
-### 2.2. Modificación de permisos con chmod y la máscara umask
+### 2.2. Modificación de permisos con `chmod` y la máscara `umask`
 
 El comando `chmod` permite modificar los permisos de archivos y directorios utilizando
-dos notaciones principales: la **octal** y la **simbólica**. Aunque el sistema de
-permisos se basa internamente en valores binarios, el usuario no interactúa directamente
-con ceros y unos.
+dos notaciones principales: la **octal** y la **simbólica**.
 
 En la **notación octal**, cada permiso tiene un valor numérico fijo: la lectura equivale
 a 4, la escritura a 2 y la ejecución a 1. La suma de estos valores determina el permiso
@@ -310,9 +312,7 @@ puede leer y ejecutar, y el resto de usuarios solo puede leer.
 
 La **notación simbólica**, por su parte, utiliza letras para identificar a los sujetos
 (`u` para el propietario, `g` para el grupo, `o` para otros y `a` para todos) y
-operadores para añadir, quitar o asignar permisos. Este enfoque resulta especialmente
-útil cuando se desea realizar cambios incrementales sin recalcular valores numéricos,
-favoreciendo la claridad conceptual.
+operadores para añadir, quitar o asignar permisos.
 
 :::tip Ejemplo
 
@@ -330,15 +330,13 @@ favoreciendo la claridad conceptual.
 
 :::
 
-Complementariamente, el sistema emplea el comando `umask` para definir los permisos
-**por defecto** de los nuevos archivos y directorios. Mientras que `chmod` modifica
-permisos existentes, `umask` actúa como una máscara que restringe los permisos máximos
-iniciales. Para los archivos, el sistema parte de un valor máximo de lectura y escritura
-para todos, y para los directorios, de permisos completos. El valor de `umask` indica
-qué permisos deben eliminarse automáticamente, de modo que cuanto más restrictiva sea la
-máscara, más limitados serán los permisos resultantes. Este mecanismo refuerza la
-seguridad desde el momento de la creación de los recursos y evita configuraciones
-excesivamente permisivas.
+El sistema emplea el comando `umask` para definir los permisos **por defecto** de los
+nuevos archivos y directorios. Mientras que `chmod` modifica permisos existentes,
+`umask` actúa como una máscara que restringe los permisos máximos iniciales. Para los
+archivos, el sistema parte de un valor máximo de lectura y escritura para todos, y para
+los directorios, de permisos completos. El valor de `umask` indica qué permisos deben
+eliminarse automáticamente, de modo que cuanto más restrictiva sea la máscara, más
+limitados serán los permisos resultantes.
 
 :::tip Ejemplo
 
@@ -355,24 +353,19 @@ Supongamos que un usuario tiene configurada una **máscara `umask` de 022**:
 
 :::
 
-### 2.3. Propiedad de archivos y gestión con chown
+### 2.3. Propiedad de archivos y gestión con `chown`
 
 Además de los permisos, cada archivo y directorio posee un **propietario** y un
-**grupo**, que determinan quién ejerce la autoridad principal sobre él. El comando
-`chown` permite modificar esta propiedad, definiendo quién es el dueño y a qué grupo
-pertenece un recurso. A diferencia de `chmod`, que puede ser utilizado por el
+**grupo**, que determinan quién ejerce la autoridad principal sobre él.
+
+El comando `chown` permite modificar esta propiedad, definiendo quién es el dueño y a
+qué grupo pertenece un recurso. A diferencia de `chmod`, que puede ser utilizado por el
 propietario del archivo para ajustar sus permisos, `chown` requiere privilegios
 administrativos, ya que cambiar la propiedad implica transferir el control efectivo del
 recurso.
 
 `chown` permite modificar únicamente el usuario propietario, solo el grupo o ambos
-simultáneamente, y puede aplicarse de forma recursiva a directorios completos. Esta
-funcionalidad resulta esencial en tareas administrativas habituales, como la
-reorganización de archivos entre usuarios, la corrección de errores de permisos o la
-configuración de servicios que requieren que ciertos directorios pertenezcan a usuarios
-o grupos específicos. El uso indebido de esta herramienta, especialmente sobre
-directorios críticos del sistema, puede comprometer su funcionamiento, por lo que debe
-emplearse con cautela.
+simultáneamente, y puede aplicarse de forma recursiva a directorios completos.
 
 :::tip Ejemplo
 
@@ -410,12 +403,13 @@ sudo chown -R ana:desarrolladores proyecto
 ### 2.4. Administración básica de cuentas de usuario
 
 La gestión de usuarios se completa con comandos orientados a la creación y mantenimiento
-de cuentas. Herramientas como `adduser` permiten crear nuevos usuarios de forma
-interactiva, mientras que `passwd` se utiliza para establecer o modificar contraseñas.
-La pertenencia a grupos puede consultarse mediante `groups`, tanto para el usuario
-actual como para cualquier otro usuario del sistema, y modificarse añadiendo usuarios a
-grupos específicos, como `sudo`, para concederles capacidades administrativas
-controladas.
+de cuentas.
+
+Herramientas como `adduser` permiten crear nuevos usuarios de forma interactiva,
+mientras que `passwd` se utiliza para establecer o modificar contraseñas. La pertenencia
+a grupos puede consultarse mediante `groups`, tanto para el usuario actual como para
+cualquier otro usuario del sistema, y modificarse añadiendo usuarios a grupos
+específicos, como `sudo`, para concederles capacidades administrativas controladas.
 
 :::tip Ejemplo
 
@@ -440,15 +434,15 @@ controladas.
 ## 3. Gestión de procesos, señales y servicios
 
 En Linux, un **proceso** se define como un **programa en ejecución**. Cuando un usuario
-inicia un programa, ya sea mediante la terminal o haciendo doble clic sobre un icono, el
-sistema operativo carga el archivo binario en memoria, asigna los recursos necesarios y
-lo transforma en un proceso activo. Cada proceso es gestionado por el kernel y recibe un
-identificador único denominado **PID** (_Process ID_). Todos los procesos forman una
-jerarquía cuyo origen es el proceso con PID 1, gestionado actualmente por **`systemd`**.
-A lo largo de su ciclo de vida, un proceso puede encontrarse en distintos estados, que
-van desde ejecución activa hasta espera o finalización, y puede supervisarse mediante
-herramientas como `ps`, `top` o `htop`, las cuales permiten analizar su consumo de
-recursos y comportamiento.
+inicia un programa el sistema operativo carga el archivo binario en memoria, asigna los
+recursos necesarios y lo transforma en un proceso activo.
+
+Cada proceso es gestionado por el kernel y recibe un identificador único denominado
+**PID** (_Process ID_). Todos los procesos forman una jerarquía cuyo origen es el
+proceso con PID 1, gestionado actualmente por **`systemd`**. A lo largo de su ciclo de
+vida, un proceso puede encontrarse en distintos estados, que van desde ejecución activa
+hasta espera o finalización, y puede supervisarse mediante herramientas como `ps`, `top`
+o `htop`, las cuales permiten analizar su consumo de recursos y comportamiento.
 
 Linux organiza los procesos en forma de árbol genealógico. Cada proceso nace de otro
 proceso padre:
@@ -476,8 +470,8 @@ Los procesos pueden encontrarse en diferentes estados según su actividad:
 ### 3.1. Señales y control de procesos
 
 Las **señales** son mecanismos que permiten comunicar eventos a un proceso en ejecución.
-Funcionan como mensajes que pueden solicitar la terminación, la pausa, la reanudación o
-la recarga de configuraciones de un proceso. Las señales más utilizadas son:
+Funcionan como mensajes que pueden solicitar la terminación, pausa, reanudación o la
+recarga de configuraciones de un proceso. Las señales más utilizadas son:
 
 | Señal       | Nombre    | Número | Función                                                                   |
 | ----------- | --------- | ------ | ------------------------------------------------------------------------- |
@@ -489,10 +483,12 @@ la recarga de configuraciones de un proceso. Las señales más utilizadas son:
 
 El comando `kill` permite enviar estas señales a procesos específicos mediante su PID.
 Por ejemplo, `kill -15 1234` solicita una terminación ordenada, mientras que
-`kill -9 1234` fuerza su cierre. Si se desconoce el PID, se puede usar `pkill` con el
-nombre del proceso: `pkill -9 firefox`. Los usuarios solo pueden enviar señales a sus
-propios procesos; para interactuar con procesos de otros usuarios o del sistema se
-requiere privilegio de superusuario (`sudo`).
+`kill -9 1234` fuerza su cierre.
+
+Si se desconoce el PID, se puede usar `pkill` con el nombre del proceso:
+`pkill -9 firefox`. Los usuarios solo pueden enviar señales a sus propios procesos, para
+interactuar con procesos de otros usuarios o del sistema se requiere privilegio de
+superusuario (`sudo`).
 
 Señales comunes generadas desde el teclado incluyen:
 
@@ -500,23 +496,26 @@ Señales comunes generadas desde el teclado incluyen:
 - **Ctrl + Z (SIGTSTP):** Pausa el proceso y lo envía al segundo plano, permitiendo
   reanudarlo con `fg`.
 
-### 3.2. Daemons y servicios
+### 3.2. _Daemons_ y servicios
 
-Los **daemons** son procesos diseñados para ejecutarse en segundo plano de manera
+Los **_daemons_** son procesos diseñados para ejecutarse en segundo plano de manera
 continua, sin depender de la sesión de un usuario. Proporcionan servicios permanentes
-como servidores web, SSH o tareas programadas. A diferencia de los procesos
-interactivos, los daemons se desvinculan de su terminal original y son adoptados por
-`systemd` (PID 1), lo que garantiza su ejecución continua incluso si el usuario que los
-inició cierra su sesión.
+como servidores web, SSH o tareas programadas.
 
-Por convención, muchos daemons tienen nombres terminados en **"d"**, como `sshd`
+A diferencia de los procesos interactivos, los _daemons_ se desvinculan de su terminal
+original y son adoptados por `systemd` (PID 1), lo que garantiza su ejecución continua
+incluso si el usuario que los inició cierra su sesión.
+
+Por convención, muchos _daemons_ tienen nombres terminados en **"d"**, como `sshd`
 (gestión de conexiones SSH), `httpd` o `apache2` (servicio web), `crond` (tareas
-programadas) y `systemd` (control de servicios y procesos del sistema). Por razones de
-seguridad, los daemons no deben ejecutarse como `root` salvo que sea estrictamente
-necesario. En entornos web, por ejemplo, se suele asignar un usuario específico como
-`www-data` para minimizar riesgos en caso de explotación de vulnerabilidades.
+programadas) y `systemd` (control de servicios y procesos del sistema).
 
-El control de daemons modernos se realiza mediante `systemctl`, que permite iniciar,
+Por razones de seguridad, los _daemons_ no deben ejecutarse como `root` salvo que sea
+estrictamente necesario. En entornos web, por ejemplo, se suele asignar un usuario
+específico como `www-data` para minimizar riesgos en caso de explotación de
+vulnerabilidades.
+
+El control de _daemons_ modernos se realiza mediante `systemctl`, que permite iniciar,
 detener, reiniciar y habilitar servicios de manera uniforme:
 
 | Comando                      | Función                                                                        |
@@ -526,16 +525,14 @@ detener, reiniciar y habilitar servicios de manera uniforme:
 | `sudo systemctl status sshd` | Muestra el estado, PID y consumo de recursos del daemon.                       |
 | `sudo systemctl enable sshd` | Configura el daemon para que se inicie automáticamente al arrancar el sistema. |
 
-Este enfoque centralizado garantiza una gestión coherente de los servicios, combinando
-control de permisos, seguridad y estabilidad del sistema operativo.
-
 ## 4. Automatización
 
 En Linux, la eficiencia operativa se potencia mediante la **automatización** de tareas
-repetitivas o complejas a través de la shell. Una herramienta fundamental para este
-propósito son los **alias**, que funcionan como atajos para comandos largos o
-frecuentemente utilizados. Los alias permiten reducir errores, ahorrar tiempo y
-estandarizar procedimientos dentro del entorno de trabajo.
+repetitivas o complejas a través de la shell.
+
+Una herramienta fundamental para este propósito son los **alias**, que funcionan como
+atajos para comandos largos o frecuentemente utilizados. Los alias permiten reducir
+errores, ahorrar tiempo y estandarizar procedimientos dentro del entorno de trabajo.
 
 Los alias se configuran generalmente en archivos de inicialización de la shell, como
 `~/.bashrc` o `~/.zshrc`, lo que asegura que estén disponibles de manera automática en
@@ -553,7 +550,4 @@ cambios sin necesidad de cerrar la sesión, manteniendo la continuidad del traba
 
 Más allá de los alias, Linux ofrece otras herramientas de automatización, como **scripts
 Bash** y **Makefiles**, que permiten ejecutar secuencias de comandos de manera periódica
-o en respuesta a eventos específicos. Esta capacidad de personalización y control
-granular sobre el entorno operativo refuerza la filosofía de eficiencia y productividad
-que caracteriza al ecosistema Linux, convirtiéndolo en una plataforma ideal tanto para
-usuarios individuales como para entornos profesionales y de servidores.
+o en respuesta a eventos específicos.
