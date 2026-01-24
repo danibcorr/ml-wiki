@@ -3165,7 +3165,7 @@ el contrario, las **imágenes distintas** se consideran pares negativos, lo que 
 modelo a situar sus representaciones en regiones alejadas del espacio embebido.
 
 <p align="center">
-  <img src={require("../../../static/img/blogs/meta-learning/contrastive-learning-example.png").default}/>
+  <img src={require("@site/static/img/blogs/meta-learning/contrastive-learning-example.png").default}/>
   <br />
   <em>Ejemplo de aprendizaje contrastivo</em>
 </p>
@@ -3226,7 +3226,7 @@ computacional y procesamiento del lenguaje natural. A continuación, se describe
 de las funciones de pérdida más utilizadas.
 
 <p align="center">
-  <img src={require("../../../static/img/blogs/meta-learning/triplet-loss-example.png").default}/>
+  <img src={require("@site/static/img/blogs/meta-learning/triplet-loss-example.png").default}/>
   <br />
   <em>Ejemplo de Triplet Loss</em>
 </p>
@@ -3740,7 +3740,7 @@ Los grafos ofrecen un marco unificado para abordar problemas en múltiples domin
 ## 8. Otros paradigmas de aprendizaje, _Multi-task learning_ y _meta learning_
 
 <p align="center">
-  <img src={require("../../../static/img/blogs/meta-learning/multi-task.png").default} height="350"/>
+  <img src={require("@site/static/img/blogs/meta-learning/multi-task.png").default} height="350"/>
   <br />
   <em>Diagrama de una arquitectura Multi-Task</em>
 </p>
@@ -3764,7 +3764,7 @@ transfiriendo conocimiento entre tareas y minimizando la necesidad de ajustes
 específicos.
 
 <p align="center">
-  <img src={require("../../../static/img/blogs/meta-learning/meta-learning.png").default} height="350"/>
+  <img src={require("@site/static/img/blogs/meta-learning/meta-learning.png").default} height="350"/>
   <br />
   <em>Diagrama sobre el uso de *Meta-Learning*</em>
 </p>
@@ -3829,7 +3829,7 @@ Las principales estrategias para abordar múltiples tareas incluyen:
 ### 8.3. _Few-Shot Learning_
 
 <p align="center">
-  <img src={require("../../../static/img/blogs/meta-learning/few-shot-learning.png").default}/>
+  <img src={require("@site/static/img/blogs/meta-learning/few-shot-learning.png").default}/>
   <br />
   <em>Ejemplo de uso de *Few-Shot Learning* de *3-ways* y *3-shots*</em>
 </p>

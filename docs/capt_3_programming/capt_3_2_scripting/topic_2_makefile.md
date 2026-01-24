@@ -14,7 +14,7 @@ toc_max_heading_level: 3
 ## 1. Introducción
 
 <p align="center">
-  <img src={require("../../../static/img/docs/logos/makefile-logo.png").default} width="300"/>
+  <img src={require("@site/static/img/docs/logos/makefile-logo.png").default} width="300"/>
   <br />
   <em>Logo de Makefile</em>
 </p>

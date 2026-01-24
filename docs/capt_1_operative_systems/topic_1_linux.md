@@ -7,6 +7,14 @@ title: Linux
 toc_max_heading_level: 3
 ---
 
+<div className="button-container">
+  <a 
+    href={require('@site/static/documents/topic_1_linux.pdf').default} 
+    download="topic_1_linux.pdf"
+    className="button button--primary"
+  >Descargar PDF</a>
+</div>
+
 ## Bibliografía
 
 - [60 Linux Commands you NEED to know (in 10 minutes)](https://www.youtube.com/watch?v=gd7BXuUQ91w)
@@ -15,7 +23,7 @@ toc_max_heading_level: 3
 ## 1. Introducción
 
 <p align="center">
-  <img src={require("../../static/img/docs/logos/linux-logo.png").default} height="300"/>
+  <img src={require("@site/static/img/docs/logos/linux-logo.png").default} height="300"/>
   <br />
   <em>Mascota de Linux</em>
 </p>
@@ -54,7 +62,7 @@ por el sistema. Aunque existen alternativas modernas, **Bash** se mantiene como 
 _shell_ más extendida y estandarizada.
 
 <p align="center">
-  <img src={require("../../static/img/docs/shell-example.png").default} height="500"/>
+  <img src={require("@site/static/img/docs/shell-example.png").default}/>
   <br />
   <em>Ejemplo de una ventana de una shell o terminal</em>
 </p>
@@ -189,7 +197,7 @@ A diferencia de otros sistemas operativos, no existen unidades identificadas por
 se incorporan a esta jerarquía mediante el proceso de montaje.
 
 <p align="center">
-  <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.tecmint.com%2Fwp-content%2Fuploads%2F2012%2F07%2FLinux-File-System.jpg&f=1&nofb=1&ipt=b56b5b1d3ede73ff5f4eeeba1bd0c56bc7573349258800f0aca2cf57fa506845" height="300"/>
+  <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.tecmint.com%2Fwp-content%2Fuploads%2F2012%2F07%2FLinux-File-System.jpg&f=1&nofb=1&ipt=b56b5b1d3ede73ff5f4eeeba1bd0c56bc7573349258800f0aca2cf57fa506845"/>
   <br />
   <em>Jerarquía de los directorios de Linux</em>
 </p>
@@ -248,7 +256,7 @@ correspondientes; si no lo es, verifica si pertenece al grupo; y solo si no cump
 ninguna de estas condiciones, se aplican los permisos definidos para otros.
 
 <p align="center">
-  <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.purfe.com%2Fwp-content%2Fuploads%2F2021%2F02%2Ffile_permissions.jpg&f=1&nofb=1&ipt=a7ced098cac75da3129b35051830e66669b47212e2784e64a24446e2af131f4c" height="450"/>
+  <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.purfe.com%2Fwp-content%2Fuploads%2F2021%2F02%2Ffile_permissions.jpg&f=1&nofb=1&ipt=a7ced098cac75da3129b35051830e66669b47212e2784e64a24446e2af131f4c"/>
   <br />
   <em>Registro de permisos de Linux</em>
 </p>

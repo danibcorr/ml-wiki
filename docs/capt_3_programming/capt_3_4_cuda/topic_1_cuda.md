@@ -17,7 +17,7 @@ toc_max_heading_level: 3
 ## 1. Introducción
 
 <p align="center">
-  <img src={require("../../../static/img/docs/logos/cuda-logo.png").default} height="200"/>
+  <img src={require("@site/static/img/docs/logos/cuda-logo.png").default} height="200"/>
   <br />
   <em>Logo de Nvidia CUDA</em>
 </p>
@@ -33,17 +33,18 @@ renderización de gráficos.
 
 ### 2.1. Introducción
 
-La plataforma de computación CUDA ofrece un amplio ecosistema. No obstante, en los puntos
-1 y 2, se abordará el uso de CUDA en combinación con el lenguaje de programación C. A
-partir del punto 3, se explorarán otras bibliotecas y aplicaciones de CUDA en Python.
+La plataforma de computación CUDA ofrece un amplio ecosistema. No obstante, en los
+puntos 1 y 2, se abordará el uso de CUDA en combinación con el lenguaje de programación
+C. A partir del punto 3, se explorarán otras bibliotecas y aplicaciones de CUDA en
+Python.
 
 <p align="center">
   <img src={require("./assets/B0FF9827-9E32-46F2-8365-FA0E686C649D.png").default}/>
   <br />
 </p>
 
-CUDA se basa en tres cualidades fundamentales que destacan la capacidad de la GPU para el
-procesamiento paralelo:
+CUDA se basa en tres cualidades fundamentales que destacan la capacidad de la GPU para
+el procesamiento paralelo:
 
 - **Simplicidad**: La GPU organiza los hilos en grupos de 32, conocidos como _warps_.
   Todos los hilos en un _warp_ ejecutan la misma instrucción simultáneamente. Esta
@@ -68,8 +69,8 @@ dentro de un _warp_ contribuye a una ejecución eficiente.
 CUDA combina software, firmware y hardware para ofrecer una plataforma de computación
 paralela robusta:
 
-- **Software**: Proporciona extensiones SIMD que permiten la programación eficiente de la
-  GPU, facilitando la ejecución paralela y escalable.
+- **Software**: Proporciona extensiones SIMD que permiten la programación eficiente de
+  la GPU, facilitando la ejecución paralela y escalable.
 - **Firmware**: Incluye drivers para la programación GPU, que soportan tareas como
   renderizado, manejo de APIs y gestión de memoria.
 - **Hardware**: Habilita el paralelismo general de la GPU, optimizando la capacidad de
@@ -84,8 +85,8 @@ en:
 - **GPU**: Orientada al procesamiento intensivo en datos y paralelismo fino.
 - **CPU**: Adecuada para operaciones con saltos y bifurcaciones, y paralelismo grueso.
 
-Es fundamental identificar qué partes del código se benefician de la paralelización en la
-GPU y cuáles deben procesarse secuencialmente en la CPU.
+Es fundamental identificar qué partes del código se benefician de la paralelización en
+la GPU y cuáles deben procesarse secuencialmente en la CPU.
 
 <p align="center">
   <img src={require("./assets/EEA7EE5C-1D79-4B88-8DF7-37E17BF0D2FF.jpeg").default}/>
@@ -108,10 +109,10 @@ siguiente imagen.
 
 Cada multiprocesador dispone de su propio banco de registros, memoria compartida, una
 caché de constantes y una caché de texturas (ambas de sólo lectura). Además, está
-equipada con una memoria global de tipo GDDR, que es tres veces más rápida que la memoria
-principal de la CPU, aunque mucho más lenta que la memoria compartida de tipo SRAM. Los
-bloques de hilos en CUDA pueden ser asignados a cualquier multiprocesador para su
-ejecución. La imagen siguiente ilustra la estructura de una GPU.
+equipada con una memoria global de tipo GDDR, que es tres veces más rápida que la
+memoria principal de la CPU, aunque mucho más lenta que la memoria compartida de tipo
+SRAM. Los bloques de hilos en CUDA pueden ser asignados a cualquier multiprocesador para
+su ejecución. La imagen siguiente ilustra la estructura de una GPU.
 
 <p align="center">
   <img src={require("./assets/Untitled 1 (1).png").default}/>
@@ -120,8 +121,8 @@ ejecución. La imagen siguiente ilustra la estructura de una GPU.
 
 Para ilustrar, consideremos la generación Volta, específicamente la GPU GV100. Esta GPU
 cuenta con 84 multiprocesadores (SMs) y 8 controladores de memoria de 512 bits. En la
-arquitectura Volta, cada multiprocesador tiene 64 núcleos para operaciones de tipo int32,
-64 núcleos para float32, 32 núcleos para float64 y 8 unidades tensoriales.
+arquitectura Volta, cada multiprocesador tiene 64 núcleos para operaciones de tipo
+int32, 64 núcleos para float32, 32 núcleos para float64 y 8 unidades tensoriales.
 
 <p align="center">
   <img src={require("./assets/Untitled 2.png").default}/>
@@ -138,12 +139,12 @@ crear diseños más complejos al replicarlo.
 
 #### 2.4.1. Núcleos tensoriales
 
-En la última década, uno de los componentes que mayor protagonismo ha tomado han sido los
-núcleos tensoriales. Los núcleos tensoriales están diseñados para realizar operaciones
-matriciales a alta velocidad, lo que resulta crucial en el entrenamiento de modelos de
-Inteligencia Artificial y en procesos que implican operaciones matriciales extensivas. El
-siguiente diagrama ilustra el proceso de operación de cada núcleo tensorial por ciclo de
-reloj.
+En la última década, uno de los componentes que mayor protagonismo ha tomado han sido
+los núcleos tensoriales. Los núcleos tensoriales están diseñados para realizar
+operaciones matriciales a alta velocidad, lo que resulta crucial en el entrenamiento de
+modelos de Inteligencia Artificial y en procesos que implican operaciones matriciales
+extensivas. El siguiente diagrama ilustra el proceso de operación de cada núcleo
+tensorial por ciclo de reloj.
 
 <p align="center">
   <img src={require("./assets/Untitled 4 (2).png").default}/>
@@ -152,9 +153,9 @@ reloj.
 
 #### 2.4.2. Precisión numérica
 
-La precisión de los datos, como pasar de enteros de 32 bits a enteros de 16 bits, impacta
-en la tasa de transferencia (_Throughput_) del sistema. Reducir la precisión permite
-realizar un mayor número de operaciones, aunque con una precisión menor en los
+La precisión de los datos, como pasar de enteros de 32 bits a enteros de 16 bits,
+impacta en la tasa de transferencia (_Throughput_) del sistema. Reducir la precisión
+permite realizar un mayor número de operaciones, aunque con una precisión menor en los
 resultados. Dependiendo de la aplicación, esta reducción de precisión puede ser
 aceptable. A continuación, se muestra el _Throughput_ para diferentes precisiones de
 datos en arquitecturas de GPU modernas.
@@ -177,18 +178,18 @@ nvidia-smi
 ```
 
 Durante la programación en CUDA, tanto la CPU como la GPU realizan operaciones
-simultáneamente, por lo que es necesario sincronizar los tiempos de ejecución entre ambos
-componentes.
+simultáneamente, por lo que es necesario sincronizar los tiempos de ejecución entre
+ambos componentes.
 
 <p align="center">
   <img src={require("./assets/Untitled 6 (2).png").default}/>
   <br />
 </p>
 
-La sincronización entre la GPU y la CPU, así como entre diferentes hilos en la GPU, puede
-hacer que las sentencias condicionales como `if` sean desfavorables para la ejecución en
-la GPU. Por tanto, se recomienda minimizar el uso de sentencias condicionales en un
-Kernel.
+La sincronización entre la GPU y la CPU, así como entre diferentes hilos en la GPU,
+puede hacer que las sentencias condicionales como `if` sean desfavorables para la
+ejecución en la GPU. Por tanto, se recomienda minimizar el uso de sentencias
+condicionales en un Kernel.
 
 La programación en CUDA se realiza utilizando C/C++ y los archivos CUDA tienen la
 extensión `.cu`. La compilación del código se lleva a cabo con el siguiente comando:
@@ -246,19 +247,20 @@ ejecución**, que tiene la siguiente forma: `nombre_funcion<<<x, y>>>`, donde:
 - `x` es el número de bloques, debe ser menor a 2048.
 - `y` es el número de hilos por bloque, debe ser menor a 1024.
 
-El número total de hilos se obtiene multiplicando `x` por `y`. Por ejemplo, con 2 bloques
-(`x = 2`) y 4 hilos por bloque (`y = 4`), se obtienen 8 hilos en total. **El número de
-bloques y hilos depende de las capacidades de hardware de la GPU.**
+El número total de hilos se obtiene multiplicando `x` por `y`. Por ejemplo, con 2
+bloques (`x = 2`) y 4 hilos por bloque (`y = 4`), se obtienen 8 hilos en total. **El
+número de bloques y hilos depende de las capacidades de hardware de la GPU.**
 
-El código del _kernel_ se ejecuta en cada hilo de cada bloque configurado cuando se lanza
-el _kernel_. Un _kernel_ con un solo bloque utilizará solo un multiprocesador de la GPU.
+El código del _kernel_ se ejecuta en cada hilo de cada bloque configurado cuando se
+lanza el _kernel_. Un _kernel_ con un solo bloque utilizará solo un multiprocesador de
+la GPU.
 
-El comando `cudaDeviceSynchronize()` asegura que la GPU complete su tarea antes de que la
-CPU finalice el programa, funcionando como una herramienta de sincronización entre CPU y
-GPU.
+El comando `cudaDeviceSynchronize()` asegura que la GPU complete su tarea antes de que
+la CPU finalice el programa, funcionando como una herramienta de sincronización entre
+CPU y GPU.
 
-CUDA puede agilizar los bucles en la programación. Por ejemplo, para incrementar un valor
-`b` a los `N` elementos de un vector:
+CUDA puede agilizar los bucles en la programación. Por ejemplo, para incrementar un
+valor `b` a los `N` elementos de un vector:
 
 ```c
 void incremento_en_cpu(float *a, float b, int N)
@@ -280,8 +282,9 @@ void main()
 }
 ```
 
-El bucle anterior es adecuado para la paralelización, ya que cada índice es independiente
-y no requiere un orden específico (las hebras en un _warp_ se ejecutan desordenadamente).
+El bucle anterior es adecuado para la paralelización, ya que cada índice es
+independiente y no requiere un orden específico (las hebras en un _warp_ se ejecutan
+desordenadamente).
 
 #### 3.1.1. Identificar hilos, bloques y mallas en un _kernel_ de CUDA
 
@@ -299,8 +302,8 @@ que pueden ejecutarse en cualquier orden y de forma independiente.
 
 El _kernel_ debe realizar el trabajo de una sola iteración del bucle, por lo que la
 configuración del _kernel_ debe ajustarse al número de iteraciones del bucle,
-configurando adecuadamente tanto el número de bloques como el número de hilos por bloque.
-A continuación, se presenta el código paralelizado del bucle:
+configurando adecuadamente tanto el número de bloques como el número de hilos por
+bloque. A continuación, se presenta el código paralelizado del bucle:
 
 ```c
 // Función de kernel para incrementar cada elemento del arreglo 'a' en la GPU
@@ -426,10 +429,10 @@ Los tipos de memoria en CUDA se pueden observar en la imagen siguiente:
 
 La memoria unificada presenta algunas consideraciones:
 
-- La capacidad máxima de memoria unificada está limitada por la menor cantidad de memoria
-  disponible en las GPUs.
-- La memoria unificada utilizada por la CPU debe migrar de nuevo a la GPU antes de lanzar
-  un _kernel_.
+- La capacidad máxima de memoria unificada está limitada por la menor cantidad de
+  memoria disponible en las GPUs.
+- La memoria unificada utilizada por la CPU debe migrar de nuevo a la GPU antes de
+  lanzar un _kernel_.
 - La CPU no puede acceder a la memoria unificada mientras la GPU está ejecutando un
   _kernel_; se debe llamar a `cudaDeviceSynchronize()` antes de que la CPU acceda a la
   memoria unificada.
@@ -504,8 +507,8 @@ utilizando C++.
 
 Cuando se trabaja con una cantidad de datos que excede el número máximo de hebras
 disponibles, es necesario dividir los datos en bloques más pequeños que se ajusten al
-número de hebras. Tras completar el procesamiento de una división, se pasa a la siguiente
-utilizando la expresión:
+número de hebras. Tras completar el procesamiento de una división, se pasa a la
+siguiente utilizando la expresión:
 
 $$
 blockDim.x \cdot gridDim.x
@@ -532,9 +535,9 @@ __global__ void kernel(int *a, int N)
 
 ### 3.5. Manejo de errores
 
-Las funciones de CUDA a menudo devuelven un valor que indica si se ha producido un error,
-facilitando el manejo de errores. A continuación, se muestra cómo gestionar errores al
-reservar memoria:
+Las funciones de CUDA a menudo devuelven un valor que indica si se ha producido un
+error, facilitando el manejo de errores. A continuación, se muestra cómo gestionar
+errores al reservar memoria:
 
 ```c
 // Declara una variable para almacenar el código de error de CUDA
@@ -728,8 +731,8 @@ Los tipos de operadores más comunes son:
 
   El primer bucle `for` tiene baja carga computacional. Los siguientes bucles tienen
   dependencias, pero se pueden leer en paralelo si se asignan a hilos CUDA. CUDA
-  proporciona operaciones atómicas (`atomicInc(histo[image[i][j]])`) para manejar accesos
-  concurrentes al vector `histo[]` y prevenir condiciones de carrera.
+  proporciona operaciones atómicas (`atomicInc(histo[image[i][j]])`) para manejar
+  accesos concurrentes al vector `histo[]` y prevenir condiciones de carrera.
 
 Como análisis final tenemos:
 
@@ -740,20 +743,22 @@ Como análisis final tenemos:
 
 ## 4. Acelerar aplicaciones con CUDA en Python utilizando Numba y CuPy
 
-El rendimiento de las aplicaciones científicas y de ingeniería en Python se puede mejorar
-significativamente mediante el uso de herramientas como Numba y CuPy. Estas tecnologías
-permiten la paralelización y aceleración del código, aprovechando la potencia de
-procesamiento de las GPUs y superando las limitaciones del intérprete de Python.
+El rendimiento de las aplicaciones científicas y de ingeniería en Python se puede
+mejorar significativamente mediante el uso de herramientas como Numba y CuPy. Estas
+tecnologías permiten la paralelización y aceleración del código, aprovechando la
+potencia de procesamiento de las GPUs y superando las limitaciones del intérprete de
+Python.
 
 ### 4.1. Numba
 
 #### 4.1.1. Introducción
 
 Numba es un compilador JIT (_Just-In-Time_) para Python que acelera el código al
-convertir funciones en código máquina optimizado para CPU y GPU. Esto evita el intérprete
-de Python y permite la ejecución eficiente de operaciones numéricas, especialmente
-aquellas que involucran bucles y cálculos intensivos. La compilación se realiza en tiempo
-de ejecución, aplicando optimizaciones basadas en los datos de entrada.
+convertir funciones en código máquina optimizado para CPU y GPU. Esto evita el
+intérprete de Python y permite la ejecución eficiente de operaciones numéricas,
+especialmente aquellas que involucran bucles y cálculos intensivos. La compilación se
+realiza en tiempo de ejecución, aplicando optimizaciones basadas en los datos de
+entrada.
 
 Sin embargo, Numba presenta ciertas limitaciones como el no ser compatible con Pandas,
 por lo que para utilizar Numba con datos de Pandas, se recomienda convertir los
@@ -825,8 +830,8 @@ Para más información, consultar la [página oficial de CuPy](https://cupy.dev/
 
 #### 4.2.2. Uso básico de CuPy
 
-CuPy ofrece una API similar a NumPy, facilitando la transición entre ambas bibliotecas. A
-continuación se presenta un ejemplo básico de cómo realizar cálculos en una GPU
+CuPy ofrece una API similar a NumPy, facilitando la transición entre ambas bibliotecas.
+A continuación se presenta un ejemplo básico de cómo realizar cálculos en una GPU
 utilizando CuPy:
 
 ```python
@@ -852,7 +857,7 @@ print(c_numpy)  # Resultado: [ 7  9 11 13 15]
   Recomendado para optimizar algoritmos matemáticos complejos y simulaciones con
   estructuras de bucles que pueden beneficiarse de la compilación JIT.
 - **CuPy**: Mejor para trabajar con matrices y realizar operaciones a gran escala en
-  GPUs. Ofrece una API similar a NumPy, facilitando la migración de código y aprovechando
-  el hardware de CUDA. Adecuado para tareas que involucren cálculos matriciales
-  intensivos, como el entrenamiento de modelos de machine learning, procesamiento de
-  imágenes y simulaciones con alta densidad de datos.
+  GPUs. Ofrece una API similar a NumPy, facilitando la migración de código y
+  aprovechando el hardware de CUDA. Adecuado para tareas que involucren cálculos
+  matriciales intensivos, como el entrenamiento de modelos de machine learning,
+  procesamiento de imágenes y simulaciones con alta densidad de datos.

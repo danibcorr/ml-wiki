@@ -16,15 +16,15 @@ toc_max_heading_level: 3
 ## 1. Introducción
 
 <p align="center">
-  <img src={require("../../../static/img/docs/logos/docker-logo.png").default} width="500"/>
+  <img src={require("@site/static/img/docs/logos/docker-logo.png").default} width="500"/>
   <br />
   <em>Logo de Docker</em>
 </p>
 
-**Docker** es una plataforma de código abierto que facilita la creación, implementación y
-ejecución de aplicaciones mediante contenedores. Los contenedores permiten empaquetar una
-aplicación junto con sus dependencias y configuraciones en una unidad estandarizada, lo
-que simplifica el desarrollo de software y garantiza consistencia entre entornos.
+**Docker** es una plataforma de código abierto que facilita la creación, implementación
+y ejecución de aplicaciones mediante contenedores. Los contenedores permiten empaquetar
+una aplicación junto con sus dependencias y configuraciones en una unidad estandarizada,
+lo que simplifica el desarrollo de software y garantiza consistencia entre entornos.
 
 ### 1.1. Características principales
 
@@ -109,18 +109,18 @@ Los contenedores son ideales para:
 
 #### 1.2.2. Máquinas virtuales
 
-**Las máquinas virtuales (VMs)** son una tecnología de virtualización más tradicional que
-permite ejecutar múltiples sistemas operativos en un servidor físico mediante un
+**Las máquinas virtuales (VMs)** son una tecnología de virtualización más tradicional
+que permite ejecutar múltiples sistemas operativos en un servidor físico mediante un
 hipervisor, como **VMware** o **VirtualBox**.
 
 ##### Características de las máquinas virtuales
 
-- **Hipervisor**: Un hipervisor puede ejecutarse directamente en el hardware del servidor
-  (tipo 1) o sobre un sistema operativo (tipo 2). Este gestiona la creación y ejecución
-  de múltiples VMs, asignando recursos de hardware eficientemente.
-- **Sistema operativo completo**: Cada VM tiene su propio sistema operativo completo (por
-  ejemplo, Linux, Windows), lo que significa que las VMs consumen más recursos de CPU,
-  memoria y almacenamiento que los contenedores.
+- **Hipervisor**: Un hipervisor puede ejecutarse directamente en el hardware del
+  servidor (tipo 1) o sobre un sistema operativo (tipo 2). Este gestiona la creación y
+  ejecución de múltiples VMs, asignando recursos de hardware eficientemente.
+- **Sistema operativo completo**: Cada VM tiene su propio sistema operativo completo
+  (por ejemplo, Linux, Windows), lo que significa que las VMs consumen más recursos de
+  CPU, memoria y almacenamiento que los contenedores.
 - **Aislamiento fuerte**: Debido a que cada VM tiene su propio kernel y sistema
   operativo, proporciona un aislamiento más fuerte que los contenedores. Esto es útil
   cuando la seguridad es crítica.
@@ -235,8 +235,8 @@ docker create -e MONGO_INITDB_ROOT_USERNAME=dani -e MONGO_INITDB_ROOT_PASSWORD=c
 ```
 
 Estas variables configuran el usuario y la contraseña del administrador de la base de
-datos durante la inicialización del contenedor. Es importante revisar la documentación de
-la imagen del contenedor, ya que las variables de entorno varían según cada imagen.
+datos durante la inicialización del contenedor. Es importante revisar la documentación
+de la imagen del contenedor, ya que las variables de entorno varían según cada imagen.
 
 ### 1.7. Construcción de imágenes mediante Dockerfile
 
@@ -342,8 +342,8 @@ services:
 
 Con este archivo de configuración, se definen dos servicios: uno para la aplicación
 (`mi-app`) y otro para MongoDB (`mongodb`). La aplicación se construye a partir del
-contexto del directorio actual, mapeando el puerto 3000 del contenedor al puerto 3000 del
-host. El servicio MongoDB utiliza una imagen preexistente (`mongo`), mapea el puerto
+contexto del directorio actual, mapeando el puerto 3000 del contenedor al puerto 3000
+del host. El servicio MongoDB utiliza una imagen preexistente (`mongo`), mapea el puerto
 27017 y establece las credenciales de acceso mediante variables de entorno.
 
 Para iniciar los servicios definidos en el archivo `docker-compose.yml`, basta con
@@ -374,8 +374,8 @@ Los volúmenes pueden ser de diferentes tipos:
 
 1. **Volúmenes anónimos**: Son volúmenes sin nombre, lo que impide referenciarlos
    explícitamente desde otros contenedores.
-2. **Volúmenes de host**: Permiten especificar qué carpeta del sistema anfitrión se monta
-   dentro del contenedor.
+2. **Volúmenes de host**: Permiten especificar qué carpeta del sistema anfitrión se
+   monta dentro del contenedor.
 3. **Volúmenes nombrados**: Son volúmenes con nombre, lo que permite referenciarlos en
    otros contenedores o en múltiples servicios.
 
@@ -451,7 +451,7 @@ reinicio o actualización de los servicios.
 ### 1. Introducción
 
 <p align="center">
-  <img src={require("../../../static/img/docs/logos/kubernetes-logo.png").default} width="500"/>
+  <img src={require("@site/static/img/docs/logos/kubernetes-logo.png").default} width="500"/>
   <br />
   <em>Logo de Kubernetes</em>
 </p>
@@ -499,8 +499,8 @@ minikube status
 Un nodo representa la unidad más pequeña dentro de un clúster de Kubernetes. Este puede
 ser una máquina física o una máquina virtual donde se ejecutan las aplicaciones.
 Kubernetes abstrae el hardware subyacente, permitiendo una gestión eficiente de los
-requisitos de recursos. Si un nodo no puede proporcionar más recursos o falla, Kubernetes
-redistribuye las cargas de trabajo a otros nodos disponibles.
+requisitos de recursos. Si un nodo no puede proporcionar más recursos o falla,
+Kubernetes redistribuye las cargas de trabajo a otros nodos disponibles.
 
 Existen diferentes tipos de nodos:
 
@@ -512,28 +512,28 @@ Existen diferentes tipos de nodos:
 #### 1.1.2. Pod
 
 Un pod es la unidad mínima de ejecución en Kubernetes y puede contener uno o más
-contenedores que comparten los mismos recursos y red local. Todos los contenedores dentro
-del mismo pod pueden comunicarse entre sí y comparten el mismo entorno de red. Al escalar
-un pod, todos los contenedores dentro de él se escalan conjuntamente.
+contenedores que comparten los mismos recursos y red local. Todos los contenedores
+dentro del mismo pod pueden comunicarse entre sí y comparten el mismo entorno de red. Al
+escalar un pod, todos los contenedores dentro de él se escalan conjuntamente.
 
 #### 1.1.3. Clúster
 
 Un clúster es un conjunto de nodos, también conocidos como workers, que se ejecutan en
 Kubernetes. La relación entre las aplicaciones que se están ejecutando en cada nodo es
-independiente. Por ejemplo, si se tiene un servidor de Proxmox donde existen dos máquinas
-virtuales, VM1 y VM2, a pesar de que cuenten con diferentes Pods, si todos están
-gestionados por Kubernetes, ambos formarán parte del mismo clúster.
+independiente. Por ejemplo, si se tiene un servidor de Proxmox donde existen dos
+máquinas virtuales, VM1 y VM2, a pesar de que cuenten con diferentes Pods, si todos
+están gestionados por Kubernetes, ambos formarán parte del mismo clúster.
 
 ### 1.2. StatefulSet y volúmenes
 
-Dado que no se puede garantizar el lugar de ejecución de una aplicación, el uso del disco
-local para almacenar datos es inviable, siendo útil únicamente para almacenamiento
+Dado que no se puede garantizar el lugar de ejecución de una aplicación, el uso del
+disco local para almacenar datos es inviable, siendo útil únicamente para almacenamiento
 temporal de datos, como caché.
 
-Kubernetes emplea volúmenes persistentes, que a diferencia de otros recursos como la CPU,
-GPU y RAM, que son gestionados por los clústeres de Kubernetes, deben ser adjuntados al
-propio clúster de Kubernetes desde unidades locales o en la nube. Estos volúmenes no se
-asocian a un nodo en particular.
+Kubernetes emplea volúmenes persistentes, que a diferencia de otros recursos como la
+CPU, GPU y RAM, que son gestionados por los clústeres de Kubernetes, deben ser
+adjuntados al propio clúster de Kubernetes desde unidades locales o en la nube. Estos
+volúmenes no se asocian a un nodo en particular.
 
 **StatefulSet** permite la creación de pods con volúmenes persistentes, garantizando la
 integridad de los datos incluso si el pod se reinicia o se elimina.
@@ -799,8 +799,8 @@ spec:
 
 #### 1.6.1. Servicios en Kubernetes
 
-Los servicios en Kubernetes permiten acceder a los pods desde dentro y fuera del clúster.
-Un ejemplo de esto es el uso de un Load Balancer:
+Los servicios en Kubernetes permiten acceder a los pods desde dentro y fuera del
+clúster. Un ejemplo de esto es el uso de un Load Balancer:
 
 ```yaml
 apiVersion: v1
@@ -866,9 +866,9 @@ spec:
 
 #### 1.8.3. Load Balancer
 
-Load Balancer está más enfocado a proveedores de la nube para redireccionar el tráfico en
-los Pods. Crea un balanceador de carga proporcionando una IP estable para el servidor, lo
-que facilita su acceso desde internet.
+Load Balancer está más enfocado a proveedores de la nube para redireccionar el tráfico
+en los Pods. Crea un balanceador de carga proporcionando una IP estable para el
+servidor, lo que facilita su acceso desde internet.
 
 ```yaml
 apiVersion: v1

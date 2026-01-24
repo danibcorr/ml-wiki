@@ -15,7 +15,7 @@ toc_max_heading_level: 3
 ## 1. Introducción
 
 <p align="center">
-  <img src={require("../../../static/img/docs/logos/mlops-logo.png").default} width="500"/>
+  <img src={require("@site/static/img/docs/logos/mlops-logo.png").default} width="500"/>
   <br />
   <em>Ciclo de vide de un proyecto MLOps</em>
 </p>

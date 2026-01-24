@@ -15,7 +15,7 @@ toc_max_heading_level: 3
 ## 1. Introducción
 
 <p align="center">  
-  <img src={require("../../../static/img/docs/logos/github-logo.png").default} width="500"/>  
+  <img src={require("@site/static/img/docs/logos/github-logo.png").default} width="500"/>  
   <br />  
   <em>Logo de GitHub</em>  
 </p>
@@ -37,8 +37,8 @@ encuentran:
 
 Una de las principales ventajas de utilizar **GitHub Actions** en lugar de herramientas
 como **Jenkins**, u otras soluciones similares, es su integración nativa con GitHub.
-Además, su **Marketplace** proporciona un amplio catálogo de acciones desarrolladas tanto
-por GitHub como por terceros, lo que permite extender y personalizar los flujos de
+Además, su **Marketplace** proporciona un amplio catálogo de acciones desarrolladas
+tanto por GitHub como por terceros, lo que permite extender y personalizar los flujos de
 trabajo de manera eficiente.
 
 ## 2. CI/CD con GitHub Actions
@@ -55,8 +55,8 @@ eficiencia y reduciendo errores en la integración y despliegue de software.
 
 ### 2.1. GitHub Actions y su funcionamiento
 
-**GitHub Actions** es una plataforma que permite la automatización de flujos de trabajo a
-través de archivos de configuración en formato YAML.
+**GitHub Actions** es una plataforma que permite la automatización de flujos de trabajo
+a través de archivos de configuración en formato YAML.
 
 Cada **workflow** está compuesto por una serie de pasos organizados en **jobs**, que
 pueden ejecutarse en paralelo o en secuencia, dependiendo de las necesidades del
@@ -82,7 +82,7 @@ src
 ```
 
 <p align="center">  
-  <img src={require("../../../static/img/docs/workflow-github-actions.png").default}/>  
+  <img src={require("@site/static/img/docs/workflow-github-actions.png").default}/>  
   <br />  
   <em>Logo de GitHub</em>  
 </p>
@@ -104,8 +104,8 @@ automatizar tareas dentro de un repositorio.
 ### 2.2.1. Elementos clave de un workflow
 
 - **Nombre del Workflow (`name`)**: El campo `name` define un nombre descriptivo para el
-  workflow. Aunque es opcional, se recomienda utilizarlo para mejorar la identificación y
-  reutilización de workflows dentro del repositorio.
+  workflow. Aunque es opcional, se recomienda utilizarlo para mejorar la identificación
+  y reutilización de workflows dentro del repositorio.
 
   ```yaml
   name: Nombre del Workflow
@@ -312,9 +312,9 @@ jobs:
 :::note Nota
 
 La clave de caché `key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}`
-garantiza que el caché solo se actualice cuando cambie el archivo `poetry.lock`. Utilizar
-caché reduce significativamente el tiempo de ejecución del workflow, pero es importante
-monitorearlo para evitar el uso de dependencias obsoletas.
+garantiza que el caché solo se actualice cuando cambie el archivo `poetry.lock`.
+Utilizar caché reduce significativamente el tiempo de ejecución del workflow, pero es
+importante monitorearlo para evitar el uso de dependencias obsoletas.
 
 :::
 
@@ -370,17 +370,17 @@ runs:
       run: poetry install
 ```
 
-La modularización de workflows no solo mejora la reutilización, sino que también facilita
-el mantenimiento del código y la integración de nuevas funcionalidades sin modificar los
-workflows principales. Este enfoque modular permite dividir la complejidad de los
-workflows, mejorar la eficiencia y permitir la reutilización de configuraciones a lo
-largo del proyecto.
+La modularización de workflows no solo mejora la reutilización, sino que también
+facilita el mantenimiento del código y la integración de nuevas funcionalidades sin
+modificar los workflows principales. Este enfoque modular permite dividir la complejidad
+de los workflows, mejorar la eficiencia y permitir la reutilización de configuraciones a
+lo largo del proyecto.
 
 ### 2.4. Uso de estrategias con matrices
 
 Las **matrices de estrategia** en GitHub Actions permiten ejecutar un mismo **workflow**
-en múltiples combinaciones de entornos, lo que es útil para probar software en diferentes
-sistemas operativos, versiones o configuraciones.
+en múltiples combinaciones de entornos, lo que es útil para probar software en
+diferentes sistemas operativos, versiones o configuraciones.
 
 Por ejemplo, podemos crear una matriz para múltiples sistemas operativos y versiones:
 
@@ -449,17 +449,26 @@ operativos.
 
 - Podemos utilizar múltiples S.O. (Linux, Mac, Windows) → Matrix.
 
-- Wondflow → pipeline múltiples pasos (Example: Wondflow → Merge → Test → ... → build → Deploy).
+- Wondflow → pipeline múltiples pasos (Example: Wondflow → Merge → Test → ... → build →
+  Deploy).
 
-- gitHub → Wondflow → Wondflow → Wondflow → Wondflow → Wondflow → WondFlow → WondFlow → WondFlow → WondFlow → WondFlow → Wondflow → WondFlow → WondFlow → WondFlow → Wondflow → Wondflow → WondFlow → WondFlow → Wondflow → WondFlow → Wondflow → WondFlow → WondFlow → Wondflow → Wondflow → Wondflow → Wondflow → WondFlwo → WondFlow → WondFlow → WondFlow → WondFlow → WondFlwo → WondFlow → WondFlow → WondFlow → WundFlow → WondFlow → WondFlow → WondFlow → WondFlow → WundFlow → WondFlwo → WondFlow → WondFlow → WondFlow → WondFlow → WondFlow → WondFlow → WondFlow → WondFlow.
+- gitHub → Wondflow → Wondflow → Wondflow → Wondflow → Wondflow → WondFlow → WondFlow →
+  WondFlow → WondFlow → WondFlow → Wondflow → WondFlow → WondFlow → WondFlow → Wondflow
+  → Wondflow → WondFlow → WondFlow → Wondflow → WondFlow → Wondflow → WondFlow →
+  WondFlow → Wondflow → Wondflow → Wondflow → Wondflow → WondFlwo → WondFlow → WondFlow
+  → WondFlow → WondFlow → WondFlwo → WondFlow → WondFlow → WondFlow → WundFlow →
+  WondFlow → WondFlow → WondFlow → WondFlow → WundFlow → WondFlwo → WondFlow → WondFlow
+  → WondFlow → WondFlow → WondFlow → WondFlow → WondFlow → WondFlow.
 
 - name: number project.
 - para cuando "nacemos un trigger" del Wondflow.
 - trabajo a realizar.
 
-- Deudo de los jobs el run - ou es la máquina donde ejecutan el job (mirar documentación).
+- Deudo de los jobs el run - ou es la máquina donde ejecutan el job (mirar
+  documentación).
 - Deudo de los jobs tenemos los steps.
-- Deudo de los steps tenemos los uses para definir acciones ya existentes (mirar docu de cada acción).
+- Deudo de los steps tenemos los uses para definir acciones ya existentes (mirar docu de
+  cada acción).
 - o crear nuestra propia acción.
 
 - Al final cada job es ejecuto desde la raíz del rep (1).

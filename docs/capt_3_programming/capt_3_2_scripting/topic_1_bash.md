@@ -15,7 +15,7 @@ toc_max_heading_level: 4
 ## 1. Introducción
 
 <p align="center">
-  <img src={require("../../../static/img/docs/logos/bash-logo.png").default} width="500"/>
+  <img src={require("@site/static/img/docs/logos/bash-logo.png").default} width="500"/>
   <br />
   <em>Logo de Bash</em>
 </p>

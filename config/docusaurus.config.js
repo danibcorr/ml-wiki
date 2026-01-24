@@ -46,6 +46,8 @@ const config = {
           showLastUpdateTime: true,
           showLastUpdateAuthor: true,
           breadcrumbs: false,
+          showLastUpdateAuthor: false,
+          showLastUpdateTime: false,
         },
         theme: {
           customCss: "./src/css/custom.css",
