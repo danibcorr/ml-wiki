@@ -71,7 +71,7 @@ principales son:
   - Logros más relevantes.
   - Palabras clave alineadas con el puesto.
 
-    :::tip Ejemplo
+    !!! example "Ejemplo"
 
     Data Scientist con más de 5 años de experiencia en el desarrollo de modelos
     predictivos y análisis de datos masivos en telecomunicaciones. Experto en Python,
@@ -79,15 +79,13 @@ principales son:
     de celdas con anomalías en un 25%, lo que incrementó en un 10% la satisfacción de
     los usuarios mediante técnicas de inteligencia artificial.
 
-    :::
-
 - **Experiencia profesional:**
   - Presentar en orden cronológico inverso (de lo más reciente a lo más antiguo), con el
     formato: **\[Puesto] | \[Empresa] | \[Fechas]**.
   - Describir logros concretos y medibles en un máximo de dos líneas, aplicando la
     **fórmula XYZ**: _“Logré X, medido por Y, al hacer Z.”_
 
-    :::tip Ejemplos
+    !!! example "Ejemplo"s
     - Diseñé pipelines ETL en Python y SQL, mejorando la calidad de datos en un **35%**.
     - Implementé pipelines CI/CD, reduciendo tiempos de despliegue en **50%**.
     - Entrené modelos predictivos que incrementaron la precisión en un **25%**.
@@ -95,8 +93,6 @@ principales son:
     - Automatizé despliegues con Jenkins, reduciendo plazos de entrega en un **50%**.
     - Implementé infraestructura como código con Terraform, garantizando consistencia en
       entornos de nube.
-
-    :::
 
   Es recomendable reflejar tanto **habilidades técnicas (hard skills)** —lenguajes,
   frameworks, herramientas— como **habilidades blandas (soft skills)** —liderazgo,
@@ -275,22 +271,18 @@ una con métodos específicos para estructurar la respuesta.
 Estas se basan en experiencias pasadas y buscan evaluar cómo se ha actuado en
 situaciones similares.
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 Háblame de una ocasión en la que tuviste que gestionar un miembro del equipo difícil.
-
-:::
 
 #### 5.2.2. Preguntas situacionales (_Situational_)
 
 Plantean escenarios hipotéticos para evaluar la capacidad de reacción y toma de
 decisiones.
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 ¿Qué harías si cometieras un error que nadie más hubiera notado?
-
-:::
 
 #### 5.2.3. Método CARL
 
@@ -302,13 +294,11 @@ CARL:
 - **R**esultados: Muestra el impacto logrado con datos concretos.
 - **L**ección: Señala lo aprendido y cómo lo aplicarías en el futuro.
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 En un proyecto con plazos ajustados (Contexto), organicé reuniones diarias y reasigné
 tareas (Acción). Logramos entregar tres días antes de lo previsto (Resultado). Aprendí
 la importancia de dividir el trabajo en sprints cortos (Lección).
-
-:::
 
 #### 5.2.4. Método RCS (para preguntas situacionales)
 
@@ -318,13 +308,11 @@ Para preguntas hipotéticas, el método RCS ayuda a estructurar la respuesta:
 - **C**larificar: Solicita detalles adicionales si es necesario.
 - **S**tructure: Organiza tus ideas antes de responder.
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 Para confirmar, ¿preguntas cómo actuaría con un cliente que solicita algo imposible?
 (Replantear). ¿Se debe a limitaciones de recursos o a políticas internas? (Clarificar).
 Dame un momento para organizar mi respuesta (Structure).
-
-:::
 
 Este enfoque transmite calma, pensamiento crítico y claridad lógica.
 
@@ -338,14 +326,12 @@ Se recomienda estructurar la respuesta en **Presente–Pasado–Futuro**:
 - **Pasado:** Menciona la experiencia más relevante.
 - **Futuro:** Explica cómo tu perfil encaja en el puesto.
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 Actualmente soy analista de datos y optimicé modelos predictivos que aumentaron la
 precisión en un 20%. Antes trabajé en consultoría estratégica, lo que me dio visión de
 negocio. Ahora quiero aplicar mis capacidades técnicas y de gestión para impulsar
 proyectos de inteligencia artificial en su empresa.
-
-:::
 
 #### 5.3.2. “¿Dónde te ves en 5 años?”
 
@@ -373,14 +359,12 @@ Una estructura efectiva es la regla del 50/30/20:
 - **Brechas largas o recientes:** Preparar una respuesta honesta y clara convierte la
   brecha en una oportunidad para mostrar desarrollo personal o profesional.
 
-:::tip Ejemplos
+!!! example "Ejemplo"s
 
 - Personal: cuidado de un familiar → demuestra organización, resiliencia y capacidad
   multitarea.
 - Profesional (despido): explicar cómo mantuviste tus habilidades activas mediante
   cursos, proyectos o voluntariado.
-
-:::
 
 ### 5.5. Negociación salarial
 
@@ -398,13 +382,11 @@ transporte y coste de vida, ya que influyen en la valoración de la oferta.
 4. Argumenta con datos y referencias salariales, no con emociones.
 5. Mantén ética y gratitud, reforzando tu interés por el puesto.
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 El promedio del sector es de 62.500 €. Con mis cuatro años de experiencia en \[área X],
 puedo aportar valor inmediato en \[reto específico]. ¿Sería posible ajustar la oferta
 para acercarnos a ese promedio?
-
-:::
 
 ## 6. Comunicación Profesional
 

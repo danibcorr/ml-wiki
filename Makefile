@@ -1,44 +1,32 @@
-.PHONY: setup-i18n dev build serve format install clean typecheck all
+.PHONY: setup \
+		clean-cache-temp-files \
+		doc  \
+		pipeline all
 
 .DEFAULT_GOAL := all
 
-setup-i18n:
-	@echo "Setting up translations..."
-	@npm run write-translations
-	@echo "✅ Translations configured"
+PATH_PROJECT_ROOT ?= .
+TEST_PATH ?= tests
 
-dev:
-	@echo "Starting development server..."
-	@npm run start
-
-build: format install
-	@echo "Building site..."
-	@npm run build
-	@echo "✅ Site built"
-
-serve:
-	@echo "Serving site..."
-	@npm run serve
-
-format:
-	@echo "Formatting code..."
-	@npm run pretty
-	@echo "✅ Code formatted"
-
-install:
+setup:
 	@echo "Installing dependencies..."
-	@npm install
-	@echo "✅ Dependencies installed"
+	@uv sync --all-extras
+	@echo "✅ Dependencies installed."
 
-clean:  
-	@echo "Cleaning cache and dependencies..."
-	@npm run clear
-	@rm -rf node_modules package-lock.json
-	@echo "✅ Cleaned cache and dependencies"
+clean-cache-temp-files:
+	@echo "Cleaning cache and temporary files..."
+	@find . -type d -name __pycache__ -exec rm -rf {} +
+	@find . -type d -name .pytest_cache -exec rm -rf {} +
+	@find . -type d -name .mypy_cache -exec rm -rf {} +
+	@find . -type f \( -name '*.pyc' -o -name '*.pyo' \) -delete
+	@echo "✅ Clean complete."
 
-typecheck:
-	@echo "Type checking..."
-	@npm run typecheck
-	@echo "✅ Types checked"
+doc:
+	@echo "Serving documentation..."
+	@uv run zensical serve
 
-all: build
+pipeline: clean-cache-temp-files
+	@echo "✅ Pipeline complete."
+
+all: setup pipeline doc
+	@echo "✅ All tasks complete."

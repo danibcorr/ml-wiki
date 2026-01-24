@@ -14,7 +14,7 @@ toc_max_heading_level: 3
 ## 1. Introducción
 
 <p align="center">
-  <img src={require("@site/static/img/docs/logos/makefile-logo.png").default} width="300"/>
+  <img src="/assets/img/docs/logos/makefile-logo.png" width="300"/>
   <br />
   <em>Logo de Makefile</em>
 </p>
@@ -48,7 +48,7 @@ targets: prerequisites
 - **comandos:** Son las instrucciones que se ejecutan para crear el _target_. Cada
   comando debe comenzar con un carácter de tabulación, no con espacios.
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 ```makefile
 install: pyproject.toml
@@ -70,15 +70,13 @@ Cuando ejecutas el comando `make install`, Make verifica si el archivo `pyprojec
 existe. Si el archivo está presente, Make ejecutará `poetry install` para instalar las
 dependencias del proyecto. Si el archivo no existe, Make mostrará un error.
 
-:::
-
 ### 2.2. Comentarios
 
 Los comentarios en un Makefile se escriben utilizando el símbolo `#`. Estos comentarios
 no afectan la ejecución del archivo y sirven para describir el propósito de las reglas o
 comandos.
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 ```makefile
 # Esta regla instala las dependencias de Poetry
@@ -86,14 +84,12 @@ install: pyproject.toml
     poetry install
 ```
 
-:::
-
 ### 2.3. Variables
 
 Las variables en Makefiles permiten almacenar y reutilizar valores, facilitando la
 personalización de comandos o rutas.
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 ```makefile
 TEST_FILE ?= ./tests
@@ -122,8 +118,6 @@ make tests TEST_FILE=./tests/test_ejemplo.py
 Esto ejecutará los tests usando el archivo `test_ejemplo.py` en lugar del directorio por
 defecto.
 
-:::
-
 #### 2.3.1. Variables automáticas
 
 Make proporciona variables automáticas que son útiles para simplificar reglas. Estas
@@ -139,7 +133,7 @@ necesidad de escribirlos explícitamente cada vez.
 | `$(@D)`  | Directorio del _target_ actual.                           |
 | `$(@F)`  | Nombre del archivo del _target_ actual.                   |
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 Supongamos que estamos procesando datos en Python y queremos automatizar la creación de
 un archivo comprimido a partir de varios archivos generados:
@@ -196,14 +190,12 @@ En la regla `process_data`, Python recibe como entrada el primer prerrequisito
 `input1.txt` a través de `$<` y genera la salida en `processed_data/input1.csv`
 automáticamente.
 
-:::
-
 #### 2.3.2. Variables específicas de objetivo y patrones
 
 En Make, las variables específicas de objetivo y patrones permiten definir
 configuraciones particulares para ciertos objetivos o archivos.
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 Si queremos procesar archivos .csv para generar archivos .txt con una configuración
 específica para cada tipo de archivo:
@@ -226,8 +218,6 @@ En este ejemplo:
 - La regla `%.txt: %.csv` usa el archivo `.csv` como entrada (representado por `$<`) y
   genera un archivo `.txt` como salida (representado por `$@`).
 
-:::
-
 ## 3. Funciones avanzadas
 
 ### 3.1. Funciones para cadenas de texto
@@ -238,7 +228,7 @@ Make ofrece funciones que facilitan la manipulación de cadenas de texto.
 
 La función `subst` reemplaza un texto por otro en una cadena.
 
-:::note Sintaxis
+note Sintaxis
 
 ```makefile
 $(subst from,to,text)
@@ -248,9 +238,7 @@ $(subst from,to,text)
 - **to**: Texto de reemplazo.
 - **text**: Cadena donde se hace la búsqueda.
 
-:::
-
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 ```makefile
 SOURCES = file1.cpp file2.cpp file3.cpp
@@ -260,13 +248,11 @@ OBJECTS = $(subst .cpp,.o,$(SOURCES))
 Aquí, `subst` reemplaza `.cpp` por `.o` en la lista de archivos, generando
 `file1.o file2.o file3.o`.
 
-:::
-
 #### 3.1.2. Función `patsubst`
 
 La función `patsubst` permite hacer sustituciones usando patrones (como `%`).
 
-:::note Sintaxis
+note Sintaxis
 
 ```makefile
 $(patsubst pattern,replacement,text)
@@ -276,9 +262,7 @@ $(patsubst pattern,replacement,text)
 - **replacement**: Texto con el cual reemplazar el patrón.
 - **text**: Texto donde buscar el patrón.
 
-:::
-
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 ```makefile
 SOURCES = file1.cpp file2.cpp file3.cpp
@@ -288,8 +272,6 @@ OBJECTS = $(patsubst %.cpp,%.o,$(SOURCES))
 Este ejemplo reemplaza `.cpp` por `.o`, igual que el anterior, pero usando un patrón
 para mayor flexibilidad.
 
-:::
-
 #### 3.1.3. Funciones `filter` y `filter-out`
 
 Estas funciones permiten filtrar listas.
@@ -297,16 +279,14 @@ Estas funciones permiten filtrar listas.
 - **`filter`**: Mantiene las palabras que coinciden con un patrón.
 - **`filter-out`**: Elimina las palabras que coinciden con un patrón.
 
-:::note Sintaxis
+note Sintaxis
 
 ```makefile
 $(filter pattern...,text)
 $(filter-out pattern...,text)
 ```
 
-:::
-
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 ```makefile
 SOURCES = file1.c file2.cpp file3.h
@@ -315,14 +295,12 @@ C_FILES = $(filter %.c,$(SOURCES))
 
 Aquí, `filter` selecciona solo los archivos `.c`, resultando en `file1.c`.
 
-:::
-
 #### 3.1.4. Función `foreach`
 
 La función `foreach` permite iterar sobre una lista y aplicar una operación a cada
 elemento.
 
-:::note Sintaxis
+note Sintaxis
 
 ```makefile
 $(foreach var,list,text)
@@ -332,9 +310,7 @@ $(foreach var,list,text)
 - **list**: Lista sobre la que se iterará.
 - **text**: Texto que se evaluará para cada valor.
 
-:::
-
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 ```makefile
 DIRS = dir1 dir2 dir3
@@ -344,13 +320,11 @@ CLEAN_DIRS = $(foreach dir,$(DIRS),$(dir)/clean)
 Este ejemplo crea la lista `CLEAN_DIRS` con las rutas `dir1/clean`, `dir2/clean` y
 `dir3/clean`.
 
-:::
-
 #### 3.1.5. Función `if`
 
 La función `if` permite ejecutar algo según una condición.
 
-:::note Sintaxis
+note Sintaxis
 
 ```makefile
 $(if condition,then-part[,else-part])
@@ -360,9 +334,7 @@ $(if condition,then-part[,else-part])
 - **then-part**: Acción si la condición es verdadera.
 - **else-part**: Acción si la condición es falsa (opcional).
 
-:::
-
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 ```makefile
 USE_DEBUG = yes
@@ -371,8 +343,6 @@ CFLAGS = $(if $(USE_DEBUG),-g,-O2)
 
 Si `USE_DEBUG` es `yes`, se añade `-g` para depuración. Si no, se usa `-O2` para
 optimización.
-
-:::
 
 ### 3.2. Directivas
 
@@ -386,7 +356,7 @@ La directiva `include` permite incluir otros Makefiles dentro de uno principal. 
 ayuda a organizar el código de manera modular y facilita el mantenimiento al separar
 configuraciones y reglas en archivos diferentes.
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 ```makefile
 include config.mk
@@ -395,8 +365,6 @@ include config.mk
 Este comando incluirá el contenido de `config.mk` en el Makefile actual, lo que permite
 reutilizar configuraciones o reglas comunes en varios Makefiles.
 
-:::
-
 #### 3.2.2. Directiva `VPATH`
 
 La directiva `VPATH` especifica directorios adicionales donde Make buscará los archivos
@@ -404,7 +372,7 @@ necesarios, como los archivos fuente o de cabecera. Esto es útil cuando los arc
 están en el mismo directorio que el Makefile y se quiere mantener una estructura de
 proyecto ordenada.
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 ```makefile
 VPATH = src:include
@@ -414,15 +382,13 @@ En este caso, Make buscará primero en el directorio `src` y luego en `include` 
 encontrar los archivos necesarios. Esto es útil cuando tienes los archivos fuente y los
 archivos de cabecera en directorios separados.
 
-:::
-
 #### 3.2.3. Directiva `.PHONY`
 
 La directiva `.PHONY` se utiliza para declarar objetivos que no corresponden a archivos
 reales en el sistema de archivos. Esto es importante para evitar que Make intente buscar
 archivos con el mismo nombre que el objetivo y así prevenir conflictos.
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 ```makefile
 .PHONY: clean all
@@ -431,15 +397,13 @@ archivos con el mismo nombre que el objetivo y así prevenir conflictos.
 Aquí, `clean` y `all` son objetivos "falsos", ya que no representan archivos reales en
 el sistema, sino tareas o comandos que Make debe ejecutar.
 
-:::
-
 #### 3.2.4. Directiva `.DELETE_ON_ERROR`
 
 La directiva `.DELETE_ON_ERROR` indica que Make debe eliminar un archivo de objetivo si
 un comando falla durante su ejecución. Esto es útil para evitar que queden archivos
 incompletos o corruptos cuando un proceso de compilación falla.
 
-:::note Sintaxis
+note Sintaxis
 
 ```makefile
 .DELETE_ON_ERROR:
@@ -448,15 +412,13 @@ incompletos o corruptos cuando un proceso de compilación falla.
 Esto asegura que cualquier archivo generado se eliminará si ocurre un error en su
 construcción, manteniendo el sistema limpio.
 
-:::
-
 ### 3.3. Condicionales
 
 Makefiles permiten el uso de estructuras condicionales para adaptar las reglas según
 diferentes entornos o configuraciones. Esto es útil para crear Makefiles más flexibles y
 reutilizables.
 
-:::note Sintaxis
+note Sintaxis
 
 ```makefile
 ifeq (condición)
@@ -469,9 +431,7 @@ endif
 - **condición**: La condición a evaluar (puede ser una variable o expresión).
 - **acción**: La acción a realizar si la condición es verdadera o falsa.
 
-:::
-
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 ```makefile
 ifeq ($(USE_DEBUG),yes)
@@ -485,15 +445,13 @@ En este caso, si la variable `USE_DEBUG` es `yes`, Make utilizará las banderas 
 compilación para depuración (`-g`). Si no, se utilizarán las banderas de optimización
 (`-O2`).
 
-:::
-
 ### 3.4. Macros y funciones
 
 Make permite definir macros y funciones personalizadas para agrupar comandos y mejorar
 la legibilidad del Makefile. Estas macros ayudan a evitar la repetición y facilitan la
 reutilización del código.
 
-:::note Sintaxis de una macro
+note Sintaxis de una macro
 
 ```makefile
 define nombre_de_macro
@@ -504,9 +462,7 @@ endef
 - **nombre_de_macro**: El nombre de la macro que se define.
 - **comandos**: Los comandos que ejecutará la macro.
 
-:::
-
-:::tip Ejemplo de macro
+!!! example "Ejemplo" de macro
 
 ```makefile
 define compile_rule
@@ -517,7 +473,7 @@ endef
 Aquí, `compile_rule` es una macro que contiene la regla para compilar archivos `.c` en
 archivos `.o`.
 
-:::tip Ejemplo de invocación de macro
+!!! example "Ejemplo" de invocación de macro
 
 ```makefile
 %.o: %.c
@@ -526,8 +482,6 @@ archivos `.o`.
 
 La regla `%.o: %.c` invoca la macro `compile_rule` con `$(call compile_rule)`, lo que
 permite reutilizar la misma lógica de compilación en múltiples reglas.
-
-:::
 
 ## 4. Mejores prácticas y estilos
 
@@ -548,7 +502,7 @@ Algunas sugerencias incluyen:
 3. **Modularización:** Dividir los Makefiles grandes en varios archivos pequeños y
    organizados, utilizando la directiva `include`.
 
-:::tip Ejemplo de organización
+!!! example "Ejemplo" de organización
 
 ```makefile
 # Variables de configuración
@@ -576,8 +530,6 @@ clean:
 En este ejemplo, las variables de configuración se definen al inicio del archivo,
 seguidas de los objetivos, las reglas de compilación y finalmente la regla de limpieza.
 
-:::
-
 ### 4.2. Depuración
 
 La depuración de Makefiles puede ser compleja si no se siguen ciertas prácticas. Algunas
@@ -586,7 +538,7 @@ técnicas útiles incluyen:
 1. **Ejecución en seco (`-n`):** Esta opción permite ver qué comandos se ejecutarían sin
    realmente ejecutarlos, lo cual es útil para verificar el flujo de ejecución.
 
-   :::note Sintaxis
+   note Sintaxis
 
    ```sh
    make -n
@@ -595,12 +547,10 @@ técnicas útiles incluyen:
    Esto imprimirá los comandos que se ejecutarían sin hacer ninguna modificación en los
    archivos.
 
-   :::
-
 2. **Depuración detallada (`-d`):** Proporciona una salida de depuración detallada para
    ayudar a identificar errores en la ejecución del Makefile.
 
-   :::note Sintaxis
+   note Sintaxis
 
    ```sh
    make -d
@@ -608,12 +558,10 @@ técnicas útiles incluyen:
 
    Esto muestra información detallada sobre cómo Make procesa las reglas y dependencias.
 
-   :::
-
 3. **Impresión de variables:** Para comprobar el valor de las variables, se puede
    definir una regla que las imprima.
 
-   :::tip Ejemplo
+   !!! example "Ejemplo"
 
    ```makefile
    debug:
@@ -628,5 +576,3 @@ técnicas útiles incluyen:
 
    Se imprimirá el valor actual de la variable `CFLAGS`, ayudando a verificar su
    configuración y valor.
-
-   :::

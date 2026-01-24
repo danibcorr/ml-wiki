@@ -1,21 +1,28 @@
-# Dependencies
-/node_modules
+# Folders
+/data/
+/saved_objects/
+/runs/
+__pycache__/
+.mypy_cache/
+/results/
+*build/
+*dist/
+*venv/
+*env/
+*site/
+*.egg-info/
+.pytest_cache/
+*.ruff_cache/
+.cache
+.complexipy_cache/
 
-# Production
-/build
+# Files
+*.pyc
+*.pyo
+*.pyd
+*.egg-info
+.python-version
 
-# Generated files
-.docusaurus
-.cache-loader
-
-# Misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-node_modules
+# Exceptions
+!/.devcontainer/*
+!/.github/**

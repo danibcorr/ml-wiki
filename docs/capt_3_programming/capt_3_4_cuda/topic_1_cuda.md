@@ -17,7 +17,7 @@ toc_max_heading_level: 3
 ## 1. Introducción
 
 <p align="center">
-  <img src={require("@site/static/img/docs/logos/cuda-logo.png").default} height="200"/>
+  <img src="/assets/img/docs/logos/cuda-logo.png" height="200"/>
   <br />
   <em>Logo de Nvidia CUDA</em>
 </p>
@@ -39,7 +39,7 @@ C. A partir del punto 3, se explorarán otras bibliotecas y aplicaciones de CUDA
 Python.
 
 <p align="center">
-  <img src={require("./assets/B0FF9827-9E32-46F2-8365-FA0E686C649D.png").default}/>
+  <img src="/assets/img/docs/B0FF9827-9E32-46F2-8365-FA0E686C649D.png"/>
   <br />
 </p>
 
@@ -89,7 +89,7 @@ Es fundamental identificar qué partes del código se benefician de la paraleliz
 la GPU y cuáles deben procesarse secuencialmente en la CPU.
 
 <p align="center">
-  <img src={require("./assets/EEA7EE5C-1D79-4B88-8DF7-37E17BF0D2FF.jpeg").default}/>
+  <img src="/assets/img/docs/EEA7EE5C-1D79-4B88-8DF7-37E17BF0D2FF.jpeg"/>
   <br />
 </p>
 
@@ -103,7 +103,7 @@ núcleos. Algunas de las familias de GPU de la familia Tesla de NVidia se muestr
 siguiente imagen.
 
 <p align="center">
-  <img src={require("./assets/Untitled (1).png").default}/>
+  <img src="/assets/img/docs/Untitled (1).png"/>
   <br />
 </p>
 
@@ -115,7 +115,7 @@ SRAM. Los bloques de hilos en CUDA pueden ser asignados a cualquier multiprocesa
 su ejecución. La imagen siguiente ilustra la estructura de una GPU.
 
 <p align="center">
-  <img src={require("./assets/Untitled 1 (1).png").default}/>
+  <img src="/assets/img/docs/Untitled 1 (1).png"/>
   <br />
 </p>
 
@@ -125,7 +125,7 @@ arquitectura Volta, cada multiprocesador tiene 64 núcleos para operaciones de t
 int32, 64 núcleos para float32, 32 núcleos para float64 y 8 unidades tensoriales.
 
 <p align="center">
-  <img src={require("./assets/Untitled 2.png").default}/>
+  <img src="/assets/img/docs/Untitled 2.png"/>
   <br />
 </p>
 
@@ -133,7 +133,7 @@ De la imagen anterior se observa que el diseño de un bloque se utiliza como bas
 crear diseños más complejos al replicarlo.
 
 <p align="center">
-  <img src={require("./assets/Untitled 3.png").default}/>
+  <img src="/assets/img/docs/Untitled 3.png"/>
   <br />
 </p>
 
@@ -147,7 +147,7 @@ extensivas. El siguiente diagrama ilustra el proceso de operación de cada núcl
 tensorial por ciclo de reloj.
 
 <p align="center">
-  <img src={require("./assets/Untitled 4 (2).png").default}/>
+  <img src="/assets/img/docs/Untitled 4 (2).png"/>
   <br />
 </p>
 
@@ -161,7 +161,7 @@ aceptable. A continuación, se muestra el _Throughput_ para diferentes precision
 datos en arquitecturas de GPU modernas.
 
 <p align="center">
-  <img src={require("./assets/Untitled 5 (2).png").default}/>
+  <img src="/assets/img/docs/Untitled 5 (2).png"/>
   <br />
 </p>
 
@@ -182,7 +182,7 @@ simultáneamente, por lo que es necesario sincronizar los tiempos de ejecución 
 ambos componentes.
 
 <p align="center">
-  <img src={require("./assets/Untitled 6 (2).png").default}/>
+  <img src="/assets/img/docs/Untitled 6 (2).png"/>
   <br />
 </p>
 
@@ -343,7 +343,7 @@ i_{x} = (blockIdx.x \cdot blockDim.x) + threadIdx.x
 $$
 
 <p align="center">
-  <img src={require("./assets/Untitled 7 (1).png").default}/>
+  <img src="/assets/img/docs/Untitled 7 (1).png"/>
   <br />
 </p>
 
@@ -353,7 +353,7 @@ En casos donde el número de hilos excede el número de tareas, se debe asegurar
 índice obtenido $i_{x}$ sea menor que el número total de datos.
 
 <p align="center">
-  <img src={require("./assets/Untitled 8 (1).png").default}/>
+  <img src="/assets/img/docs/Untitled 8 (1).png"/>
   <br />
 </p>
 
@@ -407,7 +407,7 @@ versiones recientes de CUDA permiten el uso de **memoria unificada**, que facili
 intercambio de datos entre la CPU y la GPU.
 
 <p align="center">
-  <img src={require("./assets/Untitled 9.png").default}/>
+  <img src="/assets/img/docs/Untitled 9.png"/>
   <br />
 </p>
 
@@ -423,7 +423,7 @@ La memoria unificada ofrece una serie de ventajas:
 Los tipos de memoria en CUDA se pueden observar en la imagen siguiente:
 
 <p align="center">
-  <img src={require("./assets/Untitled 10 (1).png").default}/>
+  <img src="/assets/img/docs/Untitled 10 (1).png"/>
   <br />
 </p>
 
@@ -442,7 +442,7 @@ La memoria unificada presenta algunas consideraciones:
 Podemos resumir el proceso de la memoria unificada con la siguiente imagen:
 
 <p align="center">
-  <img src={require("./assets/AB407146-6A59-4476-A97F-B0D7BF2AA8CC.png").default}/>
+  <img src="/assets/img/docs/AB407146-6A59-4476-A97F-B0D7BF2AA8CC.png"/>
   <br />
 </p>
 
@@ -604,7 +604,7 @@ int main()
 ### 3.6. Ejemplos de Kernels característicos/comunes
 
 <p align="center">
-  <img src={require("./assets/Untitled 12.png").default}/>
+  <img src="/assets/img/docs/Untitled 12.png"/>
   <br />
 </p>
 

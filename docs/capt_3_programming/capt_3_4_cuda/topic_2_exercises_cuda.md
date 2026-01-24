@@ -16,7 +16,8 @@ toc_max_heading_level: 3
 Ejemplo
 </summary>
 
-En este código mostraremos como ejecutar la función primero en la GPU, y luego en la CPU.
+En este código mostraremos como ejecutar la función primero en la GPU, y luego en la
+CPU.
 
 ```c
 #include <stdio.h>
@@ -702,7 +703,7 @@ Ejemplo
 </summary>
 
 <p align="center">
-  <img src={require("./assets/Matrix.jpg").default}/>
+  <img src="./assets/Matrix.jpg"/>
   <br />
 </p>
 
@@ -840,7 +841,7 @@ Ejemplo
 </summary>
 
 <p align="center">
-  <img src={require("./assets/Thermal_Conductivity.jpg").default}/>
+  <img src="./assets/Thermal_Conductivity.jpg"/>
   <br />
 </p>
 
@@ -1016,8 +1017,8 @@ int main()
 
 Podemos utilizar el comando `!nsys profile --stats=true ./kernel` para obtener
 información sobre dicho kernel. Entre la información proporcionada, se encuentra el
-tiempo medio de ejecución del kernel po lo que sería muy útil para hacer evaluaciones del
-mejor reparto de bloques y hebras para el problema concreto.
+tiempo medio de ejecución del kernel po lo que sería muy útil para hacer evaluaciones
+del mejor reparto de bloques y hebras para el problema concreto.
 
 ### Optimización
 
@@ -1184,8 +1185,8 @@ int main()
 Ejemplo
 </summary>
 
-Al utilizar precarga de memoria, obtenemos menos transferencias de memoria pero con mayor
-contenido además de una reducción en el tiempo de ejecución del Kernel.
+Al utilizar precarga de memoria, obtenemos menos transferencias de memoria pero con
+mayor contenido además de una reducción en el tiempo de ejecución del Kernel.
 
 ```c
 #include <stdio.h>

@@ -17,7 +17,7 @@ toc_max_heading_level: 3
 ## 1. Introducción
 
 <p align="center">  
-  <img src={require("@site/static/img/docs/logos/git-logo.png").default}/>  
+  <img src="/assets/img/docs/logos/git-logo.png"/>  
   <br />  
   <em>Logo de Git</em>  
 </p>
@@ -69,7 +69,7 @@ restaurar versiones anteriores de manera segura y organizada.
 ### 2.2. Áreas
 
 <p align="center">  
-  <img src={require("@site/static/img/docs/git-stages.png").default}/>  
+  <img src="/assets/img/docs/git-stages.png"/>  
   <br />  
   <em>Áreas de trabajo en Git. [Link](https://ihcantabria.github.io/ApuntesGit/_images/comandos-workflow.png)</em>  
 </p>
@@ -212,7 +212,7 @@ Un comando de Git se compone de tres elementos fundamentales: el programa princi
 (`git`), el comando que define la acción concreta que se desea realizar y, de forma
 opcional, una serie de opciones y argumentos que ajustan su comportamiento.
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 ```
 git commit -m "Esto es un commit"
@@ -221,8 +221,6 @@ git commit -m "Esto es un commit"
 En este caso, `git commit` define la acción de confirmar cambios, `-m` es una opción que
 permite añadir un mensaje descriptivo y `"Esto es un commit"` es el argumento asociado a
 dicha opción.
-
-:::
 
 A continuación se describen los comandos más relevantes para la gestión del control de
 versiones en un repositorio Git a nivel local.
@@ -286,7 +284,7 @@ _source_ puede ser la rama `dev` y la _target_ puede ser la rama `main` o `maste
 ### 4.3. _Trunk-Based Development_
 
 <p align="center">
-  <img src={require("@site/static/img/docs/trunk-based-git.png").default}/>
+  <img src="/assets/img/docs/trunk-based-git.png"/>
   <br />
   <em>Esquema de desarrollo Trunk-Based. [Link](https://statusneo.com/wp-content/uploads/2022/12/Beginners%20Guide%20to%20Trunk-Based%20Development.png)</em>
 </p>
@@ -313,7 +311,7 @@ Sin embargo, presenta las siguientes desventajas:
 ### 4.4. Git Flow
 
 <p align="center">
-  <img src={require("@site/static/img/docs/git-flow-git.png").default}/>
+  <img src="/assets/img/docs/git-flow-git.png"/>
   <br />
   <em>Esquema de desarrollo Git Flow. [Link](https://images.edrawmax.com/what-is/gitflow-diagram/2-git-flow-model.png)</em>
 </p>
@@ -456,7 +454,7 @@ Se ejecuta antes de realizar un _commit_. Es útil para verificar el formato del
 ejecutar pruebas unitarias, validar los mensajes de _commit_ o evitar errores
 ortográficos.
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 Verificación de estilo con Black en la rama `main`.
 
@@ -485,14 +483,12 @@ fi
 echo "El commit se ha completado con éxito."
 ```
 
-:::
-
 #### 5.2.2. `pre-push`
 
 Se ejecuta antes de enviar cambios a un repositorio remoto. Se emplea para evitar
 _pushes_ en ramas protegidas o para ejecutar pruebas antes de subir los cambios.
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 Instalación de dependencias y ejecución de pruebas con Poetry.
 
@@ -533,14 +529,12 @@ fi
 echo "El push se ha completado con éxito."
 ```
 
-:::
-
 #### 5.2.3. `post-commit`
 
 Se ejecuta después de realizar un _commit_. Puede utilizarse para enviar notificaciones
 automáticas al equipo.
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 Notificación por correo tras un commit.
 
@@ -555,14 +549,12 @@ commit_message=$(git log -1 --pretty=%B)
 echo "Nuevo commit realizado: $commit_message" | sendmail -v equipo@example.com
 ```
 
-:::
-
 #### 5.2.4. `post-merge`
 
 Se ejecuta después de completar un _merge_. Es útil para actualizar dependencias o
 regenerar documentación.
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 Actualización de dependencias con Poetry.
 
@@ -593,8 +585,6 @@ fi
 echo "El post-merge se ha completado con éxito."
 ```
 
-:::
-
 #### 5.2.5. `pre-receive` y `post-receive`
 
 Estos _hooks_ se ejecutan en el servidor remoto al recibir cambios mediante _push_.
@@ -603,7 +593,7 @@ Estos _hooks_ se ejecutan en el servidor remoto al recibir cambios mediante _pus
   proyecto antes de aceptarlos.
 - **post-receive**: Se emplea para realizar despliegues automáticos en producción.
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 Bloquear _pushes_ con mensajes de _commit_ incorrectos.
 
@@ -622,9 +612,7 @@ while read oldrev newrev refname; do
 done
 ```
 
-:::
-
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 Despliegue automático tras recibir un _push_.
 
@@ -643,8 +631,6 @@ git pull origin main
 # Reiniciar el servidor web para aplicar cambios
 pm2 restart mi-aplicacion
 ```
-
-:::
 
 ## 6. Casos de uso prácticos en Git
 

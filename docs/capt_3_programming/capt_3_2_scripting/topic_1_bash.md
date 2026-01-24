@@ -15,7 +15,7 @@ toc_max_heading_level: 4
 ## 1. Introducción
 
 <p align="center">
-  <img src={require("@site/static/img/docs/logos/bash-logo.png").default} width="500"/>
+  <img src="/assets/img/docs/logos/bash-logo.png" width="500"/>
   <br />
   <em>Logo de Bash</em>
 </p>
@@ -37,18 +37,16 @@ al sistema qué intérprete debe usar para ejecutar los comandos del script.
 
 Es importante destacar que los scripts de BASH suelen tener la extensión `.sh`.
 
-:::note Nota
+note Nota
 
 El uso del shebang `#!/bin/bash` garantiza que el script se ejecute con el intérprete
 adecuado, independientemente del entorno en el que se ejecute.
-
-:::
 
 A continuación, se añaden las líneas de comandos que definen las acciones a realizar,
 como mostrar un mensaje en la terminal, ejecutar otros scripts o realizar tareas
 específicas.
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 Supongamos que tenemos un script llamado `script.sh`. Para hacerlo ejecutable, primero
 debemos otorgarle permisos.
@@ -84,14 +82,12 @@ directamente así:
 ./script.sh
 ```
 
-:::
-
 ### 2.2. Pasar parámetros como argumentos
 
 En BASH, los parámetros se pasan al script mediante el uso de `$`, seguido del número
 que representa la posición del argumento.
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 ```bash
 #!/bin/bash
@@ -103,18 +99,16 @@ echo "Adiós $2"
 En este caso, el primer argumento se pasa como `$1`, el segundo como `$2`, y así
 sucesivamente.
 
-:::note Nota
+note Nota
 
 `$0` siempre contiene el nombre del script.
-
-:::
 
 ### 2.3. Asignación de variables
 
 En BASH, las variables se asignan de manera sencilla, sin necesidad de declarar su tipo
 previamente.
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 ```bash
 #!/bin/bash
@@ -135,13 +129,11 @@ resultado=$(comando)
 El uso de `$(comando)` permite capturar la salida de un comando y almacenarla en una
 variable, lo cual resulta útil para automatizar tareas y procesar información.
 
-:::
-
 ### 2.4. Introducción de entradas del usuario
 
 Para capturar entradas del usuario, se utiliza el comando `read`.
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 ```bash
 #!/bin/bash
@@ -151,22 +143,18 @@ read nombre
 echo "Tu nombre es $nombre"
 ```
 
-:::
-
 ### 2.5. Operaciones aritméticas
 
 Las operaciones aritméticas en BASH se realizan dentro de `$(( ))`, lo que permite
 evaluar expresiones matemáticas de manera sencilla.
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 ```bash
 #!/bin/bash
 
 echo $((5 + 5))
 ```
-
-:::
 
 Operaciones disponibles:
 
@@ -181,7 +169,7 @@ Operaciones disponibles:
 En BASH, las condiciones se expresan utilizando el comando `if`, junto con los
 operadores de comparación y lógicos.
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 ```bash
 #!/bin/bash
@@ -194,8 +182,6 @@ else
     echo "Intruso"
 fi
 ```
-
-:::
 
 Operadores de comparación:
 
@@ -215,19 +201,17 @@ Operadores booleanos:
 Es importante recordar que `-a` y `-o` se usan dentro de corchetes, mientras que `&&` y
 `||` se emplean fuera de ellos.
 
-:::note Nota
+note Nota
 
 Recuerda que los operadores `&&` y `||` son más comunes fuera de los corchetes, mientras
 que los operadores `-a` y `-o` se utilizan dentro de los corchetes en las condiciones
 del `if`.
 
-:::
-
 ### 2.7. Bucles
 
 BASH soporta varios tipos de bucles. Un bucle `for` se define de la siguiente manera:
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 ```bash
 #!/bin/bash
@@ -237,12 +221,10 @@ for i in 1 2 3; do
 done
 ```
 
-:::
-
 Un bucle `while` se usa cuando se necesita repetir una acción mientras se cumpla una
 condición específica:
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 ```bash
 #!/bin/bash
@@ -254,18 +236,14 @@ while [ $i -le 5 ]; do
 done
 ```
 
-:::
-
 Comandos adicionales:
 
 - `break`: Finaliza el bucle.
 - `continue`: Salta a la siguiente iteración del bucle.
 
-:::note Los bucles `for` son ideales cuando se conoce el número exacto de iteraciones,
+note Los bucles `for` son ideales cuando se conoce el número exacto de iteraciones,
 mientras que los bucles `while` se utilizan cuando la condición de salida depende de una
 variable o el resultado de una operación.
-
-:::
 
 ### 2.8. Funciones
 
@@ -274,7 +252,7 @@ Definir funciones ayuda a hacer el código más modular, legible y fácil de man
 facilitando además la reutilización de bloques de código sin tener que escribirlos
 varias veces.
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 ```bash
 #!/bin/bash
@@ -286,7 +264,7 @@ function funcion() {
 funcion
 ```
 
-::::
+:
 
 ## 3. Ejemplos de automatización
 

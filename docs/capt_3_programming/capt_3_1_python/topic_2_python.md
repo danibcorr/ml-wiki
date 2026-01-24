@@ -15,18 +15,18 @@ toc_max_heading_level: 4
 ## 1. Introducción
 
 <p align="center">
-  <img src={require("@site/static/img/docs/logos/python-logo.png").default} height="250"/>
+  <img src="/assets/img/docs/logos/python-logo.png" height="250" width="250"/>
   <br />
   <em>Logo de Python</em>
 </p>
 
 **Python** es un lenguaje de programación de alto nivel, interpretado y de propósito
-general, desarrollado por Guido van Rossum. Su sintaxis se caracteriza
-por ser clara y legible, lo que facilita tanto el aprendizaje como la escritura de
-código eficiente y comprensible. Python cuenta con una amplia comunidad de
-desarrolladores y un ecosistema robusto de bibliotecas y frameworks que permiten abordar
-una gran diversidad de proyectos, incluyendo aplicaciones web, análisis de datos,
-automatización de tareas y aprendizaje automático.
+general, desarrollado por Guido van Rossum. Su sintaxis se caracteriza por ser clara y
+legible, lo que facilita tanto el aprendizaje como la escritura de código eficiente y
+comprensible. Python cuenta con una amplia comunidad de desarrolladores y un ecosistema
+robusto de bibliotecas y frameworks que permiten abordar una gran diversidad de
+proyectos, incluyendo aplicaciones web, análisis de datos, automatización de tareas y
+aprendizaje automático.
 
 ## 2. Instalación
 

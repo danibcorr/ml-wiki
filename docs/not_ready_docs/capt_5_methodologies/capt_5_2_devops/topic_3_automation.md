@@ -15,7 +15,7 @@ toc_max_heading_level: 3
 ## 1. Introducción
 
 <p align="center">  
-  <img src={require("@site/static/img/docs/logos/github-logo.png").default} width="500"/>  
+  <img src="/assets/img/docs/logos/github-logo.png" width="500"/>  
   <br />  
   <em>Logo de GitHub</em>  
 </p>
@@ -82,7 +82,7 @@ src
 ```
 
 <p align="center">  
-  <img src={require("@site/static/img/docs/workflow-github-actions.png").default}/>  
+  <img src="/assets/img/docs/workflow-github-actions.png"/>  
   <br />  
   <em>Logo de GitHub</em>  
 </p>
@@ -117,7 +117,7 @@ automatizar tareas dentro de un repositorio.
   **job** específico. Si varios jobs requieren los mismos permisos, es recomendable
   declararlos a nivel del workflow en lugar de repetirlos en cada job.
 
-  :::tip Ejemplo
+  !!! example "Ejemplo"
 
   Definición de permisos a nivel de **workflow**
 
@@ -164,7 +164,7 @@ automatizar tareas dentro de un repositorio.
   máquina virtual. Se debe especificar un sistema operativo con `runs-on`, permitiendo
   elegir entre Linux, macOS y Windows.
 
-  :::tip Ejemplo
+  !!! example "Ejemplo"
 
   ```yaml
   jobs:
@@ -172,14 +172,10 @@ automatizar tareas dentro de un repositorio.
       runs-on: ubuntu-latest
   ```
 
-  :::
-
-  :::note Nota
+  note Nota
 
   Consulta la documentación oficial sobre runners de GitHub
   [aquí](https://docs.github.com/en/actions/using-github-hosted-runners/using-github-hosted-runners/about-github-hosted-runners).
-
-  :::
 
 GitHub Actions permite integrar acciones predefinidas disponibles en
 [GitHub Actions](https://github.com/actions) y el
@@ -187,7 +183,7 @@ GitHub Actions permite integrar acciones predefinidas disponibles en
 
 ### 2.2.2. Ejemplos de configuración de workflows
 
-:::tip Ejemplo básico
+!!! example "Ejemplo" básico
 
 El siguiente ejemplo muestra un workflow que se ejecuta cuando hay un `push` o un
 `pull_request` en la rama `main`.
@@ -213,14 +209,12 @@ jobs:
         uses: actions/checkout@v4
 ```
 
-:::note Nota
+note Nota
 
 Se recomienda incluir la acción `checkout` al inicio del workflow para asegurarse de que
 el código más reciente esté disponible antes de ejecutar cualquier otra tarea.
 
-:::
-
-:::tip Ejemplo configuración de Python, Poetry y Flake8
+!!! example "Ejemplo" configuración de Python, Poetry y Flake8
 
 En este ejemplo, el workflow configura Python, administra dependencias con Poetry y
 valida el código con Flake8.
@@ -260,9 +254,7 @@ jobs:
         run: poetry run flake8 src/
 ```
 
-:::
-
-:::tip Ejemplo uso de caché para optimización de **workflows**
+!!! example "Ejemplo" uso de caché para optimización de **workflows**
 
 Para mejorar el rendimiento, es posible utilizar caché para almacenar dependencias y
 evitar reinstalaciones innecesarias.
@@ -309,14 +301,12 @@ jobs:
         run: poetry install
 ```
 
-:::note Nota
+note Nota
 
 La clave de caché `key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}`
 garantiza que el caché solo se actualice cuando cambie el archivo `poetry.lock`.
 Utilizar caché reduce significativamente el tiempo de ejecución del workflow, pero es
 importante monitorearlo para evitar el uso de dependencias obsoletas.
-
-:::
 
 ### 2.3. Modularización de workflows y acciones
 

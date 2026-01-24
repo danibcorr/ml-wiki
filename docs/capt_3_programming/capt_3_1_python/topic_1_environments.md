@@ -2,12 +2,11 @@
 sidebar_position: 1
 authors:
   - name: Daniel Bazo Correa
-description: Creación y gestión de entornos virtuales de Python con VENV, Anaconda y Poetry
+description:
+  Creación y gestión de entornos virtuales de Python con VENV, Anaconda y Poetry
 title: Gestión de entornos en Python
 toc_max_heading_level: 3
 ---
-
-import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem';
 
 ## Bibliografía
 
@@ -35,7 +34,7 @@ sobre todo, favorecen la **reproducibilidad** de los proyectos.
 ### 1.1. Anaconda
 
 <p align="center">
-  <img src={require("@site/static/img/docs/logos/anaconda-logo.png").default} width="500"/>
+  <img src="/assets/img/docs/logos/anaconda-logo.png" width="500"/>
   <br />
   <em>Logo de Anaconda</em>
 </p>
@@ -119,16 +118,15 @@ necesita un proyecto en particular, sin afectar al resto del sistema ni a otros
 proyectos. Dependiendo de la herramienta que elijas, el proceso puede variar un poco.
 Aquí tienes las opciones más utilizadas:
 
-<Tabs>
-   <TabItem value="venv" label="VENV">
+=== "VENV"
 
-      1. **Actualizar el sistema** (para tener las últimas mejoras y seguridad):
+      1.  **Actualizar el sistema** (para tener las últimas mejoras y seguridad):
 
          ```bash
          sudo apt update && sudo apt upgrade -y
          ```
 
-      2. **Añadir un repositorio con versiones recientes de Python** (opcional, solo si tu
+      2.  **Añadir un repositorio con versiones recientes de Python** (opcional, solo si tu
          sistema no tiene la versión que necesitas):
 
          ```bash
@@ -136,53 +134,51 @@ Aquí tienes las opciones más utilizadas:
          sudo apt update
          ```
 
-      3. **Instalar una versión específica de Python** (ejemplo: Python 3.10):
+      3.  **Instalar una versión específica de Python** (ejemplo: Python 3.10):
 
          ```bash
          sudo apt install python3.10
          ```
 
-      4. **Instalar VENV y herramientas básicas** (`pip` y cabeceras de desarrollo):
+      4.  **Instalar VENV y herramientas básicas** (`pip` y cabeceras de desarrollo):
 
          ```bash
          sudo apt install python3.10-venv python3.10-dev python3-pip
          ```
 
-      5. **Crear el entorno virtual** dentro del directorio del proyecto:
+      5.  **Crear el entorno virtual** dentro del directorio del proyecto:
 
          ```bash
          python -m venv nombre_del_entorno
          ```
 
-      6. **Activar el entorno** (a partir de aquí, todo lo que instales quedará dentro de esta
-         “caja aislada”):
+      6.  **Activar el entorno** (a partir de aquí, todo lo que instales quedará dentro de
+         esta “caja aislada”):
 
          ```bash
          source nombre_del_entorno/bin/activate
          ```
 
-   </TabItem>
+=== "Anaconda"
 
-   <TabItem value="anaconda" label="Anaconda">
-
-      1. **Descargar e instalar Anaconda** desde la
+      7. **Descargar e instalar Anaconda** desde la
          [página oficial](https://www.anaconda.com/download).
 
-      2. **Abrir la terminal de Anaconda Prompt** (en Windows se instala junto con Anaconda).
+      8. **Abrir la terminal de Anaconda Prompt** (en Windows se instala junto con Anaconda).
 
-      3. **Crear un nuevo entorno**:
+      9. **Crear un nuevo entorno**:
 
          ```bash
          conda create --name nombre_del_entorno
          ```
 
-      4. **Activar el entorno**:
+      10. **Activar el entorno**:
 
          ```bash
          conda activate nombre_del_entorno
          ```
 
-      5. **(Opcional) Usar `pip` dentro de Anaconda**: Se puede, aunque no se recomienda
+      11. **(Opcional) Usar `pip` dentro de Anaconda**: Se puede, aunque no se recomienda
          mezclar `conda` y `pip`, porque puede dar problemas de compatibilidad.
 
          ```bash
@@ -190,169 +186,157 @@ Aquí tienes las opciones más utilizadas:
          pip install --upgrade pip
          ```
 
-   </TabItem>
+=== "Poetry"
 
-   <TabItem value="poetry" label="Poetry">
-
-      1. **Instalar Poetry**:
+      12. **Instalar Poetry**:
 
          ```bash
          pip install poetry
          ```
 
-      2. **Configurar Poetry para que cree entornos dentro del proyecto** (esto es lo más
+      13. **Configurar Poetry para que cree entornos dentro del proyecto** (esto es lo más
          práctico y viene por defecto en las versiones recientes):
 
          ```bash
          poetry config virtualenvs.in-project true
          ```
 
-      3. **Crear un nuevo proyecto** (Poetry genera la estructura básica con carpetas y un
+      14. **Crear un nuevo proyecto** (Poetry genera la estructura básica con carpetas y un
          archivo `pyproject.toml`):
 
          ```bash
          poetry new nombre_del_proyecto
          ```
 
-      4. **Instalar dependencias y generar el entorno automáticamente**:
+      15. **Instalar dependencias y generar el entorno automáticamente**:
 
          ```bash
          poetry install
          ```
 
-   </TabItem>
+=== "uv"
 
-   <TabItem value="uv" label="uv">
-
-      1. **Instalar uv** (en Linux/macOS):
+      16. **Instalar uv** (en Linux/macOS):
 
          ```bash
          curl -LsSf https://astral.sh/uv/install.sh | sh
          ```
 
-      2. **Crear un nuevo proyecto**:
+      17. **Crear un nuevo proyecto**:
 
          ```bash
          uv init nombre_del_proyecto
          cd nombre_del_proyecto
          ```
 
-      3. **Crear el entorno virtual e instalar dependencias**:
+      18. **Crear el entorno virtual e instalar dependencias**:
 
          ```bash
          uv venv
          uv pip install nombre_del_paquete
          ```
 
-   </TabItem>
-</Tabs>
-
 ### 2.2. Gestión de la caché
 
 Para liberar espacio o solucionar problemas con dependencias, se puede purgar la caché
 con los siguientes comandos:
 
-<Tabs>
-   <TabItem value="pip" label="PIP">
+=== "PIP"
+
       ```bash
       pip cache purge
       ```
-   </TabItem>
-   <TabItem value="anaconda" label="Anaconda">
+
+=== "Anaconda"
+
       ```bash
       conda clean --all
       ```
-   </TabItem>
-   <TabItem value="poetry" label="Poetry">
+
+=== "Poetry"
+
       ```bash
-      poetry cache clear --all .
+      poetry cache clear --all
       ```
-   </TabItem>
-   <TabItem value="uv" label="uv">
+
+=== "uv"
+
       ```bash
       uv cache clean
       ```
-   </TabItem>
-</Tabs>
 
 ### 2.3. Actualización de paquetes
 
 Mantener las dependencias actualizadas es clave para el correcto funcionamiento del
 proyecto.
 
-<Tabs>
-   <TabItem value="pip" label="PIP">
+=== "PIP"
 
-      ##### Actualizar todos los paquetes
+      1. Actualizar todos los paquetes
 
-      Puedes utilizar el siguiente comando para actualizar todos los paquetes:
+         Puedes utilizar el siguiente comando para actualizar todos los paquetes:
 
-      ```bash
-      pip freeze | grep -v "^\-e" | cut -d = -f 1 | xargs -n1 pip install -U
-      ```
+         ```bash
+         pip freeze | grep -v "^\-e" | cut -d = -f 1 | xargs -n1 pip install -U
+         ```
 
-      Donde:
+         Donde:
 
-      - `pip freeze`: Genera una lista de los paquetes instalados.
-      - `grep -v "^\-e"`: Excluye las instalaciones en modo editable.
-      - `cut -d = -f 1`: Extrae solo los nombres de los paquetes, sin las versiones.
-      - `xargs -n1 pip install -U`: Actualiza cada paquete.
+         - `pip freeze`: Genera una lista de los paquetes instalados.
+         - `grep -v "^\-e"`: Excluye las instalaciones en modo editable.
+         - `cut -d = -f 1`: Extrae solo los nombres de los paquetes, sin las versiones.
+         - `xargs -n1 pip install -U`: Actualiza cada paquete.
 
-      ##### Actualizar un paquete específico
+      2. Actualizar un paquete específico
 
-      Para actualizar un paquete específico:
+         Para actualizar un paquete específico:
 
-      ```bash
-      pip install --upgrade nombre_del_paquete
-      ```
+         ```bash
+         pip install --upgrade nombre_del_paquete
+         ```
 
-   </TabItem>
-   <TabItem value="anaconda" label="Anaconda">
+=== "Anaconda"
 
-      ##### Actualizar todos los paquetes
+      1. Actualizar todos los paquetes
 
-      Aunque Anaconda permite la instalación de paquetes con PIP, se recomienda evitar
-      mezclar paquetes del repositorio de Anaconda y PIP, ya que esto podría causar
-      conflictos. Si decides usar paquetes de Anaconda, puedes actualizar todos los
-      paquetes con:
+         Aunque Anaconda permite la instalación de paquetes con PIP, se recomienda evitar
+         mezclar paquetes del repositorio de Anaconda y PIP, ya que esto podría causar
+         conflictos. Si decides usar paquetes de Anaconda, puedes actualizar todos los
+         paquetes con:
 
-      ```bash
-      conda update --all
-      ```
+         ```bash
+         conda update --all
+         ```
 
-      ##### Actualizar un paquete específico
+      2. Actualizar un paquete específico
 
-      Para actualizar un paquete específico:
+         Para actualizar un paquete específico:
 
-      ```bash
-      conda update nombre_del_paquete
-      ```
+         ```bash
+         conda update nombre_del_paquete
+         ```
 
-   </TabItem>
-   <TabItem value="poetry" label="Poetry">
+=== "Poetry"
 
-      ##### Actualizar todos los paquetes
+      1. Actualizar todos los paquetes
 
-      ```bash
-      poetry update
-      ```
+         ```bash
+         poetry update
+         ```
 
-      ##### Actualizar un paquete específico
+      2. Actualizar un paquete específico
 
-      Para actualizar un paquete específico:
+         Para actualizar un paquete específico:
 
-      ```bash
-      poetry update nombre_del_paquete
-      ```
+         ```bash
+         poetry update nombre_del_paquete
+         ```
 
-   </TabItem>
+=== "uv"
 
-   <TabItem value="uv" label="uv">
       ```bash
       uv pip install --upgrade nombre_del_paquete
       ```
-   </TabItem>
-</Tabs>
 
 ### 2.4. Instalación de paquetes desde un archivo de requisitos
 
@@ -361,38 +345,35 @@ Cuando un proyecto necesita dependencias específicas, es útil usar un archivo
 
 1. **Crear un archivo `requirements.txt`** con los paquetes y versiones deseadas:
 
-   ```plaintext
-   numpy==1.21.0
-   pandas>=1.3.0
-   requests
-   ```
+      ```plaintext
+      numpy==1.21.0
+      pandas>=1.3.0
+      requests
+      ```
 
 2. **Instalar los paquetes desde el archivo**:
 
-   <Tabs>
-      <TabItem value="pip" label="PIP">
-         ```bash
-         pip install -r requirements.txt
-         ```
-      </TabItem>
+=== "PIP"
 
-      <TabItem value="poetry" label="Poetry">
-         ```bash
-         poetry install
-         ```
-      </TabItem>
+      ```bash
+      pip install -r requirements.txt
+      ```
 
-      <TabItem value="uv" label="uv">
-         ```bash
-         uv pip install -r requirements.txt
-         ```
-      </TabItem>
-   </Tabs>
+=== "Poetry"
+
+      ```bash
+      poetry install
+      ```
+
+=== "uv"
+
+      ```bash
+      uv pip install -r requirements.txt
+      ```
 
 ### 2.5. Eliminar un entorno
 
-<Tabs>
-   <TabItem value="venv" label="VENV, Poetry, uv">
+=== "VENV, Poetry, uv"
 
       En la mayoría de los casos, los entornos creados con ``VENV``, ``Poetry`` y ``uv`` se alojan dentro del propio directorio del proyecto. Por ello, si ya no los necesitas, basta con eliminar la carpeta correspondiente para borrar por completo el entorno junto con toda su información.
 
@@ -400,8 +381,7 @@ Cuando un proyecto necesita dependencias específicas, es útil usar un archivo
       rm -rf nombre_del_entorno
       ```
 
-   </TabItem>
-   <TabItem value="anaconda" label="Anaconda">
+=== "Anaconda"
 
       1. **Listar los entornos disponibles**:
 
@@ -414,9 +394,6 @@ Cuando un proyecto necesita dependencias específicas, es útil usar un archivo
          ```bash
          conda env remove --name nombre_del_entorno
          ```
-
-   </TabItem>
-</Tabs>
 
 ### 2.6. Integración del entorno con Jupyter
 
@@ -445,8 +422,7 @@ necesidad de ejecutar los comandos anteriores.
 
 ### 2.7. Eliminación de paquetes instalados
 
-<Tabs>
-   <TabItem value="pip" label="PIP">
+=== "PIP"
 
       Eliminar todos los paquetes
 
@@ -461,24 +437,20 @@ necesidad de ejecutar los comandos anteriores.
       pip uninstall nombre_del_paquete
       ```
 
-   </TabItem>
-   <TabItem value="anaconda" label="Anaconda">
+=== "Anaconda"
 
       ```bash
       conda remove nombre_del_paquete
       ```
 
-   </TabItem>
-   <TabItem value="poetry" label="Poetry">
+=== "Poetry"
 
       ```bash
       poetry remove nombre_del_paquete
       ```
 
-   </TabItem>
-   <TabItem value="uv" label="uv">
+=== "uv"
+
       ```bash
       uv pip uninstall nombre_del_paquete
       ```
-   </TabItem>
-</Tabs>

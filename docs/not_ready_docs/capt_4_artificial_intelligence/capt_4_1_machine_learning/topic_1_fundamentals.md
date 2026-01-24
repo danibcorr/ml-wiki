@@ -132,7 +132,7 @@ generar un modelo que no capture correctamente patrones generales.
 Para evitar este problema, se recomienda introducir aleatoriedad en la selección de las
 muestras y definir un porcentaje para cada partición del conjunto de datos.
 
-:::note
+note
 
 Es fundamental establecer una **semilla aleatoria** antes de cualquier proceso que
 requiera aleatorización, garantizando así la reproducibilidad de los resultados.
@@ -170,8 +170,6 @@ torch.backends.cudnn.benchmark = False
 # Establecer semilla en Scikit-learn
 sklearn.utils.check_random_state(SEED)
 ```
-
-:::
 
 Otra estrategia para la selección de datos es la **validación cruzada**, la cual
 consiste en dividir el conjunto de datos en múltiples partes y realizar iteraciones en
@@ -229,14 +227,12 @@ donde los valores pueden solaparse, los _bins_ ayudan a agrupar puntos de datos 
 de un intervalo definido. De este modo, se generan distribuciones que permiten analizar
 el comportamiento de los datos.
 
-:::note
+note
 
 La elección del número de _bins_ es crucial, ya que debe reflejar correctamente la
 distribución de los datos. Este tipo de histogramas resulta especialmente útil en
 algoritmos como **Naïve Bayes**, donde se generan distribuciones de probabilidad en cada
 iteración, permitiendo obtener valores como medias e intervalos de confianza.
-
-:::
 
 El conjunto completo de datos recopilados se denomina **población** y se representa con
 la letra $N$. Un subconjunto de la población se denomina **muestra** y se representa con
@@ -246,13 +242,11 @@ La probabilidad de que un dato pertenezca a una determinada parte del histograma
 calcula dividiendo el número de muestras en esa sección entre el número total de
 muestras en la población.
 
-:::note
+note
 
 La confianza en los resultados depende del tamaño de la muestra: cuanto mayor sea el
 número de muestras, mayor será la confianza en la estimación. Donde la confianza
 representa el grado de incertidumbre asociado a una probabilidad.
-
-:::
 
 ### 3.2. Características de la probabilidad
 
@@ -303,7 +297,7 @@ Esta distribución es útil en situaciones donde se realizan múltiples intentos
 independientes de un mismo experimento y se desea conocer la probabilidad de obtener un
 número específico de éxitos.
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 Supongamos que se lanza una moneda equilibrada (equiprobable, la probabilidad de tener
 cara es la misa que de tener cruz) 5 veces y se quiere calcular la probabilidad de
@@ -336,8 +330,6 @@ $$
 Por lo tanto, la probabilidad de obtener exactamente 3 caras en 5 lanzamientos de una
 moneda equilibrada es del 31.25%.
 
-:::
-
 #### 3.2.2. Distribución de Poisson (discreta)
 
 La **distribución de Poisson** se utiliza para modelar la probabilidad de que ocurra un
@@ -363,7 +355,7 @@ donde:
 Esta distribución es especialmente útil cuando se estudian eventos raros o poco
 frecuentes en un período de tiempo determinado.
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 Supongamos que una central telefónica recibe en promedio 10 llamadas por hora y se desea
 calcular la probabilidad de que en una hora lleguen exactamente 7 llamadas.
@@ -382,15 +374,13 @@ $$
 Por lo tanto, la probabilidad de recibir exactamente 7 llamadas en una hora es del
 9.02%.
 
-:::
-
 #### 3.2.3. Distribución Normal o Gaussiana (continua)
 
 La distribución normal, también denominada distribución gaussiana, se representa
 mediante una curva en forma de campana. En esta distribución, el eje $$y$$ indica la
 **verosimilitud** (**_likelihood_**) de observar un determinado valor en el eje $$x$$.
 
-:::note Verosimilitud vs. Probabilidad
+note Verosimilitud vs. Probabilidad
 
 Aunque son conceptos relacionados, la verosimilitud y la probabilidad tienen diferencias
 clave:
@@ -409,8 +399,6 @@ Mientras que la probabilidad se emplea para predecir eventos futuros basándose 
 modelo conocido, la verosimilitud se usa para evaluar qué tan bien un modelo con ciertos
 parámetros explica los datos observados. Para obtener probabilidades a partir de la
 verosimilitud, se puede utilizar el Teorema de Bayes.
-
-:::
 
 La distribución normal es **simétrica** respecto a su **media** ($$\mu$$), lo que
 implica que el valor más verosímil es precisamente la media. La forma de la curva normal
@@ -480,13 +468,11 @@ Sea $F$ la función de distribución acumulada (CDF) y $\mathbb{R}$ el conjunto 
 reales, entonces se cumple que $F: \mathbb{R} \to [0,1]$, lo que significa que el rango
 de valores de la función de distribución está comprendido entre 0 y 1.
 
-:::note
+note
 
 Se usa mayúscula para $F(x)$ porque se refiere a la función matemática que mapea los
 valores de la variable aleatoria $X$ a la probabilidad acumulada, distinguiéndola de la
 función de densidad de probabilidad que se representa en minúscula, como $f(x)$.
-
-:::
 
 Algunas de sus propiedades fundamentales son:
 
@@ -504,7 +490,7 @@ Algunas de sus propiedades fundamentales son:
 Estas propiedades permiten calcular probabilidades acumuladas y facilitan el análisis de
 distribuciones de probabilidad continuas.
 
-:::tip Ejemplo
+!!! example "Ejemplo"
 
 Se desea calcular la probabilidad de que un valor se encuentre en el intervalo
 $[142.5,
@@ -536,8 +522,6 @@ diff = cdf_p1 - cdf_p2
 Por lo tanto, la probabilidad de que un valor de esta distribución normal se encuentre
 en el intervalo $[142.5, 155.7]$ es aproximadamente del 47.72%.
 
-:::
-
 #### 3.2.4. Distribución Exponencial (continua)
 
 La distribución exponencial se emplea para modelar el tiempo transcurrido entre eventos
@@ -561,7 +545,7 @@ $$
 
 La media de la distribución exponencial equivale a la **esperanza matemática** $E[X]$.
 
-:::note
+note
 
 La **esperanza matemática**, denotada como $E[X]$, es lo que comúnmente llamamos la
 **media** o el **valor esperado** de una variable aleatoria. Sin embargo, la
@@ -597,8 +581,6 @@ o la moda**. Por ejemplo, en una distribución sesgada a la derecha, como la dis
 exponencial, la esperanza matemática es mayor que la mediana, lo que indica que los
 valores más altos de la variable aleatoria tienen una probabilidad significativa de
 ocurrir.
-
-:::
 
 En la distribución exponencial, se obtiene:
 
@@ -645,7 +627,7 @@ $$
 \sigma^2 = \frac{(b-a)^2}{12}.
 $$
 
-:::tip ¿De dónde sale el 12 de la varianza de la distribución uniforme?
+tip ¿De dónde sale el 12 de la varianza de la distribución uniforme?
 
 La varianza de una variable aleatoria continua $X$ se define como:
 
@@ -700,8 +682,6 @@ Finalmente, después de desarrollar la expresión y simplificar, se obtiene la e
 $$
 \text{Var}(X) = \frac{(b-a)^2}{12}
 $$
-
-:::
 
 ### 3.3. Evaluación del error
 
@@ -776,12 +756,10 @@ peor que la media.
 
 El coeficiente $R^2$ se emplea en problemas de regresión sobre datos continuos.
 
-:::note
+note
 
 El coeficiente $R^2$ equivale al cuadrado del coeficiente de correlación de Pearson solo
 en el caso de la regresión lineal simple.
-
-:::
 
 #### 3.3.4. Coeficiente de Correlación de Pearson
 
@@ -848,7 +826,7 @@ posible aplicar estos modelos para realizar tareas como clasificación de nuevos
 predicción de valores y otras aplicaciones. A continuación, se presentan algunos de los
 métodos más utilizados.
 
-:::tip
+tip
 
 A pesar del auge de los modelos de lenguaje basados en arquitecturas de **aprendizaje
 profundo (_Deep Learning_)**, su aplicación sigue siendo limitada en ciertos contextos
@@ -861,8 +839,6 @@ Es recomendable iniciar con modelos más sencillos para comprender los resultado
 evaluar su utilidad en función de los objetivos del análisis. A partir de esta base, y
 considerando factores como el tiempo y los recursos disponibles, se puede optar por
 soluciones más complejas que ofrezcan un mayor retorno de inversión (ROI).
-
-:::
 
 ### 4.1. Regresión lineal
 
@@ -1874,8 +1850,13 @@ PDF con cierta precisión**
 **Mixture Model**  
 **GMM (Gaussian Mixture)**
 
-- Para la varianza usar la función de activación ELU: $$A(z) = \begin{cases} z & z > 0
-  \\ \alpha (e^z - 1) & z < 0 \end{cases}$$ modificada ELU(z) + 1 + 1e^{-15}
+- Para la varianza usar la función de activación ELU:
+
+  $$
+  A(z) = \begin{cases} z & z > 0
+  \\ \alpha (e^z - 1) & z < 0 \end{cases}$$ modificada
+  ELU(z) + 1 + 1e^{-15}
+  $$
 
 - Evita que la función de operación crezca mucho y suprida los datos con alta variancia.
   → Inestable
