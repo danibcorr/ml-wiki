@@ -39,8 +39,8 @@ problemas que me han surgido.
 
 # Consideraciones
 
-La mayoría de los ejemplos y configuraciones están basados en **Linux**, específicamente
-en distribuciones basadas en **Debian**. Algunos comandos pueden variar según tu sistema
+La mayoría de los ejemplos y configuraciones están basados en Linux, específicamente en
+distribuciones basadas en Debian. Algunos comandos pueden variar según tu sistema
 operativo o distribución, y mantener toda la información actualizada puede ser
 complicado.
 

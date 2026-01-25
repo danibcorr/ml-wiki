@@ -463,7 +463,7 @@ ortográficos.
 
     Verificación de estilo con Black en la rama `main`.
 
-    ``` bash
+    ```bash linenums="1"
     #!/bin/bash
     # Hook pre-commit para ejecutar Black solo en la rama main
 
@@ -497,7 +497,7 @@ _pushes_ en ramas protegidas o para ejecutar pruebas antes de subir los cambios.
 
     Instalación de dependencias y ejecución de pruebas con Poetry.
 
-    ``` bash
+    ```bash linenums="1"
     #!/bin/bash
     # Hook pre-push para actualizar pip, instalar Poetry, instalar dependencias y ejecutar pruebas
 
@@ -543,7 +543,7 @@ automáticas al equipo.
 
     Notificación por correo tras un commit.
 
-    ``` bash
+    ```bash linenums="1"
     #!/bin/bash
     # Hook post-commit para enviar una notificación por correo
 
@@ -563,7 +563,7 @@ regenerar documentación.
 
     Actualización de dependencias con Poetry.
 
-    ``` bash
+    ```bash linenums="1"
     #!/bin/bash
     # Hook post-merge para actualizar dependencias con Poetry
 
@@ -601,7 +601,7 @@ políticas del proyecto antes de aceptarlos.
 
     Bloquear _pushes_ con mensajes de _commit_ incorrectos.
 
-    ``` bash
+    ```bash linenums="1"
     #!/bin/bash
     # Hook pre-receive para validar mensajes de commit
 
@@ -623,7 +623,7 @@ producción.
 
     Despliegue automático tras recibir un _push_.
 
-    ``` bash
+    ```bash linenums="1"
     #!/bin/bash
     # Hook post-receive para desplegar automáticamente el código en producción
 

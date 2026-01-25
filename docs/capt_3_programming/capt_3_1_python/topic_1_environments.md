@@ -206,25 +206,25 @@ los siguientes comandos:
 
 === "PIP"
 
-      ``` bash
+      ```bash linenums="1"
       pip cache purge
       ```
 
 === "Anaconda"
 
-      ``` bash
+      ```bash linenums="1"
       conda clean --all
       ```
 
 === "Poetry"
 
-      ``` bash
+      ```bash linenums="1"
       poetry cache clear --all
       ```
 
 === "uv"
 
-      ``` bash
+      ```bash linenums="1"
       uv cache clean
       ```
 
@@ -242,7 +242,7 @@ dependencias actualizadas es clave para el correcto funcionamiento del proyecto.
 
          Puedes utilizar el siguiente comando para actualizar todos los paquetes:
 
-         ``` bash
+         ```bash linenums="1"
          pip freeze | grep -v "^\-e" | cut -d = -f 1 | xargs -n1 pip install -U
          ```
 
@@ -257,7 +257,7 @@ dependencias actualizadas es clave para el correcto funcionamiento del proyecto.
 
          Para actualizar un paquete específico:
 
-         ``` bash
+         ```bash linenums="1"
          pip install --upgrade nombre_del_paquete
          ```
 
@@ -270,7 +270,7 @@ dependencias actualizadas es clave para el correcto funcionamiento del proyecto.
          conflictos. Si decides usar paquetes de Anaconda, puedes actualizar todos los
          paquetes con:
 
-         ``` bash
+         ```bash linenums="1"
          conda update --all
          ```
 
@@ -278,7 +278,7 @@ dependencias actualizadas es clave para el correcto funcionamiento del proyecto.
 
          Para actualizar un paquete específico:
 
-         ``` bash
+         ```bash linenums="1"
          conda update nombre_del_paquete
          ```
 
@@ -286,7 +286,7 @@ dependencias actualizadas es clave para el correcto funcionamiento del proyecto.
 
       1. Actualizar todos los paquetes
 
-         ``` bash
+         ```bash linenums="1"
          poetry update
          ```
 
@@ -294,13 +294,13 @@ dependencias actualizadas es clave para el correcto funcionamiento del proyecto.
 
          Para actualizar un paquete específico:
 
-         ``` bash
+         ```bash linenums="1"
          poetry update nombre_del_paquete
          ```
 
 === "uv"
 
-      ``` bash
+      ```bash linenums="1"
       uv pip install --upgrade nombre_del_paquete
       ```
 

@@ -29,8 +29,8 @@ administración de sistemas.
 
 ### Ejemplo de programa base
 
-Un programa básico en BASH comienza con la línea `#!/bin/bash` (_shebang_), que indica al
-sistema qué intérprete debe usar para ejecutar los comandos del script.
+Un programa básico en BASH comienza con la línea `#!/bin/bash` (_shebang_), que indica
+al sistema qué intérprete debe usar para ejecutar los comandos del script.
 
 Es importante destacar que los scripts de BASH suelen tener la extensión `.sh`.
 
@@ -51,14 +51,14 @@ específicas.
     Primero, crearemos un _script_ básico, con nombre `script.sh`, para mostrar en la
     terminal un `Hola mundo`:
 
-    ``` bash
+    ```bash linenums="1"
     #!/bin/bash
 
     echo "Hola mundo"
     ```
 
-En Linux, cada archivo tiene **permisos** que determinan quién puede leerlo, escribirlo o
-ejecutarlo. Cuando creas un script (`script.sh`), normalmente **no tiene permisos de
+En Linux, cada archivo tiene **permisos** que determinan quién puede leerlo, escribirlo
+o ejecutarlo. Cuando creas un script (`script.sh`), normalmente **no tiene permisos de
 ejecución por defecto**, lo que significa que no se puede ejecutar directamente. Para
 permitir que el sistema lo ejecute como un programa, usamos:
 
@@ -81,12 +81,12 @@ directamente así:
 
 ### Pasar parámetros como argumentos
 
-En BASH, los parámetros se pasan al script mediante el uso de `$`, seguido del número que
-representa la posición del argumento.
+En BASH, los parámetros se pasan al script mediante el uso de `$`, seguido del número
+que representa la posición del argumento.
 
 ???+ example "Ejemplo"
 
-    ``` bash
+    ```bash linenums="1"
     #!/bin/bash
 
     echo "Hola $1"
@@ -107,7 +107,7 @@ previamente.
 
 ???+ example "Ejemplo"
 
-    ``` bash
+    ```bash linenums="1"
     #!/bin/bash
 
     nombre="Daniel"
@@ -117,7 +117,7 @@ previamente.
     También es posible almacenar el resultado de la ejecución de un comando del sistema en
     una variable:
 
-    ``` bash
+    ```bash linenums="1"
     #!/bin/bash
 
     resultado=$(comando)
@@ -132,7 +132,7 @@ Para capturar entradas del usuario, se utiliza el comando `read`.
 
 ???+ example "Ejemplo"
 
-    ``` bash
+    ```bash linenums="1"
     #!/bin/bash
 
     echo "¿Cuál es tu nombre?"
@@ -147,7 +147,7 @@ evaluar expresiones matemáticas de manera sencilla.
 
 ???+ example "Ejemplo"
 
-    ``` bash
+    ```bash linenums="1"
     #!/bin/bash
 
     echo $((5 + 5))
@@ -163,12 +163,12 @@ Operaciones disponibles:
 
 ### Condiciones
 
-En BASH, las condiciones se expresan utilizando el comando `if`, junto con los operadores
-de comparación y lógicos.
+En BASH, las condiciones se expresan utilizando el comando `if`, junto con los
+operadores de comparación y lógicos.
 
 ???+ example "Ejemplo"
 
-    ``` bash
+    ```bash linenums="1"
     #!/bin/bash
 
     if [ "$1" == "Dani" ] || [ "$1" == "Paco" ]; then
@@ -210,7 +210,7 @@ BASH soporta varios tipos de bucles. Un bucle `for` se define de la siguiente ma
 
 ???+ example "Ejemplo"
 
-    ``` bash
+    ```bash linenums="1"
     #!/bin/bash
 
     for i in 1 2 3; do
@@ -223,7 +223,7 @@ condición específica:
 
 ???+ example "Ejemplo"
 
-    ``` bash
+    ```bash linenums="1"
     #!/bin/bash
 
     i=1
@@ -246,12 +246,12 @@ variable o el resultado de una operación.
 
 Las funciones en BASH permiten organizar y reutilizar el código de manera más eficiente.
 Definir funciones ayuda a hacer el código más modular, legible y fácil de mantener,
-facilitando además la reutilización de bloques de código sin tener que escribirlos varias
-veces.
+facilitando además la reutilización de bloques de código sin tener que escribirlos
+varias veces.
 
 ???+ example "Ejemplo"
 
-    ``` bash
+    ```bash linenums="1"
     #!/bin/bash
 
     function funcion() {
