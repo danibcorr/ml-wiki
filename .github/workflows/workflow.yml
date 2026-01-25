@@ -45,6 +45,9 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v6
 
+      - name: Setup Python Environment
+        uses: ./.github/actions/setup-python-env
+
       - name: Get Version
         id: version
         uses: ./.github/actions/obtain-version
