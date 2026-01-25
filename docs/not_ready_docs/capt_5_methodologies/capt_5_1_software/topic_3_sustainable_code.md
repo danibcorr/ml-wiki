@@ -6,14 +6,14 @@ description: Conoce las claves esenciales para crear código sostenible.
 title: Código sostenible
 ---
 
-## 1. Código sostenible
+## Código sostenible
 
 El desarrollo de un proyecto debe realizarse bajo una estructura de código clara y
 sostenible, utilizando herramientas y metodologías para garantizar su organización y
 limpieza. Estas prácticas son fundamentales durante el desarrollo, puesta en producción
 y evolución del proyecto.
 
-### 1.1. Estructura del proyecto
+### Estructura del proyecto
 
 Un proyecto debe estar organizado en dos partes principales:
 
@@ -44,7 +44,7 @@ src (o nombre del proyecto)
 ├── main.py
 ```
 
-### 1.2. Código limpio
+### Código limpio
 
 La guía de estilo [PEP 8](https://pep8.org/) define convenciones para escribir código
 Python que sea legible y consistente. A continuación, se destacan sus principales
@@ -62,7 +62,7 @@ aplicar estas convenciones automáticamente en los proyectos.
 
 Ejemplo:
 
-```py linenums="1"
+```py
 def funcion_larga(parametro1, parametro2,
                   parametro3, parametro4):
     return parametro1 + parametro2 + parametro3 + parametro4
@@ -75,7 +75,7 @@ def funcion_larga(parametro1, parametro2,
   mantener la consistencia.
 - Para cadenas multilínea, se prefieren las comillas dobles.
 
-```py linenums="1"
+```py
 cadena_simple = 'Hola mundo'
 cadena_doble = "Hola mundo"
 cadena_multilinea = """
@@ -95,7 +95,7 @@ siguiente orden:
 
 Se recomienda utilizar importaciones absolutas.
 
-```py linenums="1"
+```py
 import os
 import sys
 
@@ -111,7 +111,7 @@ from local_module import local_function
 - Se debe agregar un espacio alrededor de operadores de asignación, comparación y
   booleanos.
 
-```py linenums="1"
+```py
 x = 5
 y = x + 1
 if x == y:
@@ -125,7 +125,7 @@ if x == y:
 - Los **docstrings** son obligatorios para módulos, funciones, clases y métodos
   públicos, describiendo su funcionalidad y parámetros.
 
-```py linenums="1"
+```py
 def suma(a, b):
     """
     Suma dos números y devuelve el resultado.
@@ -150,7 +150,7 @@ def suma(a, b):
 - **Métodos y variables de instancia:** Como las funciones, con un guion bajo inicial
   para los elementos no públicos (ej. `_variable_interna`).
 
-```py linenums="1"
+```py
 class MiClase:
     MI_CONSTANTE = 42
 

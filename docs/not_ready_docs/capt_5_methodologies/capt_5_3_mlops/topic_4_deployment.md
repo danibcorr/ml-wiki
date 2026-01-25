@@ -211,7 +211,7 @@ A continuación, se muestra un fragmento de código que inicializa una sesión d
 inferencia con un modelo ONNX, estableciendo un orden de prioridad en los EPs
 (preferencia por CUDA sobre CPU):
 
-```py linenums="1"
+```py
 import onnxruntime as ort
 
 session = ort.InferenceSession("modelo.onnx", providers=["CUDAExecutionProvider", "CPUExecutionProvider"])
@@ -222,7 +222,7 @@ resultados = session.run(None, inputs)
 También es posible modificar la prioridad de los EPs para utilizar solo el proveedor de
 CPU:
 
-```py linenums="1"
+```py
 session.set_providers(["CPUExecutionProvider"])
 ```
 
@@ -260,7 +260,7 @@ sidebar_position: 7 authors:
 
 ---
 
-## 1. Publicación de un paquete de Python en PyPI
+## Publicación de un paquete de Python en PyPI
 
 Para publicar un paquete de Python en PyPI, es necesario que el proyecto tenga una
 estructura organizada. Es recomendable alojar el paquete en un repositorio para
@@ -270,7 +270,7 @@ prácticas de desarrollo.
 El primer paso es crear un archivo `setup.py` que contenga la configuración del paquete.
 A continuación, se muestra un ejemplo de configuración básica:
 
-```py linenums="1"
+```py
 import os
 from setuptools import setup, find_packages
 import codecs

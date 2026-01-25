@@ -10,7 +10,7 @@ title: Guía CV
 
 - [JeffSu](https://www.youtube.com/@JeffSu)
 
-## 1. Introducción
+## Introducción
 
 Esta guía se ha elaborado a partir de información recopilada de diversas fuentes, como
 artículos, videos, blogs especializados y modelos de currículum. Su propósito es servir
@@ -22,7 +22,7 @@ El objetivo es que este material resulte útil para avanzar en la carrera profes
 que, en caso de tener que enfrentar nuevamente un proceso de búsqueda laboral, funcione
 como una referencia sólida y estructurada.
 
-## 2. Preparación para la búsqueda de empleo
+## Preparación para la búsqueda de empleo
 
 En un mercado laboral altamente competitivo no basta con poseer conocimientos técnicos.
 Es fundamental saber **presentar las competencias de manera clara y convincente**,
@@ -121,7 +121,7 @@ recomienda:
 - Eliminar cualquier error ortográfico o gramatical.
 - Evitar frases genéricas o clichés como “trabajo en equipo” o “altamente motivado”.
 
-## 3. Carta de Presentación
+## Carta de Presentación
 
 La carta de presentación es un documento breve que acompaña al currículum y explica
 **por qué eres la persona ideal para el puesto**. A diferencia del CV, que se centra en
@@ -199,7 +199,7 @@ páginas, manteniendo la brevedad sin sacrificar claridad ni precisión. Finalme
 esencial cuidar el tono, que debe ser profesional, cercano y directo, transmitiendo
 seguridad y autenticidad en cada frase.
 
-## 4. LinkedIn
+## LinkedIn
 
 ### 4.1. LinkedIn como complemento
 
@@ -250,7 +250,7 @@ Para solicitarlas, basta con acceder al perfil del contacto, hacer clic en el bo
 mensaje para que refleje claramente tu relación profesional y el tipo de feedback que
 aprecias.
 
-## 5. Habilidades de Entrevista
+## Habilidades de Entrevista
 
 ### 5.1. La entrevista como conversación estratégica
 

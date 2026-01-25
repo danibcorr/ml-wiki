@@ -10,7 +10,7 @@ title: Estructuras de datos y algoritmos
 
 - [YouTube Cesar Ramos](https://www.youtube.com/@cesarramos2592)
 
-## 1. Notación Big O
+## Notación Big O
 
 La notación Big O se utiliza para evaluar la eficiencia de los algoritmos en términos de
 complejidad temporal y espacial. La **complejidad temporal** se refiere a cómo varía el
@@ -18,7 +18,7 @@ tiempo requerido por un algoritmo en función del número de elementos de entrad
 mientras que la **complejidad espacial** se refiere al uso de memoria en función del
 número de variables utilizadas por el algoritmo.
 
-### 1.1. Ejemplos de notación Big O
+### Ejemplos de notación Big O
 
 - $O\left( 1 \right)$: El tiempo de ejecución es constante, independientemente del
   tamaño de la entrada. Es típico en algoritmos que acceden a un número fijo de
@@ -47,14 +47,14 @@ número de variables utilizadas por el algoritmo.
 En casos donde se realizan múltiples operaciones con diferentes costes temporales, la
 notación Big O se utiliza para representar el peor caso.
 
-### 1.2. Complejidad de algoritmos multipartes
+### Complejidad de algoritmos multipartes
 
 En algoritmos que involucran múltiples estructuras de datos, la complejidad puede
 depender de más de un parámetro.
 
 ???+ example "Ejemplo"
 
-```py linenums="1"
+```py
 def funcion():
     for i in arrayA:
         ...
@@ -68,7 +68,7 @@ $A$ y $B$ son los tamaños de los arrays `arrayA` y `arrayB`, respectivamente.
 
 ???+ example "Ejemplo"
 
-```py linenums="1"
+```py
 def funcion():
     for i in arrayA:
         for j in arrayB:
@@ -83,7 +83,7 @@ Es importante señalar que la notación Big O no está limitada a la letra $N$; 
 letra puede ser utilizada para representar el tamaño de la entrada en función del
 contexto del problema.
 
-## 2. Métodos de ordenación
+## Métodos de ordenación
 
 Este capítulo presenta algunos de los métodos de ordenación más utilizados en
 estructuras de datos y algoritmos.
@@ -102,7 +102,7 @@ indica que la lista está ordenada.
 
 tip Implementación
 
-```py linenums="1"
+```py
 def ordenacion_burbuja(lista: list[int]) -> list[int]:
 
     # Bucle externo que recorre toda la lista
@@ -138,7 +138,7 @@ completamente ordenada.
 
 tip Implementación
 
-```py linenums="1"
+```py
 def ordenacion_seleccion(lista: list[int]) -> list[int]:
 
     # Bucle externo que recorre toda la lista
@@ -178,7 +178,7 @@ elementos desordenados.
 
 tip Implementación
 
-```py linenums="1"
+```py
 def ordenacion_insercion(lista: list[int]) -> list[int]:
 
     # Bucle que recorre la lista desde el segundo elemento hasta el final
@@ -205,7 +205,7 @@ def ordenacion_insercion(lista: list[int]) -> list[int]:
 Estos métodos de ordenación, aunque menos eficientes para grandes conjuntos de datos,
 proporcionan una buena base para entender algoritmos más avanzados y eficientes.
 
-## 3. Métodos de búsqueda
+## Métodos de búsqueda
 
 Este capítulo explora algunos de los métodos de búsqueda más utilizados en estructuras
 de datos y algoritmos.
@@ -224,7 +224,7 @@ elementos.
 
 tip Implementación
 
-```py linenums="1"
+```py
 def busqueda_lineal(lista: list[int], valor_buscar: int) -> int:
 
     # Recorre la lista utilizando enumerate para obtener índice y valor
@@ -252,7 +252,7 @@ posibles ubicaciones a una sola. Este método requiere que la lista esté ordena
 
 tip Implementación
 
-```py linenums="1"
+```py
 def busqueda_binaria(lista: list[int], valor_buscar: int) -> int:
 
     # Ordena la lista de manera ascendente
@@ -283,7 +283,7 @@ def busqueda_binaria(lista: list[int], valor_buscar: int) -> int:
     return None
 ```
 
-## 4. Estructuras de Datos
+## Estructuras de Datos
 
 ### 4.1. Pilas
 
@@ -298,7 +298,7 @@ Las pilas pueden tener un tamaño estático o dinámico.
 
 tip Implementación
 
-```py linenums="1"
+```py
 class Pila:
 
     def __init__(self, tam: int = None):
@@ -364,7 +364,7 @@ extremo y las de extracción en el otro.
 
 tip Implementación
 
-```py linenums="1"
+```py
 class Cola():
 
     def __init__(self, tam: int = None):
@@ -454,7 +454,7 @@ al siguiente nodo o a `None` si es el último nodo.
 
 tip Implementación
 
-```py linenums="1"
+```py
 class Nodo():
 
     def __init__(self, dato: int):
@@ -553,7 +553,7 @@ lista en ambos sentidos y facilita la eliminación de elementos.
 
 tip Implementación
 
-```py linenums="1"
+```py
 class Nodo():
 
     def __init__(self, dato: int):
@@ -660,7 +660,7 @@ inserción y eliminación cuando se conoce el nodo previo.
 
 tip Implementación
 
-```py linenums="1"
+```py
 class Nodo():
 
     def __init__(self, dato: int):
@@ -766,7 +766,7 @@ forma circular.
 
 tip Implementación
 
-```py linenums="1"
+```py
 class Nodo():
 
     def __init__(self, dato: int):
@@ -918,7 +918,7 @@ eficiente para organizar y buscar datos.
 
 tip Implementación
 
-```py linenums="1"
+```py
 class Nodo():
 
     def __init__(self, valor: int = None, padre: int = None, es_raiz: bool = False, es_izquierdo: bool = False, es_derecho: bool = False):

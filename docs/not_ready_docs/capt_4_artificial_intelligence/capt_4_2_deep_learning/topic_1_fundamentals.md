@@ -11,7 +11,7 @@ title: Deep Learning
 - [Deep Learning for Coders with Fastai and PyTorch: AI Applications Without a PhD](https://course.fast.ai/Resources/book.html)
 - [Standford](https://youtube.com/playlist?list=PLoROMvodv4rNjRoawgt72BBNwL2V7doGI&si=TXQ-EA7J7sAwfKEQ).
 
-## 1. Introducción al aprendizaje profundo
+## Introducción al aprendizaje profundo
 
 Antes de abordar el estudio del **aprendizaje profundo (_Deep Learning_)**, resulta
 esencial comprender el concepto de inteligencia, una noción que, aunque aparentemente
@@ -59,7 +59,7 @@ tareas que antes se consideraban exclusivas del razonamiento humano, tales como 
 reconocimiento de imágenes, el procesamiento del lenguaje natural, el análisis de audio
 y la interpretación de grandes volúmenes de datos no estructurados.
 
-### 1.1. Escalabilidad y leyes de crecimiento
+### Escalabilidad y leyes de crecimiento
 
 Un aspecto esencial en la evolución del aprendizaje profundo es el estudio de las
 **leyes de escalado neuronal (_Neural Scaling Laws_)**, las cuales describen
@@ -107,7 +107,7 @@ modo, el campo avanza no solo hacia modelos más grandes y potentes, sino tambi�
 sistemas más eficientes, accesibles y sostenibles desde el punto de vista energético y
 económico.
 
-### 1.2. Memoria implícita y modelos fundacionales
+### Memoria implícita y modelos fundacionales
 
 Las redes neuronales artificiales poseen la capacidad de aproximar distribuciones de
 probabilidad a partir de los datos de entrada. En esencia, su propósito es construir una
@@ -178,7 +178,7 @@ mundo que pueden reutilizarse en diversos contextos. A partir de una base preent
 sobre grandes volúmenes de datos, es posible **ajustarlos finamente (_fine-tuning_)**
 para resolver tareas concretas sin necesidad de entrenarlos desde cero.
 
-### 1.3. El aprendizaje como problema de optimización
+### El aprendizaje como problema de optimización
 
 El proceso de aprendizaje en redes neuronales debe entenderse, desde una perspectiva
 formal, como un problema de optimización matemática. En este marco, un modelo se define
@@ -243,7 +243,7 @@ compresión es, en última instancia, una manifestación del aprendizaje mismo: 
 habilidad de mapear, abstraer y recuperar información compleja sin necesidad de
 conservar todos los detalles explícitos.
 
-### 1.4. Arquitecturas y tipos de datos
+### Arquitecturas y tipos de datos
 
 El aprendizaje profundo se adapta a diferentes problemas mediante el uso de
 arquitecturas especializadas, diseñadas para extraer información relevante según la
@@ -333,7 +333,7 @@ estructura y formato:
   original, reforzando la narrativa y manteniendo la progresión natural hacia los
   fundamentos de _Deep Learning_.
 
-## 2. Conceptos básicos de matemáticas
+## Conceptos básicos de matemáticas
 
 ### 2.1. Tensores como estructura fundamental
 
@@ -515,7 +515,7 @@ vectoriales.
 A continuación, se presenta un ejemplo de implementación de la similitud del coseno
 utilizando Python con la biblioteca **NumPy**:
 
-```py linenums="1"
+```py
 import numpy as np
 
 def normalizar_matriz(matriz: np.ndarray) -> np.ndarray:
@@ -538,7 +538,7 @@ print(similarity_matrix)
 
 El siguiente código muestra el mismo procedimiento utilizando **PyTorch**:
 
-```py linenums="1"
+```py
 import torch
 import torch.nn.functional as F
 
@@ -630,7 +630,7 @@ optimización de cálculos o el uso de estrategias que reduzcan el coste computa
 Para crear tensores, es posible hacerlo a partir de listas, mediante inicialización
 aleatoria o con valores fijos, por ejemplo:
 
-```py linenums="1"
+```py
 import torch
 
 # Tensores básicos
@@ -660,7 +660,7 @@ posibles, pero también el consumo de memoria. El dispositivo (`device`) es rele
 porque un tensor ubicado en la GPU no puede ser manipulado directamente desde la CPU,
 por lo que es necesario transferirlo o copiarlo según sea necesario. Por ejemplo:
 
-```py linenums="1"
+```py
 tensor = torch.rand((2, 3, 4))
 print("Tipo de dato:", tensor.dtype)
 print("Forma:", tensor.shape)
@@ -674,7 +674,7 @@ mínimo. El parámetro `dim` indica el eje sobre el cual se aplica la operación
 `dim=0` actúa sobre las filas (por columnas), mientras que `dim=1` actúa sobre las
 columnas (por filas).
 
-```py linenums="1"
+```py
 tensor = torch.tensor([[1., 2., 3.], [4., 5., 6.]])
 
 print("Suma total:", tensor.sum())
@@ -688,7 +688,7 @@ modificar la forma del tensor sin alterar sus datos subyacentes. Estas operacion
 fundamentales para adaptar las dimensiones de los tensores según las necesidades de las
 redes neuronales.
 
-```py linenums="1"
+```py
 x = torch.arange(1, 7)
 print("Tensor original:", x)
 
@@ -709,7 +709,7 @@ Las funciones `permute()` y `transpose()` permiten reordenar las dimensiones de 
 tensor, lo cual es especialmente útil en el procesamiento de imágenes o secuencias, por
 ejemplo, al desplazar canales de color o mapas de características.
 
-```py linenums="1"
+```py
 tensor = torch.rand((2, 3, 4))
 print("Forma original:", tensor.shape)
 
@@ -726,7 +726,7 @@ También es posible combinar tensores mediante funciones como `torch.cat()` y
 `torch.stack()`. La primera une tensores existentes a lo largo de un eje específico,
 mientras que la segunda crea una nueva dimensión para apilarlos.
 
-```py linenums="1"
+```py
 a = torch.tensor([[1, 2], [3, 4]])
 b = torch.tensor([[5, 6], [7, 8]])
 
@@ -747,7 +747,7 @@ realizar cálculos sin recurrir a bucles explícitos. Este enfoque no solo mejor
 legibilidad del código, sino que también aprovecha las optimizaciones internas del
 framework y del hardware subyacente, como las implementaciones en CUDA para GPU.
 
-```py linenums="1"
+```py
 x = torch.tensor([1., 2., 3.])
 y = torch.tensor([4., 5., 6.])
 
@@ -762,7 +762,7 @@ Estas operaciones resultan especialmente útiles para inspeccionar distribucione
 datos o normalizar tensores antes del entrenamiento, tareas que contribuyen a
 estabilizar el aprendizaje de los modelos.
 
-```py linenums="1"
+```py
 tensor = torch.randn((3, 4))  # Distribución normal
 print("Tensor aleatorio:\n", tensor)
 print("Media:", tensor.mean())
@@ -776,7 +776,7 @@ NumPy**, lo que facilita su integración con bibliotecas de análisis y visualiz
 Esta interoperabilidad permite combinar el poder de cálculo de PyTorch con la
 versatilidad de ecosistemas como NumPy, Matplotlib o Pandas.
 
-```py linenums="1"
+```py
 import numpy as np
 
 # Tensor a NumPy
@@ -795,7 +795,7 @@ facilidad de integración con otros entornos de análisis. En capítulos posteri
 emplearán estos fundamentos para la construcción de modelos de aprendizaje profundo
 basados en esta biblioteca.
 
-## 3. Regresión lineal y logística
+## Regresión lineal y logística
 
 Los modelos de regresión lineal y logística constituyen la base conceptual del
 aprendizaje profundo. También se conocen como modelos diferenciables, ya que su
@@ -1132,7 +1132,7 @@ El objetivo consiste en aplicar el descenso del gradiente sobre esta función, c
 explícitamente las derivadas parciales respecto a $x_1$ y $x_2$, e implementando el
 algoritmo en Python mediante la biblioteca NumPy:
 
-```py linenums="1"
+```py
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -1197,7 +1197,7 @@ diferenciación en sistemas de la computación con ciencias de la computación.
 
 Un ejemplo simple de su funcionamiento es el siguiente:
 
-```py linenums="1"
+```py
 import torch
 
 x = torch.tensor([2.0, 3.0], requires_grad=True)
@@ -1291,7 +1291,7 @@ en $\theta=0$. En este ejemplo, todos los optimizadores parten de un valor inici
 $\theta=5$ y buscan reducir la función de pérdida. Aunque cada algoritmo sigue
 trayectorias distintas, todos tienden hacia el mínimo global en $\theta=0$.
 
-```py linenums="1"
+```py
 import numpy as np
 
 # Función de pérdida y gradiente
@@ -1727,7 +1727,7 @@ inicialización de parámetros, _forward propagation_, _backward propagation_, l
 actualización de los parámetros mediante descenso del gradiente y, finalmente, la
 generación de predicciones y la evaluación del modelo.
 
-```py linenums="1"
+```py
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -1819,7 +1819,7 @@ plt.title("Reducción del coste durante el entrenamiento")
 plt.show()
 ```
 
-## 4. Neurona artificil y redes neuronales
+## rona artificil y redes neuronales
 
 Para ilustrar el funcionamiento básico de este tipo de modelos, puede considerarse el
 problema de estimar el precio de una vivienda. Si se representa gráficamente el tamaño
@@ -2079,7 +2079,7 @@ relación entre las características de entrada y la clase de salida, mostrando 
 combinación de forward y backward propagation permite ajustar los parámetros mediante
 optimización basada en gradientes.
 
-```py linenums="1"
+```py
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -2328,7 +2328,7 @@ parámetros globales de la red.
 
 A modo de ejemplo aqui tenemos una implementacion utilizando pytorch:
 
-```py linenums="1"
+```py
 from torch.utils.data import DataLoader
 dataloader = DataLoader(dataset, shuffle=True, batch_size=32)
 for xb, yb in dataloader:
@@ -2502,7 +2502,7 @@ datos, es posible aplicar un ajuste fino o **_fine-tuning_**, que consiste en re
 toda la red para adaptar gradualmente los parámetros a las particularidades del nuevo
 dominio.
 
-## 5. Diferenciacion automatica
+## erenciacion automatica
 
 # Diferenciación Numérica, Simbólica y Automática: Una Explicación Integrada
 
@@ -2513,7 +2513,7 @@ precisión, su coste computacional y su aplicabilidad. Comprender sus diferencia
 requiere analizar cómo opera cada técnica, qué tipo de información utiliza y qué
 compromisos establece entre exactitud y eficiencia.
 
-## 1. Diferenciación Numérica
+## Diferenciación Numérica
 
 La diferenciación numérica aproxima la derivada a partir de valores concretos de la
 función, sin manipular expresiones algebraicas ni reglas simbólicas. Se basa
@@ -2543,7 +2543,7 @@ alejado de $\cos(1) \approx 0.5403$. En cambio, la diferencia centrada ofrece un
 resultado mucho más cercano al valor exacto, del orden de 0.5400. Este contraste refleja
 la sensibilidad del método a su formulación y a la elección de $h \).
 
-## 2. Diferenciación Simbólica
+## Diferenciación Simbólica
 
 La diferenciación simbólica opera directamente sobre la expresión matemática de la
 función y utiliza reglas formales de derivación para obtener una fórmula exacta. Dado un
@@ -2562,7 +2562,7 @@ generar fórmulas extremadamente grandes, fenómeno conocido como _expression sw
 explosión combinatoria limita su aplicación en programas extensos o en funciones
 definidas de forma procedimental.
 
-## 3. Diferenciación Automática
+## Diferenciación Automática
 
 La diferenciación automática (AD) se sitúa conceptualmente entre los dos métodos
 anteriores. No se basa en aproximaciones numéricas ni en transformaciones simbólicas
@@ -2578,7 +2578,7 @@ utilizado en aprendizaje automático para implementar _backpropagation_, el cost
 comparable al de evaluar la propia función. Esta eficiencia explica su papel central en
 la optimización de modelos contemporáneos.
 
-## 4. Comparación de los Métodos
+## Comparación de los Métodos
 
 Aunque los tres enfoques comparten el objetivo de obtener derivadas, sus fundamentos y
 resultados difieren. La diferenciación numérica utiliza exclusivamente números y
@@ -2587,7 +2587,7 @@ resultados exactos; la diferenciación automática combina precisión numérica 
 computacional sin generar fórmulas complejas. De este modo, la diferenciación automática
 recoge ventajas de ambos extremos, pero no puede considerarse idéntica a ninguno.
 
-## 5. Redes neuronales convolucionales
+## Redes neuronales convolucionales
 
 ### 5.1. Procesamiento visual humano y su analogía con las redes neuronales convolucinales
 

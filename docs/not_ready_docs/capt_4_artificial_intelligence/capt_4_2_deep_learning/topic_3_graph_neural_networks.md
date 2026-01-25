@@ -8,7 +8,7 @@ title: Redes Neuronales de Grafos
 
 # Redes Neuronales de Grafos
 
-## 1. Introducción al aprendizaje automático con grafos
+## Introducción al aprendizaje automático con grafos
 
 En numerosos dominios del mundo real, como las redes sociales, la economía o los
 sistemas de comunicaciones, los datos no se organizan de forma tabular, sino que adoptan
@@ -29,7 +29,7 @@ tipos de datos, debido a su tamaño arbitrario, su compleja topología, la ausen
 orden fijo en los nodos, la posible dinámica temporal y la coexistencia de múltiples
 tipos de información o modalidades.
 
-## 2. Graph Learning y Redes Neuronales de Grafos
+## Graph Learning y Redes Neuronales de Grafos
 
 El aprendizaje automático sobre grafos puede entenderse como un proceso en el que un
 grafo se introduce como entrada a un modelo, típicamente una Red Neuronal de Grafos
@@ -51,7 +51,7 @@ nodo. Estas representaciones, también denominadas _embeddings_, son la base sob
 operan los modelos de aprendizaje y permiten aplicar técnicas de Deep Learning a datos
 relacionales.
 
-## 3. Tipos de tareas en grafos
+## Tipos de tareas en grafos
 
 Las tareas de aprendizaje sobre grafos pueden organizarse según el nivel de granularidad
 al que se aplica la predicción. Existen tareas a nivel de nodo, cuyo objetivo es
@@ -63,7 +63,7 @@ sobre subgrafos, mientras que, finalmente, las tareas a nivel de grafo completo 
 asignar categorías globales, comparar grafos entre sí o analizar su evolución y
 generación, como sucede en simulaciones de sistemas complejos.
 
-## 4. Componentes y definición de un grafo
+## Componentes y definición de un grafo
 
 Un grafo se compone de un conjunto de nodos o vértices, denotado por $N$, y un conjunto
 de enlaces o aristas, denotado por $E$. El sistema completo se representa como
@@ -79,7 +79,7 @@ conectados. En los grafos dirigidos, en cambio, cada enlace tiene una dirección
 definida, lo que introduce una asimetría en las relaciones y permite modelar flujos,
 jerarquías o dependencias causales.
 
-## 5. Grado y propiedades básicas
+## Grado y propiedades básicas
 
 En grafos no dirigidos, el grado de un nodo $i$, denotado como $K_i$, corresponde al
 número de enlaces adyacentes a dicho nodo. El grado medio del grafo se obtiene como

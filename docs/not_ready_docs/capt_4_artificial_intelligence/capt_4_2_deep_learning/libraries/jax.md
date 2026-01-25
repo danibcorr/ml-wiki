@@ -90,7 +90,7 @@ Algunas de las ventajas que ofrece JAX son:
 
 A cotinuación se muestra un ejemplo de cómo se puede utilizar JAX:
 
-```py linenums="1"
+```py
 import jax.numpy as jnp
 from jax import grad, vmap, jit
 
@@ -127,7 +127,7 @@ flexible para la computación numérica y el aprendizaje automático.
 conjunto de datos de entrada, facilitando la aplicación de operaciones vectorizadas. Por
 ejemplo:
 
-```py linenums="1"
+```py
 import jax.numpy as jnp
 from jax import vmap
 
@@ -165,7 +165,7 @@ datos para entrenamiento, etc.
 
 Por ejemplo:
 
-```py linenums="1"
+```py
 key = jax.random.PRNGKey(0x1234)
 key, model_key = jax.random.split(key)
 model = VAE(latent_dim=4)
@@ -237,7 +237,7 @@ PyTorch o TensorFlow y otra versión que se conoce como compacta.
 
 Por ejemplo, en la versión compacta, podemos crear las capas conforme se llamen:
 
-```py linenums="1"
+```py
 class MLP(nn.Module):
     features: Sequence[int]
 
@@ -261,7 +261,7 @@ output = model.apply(variables, batch)
 En la versión no compacta, primero definimos las capas en el setup y posteriormente se
 llaman en el call:
 
-```py linenums="1"
+```py
 from flax import linen as nn
 
 class Net(nn.Module):
@@ -303,7 +303,7 @@ estado durante la ejecución y permite su interoperabilidad con JAX.
 
 Aquí tienes un ejemplo de cómo se utiliza:
 
-```py linenums="1"
+```py
 import jax
 import jax.numpy as jnp
 import flax.linen as nn

@@ -11,7 +11,7 @@ title: GitHub Actions
 - [ML in Production: From Data Scientist to ML Engineer](https://www.udemy.com/course/ml-in-production/?couponCode=SKILLS4SALEA)
 - [GitHub Actions Documentation](https://docs.github.com/en/actions)
 
-## 1. Introducción
+## Introducción
 
 <p align="center">  
   <img src="/assets/img/docs/logos/github-logo.png" width="500"/>  
@@ -40,7 +40,7 @@ Además, su **Marketplace** proporciona un amplio catálogo de acciones desarrol
 tanto por GitHub como por terceros, lo que permite extender y personalizar los flujos de
 trabajo de manera eficiente.
 
-## 2. CI/CD con GitHub Actions
+## CI/CD con GitHub Actions
 
 La implementación de **CI/CD** permite automatizar procesos de desarrollo, mejorando la
 eficiencia y reduciendo errores en la integración y despliegue de software.

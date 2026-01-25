@@ -11,7 +11,7 @@ title: Git
 - [Learning Git: A Hands-On and Visual Guide to the Basics of Git](https://www.oreilly.com/library/view/learning-git/9781098133900/)
 - [Ship / Show / Ask, A modern branching strategy](https://martinfowler.com/articles/ship-show-ask.html)
 
-## 1. Introducción
+## Introducción
 
 <p align="center">  
   <img src="/assets/img/docs/logos/git-logo.png"/>  
@@ -29,7 +29,7 @@ Plataformas como **GitHub** o **GitLab** utilizan Git para facilitar la gestión
 proyectos y la colaboración en línea, ofreciendo interfaces gráficas y funcionalidades
 adicionales como la integración continua.
 
-## 2. Control de versiones
+## Control de versiones
 
 El **control de versiones** es una herramienta que permite gestionar los cambios en
 archivos a lo largo del tiempo, facilitando la recuperación de versiones anteriores
@@ -40,7 +40,7 @@ cambio usando un _commit_ en Git, se genera un **identificador único** que regi
 estado exacto de los archivos en ese momento. Esto te permite consultar, comparar o
 restaurar versiones anteriores de manera segura y organizada.
 
-### 2.1. Terminología
+### Terminología
 
 - **Repositorio local**: Espacio en el ordenador donde se almacenan todos los archivos
   de un proyecto y sus versiones anteriores. Git permite hacer un seguimiento de los
@@ -63,7 +63,7 @@ restaurar versiones anteriores de manera segura y organizada.
   conflicto. En ese caso, es necesario revisar y decidir manualmente qué cambios
   conservar.
 
-### 2.2. Áreas
+### Áreas de trabajo
 
 <p align="center">  
   <img src="/assets/img/docs/git-stages.png"/>  
@@ -96,7 +96,7 @@ El flujo de trabajo típico consiste en modificar archivos en el _Working Direct
 añadirlos al _Staging Area_ mediante `git add`, confirmarlos al _Commit History_ con
 `git commit` y finalmente subirlos al repositorio remoto con `git push`.
 
-### 2.3. Estados de un archivo en Git
+### Estados de un archivo
 
 Durante el ciclo de vida en Git, un archivo puede pasar por diferentes estados:
 
@@ -119,9 +119,9 @@ Durante el ciclo de vida en Git, un archivo puede pasar por diferentes estados:
    se guardan en la base de datos de Git, registrándolos en el historial del repositorio
    de manera permanente.
 
-## 3. Git
+## Git
 
-### 3.1. Comandos básicos de Linux para Git Bash
+### Comandos básicos para Git Bash
 
 **Git Bash** es una interfaz de línea de comandos (también conocido como **CLI** de
 _Command-line Interface_) que permite la interacción con Git mediante el uso de comandos
@@ -130,7 +130,7 @@ de Linux.
 Si quieres conocer sobre estos comandos y lo básico sobre Linux, puedes dirigirte a este
 [apartado](docs/capt_1_operative_systems/topic_1_linux.md).
 
-### 3.2. Configuración básica de Git
+### Configuración de Git
 
 Antes de comenzar a trabajar con plataformas como GitHub o GitLab, es imprescindible
 configurar correctamente el entorno local de Git. Esta configuración incluye, entre
@@ -142,7 +142,7 @@ variables definidas en la configuración global de Git junto con sus valores. Es
 configuración se utiliza, entre otros fines, para establecer el nombre de usuario y la
 dirección de correo electrónico que quedarán asociados a cada _commit_.
 
-#### 3.2.1. Configurar nombre de usuario y correo
+#### Configurar nombre de usuario y correo
 
 Git utiliza el nombre y el correo configurados para identificar tus contribuciones.
 Puedes configurarlos globalmente para que se apliquen a todos tus repositorios
@@ -162,7 +162,7 @@ git config --global --list
 Si deseas configurarlos solo para un repositorio específico, omite la opción `--global`
 y ejecuta los comandos dentro del directorio del repositorio.
 
-#### 3.2.2. Configurar autenticación SSH para GitHub/GitLab
+#### Configurar autenticación SSH para GitHub/GitLab
 
 Configurar claves SSH simplifica la autenticación con GitHub/GitLab:
 
@@ -193,7 +193,7 @@ Configurar claves SSH simplifica la autenticación con GitHub/GitLab:
    ```
    (Para GitLab: `ssh -T git@gitlab.com`).
 
-#### 3.2.3. Configurar autenticación con tokens personales
+#### Configurar autenticación con tokens personales
 
 Si prefieres usar HTTPS en lugar de SSH, puedes crear un token personal de acceso en
 GitHub/GitLab y usarlo como contraseña al clonar o realizar _push_. Para configurarlo:
@@ -203,7 +203,7 @@ GitHub/GitLab y usarlo como contraseña al clonar o realizar _push_. Para config
 3. Al realizar una operación que requiera autenticación, usa tu usuario como nombre de
    usuario y el token como contraseña.
 
-### 3.3. Comandos para el control de versiones local
+### Comandos para el control de versiones
 
 Un comando de Git se compone de tres elementos fundamentales: el programa principal
 (`git`), el comando que define la acción concreta que se desea realizar y, de forma
@@ -246,9 +246,9 @@ versiones en un repositorio Git a nivel local.
 | **git rebase**         | Reaplica commits sobre una base distinta, manteniendo un historial lineal. Es especialmente útil para actualizar ramas con respecto a la rama principal.                                                          | `git rebase main` reaplica los commits actuales sobre `main`.                                              |
 | **git clean**          | Elimina archivos no rastreados del directorio de trabajo. Debe usarse con precaución, ya que borra archivos de forma permanente.                                                                                  | `git clean -f` elimina archivos no rastreados.                                                             |
 
-## 4. Estrategias para el control de versiones
+## Estrategias para el control de versiones
 
-### 4.1. Ramas
+### Ramas
 
 Las estrategias relacionadas con Git están estrechamente vinculadas con la forma en que
 se crean, desarrollan y combinan las diferentes ramas dentro de un mismo repositorio. El
@@ -270,7 +270,7 @@ no está siendo apuntado por una rama, situación conocida como **_Detached HEAD
 Tanto **_Trunk-Based Development_** como **_Git Flow_** son estrategias populares de
 control de versiones, cada una con sus propias ventajas y casos de uso.
 
-### 4.2. _Merge_ y _pull requests_
+### _Merge_ y _pull requests_
 
 Para combinar los cambios de una rama a otra se utilizan los _merges_ o _pull requests_
 en los repositorios. En este proceso intervienen dos ramas: la rama "_source_" y la rama
@@ -278,7 +278,7 @@ en los repositorios. En este proceso intervienen dos ramas: la rama "_source_" y
 la _target_ es la rama donde se introducirán dichos cambios. Por ejemplo, la rama
 _source_ puede ser la rama `dev` y la _target_ puede ser la rama `main` o `master`.
 
-### 4.3. _Trunk-Based Development_
+### _Trunk-Based Development_
 
 <p align="center">
   <img src="/assets/img/docs/trunk-based-git.png"/>
@@ -305,7 +305,7 @@ Sin embargo, presenta las siguientes desventajas:
   en comparación con Git Flow, lo que puede dificultar la identificación de problemas
   específicos.
 
-### 4.4. Git Flow
+### Git Flow
 
 <p align="center">
   <img src="/assets/img/docs/git-flow-git.png"/>
@@ -332,7 +332,7 @@ Sin embargo, presenta las siguientes desventajas:
 - **Ralentización del desarrollo**: Si no se gestiona correctamente, puede ralentizar el
   proceso de desarrollo debido a la necesidad de mantener y fusionar múltiples ramas.
 
-### 4.5. Cuándo usar Trunk-Based Development o Git Flow
+### Cuándo usar Trunk-Based Development o Git Flow
 
 - **Trunk-Based Development**: Es ideal para equipos que practican CI/CD, necesitan
   iteraciones rápidas y trabajan en proyectos con actualizaciones frecuentes. Es
@@ -343,7 +343,7 @@ Sin embargo, presenta las siguientes desventajas:
   enfoque más estructurado. Es ideal para proyectos donde la estabilidad y la
   planificación a largo plazo son prioritarias.
 
-### 4.6. _Ship / Show / Ask_
+### _Ship / Show / Ask_
 
 Uno de los problemas recurrentes en el desarrollo de software moderno reside en el
 crecimiento progresivo de código, el aumento de su complejidad y la consiguiente pérdida
@@ -404,14 +404,14 @@ desconocidas, surge una mayor necesidad de comunicación, lo que incrementa el u
 **Show** y **Ask**. Esto pone de manifiesto que la comunicación efectiva y el trabajo
 colaborativo son pilares fundamentales de la ingeniería de software.
 
-## 5. Git Hooks
+## Git Hooks
 
 Los **Git Hooks** son una funcionalidad integrada en Git que permite automatizar tareas
 y aplicar políticas a lo largo del flujo de trabajo. Gracias a ellos, Git puede ejecutar
 acciones en momentos clave del proceso de desarrollo, asegurando la calidad del código y
 el cumplimiento de políticas específicas del proyecto.
 
-### 5.1. Definición y uso de Git Hooks
+### Definición y uso de Git Hooks
 
 Los Git Hooks son scripts que se ejecutan automáticamente en respuesta a eventos
 específicos dentro de Git, como antes o después de realizar un _commit_, un _push_ o un
@@ -443,9 +443,9 @@ en el código sin la aprobación explícita del desarrollador, ya que estas modi
 pueden provocar conflictos, errores inesperados o dificultades en la integración del
 código.
 
-### 5.2. Tipos de Git Hooks
+### Tipos de Git Hooks
 
-#### 5.2.1. `pre-commit`
+#### `pre-commit`
 
 Se ejecuta antes de realizar un _commit_. Es útil para verificar el formato del código,
 ejecutar pruebas unitarias, validar los mensajes de _commit_ o evitar errores
@@ -455,7 +455,7 @@ ortográficos.
 
     Verificación de estilo con Black en la rama `main`.
 
-    ```bash
+    ``` bash
     #!/bin/bash
     # Hook pre-commit para ejecutar Black solo en la rama main
 
@@ -480,7 +480,7 @@ ortográficos.
     echo "El commit se ha completado con éxito."
     ```
 
-#### 5.2.2. `pre-push`
+#### `pre-push`
 
 Se ejecuta antes de enviar cambios a un repositorio remoto. Se emplea para evitar
 _pushes_ en ramas protegidas o para ejecutar pruebas antes de subir los cambios.
@@ -489,7 +489,7 @@ _pushes_ en ramas protegidas o para ejecutar pruebas antes de subir los cambios.
 
     Instalación de dependencias y ejecución de pruebas con Poetry.
 
-    ```bash
+    ``` bash
     #!/bin/bash
     # Hook pre-push para actualizar pip, instalar Poetry, instalar dependencias y ejecutar pruebas
 
@@ -526,7 +526,7 @@ _pushes_ en ramas protegidas o para ejecutar pruebas antes de subir los cambios.
     echo "El push se ha completado con éxito."
     ```
 
-#### 5.2.3. `post-commit`
+#### `post-commit`
 
 Se ejecuta después de realizar un _commit_. Puede utilizarse para enviar notificaciones
 automáticas al equipo.
@@ -535,7 +535,7 @@ automáticas al equipo.
 
     Notificación por correo tras un commit.
 
-    ```bash
+    ``` bash
     #!/bin/bash
     # Hook post-commit para enviar una notificación por correo
 
@@ -546,7 +546,7 @@ automáticas al equipo.
     echo "Nuevo commit realizado: $commit_message" | sendmail -v equipo@example.com
     ```
 
-#### 5.2.4. `post-merge`
+#### `post-merge`
 
 Se ejecuta después de completar un _merge_. Es útil para actualizar dependencias o
 regenerar documentación.
@@ -555,7 +555,7 @@ regenerar documentación.
 
     Actualización de dependencias con Poetry.
 
-    ```bash
+    ``` bash
     #!/bin/bash
     # Hook post-merge para actualizar dependencias con Poetry
 
@@ -582,7 +582,7 @@ regenerar documentación.
     echo "El post-merge se ha completado con éxito."
     ```
 
-#### 5.2.5. `pre-receive` y `post-receive`
+#### `pre-receive` y `post-receive`
 
 Estos _hooks_ se ejecutan en el servidor remoto al recibir cambios mediante _push_.
 
@@ -594,7 +594,7 @@ Estos _hooks_ se ejecutan en el servidor remoto al recibir cambios mediante _pus
 
     Bloquear _pushes_ con mensajes de _commit_ incorrectos.
 
-    ```bash
+    ``` bash
     #!/bin/bash
     # Hook pre-receive para validar mensajes de commit
 
@@ -613,7 +613,7 @@ Estos _hooks_ se ejecutan en el servidor remoto al recibir cambios mediante _pus
 
     Despliegue automático tras recibir un _push_.
 
-    ```bash
+    ``` bash
     #!/bin/bash
     # Hook post-receive para desplegar automáticamente el código en producción
 
@@ -629,13 +629,13 @@ Estos _hooks_ se ejecutan en el servidor remoto al recibir cambios mediante _pus
     pm2 restart mi-aplicacion
     ```
 
-## 6. Casos de uso prácticos en Git
+## Casos de uso prácticos
 
 En el desarrollo con Git es habitual necesitar manipular la historia de commits o
 sincronizar el repositorio local con el remoto. A continuación se presentan soluciones
 claras y seguras para los escenarios más frecuentes.
 
-### 6.1 Gestionar commits no firmados
+### Gestionar commits no firmados
 
 Para garantizar la autenticidad de los commits, se pueden adoptar varias estrategias:
 
@@ -663,7 +663,7 @@ Para garantizar la autenticidad de los commits, se pueden adoptar varias estrate
     git push --force-with-lease
     ```
 
-### 6.2 Sincronizar el repositorio local con el remoto
+### Sincronizar repositorio local con el remoto
 
 Para que la rama local sea idéntica a la remota, eliminando cambios locales y archivos
 no versionados:

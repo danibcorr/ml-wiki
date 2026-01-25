@@ -15,16 +15,20 @@ slug: /
 ¡Bienvenido/a!
 
 Soy Dani y este es mi espacio dedicado al desarrollo de software que me gustaría
-compartir contigo. He de decir que, al principio, tenía un enfoque más centrado en la
-inteligencia artificial, pero conforme he ido avanzando han aparecido otros temas que me
-han llamado más la atención o que me han resultado más relevantes para mi día a día,
-tanto en mis desarrollos personales como en el trabajo.
+compartir contigo.
+
+He de decir que al principio tenía un enfoque más centrado en la inteligencia
+artificial, pero conforme he ido avanzando han aparecido otros temas que me han llamado
+más la atención o que me han resultado más relevantes para mi día a día, tanto en mis
+desarrollos personales como en el trabajo.
 
 Supongo que a ti también te pasará, verás que la inteligencia artificial no lo es todo,
 sino una pequeña pieza de un bloque mucho más grande. Al final, no deja de ser una
-herramienta más. En cualquier caso, aquí te acompañaré paso a paso desde lo que
-considero que deben ser los pilares de la ingeniería de software hasta los algoritmos
-más avanzados de inteligencia artificial.
+herramienta más.
+
+En cualquier caso, aquí te acompañaré paso a paso desde lo que considero que deben ser
+los pilares de la ingeniería de software hasta los algoritmos más avanzados de
+inteligencia artificial.
 
 # ¿Qué encontrarás aquí?
 
@@ -41,8 +45,10 @@ operativo o distribución, y mantener toda la información actualizada puede ser
 complicado.
 
 Por ello, te animo a investigar por tu cuenta si surge alguna dificultad para seguir
-algún paso. También puedes contribuir al proyecto abriendo una nueva _pull request_ al
-repositorio y, si quieres, compartir tus hallazgos para enriquecer este espacio.
+algún paso.
+
+También puedes contribuir al proyecto abriendo una nueva _pull request_ al repositorio
+y, si quieres, compartir tus hallazgos para enriquecer este espacio.
 
 # Contribuye al proyecto
 

@@ -22,7 +22,7 @@ una misma acción puede producir resultados distintos. La ausencia de una respue
 correcta inmediata obliga al agente a descubrir progresivamente qué decisiones son más
 efectivas, evaluando las consecuencias futuras de sus acciones.
 
-## 1. Elementos fundamentales del aprendizaje por refuerzo
+## Elementos fundamentales del aprendizaje por refuerzo
 
 El marco conceptual de RL se estructura en torno a varios componentes esenciales que
 interactúan de manera sistemática. El **agente** es la entidad que toma decisiones y
@@ -42,7 +42,7 @@ recompensas adicionales.
 Formalmente, la dinámica del proceso se describe mediante la tupla $(S, A, R(S), S')$,
 donde $S'$ es el nuevo estado resultante de ejecutar la acción $A$ en el estado $S$.
 
-## 2. Retorno y factor de descuento
+## Retorno y factor de descuento
 
 El desempeño del agente se evalúa no solo por las recompensas inmediatas, sino por el
 **retorno** acumulado. El **retorno** $G_t$ representa la suma total de recompensas
@@ -56,7 +56,7 @@ ajusta la importancia relativa de las recompensas futuras: valores pequeños de 
 inducen un comportamiento más “impaciente”, priorizando beneficios inmediatos, mientras
 que valores cercanos a uno favorecen estrategias orientadas al largo plazo.
 
-## 3. Políticas y objetivo del aprendizaje
+## Políticas y objetivo del aprendizaje
 
 La **política** $\pi$ define la estrategia del agente, determinando qué acción
 seleccionar en cada estado. Una política puede ser **determinista**, asignando una
@@ -67,7 +67,7 @@ El objetivo del aprendizaje por refuerzo es encontrar una **política óptima** 
 que maximice el retorno esperado a lo largo del tiempo, equilibrando de manera eficiente
 las recompensas inmediatas y futuras dentro del entorno.
 
-## 4. Procesos de Decisión de Markov (MDP)
+## Procesos de Decisión de Markov (MDP)
 
 El **Proceso de Decisión de Markov** (MDP) proporciona el marco matemático para modelar
 situaciones donde los resultados son parcialmente aleatorios y parcialmente
@@ -84,7 +84,7 @@ ejecutada, lo que simplifica el análisis y el diseño de algoritmos de aprendiz
 - **Estado** ($S_t$): Información relevante del entorno después de ejecutar una acción.
 - **Recompensa** ($R_t$): Señal escalar que evalúa la acción realizada.
 
-## 5. Funciones de valor
+## Funciones de valor
 
 Las **funciones de valor** estiman las recompensas futuras esperadas y proporcionan una
 base cuantitativa para comparar decisiones. La **función de valor de estado**

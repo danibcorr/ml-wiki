@@ -9,7 +9,7 @@ title: DevOps
 
 - [IBM DevOps and Software Engineering Professional Certificate](https://www.coursera.org/professional-certificates/devops-and-software-engineering)
 
-## 1. Introducción a DevOps
+## Introducción a DevOps
 
 DevOps se define como una filosofía y un conjunto de prácticas que integran el
 desarrollo de software (_Development_) y las operaciones de tecnologías de la
@@ -60,7 +60,7 @@ disponibilidad y rendimiento, mientras que el _error budget_ define la cantidad 
 fallos aceptables en un período determinado sin incumplir dichos acuerdos, guiando así
 la toma de decisiones técnicas y organizativas.
 
-### 1.1. Agilidad y sus pilares fundamentales
+### Agilidad y sus pilares fundamentales
 
 Para que una organización pueda considerarse verdaderamente ágil, debe sustentarse en
 tres pilares interrelacionados que, en conjunto, permiten responder con rapidez al
@@ -91,7 +91,7 @@ tradicionales basados en metodologías en cascada hacia modelos ágiles y flexib
 orientados a la entrega continua y a la adaptación constante a las necesidades del
 negocio.
 
-### 1.2. Metodologías de trabajo en DevOps
+### Metodologías de trabajo en DevOps
 
 En un entorno DevOps, el flujo de trabajo comienza con la discusión colaborativa de las
 nuevas funcionalidades o mejoras que se desean incorporar al sistema. Una vez alcanzado
@@ -111,7 +111,7 @@ o dos semanas, aunque su duración puede ajustarse en función de las caracterí
 proyecto. Dividir el desarrollo en tareas pequeñas permite obtener retroalimentación
 temprana, reducir riesgos y favorecer la experimentación controlada.
 
-### 1.3. Producto Mínimo Viable (MVP)
+### Producto Mínimo Viable (MVP)
 
 El concepto de Producto Mínimo Viable (MVP) ocupa un lugar central en DevOps. Se define
 como la versión más simple de un producto que puede ponerse en producción con el
@@ -124,7 +124,7 @@ En este enfoque, el desarrollo y el despliegue se conciben como un ciclo continu
 aprendizaje, donde cada iteración proporciona información valiosa para la evolución del
 producto.
 
-## 2. Métricas clave en DevOps
+## Métricas clave en DevOps
 
 La mejora continua en DevOps requiere medir de forma sistemática el desempeño de los
 procesos y equipos. Entre las métricas más relevantes se encuentran el _Lead Time_, que
@@ -141,7 +141,7 @@ especialmente útil para analizar la fiabilidad de determinados elementos del si
 Estas métricas, utilizadas de manera conjunta, permiten identificar cuellos de botella,
 evaluar la estabilidad del sistema y orientar las decisiones de mejora.
 
-## 3. Pruebas y desarrollo basado en pruebas
+## Pruebas y desarrollo basado en pruebas
 
 ### 3.1. Desarrollo guiado por pruebas (TDD)
 
@@ -171,7 +171,7 @@ otros actores, ya que las pruebas se expresan en un lenguaje cercano al dominio 
 problema. Como resultado, BDD contribuye a validar que el software cumple con los
 requisitos funcionales y no funcionales definidos a nivel de negocio.
 
-## 4. Arquitectura de microservicios
+## Arquitectura de microservicios
 
 La arquitectura de microservicios propone dividir una aplicación en servicios pequeños,
 autónomos y sin estado, cada uno de los cuales gestiona su propia lógica y persiste su
@@ -196,7 +196,7 @@ recursos para que los fallos de un componente no afecten a otros. Finalmente, pr
 como el _Monkey Testing_ introducen fallos deliberados en el sistema con el fin de
 evaluar su capacidad de recuperación ante situaciones imprevistas.
 
-## 5. Infraestructura como Código (IaC)
+## Infraestructura como Código (IaC)
 
 La Infraestructura como Código (_Infrastructure as Code_, IaC) es un principio
 fundamental de DevOps que consiste en definir y gestionar la infraestructura mediante

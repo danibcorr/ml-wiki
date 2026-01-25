@@ -61,7 +61,7 @@ visualizar.
 Muchos de los datasets se encuentran comprimidos, si usamos Colab será pesado subir los
 ficheros a Drive además del tiempo requerido para ello.
 
-```py linenums="1"
+```py
 import zipfile
 import os
 
@@ -81,7 +81,7 @@ Podemos utilizar WandB para el registro de la evolución de nuestro módulo. Uti
 WandB nos permite obtener un registro del aprendizaje del modelo, compartir información
 en tiempo real, etc.
 
-```py linenums="1"
+```py
 import wandb
 
 !wandb login
@@ -113,7 +113,7 @@ pasos específicos. Por ejemplo, por cómo ha sido entrenado ResNet no podemos u
 `BatchNormalization()` ni tampoco realizar normalización en los datos ya que requiere
 realizar el procesado de la siguiente manera:
 
-```py linenums="1"
+```py
 train_datagen = ImageDataGenerator(
     dtype='float32',
     preprocessing_function = preprocess_input,
@@ -128,7 +128,7 @@ recomendado es visitar siempre la documentación de `Tensorflow` .
 Lo primero para poder hacer uso de los modelos pre-entrenados de `Tensorflow` es cargar
 el modelo con los ajustes deseados:
 
-```py linenums="1"
+```py
 import tensorflow as tf
 
 #   Modelo
@@ -141,7 +141,7 @@ modelo_base = tf.keras.applications.ResNet50(
 
 Posteriormente, debemos congelar los parámetros del modelo para no reentrenarlos.
 
-```py linenums="1"
+```py
 for capa in modelo_base.layers:
 
   capa.trainable = False
@@ -151,7 +151,7 @@ Para ajustar el modelo pre-entrenado a nuestro problema, debemos añadir nuevas 
 modelo. Estas serán las capas que entrenaremos en primera instancia para posteriormente
 descongelar el modelo y entrenarlo al completo.
 
-```py linenums="1"
+```py
 def Modelo(modelo_base):
 
 		# Con modelo_base.summary() podemos ver todas las capas que cuenta el modelo
@@ -185,7 +185,7 @@ modelo = Modelo(modelo_base)
 
 ### 0.4. Mostrar gráficas de pérdidas y accuracy
 
-```py linenums="1"
+```py
 history = modelo.fit(...)
 
 # Creamos una gráfica para mostrar el accuracy obtenido tanto en el set de entrenamiento como en el de validacion
@@ -217,7 +217,7 @@ entrenamiento, validación y pruebas, entre otras herramientras.
 
 Un posible uso sería el siguiente:
 
-```py linenums="1"
+```py
 train_datagen = ImageDataGenerator(
     dtype='float32',
     preprocessing_function = preprocess_input,
@@ -247,7 +247,7 @@ validation_generator =  train_datagen.flow_from_directory(
 A la hora de utilizar generadores de datos tenemos que ajustar los parámetros de la
 función .fit:
 
-```py linenums="1"
+```py
 history = modelo.fit(
             train_generator,
             steps_per_epoch = train_generator.samples // num_batch,
@@ -269,13 +269,13 @@ history = modelo.fit(
 
 #### 1.0.3. Tipos de arquitecturas para visión computacional
 
-### 1.1. Lenguaje de signos, SIGN MNIST
+### Lenguaje de signos, SIGN MNIST
 
 #### 1.1.1. Anotaciones
 
 #### 1.1.2. Código
 
-```py linenums="1"
+```py
 import tensorflow.keras as keras
 import pandas as pd
 import tensorflow as tf
@@ -435,13 +435,13 @@ plt.legend(['Entrenamiento', 'Test'], loc='upper right')
 plt.show()
 ```
 
-### 1.2. Perros vs Gatos
+### Perros vs Gatos
 
 #### 1.2.1. Anotaciones
 
 #### 1.2.2. Código
 
-```py linenums="1"
+```py
 import os
 import tensorflow as tf
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
@@ -600,7 +600,7 @@ plt.legend(['Entrenamiento', 'Test'], loc='upper right')
 plt.show()
 ```
 
-### 1.3. Implementación YOLO
+### Implementación YOLO
 
 Para hacer uso de las utilidades, modelo y demás herramientas, debemos descargar las
 herramientas del repositorio.
@@ -646,7 +646,7 @@ explicación.
 
 Primero importamos las librerías necesarias.
 
-```py linenums="1"
+```py
 import argparse
 import os
 import matplotlib.pyplot as plt
@@ -680,7 +680,7 @@ siguientes variables:
   de clase" (𝑐1, 𝑐2, ..., 𝑐80) para cada una de las 80 clases para cada una de las 5
   cajas por celda.
 
-```py linenums="1"
+```py
 def yolo_filter_boxes(boxes, box_confidence, box_class_probs, threshold = .6):
 
     # Step 1: Compute box scores
@@ -709,7 +709,7 @@ def yolo_filter_boxes(boxes, box_confidence, box_class_probs, threshold = .6):
 Implementar IoU (_Intersection over Union_). No es necesario implementarlo pero para que
 veamos cómo se haría.
 
-```py linenums="1"
+```py
 def iou(box1, box2):
 
     (box1_x1, box1_y1, box1_x2, box1_y2) = box1
@@ -739,7 +739,7 @@ Implementar _Non-Max Suppression._ `Tensorflow` tiene dos funciones incorporadas
 utilizan para implementar la supresión de no-máximos (por lo que no es necesario
 utilizar la función iou()).
 
-```py linenums="1"
+```py
 def yolo_non_max_suppression(scores, boxes, classes, max_boxes = 10, iou_threshold = 0.5):
 
     # tensor to be used in tf.image.non_max_suppression()
@@ -762,7 +762,7 @@ def yolo_non_max_suppression(scores, boxes, classes, max_boxes = 10, iou_thresho
 
 Convertir las predicciones de la caja YOLO en esquinas de la caja delimitadora.
 
-```py linenums="1"
+```py
 def yolo_boxes_to_corners(box_xy, box_wh):
 
     box_mins = box_xy - (box_wh / 2.)
@@ -779,7 +779,7 @@ def yolo_boxes_to_corners(box_xy, box_wh):
 Convertimos la salida de la codificación YOLO (un montón de cajas) en sus cajas
 predichas junto con sus puntuaciones, coordenadas de caja y clases.
 
-```py linenums="1"
+```py
 def yolo_eval(yolo_outputs, image_shape = (720, 1280), max_boxes=10, score_threshold=.6, iou_threshold=.5):
 
     ### START CODE HERE
@@ -805,7 +805,7 @@ def yolo_eval(yolo_outputs, image_shape = (720, 1280), max_boxes=10, score_thres
 Podemos probar un modelo pre-entrenado de YOLO. Dicho modelo ha sido entrenado en el
 dataset de COCO basado en un problema de conducción autónoma.
 
-```py linenums="1"
+```py
 class_names = read_classes("model_data/coco_classes.txt")
 anchors = read_anchors("model_data/yolo_anchors.txt")
 model_image_size = (608, 608)
@@ -814,7 +814,7 @@ yolo_model = load_model("model_data/", compile=False)
 
 Creamos una función para poder ejecutar el gráfico para predecir las cajas.
 
-```py linenums="1"
+```py
 def predict(image_file):
     # Preprocess your image
     image, image_data = preprocess_image("images/" + image_file, model_image_size = (608, 608))
@@ -842,7 +842,7 @@ def predict(image_file):
 
 Finalmente, probamos el modelo:
 
-```py linenums="1"
+```py
 out_scores, out_boxes, out_classes = predict("download.jpeg")
 ```
 
@@ -868,7 +868,7 @@ el problema como un clasificador por visión computacional.
 
 Ejemplo de código para procesar señales de audio a espectrogramas:
 
-```py linenums="1"
+```py
 import librosa
 import numpy as np
 

@@ -8,7 +8,7 @@ title: Makefile
 
 - [Makefile Tutorial](https://makefiletutorial.com/)
 
-## 1. Introducción
+## Introducción
 
 <p align="center">
   <img src="/assets/img/docs/logos/makefile-logo.png" width="300"/>
@@ -24,7 +24,7 @@ contener comandos en [Bash](./topic_1_bash.md).
 El uso de Makefiles ofrece varios beneficios en el desarrollo de software, pero el que
 más destacada es la capacidad de automatización de tareas repetitivas.
 
-## 2. Sintaxis básica
+## Sintaxis básica
 
 ### 2.1. Estructura de una regla
 
@@ -157,7 +157,7 @@ necesidad de escribirlos explícitamente cada vez.
     El script `script.py` podría utilizar los prerrequisitos para producir archivos de
     salida:
 
-    ```py linenums="1"
+    ```py
     import sys
     import os
 
@@ -215,7 +215,7 @@ configuraciones particulares para ciertos objetivos o archivos.
     - La regla `%.txt: %.csv` usa el archivo `.csv` como entrada (representado por `$<`) y
       genera un archivo `.txt` como salida (representado por `$@`).
 
-## 3. Funciones avanzadas
+## Funciones avanzadas
 
 ### 3.1. Funciones para cadenas de texto
 
@@ -480,7 +480,7 @@ reutilización del código.
         La regla `%.o: %.c` invoca la macro `compile_rule` con `$(call compile_rule)`, lo que
         permite reutilizar la misma lógica de compilación en múltiples reglas.
 
-## 4. Mejores prácticas y estilos
+## Mejores prácticas y estilos
 
 El uso adecuado de Makefiles no solo facilita la compilación y gestión de proyectos,
 sino que también mejora la legibilidad y mantenimiento a largo plazo. A continuación, se

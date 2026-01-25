@@ -962,8 +962,8 @@ del mejor reparto de bloques y hebras para el problema concreto.
 Por ejemplo, si tenemos datos con tamaños de
 $2^{24} = 2^{25} = 2^{10} \cdot 2^{10} \cdot 2^{5}$, podemos tener como máximo 1024
 hebras por bloque, quedando $2^{15}$ hebras que las repartiremos conformando
-$2^{25}/1024 = 32768$ bloques. En total tendríamos $1024 \cdot 32768 = 33554432$
-hebras totales.
+$2^{25}/1024 = 32768$ bloques. En total tendríamos $1024 \cdot 32768 = 33554432$ hebras
+totales.
 
 #### Consultar especificaciones de la GPU
 

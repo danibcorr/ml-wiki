@@ -1,9 +1,7 @@
 ---
-authors:
-Daniel Bazo Correa
+authors: Daniel Bazo Correa
 description: Crea tus propios scripts ejecutables con Bash.
 title: Bash
-
 ---
 
 ## Bibliografía
@@ -11,7 +9,7 @@ title: Bash
 - [Pradumnasaraf/DevOps](https://github.com/Pradumnasaraf/DevOps)
 - [TODOS deberían aprender BASH - Bash PARTE 1](https://www.youtube.com/watch?v=4_ub6614dwY)
 
-## 1. Introducción
+## Introducción
 
 <p align="center">
   <img src="/assets/img/docs/logos/bash-logo.png" width="500"/>
@@ -27,7 +25,7 @@ Se distingue por su eficiencia en la ejecución de comandos, su compatibilidad c
 _scripts_ de _shell_ y su versatilidad para la automatización de tareas y la
 administración de sistemas.
 
-## 2. Conceptos básicos
+## Conceptos básicos
 
 ### 2.1. Ejemplo de programa base
 
@@ -53,7 +51,7 @@ específicas.
     Primero, crearemos un _script_ básico, con nombre `script.sh`, para mostrar en la
     terminal un `Hola mundo`:
 
-    ```bash
+    ``` bash
     #!/bin/bash
 
     echo "Hola mundo"
@@ -88,7 +86,7 @@ que representa la posición del argumento.
 
 ???+ example "Ejemplo"
 
-    ```bash
+    ``` bash
     #!/bin/bash
 
     echo "Hola $1"
@@ -109,7 +107,7 @@ previamente.
 
 ???+ example "Ejemplo"
 
-    ```bash
+    ``` bash
     #!/bin/bash
 
     nombre="Daniel"
@@ -119,7 +117,7 @@ previamente.
     También es posible almacenar el resultado de la ejecución de un comando del sistema en
     una variable:
 
-    ```bash
+    ``` bash
     #!/bin/bash
 
     resultado=$(comando)
@@ -134,7 +132,7 @@ Para capturar entradas del usuario, se utiliza el comando `read`.
 
 ???+ example "Ejemplo"
 
-    ```bash
+    ``` bash
     #!/bin/bash
 
     echo "¿Cuál es tu nombre?"
@@ -149,7 +147,7 @@ evaluar expresiones matemáticas de manera sencilla.
 
 ???+ example "Ejemplo"
 
-    ```bash
+    ``` bash
     #!/bin/bash
 
     echo $((5 + 5))
@@ -170,7 +168,7 @@ operadores de comparación y lógicos.
 
 ???+ example "Ejemplo"
 
-    ```bash
+    ``` bash
     #!/bin/bash
 
     if [ "$1" == "Dani" ] || [ "$1" == "Paco" ]; then
@@ -212,7 +210,7 @@ BASH soporta varios tipos de bucles. Un bucle `for` se define de la siguiente ma
 
 ???+ example "Ejemplo"
 
-    ```bash
+    ``` bash
     #!/bin/bash
 
     for i in 1 2 3; do
@@ -225,7 +223,7 @@ condición específica:
 
 ???+ example "Ejemplo"
 
-    ```bash
+    ``` bash
     #!/bin/bash
 
     i=1
@@ -253,7 +251,7 @@ varias veces.
 
 ???+ example "Ejemplo"
 
-    ```bash
+    ``` bash
     #!/bin/bash
 
     function funcion() {
@@ -263,7 +261,7 @@ varias veces.
     funcion
     ```
 
-## 3. Ejemplos de automatización
+## Ejemplos de automatización
 
 En el desarrollo de proyectos en Python, la automatización de tareas mediante **Bash**
 resulta fundamental para garantizar la reproducibilidad y eficiencia del entorno.

@@ -1,9 +1,7 @@
 ---
-
 authors: Daniel Bazo Correa
 description: Librerias de interés de Python.
 title: Librerias
-
 ---
 
 # Librerías

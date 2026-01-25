@@ -57,7 +57,7 @@ recordatorio. No tiene ningún tipo de orden.
 Vamos a definir 2 funciones, una se encargará de guardar el estado del modelo y del
 optimizador pero podríamos guardar otros parámetros del modelo. Estas funciones son:
 
-```py linenums="1"
+```py
 def guardar_checkpoint(checkpoint, filename = "checkpoint.pth.tar"):
 
 	print("Guardando estado del modelo")
@@ -76,7 +76,7 @@ parámetros guardados.
 A la hora de definir los hiper-parámetros es recomendable declarar otra variable para
 indicar si queremos cargar un modelo o no:
 
-```py linenums="1"
+```py
 # Hiperparámetros
 num_clases = 10  # Para CIFAR-10 tenemos 10 clases
 clasesbatch_size = 64
@@ -89,7 +89,7 @@ cargar_modelo = True
 
 El bucle de entrenamiento podría ser similar al siguiente:
 
-```py linenums="1"
+```py
 cont = 0
 
 for epoca in range(num_epocas):
@@ -169,7 +169,7 @@ la función de pérdida.
 
 Añadir el scheduler cuando definimos la función de pérdida y el optimizador
 
-```py linenums="1"
+```py
 # Loss function, para clasificaciones de una sola etiqueta (y) como en este caso podemos utilizar Cross Entropy Loss
 func_perdida = nn.CrossEntropyLoss()
 
@@ -194,7 +194,7 @@ según la función de coste.
 
 ### 0.3. Bucle básico de entrenamiento
 
-```py linenums="1"
+```py
 for epoch in range(0, numero_epocas):
 
     running_loss = 0.0

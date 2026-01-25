@@ -6,7 +6,7 @@ description: Creación y uso de logs en Python.
 title: Logs
 ---
 
-## 1. Creación y registro de logs con Loguru
+## Creación y registro de logs con Loguru
 
 El logging permite registrar y monitorizar las actividades de las aplicaciones durante
 su ejecución. A diferencia de `print`, los logs proporcionan una forma más estructurada
@@ -22,7 +22,7 @@ información pertenece a una misma aplicación.
 
 El siguiente código muestra cómo crear un log de tipo `INFO`:
 
-```py linenums="1"
+```py
 from loguru import logger
 
 logger.info("¡Hola!, esto es un mensaje de información")
@@ -31,7 +31,7 @@ logger.info("¡Hola!, esto es un mensaje de información")
 Este código genera un log que incluye información sobre la fecha, hora de ejecución,
 tipo de log (`INFO`), función, módulo y la línea de código correspondiente.
 
-### 1.1. Niveles de logs
+### Niveles de logs
 
 Loguru permite definir diferentes niveles de logs, organizados jerárquicamente:
 
@@ -42,21 +42,21 @@ Loguru permite definir diferentes niveles de logs, organizados jerárquicamente:
 - **ERROR**: Indica un error en una parte específica del código.
 - **CRITICAL**: Identifica errores críticos que impiden el funcionamiento del código.
 
-### 1.2. Almacenamiento de logs en archivos
+### Almacenamiento de logs en archivos
 
 Loguru permite almacenar logs en archivos. Por ejemplo:
 
-```py linenums="1"
+```py
 from loguru import logger
 
 logger.add("programa.log")
 ```
 
-### 1.3. Rotación de logs
+### Rotación de logs
 
 Es posible establecer rotaciones para los archivos de log:
 
-```py linenums="1"
+```py
 from loguru import logger
 
 # Rotación cuando el archivo alcance 1 MB
@@ -66,11 +66,11 @@ logger.add("programa.log", rotation="1 MB")
 logger.add("programa.log", rotation="13:15")
 ```
 
-### 1.4. Almacenamiento de logs por nivel de jerarquía
+### Almacenamiento de logs por nivel de jerarquía
 
 Se pueden almacenar logs en archivos diferentes según su nivel de jerarquía:
 
-```py linenums="1"
+```py
 from loguru import logger
 
 logger.add("info.log", level="INFO")
@@ -80,11 +80,11 @@ logger.add("critical.log", level="CRITICAL")
 - `info.log` almacenará todos los logs a partir del nivel `INFO`, excluyendo `DEBUG`.
 - `critical.log` solo almacenará los logs de nivel `CRITICAL`.
 
-### 1.5. Uso de decoradores
+### Uso de decoradores
 
 Loguru permite el uso de decoradores para capturar excepciones en funciones:
 
-```py linenums="1"
+```py
 from loguru import logger
 
 @logger.catch
@@ -94,7 +94,7 @@ def funcion(a, b):
 
 Este decorador facilita la captura y el registro automático de errores en las funciones.
 
-## 2. Creación y registro de logs con logging
+## Creación y registro de logs con logging
 
 Este es el logger por defecto de Python.
 

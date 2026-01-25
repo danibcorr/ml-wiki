@@ -12,7 +12,7 @@ title: Docker
 - [Docker Docs](https://docs.docker.com/)
 - [DevOps con Docker, Jenkins, Kubernetes, Git, GitFlow CI y CD](https://www.udemy.com/course/devops-con-dockers-kubernetes-jenkins-y-gitflow-cicd/)
 
-## 1. Introducción
+## Introducción
 
 <p align="center">
   <img src="/assets/img/docs/logos/docker-logo.png" width="500"/>
@@ -25,7 +25,7 @@ y ejecución de aplicaciones mediante contenedores. Los contenedores permiten em
 una aplicación junto con sus dependencias y configuraciones en una unidad estandarizada,
 lo que simplifica el desarrollo de software y garantiza consistencia entre entornos.
 
-### 1.1. Características principales
+### Características principales
 
 - **Portabilidad**: Los contenedores Docker se ejecutan en cualquier sistema que soporte
   Docker, independientemente del sistema operativo.
@@ -38,7 +38,7 @@ lo que simplifica el desarrollo de software y garantiza consistencia entre entor
 - **Escalabilidad**: Docker facilita la creación y eliminación rápida de instancias de
   aplicaciones.
 
-### 1.2. Diferencia entre un contenedor y una máquina virtual
+### Diferencia entre un contenedor y una máquina virtual
 
 Los contenedores y las máquinas virtuales son tecnologías de virtualización que permiten
 ejecutar múltiples aplicaciones en un solo servidor físico. Aunque comparten objetivos
@@ -155,7 +155,7 @@ usadas para desarrollar, gestionar y desplegar contenedores en entornos de desar
 locales. Permiten a los desarrolladores crear aplicaciones de manera rápida, probarlas y
 asegurarse de que se comportarán de la misma manera en producción.
 
-### 1.3. Recopilación de comandos
+### Recopilación de comandos
 
 |                                   Comando                                   |                                                                                                                                                                                                                                                                           Uso/función                                                                                                                                                                                                                                                                           |
 | :-------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
@@ -179,7 +179,7 @@ asegurarse de que se comportarán de la misma manera en producción.
 |                    **docker network inspect nombre_red**                    |                                                                                                                                                                                                              Obtiene detalles sobre una red específica, como las direcciones IP de los contenedores conectados y qué contenedores están en la red.                                                                                                                                                                                                              |
 |            **docker update [OPTIONS] CONTAINER [CONTAINER...]**             |                                                                                                                                                                                                      Actualiza la configuración de uno o varios contenedores. [Documentación Docker Update](https://docs.docker.com/engine/reference/commandline/update/)                                                                                                                                                                                                       |
 
-### 1.4. Acceso a contenedores mediante mapeo de puertos
+### Acceso a contenedores mediante mapeo de puertos
 
 El mapeo de puertos, o _port mapping_, asigna un puerto específico del host al puerto de
 un contenedor, lo que permite que una aplicación dentro del contenedor sea accesible
@@ -204,7 +204,7 @@ Docker proporciona comandos para capturar los logs de los contenedores:
 - `docker logs -f nombre_contenedor`: Muestra los registros del contenedor de manera
   continua.
 
-### 1.5. Crear e iniciar un contenedor con Docker Run
+### Crear e iniciar un contenedor con Docker Run
 
 El comando `docker run` combina los comandos `docker create` y `docker start` y realiza
 los siguientes pasos:
@@ -221,7 +221,7 @@ Ejemplo de comando para ejecutar un contenedor de MongoDB en segundo plano (util
 docker run -d -p 27017:27017 --name mongodb mongo
 ```
 
-### 1.6. Variables de entorno en contenedores
+### Variables de entorno en contenedores
 
 Para conectar una base de datos con una aplicación dentro de Docker, se utilizan
 variables de entorno específicas para la imagen del contenedor.
@@ -237,7 +237,7 @@ Estas variables configuran el usuario y la contraseña del administrador de la b
 datos durante la inicialización del contenedor. Es importante revisar la documentación
 de la imagen del contenedor, ya que las variables de entorno varían según cada imagen.
 
-### 1.7. Construcción de imágenes mediante Dockerfile
+### Construcción de imágenes mediante Dockerfile
 
 Un `Dockerfile` es un archivo de texto con instrucciones que te permiten construir una
 imagen Docker. La imagen construida a partir de un `Dockerfile` puede ser usada para
@@ -291,7 +291,7 @@ Modos de red en Docker:
 - **Red personalizada**: Permite especificar el rango de direcciones IP y otros
   parámetros.
 
-### 1.8. Definición y gestión de múltiples contenedores mediante Docker Compose
+### Definición y gestión de múltiples contenedores mediante Docker Compose
 
 Docker Compose es una herramienta que permite definir y gestionar múltiples contenedores
 como un conjunto de servicios interconectados. Utiliza un archivo de configuración
@@ -362,7 +362,7 @@ asociados, se utiliza:
 docker compose down
 ```
 
-### 1.9. Creación de volúmenes para la persistencia de datos
+### Creación de volúmenes para la persistencia de datos
 
 En Docker, los volúmenes permiten la persistencia de datos en los contenedores. Esto
 significa que, incluso si un contenedor se elimina, los datos asociados a los volúmenes
@@ -447,7 +447,7 @@ reinicio o actualización de los servicios.
 - [Kubernetes Tutorials](https://youtube.com/playlist?list=PLiMWaCMwGJXnHmccp2xlBENZ1xr4FpjXF&si=mxLcHpXxnZUhSGu3)
 - [Kubernetes: De novato a pro! (Curso completo en español)](https://youtu.be/DCoBcpOA7W4?si=KioSNJrOkZp-Dx5K)
 
-### 1. Introducción
+### Introducción
 
 <p align="center">
   <img src="/assets/img/docs/logos/kubernetes-logo.png" width="500"/>
@@ -470,7 +470,7 @@ aprendizaje automático, como se evidencia en su uso en Kubeflow. Al gestionar l
 infraestructura de cómputo, redes y almacenamiento, Kubernetes simplifica la
 implementación y administración de aplicaciones en contenedores a gran escala.
 
-### 1.1. Componentes de Kubernetes
+### Componentes de Kubernetes
 
 **Kubectl** es una interfaz de línea de comandos que facilita la interacción con un
 clúster de Kubernetes, permitiendo la gestión de objetos como pods, servicios y
@@ -523,7 +523,7 @@ independiente. Por ejemplo, si se tiene un servidor de Proxmox donde existen dos
 máquinas virtuales, VM1 y VM2, a pesar de que cuenten con diferentes Pods, si todos
 están gestionados por Kubernetes, ambos formarán parte del mismo clúster.
 
-### 1.2. StatefulSet y volúmenes
+### StatefulSet y volúmenes
 
 Dado que no se puede garantizar el lugar de ejecución de una aplicación, el uso del
 disco local para almacenar datos es inviable, siendo útil únicamente para almacenamiento
@@ -603,7 +603,7 @@ kubectl get pvc  # Para ver la asignación del volumen, capacidad, etc.
 kubectl get sts  # Para ver los StatefulSets.
 ```
 
-### 1.3. Manifiestos
+### Manifiestos
 
 Un manifiesto es un archivo en formato YAML o JSON que especifica cómo desplegar una
 aplicación en un clúster de Kubernetes. Este archivo se conoce como un registro de
@@ -719,7 +719,7 @@ spec:
         - containerPort: 80
 ```
 
-### 1.4. Despliegue y gestión de réplicas
+### Despliegue y gestión de réplicas
 
 Un despliegue permite declarar el número de réplicas, es decir, el número de Pods, y
 asegurar que el estado deseado se mantenga, monitorizándolos.
@@ -758,7 +758,7 @@ spec:
             - containerPort: 80
 ```
 
-### 1.5. DaemonSet
+### DaemonSet
 
 Un DaemonSet es una forma de hacer un despliegue de un Pod, pero este Pod va a estar en
 todos los nodos del clúster. Un solo Pod en cada nodo. No se especifica por tanto el
@@ -794,7 +794,7 @@ spec:
           image: nginx:alpine
 ```
 
-### 1.6. Exponer aplicaciones
+### Exponer aplicaciones
 
 #### 1.6.1. Servicios en Kubernetes
 
@@ -822,7 +822,7 @@ Ingress administra el acceso externo a los servicios del clúster, típicamente 
 Proporciona balanceo de carga y terminación SSL. Permite el acceso al servicio mediante
 paths, y suele requerirse Ingress-Nginx controller que se suele instalar por separado.
 
-### 1.7. Networking y almacenamiento
+### Networking y almacenamiento
 
 #### 1.7.1. Pod Networking
 
@@ -834,7 +834,7 @@ Cloud Cluster Networking Interface.
 **etcd** es un almacén de datos clave-valor distribuido utilizado para guardar datos de
 configuración, estado y metadatos.
 
-### 1.8. Tipos de servicios
+### Tipos de servicios
 
 #### 1.8.1. Cluster IP
 

@@ -5,9 +5,9 @@ description: Fundamentos del Machine Learning.
 title: Machine Learning
 ---
 
-## 1. Introducción
+## Introducción
 
-### 1.1. Definición
+### Definición
 
 <p align="center">
   <img src="https://www.techspot.com/articles-info/2048/images/2020-07-07-image.jpg"/>
@@ -24,7 +24,7 @@ A diferencia de los enfoques tradicionales de programación, donde las reglas se
 explícitamente, en el aprendizaje automático los algoritmos ajustan sus parámetros
 automáticamente para mejorar su desempeño en función de los datos.
 
-### 1.2. Técnicas
+### Técnicas
 
 <p align="center">
   <img src="https://www.sharpsightlabs.com/wp-content/uploads/2021/04/regression-vs-classification_simple-comparison-image_v3.png"/>
@@ -74,7 +74,7 @@ bajo sesgo para modelar con mayor exactitud, la distribución de los datos en la
 varianza, para que el resultado de las predicciones sea consistente para diferentes
 conjuntos de datos.
 
-### 1.3. Tipos de datos
+### Tipos de datos
 
 #### 1.3.1. Variables dependientes e independientes
 
@@ -98,7 +98,7 @@ pueden existir valores intermedios con una precisión arbitraria. En contraste, 
 valores discretos solo pueden asumir ciertos valores específicos, como la cantidad de
 páginas de un libro, donde no existen valores intermedios entre un número entero y otro.
 
-## 2. Estrategias para la selección y validación de datos
+## Estrategias para la selección y validación de datos
 
 Los datos son un elemento esencial en los algoritmos de aprendizaje automático. Sin una
 selección adecuada, es posible obtener relaciones no significativas o incluso
@@ -139,7 +139,7 @@ Por ejemplo, el siguiente código establece semillas para las bibliotecas más u
 en Python para aprendizaje automático y profundo, garantizando la reproducibilidad de
 los experimentos:
 
-```py linenums="1"
+```py
 import random
 import numpy as np
 import tensorflow as tf
@@ -207,7 +207,7 @@ de tamaño similar, y entrenar el modelo de manera iterativa:
 El caso más común es el **k-Fold Cross Validation**, donde (k) suele ser cinco o diez,
 dependiendo del tamaño del conjunto de datos y de la complejidad del modelo.
 
-## 3. Conceptos de estadística
+## Conceptos de estadística
 
 ### 3.1. Distribuciones
 
@@ -502,7 +502,7 @@ $P(X \leq 155.7) - P(X \leq 142.5) \approx 0.5 - 0.02275 \approx 0.4772$
 
 Implementación en Python:
 
-```py linenums="1"
+```py
 from statistics import NormalDist
 
 # Se calcula la función de distribución acumulada (CDF) en los puntos de interés
@@ -816,7 +816,7 @@ una hipótesis nula por tanto el P valor mide la probabilidad de que el resultad
 observado ocurra. Si no hay diferencias lo que es una hipótesis nula verdadera, pero no
 mide la magnitud de la diferencia.
 
-## 4. Modelos clásicos
+## Modelos clásicos
 
 Una vez comprendido el concepto de modelo de aprendizaje automático, donde se utilizan
 datos para modelar su distribución, analizar relaciones y extraer conocimiento, es
@@ -1016,7 +1016,7 @@ ganancia.
 - \( \text{Entrada: un modelo, por cantidad} \)
 -
 
-## 5. Algoritmos de agrupación
+## Algoritmos de agrupación
 
 ### 5.1. Tipos de algoritmos de agrupación
 

@@ -11,7 +11,7 @@ title: CUDA
 - [CuPy: NumPy & SciPy for GPU](https://cupy.dev/)
 - [Numba: A High Performance Python Compiler (pydata.org)](https://numba.pydata.org/)
 
-## 1. Introducción
+## Introducción
 
 <p align="center">
   <img src="/assets/img/docs/logos/cuda-logo.png" height="200"/>
@@ -26,7 +26,7 @@ complejos con mayor eficiencia en comparación con las unidades de procesamiento
 (CPU). CUDA se utiliza en áreas como la inteligencia artificial, simulaciones y
 renderización de gráficos.
 
-## 2. Conceptos de CUDA
+## Conceptos de CUDA
 
 ### 2.1. Introducción
 
@@ -162,7 +162,7 @@ datos en arquitecturas de GPU modernas.
   <br />
 </p>
 
-## 3. Programación con CUDA en C
+## Programación con CUDA en C
 
 ### 3.1. Conceptos básicos
 
@@ -738,7 +738,7 @@ Como análisis final tenemos:
 - El operador de reducción requiere una mayor intervención del programador.
 - El histograma es el más desafiante para el programador.
 
-## 4. Acelerar aplicaciones con CUDA en Python utilizando Numba y CuPy
+## Acelerar aplicaciones con CUDA en Python utilizando Numba y CuPy
 
 El rendimiento de las aplicaciones científicas y de ingeniería en Python se puede
 mejorar significativamente mediante el uso de herramientas como Numba y CuPy. Estas
@@ -775,7 +775,7 @@ Numba ofrece varios decoradores para la compilación y optimización de funcione
 
 Los decoradores pueden combinarse para optimizar el rendimiento. Por ejemplo:
 
-```py linenums="1"
+```py
 @njit(parallel=True, fastmath=True)
 ```
 
@@ -787,7 +787,7 @@ maximizar la velocidad de ejecución.
 
 Ejemplo básico de uso de Numba con el decorador `@njit`:
 
-```py linenums="1"
+```py
 from numba import njit
 import numpy as np
 
@@ -831,7 +831,7 @@ CuPy ofrece una API similar a NumPy, facilitando la transición entre ambas bibl
 A continuación se presenta un ejemplo básico de cómo realizar cálculos en una GPU
 utilizando CuPy:
 
-```py linenums="1"
+```py
 import cupy as cp
 
 # Crear matrices en la GPU

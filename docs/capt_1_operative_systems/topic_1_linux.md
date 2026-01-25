@@ -4,14 +4,12 @@ description: Introducción al kernel de Linux y a los sistemas operativos basado
 title: Linux
 ---
 
-[Descargar PDF](../assets/documents/Linux_Machine_Learning_Wiki.pdf){: .md-button .md-button--primary download="Linux-ML-Wiki.pdf" } [Descargar EPUB](../assets/documents/Linux_Machine_Learning_Wiki.pdf){: .md-button .md-button--primary download="Linux-ML-Wiki.pdf" }
-
 ## Bibliografía
 
 - [60 Linux Commands you NEED to know (in 10 minutes)](https://www.youtube.com/watch?v=gd7BXuUQ91w)
 - [Linux Para Principiantes - Curso completo](https://youtu.be/jVQKk8IB9pA?si=BdLz0eLehoVxupwF)
 
-## 1. Introducción
+## Introducción
 
 <p align="center">
   <img src="/assets/img/docs/logos/linux-logo.png" height="300" width="300"/>
@@ -45,7 +43,7 @@ configuraciones específicas y, en muchos casos, un entorno gráfico, se obtiene
 **distribución**. Ejemplos representativos como Ubuntu, Debian, Fedora o Arch Linux
 ilustran cómo un mismo núcleo puede ajustarse a contextos de uso muy distintos.
 
-### 1.1. Interfaz de línea de comandos y shell
+### La terminal
 
 La interacción directa con Linux se realiza principalmente a través de la **_shell_**,
 un intérprete de comandos que traduce las órdenes del usuario en acciones ejecutables
@@ -110,7 +108,7 @@ No todos los comandos necesariamente cuentan con una sección específica en el 
 algunos casos, la información puede encontrarse únicamente mediante otras herramientas
 de ayuda o documentación externa.
 
-### 1.2. Comandos básicos y uso habitual del sistema
+### Comandos básicos
 
 La interacción cotidiana con Linux se apoya en un conjunto de comandos fundamentales que
 permiten administrar el sistema, navegar por su estructura de archivos (directorios) y
@@ -174,7 +172,7 @@ acaso.
 | `top`     | Muestra los procesos en ejecución y uso de recursos en tiempo real.                    | `top`                                   |
 | `ps`      | Lista los procesos en ejecución.                                                       | `ps aux`                                |
 
-### 1.3. El sistema de archivos y su jerarquía
+### Directorios
 
 Linux organiza su almacenamiento siguiendo una estructura jerárquica unificada en forma
 de árbol, cuyo origen se encuentra en el directorio raíz (`/`).
@@ -206,7 +204,7 @@ Dentro de esta estructura destacan directorios esenciales:
   del estado interno del kernel, permitiendo un acceso sistemático y controlado a los
   recursos del sistema.
 
-## 2. Gestión de usuarios y grupos
+## Gestión de usuarios y grupos
 
 Linux es un sistema **multiusuario**, en el que la seguridad y el control de acceso se
 articulan mediante un modelo basado en usuarios, grupos y permisos. Este enfoque permite
@@ -223,7 +221,7 @@ crea, y puede pertenecer a varios **grupos secundarios**, que amplían sus capac
 como ocurre con el grupo `sudo`, destinado a la ejecución controlada de tareas
 administrativas.
 
-### 2.1. Modelo de seguridad y permisos
+### Seguridad y permisos
 
 Cada archivo o directorio define privilegios de **lectura**, **escritura** y
 **ejecución** para tres categorías claramente diferenciadas: el **propietario**, el
@@ -286,7 +284,7 @@ ejecución (`x`) está concedido o no.
     habilitado, se reemplaza con un guion (`-`). Por ejemplo, `r--` indica que únicamente se
     permite la lectura, mientras que `rw-` permite lectura y escritura, pero no ejecución.
 
-### 2.2. Modificación de permisos con `chmod` y la máscara `umask`
+### Modificación de permisos
 
 El comando `chmod` permite modificar los permisos de archivos y directorios utilizando
 dos notaciones principales: la **octal** y la **simbólica**.
@@ -340,7 +338,7 @@ limitados serán los permisos resultantes.
       eliminan los permisos de escritura para **grupo** y **otros**, resultando en permisos
       finales `rwxr-xr-x`.
 
-### 2.3. Propiedad de archivos y gestión con `chown`
+### Propiedad y gestión de archivos
 
 Además de los permisos, cada archivo y directorio posee un **propietario** y un
 **grupo**, que determinan quién ejerce la autoridad principal sobre él.
@@ -359,21 +357,21 @@ simultáneamente, y puede aplicarse de forma recursiva a directorios completos.
     Supongamos que un administrador desea **cambiar el propietario y el grupo de un
     directorio** llamado `proyecto` un usuario llamado `ana`:
 
-    ```bash
+    ``` bash
     sudo chown ana proyecto
     ```
 
     Después de ejecutar este comando, `ana` será la propietaria del directorio, mientras que
     el grupo permanece sin cambios. Para **cambiar solo el grupo** a `desarrolladores`:
 
-    ```bash
+    ``` bash
     sudo chown :desarrolladores proyecto
     ```
 
     El propietario actual se mantiene, pero ahora el grupo asociado es `desarrolladores`.
     Para **cambiar tanto propietario como grupo simultáneamente**:
 
-    ```bash
+    ``` bash
     sudo chown ana:desarrolladores proyecto
     ```
 
@@ -381,11 +379,11 @@ simultáneamente, y puede aplicarse de forma recursiva a directorios completos.
     al directorio. Para **aplicar los cambios de manera recursiva** a todos los archivos y
     subdirectorios dentro de `proyecto`:
 
-    ```bash
+    ``` bash
     sudo chown -R ana:desarrolladores proyecto
     ```
 
-### 2.4. Administración básica de cuentas de usuario
+### Administración de cuentas de usuario
 
 La gestión de usuarios se completa con comandos orientados a la creación y mantenimiento
 de cuentas.
@@ -414,7 +412,7 @@ específicos, como `sudo`, para concederles capacidades administrativas controla
       similar a `pedro : pedro sudo`, confirmando que el usuario pertenece a su grupo
       primario y al grupo de administradores.
 
-## 3. Gestión de procesos, señales y servicios
+## Gestión de procesos, señales y servicios
 
 En Linux, un **proceso** se define como un **programa en ejecución**. Cuando un usuario
 inicia un programa el sistema operativo carga el archivo binario en memoria, asigna los
@@ -450,7 +448,7 @@ Los procesos pueden encontrarse en diferentes estados según su actividad:
 - **Zombie (Z):** Ha terminado su ejecución, pero su padre aún no ha registrado su
   finalización. No consume memoria activa.
 
-### 3.1. Señales y control de procesos
+### Señales y control de procesos
 
 Las **señales** son mecanismos que permiten comunicar eventos a un proceso en ejecución.
 Funcionan como mensajes que pueden solicitar la terminación, pausa, reanudación o la
@@ -479,7 +477,7 @@ Señales comunes generadas desde el teclado incluyen:
 - **Ctrl + Z (SIGTSTP):** Pausa el proceso y lo envía al segundo plano, permitiendo
   reanudarlo con `fg`.
 
-### 3.2. _Daemons_ y servicios
+### _Daemons_ y servicios
 
 Los **_daemons_** son procesos diseñados para ejecutarse en segundo plano de manera
 continua, sin depender de la sesión de un usuario. Proporcionan servicios permanentes
@@ -508,7 +506,7 @@ detener, reiniciar y habilitar servicios de manera uniforme:
 | `sudo systemctl status sshd` | Muestra el estado, PID y consumo de recursos del daemon.                       |
 | `sudo systemctl enable sshd` | Configura el daemon para que se inicie automáticamente al arrancar el sistema. |
 
-## 4. Automatización
+## Automatización
 
 En Linux, la eficiencia operativa se potencia mediante la **automatización** de tareas
 repetitivas o complejas a través de la shell.

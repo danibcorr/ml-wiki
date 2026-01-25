@@ -10,7 +10,7 @@ title: MLOps
 - [ML in Production: From Data Scientist to ML Engineer](https://www.udemy.com/course/ml-in-production/?couponCode=SKILLS4SALEA)
 - [PEP 8 — the Style Guide for Python Code](https://pep8.org/)
 
-## 1. Introducción
+## Introducción
 
 <p align="center">
   <img src="/assets/img/docs/logos/mlops-logo.png" width="500"/>
@@ -38,7 +38,7 @@ interfaz es esencial para procesar solicitudes y devolver predicciones, mientras
 gestión de predicciones y la monitorización aseguran la calidad, fiabilidad y
 rendimiento en tiempo real.
 
-## 2. Los desafíos de MLOps
+## Los desafíos de MLOps
 
 Uno de los principales desafíos en la adopción de metodologías de MLOps es la correcta
 definición tanto del problema como de la posible solución. Además, es fundamental
