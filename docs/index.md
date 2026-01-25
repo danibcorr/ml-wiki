@@ -14,7 +14,7 @@ slug: /
 
 ¡Bienvenido/a!
 
-Soy Dani y este es mi espacio dedicado al desarrollo de software que me gustaría
+Soy Dani, y este es mi espacio dedicado al desarrollo de software que me gustaría
 compartir contigo.
 
 He de decir que al principio tenía un enfoque más centrado en la inteligencia

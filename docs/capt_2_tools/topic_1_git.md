@@ -21,8 +21,8 @@ title: Git
 
 **Git** es un sistema de control de versiones que permite gestionar el historial de
 cambios en proyectos de software. Facilita la colaboración entre desarrolladores, el
-seguimiento de modificaciones en el código y la administración de distintas versiones del
-código a lo largo del tiempo. Al igual que el _kernel_ de Linux, fue desarrollado
+seguimiento de modificaciones en el código y la administración de distintas versiones
+del código a lo largo del tiempo. Al igual que el _kernel_ de Linux, fue desarrollado
 inicialmente por Linus Torvalds.
 
 Plataformas como **GitHub** o **GitLab** utilizan Git para facilitar la gestión de
@@ -42,25 +42,26 @@ restaurar versiones anteriores de manera segura y organizada.
 
 ### Terminología
 
-- **Repositorio local**: Espacio en el ordenador donde se almacenan todos los archivos de
-  un proyecto y sus versiones anteriores. Git permite hacer un seguimiento de los cambios
-  en estos archivos sin necesidad de conexión a internet.
+- **Repositorio local**: Espacio en el ordenador donde se almacenan todos los archivos
+  de un proyecto y sus versiones anteriores. Git permite hacer un seguimiento de los
+  cambios en estos archivos sin necesidad de conexión a internet.
 
-- **Repositorio remoto**: Copia del repositorio local almacenada en internet o en una red
-  externa. Plataformas como GitHub, GitLab o Bitbucket permiten que varias personas
+- **Repositorio remoto**: Copia del repositorio local almacenada en internet o en una
+  red externa. Plataformas como GitHub, GitLab o Bitbucket permiten que varias personas
   trabajen en el mismo proyecto desde diferentes ubicaciones.
 
-- **Histórico (_Log_)**: Registro que muestra todos los cambios realizados en el proyecto
-  a lo largo del tiempo. Cada vez que se guarda un cambio en Git (un **_commit_**), queda
-  registrado en este historial con información como la fecha, el autor del cambio y una
-  descripción de lo modificado. También se conoce como **_Commit History_**, siendo el
-  lugar donde se almacenan todos los **_commits_** realizados.
+- **Histórico (_Log_)**: Registro que muestra todos los cambios realizados en el
+  proyecto a lo largo del tiempo. Cada vez que se guarda un cambio en Git (un
+  **_commit_**), queda registrado en este historial con información como la fecha, el
+  autor del cambio y una descripción de lo modificado. También se conoce como **_Commit
+  History_**, siendo el lugar donde se almacenan todos los **_commits_** realizados.
 
 - **Conflicto**: Situación que ocurre cuando Git no puede combinar automáticamente los
-  cambios de diferentes personas en un mismo archivo. Por ejemplo, si dos personas editan
-  la misma línea de un archivo y luego intentan guardar sus cambios en el repositorio
-  remoto, Git no puede determinar qué versión debe mantener y marca un conflicto. En ese
-  caso, es necesario revisar y decidir manualmente qué cambios conservar.
+  cambios de diferentes personas en un mismo archivo. Por ejemplo, si dos personas
+  editan la misma línea de un archivo y luego intentan guardar sus cambios en el
+  repositorio remoto, Git no puede determinar qué versión debe mantener y marca un
+  conflicto. En ese caso, es necesario revisar y decidir manualmente qué cambios
+  conservar.
 
 ### Áreas de trabajo
 
@@ -80,10 +81,10 @@ Dentro del sistema Git se distinguen diferentes áreas:
    Cuando se añaden nuevos archivos en esta área, para Git están en estado _untracked_
    (sin seguimiento) hasta que se añadan explícitamente.
 
-2. **_Staging Area_**: Funciona como un espacio de borrador donde se preparan los cambios
-   para el siguiente _commit_. Se representa físicamente mediante un fichero llamado
-   `index` dentro de la carpeta `.git` en la raíz del repositorio. Los archivos añadidos
-   a esta área pasan a estar _tracked_ (con seguimiento).
+2. **_Staging Area_**: Funciona como un espacio de borrador donde se preparan los
+   cambios para el siguiente _commit_. Se representa físicamente mediante un fichero
+   llamado `index` dentro de la carpeta `.git` en la raíz del repositorio. Los archivos
+   añadidos a esta área pasan a estar _tracked_ (con seguimiento).
 
 3. **_Commit History_**: Área donde se almacenan todas las versiones confirmadas del
    proyecto.
@@ -103,9 +104,9 @@ Durante el ciclo de vida en Git, un archivo puede pasar por diferentes estados:
    rastreando. No se guarda en el historial del repositorio hasta que se agregue
    manualmente con `git add`.
 
-2. **Ignorado (_Ignored_)**: Archivos como configuraciones personales o temporales pueden
-   estar en una lista especial llamada `.gitignore`. Git los omite y no los agrega al
-   repositorio.
+2. **Ignorado (_Ignored_)**: Archivos como configuraciones personales o temporales
+   pueden estar en una lista especial llamada `.gitignore`. Git los omite y no los
+   agrega al repositorio.
 
 3. **Modificado (_Modified_)**: El archivo ha sido editado después de su última
    confirmación (_commit_), pero esos cambios aún no han sido registrados en Git.
@@ -132,20 +133,20 @@ Si quieres conocer sobre estos comandos y lo básico sobre Linux, puedes dirigir
 ### Configuración de Git
 
 Antes de comenzar a trabajar con plataformas como GitHub o GitLab, es imprescindible
-configurar correctamente el entorno local de Git. Esta configuración incluye, entre otros
-aspectos, la identidad del autor de los _commits_ y ciertos parámetros de comportamiento
-global.
+configurar correctamente el entorno local de Git. Esta configuración incluye, entre
+otros aspectos, la identidad del autor de los _commits_ y ciertos parámetros de
+comportamiento global.
 
-Mediante el comando `git config --global --list` es posible consultar todas las variables
-definidas en la configuración global de Git junto con sus valores. Esta configuración se
-utiliza, entre otros fines, para establecer el nombre de usuario y la dirección de correo
-electrónico que quedarán asociados a cada _commit_.
+Mediante el comando `git config --global --list` es posible consultar todas las
+variables definidas en la configuración global de Git junto con sus valores. Esta
+configuración se utiliza, entre otros fines, para establecer el nombre de usuario y la
+dirección de correo electrónico que quedarán asociados a cada _commit_.
 
 #### Configurar nombre de usuario y correo
 
 Git utiliza el nombre y el correo configurados para identificar tus contribuciones.
-Puedes configurarlos globalmente para que se apliquen a todos tus repositorios utilizando
-los siguientes comandos:
+Puedes configurarlos globalmente para que se apliquen a todos tus repositorios
+utilizando los siguientes comandos:
 
 ```bash linenums="1"
 git config --global user.name "Tu Nombre"
@@ -158,14 +159,14 @@ Para verificar la configuración, puedes utilizar:
 git config --global --list
 ```
 
-Si deseas configurarlos solo para un repositorio específico, omite la opción `--global` y
-ejecuta los comandos dentro del directorio del repositorio.
+Si deseas configurarlos solo para un repositorio específico, omite la opción `--global`
+y ejecuta los comandos dentro del directorio del repositorio.
 
 #### Configurar autenticación SSH para GitHub/GitLab
 
 Configurar claves SSH simplifica la autenticación con GitHub/GitLab.
 
-Genera una clave SSH si no tienes una:
+Para ello, genera una clave SSH si no tienes una, utilizando el siguiente comando:
 
 ```bash linenums="1"
 ssh-keygen -t ed25519 -C "<EMAIL_ADDRESS>"
@@ -183,16 +184,20 @@ Copia la clave pública generada:
 cat ~/.ssh/id_ed25519.pub
 ```
 
-Ve a tu cuenta de GitHub o GitLab, accede a **Settings** > **SSH and GPG keys**, y añade
-la clave pública copiada.
+Ve a tu cuenta de GitHub o GitLab, accede a **Settings** > **SSH and GPG keys** (o
+similar), y añade la clave pública copiada.
 
-Prueba la conexión:
+Finalmente, puedes probar la conexión utilizando el siguiente comando:
 
 ```bash linenums="1"
 ssh -T git@github.com
 ```
 
-(Para GitLab: `ssh -T git@gitlab.com`).
+En el caso de utilizar GitLab puedes utilizar este otro comando:
+
+```bash linenums="1"
+ssh -T git@gitlab.com
+```
 
 #### Configurar autenticación con tokens personales
 
@@ -259,14 +264,14 @@ distintas personas colaboren en un proyecto simultáneamente.
 Una de las metodologías más básicas o estándares de Git consiste en utilizar una rama
 principal conocida como `main` o `master`, que es la que se lleva a producción y debe
 estar siempre disponible. Adicionalmente, se cuenta con una rama de desarrollo (`dev`)
-que incorpora las nuevas características o funcionalidades que posteriormente se añadirán
-a la rama principal. A partir de estas, es posible crear diferentes subramas que permiten
-implementar cada característica por separado, aunque esto dependerá de la metodología de
-trabajo utilizada.
+que incorpora las nuevas características o funcionalidades que posteriormente se
+añadirán a la rama principal. A partir de estas, es posible crear diferentes subramas
+que permiten implementar cada característica por separado, aunque esto dependerá de la
+metodología de trabajo utilizada.
 
-En Git existe el concepto de `HEAD`, un puntero que indica la rama que se está utilizando
-y apunta a un _commit_ específico. Es posible encontrarse en un _commit_ que no está
-siendo apuntado por una rama, situación conocida como **_Detached HEAD State_**.
+En Git existe el concepto de `HEAD`, un puntero que indica la rama que se está
+utilizando y apunta a un _commit_ específico. Es posible encontrarse en un _commit_ que
+no está siendo apuntado por una rama, situación conocida como **_Detached HEAD State_**.
 
 Tanto **_Trunk-Based Development_** como **_Git Flow_** son estrategias populares de
 control de versiones, cada una con sus propias ventajas y casos de uso.
@@ -302,8 +307,8 @@ Sin embargo, presenta las siguientes desventajas:
 
 - **Gestión en equipos grandes**: Puede ser difícil de gestionar en equipos grandes sin
   una estricta disciplina y coordinación.
-- **Rastreo de cambios individuales**: Es menos capaz de rastrear cambios individuales en
-  comparación con Git Flow, lo que puede dificultar la identificación de problemas
+- **Rastreo de cambios individuales**: Es menos capaz de rastrear cambios individuales
+  en comparación con Git Flow, lo que puede dificultar la identificación de problemas
   específicos.
 
 ### Git Flow
@@ -314,8 +319,8 @@ Sin embargo, presenta las siguientes desventajas:
   <em>Esquema de desarrollo Git Flow. [Link](https://images.edrawmax.com/what-is/gitflow-diagram/2-git-flow-model.png)</em>
 </p>
 
-Esta estrategia utiliza múltiples ramas para diferentes propósitos (por ejemplo, ramas de
-características, ramas de lanzamiento, ramas de corrección).
+Esta estrategia utiliza múltiples ramas para diferentes propósitos (por ejemplo, ramas
+de características, ramas de lanzamiento, ramas de corrección).
 
 Las principales ventajas de esta estrategia son:
 
@@ -348,9 +353,9 @@ Sin embargo, presenta las siguientes desventajas:
 
 Uno de los problemas recurrentes en el desarrollo de software moderno reside en el
 crecimiento progresivo de código, el aumento de su complejidad y la consiguiente pérdida
-de visibilidad por parte del resto de los miembros del equipo. Esta situación provoca que
-la incorporación de nuevas funcionalidades en las ramas de producción se vea limitada o,
-en muchos casos, que la responsabilidad del control de calidad recaiga casi
+de visibilidad por parte del resto de los miembros del equipo. Esta situación provoca
+que la incorporación de nuevas funcionalidades en las ramas de producción se vea
+limitada o, en muchos casos, que la responsabilidad del control de calidad recaiga casi
 exclusivamente en las herramientas de integración y despliegue continuo (CI/CD),
 reduciendo la interacción humana en el proceso de revisión.
 
@@ -360,24 +365,24 @@ propuesto por Rouan Wilsenach, se articula en tres modalidades diferenciadas que
 equilibrar velocidad, calidad y comunicación dentro del equipo.
 
 El enfoque **_Ship_** se basa en la realización de cambios pequeños, acotados y de bajo
-riesgo que pueden integrarse directamente en la rama principal sin necesidad de abrir una
-_Pull Request_ ni solicitar la revisión explícita de otros miembros del equipo. Resulta
-especialmente adecuado cuando se añade una funcionalidad siguiendo un patrón existente,
-se corrige un error menor y poco relevante, se actualiza documentación o se mejora el
-código a partir de comentarios previos.
+riesgo que pueden integrarse directamente en la rama principal sin necesidad de abrir
+una _Pull Request_ ni solicitar la revisión explícita de otros miembros del equipo.
+Resulta especialmente adecuado cuando se añade una funcionalidad siguiendo un patrón
+existente, se corrige un error menor y poco relevante, se actualiza documentación o se
+mejora el código a partir de comentarios previos.
 
 La modalidad **_Show_** introduce un punto intermedio entre la integración directa y la
 revisión formal. En este caso, se crea una _Pull Request_ desde una rama distinta de la
-principal, pero dicha solicitud no requiere aprobación obligatoria para ser integrada. El
-cambio pasa por los mecanismos habituales de CI/CD y se incorpora rápidamente a la base
-de código, pero al mismo tiempo se genera un espacio explícito para la revisión, el
+principal, pero dicha solicitud no requiere aprobación obligatoria para ser integrada.
+El cambio pasa por los mecanismos habituales de CI/CD y se incorpora rápidamente a la
+base de código, pero al mismo tiempo se genera un espacio explícito para la revisión, el
 aprendizaje y la conversación. El equipo es notificado de la existencia de la _Pull
 Request_, lo que permite que otros desarrolladores revisen el enfoque adoptado, planteen
 preguntas o sugieran mejoras. Este enfoque es especialmente útil cuando se busca
 retroalimentación sobre cómo mejorar una solución, cuando se introduce un nuevo patrón,
-se realiza una refactorización relevante o se corrige un error interesante desde el punto
-de vista técnico. De este modo, se favorece el aprendizaje colectivo sin frenar el flujo
-de entrega.
+se realiza una refactorización relevante o se corrige un error interesante desde el
+punto de vista técnico. De este modo, se favorece el aprendizaje colectivo sin frenar el
+flujo de entrega.
 
 Por último, el enfoque **_Ask_** representa el modelo más tradicional y deliberativo.
 Consiste en abrir una _Pull Request_ que sí requiere la aprobación explícita de uno o
@@ -393,9 +398,9 @@ integración posterior.
 Independientemente de la modalidad elegida, una de las reglas fundamentales que subyacen
 a esta estrategia es que las ramas no deben tener una vida prolongada y deben mantenerse
 alineadas con la rama principal mediante _rebases_ frecuentes. Las ramas que divergen
-durante demasiado tiempo incrementan el riesgo de conflictos al integrarse, dificultan la
-comprensión del estado real del proyecto y suelen generar frustración innecesaria en el
-equipo.
+durante demasiado tiempo incrementan el riesgo de conflictos al integrarse, dificultan
+la comprensión del estado real del proyecto y suelen generar frustración innecesaria en
+el equipo.
 
 El propio autor destaca que, cuando se entregan funcionalidades siguiendo patrones
 consolidados y existe un alto nivel de confianza y estándares de calidad compartidos, el
@@ -407,8 +412,8 @@ colaborativo son pilares fundamentales de la ingeniería de software.
 
 ## Git Hooks
 
-Los **Git Hooks** son una funcionalidad integrada en Git que permite automatizar tareas y
-aplicar políticas a lo largo del flujo de trabajo. Gracias a ellos, Git puede ejecutar
+Los **Git Hooks** son una funcionalidad integrada en Git que permite automatizar tareas
+y aplicar políticas a lo largo del flujo de trabajo. Gracias a ellos, Git puede ejecutar
 acciones en momentos clave del proceso de desarrollo, asegurando la calidad del código y
 el cumplimiento de políticas específicas del proyecto.
 
@@ -434,8 +439,8 @@ chmod +x pre-commit
 Una vez ubicados en el directorio correcto y con los permisos necesarios, Git ejecutará
 automáticamente estos scripts cuando ocurra el evento correspondiente.
 
-Al desarrollar y administrar Git Hooks, es esencial seguir ciertas pautas que aseguren su
-eficacia y mantengan un flujo de trabajo ordenado.
+Al desarrollar y administrar Git Hooks, es esencial seguir ciertas pautas que aseguren
+su eficacia y mantengan un flujo de trabajo ordenado.
 
 En primer lugar, los hooks deben ser rápidos y confiables, de manera que su ejecución no
 interfiera con la productividad del equipo ni genere demoras en los procesos habituales
@@ -589,8 +594,8 @@ regenerar documentación.
 
 Estos _hooks_ se ejecutan en el servidor remoto al recibir cambios mediante _push_.
 
-**pre-receive**: Se usa para validar que los _commits_ cumplan con las políticas del
-proyecto antes de aceptarlos.
+En el caso de **pre-receive**, se usa para validar que los _commits_ cumplan con las
+políticas del proyecto antes de aceptarlos.
 
 ???+ example "Ejemplo"
 
@@ -611,7 +616,8 @@ proyecto antes de aceptarlos.
     done
     ```
 
-**post-receive**: Se emplea para realizar despliegues automáticos en producción.
+Mientras que **post-receive**, se emplea para realizar despliegues automáticos en
+producción.
 
 ???+ example "Ejemplo"
 
@@ -643,15 +649,18 @@ claras y seguras para los escenarios más frecuentes.
 
 Para garantizar la autenticidad de los commits, se pueden adoptar varias estrategias.
 
-Entre ellas, podemos reescribir y firmar todos los commits, si los commits son válidos
-pero carecen de firma, se pueden recrear firmados:
+Podemos volver a generar y firmar todos los commits. Si ya son válidos pero les falta la
+firma, basta con recrearlos para que aparezcan firmados. Para ello utilizamos los
+siguientes comandos:
 
 ```bash linenums="1"
 git rebase --root --exec 'git commit --amend --no-edit -S'
 git push --force-with-lease
 ```
 
-Eliminar commits no firmados conservando los firmados:
+Si el repositorio requiere firmas GPG y has añadido commits sin firmar, se producirá un
+error al intentar subirlos. Para solucionarlo, puedes reescribir el historial y firmar
+los commits existentes sin perder los cambios mediante los siguientes comandos:
 
 ```bash linenums="1"
 git log --pretty="%h %G?"   # Identifica commits no firmados (N)
@@ -660,7 +669,7 @@ git rebase -i --root        # Marca con 'drop' los commits N en el editor
 git push --force-with-lease origin rama-limpia
 ```
 
-Resetear la rama a un commit firmado específico:
+Otra alternativa es restablecer la rama a un commit firmado determinado:
 
 ```bash linenums="1"
 git reset --hard <commit_firmado>
@@ -669,21 +678,22 @@ git push --force-with-lease
 
 ### Sincronizar repositorio local con el remoto
 
-Para que la rama local sea idéntica a la remota, eliminando cambios locales y archivos no
-versionados:
+Para sincronizar la rama local exactamente con la remota, descartando cualquier cambio
+local y archivos sin seguimiento, utiliza el siguiente comando.
+
+!!! warning "Advertencia"
+
+    Esta operación es irreversible y eliminará cualquier trabajo que no haya sido subido al repositorio.
 
 ```bash linenums="1"
 git fetch origin && git reset --hard origin/main && git clean -fd
 ```
 
-Si se desea borrar y recrear la rama local:
+Si prefieres eliminar y recrear la rama local por completo para asegurar una copia
+limpia desde el servidor, puedes seguir estos pasos:
 
 ```bash linenums="1"
 git checkout main
 git branch -D nombre-rama
 git checkout -b nombre-rama origin/nombre-rama
 ```
-
-Estas estrategias permiten mantener la historia de commits organizada y sincronizar de
-manera segura el repositorio local con el remoto, evitando conflictos y pérdida de
-información.
