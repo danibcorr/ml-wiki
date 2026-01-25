@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./static/img/docs/logos/machine-learning-wiki-logo.png" width="300"/>
+  <img src="./docs/assets/img/docs/logos/machine-learning-wiki-logo.png" width="300"/>
   <br />
 </p>
 

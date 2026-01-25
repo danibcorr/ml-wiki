@@ -1,69 +1,56 @@
-name: ML Wiki CI/CD
+name: CI/CD Pipeline
+
 on:
   push:
-    branches: ["*"]
+    branches: [main, dev]
   pull_request:
     branches: [main, dev]
 
+env:
+  SRC_PYTHON_VERSION: "3.11"
+
 jobs:
-  build:
-    name: Build Web
+  build-deploy-docs:
+    name: Build and Deploy Documentation
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v5
-        with:
-          node-version: 22.x
-          cache: npm
+      - name: Setup Python Environment
+        uses: ./.github/actions/setup-python-env
 
-      - name: Cache Node Modules
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.npm
-            node_modules
-            .docusaurus
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}-${{
-            hashFiles('config/**') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-
+      - name: Get Version
+        id: version
+        uses: ./.github/actions/obtain-version
 
-      - name: Install Dependencies
-        run: npm ci
+      - name: Build and Deploy Documentation
+        uses: ./.github/actions/build-docs
 
-      - name: Build Website
-        run: npm run build
-
-      - name: Validate Build Output
-        run: |
-          if [ ! -d "build" ]; then
-            echo "Build directory does not exist!"
-            exit 1
-          fi
-
-      - name: Upload Artifact
-        if: github.ref == 'refs/heads/main'
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: build
-
-  deploy:
-    name: Deploy Web to GitHub Pages
-    if: github.ref == 'refs/heads/main'
-    needs: build
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  create-release:
+    name: Create Release
     runs-on: ubuntu-latest
+    needs: build-deploy-docs
+
+    permissions:
+      contents: write
+
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+
+      - name: Get Version
+        id: version
+        uses: ./.github/actions/obtain-version
+
+      - name: Create Release
+        uses: ./.github/actions/create-release
+        with:
+          version: ${{ steps.version.outputs.version }}
+          token: ${{ secrets.GITHUB_TOKEN }}

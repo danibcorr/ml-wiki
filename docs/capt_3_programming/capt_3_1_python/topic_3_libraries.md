@@ -1,19 +1,22 @@
 ---
-sidebar_position: 3
-authors:
-  - name: Daniel Bazo Correa
+authors: Daniel Bazo Correa
 description: Librerias de interés de Python.
 title: Librerias
-toc_max_heading_level: 4
 ---
 
 # Librerías
 
 En el desarrollo con Python, existen numerosas librerías que facilitan la implementación
-de diversas funcionalidades. A continuación, se destacan algunas consideradas
-especialmente relevantes. Se recomienda consultar la documentación oficial de cada
-librería y sus páginas en [PyPI](https://pypi.org/) para información detallada sobre
-instalación, uso y compatibilidad.
+de diversas funcionalidades.
+
+A continuación, destaco algunas consideradas especialmente relevantes para crear
+utilidades, herramientas de línea de comandos (CLI) o similares.
+
+Se recomienda consultar la documentación oficial de cada librería y sus páginas en
+[PyPI](https://pypi.org/) para obtener información detallada sobre la instalación, el uso
+y la compatibilidad de cada uno de los paquetes detallados a continuación, o incluso
+buscar nuevas alternativas, ya que con el tiempo podría ser que algunas de estas
+librerías queden obsoletas.
 
 | Librería         | Descripción                                                                                                                                   |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |

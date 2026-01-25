@@ -1,10 +1,7 @@
 ---
-sidebar_position: 2
-authors:
-  - name: Daniel Bazo Correa
+authors: Daniel Bazo Correa
 description: Aprende todo lo necesario sobre el lenguaje de programación Python.
 title: Python
-toc_max_heading_level: 4
 ---
 
 ## Bibliografía
@@ -12,25 +9,40 @@ toc_max_heading_level: 4
 - [Python Docs](https://docs.python.org/3/)
 - [Python Bootcamps Udemy](https://www.udemy.com/course/complete-python-bootcamp/)
 
-## 1. Introducción
+## Introducción
 
 <p align="center">
-  <img src={require("../../../static/img/docs/logos/python-logo.png").default} height="250"/>
+  <img src="/assets/img/docs/logos/python-logo.png" height="250" width="250"/>
   <br />
   <em>Logo de Python</em>
 </p>
 
 **Python** es un lenguaje de programación de alto nivel, interpretado y de propósito
-general, desarrollado por Guido van Rossum. Su sintaxis se caracteriza
-por ser clara y legible, lo que facilita tanto el aprendizaje como la escritura de
-código eficiente y comprensible. Python cuenta con una amplia comunidad de
-desarrolladores y un ecosistema robusto de bibliotecas y frameworks que permiten abordar
-una gran diversidad de proyectos, incluyendo aplicaciones web, análisis de datos,
-automatización de tareas y aprendizaje automático.
+general, desarrollado por Guido van Rossum.
 
-## 2. Instalación
+Su sintaxis se caracteriza por ser clara y legible, lo que facilita tanto el aprendizaje
+como la escritura de código eficiente y comprensible.
 
-### 2.1. Jupyter Notebooks
+Python cuenta con una amplia comunidad de desarrolladores y un ecosistema robusto de
+bibliotecas y frameworks que permiten abordar una gran diversidad de proyectos,
+incluyendo aplicaciones web, análisis de datos, automatización de tareas y aprendizaje
+automático.
+
+## Instalación
+
+### Creación y configuración del entorno
+
+Antes de comenzar a programar en Python, es recomendable crear un entorno virtual que
+permita aislar la versión de Python y los paquetes específicos de cada proyecto.
+
+Esto evita conflictos entre dependencias y garantiza la reproducibilidad del entorno de
+desarrollo.
+
+Para obtener instrucciones detalladas sobre la configuración de entornos virtuales y la
+gestión de paquetes en Python, se puede consultar el
+[apartado de programación en Python](./topic_1_environments.md).
+
+### Jupyter Notebooks
 
 Para experimentar y desarrollar en Python, se recomienda utilizar **Jupyter Notebooks**,
 una herramienta interactiva que integra código, texto y visualizaciones en un único
@@ -44,38 +56,6 @@ documento. Entre sus principales ventajas destacan:
   bibliotecas como **Matplotlib** o **Seaborn**, mostrando los resultados de manera
   inmediata dentro del mismo documento.
 
-### 2.2. Creación y configuración del entorno
-
-Antes de comenzar a programar en Python, es recomendable crear un entorno virtual que
-permita aislar la versión de Python y los paquetes específicos de cada proyecto. Esto
-evita conflictos entre dependencias y garantiza la reproducibilidad del entorno de
-desarrollo. Para obtener instrucciones detalladas sobre la configuración de entornos
-virtuales y la gestión de paquetes en Python, se puede consultar el
-[apartado de herramientas y gestión de entornos en Python](./topic_1_environments.md).
-
-### 2.3. Comandos útiles para la terminal
-
-A continuación, se listan algunos comandos útiles para la terminal en Linux, junto con
-su función:
-
-| Comando                | Función                                                 |
-| ---------------------- | ------------------------------------------------------- |
-| `pwd`                  | Muestra la ruta completa del directorio actual.         |
-| `ls`                   | Lista los archivos y carpetas en el directorio actual.  |
-| `ls -l`                | Muestra una lista detallada de los archivos y carpetas. |
-| `cd nombre_directorio` | Cambia al directorio especificado.                      |
-| `cd ..`                | Navega al directorio superior (padre).                  |
-| `cd /`                 | Navega al directorio raíz del sistema.                  |
-| `mkdir nombre_carpeta` | Crea una nueva carpeta con el nombre especificado.      |
-| `rm nombre_archivo`    | Elimina un archivo especificado.                        |
-| `rm -r nombre_carpeta` | Elimina una carpeta y su contenido de manera recursiva. |
-| `touch nombre_archivo` | Crea un archivo vacío con el nombre especificado.       |
-| `mv origen destino`    | Mueve o renombra archivos o carpetas.                   |
-| `cp origen destino`    | Copia archivos o carpetas de un lugar a otro.           |
-| `clear`                | Limpia la pantalla del terminal.                        |
-
-### 2.4. Atajos de teclado para Jupyter Notebooks
-
 A continuación, se presentan algunos atajos de teclado útiles para trabajar en **Jupyter
 Notebooks**:
 
@@ -88,9 +68,9 @@ Notebooks**:
 | `ctrl + enter`     | Ejecuta la celda actual sin avanzar a la siguiente.                                    |
 | `shift + enter`    | Ejecuta la celda actual y avanza a la siguiente.                                       |
 
-## 3. Conceptos básicos
+## Conceptos básicos
 
-### 3.1. Tipos de datos
+### Tipos de datos
 
 Python ofrece varios tipos de datos fundamentales que permiten definir, almacenar y
 manipular información. A continuación, se detallan los principales tipos de datos y sus
@@ -107,7 +87,7 @@ características:
 | **Sets** (colección única y desordenada)    | `set`             | `{"a", "b"}`                     |
 | **Booleanos** (valores lógicos)             | `bool`            | `True`, `False`                  |
 
-### 3.2. Operaciones con datos
+### Operaciones con datos
 
 Python permite realizar una amplia variedad de operaciones sobre datos numéricos y otros
 tipos. A continuación, se describen las principales operaciones matemáticas y funciones
@@ -129,9 +109,9 @@ disponibles:
 | `hex(x)`                | Convierte `x` a hexadecimal.                                           |
 | `bin(x)`                | Convierte `x` a binario.                                               |
 
-### 3.3. Operadores
+### Operadores
 
-#### 3.3.1. Operadores de comparación
+#### Operadores de comparación
 
 Los operadores de comparación permiten evaluar relaciones entre dos valores, devolviendo
 un resultado booleano (`True` o `False`).
@@ -145,7 +125,7 @@ un resultado booleano (`True` o `False`).
 | `A > B`   | A es mayor que B.         |
 | `A >= B`  | A es mayor o igual que B. |
 
-#### 3.3.2. Operadores lógicos
+#### Operadores lógicos
 
 Los operadores lógicos permiten combinar varias condiciones y controlar el flujo de
 ejecución en función de los resultados.
@@ -160,7 +140,7 @@ Los operadores lógicos se utilizan principalmente en estructuras de control, co
 condicionales y bucles, para determinar el flujo del programa en función de condiciones
 lógicas. Estas estructuras de control se explicarán en secciones posteriores.
 
-### 3.4. Variables
+### Variables
 
 Al crear variables en Python, se deben seguir ciertas reglas:
 
@@ -174,25 +154,25 @@ Al crear variables en Python, se deben seguir ciertas reglas:
 explícitamente el tipo de dato, ya que este se asigna automáticamente según el valor.
 Por ejemplo:
 
-```python
+```py linenums="1"
 mis_perros = 2
 mis_perros = ["Pixel", "One"]
 ```
 
 Para conocer el tipo de una variable, se utiliza la función `type(variable)`.
 
-### 3.5. Mostrar datos por pantalla
+### Mostrar datos por pantalla
 
 Para mostrar datos en pantalla, se utiliza la función `print()`, por ejemplo:
 
-```python
+```py linenums="1"
 print("Esto es una prueba")
 ```
 
 Se pueden concatenar variables que contienen cadenas de texto o métodos/funciones que
 devuelvan un valor utilizando el operador `+`, por ejemplo:
 
-```python
+```py linenums="1"
 char_name = "Daniel"
 char_age = 19
 
@@ -203,7 +183,7 @@ Este método puede ser ineficiente. A partir de la versión de Python 3, es posi
 formato a la función `print()` utilizando una cadena de formato con `f`, que permite
 incluir variables o expresiones dentro de llaves `{}`, por ejemplo:
 
-```python
+```py linenums="1"
 char_name = "Daniel"
 char_age = 19
 
@@ -214,21 +194,21 @@ Incluso podemos modificar la cantidad específica de decimales para un valor de 
 `float` utilizando el formato `{valor_float:.precision}`. Por ejemplo, para mostrar el
 número Pi con 5 decimales:
 
-```python
+```py linenums="1"
 import math
 
 pi = math.pi
 print(f"El número pi con 5 decimales es: {pi:.5f}")
 ```
 
-### 3.6. Introducción de datos
+### Introducción de datos
 
 Python permite recibir información del usuario mediante la función `input(...)`. Esta
 función siempre devuelve el valor ingresado como una cadena de texto (`string`). Por lo
 tanto, es necesario realizar una conversión de tipo (**_casting_**) si se requiere un
 tipo de dato diferente. Por ejemplo:
 
-```python
+```py linenums="1"
 nombre = input("Introduce tu nombre: ")
 edad = input("Introduce tu edad: ")
 
@@ -240,20 +220,20 @@ print(f"Edad: {edad}")
 Para convertir un `input` a un número, es necesario hacer un _casting_, como en el
 siguiente ejemplo, donde se convierte una entrada de tipo `string` a `float`:
 
-```python
+```py linenums="1"
 numero = float(input("Introduce un numero: "))
 ```
 
 Este procedimiento es útil para manipular datos numéricos o realizar cálculos después de
 recibir la entrada del usuario.
 
-### 3.7. Cadenas de texto (Strings)
+### Cadenas de texto (Strings)
 
 Un **string** es una secuencia de caracteres que puede contener letras, números,
 símbolos o espacios. A cotinuación se muestra un ejemplo básico de string junto con el
 uso del indexado:
 
-```python
+```py linenums="1"
 frase = "Hola buenas"
 
 # Muestra el carácter 'H'
@@ -279,7 +259,7 @@ Los strings son **inmutables**, lo que significa que no es posible cambiar un ca
 específico en un string ya creado. Intentar modificar directamente un elemento producirá
 un error. Por ejemplo:
 
-```python
+```py linenums="1"
 frase = "Hola buenas"
 
 # Intentar cambiar el primer carácter
@@ -291,7 +271,7 @@ directamente un carácter de un string existente. Para modificar un string, es n
 crear uno nuevo combinando partes del string original. Por ejemplo, para cambiar la
 primera letra de `"Hola buenas"` por una minúscula:
 
-```python
+```py linenums="1"
 frase = "Hola buenas"
 
 # Crear un nuevo string con la primera letra modificada
@@ -305,7 +285,7 @@ En este ejemplo, se construye una nueva cadena concatenando `"h"` con el resto d
 string original (`frase[1:]`), que devuelve el string desde el segundo carácter en
 adelante.
 
-#### 3.7.1. Métodos
+#### Métodos
 
 Las variables de tipo string en Python disponen de varias funciones incorporadas para
 manipular y analizar el contenido de la cadena:
@@ -336,7 +316,7 @@ manipular y analizar el contenido de la cadena:
 | `variable.partition('x')`                          | Divide la cadena en dos partes en el primer encuentro del carácter `x`.                                        |
 | `variable.strip()`                                 | Elimina los espacios al principio y al final de la cadena.                                                     |
 
-### 3.8. Declaraciones condicionales
+### Declaraciones condicionales
 
 Las declaraciones condicionales en Python, como `if`, `elif` y `else`, permiten ejecutar
 diferentes bloques de código según si se cumplen o no ciertas condiciones. Esto es
@@ -346,7 +326,7 @@ datos o situaciones evaluadas.
 El condicional básico en Python es la instrucción `if`, que ejecuta un bloque de código
 solo si la condición especificada es verdadera.
 
-```python
+```py linenums="1"
 if condicion:
     # Código a ejecutar si la condición es verdadera
 ```
@@ -354,7 +334,7 @@ if condicion:
 Si la condición es falsa, se puede usar una instrucción `else` para ejecutar un bloque
 alternativo:
 
-```python
+```py linenums="1"
 if condicion:
     # Código a ejecutar si la condición es verdadera
 else:
@@ -364,7 +344,7 @@ else:
 Para manejar múltiples condiciones, se utiliza la instrucción `elif`, que permite
 evaluar varias condiciones de forma secuencial:
 
-```python
+```py linenums="1"
 if primera_condicion:
     # Código a ejecutar si la primera condición es verdadera
 elif segunda_condicion:
@@ -373,125 +353,123 @@ else:
     # Código a ejecutar si ninguna de las condiciones anteriores es verdadera
 ```
 
-##### Ejemplos
+???+ example "Ejemplo"
 
-Veamos cómo se aplican estas estructuras en ejemplos prácticos. Primero, se utiliza un
-condicional `if` para verificar si un número está presente en una lista:
+    En este ejemplo, primero se utiliza un condicional `if` para verificar si un número está presente en una lista:
 
-```python
-letra = 'y'
-palabra = "Laguna"
+    ```py linenums="1"
+    letra = 'y'
+    palabra = "Laguna"
 
-if letra in palabra:
-    print(f"La palabra {palabra} contiene la letra {letra}")
-else:
-    print(f"La palabra {palabra} no contiene la letra {letra}")
-```
+    if letra in palabra:
+        print(f"La palabra {palabra} contiene la letra {letra}")
+    else:
+        print(f"La palabra {palabra} no contiene la letra {letra}")
+    ```
 
-En este caso, si `letra` se encuentra en el string `palabra`, el programa imprimirá un
-mensaje indicando que la palabra contiene la letra. En caso contrario, se ejecutará el
-bloque `else`.
+    En este caso, si `letra` se encuentra en el string `palabra`, el programa imprimirá un
+    mensaje indicando que la palabra contiene la letra. En caso contrario, se ejecutará el
+    bloque `else`.
 
-### 3.9. Bucles
+### Bucles
 
 Los bucles en Python permiten ejecutar un bloque de código repetidamente, facilitando la
 automatización de tareas repetitivas al recorrer secuencias de elementos o al evaluar
 una condición.
 
-#### 3.9.1. Bucle `for`
+#### Bucle `for`
 
 El bucle `for` es ideal para iterar sobre secuencias como listas o strings. Su sintaxis
 básica es:
 
-```python
+```py linenums="1"
 for variable in iterable:
     # Código a ejecutar para cada elemento en el iterable
 ```
 
-##### Ejemplos
+???+ example "Recorrer un rango de números"
 
-1. **Recorrer un rango de números**  
-   La función `range(n, m, s)` genera una secuencia de números desde `n` hasta `m - 1`,
-   con un paso de `s`. Por ejemplo, para mostrar números desde 0 hasta 10 en pasos de 2:
+    La función `range(n, m, s)` genera una secuencia de números desde `n` hasta `m - 1`, con
+    un paso de `s`. Por ejemplo, para mostrar números desde 0 hasta 10 en pasos de 2:
 
-   ```python
-   for numero in range(0, 11, 2):
-       print(numero)
-   ```
+    ```py linenums="1"
+    for numero in range(0, 11, 2):
+        print(numero)
+    ```
 
-2. **Recorrer los caracteres de un string**  
-   Se puede utilizar `range()` y `len()` para iterar sobre los índices de un string:
+???+ example "Recorrer los caracteres de un string"
 
-   ```python
-   mi_string = "Hola caracola"
-   for letra in range(len(mi_string)):
-       print(mi_string[letra])
-   ```
+    Se puede utilizar `range()` y `len()` para iterar sobre los índices de un string:
 
-   Alternativamente, se puede iterar directamente sobre los caracteres del string:
+    ```py linenums="1"
+    mi_string = "Hola caracola"
+    for letra in range(len(mi_string)):
+        print(mi_string[letra])
+    ```
 
-   ```python
-   mi_string = "Hola caracola"
-   for letra in mi_string:
-       print(letra)
-   ```
+    Alternativamente, se puede iterar directamente sobre los caracteres del string:
 
-3. **Recorrer dos secuencias simultáneamente con `zip()`**  
-   `zip()` permite recorrer dos secuencias al mismo tiempo, emparejando sus elementos:
+    ```py linenums="1"
+    mi_string = "Hola caracola"
+    for letra in mi_string:
+        print(letra)
+    ```
 
-   ```python
-   mi_lista1 = "Hola"
-   mi_lista2 = "Yadi"
+???+ example "Recorrer dos secuencias simultáneamente con `zip()`"
 
-   for item in zip(mi_lista1, mi_lista2):
-       print(item)
-   ```
+    `zip()` permite recorrer dos secuencias al mismo tiempo, emparejando sus elementos:
 
-   En este ejemplo, solo se recorrerán los caracteres hasta el final del string más
-   corto.
+    ```py linenums="1"
+    mi_lista1 = "Hola"
+    mi_lista2 = "Yadi"
 
-4. **Uso de `enumerate()` para obtener índices y valores**  
-   `enumerate()` permite obtener el índice y el valor de cada elemento en una secuencia:
+    for item in zip(mi_lista1, mi_lista2):
+        print(item)
+    ```
 
-   ```python
-   word = "abcde"
+    En este ejemplo, solo se recorrerán los caracteres hasta el final del string más corto.
 
-   for idx, letra in enumerate(word):
-       print(f"Índice {idx}: {letra}")
-   ```
+???+ example "Uso de `enumerate()` para obtener índices y valores"
 
-#### 3.9.2. Bucle `while`
+    `enumerate()` permite obtener el índice y el valor de cada elemento en una secuencia:
+
+    ```py linenums="1"
+    word = "abcde"
+
+    for idx, letra in enumerate(word):
+        print(f"Índice {idx}: {letra}")
+    ```
+
+#### Bucle `while`
 
 El bucle `while` continúa ejecutándose mientras una condición se mantenga verdadera. Su
 sintaxis básica es:
 
-```python
+```py linenums="1"
 while condicion:
     # Código a ejecutar mientras la condición sea verdadera
 ```
 
-##### Ejemplo
+???+ example "Crear un contador"
 
-1. **Crear un contador**  
-   Un bucle `while` puede usarse para incrementar un contador hasta que alcance un valor
-   determinado:
+    Un bucle `while` puede usarse para incrementar un contador hasta que alcance un valor
+    determinado:
 
-   ```python
-   contador = 0
-   while contador < 5:
-       print(contador)
-       contador += 1
-   ```
+    ```py linenums="1"
+    contador = 0
+    while contador < 5:
+        print(contador)
+        contador += 1
+    ```
 
-   En este caso, el bucle imprime los valores de `contador` mientras este sea menor
-   que 5.
+    En este caso, el bucle imprime los valores de `contador` mientras este sea menor que 5.
 
-#### 3.9.3. Control de flujo en bucles: `break`, `continue`, y `pass`
+#### Control de flujo en bucles: `break`, `continue`, y `pass`
 
 La instrucción `break` termina el bucle inmediatamente, incluso si no ha terminado de
 recorrer todos los elementos:
 
-```python
+```py linenums="1"
 mi_string = "Daniel"
 
 for letra in mi_string:
@@ -506,7 +484,7 @@ resto de las iteraciones.
 Por otra parte, `continue` omite el resto del código en la iteración actual y pasa a la
 siguiente:
 
-```python
+```py linenums="1"
 mi_string = "Daniel"
 
 for letra in mi_string:
@@ -521,7 +499,7 @@ siguiente letra.
 Finalmente, `pass` no hace nada, pero se utiliza como marcador de posición cuando se
 necesita un bloque de código vacío:
 
-```python
+```py linenums="1"
 for letra in 'Python':
     if letra == 'h':
         pass  # No realiza ninguna acción
@@ -532,7 +510,7 @@ for letra in 'Python':
 En este caso, cuando el bucle encuentra la letra 'h', no realiza ninguna acción
 específica gracias a `pass`, pero el bucle continúa normalmente.
 
-### 3.10. Uso de `__name__` y la función `main`
+### Uso de `__name__` y la función `main`
 
 En Python, la variable especial `__name__` se utiliza para determinar si un archivo se
 está ejecutando directamente como un script o si está siendo importado como un módulo en
@@ -549,14 +527,14 @@ Cuando un archivo de Python se ejecuta directamente, Python asigna a la variable
 `__name__` el valor `"__main__"`. Sin embargo, si el archivo es importado como un módulo
 en otro script, `__name__` toma el nombre del archivo (sin la extensión `.py`).
 
-#### 3.10.1. Caso práctico
+#### Caso práctico
 
 Por ejemplo, consideremos dos archivos Python, `one79.py` y `two79.py`, que se importan
 mutuamente. Aquí está cómo se comporta `__name__` en cada caso:
 
 **Archivo `one79.py`**
 
-```python
+```py linenums="1"
 # one79.py
 import two79
 
@@ -570,7 +548,7 @@ else:
 
 **Archivo `two79.py`**
 
-```python
+```py linenums="1"
 # two79.py
 import one79 as t
 
@@ -598,7 +576,7 @@ Es una buena práctica definir una función `main()` que contenga el código pri
 ejecutar. Esto hace que el código sea más organizado y facilita la reutilización. Aquí
 se muestra cómo se puede definir y usar `main()`:
 
-```python
+```py linenums="1"
 # one79.py
 import two79
 
@@ -614,13 +592,13 @@ es ejecutado directamente. Si `one79.py` es importado, solo se ejecutará el có
 de la función `main()`, que podría ser útil para la inicialización de módulos o
 importaciones.
 
-## 4. Estructuras de datos
+## Estructuras de datos
 
 En Python, las estructuras de datos son fundamentales para almacenar y manipular datos
 de manera eficiente. A continuación, exploraremos algunas de las estructuras de datos
 más comunes.
 
-### 4.1. Listas
+### Listas
 
 Las listas en Python son estructuras de datos que permiten almacenar secuencias
 ordenadas y mutables de elementos. A diferencia de otros lenguajes, las listas en Python
@@ -631,19 +609,19 @@ significa que puede cambiar durante la ejecución del programa. La indexación c
 Para definir una lista, basta con usar corchetes y separar los elementos por comas. A
 continuación se muestra un ejemplo donde cada elemento es un string:
 
-```python
+```py linenums="1"
 lista_amigos = ["Jorge", "Fran", "Ricardo"]
 ```
 
 También es posible inicializar una lista vacía:
 
-```python
+```py linenums="1"
 lista = []
 ```
 
 El acceso a los elementos se realiza mediante el índice. Por ejemplo:
 
-```python
+```py linenums="1"
 lista_amigos = ["Jorge", "Fran", "Ricardo"]
 
 # Accede al primer elemento
@@ -659,7 +637,7 @@ print(lista_amigos[0:2])
 print(lista_amigos)
 ```
 
-#### 4.1.1. Métodos
+#### Métodos
 
 | Función                  | Definición                                                                      |
 | ------------------------ | ------------------------------------------------------------------------------- |
@@ -679,7 +657,7 @@ print(lista_amigos)
 | `min(lista)`             | Devuelve el valor mínimo de la lista.                                           |
 | `del lista[x]`           | Elimina el elemento en el índice `x` de la lista.                               |
 
-#### 4.1.2. Uso de bucles `for` dentro de listas
+#### Uso de bucles `for` dentro de listas
 
 Los bucles `for` permiten iterar sobre los elementos de una lista de manera sencilla.
 Además, Python permite utilizar **comprensión de listas** para crear nuevas listas
@@ -687,7 +665,7 @@ basadas en operaciones sobre una secuencia de elementos.
 
 Ejemplos de bucles `for` en listas:
 
-```python
+```py linenums="1"
 # Crear una lista de caracteres de un string
 mi_lista = [letra for letra in "Hola"]
 print(mi_lista)
@@ -706,7 +684,7 @@ mi_lista = [numero ** 2 for numero in range(0, 15, 2) if numero % 2 == 0]
 print(mi_lista)
 ```
 
-#### 4.1.3. Listas anidadas y matrices
+#### Listas anidadas y matrices
 
 Las listas en Python pueden contener otras listas, lo que permite la representación de
 matrices o tablas de datos. Este tipo de estructura es útil para manejar información en
@@ -714,7 +692,7 @@ varias dimensiones.
 
 Ejemplo de una lista anidada que representa una matriz:
 
-```python
+```py linenums="1"
 number_grid = [
     [1, 2, 3],
     [4, 5, 6],
@@ -729,7 +707,7 @@ print(number_grid[2][2])
 En este caso, `number_grid[2][2]` devolverá el valor `9`, que es el elemento ubicado en
 la tercera fila y tercera columna.
 
-### 4.2. Tuplas
+### Tuplas
 
 Las **tuplas** en Python son secuencias ordenadas e **inmutables**, lo que significa
 que, a diferencia de las listas, sus elementos no pueden ser modificados después de su
@@ -738,7 +716,7 @@ lo largo del programa. Además, son más rápidas de procesar que las listas.
 
 Para definir una tupla, se utilizan paréntesis:
 
-```python
+```py linenums="1"
 # Definición de una tupla
 coordenadas = (4, 5)
 
@@ -749,12 +727,12 @@ print(f"Primera coordenada {coordenadas[0]} y segunda coordenada {coordenadas[1]
 También es posible combinar tuplas con otras estructuras de datos, como listas de
 tuplas:
 
-```python
+```py linenums="1"
 lista_tuplas = [(1, 2), (3, 4), (5, 6)]
 print(f"Mi lista de tuplas es {lista_tuplas}")
 ```
 
-#### 4.2.1. Métodos
+#### Métodos
 
 A pesar de ser inmutables, las tuplas tienen algunos métodos útiles:
 
@@ -763,7 +741,7 @@ A pesar de ser inmutables, las tuplas tienen algunos métodos útiles:
 | `tupla.count(x)` | Devuelve el número de veces que `x` aparece en la tupla.       |
 | `tupla.index(x)` | Devuelve el índice de la primera aparición de `x` en la tupla. |
 
-### 4.3. Sets
+### Sets
 
 Los **sets** en Python son colecciones **desordenadas** de elementos únicos. A
 diferencia de las listas y tuplas, los sets no permiten duplicados, lo que los convierte
@@ -772,7 +750,7 @@ matemáticas como uniones e intersecciones.
 
 Un set se puede definir usando llaves `{}` o con la función `set()`:
 
-```python
+```py linenums="1"
 # Inicializar un set vacío
 mi_set = set()
 
@@ -784,7 +762,7 @@ mi_set.add(1)  # No se añadirá, ya que el elemento es único
 mi_nuevo_set = {'a', 'b', 'c'}
 ```
 
-#### 4.3.1. Métodos
+#### Métodos
 
 Un set se puede definir usando llaves `{}` o con la función `set()`:
 
@@ -800,7 +778,7 @@ Un set se puede definir usando llaves `{}` o con la función `set()`:
 | `s1.issubset(s2)`          | Verifica si todos los elementos de `s1` están en `s2`.                                 |
 | `s1.union(s2)`             | Devuelve la unión de `s1` y `s2`, combinando todos los elementos únicos de ambos sets. |
 
-### 4.4. Diccionarios
+### Diccionarios
 
 Los **diccionarios** en Python son colecciones de datos que almacenan pares de
 **clave-valor**. Las claves son únicas y se utilizan para acceder a los valores
@@ -810,7 +788,7 @@ de su creación.
 Un diccionario se define utilizando llaves `{}`, donde cada elemento es un par de
 clave-valor:
 
-```python
+```py linenums="1"
 # Definición de un diccionario
 conversion_meses = {
     "Ene": "Enero",
@@ -827,7 +805,7 @@ clave = "Daniel"
 print(conversion_meses.get(clave, f"La clave {clave} no está en el diccionario"))
 ```
 
-#### 4.4.1. Métodos
+#### Métodos
 
 Los diccionarios ofrecen varios métodos para interactuar con sus elementos:
 
@@ -837,14 +815,14 @@ Los diccionarios ofrecen varios métodos para interactuar con sus elementos:
 | `diccionario.keys()`   | Devuelve una vista de las claves del diccionario.            |
 | `diccionario.values()` | Devuelve una vista de los valores del diccionario.           |
 
-#### 4.4.2. Casos prácticos
+#### Casos prácticos
 
 ##### **Diccionarios anidados**
 
 Es posible crear diccionarios dentro de otros diccionarios para representar estructuras
 más complejas:
 
-```python
+```py linenums="1"
 diccionario = {"k3": {'insideKey': 100}}
 
 # Acceder al valor de 'insideKey'
@@ -855,7 +833,7 @@ print(diccionario["k3"]['insideKey'])
 
 Se puede iterar sobre claves, valores o pares clave-valor en un diccionario:
 
-```python
+```py linenums="1"
 d = {'k1': 1, 'k2': 2}
 
 for llave in d.keys():
@@ -873,7 +851,7 @@ for elemento in d.items():
 Puedes combinar listas y diccionarios para crear estructuras más elaboradas, como una
 lista de clientes y sus animales:
 
-```python
+```py linenums="1"
 clientes =
 
  [
@@ -889,13 +867,13 @@ for cliente in clientes:
 Estas estructuras de datos flexibles y eficientes permiten manipular datos de diferentes
 formas en Python, ofreciendo soluciones adecuadas para una gran variedad de problemas.
 
-## 5. Métodos y funciones
+## Métodos y funciones
 
 En Python, los métodos y las funciones son herramientas esenciales para la programación
 modular y la reutilización del código. A continuación, se exploran en detalle los
 métodos y las funciones, sus diferencias y cómo usarlos.
 
-### 5.1. Métodos
+### Métodos
 
 Los métodos son funciones que están asociadas a un objeto específico. Actúan sobre el
 objeto y pueden modificar su estado o realizar alguna operación en él. Los métodos están
@@ -911,7 +889,7 @@ la documentación oficial en [https://docs.python.org/](https://docs.python.org/
 
 Ejemplos de métodos para strings:
 
-```python
+```py linenums="1"
 texto = "hola mundo"
 
 # Convertir a mayúsculas
@@ -924,29 +902,29 @@ print(texto.split())  # Output: ['hola', 'mundo']
 print(texto.replace("mundo", "Python"))  # Output: "hola Python"
 ```
 
-#### 5.1.1. Obtener una lista de métodos disponibles
+#### Obtener una lista de métodos disponibles
 
 Para obtener una lista de todos los métodos disponibles para un tipo de objeto, puedes
 usar la función `dir()`. Por ejemplo:
 
-```python
+```py linenums="1"
 # Muestra todos los métodos disponibles para objetos de tipo str
 print(dir(str))
 ```
 
-#### 5.1.2. Obtener ayuda sobre un método específico
+#### Obtener ayuda sobre un método específico
 
 Puedes obtener información detallada sobre un método específico utilizando la función
 `help()`. Por ejemplo:
 
-```python
+```py linenums="1"
 # Muestra la documentación para el método upper()
 help(str.upper)
 ```
 
 Esta función te proporcionará una descripción del método, su uso y posibles parámetros.
 
-### 5.2. Definición de funciones
+### Definición de funciones
 
 Las funciones son bloques de código reutilizables que realizan una tarea específica y
 pueden ser llamadas desde cualquier lugar del programa. A diferencia de los métodos, que
@@ -960,7 +938,7 @@ se indenta.
 A continuación, se muestra Aquí tienes un ejemplo de cómo definir y usar una función en
 Python:
 
-```python
+```py linenums="1"
 def saludo(nombre):
 
     return f"Hola, {nombre}!"
@@ -975,7 +953,7 @@ Las funciones pueden tomar cualquier número de parámetros, y estos parámetros
 tener valores predeterminados. Si un parámetro tiene un valor predeterminado, puedes
 omitir ese parámetro cuando llamas a la función. Aquí tienes un ejemplo:
 
-```python
+```py linenums="1"
 def saludo(nombre="Mundo"):
 
     return f"Hola, {nombre}!"
@@ -995,14 +973,14 @@ manejables.
 Las funciones en Python pueden contener una variedad de estructuras de control, como
 bucles y llamadas a otras funciones. Aquí te presento algunos ejemplos:
 
-#### 5.2.1. Casos prácticos
+#### Casos prácticos
 
 ##### Función para comprobar una lista
 
 Esta función toma una lista de números como entrada y separa los números pares e impares
 en dos conjuntos diferentes:
 
-```python
+```py linenums="1"
 def comprobar_lista(lista):
 
     # Inicializa dos conjuntos vacíos para almacenar números pares e impares
@@ -1036,7 +1014,7 @@ comprobar_lista([1, 1, 1, 1, 1, 1, 23, 56, 87, 918, 23, 12, 3, 2, 4, 6, 5])
 
 Este ejemplo muestra una función que determina el trabajador con más horas trabajadas:
 
-```python
+```py linenums="1"
 horas_trabajadores = [("Daniel", 22), ("Kike", 20), ("Ricardo", 25)]
 
 def mejor_trabajador(lista):
@@ -1069,7 +1047,7 @@ En este ejemplo, se muestra un juego simple donde las funciones llaman a otras
 funciones. Se utiliza la función `shuffle()` de Python, que reordena una lista de manera
 aleatoria:
 
-```python
+```py linenums="1"
 # El juego de la bolita
 
 # Importamos la función shuffle para barajar la lista
@@ -1151,7 +1129,7 @@ operar()
 Estos ejemplos muestran cómo las funciones en Python pueden contener lógica compleja y
 cómo pueden interactuar entre sí para realizar tareas más grandes.
 
-### 5.3. Argumentos Arbitrarios, \*Args y \*\*Kwargs
+### Argumentos Arbitrarios, \*Args y \*\*Kwargs
 
 En Python, los términos **`*args`** y **`**kwargs`\*\* se utilizan en la definición de
 funciones para permitir que estas acepten un número arbitrario de argumentos.
@@ -1159,7 +1137,7 @@ funciones para permitir que estas acepten un número arbitrario de argumentos.
 En el siguiente ejemplo, `a` y `b` son argumentos posicionales. La función `mifuncion`
 toma estos dos argumentos, los suma y luego multiplica el resultado por 0.05:
 
-```python
+```py linenums="1"
 def mifuncion(a, b):
 
     return sum((a, b)) * 0.05
@@ -1171,18 +1149,18 @@ Sin embargo, si quisiéramos que esta función pudiera manejar más de dos núme
 tendríamos que modificar la definición de la función para incluir más parámetros. Una
 opción sería asignar un valor predeterminado a estos parámetros adicionales:
 
-```python
+```py linenums="1"
 def mifuncion(a, b, c = 0):
 
     return sum((a, b, c)) * 0.05
 ```
 
-#### 5.3.1. Funciones con \*Args
+#### Funciones con \*Args
 
 Aquí es donde **`*args`** resulta útil. Nos permite configurar la función para aceptar
 un número arbitrario de argumentos:
 
-```python
+```py linenums="1"
 def mifuncion(*args):
 
     return sum(args) * 0.05
@@ -1192,13 +1170,13 @@ En este caso, **`*args`** permite tratar la entrada como una tupla de parámetro
 podemos pasar tantos argumentos como queramos. Por defecto, Python toma todos los
 parámetros que se pasan y los configura como una tupla.
 
-#### 5.3.2. Funciones con \*\*Kwargs
+#### Funciones con \*\*Kwargs
 
 De manera similar, Python ofrece una forma de manejar un número arbitrario de argumentos
 de palabras clave. En lugar de crear una tupla, crea un diccionario. Para ello, usamos
 **`**kwargs`\*\*:
 
-```python
+```py linenums="1"
 def mifuncion(**kwargs):
 
     if 'fruta' in kwargs:
@@ -1220,11 +1198,11 @@ def mifuncion(**kwargs):
 mifuncion(fruta = 'manzana', verduras = 'zanahoria')
 ```
 
-#### 5.3.3. Combinando \*Args y \*\*Kwargs
+#### Combinando \*Args y \*\*Kwargs
 
 También podemos combinar **`*args`** y **`**kwargs`\*\* en la misma función:
 
-```python
+```py linenums="1"
 def mifuncion(*args, **kwargs):
 
     print(f"Tengo {args[0]} coneja llamada {kwargs['animal']}")
@@ -1236,7 +1214,7 @@ En este caso, `args` es una tupla de los argumentos posicionales y `kwargs` es u
 diccionario de los argumentos de palabras clave. Esto nos da una gran flexibilidad a la
 hora de definir funciones en Python.
 
-### 5.4. Funciones anónimas (Lambdas), Map y Filter
+### Funciones anónimas (Lambdas), Map y Filter
 
 Las **expresiones Lambda**, junto con las funciones **`map()`** y **`filter()`**, son
 herramientas poderosas en Python que permiten un procesamiento de datos avanzado.
@@ -1244,7 +1222,7 @@ herramientas poderosas en Python que permiten un procesamiento de datos avanzado
 Las **expresiones Lambda** son una forma rápida de crear funciones anónimas, es decir,
 funciones que se utilizan una sola vez.
 
-```python
+```py linenums="1"
 lambda num: pow(num,2)
 ```
 
@@ -1253,7 +1231,7 @@ Esta expresión lambda toma un número, lo eleva al cuadrado y devuelve el resul
 La función **`map()`** aplica una función a cada elemento de una lista, devolviendo una
 nueva lista con los resultados.
 
-```python
+```py linenums="1"
 mis_nums = [1,2,3,4,5]
 list(map(lambda num: pow(num,2),mis_nums))
 ```
@@ -1265,7 +1243,7 @@ La función **`filter()`** filtra los elementos de una lista basándose en una f
 filtrado, devolviendo una nueva lista con los elementos que cumplen la condición de
 filtrado.
 
-```python
+```py linenums="1"
 mis_nums = [1,2,3,4,5]
 list(filter(lambda num: num % 2 == 0,mis_nums))
 ```
@@ -1276,7 +1254,7 @@ En este ejemplo, la función `filter()` aplica la expresión lambda a cada eleme
 Las expresiones lambda se utilizan comúnmente junto con las funciones `map()` y
 `filter()`, permitiendo un procesamiento de datos más conciso y eficiente.
 
-```python
+```py linenums="1"
 people = ['Dr. Christopher Brooks', 'Dr. Kevyn Collins-Thompson',
             'Dr. VG Vinod Vydiswaran', 'Dr. Daniel Romero']
 
@@ -1291,7 +1269,7 @@ que aumenta su flexibilidad y utilidad. Sin embargo, debido a su naturaleza anó
 un solo uso, las expresiones lambda son más adecuadas para operaciones simples y
 concisas. Para operaciones más complejas, es recomendable definir una función completa.
 
-### 5.5. Decoradores
+### Decoradores
 
 Los decoradores en Python son una herramienta poderosa que permite "decorar" una
 función, es decir, modificar su comportamiento sin alterar su código fuente. Esto es
@@ -1311,7 +1289,7 @@ asignadas a variables, almacenadas en estructuras de datos, pasadas como argumen
 otras funciones e incluso retornadas como valores de otras funciones. Aquí tienes un
 ejemplo:
 
-```python
+```py linenums="1"
 def funcion_saludo():
 
     return "Hola"
@@ -1330,7 +1308,7 @@ Un decorador es una función que toma otra función y extiende su comportamiento
 modificar explícitamente su código fuente. Aquí tienes un ejemplo de cómo se define y se
 usa un decorador:
 
-```python
+```py linenums="1"
 def nuevo_decorador(funcion_original):
 
     def funcion_nueva():
@@ -1354,7 +1332,7 @@ antes y después de la ejecución de la función original. La sintaxis `@nuevo_d
 antes de la definición de `funcion_necesita_decorador` es lo que aplica el decorador a
 la función.
 
-### 5.6. Generadores
+### Generadores
 
 Los generadores en Python son una forma eficiente de crear iteradores. A diferencia de
 las funciones normales, los generadores utilizan la palabra clave `yield` en lugar de
@@ -1368,7 +1346,7 @@ devolver un resultado, devuelve un objeto generador. Este objeto puede ser itera
 obtener los valores generados por `yield`. Aquí tienes un ejemplo de una función
 generadora que genera los cubos de los números hasta `n`:
 
-```python
+```py linenums="1"
 def funcion_cubo_generador(n):
 
     for x in range(n):
@@ -1387,7 +1365,7 @@ La función `iter()` en Python convierte un objeto iterable en un iterador. Esto
 significa que podemos utilizar la función `next()` en el objeto para acceder a sus
 elementos uno a uno. Aquí tienes un ejemplo:
 
-```python
+```py linenums="1"
 s = "hello"
 s_iterador = iter(s)
 print(next(s_iterador))  # Imprime: h
@@ -1397,12 +1375,12 @@ En este ejemplo, hemos convertido la cadena `s` en un iterador utilizando la fun
 `iter()`. Luego, hemos utilizado la función `next()` para obtener el primer elemento del
 iterador.
 
-### 5.7. Cronometrar el tiempo de ejecución de una función
+### Cronometrar el tiempo de ejecución de una función
 
 Para evaluar la eficiencia de nuestro código, podemos medir el tiempo que una función
 tarda en ejecutar una acción específica. Por ejemplo:
 
-```python
+```py linenums="1"
 import time
 
 def func_uno(n):
@@ -1429,7 +1407,7 @@ difícil ver una diferencia real. Sin embargo, podemos importar la biblioteca _t
 que permite realizar mediciones más precisas con un número de repeticiones y parámetros
 que podemos asignar. Por ejemplo:
 
-```python
+```py linenums="1"
 import timeit
 
 # Preparación para la primera función
@@ -1459,12 +1437,12 @@ Es importante mencionar que Jupyter permite utilizar **funciones mágicas** (las
 funciones mágicas de Jupyter se activan con dos signos de porcentaje al comienzo del
 bloque de código), una de ellas es la función _timeit_:
 
-```python
+```py linenums="1"
 %%timeit
 func_uno(100)
 ```
 
-### 5.8. Declaraciones anidadas y alcance del código (Scope)
+### Declaraciones anidadas y alcance del código (Scope)
 
 En Python, es crucial entender cómo se manejan las variables que creamos. Estas
 variables se almacenan en lo que se conoce como un "alcance" o "scope", que determina la
@@ -1472,7 +1450,7 @@ visibilidad de la variable a otras partes del código.
 
 Por ejemplo:
 
-```python
+```py linenums="1"
 x = 25
 
 def printer():
@@ -1500,7 +1478,7 @@ sigue la regla LEGB:
 Este es el orden en el que Python buscará las variables. Aquí hay un ejemplo de cómo
 funciona:
 
-```python
+```py linenums="1"
 # VARIABLE GLOBAL
 nombre = "Esto es un string global"
 
@@ -1530,7 +1508,7 @@ reasignación solo se mantiene dentro de la función. Una vez que salimos de ell
 valor de la variable vuelve a ser el valor que se le asignó al principio. Para cambiar
 esto, podemos usar la palabra clave `global`, como en el siguiente ejemplo:
 
-```python
+```py linenums="1"
 x = 50
 
 def prueba():
@@ -1549,7 +1527,7 @@ absolutamente necesario. Es más seguro devolver un objeto y luego asignarlo a l
 variable. De esta manera, evitamos sobrescribir la variable global dentro de una función
 sin siquiera saberlo.
 
-## 6. Programación Orientada a Objetos
+## Programación Orientada a Objetos
 
 La **Programación Orientada a Objetos (POO)** es un paradigma que organiza el código en
 torno a **objetos** en lugar de funciones y lógica. Estos objetos combinan **datos**
@@ -1560,14 +1538,14 @@ La **POO** en Python es una herramienta poderosa que facilita la creación de c�
 limpio, estructurado y modular. Al usar clases, herencia y polimorfismo, puedes
 desarrollar programas flexibles y fáciles de mantener.
 
-### 6.1. Clases y objetos
+### Clases y objetos
 
 Una **clase** es un molde o plantilla para crear objetos, que son instancias de la
 clase. Los objetos tienen **atributos** (características) y **métodos**
 (comportamientos). A continuación, se muestra un ejemplo básico de una clase y cómo se
 crea un objeto:
 
-```python
+```py linenums="1"
 class NombreDeClase():
 
     def __init__(self, parametro1, parametro2):
@@ -1585,7 +1563,7 @@ nueva instancia de la clase. El primer argumento de cualquier método en una cla
 
 ##### Ejemplo
 
-```python
+```py linenums="1"
 class Coche():
 
     def __init__(self, marca, modelo, mejorado, acceso_coche):
@@ -1604,7 +1582,7 @@ En este ejemplo, se define la clase `Coche` con atributos y métodos. Posteriorm
 crea una instancia de la clase `Coche`, `mi_coche`, que tiene sus propios atributos y
 comportamientos.
 
-### 6.2. Métodos y atributos
+### Métodos y atributos
 
 Los **atributos** son características del objeto, y los **métodos** son acciones que
 puede realizar. Algunos atributos son comunes a todas las instancias, mientras que otros
@@ -1612,7 +1590,7 @@ son específicos para cada objeto.
 
 ##### Ejemplo
 
-```python
+```py linenums="1"
 class Perro():
 
     # Atributo de clase (común para todas las instancias)
@@ -1642,9 +1620,9 @@ En este ejemplo, `especie` es un atributo de clase compartido por todas las inst
 de `Perro`, mientras que `raza`, `nombre` y `edad` son atributos únicos para cada
 instancia.
 
-### 6.3. Herencia y polimorfismo
+### Herencia y polimorfismo
 
-#### 6.3.1. Herencia
+#### Herencia
 
 La **herencia** permite crear nuevas clases a partir de clases ya existentes. La nueva
 clase (subclase) hereda los atributos y métodos de la clase padre, pero también puede
@@ -1652,7 +1630,7 @@ tener sus propios atributos y métodos o sobreescribir los heredados.
 
 ##### Ejemplo
 
-```python
+```py linenums="1"
 class Animal():
 
     def __init__(self, nombre):
@@ -1678,14 +1656,14 @@ mi_perro.comer()  # Imprime: Estoy comiendo
 En este caso, `Perro` hereda de `Animal`, por lo que puede usar el método `comer`.
 Además, la subclase `Perro` sobrescribe el método `quien_soy` de la clase `Animal`.
 
-#### 6.3.2. Polimorfismo
+#### Polimorfismo
 
 El **polimorfismo** permite usar el mismo nombre de método en diferentes clases. Aunque
 el método tenga el mismo nombre, cada clase puede implementarlo de manera diferente.
 
 ##### Ejemplo
 
-```python
+```py linenums="1"
 class Perro():
 
     def __init__(self, nombre):
@@ -1715,14 +1693,14 @@ mi_gato.sonido()
 En este ejemplo, tanto la clase `Perro` como la clase `Gato` tienen el método `sonido`,
 pero el comportamiento es diferente según el tipo de objeto que lo invoque.
 
-### 6.4. Clases Abstractas
+### Clases Abstractas
 
 Una **clase abstracta** es aquella que no se espera que se instancie directamente. Solo
 sirve como base para otras clases que implementen sus métodos.
 
 ##### Ejemplo
 
-```python
+```py linenums="1"
 class Animal():
 
     def __init__(self, nombre):
@@ -1746,9 +1724,9 @@ print(mi_perro.sonido())
 En este caso, `Animal` es una clase base abstracta, y la clase `Perro` debe implementar
 el método `sonido`. Si no se implementa el método en la subclase, se genera un error.
 
-## 7. Módulos y paquetes
+## Módulos y paquetes
 
-### 7.1. Importación de módulos
+### Importación de módulos
 
 En Python, los **módulos** son archivos que contienen definiciones y declaraciones de
 Python, mientras que los **paquetes** son colecciones de módulos. Un gestor de paquetes
@@ -1759,12 +1737,12 @@ numerosos paquetes de terceros. Para instalar un paquete, puedes ejecutar el com
 `pip install` en tu terminal. A continuación, te mostramos cómo instalar y utilizar la
 biblioteca `colorama` para imprimir texto en color:
 
-```bash
+```bash linenums="1"
 # Comando para instalar colorama usando PIP
 pip install colorama
 ```
 
-```python
+```py linenums="1"
 from colorama import init, Fore
 
 init()
@@ -1773,7 +1751,7 @@ init()
 print(Fore.RED + "Texto de prueba")
 ```
 
-### 7.2. Uso de paquetes y librerías externas
+### Uso de paquetes y librerías externas
 
 Un **módulo** es simplemente un archivo `.py` que contiene funciones, variables y
 clases. Un **paquete** es una colección de módulos organizados en una carpeta. El
@@ -1782,7 +1760,7 @@ necesario para que Python trate el directorio como un paquete.
 
 Ejemplo de cómo estructurar un proyecto con módulos y submódulos:
 
-```python
+```py linenums="1"
 # main.py
 from paquete78 import some_main_script as p
 from paquete78.Subpaquetes import mysubscript as s
@@ -1791,32 +1769,32 @@ p.main_report()
 s.sub_report()
 ```
 
-```python
+```py linenums="1"
 # paquete78/some_main_script.py
 def main_report():
     print("Hola, soy una función dentro de mi script principal.")
 ```
 
-```python
+```py linenums="1"
 # paquete78/Subpaquetes/mysubscript.py
 def sub_report():
     print("Hola, soy una función dentro de mi subscript.")
 ```
 
-### 7.3. Módulos avanzados de Python
+### Módulos avanzados de Python
 
-#### 7.3.1. Módulos de colección
+#### Módulos de colección
 
 El módulo `collections` proporciona tipos de datos especializados como `Counter`,
 `defaultdict` y `namedtuple`, que son alternativas más eficientes a los contenedores
 generales de Python (`dict`, `list`, `set`, y `tuple`).
 
-##### 7.3.1.1. Counter
+##### Counter
 
 `Counter` es una subclase de diccionario para contar elementos de manera rápida.
 Almacena los elementos como claves y su recuento como valores.
 
-```python
+```py linenums="1"
 from collections import Counter
 
 lista = [1, 1, 1, 2, 2, 3, 'a', 'adios']
@@ -1825,24 +1803,24 @@ cuenta = Counter(lista)
 print(cuenta.most_common())  # Devuelve los elementos más comunes
 ```
 
-##### 7.3.1.2. defaultdict
+##### defaultdict
 
 `defaultdict` es una subclase de `dict` que devuelve un valor predeterminado si la clave
 no existe, evitando errores.
 
-```python
+```py linenums="1"
 from collections import defaultdict
 
 d = defaultdict(lambda: 0)
 print(d["inexistente"])  # Imprime: 0
 ```
 
-##### 7.3.1.3. namedtuple
+##### namedtuple
 
 `namedtuple` es una subclase de tupla que permite acceder a sus elementos por nombre en
 lugar de por índice.
 
-```python
+```py linenums="1"
 from collections import namedtuple
 
 Conejo = namedtuple("Conejo", ["Edad", "Color", "Nombre"])
@@ -1851,12 +1829,12 @@ misifu = Conejo(Edad=2, Color="Blanco", Nombre="Misifu")
 print(misifu.Edad)  # Imprime: 2
 ```
 
-### 7.4. Módulo de fecha y hora
+### Módulo de fecha y hora
 
 El módulo `datetime` permite trabajar con fechas y horas en Python. Puedes crear objetos
 de fecha, realizar cálculos y extraer información como el año, mes o día.
 
-```python
+```py linenums="1"
 import datetime
 from datetime import date
 
@@ -1878,14 +1856,14 @@ fecha2 = date(2020, 11, 2)
 print(fecha1 - fecha2)  # Imprime: 366 days, 0:00:00
 ```
 
-### 7.5. Módulo math y random
+### Módulo math y random
 
-#### 7.5.1. Módulo math
+#### Módulo math
 
 El módulo `math` proporciona funciones matemáticas comunes, como el valor de pi,
 logaritmos y funciones trigonométricas.
 
-```python
+```py linenums="1"
 import math
 
 # Valor de pi y e
@@ -1900,12 +1878,12 @@ print(math.sin(math.radians(90)))  # Imprime: 1.0
 print(math.degrees(math.pi/2))  # Imprime: 90.0
 ```
 
-#### 7.5.2. Módulo random
+#### Módulo random
 
 El módulo `random` genera números pseudoaleatorios y ofrece varias funciones para elegir
 elementos aleatoriamente o barajar listas.
 
-```python
+```py linenums="1"
 import random
 
 # Número aleatorio entre 0 y 100
@@ -1935,9 +1913,9 @@ print(lista)
 Con estos módulos y paquetes, puedes gestionar y realizar cálculos complejos, trabajar
 con fechas y horas, y generar números aleatorios de manera eficiente.
 
-## 8. Manejo de errores y excepciones
+## Manejo de errores y excepciones
 
-### 8.1. Validación de datos
+### Validación de datos
 
 Cuando se crean funciones que toman valores de entrada del usuario, es importante
 verificar esas entradas para asegurarse de que son correctas. Esto se conoce como
@@ -1952,7 +1930,7 @@ ejecutarlas de nuevo.
 Una forma cómoda de validar datos es utilizar bucles `while` para pedir al usuario que
 introduzca un valor repetidamente cuando este no es válido. Aquí tienes un ejemplo:
 
-```python
+```py linenums="1"
 def limite(eleccion):
 
     return int(eleccion) >= 1 and int(eleccion) <= 10
@@ -1985,7 +1963,7 @@ correcto, la función le pide al usuario que introduzca un nuevo valor.
 Si quieres limpiar la consola cuando el usuario introduce valores incorrectos, puedes
 importar y usar la biblioteca `IPython.display` y usar la función `clear_output()`:
 
-```python
+```py linenums="1"
 from IPython.display import clear_output
 ```
 
@@ -1993,7 +1971,7 @@ Esta función borra la salida de la celda actual en un cuaderno Jupyter, lo que 
 útil para mantener la interfaz de usuario limpia. Sin embargo, ten en cuenta que
 `clear_output()` solo funciona en cuadernos Jupyter y no en otros entornos de Python.
 
-### 8.2. Manejo de excepciones
+### Manejo de excepciones
 
 El manejo de errores es una estrategia que nos permite planificar y gestionar posibles
 errores que puedan surgir en nuestro código. Por ejemplo, si un usuario intenta escribir
@@ -2013,7 +1991,7 @@ Existen tres palabras clave para el manejo de errores en Python:
 
 Aquí tienes un ejemplo de cómo se utilizan estas palabras clave:
 
-```python
+```py linenums="1"
 try:
 
     f.open("fichero",'w')
@@ -2039,7 +2017,7 @@ finally:
 En este otro ejemplo, pediremos constantemente un dato al usuario hasta que introduzca
 un valor adecuado:
 
-```python
+```py linenums="1"
 def introducir_entero():
 
     while True:
@@ -2063,13 +2041,13 @@ introducir_entero()
 Python tiene más excepciones implementadas que puedes consultar en la documentación, en
 el apartado "Library → Exceptions".
 
-### 8.3. Depurador de Python
+### Depurador de Python
 
 El depurador o **debugger** se emplea para identificar y corregir errores en el código.
 En lugar de utilizar `print()` para ver qué sucede a cada rato, podemos usar el
 depurador de Python, _pdb_. Por ejemplo:
 
-```python
+```py linenums="1"
 import pdb
 
 x = [1,2,3]
@@ -2089,7 +2067,7 @@ pdb.set_trace()
 resultado2 = y + x # ERROR
 ```
 
-### 8.4. Pruebas unitarias con Pylint
+### Pruebas unitarias con Pylint
 
 Las pruebas unitarias son esenciales a medida que expandimos nuestros proyectos con
 varios archivos o comenzamos a trabajar en equipo. Al realizar cualquier cambio o
@@ -2105,11 +2083,11 @@ ellas:
 
 Para usar Pylint, ejecuta el siguiente código en la terminal:
 
-```bash
+```bash linenums="1"
 pylint nombre_fichero.py -r y
 ```
 
-### 8.5. Pruebas con Unittest
+### Pruebas con Unittest
 
 Con `unittest`, puedes implementar un script en Python que analice los resultados
 devueltos por tu código y compruebe si son los esperados. Aquí tienes un ejemplo con dos
@@ -2117,7 +2095,7 @@ archivos, `cap85a.py` y `cap85b.py`.
 
 `cap85a.py`:
 
-```python
+```py linenums="1"
 def prueba(texto):
 
     return texto.capitalize()
@@ -2125,7 +2103,7 @@ def prueba(texto):
 
 `cap85b.py`:
 
-```python
+```py linenums="1"
 import cap85a
 import unittest
 
@@ -2146,13 +2124,13 @@ En este ejemplo, `unittest` se utiliza para comprobar que la función `prueba` d
 archivo `cap85a.py` devuelve el resultado esperado. Si el resultado es el esperado, la
 prueba pasará. Si no, la prueba fallará y se mostrará un mensaje de error.
 
-## 9. Trabajo con archivos y directorios
+## Trabajo con archivos y directorios
 
-### 9.1. Lectura y escritura de archivos
+### Lectura y escritura de archivos
 
 Podemos abrir un fichero usando la función `open()`:
 
-```python
+```py linenums="1"
 file = open(dirección_del_fichero)
 ```
 
@@ -2179,7 +2157,7 @@ Para poder leer un fichero podemos utilizar algunas funciones como:
 
 Por ejemplo:
 
-```python
+```py linenums="1"
 nombre_fic = input("Nombre del fichero: ")
 
 fichero = open(nombre_fic,"r")
@@ -2191,7 +2169,7 @@ if fichero.readable():
 
 Alternativa:
 
-```python
+```py linenums="1"
 for empleado in empleado_fic:
 
     print(empleado)
@@ -2207,7 +2185,7 @@ no aparecerá nada, para solucionarlo hay que usar:
 
 Otra forma de abrir un fichero y operar con él sería:
 
-```python
+```py linenums="1"
 with open('myfile.txt', mode='w') as my_new_file:
 
     contents = my_new_file.read()
@@ -2217,7 +2195,7 @@ print(contents)
 
 Un ejemplo de cómo escribir en un fichero sería:
 
-```python
+```py linenums="1"
 nombre_fic = input("Nombre del fichero: ")
 
 fichero = open(nombre_fic,"a") # Voy a añadir texto al final
@@ -2230,7 +2208,7 @@ fichero.write("\\n" + nuevo_empleado + " - " + funcion_empleado)
 fichero.close()
 ```
 
-### 9.2. Manejo de archivos y directorios
+### Manejo de archivos y directorios
 
 En Python, se utilizan varios módulos para la apertura, lectura y manipulación de
 archivos y directorios en el sistema operativo. Los módulos principales son:
@@ -2241,7 +2219,7 @@ archivos y directorios en el sistema operativo. Los módulos principales son:
 Estos módulos permiten realizar operaciones como abrir y leer archivos individuales,
 navegar por los directorios, mover y eliminar archivos, entre otras.
 
-```python
+```py linenums="1"
 import os
 import shutil
 import send2trash
@@ -2270,7 +2248,7 @@ send2trash.send2trash("Prueba.txt")
 Además, Python permite listar todos los archivos de un directorio, incluyendo carpetas,
 subcarpetas y ficheros que contienen:
 
-```python
+```py linenums="1"
 import os
 
 directorio = '/home/daniel/Desktop'
@@ -2291,7 +2269,7 @@ for carpeta, sub_carpetas, archivos in os.walk(directorio):
         print(f"\t{archivo}")
 ```
 
-### 9.3. Manipulación de archivos CSV y JSON
+### Manipulación de archivos CSV y JSON
 
 Los archivos CSV (Comma Separated Values) son un tipo de formato que utilizan Excel y
 otros programas de bases de datos. Son útiles para la manipulación de datos de un
@@ -2302,7 +2280,7 @@ En Python, trabajaremos con el módulo `csv` incluido en la biblioteca estándar
 bibliotecas a considerar para la manipulación de datos en Python serían Pandas, Openpyxl
 o la API de Google Sheets para Python.
 
-```python
+```py linenums="1"
 import csv
 
 # Abrimos el fichero
@@ -2326,7 +2304,7 @@ for numero, correo in enumerate(correos):
 
 Ahora vamos a ver cómo podemos escribir en un archivo CSV:
 
-```python
+```py linenums="1"
 # Creamos un archivo CSV
 archivo_salida = open('fichero_prueba.csv', mode = 'w', newline = '')
 
@@ -2353,7 +2331,7 @@ f.close()
 
 Para trabajar con ficheros JSON, importamos la biblioteca `json`.
 
-```python
+```py linenums="1"
 import json
 
 # Creamos una variable de tipo JSON en Python
@@ -2365,7 +2343,7 @@ print(f"Nombre: {obj['Nombre']} \nApellidos: {obj['Apellidos']}")
 
 Python incluso permite cargar ficheros JSON directamente desde una URL:
 
-```python
+```py linenums="1"
 import requests
 
 r = requests.get("url")
@@ -2373,11 +2351,11 @@ r = requests.get("url")
 print(r.json())
 ```
 
-### 9.4. Comprimir y descomprimir archivos
+### Comprimir y descomprimir archivos
 
 Aquí tienes un ejemplo de cómo comprimir y descomprimir archivos:
 
-```python
+```py linenums="1"
 import zipfile
 
 # Creación de archivos de prueba
@@ -2404,16 +2382,16 @@ zip_obj = zipfile.ZipFile('comprimido_1.zip', 'r')
 zip_obj.extractall("contenido_extraido")
 ```
 
-## 10. Expresiones regulares
+## Expresiones regulares
 
 En esta sección, exploraremos expresiones regulares en Python para manipular y buscar
 patrones en texto.
 
-### 10.1. Búsqueda y manipulación de patrones
+### Búsqueda y manipulación de patrones
 
 Primero, aprenderemos cómo buscar y manipular patrones específicos en cadenas de texto.
 
-```python
+```py linenums="1"
 import re
 
 texto = "El número del agente es 111-111-1111"
@@ -2447,11 +2425,11 @@ for palabra in re.finditer('número',texto2):
     print(f"\t{palabra.group()} -> {palabra.span()}")
 ```
 
-### 10.2. Patrones generales
+### Patrones generales
 
 A continuación, exploraremos cómo encontrar patrones más generales en texto.
 
-```python
+```py linenums="1"
 import re
 
 texto = "Mi número de teléfono es 11 11 11 111"
@@ -2468,11 +2446,11 @@ resultado = re.search(numero_grupos,texto)
 print(resultado.group(4))
 ```
 
-### 10.3. Patrones de palabras
+### Patrones de palabras
 
 Finalmente, nos centraremos en encontrar patrones de palabras específicas en un texto.
 
-```python
+```py linenums="1"
 import re
 
 texto = "Tengo una coneja que se llama Misifu"

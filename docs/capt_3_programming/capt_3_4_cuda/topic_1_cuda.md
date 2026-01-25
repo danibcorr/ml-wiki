@@ -1,10 +1,7 @@
 ---
-sidebar_position: 1
-authors:
-  - name: Daniel Bazo Correa
+authors: Daniel Bazo Correa
 description: Conoce la plataforma de CUDA de NVIDIA para sus GPUs.
 title: CUDA
-toc_max_heading_level: 3
 ---
 
 ## Bibliografía
@@ -14,10 +11,10 @@ toc_max_heading_level: 3
 - [CuPy: NumPy & SciPy for GPU](https://cupy.dev/)
 - [Numba: A High Performance Python Compiler (pydata.org)](https://numba.pydata.org/)
 
-## 1. Introducción
+## Introducción
 
 <p align="center">
-  <img src={require("../../../static/img/docs/logos/cuda-logo.png").default} height="200"/>
+  <img src="/assets/img/docs/logos/cuda-logo.png" height="200"/>
   <br />
   <em>Logo de Nvidia CUDA</em>
 </p>
@@ -29,16 +26,16 @@ complejos con mayor eficiencia en comparación con las unidades de procesamiento
 (CPU). CUDA se utiliza en áreas como la inteligencia artificial, simulaciones y
 renderización de gráficos.
 
-## 2. Conceptos de CUDA
+## Conceptos de CUDA
 
-### 2.1. Introducción
+### Introducción
 
 La plataforma de computación CUDA ofrece un amplio ecosistema. No obstante, en los puntos
 1 y 2, se abordará el uso de CUDA en combinación con el lenguaje de programación C. A
 partir del punto 3, se explorarán otras bibliotecas y aplicaciones de CUDA en Python.
 
 <p align="center">
-  <img src={require("./assets/B0FF9827-9E32-46F2-8365-FA0E686C649D.png").default}/>
+  <img src="/assets/img/docs/B0FF9827-9E32-46F2-8365-FA0E686C649D.png"/>
   <br />
 </p>
 
@@ -56,7 +53,7 @@ procesamiento paralelo:
   tiempo mediante la conmutación con otros hilos, manteniendo una alta eficiencia en el
   procesamiento.
 
-### 2.2. Los _warps_ en CUDA
+### Los _warps_ en CUDA
 
 El concepto clave en CUDA es el **_warp_**. En el nivel de hardware, un bloque de hilos
 se divide en _warps_, que son grupos de 32 hilos que ejecutan instrucciones en paralelo.
@@ -75,7 +72,7 @@ paralela robusta:
 - **Hardware**: Habilita el paralelismo general de la GPU, optimizando la capacidad de
   procesamiento paralelo.
 
-### 2.3. Computación heterogénea
+### Computación heterogénea
 
 Aunque CUDA ofrece ventajas significativas, es crucial equilibrar la carga de trabajo
 entre la GPU y la CPU, un enfoque conocido como computación heterogénea, la cual se basa
@@ -88,21 +85,21 @@ Es fundamental identificar qué partes del código se benefician de la paraleliz
 GPU y cuáles deben procesarse secuencialmente en la CPU.
 
 <p align="center">
-  <img src={require("./assets/EEA7EE5C-1D79-4B88-8DF7-37E17BF0D2FF.jpeg").default}/>
+  <img src="/assets/img/docs/EEA7EE5C-1D79-4B88-8DF7-37E17BF0D2FF.jpeg"/>
   <br />
 </p>
 
 Vemos por tanto que el paralelismo por el que CUDA destaca es en el paralelismo de datos
 (_**data parallelism**_).
 
-### 2.4. Hardware
+### Hardware
 
 Una GPU está compuesta por _N_ multiprocesadores, cada uno de los cuales contiene _M_
 núcleos. Algunas de las familias de GPU de la familia Tesla de NVidia se muestran en la
 siguiente imagen.
 
 <p align="center">
-  <img src={require("./assets/Untitled (1).png").default}/>
+  <img src="/assets/img/docs/Untitled (1).png"/>
   <br />
 </p>
 
@@ -114,7 +111,7 @@ bloques de hilos en CUDA pueden ser asignados a cualquier multiprocesador para s
 ejecución. La imagen siguiente ilustra la estructura de una GPU.
 
 <p align="center">
-  <img src={require("./assets/Untitled 1 (1).png").default}/>
+  <img src="/assets/img/docs/Untitled 1 (1).png"/>
   <br />
 </p>
 
@@ -124,7 +121,7 @@ arquitectura Volta, cada multiprocesador tiene 64 núcleos para operaciones de t
 64 núcleos para float32, 32 núcleos para float64 y 8 unidades tensoriales.
 
 <p align="center">
-  <img src={require("./assets/Untitled 2.png").default}/>
+  <img src="/assets/img/docs/Untitled 2.png"/>
   <br />
 </p>
 
@@ -132,11 +129,11 @@ De la imagen anterior se observa que el diseño de un bloque se utiliza como bas
 crear diseños más complejos al replicarlo.
 
 <p align="center">
-  <img src={require("./assets/Untitled 3.png").default}/>
+  <img src="/assets/img/docs/Untitled 3.png"/>
   <br />
 </p>
 
-#### 2.4.1. Núcleos tensoriales
+#### Núcleos tensoriales
 
 En la última década, uno de los componentes que mayor protagonismo ha tomado han sido los
 núcleos tensoriales. Los núcleos tensoriales están diseñados para realizar operaciones
@@ -146,11 +143,11 @@ siguiente diagrama ilustra el proceso de operación de cada núcleo tensorial po
 reloj.
 
 <p align="center">
-  <img src={require("./assets/Untitled 4 (2).png").default}/>
+  <img src="/assets/img/docs/Untitled 4 (2).png"/>
   <br />
 </p>
 
-#### 2.4.2. Precisión numérica
+#### Precisión numérica
 
 La precisión de los datos, como pasar de enteros de 32 bits a enteros de 16 bits, impacta
 en la tasa de transferencia (_Throughput_) del sistema. Reducir la precisión permite
@@ -160,19 +157,19 @@ aceptable. A continuación, se muestra el _Throughput_ para diferentes precision
 datos en arquitecturas de GPU modernas.
 
 <p align="center">
-  <img src={require("./assets/Untitled 5 (2).png").default}/>
+  <img src="/assets/img/docs/Untitled 5 (2).png"/>
   <br />
 </p>
 
-## 3. Programación con CUDA en C
+## Programación con CUDA en C
 
-### 3.1. Conceptos básicos
+### Conceptos básicos
 
 En CUDA, una función paralelizada se denomina **Kernel**. Para conocer la GPU y sus
 características se puede utilizar el siguiente comando en una terminal del equipo a
 utilizar:
 
-```bash
+```bash linenums="1"
 nvidia-smi
 ```
 
@@ -181,7 +178,7 @@ simultáneamente, por lo que es necesario sincronizar los tiempos de ejecución 
 componentes.
 
 <p align="center">
-  <img src={require("./assets/Untitled 6 (2).png").default}/>
+  <img src="/assets/img/docs/Untitled 6 (2).png"/>
   <br />
 </p>
 
@@ -193,7 +190,7 @@ Kernel.
 La programación en CUDA se realiza utilizando C/C++ y los archivos CUDA tienen la
 extensión `.cu`. La compilación del código se lleva a cabo con el siguiente comando:
 
-```bash
+```bash linenums="1"
 !nvcc -arch=sm_70 -o resultado_nombre programa.cu -run
 ```
 
@@ -201,7 +198,7 @@ En este comando, `-arch=sm_70` especifica la arquitectura para la compilación.
 
 A continuación se presenta un ejemplo de código en CUDA:
 
-```c
+```c linenums="1"
 // Incluye la biblioteca estándar para entrada y salida
 #include <iostream>
 
@@ -260,7 +257,7 @@ GPU.
 CUDA puede agilizar los bucles en la programación. Por ejemplo, para incrementar un valor
 `b` a los `N` elementos de un vector:
 
-```c
+```c linenums="1"
 void incremento_en_cpu(float *a, float b, int N)
 {
     // Recorre cada elemento del arreglo desde 0 hasta N-1
@@ -283,7 +280,7 @@ void main()
 El bucle anterior es adecuado para la paralelización, ya que cada índice es independiente
 y no requiere un orden específico (las hebras en un _warp_ se ejecutan desordenadamente).
 
-#### 3.1.1. Identificar hilos, bloques y mallas en un _kernel_ de CUDA
+#### Identificar hilos, bloques y mallas en un _kernel_ de CUDA
 
 CUDA proporciona variables que describen los hilos, bloques y mallas (_grid_):
 
@@ -302,7 +299,7 @@ configuración del _kernel_ debe ajustarse al número de iteraciones del bucle,
 configurando adecuadamente tanto el número de bloques como el número de hilos por bloque.
 A continuación, se presenta el código paralelizado del bucle:
 
-```c
+```c linenums="1"
 // Función de kernel para incrementar cada elemento del arreglo 'a' en la GPU
 __global__ void incremento_en_gpu(float *a, float b, int N)
 {
@@ -340,7 +337,7 @@ i_{x} = (blockIdx.x \cdot blockDim.x) + threadIdx.x
 $$
 
 <p align="center">
-  <img src={require("./assets/Untitled 7 (1).png").default}/>
+  <img src="/assets/img/docs/Untitled 7 (1).png"/>
   <br />
 </p>
 
@@ -350,11 +347,11 @@ En casos donde el número de hilos excede el número de tareas, se debe asegurar
 índice obtenido $i_{x}$ sea menor que el número total de datos.
 
 <p align="center">
-  <img src={require("./assets/Untitled 8 (1).png").default}/>
+  <img src="/assets/img/docs/Untitled 8 (1).png"/>
   <br />
 </p>
 
-### 3.2. Asignación de memoria en GPU
+### Asignación de memoria en GPU
 
 La asignación y liberación de memoria se realiza para la CPU y la GPU utilizando las
 funciones `malloc()` y `free()` en la CPU, y `cudaMallocManaged()` y `cudaFree()` en la
@@ -362,7 +359,7 @@ GPU.
 
 Ejemplo para la CPU:
 
-```c
+```c linenums="1"
 // Sólo para CPU
 
 // Define el tamaño del arreglo como 2^21
@@ -404,7 +401,7 @@ versiones recientes de CUDA permiten el uso de **memoria unificada**, que facili
 intercambio de datos entre la CPU y la GPU.
 
 <p align="center">
-  <img src={require("./assets/Untitled 9.png").default}/>
+  <img src="/assets/img/docs/Untitled 9.png"/>
   <br />
 </p>
 
@@ -420,7 +417,7 @@ La memoria unificada ofrece una serie de ventajas:
 Los tipos de memoria en CUDA se pueden observar en la imagen siguiente:
 
 <p align="center">
-  <img src={require("./assets/Untitled 10 (1).png").default}/>
+  <img src="/assets/img/docs/Untitled 10 (1).png"/>
   <br />
 </p>
 
@@ -439,7 +436,7 @@ La memoria unificada presenta algunas consideraciones:
 Podemos resumir el proceso de la memoria unificada con la siguiente imagen:
 
 <p align="center">
-  <img src={require("./assets/AB407146-6A59-4476-A97F-B0D7BF2AA8CC.png").default}/>
+  <img src="/assets/img/docs/AB407146-6A59-4476-A97F-B0D7BF2AA8CC.png"/>
   <br />
 </p>
 
@@ -447,7 +444,7 @@ Podemos resumir el proceso de la memoria unificada con la siguiente imagen:
 
 Ejemplo incorrecto:
 
-```c
+```c linenums="1"
 // Define una variable global de memoria unificada accesible desde la CPU y la GPU
 __device__ __managed__ int x, y = 2;
 
@@ -471,7 +468,7 @@ int main()
 
 Ejemplo correcto:
 
-```c
+```c linenums="1"
 // Define una variable global de memoria unificada accesible desde la CPU y la GPU
 __device__ __managed__ int x, y = 2;
 
@@ -500,7 +497,7 @@ Es posible clonar estructuras sin usar memoria unificada, pero esto requiere rea
 copias sucesivas entre la CPU y la GPU. También es posible hacerlo con memoria unificada
 utilizando C++.
 
-### 3.4. Kernels con gran tamaño de datos
+### Kernels con gran tamaño de datos
 
 Cuando se trabaja con una cantidad de datos que excede el número máximo de hebras
 disponibles, es necesario dividir los datos en bloques más pequeños que se ajusten al
@@ -513,7 +510,7 @@ $$
 
 El siguiente bucle ilustra cómo implementar esta técnica:
 
-```c
+```c linenums="1"
 __global__ void kernel(int *a, int N)
 {
     // Calcula el índice global del hilo dentro de la cuadrícula
@@ -530,13 +527,13 @@ __global__ void kernel(int *a, int N)
 }
 ```
 
-### 3.5. Manejo de errores
+### Manejo de errores
 
 Las funciones de CUDA a menudo devuelven un valor que indica si se ha producido un error,
 facilitando el manejo de errores. A continuación, se muestra cómo gestionar errores al
 reservar memoria:
 
-```c
+```c linenums="1"
 // Declara una variable para almacenar el código de error de CUDA
 cudaError_t err;
 
@@ -554,7 +551,7 @@ if (err != cudaSuccess)
 Para la gestión de errores al lanzar un kernel, se utiliza `cudaGetLastError()`, que
 devuelve un valor de tipo `cudaError_t`. Por ejemplo:
 
-```c
+```c linenums="1"
 // -1 no es un valor válido para el número de hebras por bloque
 someKernel<<<1, -1>>>();
 
@@ -574,7 +571,7 @@ if (err != cudaSuccess)
 
 También se puede emplear una función auxiliar para verificar errores:
 
-```c
+```c linenums="1"
 #include <stdio.h>
 #include <assert.h>
 
@@ -598,10 +595,10 @@ int main()
 }
 ```
 
-### 3.6. Ejemplos de Kernels característicos/comunes
+### Ejemplos de Kernels característicos/comunes
 
 <p align="center">
-  <img src={require("./assets/Untitled 12.png").default}/>
+  <img src="/assets/img/docs/Untitled 12.png"/>
   <br />
 </p>
 
@@ -616,7 +613,7 @@ Los tipos de operadores más comunes son:
   puede utilizar todos los hilos necesarios para procesar cada píxel de manera
   independiente. Ejemplo:
 
-  ```c
+  ```c linenums="1"
   // Define el tamaño del arreglo basado en una resolución de 1920x1080
   #define N 1920 * 1080
 
@@ -634,7 +631,7 @@ Los tipos de operadores más comunes son:
 - **Operadores sobre vectores**: Cada iteración del bucle puede ser asignada a un hilo
   CUDA para maximizar el paralelismo y la escalabilidad. Ejemplo:
 
-  ```c
+  ```c linenums="1"
   // Define el tamaño del arreglo como 2^30
   #define N (1 << 30)
 
@@ -652,7 +649,7 @@ Los tipos de operadores más comunes son:
   debido a dependencias, pero se puede aprovechar el paralelismo en cada partícula. La
   carga computacional depende del número de iteraciones. Ejemplo:
 
-  ```c
+  ```c linenums="1"
   int i, j, iter, N, Niters;
 
   // Declara dos arreglos bidimensionales para almacenar datos de entrada y salida
@@ -681,15 +678,15 @@ Los tipos de operadores más comunes son:
   }
   ```
 
-  El paralelismo en este caso está determinado por el tamaño de la matriz 2D ($$N^2$$).
+  El paralelismo en este caso está determinado por el tamaño de la matriz 2D ($N^2$).
 
 - **Operadores de reducción**: Aunque el código tiene dependencias entre iteraciones, el
   paralelismo puede ser desplegado mediante una estructura en árbol binario, resultando
-  en $$\log(N)$$ pasos que reducen el grado de paralelismo hasta llegar a un solo hilo.
+  en $\log(N)$ pasos que reducen el grado de paralelismo hasta llegar a un solo hilo.
   Es fundamental usar un patrón de acceso a memoria que optimice la jerarquía de memoria
   de la GPU. Ejemplo:
 
-  ```c
+  ```c linenums="1"
   // Declara una variable para almacenar la suma y un arreglo de números
   float sum, x[N];
 
@@ -705,7 +702,7 @@ Los tipos de operadores más comunes son:
 
 - **Histogramas**: Ejemplo de código para calcular histogramas:
 
-  ```c
+  ```c linenums="1"
   // Declara un arreglo para el histograma y una matriz para la imagen
   int histo[Nbins], image[N][N];
 
@@ -738,16 +735,16 @@ Como análisis final tenemos:
 - El operador de reducción requiere una mayor intervención del programador.
 - El histograma es el más desafiante para el programador.
 
-## 4. Acelerar aplicaciones con CUDA en Python utilizando Numba y CuPy
+## Acelerar aplicaciones con CUDA en Python utilizando Numba y CuPy
 
 El rendimiento de las aplicaciones científicas y de ingeniería en Python se puede mejorar
 significativamente mediante el uso de herramientas como Numba y CuPy. Estas tecnologías
 permiten la paralelización y aceleración del código, aprovechando la potencia de
 procesamiento de las GPUs y superando las limitaciones del intérprete de Python.
 
-### 4.1. Numba
+### Numba
 
-#### 4.1.1. Introducción
+#### Introducción
 
 Numba es un compilador JIT (_Just-In-Time_) para Python que acelera el código al
 convertir funciones en código máquina optimizado para CPU y GPU. Esto evita el intérprete
@@ -760,7 +757,7 @@ por lo que para utilizar Numba con datos de Pandas, se recomienda convertir los
 DataFrames a matrices de NumPy o CuPy. Para más información, consultar la
 [página oficial de Numba](https://numba.pydata.org/).
 
-#### 4.1.2. Decoradores
+#### Decoradores
 
 Numba ofrece varios decoradores para la compilación y optimización de funciones:
 
@@ -773,7 +770,7 @@ Numba ofrece varios decoradores para la compilación y optimización de funcione
 
 Los decoradores pueden combinarse para optimizar el rendimiento. Por ejemplo:
 
-```python
+```py linenums="1"
 @njit(parallel=True, fastmath=True)
 ```
 
@@ -785,7 +782,7 @@ maximizar la velocidad de ejecución.
 
 Ejemplo básico de uso de Numba con el decorador `@njit`:
 
-```python
+```py linenums="1"
 from numba import njit
 import numpy as np
 
@@ -812,9 +809,9 @@ print(result)
 En este ejemplo, el decorador `@njit()` compila la función para ejecutarse sin el
 intérprete de Python, mejorando notablemente el rendimiento.
 
-### 4.2. CuPy
+### CuPy
 
-#### 4.2.1. Introducción
+#### Introducción
 
 CuPy es una biblioteca de Python diseñada para acelerar cálculos numéricos mediante la
 ejecución de código en GPUs. Ofrece una API similar a NumPy, permitiendo realizar
@@ -823,13 +820,13 @@ Es útil en tareas que involucran grandes volúmenes de datos o cálculos intens
 
 Para más información, consultar la [página oficial de CuPy](https://cupy.dev/).
 
-#### 4.2.2. Uso básico de CuPy
+#### Uso básico de CuPy
 
 CuPy ofrece una API similar a NumPy, facilitando la transición entre ambas bibliotecas. A
 continuación se presenta un ejemplo básico de cómo realizar cálculos en una GPU
 utilizando CuPy:
 
-```python
+```py linenums="1"
 import cupy as cp
 
 # Crear matrices en la GPU
@@ -845,7 +842,7 @@ c_numpy = cp.asnumpy(c)
 print(c_numpy)  # Resultado: [ 7  9 11 13 15]
 ```
 
-### 4.3. Comparación entre Numba y CuPy
+### Comparación entre Numba y CuPy
 
 - **Numba**: Ideal para acelerar funciones específicas y bucles en Python. Permite
   compilación JIT para CPU y GPU, y se integra bien con código existente de NumPy.
