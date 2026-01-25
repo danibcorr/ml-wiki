@@ -103,7 +103,7 @@ conjunto con uno del otro, sin enlaces internos dentro de un mismo conjunto. Est
 de grafos es frecuente en problemas de recomendación y análisis de relaciones
 usuario–objeto.
 
-## 6. Representación matricial de los grafos
+## Representación matricial de los grafos
 
 Una de las representaciones más habituales de un grafo es la matriz de adyacencia
 $A \in \mathbb{R}^{N \times N}$, definida como
@@ -128,7 +128,7 @@ pueden existir bucles propios o _self-loops_, representados en la diagonal princ
 así como multigrafos, en los que múltiples enlaces entre dos nodos codifican distintas
 propiedades.
 
-## 7. Conectividad y componentes
+## Conectividad y componentes
 
 La conectividad describe la posibilidad de desplazarse entre nodos siguiendo los enlaces
 del grafo. Un grafo completamente conectado permite alcanzar cualquier nodo desde
@@ -138,7 +138,7 @@ sutil, ya que la dirección de los enlaces puede impedir alcanzar ciertos nodos,
 lugar a componentes fuertemente conectadas, en las que existe un camino dirigido entre
 cualquier par de nodos del componente.
 
-## 8. Características estructurales y medidas de centralidad
+## Características estructurales y medidas de centralidad
 
 En el aprendizaje sobre grafos se distinguen las características estructurales, que
 describen la posición de un nodo dentro del grafo, y las características atributivas,
@@ -169,7 +169,7 @@ punto los vecinos de un nodo están conectados entre sí. Valores próximos a un
 una alta densidad de triángulos locales, mientras que valores cercanos a cero reflejan
 una estructura más dispersa.
 
-## 9. Graphlets y patrones locales
+## Graphlets y patrones locales
 
 Los _graphlets_ son pequeños subgrafos inducidos que permiten capturar patrones locales
 de conectividad. Un caso particular es la _ego-network_, que se construye alrededor de
@@ -185,7 +185,7 @@ tipo están asociados a un nodo. Estas herramientas proporcionan una descripció
 detallada de la estructura local y resultan de gran valor en el análisis y aprendizaje
 automático sobre grafos.
 
-## 10. Predicción de enlaces y métodos basados en similitud
+## Predicción de enlaces y métodos basados en similitud
 
 En la tarea de predicción de enlaces, el objetivo es inferir relaciones inexistentes a
 partir de la estructura observada del grafo. Un enfoque habitual consiste en considerar
@@ -206,7 +206,7 @@ métricas que consideran el grafo completo, como el _global neighborhood overlap
 índice Katz o potencias de la matriz de adyacencia, que capturan la conectividad a mayor
 escala.
 
-## 11. Métodos kernel para grafos
+## Métodos kernel para grafos
 
 Los métodos basados en _kernels_ consisten en definir funciones de similitud entre
 grafos en lugar de construir explícitamente características. Un _kernel_ entre dos

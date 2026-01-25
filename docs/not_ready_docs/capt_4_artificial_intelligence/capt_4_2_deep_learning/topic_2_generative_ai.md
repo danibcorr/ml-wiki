@@ -35,7 +35,7 @@ aleatorio y explora más. En cambio, cuando la temperatura es baja, la distribuc
 concentra en las opciones más probables, haciendo que el modelo sea más determinista y
 menos “creativo”.
 
-### 6.6. Modelos de Lenguaje de Gran Escala (LLMs)
+### Modelos de Lenguaje de Gran Escala (LLMs)
 
 Los modelos de lenguaje forman parte del campo del aprendizaje profundo. Aunque los
 modelos de lenguaje ya existían antes de la era de los LLMs, estos empleaban

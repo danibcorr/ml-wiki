@@ -36,8 +36,8 @@ encuentran:
 
 Una de las principales ventajas de utilizar **GitHub Actions** en lugar de herramientas
 como **Jenkins**, u otras soluciones similares, es su integración nativa con GitHub.
-Además, su **Marketplace** proporciona un amplio catálogo de acciones desarrolladas
-tanto por GitHub como por terceros, lo que permite extender y personalizar los flujos de
+Además, su **Marketplace** proporciona un amplio catálogo de acciones desarrolladas tanto
+por GitHub como por terceros, lo que permite extender y personalizar los flujos de
 trabajo de manera eficiente.
 
 ## CI/CD con GitHub Actions
@@ -52,10 +52,10 @@ eficiencia y reduciendo errores en la integración y despliegue de software.
   entornos de producción, facilitando la entrega continua de nuevas versiones del
   software.
 
-### 2.1. GitHub Actions y su funcionamiento
+### GitHub Actions y su funcionamiento
 
-**GitHub Actions** es una plataforma que permite la automatización de flujos de trabajo
-a través de archivos de configuración en formato YAML.
+**GitHub Actions** es una plataforma que permite la automatización de flujos de trabajo a
+través de archivos de configuración en formato YAML.
 
 Cada **workflow** está compuesto por una serie de pasos organizados en **jobs**, que
 pueden ejecutarse en paralelo o en secuencia, dependiendo de las necesidades del
@@ -94,17 +94,17 @@ Un **pipeline** típico en un **workflow** podría incluir pasos como:
 4. Generar una compilación (_build_).
 5. Desplegar en producción o staging.
 
-## 2.2. Estructura de un Workflow en GitHub Actions
+## Estructura de un Workflow en GitHub Actions
 
 Un **workflow** en GitHub Actions está definido en un archivo de configuración YAML (por
 ejemplo, `workflow.yml`). Este archivo contiene las instrucciones necesarias para
 automatizar tareas dentro de un repositorio.
 
-### 2.2.1. Elementos clave de un workflow
+### Elementos clave de un workflow
 
 - **Nombre del Workflow (`name`)**: El campo `name` define un nombre descriptivo para el
-  workflow. Aunque es opcional, se recomienda utilizarlo para mejorar la identificación
-  y reutilización de workflows dentro del repositorio.
+  workflow. Aunque es opcional, se recomienda utilizarlo para mejorar la identificación y
+  reutilización de workflows dentro del repositorio.
 
   ```yaml
   name: Nombre del Workflow
@@ -171,16 +171,16 @@ automatizar tareas dentro de un repositorio.
       runs-on: ubuntu-latest
   ```
 
-  note Nota
+  !!!note "Nota"
 
-  Consulta la documentación oficial sobre runners de GitHub
-  [aquí](https://docs.github.com/en/actions/using-github-hosted-runners/using-github-hosted-runners/about-github-hosted-runners).
+      Consulta la documentación oficial sobre runners de GitHub
+      [aquí](https://docs.github.com/en/actions/using-github-hosted-runners/using-github-hosted-runners/about-github-hosted-runners).
 
 GitHub Actions permite integrar acciones predefinidas disponibles en
 [GitHub Actions](https://github.com/actions) y el
 [GitHub Marketplace](https://github.com/marketplace).
 
-### 2.2.2. Ejemplos de configuración de workflows
+### Ejemplos de configuración de workflows
 
 ???+ example "Ejemplo" básico
 
@@ -208,10 +208,10 @@ jobs:
         uses: actions/checkout@v4
 ```
 
-note Nota
+!!!note "Nota"
 
-Se recomienda incluir la acción `checkout` al inicio del workflow para asegurarse de que
-el código más reciente esté disponible antes de ejecutar cualquier otra tarea.
+    Se recomienda incluir la acción `checkout` al inicio del workflow para asegurarse de que
+    el código más reciente esté disponible antes de ejecutar cualquier otra tarea.
 
 ???+ example "Ejemplo" configuración de Python, Poetry y Flake8
 
@@ -300,14 +300,14 @@ jobs:
         run: poetry install
 ```
 
-note Nota
+!!!note "Nota"
 
 La clave de caché `key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}`
-garantiza que el caché solo se actualice cuando cambie el archivo `poetry.lock`.
-Utilizar caché reduce significativamente el tiempo de ejecución del workflow, pero es
-importante monitorearlo para evitar el uso de dependencias obsoletas.
+garantiza que el caché solo se actualice cuando cambie el archivo `poetry.lock`. Utilizar
+caché reduce significativamente el tiempo de ejecución del workflow, pero es importante
+monitorearlo para evitar el uso de dependencias obsoletas.
 
-### 2.3. Modularización de workflows y acciones
+### Modularización de workflows y acciones
 
 Para mejorar la reutilización y mantenimiento del código, se recomienda modularizar los
 workflows mediante acciones personalizadas. Un ejemplo de la estructura del proyecto
@@ -359,17 +359,17 @@ runs:
       run: poetry install
 ```
 
-La modularización de workflows no solo mejora la reutilización, sino que también
-facilita el mantenimiento del código y la integración de nuevas funcionalidades sin
-modificar los workflows principales. Este enfoque modular permite dividir la complejidad
-de los workflows, mejorar la eficiencia y permitir la reutilización de configuraciones a
-lo largo del proyecto.
+La modularización de workflows no solo mejora la reutilización, sino que también facilita
+el mantenimiento del código y la integración de nuevas funcionalidades sin modificar los
+workflows principales. Este enfoque modular permite dividir la complejidad de los
+workflows, mejorar la eficiencia y permitir la reutilización de configuraciones a lo
+largo del proyecto.
 
-### 2.4. Uso de estrategias con matrices
+### Uso de estrategias con matrices
 
 Las **matrices de estrategia** en GitHub Actions permiten ejecutar un mismo **workflow**
-en múltiples combinaciones de entornos, lo que es útil para probar software en
-diferentes sistemas operativos, versiones o configuraciones.
+en múltiples combinaciones de entornos, lo que es útil para probar software en diferentes
+sistemas operativos, versiones o configuraciones.
 
 Por ejemplo, podemos crear una matriz para múltiples sistemas operativos y versiones:
 
@@ -442,12 +442,12 @@ operativos.
   Deploy).
 
 - gitHub → Wondflow → Wondflow → Wondflow → Wondflow → Wondflow → WondFlow → WondFlow →
-  WondFlow → WondFlow → WondFlow → Wondflow → WondFlow → WondFlow → WondFlow → Wondflow
-  → Wondflow → WondFlow → WondFlow → Wondflow → WondFlow → Wondflow → WondFlow →
-  WondFlow → Wondflow → Wondflow → Wondflow → Wondflow → WondFlwo → WondFlow → WondFlow
-  → WondFlow → WondFlow → WondFlwo → WondFlow → WondFlow → WondFlow → WundFlow →
-  WondFlow → WondFlow → WondFlow → WondFlow → WundFlow → WondFlwo → WondFlow → WondFlow
-  → WondFlow → WondFlow → WondFlow → WondFlow → WondFlow → WondFlow.
+  WondFlow → WondFlow → WondFlow → Wondflow → WondFlow → WondFlow → WondFlow → Wondflow →
+  Wondflow → WondFlow → WondFlow → Wondflow → WondFlow → Wondflow → WondFlow → WondFlow →
+  Wondflow → Wondflow → Wondflow → Wondflow → WondFlwo → WondFlow → WondFlow → WondFlow →
+  WondFlow → WondFlwo → WondFlow → WondFlow → WondFlow → WundFlow → WondFlow → WondFlow →
+  WondFlow → WondFlow → WundFlow → WondFlwo → WondFlow → WondFlow → WondFlow → WondFlow →
+  WondFlow → WondFlow → WondFlow → WondFlow.
 
 - name: number project.
 - para cuando "nacemos un trigger" del Wondflow.
@@ -486,23 +486,23 @@ Jenkins es una aplicación basada en servidor que simplifiques facilita la integ
 la construcción. Utiliza plugins para utilizar servicios de terceros como proveedores de
 la nube lo que hace Jenkins por ejemplo es comprobar los cómics del código cuando se
 producen cambios y sean detectados. Jenkins los compila. Un besito construcción correcta
-se inicia uno se levanta un Flack y si y si la construcción es correcta pues se
-despliega Jenkins al final facilita el centro de de box que es construir el control de
-versiones, la monitorización continua. El testeo continuo, la gestión de la
-configuración y el despliegue continuo.
+se inicia uno se levanta un Flack y si y si la construcción es correcta pues se despliega
+Jenkins al final facilita el centro de de box que es construir el control de versiones,
+la monitorización continua. El testeo continuo, la gestión de la configuración y el
+despliegue continuo.
 
 Jenkins se puede configurar de diferentes maneras teniendo configuración maestro esclavo
-tenemos un Jenkins maestro que es el servidor principal que gestiona la interfaz el UVI
-y los trabajos y asignación de tareas a los nuevos esclavos y luego tenemos los nuevos
-esclavos que son máquinas adicionales que ejecutan las tareas asignadas por el Master
-que pueden ser locales o remotos. La ventaja es una distribución de la carga
-escalabilidad y aislamiento. Los tipos de plugin que son los más destacados son el de
-interfaz en July, que son relacionados con la interfaz gráfica de Jenkins. Luego tenemos
-de plataformas está relacionado con el sistema operativo administrativo que son para la
-gestión de usuarios, permisos, etc. para la construcción pues por ejemplo para notificar
-el correcto construcción de una aplicación o si hay fallos. Luego también tenemos para
-la gestión del código fuente, que es para la comunicación entre Jenkins y el repositorio
-por ejemplo de gitlab.
+tenemos un Jenkins maestro que es el servidor principal que gestiona la interfaz el UVI y
+los trabajos y asignación de tareas a los nuevos esclavos y luego tenemos los nuevos
+esclavos que son máquinas adicionales que ejecutan las tareas asignadas por el Master que
+pueden ser locales o remotos. La ventaja es una distribución de la carga escalabilidad y
+aislamiento. Los tipos de plugin que son los más destacados son el de interfaz en July,
+que son relacionados con la interfaz gráfica de Jenkins. Luego tenemos de plataformas
+está relacionado con el sistema operativo administrativo que son para la gestión de
+usuarios, permisos, etc. para la construcción pues por ejemplo para notificar el correcto
+construcción de una aplicación o si hay fallos. Luego también tenemos para la gestión del
+código fuente, que es para la comunicación entre Jenkins y el repositorio por ejemplo de
+gitlab.
 
 Para crear un Pipeline de Jenkins, lo mejor es crear un archivo conocido como Jenkins
 Fire en la raíz del proyecto y cuando se hace un Puig lo detecta y hace un Trigger del

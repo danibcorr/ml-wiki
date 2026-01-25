@@ -14,15 +14,15 @@ title: Estructuras de datos y algoritmos
 
 La notación Big O se utiliza para evaluar la eficiencia de los algoritmos en términos de
 complejidad temporal y espacial. La **complejidad temporal** se refiere a cómo varía el
-tiempo requerido por un algoritmo en función del número de elementos de entrada,
-mientras que la **complejidad espacial** se refiere al uso de memoria en función del
-número de variables utilizadas por el algoritmo.
+tiempo requerido por un algoritmo en función del número de elementos de entrada, mientras
+que la **complejidad espacial** se refiere al uso de memoria en función del número de
+variables utilizadas por el algoritmo.
 
 ### Ejemplos de notación Big O
 
-- $O\left( 1 \right)$: El tiempo de ejecución es constante, independientemente del
-  tamaño de la entrada. Es típico en algoritmos que acceden a un número fijo de
-  elementos, como devolver el primer elemento de una lista.
+- $O\left( 1 \right)$: El tiempo de ejecución es constante, independientemente del tamaño
+  de la entrada. Es típico en algoritmos que acceden a un número fijo de elementos, como
+  devolver el primer elemento de una lista.
 
 - $O\left(\log N\right)$: El tiempo de ejecución crece logarítmicamente con el tamaño de
   la entrada. Común en algoritmos que dividen el problema a la mitad en cada paso, como
@@ -54,7 +54,7 @@ depender de más de un parámetro.
 
 ???+ example "Ejemplo"
 
-```py
+```py linenums="1"
 def funcion():
     for i in arrayA:
         ...
@@ -68,7 +68,7 @@ $A$ y $B$ son los tamaños de los arrays `arrayA` y `arrayB`, respectivamente.
 
 ???+ example "Ejemplo"
 
-```py
+```py linenums="1"
 def funcion():
     for i in arrayA:
         for j in arrayB:
@@ -76,8 +76,8 @@ def funcion():
 ```
 
 En este caso, la complejidad es $O\left(A \times B\right)$, ya que los bucles anidados
-operan sobre arrays diferentes. Es un error asumir $O\left(N^2\right)$ sin considerar
-los tamaños de los arrays involucrados.
+operan sobre arrays diferentes. Es un error asumir $O\left(N^2\right)$ sin considerar los
+tamaños de los arrays involucrados.
 
 Es importante señalar que la notación Big O no está limitada a la letra $N$; cualquier
 letra puede ser utilizada para representar el tamaño de la entrada en función del
@@ -85,10 +85,10 @@ contexto del problema.
 
 ## Métodos de ordenación
 
-Este capítulo presenta algunos de los métodos de ordenación más utilizados en
-estructuras de datos y algoritmos.
+Este capítulo presenta algunos de los métodos de ordenación más utilizados en estructuras
+de datos y algoritmos.
 
-### 2.1. Ordenación de Burbuja (_Bubble Sort_)
+### Ordenación de Burbuja (_Bubble Sort_)
 
 La ordenación de burbuja es un algoritmo de ordenación sencillo que compara pares
 adyacentes de elementos en una lista e intercambia sus posiciones si están en orden
@@ -102,7 +102,7 @@ indica que la lista está ordenada.
 
 tip Implementación
 
-```py
+```py linenums="1"
 def ordenacion_burbuja(lista: list[int]) -> list[int]:
 
     # Bucle externo que recorre toda la lista
@@ -125,20 +125,20 @@ def ordenacion_burbuja(lista: list[int]) -> list[int]:
     return lista
 ```
 
-### 2.2. Ordenación por Selección (_Selection Sort_)
+### Ordenación por Selección (_Selection Sort_)
 
-La ordenación por selección selecciona el elemento más pequeño de la lista y lo coloca
-al principio. Este proceso se repite para el resto de la lista hasta que está
-completamente ordenada.
+La ordenación por selección selecciona el elemento más pequeño de la lista y lo coloca al
+principio. Este proceso se repite para el resto de la lista hasta que está completamente
+ordenada.
 
 - **Complejidad temporal**: $$O\left(N^2\right)$$ en el peor caso, porque cada elemento
   se compara con todos los demás restantes.
-- **Complejidad espacial**: $$O\left(1\right)$$, ya que solo utiliza un espacio
-  constante adicional.
+- **Complejidad espacial**: $$O\left(1\right)$$, ya que solo utiliza un espacio constante
+  adicional.
 
 tip Implementación
 
-```py
+```py linenums="1"
 def ordenacion_seleccion(lista: list[int]) -> list[int]:
 
     # Bucle externo que recorre toda la lista
@@ -163,12 +163,12 @@ def ordenacion_seleccion(lista: list[int]) -> list[int]:
     return lista
 ```
 
-### 2.3. Ordenación por Inserción (_Insertion Sort_)
+### Ordenación por Inserción (_Insertion Sort_)
 
 La ordenación por inserción funciona dividiendo la lista en una parte ordenada y otra
 desordenada. Se toma un elemento de la parte desordenada y se inserta en la posición
-correcta dentro de la parte ordenada. Este proceso continúa hasta que no quedan
-elementos desordenados.
+correcta dentro de la parte ordenada. Este proceso continúa hasta que no quedan elementos
+desordenados.
 
 - **Complejidad temporal**: $$O\left(N^2\right)$$ en el peor caso, cuando los elementos
   están en orden inverso. En el mejor caso, con una lista ya ordenada, es
@@ -178,7 +178,7 @@ elementos desordenados.
 
 tip Implementación
 
-```py
+```py linenums="1"
 def ordenacion_insercion(lista: list[int]) -> list[int]:
 
     # Bucle que recorre la lista desde el segundo elemento hasta el final
@@ -207,24 +207,23 @@ proporcionan una buena base para entender algoritmos más avanzados y eficientes
 
 ## Métodos de búsqueda
 
-Este capítulo explora algunos de los métodos de búsqueda más utilizados en estructuras
-de datos y algoritmos.
+Este capítulo explora algunos de los métodos de búsqueda más utilizados en estructuras de
+datos y algoritmos.
 
-### 3.1. Búsqueda Lineal (_Linear Search_)
+### Búsqueda Lineal (_Linear Search_)
 
 La búsqueda lineal es un método de búsqueda sencillo que recorre cada elemento de la
 lista uno por uno hasta encontrar el elemento buscado o hasta recorrer todos los
 elementos.
 
-- **Complejidad temporal**: $$O\left(N\right)$$ en el peor caso, donde $$n$$ es el
-  número de elementos en la lista, ya que puede ser necesario recorrer todos los
-  elementos.
+- **Complejidad temporal**: $$O\left(N\right)$$ en el peor caso, donde $$n$$ es el número
+  de elementos en la lista, ya que puede ser necesario recorrer todos los elementos.
 - **Complejidad espacial**: $$O\left(1\right)$$, ya que solo requiere un espacio
   constante adicional.
 
 tip Implementación
 
-```py
+```py linenums="1"
 def busqueda_lineal(lista: list[int], valor_buscar: int) -> int:
 
     # Recorre la lista utilizando enumerate para obtener índice y valor
@@ -239,7 +238,7 @@ def busqueda_lineal(lista: list[int], valor_buscar: int) -> int:
     return None
 ```
 
-### 3.2. Búsqueda Binaria (_Binary Search_)
+### Búsqueda Binaria (_Binary Search_)
 
 La búsqueda binaria es un método de búsqueda eficiente que divide repetidamente a la
 mitad la parte de la lista que podría contener el elemento buscado, hasta reducir las
@@ -252,7 +251,7 @@ posibles ubicaciones a una sola. Este método requiere que la lista esté ordena
 
 tip Implementación
 
-```py
+```py linenums="1"
 def busqueda_binaria(lista: list[int], valor_buscar: int) -> int:
 
     # Ordena la lista de manera ascendente
@@ -285,11 +284,11 @@ def busqueda_binaria(lista: list[int], valor_buscar: int) -> int:
 
 ## Estructuras de Datos
 
-### 4.1. Pilas
+### Pilas
 
-Una pila es una estructura de datos que organiza elementos de manera secuencial
-siguiendo el principio LIFO (_Last In, First Out_). Esto implica que el último elemento
-añadido es el primero en ser retirado. Las operaciones principales en una pila son:
+Una pila es una estructura de datos que organiza elementos de manera secuencial siguiendo
+el principio LIFO (_Last In, First Out_). Esto implica que el último elemento añadido es
+el primero en ser retirado. Las operaciones principales en una pila son:
 
 - **Apilar (_push_)**: Añade un elemento a la pila.
 - **Desapilar (_pop_)**: Retira el último elemento añadido.
@@ -298,7 +297,7 @@ Las pilas pueden tener un tamaño estático o dinámico.
 
 tip Implementación
 
-```py
+```py linenums="1"
 class Pila:
 
     def __init__(self, tam: int = None):
@@ -356,7 +355,7 @@ class Pila:
         return len(self.lista)
 ```
 
-### 4.2. Colas
+### Colas
 
 Una cola es una estructura de datos que organiza elementos de manera secuencial bajo el
 principio FIFO (_First In, First Out_). Las operaciones de inserción se realizan en un
@@ -364,7 +363,7 @@ extremo y las de extracción en el otro.
 
 tip Implementación
 
-```py
+```py linenums="1"
 class Cola():
 
     def __init__(self, tam: int = None):
@@ -438,14 +437,14 @@ class Cola():
         print(self.lista)
 ```
 
-### 4.3. Nodos
+### Nodos
 
-Un nodo es un elemento fundamental en estructuras de datos como listas enlazadas,
-árboles o grafos. Cada nodo contiene uno o más campos de datos y al menos un campo que
-es un puntero o referencia a otro nodo. Esto permite navegar por los nodos conectados de
-la estructura.
+Un nodo es un elemento fundamental en estructuras de datos como listas enlazadas, árboles
+o grafos. Cada nodo contiene uno o más campos de datos y al menos un campo que es un
+puntero o referencia a otro nodo. Esto permite navegar por los nodos conectados de la
+estructura.
 
-### 4.4. Listas Enlazadas
+### Listas Enlazadas
 
 Las listas enlazadas son estructuras de datos donde cada elemento apunta al siguiente
 mediante un puntero. A diferencia de los arrays, el acceso a elementos se realiza a
@@ -454,7 +453,7 @@ al siguiente nodo o a `None` si es el último nodo.
 
 tip Implementación
 
-```py
+```py linenums="1"
 class Nodo():
 
     def __init__(self, dato: int):
@@ -545,7 +544,7 @@ class ListaEnlazada():
                 self.nodo_inicial = nuevo_nodo_inicial
 ```
 
-### 4.5. Listas Doblemente Enlazadas
+### Listas Doblemente Enlazadas
 
 Una lista doblemente enlazada consta de una secuencia de nodos donde cada nodo tiene dos
 enlaces: uno al siguiente nodo y otro al anterior. Esta estructura permite recorrer la
@@ -553,7 +552,7 @@ lista en ambos sentidos y facilita la eliminación de elementos.
 
 tip Implementación
 
-```py
+```py linenums="1"
 class Nodo():
 
     def __init__(self, dato: int):
@@ -652,15 +651,15 @@ class ListaDobleEnlazada:
                 self.nodo_inicial = segundo
 ```
 
-### 4.6. Lista Circular Simple
+### Lista Circular Simple
 
-Una lista circular simple es una lista enlazada donde el enlace del último nodo apunta
-al primero, formando un ciclo. Este tipo de lista permite operaciones eficientes de
+Una lista circular simple es una lista enlazada donde el enlace del último nodo apunta al
+primero, formando un ciclo. Este tipo de lista permite operaciones eficientes de
 inserción y eliminación cuando se conoce el nodo previo.
 
 tip Implementación
 
-```py
+```py linenums="1"
 class Nodo():
 
     def __init__(self, dato: int):
@@ -758,7 +757,7 @@ class ListaCircular():
                 self.nodo_inicial = siguiente_nodo
 ```
 
-### 4.7. Lista Circular Doble
+### Lista Circular Doble
 
 Una lista circular doble es una lista doblemente enlazada donde el último nodo apunta al
 primero y el primero apunta al último, permitiendo un recorrido en ambas direcciones en
@@ -766,7 +765,7 @@ forma circular.
 
 tip Implementación
 
-```py
+```py linenums="1"
 class Nodo():
 
     def __init__(self, dato: int):
@@ -892,13 +891,13 @@ class ListaDobleCircular():
                 self.nodo_inicial = segundo
 ```
 
-### 4.8. Árboles binarios
+### Árboles binarios
 
-Un árbol binario es una estructura de datos en la que cada nodo puede tener, como
-máximo, dos descendientes denominados hijo izquierdo y hijo derecho. Esta estructura es
-eficiente para organizar y buscar datos.
+Un árbol binario es una estructura de datos en la que cada nodo puede tener, como máximo,
+dos descendientes denominados hijo izquierdo y hijo derecho. Esta estructura es eficiente
+para organizar y buscar datos.
 
-#### 4.8.1. Características
+#### Características
 
 - Cada nodo tiene un valor y dos descendientes.
 - El valor del hijo izquierdo de un nodo es menor que el del nodo padre.
@@ -907,7 +906,7 @@ eficiente para organizar y buscar datos.
 - Un árbol binario puede estar vacío o contener nodos, en cuyo caso se compone de una
   raíz y dos subárboles binarios disjuntos: subárbol izquierdo y subárbol derecho.
 
-#### 4.8.2. Tipos de recorrido
+#### Tipos de recorrido
 
 - **Recorrido en orden**: Visita primero el hijo izquierdo, luego la raíz y, finalmente,
   el hijo derecho.
@@ -918,7 +917,7 @@ eficiente para organizar y buscar datos.
 
 tip Implementación
 
-```py
+```py linenums="1"
 class Nodo():
 
     def __init__(self, valor: int = None, padre: int = None, es_raiz: bool = False, es_izquierdo: bool = False, es_derecho: bool = False):

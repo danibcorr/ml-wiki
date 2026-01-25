@@ -18,7 +18,7 @@ may not use the same element twice.
 
 Example:
 
-```py
+```py linenums="1"
 nums = [2, 7, 11, 15]
 target = 9
 
@@ -27,7 +27,7 @@ Because nums[0] + nums[1] = 2 + 7 = 9, return [0, 1]
 
 ??? info "Solución"
 
-    ```py
+    ```py linenums="1"
     def funcion1(lista: list[int], target: int) -> list[int]:
 
         """
@@ -72,7 +72,7 @@ cannot sell a stock before you buy one.
 
 Example:
 
-```py
+```py linenums="1"
 nums = [7,1,5,3,6,4]
 output = 5
 
@@ -81,7 +81,7 @@ Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6 
 
 ??? info "Solución"
 
-    ```py
+    ```py linenums="1"
     def funcion(lista: list[int]) -> list[int]:
 
         """
@@ -133,14 +133,14 @@ array, and return false if every element is distinct.
 
 Example:
 
-```py
+```py linenums="1"
 nums = [1,2,3,1]
 output = true
 ```
 
 ??? info "Solución"
 
-    ```py
+    ```py linenums="1"
     def funcion(lista: list[int]) -> bool:
 
         """
@@ -180,12 +180,12 @@ output = true
 
 ### Maximum subarray
 
-Given an integer array nums, fin the contiguous subarray (containing at least one
-number) which has the larges sum and return its sum
+Given an integer array nums, fin the contiguous subarray (containing at least one number)
+which has the larges sum and return its sum
 
 Example:
 
-```py
+```py linenums="1"
 nums = [-2,1,-3,4,-1,2,1,-5,4]
 output = 6
 Explanaation: [4,-1,2,1] has the largest sum = 6
@@ -193,7 +193,7 @@ Explanaation: [4,-1,2,1] has the largest sum = 6
 
 ??? info "Solución"
 
-    ```py
+    ```py linenums="1"
     def funcion(lista: list[int]) -> int:
 
         """
@@ -224,14 +224,14 @@ in O(N) time and without using the division operation.
 
 Example:
 
-```py
+```py linenums="1"
 nums = [1,2,3,4]
 output = [24,12,8,6]
 ```
 
 ??? info "Solución"
 
-    ```py
+    ```py linenums="1"
     def funcion(lista: list[int]) -> bool:
 
         """

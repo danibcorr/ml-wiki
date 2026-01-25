@@ -22,14 +22,13 @@ recordatorio. No tiene ningún tipo de orden, ni pretende ser el primer capítul
 visualizar.
 
 - **La letra ‘x’ se asocia a la variable independiente**, lo que usamos para hacer
-  predicciones, por ejemplo imágenes. Mientras que la **letra ‘y’ se asocia a la
-  variable dependiente**, lo que se denominan etiquetas y es nuestro objetivo obtener
-  una predicción que tenga una alta probabilidad de parecerse a dicha ‘y’, un ejemplo de
+  predicciones, por ejemplo imágenes. Mientras que la **letra ‘y’ se asocia a la variable
+  dependiente**, lo que se denominan etiquetas y es nuestro objetivo obtener una
+  predicción que tenga una alta probabilidad de parecerse a dicha ‘y’, un ejemplo de
   etiquetas pueden ser los nombres de las imágenes que permiten clasificar razas de
   perros.
-- **weigth** = pesos: valores aleatorios con los que se inicializan a las neuronas,
-  estos parámetros son fundamentales para determinar el tipo de funcionamiento de una
-  red.
+- **weigth** = pesos: valores aleatorios con los que se inicializan a las neuronas, estos
+  parámetros son fundamentales para determinar el tipo de funcionamiento de una red.
   - Forma (shape) → w(tamaño input, número de neuronas)
 - **bias** = sesgo:
   - Forma (shape) → b(1, número de neuronas)
@@ -49,19 +48,19 @@ visualizar.
   independientes y un lote de variables dependientes.
 - **one-hot encoding**: vectores de 0’s con el tamaño del número de clases que tenga el
   dataset, cada categoría representa una posición en el vector por lo que si la imagen
-  contiene algún elemento de alguna clase el vector tendrá un 1 en la posición del
-  vector que corresponderá a su clase.
+  contiene algún elemento de alguna clase el vector tendrá un 1 en la posición del vector
+  que corresponderá a su clase.
 - Es importante saber que **una clasificación** pretende predecir una clase o categoría
   mientras que un modelo de **regresión** intenta predecir 1 o más cantidades numéricas.
 
 ## Capítulo 0: Útiles
 
-### 0.1. Descomprimir ficheros
+### Descomprimir ficheros
 
 Muchos de los datasets se encuentran comprimidos, si usamos Colab será pesado subir los
 ficheros a Drive además del tiempo requerido para ello.
 
-```py
+```py linenums="1"
 import zipfile
 import os
 
@@ -75,13 +74,13 @@ if os.path.exists(lugar_descomprimir) == False:
 	zip_ref.close()
 ```
 
-### 0.2. Utilizar Weights & Biases (wandb)
+### Utilizar Weights & Biases (wandb)
 
-Podemos utilizar WandB para el registro de la evolución de nuestro módulo. Utilizar
-WandB nos permite obtener un registro del aprendizaje del modelo, compartir información
-en tiempo real, etc.
+Podemos utilizar WandB para el registro de la evolución de nuestro módulo. Utilizar WandB
+nos permite obtener un registro del aprendizaje del modelo, compartir información en
+tiempo real, etc.
 
-```py
+```py linenums="1"
 import wandb
 
 !wandb login
@@ -103,7 +102,7 @@ wandb.init(
 config = wandb.config
 ```
 
-### 0.3. Utilizar modelos pre-entrenados
+### Utilizar modelos pre-entrenados
 
 Al importar la librería de `Tensorflow`, podemos utilizar `tf.keras.applications.` para
 que aparezca la lista de modelos pre-entrenados disponibles.
@@ -113,7 +112,7 @@ pasos específicos. Por ejemplo, por cómo ha sido entrenado ResNet no podemos u
 `BatchNormalization()` ni tampoco realizar normalización en los datos ya que requiere
 realizar el procesado de la siguiente manera:
 
-```py
+```py linenums="1"
 train_datagen = ImageDataGenerator(
     dtype='float32',
     preprocessing_function = preprocess_input,
@@ -128,7 +127,7 @@ recomendado es visitar siempre la documentación de `Tensorflow` .
 Lo primero para poder hacer uso de los modelos pre-entrenados de `Tensorflow` es cargar
 el modelo con los ajustes deseados:
 
-```py
+```py linenums="1"
 import tensorflow as tf
 
 #   Modelo
@@ -141,7 +140,7 @@ modelo_base = tf.keras.applications.ResNet50(
 
 Posteriormente, debemos congelar los parámetros del modelo para no reentrenarlos.
 
-```py
+```py linenums="1"
 for capa in modelo_base.layers:
 
   capa.trainable = False
@@ -151,7 +150,7 @@ Para ajustar el modelo pre-entrenado a nuestro problema, debemos añadir nuevas 
 modelo. Estas serán las capas que entrenaremos en primera instancia para posteriormente
 descongelar el modelo y entrenarlo al completo.
 
-```py
+```py linenums="1"
 def Modelo(modelo_base):
 
 		# Con modelo_base.summary() podemos ver todas las capas que cuenta el modelo
@@ -183,9 +182,9 @@ def Modelo(modelo_base):
 modelo = Modelo(modelo_base)
 ```
 
-### 0.4. Mostrar gráficas de pérdidas y accuracy
+### Mostrar gráficas de pérdidas y accuracy
 
-```py
+```py linenums="1"
 history = modelo.fit(...)
 
 # Creamos una gráfica para mostrar el accuracy obtenido tanto en el set de entrenamiento como en el de validacion
@@ -209,15 +208,15 @@ plt.legend(['Entrenamiento', 'Test'], loc='upper right')
 plt.show()
 ```
 
-### 0.5. ImageDataGenerator
+### ImageDataGenerator
 
 Podemos utilizar generadores de datos para la manipulación de datos de nuestro dataset.
-Con ello, conseguimos realizar aumentación datos, divisiones de datos para
-entrenamiento, validación y pruebas, entre otras herramientras.
+Con ello, conseguimos realizar aumentación datos, divisiones de datos para entrenamiento,
+validación y pruebas, entre otras herramientras.
 
 Un posible uso sería el siguiente:
 
-```py
+```py linenums="1"
 train_datagen = ImageDataGenerator(
     dtype='float32',
     preprocessing_function = preprocess_input,
@@ -247,7 +246,7 @@ validation_generator =  train_datagen.flow_from_directory(
 A la hora de utilizar generadores de datos tenemos que ajustar los parámetros de la
 función .fit:
 
-```py
+```py linenums="1"
 history = modelo.fit(
             train_generator,
             steps_per_epoch = train_generator.samples // num_batch,
@@ -261,21 +260,21 @@ history = modelo.fit(
 
 ## Capítulo 1: Visión Computacional
 
-### 1.0. Teoría previa
+### Teoría previa
 
-#### 1.0.1. Redes Neuronales Convolucionales (CNN)
+#### Redes Neuronales Convolucionales (CNN)
 
-#### 1.0.2. Transfer Learning
+#### Transfer Learning
 
-#### 1.0.3. Tipos de arquitecturas para visión computacional
+#### Tipos de arquitecturas para visión computacional
 
 ### Lenguaje de signos, SIGN MNIST
 
-#### 1.1.1. Anotaciones
+#### Anotaciones
 
-#### 1.1.2. Código
+#### Código
 
-```py
+```py linenums="1"
 import tensorflow.keras as keras
 import pandas as pd
 import tensorflow as tf
@@ -437,11 +436,11 @@ plt.show()
 
 ### Perros vs Gatos
 
-#### 1.2.1. Anotaciones
+#### Anotaciones
 
-#### 1.2.2. Código
+#### Código
 
-```py
+```py linenums="1"
 import os
 import tensorflow as tf
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
@@ -605,14 +604,14 @@ plt.show()
 Para hacer uso de las utilidades, modelo y demás herramientas, debemos descargar las
 herramientas del repositorio.
 
-#### 1.3.0. Teoría
+#### Teoría
 
-#### 1.3.1. Anotaciones
+#### Anotaciones
 
 El modelo YOLO ha sido entrenado con datos de entrada con tamaños de (m, 608, 608, 3).
-Cada salida resultante, consiste en un cuadro delimitador (_bounding boxes_) con la
-clase reconocida. A su vez, cada cuadro está representado por 6 números (𝑝𝑐, 𝑏𝑥, 𝑏𝑦, 𝑏ℎ,
-𝑏𝑤, 𝑐). Para este ejemplo de algoritmo de YOLO, usaremos **yad2k** (YAD2K: Yet Another
+Cada salida resultante, consiste en un cuadro delimitador (_bounding boxes_) con la clase
+reconocida. A su vez, cada cuadro está representado por 6 números (𝑝𝑐, 𝑏𝑥, 𝑏𝑦, 𝑏ℎ, 𝑏𝑤,
+𝑐). Para este ejemplo de algoritmo de YOLO, usaremos **yad2k** (YAD2K: Yet Another
 Darknet 2 Keras) que cuenta con 80 clases.
 
 Las cajas de anclaje se eligen explorando los datos de entrenamiento para elegir
@@ -639,14 +638,14 @@ probabilidad de que la caja contenga una determinada clase. La puntuación (_sco
 clase, calculado como 𝑖 = 𝑝𝑐 × 𝑐𝑖, consistiría en la probabilidad de que haya un objeto
 𝑝𝑐 por la probabilidad de que el objeto sea de una determinada clase 𝑐𝑖 .
 
-#### 1.3.2. Código
+#### Código
 
 Al tratarse de un código más complejo, iremos dividiéndolo en partes acompañados por una
 explicación.
 
 Primero importamos las librerías necesarias.
 
-```py
+```py linenums="1"
 import argparse
 import os
 import matplotlib.pyplot as plt
@@ -674,13 +673,13 @@ siguientes variables:
 - **box_confidence**: tensor de forma (19, 19, 5, 1) que contiene 𝑝𝑐 (probabilidad de
   confianza de que haya algún objeto) para cada una de las 5 cajas previstas en cada una
   de las 19x19 casillas.
-- **boxes**: tensor de forma (19, 19, 5, 4) que contiene el punto medio y las
-  dimensiones (𝑏𝑥, 𝑏𝑦, 𝑏ℎ, 𝑏𝑤) para cada una de las 5 cajas en cada celda.
+- **boxes**: tensor de forma (19, 19, 5, 4) que contiene el punto medio y las dimensiones
+  (𝑏𝑥, 𝑏𝑦, 𝑏ℎ, 𝑏𝑤) para cada una de las 5 cajas en cada celda.
 - **box_class_probs**: tensor de forma (19, 19, 5, 80) que contiene las "probabilidades
   de clase" (𝑐1, 𝑐2, ..., 𝑐80) para cada una de las 80 clases para cada una de las 5
   cajas por celda.
 
-```py
+```py linenums="1"
 def yolo_filter_boxes(boxes, box_confidence, box_class_probs, threshold = .6):
 
     # Step 1: Compute box scores
@@ -709,7 +708,7 @@ def yolo_filter_boxes(boxes, box_confidence, box_class_probs, threshold = .6):
 Implementar IoU (_Intersection over Union_). No es necesario implementarlo pero para que
 veamos cómo se haría.
 
-```py
+```py linenums="1"
 def iou(box1, box2):
 
     (box1_x1, box1_y1, box1_x2, box1_y2) = box1
@@ -736,10 +735,10 @@ def iou(box1, box2):
 ```
 
 Implementar _Non-Max Suppression._ `Tensorflow` tiene dos funciones incorporadas que se
-utilizan para implementar la supresión de no-máximos (por lo que no es necesario
-utilizar la función iou()).
+utilizan para implementar la supresión de no-máximos (por lo que no es necesario utilizar
+la función iou()).
 
-```py
+```py linenums="1"
 def yolo_non_max_suppression(scores, boxes, classes, max_boxes = 10, iou_threshold = 0.5):
 
     # tensor to be used in tf.image.non_max_suppression()
@@ -762,7 +761,7 @@ def yolo_non_max_suppression(scores, boxes, classes, max_boxes = 10, iou_thresho
 
 Convertir las predicciones de la caja YOLO en esquinas de la caja delimitadora.
 
-```py
+```py linenums="1"
 def yolo_boxes_to_corners(box_xy, box_wh):
 
     box_mins = box_xy - (box_wh / 2.)
@@ -776,10 +775,10 @@ def yolo_boxes_to_corners(box_xy, box_wh):
     ])
 ```
 
-Convertimos la salida de la codificación YOLO (un montón de cajas) en sus cajas
-predichas junto con sus puntuaciones, coordenadas de caja y clases.
+Convertimos la salida de la codificación YOLO (un montón de cajas) en sus cajas predichas
+junto con sus puntuaciones, coordenadas de caja y clases.
 
-```py
+```py linenums="1"
 def yolo_eval(yolo_outputs, image_shape = (720, 1280), max_boxes=10, score_threshold=.6, iou_threshold=.5):
 
     ### START CODE HERE
@@ -805,7 +804,7 @@ def yolo_eval(yolo_outputs, image_shape = (720, 1280), max_boxes=10, score_thres
 Podemos probar un modelo pre-entrenado de YOLO. Dicho modelo ha sido entrenado en el
 dataset de COCO basado en un problema de conducción autónoma.
 
-```py
+```py linenums="1"
 class_names = read_classes("model_data/coco_classes.txt")
 anchors = read_anchors("model_data/yolo_anchors.txt")
 model_image_size = (608, 608)
@@ -814,7 +813,7 @@ yolo_model = load_model("model_data/", compile=False)
 
 Creamos una función para poder ejecutar el gráfico para predecir las cajas.
 
-```py
+```py linenums="1"
 def predict(image_file):
     # Preprocess your image
     image, image_data = preprocess_image("images/" + image_file, model_image_size = (608, 608))
@@ -842,13 +841,13 @@ def predict(image_file):
 
 Finalmente, probamos el modelo:
 
-```py
+```py linenums="1"
 out_scores, out_boxes, out_classes = predict("download.jpeg")
 ```
 
 ## Capítulo 2: Procesamiento del Lenguaje Natural, NLP
 
-### 2.0. Teoría
+### Teoría
 
 Modelos secuenciales:
 
@@ -856,11 +855,11 @@ Transformers:
 
 ## Capítulo 3: Procesamiento de Audio
 
-### 3.1. Reconocimiento de audio
+### Reconocimiento de audio
 
-#### 3.1.1. Anotaciones
+#### Anotaciones
 
-#### 3.1.2. Código
+#### Código
 
 Podemos utilizar la librería `librosa` de Python para el procesado de señales de audio.
 Para este caso, podemos convertir el sonido en espectrogramas para posteriormente tratar
@@ -868,7 +867,7 @@ el problema como un clasificador por visión computacional.
 
 Ejemplo de código para procesar señales de audio a espectrogramas:
 
-```py
+```py linenums="1"
 import librosa
 import numpy as np
 

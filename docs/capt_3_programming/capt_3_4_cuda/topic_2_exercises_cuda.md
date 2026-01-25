@@ -13,7 +13,7 @@ title: Ejercicios de CUDA en C
     En este código mostraremos como ejecutar la función primero en la GPU, y luego en la
     CPU.
 
-    ```c
+    ```c linenums="1"
     #include <stdio.h>
 
     void helloCPU()
@@ -43,7 +43,7 @@ title: Ejercicios de CUDA en C
 
     En este otro caso, primero se ejecutará en la CPU y posteriormente en la GPU.
 
-    ```c
+    ```c linenums="1"
     #include <stdio.h>
 
     void helloCPU()
@@ -81,7 +81,7 @@ title: Ejercicios de CUDA en C
 
     En este primer ejemplo, vamos a ejecutar 5 hilos en un único bloque para un Kernel.
 
-    ```c
+    ```c linenums="1"
     #include <stdio.h>
 
     __global__ void firstParallel()
@@ -108,7 +108,7 @@ title: Ejercicios de CUDA en C
     En este otro ejemplo, vamos a ejecutar 5 hilos en 5 bloques diferentes de un mismo
     Kernel.
 
-    ```c
+    ```c linenums="1"
     #include <stdio.h>
 
     __global__ void firstParallel()
@@ -136,7 +136,7 @@ title: Ejercicios de CUDA en C
 
 ??? example "Ejemplo"
 
-    ```c
+    ```c linenums="1"
     #include <stdio.h>
 
     __global__ void printSuccessForCorrectExecutionConfiguration()
@@ -165,7 +165,7 @@ title: Ejercicios de CUDA en C
 
 ??? example "Ejemplo"
 
-    ```c
+    ```c linenums="1"
     #include <stdio.h>
 
     __global__ void loop(int N)
@@ -197,7 +197,7 @@ title: Ejercicios de CUDA en C
 
 ??? example "Ejemplo"
 
-    ```c
+    ```c linenums="1"
     #include <stdio.h>
 
     __global__ void loop(int N)
@@ -229,7 +229,7 @@ title: Ejercicios de CUDA en C
 
 ??? example "Ejemplo"
 
-    ```c
+    ```c linenums="1"
     #include <stdio.h>
 
     void init(int *a, int N)
@@ -307,7 +307,7 @@ title: Ejercicios de CUDA en C
 
 ??? example "Ejemplo"
 
-    ```c
+    ```c linenums="1"
     #include <stdio.h>
 
     /*
@@ -380,7 +380,7 @@ title: Ejercicios de CUDA en C
 
 ??? example "Ejemplo"
 
-    ```c
+    ```c linenums="1"
     #include <stdio.h>
 
     void init(int *a, int N)
@@ -459,7 +459,7 @@ title: Ejercicios de CUDA en C
 
 ??? example "Ejemplo"
 
-    ```c
+    ```c linenums="1"
     #include <stdio.h>
 
     void init(int *a, int N)
@@ -550,7 +550,7 @@ title: Ejercicios de CUDA en C
     Y vemos que se trata de la configuración del Kernel donde el número de hebras por bloque
     supera el máximo de 1 Giga-Bloque. Por lo que hay que cambiar al máximo permitido:
 
-    ```c
+    ```c linenums="1"
     size_t threads_per_block = 1024;
     ```
 
@@ -558,7 +558,7 @@ title: Ejercicios de CUDA en C
 
 ??? example "Ejemplo"
 
-    ```c
+    ```c linenums="1"
     #include <stdio.h>
     #include <assert.h>
 
@@ -651,7 +651,7 @@ title: Ejercicios de CUDA en C
     <br />
     </p>
 
-    ```c
+    ```c linenums="1"
     #include <stdio.h>
 
     #define N 64
@@ -784,7 +784,7 @@ title: Ejercicios de CUDA en C
         <br />
     </p>
 
-    ```c
+    ```c linenums="1"
     #include <stdio.h>
     #include <math.h>
     #include <assert.h>
@@ -954,8 +954,8 @@ title: Ejercicios de CUDA en C
 
 Podemos utilizar el comando `!nsys profile --stats=true ./kernel` para obtener
 información sobre dicho kernel. Entre la información proporcionada, se encuentra el
-tiempo medio de ejecución del kernel po lo que sería muy útil para hacer evaluaciones
-del mejor reparto de bloques y hebras para el problema concreto.
+tiempo medio de ejecución del kernel po lo que sería muy útil para hacer evaluaciones del
+mejor reparto de bloques y hebras para el problema concreto.
 
 ### Optimización
 
@@ -969,7 +969,7 @@ totales.
 
 ??? example "Ejemplo"
 
-    ```c
+    ```c linenums="1"
     #include <stdio.h>
 
     int main()
@@ -994,7 +994,7 @@ totales.
 
 ??? example "Ejemplo"
 
-    ```c
+    ```c linenums="1"
     #include <stdio.h>
 
     /*
@@ -1112,7 +1112,7 @@ totales.
     Al utilizar precarga de memoria, obtenemos menos transferencias de memoria pero con
     mayor contenido además de una reducción en el tiempo de ejecución del Kernel.
 
-    ```c
+    ```c linenums="1"
     #include <stdio.h>
 
     /*

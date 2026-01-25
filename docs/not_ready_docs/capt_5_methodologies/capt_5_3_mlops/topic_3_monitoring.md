@@ -8,9 +8,9 @@ title: Logs
 
 ## Creación y registro de logs con Loguru
 
-El logging permite registrar y monitorizar las actividades de las aplicaciones durante
-su ejecución. A diferencia de `print`, los logs proporcionan una forma más estructurada
-y sofisticada de gestionar mensajes, lo cual es esencial en aplicaciones en producción.
+El logging permite registrar y monitorizar las actividades de las aplicaciones durante su
+ejecución. A diferencia de `print`, los logs proporcionan una forma más estructurada y
+sofisticada de gestionar mensajes, lo cual es esencial en aplicaciones en producción.
 
 Loguru simplifica la configuración de logs en comparación con la biblioteca `logging` de
 Python, que es más compleja de configurar. Loguru opera a través de una única instancia
@@ -22,14 +22,14 @@ información pertenece a una misma aplicación.
 
 El siguiente código muestra cómo crear un log de tipo `INFO`:
 
-```py
+```py linenums="1"
 from loguru import logger
 
 logger.info("¡Hola!, esto es un mensaje de información")
 ```
 
-Este código genera un log que incluye información sobre la fecha, hora de ejecución,
-tipo de log (`INFO`), función, módulo y la línea de código correspondiente.
+Este código genera un log que incluye información sobre la fecha, hora de ejecución, tipo
+de log (`INFO`), función, módulo y la línea de código correspondiente.
 
 ### Niveles de logs
 
@@ -46,7 +46,7 @@ Loguru permite definir diferentes niveles de logs, organizados jerárquicamente:
 
 Loguru permite almacenar logs en archivos. Por ejemplo:
 
-```py
+```py linenums="1"
 from loguru import logger
 
 logger.add("programa.log")
@@ -56,7 +56,7 @@ logger.add("programa.log")
 
 Es posible establecer rotaciones para los archivos de log:
 
-```py
+```py linenums="1"
 from loguru import logger
 
 # Rotación cuando el archivo alcance 1 MB
@@ -70,7 +70,7 @@ logger.add("programa.log", rotation="13:15")
 
 Se pueden almacenar logs en archivos diferentes según su nivel de jerarquía:
 
-```py
+```py linenums="1"
 from loguru import logger
 
 logger.add("info.log", level="INFO")
@@ -84,7 +84,7 @@ logger.add("critical.log", level="CRITICAL")
 
 Loguru permite el uso de decoradores para capturar excepciones en funciones:
 
-```py
+```py linenums="1"
 from loguru import logger
 
 @logger.catch

@@ -20,10 +20,10 @@ title: Docker
   <em>Logo de Docker</em>
 </p>
 
-**Docker** es una plataforma de código abierto que facilita la creación, implementación
-y ejecución de aplicaciones mediante contenedores. Los contenedores permiten empaquetar
-una aplicación junto con sus dependencias y configuraciones en una unidad estandarizada,
-lo que simplifica el desarrollo de software y garantiza consistencia entre entornos.
+**Docker** es una plataforma de código abierto que facilita la creación, implementación y
+ejecución de aplicaciones mediante contenedores. Los contenedores permiten empaquetar una
+aplicación junto con sus dependencias y configuraciones en una unidad estandarizada, lo
+que simplifica el desarrollo de software y garantiza consistencia entre entornos.
 
 ### Características principales
 
@@ -45,7 +45,7 @@ ejecutar múltiples aplicaciones en un solo servidor físico. Aunque comparten o
 similares, como optimizar el uso de recursos y asegurar aislamiento, difieren en su
 implementación y arquitectura subyacente.
 
-#### 1.2.1. Contenedores
+#### Contenedores
 
 <p align="center">
   <img src="https://profile.es/wp-content/media/image-1-1024x266.png"/>
@@ -106,20 +106,20 @@ Los contenedores son ideales para:
 - **Despliegue continuo**: Facilitan el ciclo CI/CD al permitir que las aplicaciones se
   empaqueten y desplieguen uniformemente.
 
-#### 1.2.2. Máquinas virtuales
+#### Máquinas virtuales
 
-**Las máquinas virtuales (VMs)** son una tecnología de virtualización más tradicional
-que permite ejecutar múltiples sistemas operativos en un servidor físico mediante un
+**Las máquinas virtuales (VMs)** son una tecnología de virtualización más tradicional que
+permite ejecutar múltiples sistemas operativos en un servidor físico mediante un
 hipervisor, como **VMware** o **VirtualBox**.
 
 ##### Características de las máquinas virtuales
 
-- **Hipervisor**: Un hipervisor puede ejecutarse directamente en el hardware del
-  servidor (tipo 1) o sobre un sistema operativo (tipo 2). Este gestiona la creación y
-  ejecución de múltiples VMs, asignando recursos de hardware eficientemente.
-- **Sistema operativo completo**: Cada VM tiene su propio sistema operativo completo
-  (por ejemplo, Linux, Windows), lo que significa que las VMs consumen más recursos de
-  CPU, memoria y almacenamiento que los contenedores.
+- **Hipervisor**: Un hipervisor puede ejecutarse directamente en el hardware del servidor
+  (tipo 1) o sobre un sistema operativo (tipo 2). Este gestiona la creación y ejecución
+  de múltiples VMs, asignando recursos de hardware eficientemente.
+- **Sistema operativo completo**: Cada VM tiene su propio sistema operativo completo (por
+  ejemplo, Linux, Windows), lo que significa que las VMs consumen más recursos de CPU,
+  memoria y almacenamiento que los contenedores.
 - **Aislamiento fuerte**: Debido a que cada VM tiene su propio kernel y sistema
   operativo, proporciona un aislamiento más fuerte que los contenedores. Esto es útil
   cuando la seguridad es crítica.
@@ -138,7 +138,7 @@ Las máquinas virtuales son adecuadas para:
 - **Cargas de trabajo heredadas**: Donde las aplicaciones antiguas o monolíticas deben
   ejecutarse en un entorno virtualizado.
 
-#### 1.2.3. Soluciones en la nube
+#### Soluciones en la nube
 
 En la nube, proveedores como **Google Cloud Platform (GCP)**, **Amazon Web Services
 (AWS)** y **Microsoft Azure** ofrecen servicios de contenedores y máquinas virtuales:
@@ -148,7 +148,7 @@ En la nube, proveedores como **Google Cloud Platform (GCP)**, **Amazon Web Servi
 - **EC2 (AWS), VM Instances (GCP), Azure Virtual Machines**: Soluciones para desplegar y
   gestionar máquinas virtuales.
 
-#### 1.2.4. Herramientas de gestión de contenedores
+#### Herramientas de gestión de contenedores
 
 **Docker Desktop**, **Docker CLI** y **Docker Compose** son herramientas ampliamente
 usadas para desarrollar, gestionar y desplegar contenedores en entornos de desarrollo
@@ -188,7 +188,7 @@ desde el host o desde otros contenedores.
 Por ejemplo, el siguiente comando crea un contenedor de MongoDB y mapea el puerto 27017
 del host al puerto 27017 del contenedor:
 
-```bash
+```bash linenums="1"
 docker container create -p 27017:27017 --name mongodb mongo
 ```
 
@@ -217,7 +217,7 @@ los siguientes pasos:
 Ejemplo de comando para ejecutar un contenedor de MongoDB en segundo plano (utilizando
 `-d`), mapeando el puerto 27017 del host al contenedor:
 
-```bash
+```bash linenums="1"
 docker run -d -p 27017:27017 --name mongodb mongo
 ```
 
@@ -229,13 +229,13 @@ variables de entorno específicas para la imagen del contenedor.
 Por ejemplo, para crear un contenedor de MongoDB con un nombre de usuario y una
 contraseña:
 
-```bash
+```bash linenums="1"
 docker create -e MONGO_INITDB_ROOT_USERNAME=dani -e MONGO_INITDB_ROOT_PASSWORD=clave mongo
 ```
 
 Estas variables configuran el usuario y la contraseña del administrador de la base de
-datos durante la inicialización del contenedor. Es importante revisar la documentación
-de la imagen del contenedor, ya que las variables de entorno varían según cada imagen.
+datos durante la inicialización del contenedor. Es importante revisar la documentación de
+la imagen del contenedor, ya que las variables de entorno varían según cada imagen.
 
 ### Construcción de imágenes mediante Dockerfile
 
@@ -274,13 +274,13 @@ dominio.
 
 Para construir una imagen a partir de un `Dockerfile`:
 
-```bash
+```bash linenums="1"
 docker build -t nombre-imagen:etiqueta ruta/dockerfile
 ```
 
 Y para crear un contenedor en una red específica:
 
-```bash
+```bash linenums="1"
 docker create -p 27017:27017 --name mongodb --network mi-nueva-red mongo
 ```
 
@@ -341,14 +341,14 @@ services:
 
 Con este archivo de configuración, se definen dos servicios: uno para la aplicación
 (`mi-app`) y otro para MongoDB (`mongodb`). La aplicación se construye a partir del
-contexto del directorio actual, mapeando el puerto 3000 del contenedor al puerto 3000
-del host. El servicio MongoDB utiliza una imagen preexistente (`mongo`), mapea el puerto
+contexto del directorio actual, mapeando el puerto 3000 del contenedor al puerto 3000 del
+host. El servicio MongoDB utiliza una imagen preexistente (`mongo`), mapea el puerto
 27017 y establece las credenciales de acceso mediante variables de entorno.
 
 Para iniciar los servicios definidos en el archivo `docker-compose.yml`, basta con
 ejecutar:
 
-```bash
+```bash linenums="1"
 docker compose up
 ```
 
@@ -358,7 +358,7 @@ los contenedores y los pone en funcionamiento.
 Para detener y eliminar los servicios, incluidos los contenedores, redes y volúmenes
 asociados, se utiliza:
 
-```bash
+```bash linenums="1"
 docker compose down
 ```
 
@@ -373,8 +373,8 @@ Los volúmenes pueden ser de diferentes tipos:
 
 1. **Volúmenes anónimos**: Son volúmenes sin nombre, lo que impide referenciarlos
    explícitamente desde otros contenedores.
-2. **Volúmenes de host**: Permiten especificar qué carpeta del sistema anfitrión se
-   monta dentro del contenedor.
+2. **Volúmenes de host**: Permiten especificar qué carpeta del sistema anfitrión se monta
+   dentro del contenedor.
 3. **Volúmenes nombrados**: Son volúmenes con nombre, lo que permite referenciarlos en
    otros contenedores o en múltiples servicios.
 
@@ -483,23 +483,23 @@ Por defecto, Minikube crea un clúster que contiene un nodo.
 
 Para inicializar el clúster de Minikube podemos utilizar el comando:
 
-```bash
+```bash linenums="1"
 minikube start
 ```
 
 Mientras que para verificar el estado del clúster, podemos utilizar el comando:
 
-```bash
+```bash linenums="1"
 minikube status
 ```
 
-#### 1.1.1. Nodo
+#### Nodo
 
 Un nodo representa la unidad más pequeña dentro de un clúster de Kubernetes. Este puede
 ser una máquina física o una máquina virtual donde se ejecutan las aplicaciones.
 Kubernetes abstrae el hardware subyacente, permitiendo una gestión eficiente de los
-requisitos de recursos. Si un nodo no puede proporcionar más recursos o falla,
-Kubernetes redistribuye las cargas de trabajo a otros nodos disponibles.
+requisitos de recursos. Si un nodo no puede proporcionar más recursos o falla, Kubernetes
+redistribuye las cargas de trabajo a otros nodos disponibles.
 
 Existen diferentes tipos de nodos:
 
@@ -508,31 +508,31 @@ Existen diferentes tipos de nodos:
 - **Nodos al mejor precio (Spot Nodes)**: Son nodos más económicos que pueden ser
   retirados en cualquier momento.
 
-#### 1.1.2. Pod
+#### Pod
 
 Un pod es la unidad mínima de ejecución en Kubernetes y puede contener uno o más
-contenedores que comparten los mismos recursos y red local. Todos los contenedores
-dentro del mismo pod pueden comunicarse entre sí y comparten el mismo entorno de red. Al
-escalar un pod, todos los contenedores dentro de él se escalan conjuntamente.
+contenedores que comparten los mismos recursos y red local. Todos los contenedores dentro
+del mismo pod pueden comunicarse entre sí y comparten el mismo entorno de red. Al escalar
+un pod, todos los contenedores dentro de él se escalan conjuntamente.
 
-#### 1.1.3. Clúster
+#### Clúster
 
 Un clúster es un conjunto de nodos, también conocidos como workers, que se ejecutan en
 Kubernetes. La relación entre las aplicaciones que se están ejecutando en cada nodo es
-independiente. Por ejemplo, si se tiene un servidor de Proxmox donde existen dos
-máquinas virtuales, VM1 y VM2, a pesar de que cuenten con diferentes Pods, si todos
-están gestionados por Kubernetes, ambos formarán parte del mismo clúster.
+independiente. Por ejemplo, si se tiene un servidor de Proxmox donde existen dos máquinas
+virtuales, VM1 y VM2, a pesar de que cuenten con diferentes Pods, si todos están
+gestionados por Kubernetes, ambos formarán parte del mismo clúster.
 
 ### StatefulSet y volúmenes
 
-Dado que no se puede garantizar el lugar de ejecución de una aplicación, el uso del
-disco local para almacenar datos es inviable, siendo útil únicamente para almacenamiento
+Dado que no se puede garantizar el lugar de ejecución de una aplicación, el uso del disco
+local para almacenar datos es inviable, siendo útil únicamente para almacenamiento
 temporal de datos, como caché.
 
-Kubernetes emplea volúmenes persistentes, que a diferencia de otros recursos como la
-CPU, GPU y RAM, que son gestionados por los clústeres de Kubernetes, deben ser
-adjuntados al propio clúster de Kubernetes desde unidades locales o en la nube. Estos
-volúmenes no se asocian a un nodo en particular.
+Kubernetes emplea volúmenes persistentes, que a diferencia de otros recursos como la CPU,
+GPU y RAM, que son gestionados por los clústeres de Kubernetes, deben ser adjuntados al
+propio clúster de Kubernetes desde unidades locales o en la nube. Estos volúmenes no se
+asocian a un nodo en particular.
 
 **StatefulSet** permite la creación de pods con volúmenes persistentes, garantizando la
 integridad de los datos incluso si el pod se reinicia o se elimina.
@@ -598,7 +598,7 @@ spec:
 Para verificar el estado de los volúmenes y los StatefulSets, se pueden utilizar los
 siguientes comandos:
 
-```bash
+```bash linenums="1"
 kubectl get pvc  # Para ver la asignación del volumen, capacidad, etc.
 kubectl get sts  # Para ver los StatefulSets.
 ```
@@ -616,20 +616,20 @@ se pueden ver desde otro namespace.
 
 Para obtener el namespace del clúster podemos utilizar el comando:
 
-```bash
+```bash linenums="1"
 kubectl get ns
 ```
 
 Para obtener los pods de ese namespace podemos utilizar el siguiente comando, que al
 añadir al final -o wide, obtenemos información de la IP del pod, nodo, etc.
 
-```bash
+```bash linenums="1"
 kubectl -n nombre_namespace get pods -o wide
 ```
 
 Para eliminar un pod del namespace podemos utilizar el comando
 
-```bash
+```bash linenums="1"
 kubectl -n nombre_namespace delete pod nombre_pod
 ```
 
@@ -657,7 +657,7 @@ spec:
 
 Para aplicar el manifiesto:
 
-```bash
+```bash linenums="1"
 kubectl apply -f nombre.yaml  # Aplica el manifiesto en el namespace por defecto
 kubectl get pods  # Ver el estado del pod
 ```
@@ -796,10 +796,10 @@ spec:
 
 ### Exponer aplicaciones
 
-#### 1.6.1. Servicios en Kubernetes
+#### Servicios en Kubernetes
 
-Los servicios en Kubernetes permiten acceder a los pods desde dentro y fuera del
-clúster. Un ejemplo de esto es el uso de un Load Balancer:
+Los servicios en Kubernetes permiten acceder a los pods desde dentro y fuera del clúster.
+Un ejemplo de esto es el uso de un Load Balancer:
 
 ```yaml
 apiVersion: v1
@@ -816,7 +816,7 @@ spec:
       targetPort: 9376
 ```
 
-#### 1.6.2. Ingress
+#### Ingress
 
 Ingress administra el acceso externo a los servicios del clúster, típicamente HTTP.
 Proporciona balanceo de carga y terminación SSL. Permite el acceso al servicio mediante
@@ -824,25 +824,25 @@ paths, y suele requerirse Ingress-Nginx controller que se suele instalar por sep
 
 ### Networking y almacenamiento
 
-#### 1.7.1. Pod Networking
+#### Pod Networking
 
 Cada pod tiene su propia IP, y para comunicar pods en diferentes nodos se utiliza el
 Cloud Cluster Networking Interface.
 
-#### 1.7.2. Almacenamiento persistente
+#### Almacenamiento persistente
 
 **etcd** es un almacén de datos clave-valor distribuido utilizado para guardar datos de
 configuración, estado y metadatos.
 
 ### Tipos de servicios
 
-#### 1.8.1. Cluster IP
+#### Cluster IP
 
 Cluster IP proporciona una forma de exponer aplicaciones que se ejecutan en un conjunto
 de Pods a través de una dirección IP virtual única a nivel de clúster, facilitando la
 comunicación y balanceo de carga entre Pods.
 
-#### 1.8.2. Node Port
+#### Node Port
 
 Node Port crea un puerto en cada nodo que va a recibir el tráfico y lo va a mandar a los
 servicios (Pods) necesarios²⁶. Esto permite que la aplicación sea accesible desde fuera
@@ -863,11 +863,11 @@ spec:
       nodePort: 30007
 ```
 
-#### 1.8.3. Load Balancer
+#### Load Balancer
 
-Load Balancer está más enfocado a proveedores de la nube para redireccionar el tráfico
-en los Pods. Crea un balanceador de carga proporcionando una IP estable para el
-servidor, lo que facilita su acceso desde internet.
+Load Balancer está más enfocado a proveedores de la nube para redireccionar el tráfico en
+los Pods. Crea un balanceador de carga proporcionando una IP estable para el servidor, lo
+que facilita su acceso desde internet.
 
 ```yaml
 apiVersion: v1

@@ -27,17 +27,17 @@ administración de sistemas.
 
 ## Conceptos básicos
 
-### 2.1. Ejemplo de programa base
+### Ejemplo de programa base
 
-Un programa básico en BASH comienza con la línea `#!/bin/bash` (_shebang_), que indica
-al sistema qué intérprete debe usar para ejecutar los comandos del script.
+Un programa básico en BASH comienza con la línea `#!/bin/bash` (_shebang_), que indica al
+sistema qué intérprete debe usar para ejecutar los comandos del script.
 
 Es importante destacar que los scripts de BASH suelen tener la extensión `.sh`.
 
-note Nota
+!!!note "Nota"
 
-El uso del shebang `#!/bin/bash` garantiza que el script se ejecute con el intérprete
-adecuado, independientemente del entorno en el que se ejecute.
+    El uso del shebang `#!/bin/bash` garantiza que el script se ejecute con el intérprete
+    adecuado, independientemente del entorno en el que se ejecute.
 
 A continuación, se añaden las líneas de comandos que definen las acciones a realizar,
 como mostrar un mensaje en la terminal, ejecutar otros scripts o realizar tareas
@@ -57,12 +57,12 @@ específicas.
     echo "Hola mundo"
     ```
 
-En Linux, cada archivo tiene **permisos** que determinan quién puede leerlo, escribirlo
-o ejecutarlo. Cuando creas un script (`script.sh`), normalmente **no tiene permisos de
+En Linux, cada archivo tiene **permisos** que determinan quién puede leerlo, escribirlo o
+ejecutarlo. Cuando creas un script (`script.sh`), normalmente **no tiene permisos de
 ejecución por defecto**, lo que significa que no se puede ejecutar directamente. Para
 permitir que el sistema lo ejecute como un programa, usamos:
 
-```bash
+```bash linenums="1"
 chmod +x script.sh
 ```
 
@@ -75,14 +75,14 @@ chmod +x script.sh
 Después de ejecutar este comando, podrás ejecutar tu script desde la terminal
 directamente así:
 
-```bash
+```bash linenums="1"
 ./script.sh
 ```
 
-### 2.2. Pasar parámetros como argumentos
+### Pasar parámetros como argumentos
 
-En BASH, los parámetros se pasan al script mediante el uso de `$`, seguido del número
-que representa la posición del argumento.
+En BASH, los parámetros se pasan al script mediante el uso de `$`, seguido del número que
+representa la posición del argumento.
 
 ???+ example "Ejemplo"
 
@@ -100,7 +100,7 @@ que representa la posición del argumento.
 
         `$0` siempre contiene el nombre del script.
 
-### 2.3. Asignación de variables
+### Asignación de variables
 
 En BASH, las variables se asignan de manera sencilla, sin necesidad de declarar su tipo
 previamente.
@@ -126,7 +126,7 @@ previamente.
     El uso de `$(comando)` permite capturar la salida de un comando y almacenarla en una
     variable, lo cual resulta útil para automatizar tareas y procesar información.
 
-### 2.4. Introducción de entradas del usuario
+### Introducción de entradas del usuario
 
 Para capturar entradas del usuario, se utiliza el comando `read`.
 
@@ -140,7 +140,7 @@ Para capturar entradas del usuario, se utiliza el comando `read`.
     echo "Tu nombre es $nombre"
     ```
 
-### 2.5. Operaciones aritméticas
+### Operaciones aritméticas
 
 Las operaciones aritméticas en BASH se realizan dentro de `$(( ))`, lo que permite
 evaluar expresiones matemáticas de manera sencilla.
@@ -161,10 +161,10 @@ Operaciones disponibles:
 - `/`: División.
 - `%`: Módulo (el resto de la división).
 
-### 2.6. Condiciones
+### Condiciones
 
-En BASH, las condiciones se expresan utilizando el comando `if`, junto con los
-operadores de comparación y lógicos.
+En BASH, las condiciones se expresan utilizando el comando `if`, junto con los operadores
+de comparación y lógicos.
 
 ???+ example "Ejemplo"
 
@@ -198,13 +198,13 @@ Operadores booleanos:
 Es importante recordar que `-a` y `-o` se usan dentro de corchetes, mientras que `&&` y
 `||` se emplean fuera de ellos.
 
-note Nota
+!!!note "Nota"
 
-Recuerda que los operadores `&&` y `||` son más comunes fuera de los corchetes, mientras
-que los operadores `-a` y `-o` se utilizan dentro de los corchetes en las condiciones
-del `if`.
+    Recuerda que los operadores `&&` y `||` son más comunes fuera de los corchetes, mientras
+    que los operadores `-a` y `-o` se utilizan dentro de los corchetes en las condiciones del
+    `if`.
 
-### 2.7. Bucles
+### Bucles
 
 BASH soporta varios tipos de bucles. Un bucle `for` se define de la siguiente manera:
 
@@ -242,12 +242,12 @@ note Los bucles `for` son ideales cuando se conoce el número exacto de iteracio
 mientras que los bucles `while` se utilizan cuando la condición de salida depende de una
 variable o el resultado de una operación.
 
-### 2.8. Funciones
+### Funciones
 
 Las funciones en BASH permiten organizar y reutilizar el código de manera más eficiente.
 Definir funciones ayuda a hacer el código más modular, legible y fácil de mantener,
-facilitando además la reutilización de bloques de código sin tener que escribirlos
-varias veces.
+facilitando además la reutilización de bloques de código sin tener que escribirlos varias
+veces.
 
 ???+ example "Ejemplo"
 
@@ -270,7 +270,7 @@ A continuación, se presenta un ejemplo de script que ilustra cómo preparar un 
 desarrollo, instalando herramientas necesarias y dependencias tanto del sistema como de
 Python:
 
-```bash
+```bash linenums="1"
 #!/bin/bash
 set -e
 

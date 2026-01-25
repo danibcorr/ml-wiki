@@ -75,7 +75,7 @@ controlables. Un MDP integra estados, acciones y recompensas, y, gracias a la pr
 de Markov, la evolución del sistema depende únicamente del estado actual y de la acción
 ejecutada, lo que simplifica el análisis y el diseño de algoritmos de aprendizaje.
 
-### 4.1 Componentes de la interacción
+### Componentes de la interacción
 
 - **Agente**: Entidad que ejecuta acciones y toma decisiones.
 - **Entorno**: Todo lo que el agente no controla directamente, cuya evolución depende de
@@ -101,7 +101,7 @@ $Q^{\pi}(s,a) = \mathbb{E}_{\pi}\left[\sum_{t=0}^{\infty} \gamma^t R_t \mid S_0 
 Estas funciones permiten al agente seleccionar acciones que maximizan el retorno a largo
 plazo.
 
-## 6. Optimalidad y ecuación de Bellman
+## Optimalidad y ecuación de Bellman
 
 Las **funciones de valor óptimas**, $V^*(S)$ y $Q^*(S,a)$, representan el mejor
 desempeño alcanzable por cualquier política:
@@ -117,7 +117,7 @@ donde $s'$ es el estado alcanzado tras ejecutar la acción $a$ en $s$. En entorn
 estocásticos, esta relación se expresa en términos de valor esperado, considerando la
 probabilidad de transitar a cada posible estado siguiente.
 
-## 7. Profundización y métodos avanzados
+## Profundización y métodos avanzados
 
 Los estados pueden representarse como vectores que incluyen múltiples características,
 como posición, rotación y velocidades, lo que permite describir entornos complejos. En
@@ -131,7 +131,7 @@ aprovechar el conocimiento actual para maximizar recompensas. Durante el entrena
 $\epsilon$ puede ajustarse dinámicamente para priorizar inicialmente la exploración y,
 posteriormente, la explotación.
 
-### 7.1 Episodios y métodos de aprendizaje
+### Episodios y métodos de aprendizaje
 
 Un **episodio** comprende la secuencia completa de interacciones entre el agente y el
 entorno, desde un estado inicial hasta un estado terminal. Los métodos de aprendizaje
@@ -140,7 +140,7 @@ pueden clasificarse en **basados en modelo** (model-based) o **sin modelo**
 y recompensas, mientras que los segundos aprenden directamente a partir de la
 experiencia generada por la interacción.
 
-### 7.2 Métodos de Policy Gradient y Temporal Difference
+### Métodos de Policy Gradient y Temporal Difference
 
 Los **métodos de Policy Gradient** ajustan la probabilidad de seleccionar cada acción
 para maximizar el retorno esperado $G_t$. Por su parte, el **Temporal Difference (TD)
@@ -156,7 +156,7 @@ $Q(S_t, a_t) \leftarrow Q(S_t, a_t) + \alpha [r_t + \gamma Q(S_{t+1}, a_{t+1}) -
 
 donde $\alpha$ es la tasa de aprendizaje.
 
-### 7.3 Deep Q-learning
+### Deep Q-learning
 
 Para entornos con estados y acciones continuos, se emplean **Deep Q-Networks (DQN)** que
 combinan redes neuronales con aprendizaje basado en valores. Estas redes aproximan la
@@ -164,7 +164,7 @@ función $Q(s,a)$ y permiten manejar un gran número de estados de manera eficie
 aunque el número de acciones sigue siendo limitado en comparación con métodos de
 política continua.
 
-### 7.4 Ejemplos de cálculo
+### Ejemplos de cálculo
 
 Si un agente transita desde el estado $S=3$ al estado $S=1$ con $\gamma = 0.25$, el
 retorno acumulado se calcula como:

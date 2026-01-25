@@ -26,7 +26,7 @@ más destacada es la capacidad de automatización de tareas repetitivas.
 
 ## Sintaxis básica
 
-### 2.1. Estructura de una regla
+### Estructura de una regla
 
 Una regla en un Makefile define el proceso de construcción de un objetivo (**_target_**)
 a partir de sus prerrequisitos. La estructura básica de una regla es la siguiente:
@@ -67,7 +67,7 @@ targets: prerequisites
     existe. Si el archivo está presente, Make ejecutará `poetry install` para instalar las
     dependencias del proyecto. Si el archivo no existe, Make mostrará un error.
 
-### 2.2. Comentarios
+### Comentarios
 
 Los comentarios en un Makefile se escriben utilizando el símbolo `#`. Estos comentarios
 no afectan la ejecución del archivo y sirven para describir el propósito de las reglas o
@@ -81,7 +81,7 @@ comandos.
         poetry install
     ```
 
-### 2.3. Variables
+### Variables
 
 Las variables en Makefiles permiten almacenar y reutilizar valores, facilitando la
 personalización de comandos o rutas.
@@ -115,7 +115,7 @@ personalización de comandos o rutas.
     Esto ejecutará los tests usando el archivo `test_ejemplo.py` en lugar del directorio por
     defecto.
 
-#### 2.3.1. Variables automáticas
+#### Variables automáticas
 
 Make proporciona variables automáticas que son útiles para simplificar reglas. Estas
 variables permiten referirse de manera dinámica a los _targets_ y prerrequisitos sin
@@ -157,7 +157,7 @@ necesidad de escribirlos explícitamente cada vez.
     El script `script.py` podría utilizar los prerrequisitos para producir archivos de
     salida:
 
-    ```py
+    ```py linenums="1"
     import sys
     import os
 
@@ -187,7 +187,7 @@ necesidad de escribirlos explícitamente cada vez.
     `input1.txt` a través de `$<` y genera la salida en `processed_data/input1.csv`
     automáticamente.
 
-#### 2.3.2. Variables específicas de objetivo y patrones
+#### Variables específicas de objetivo y patrones
 
 En Make, las variables específicas de objetivo y patrones permiten definir
 configuraciones particulares para ciertos objetivos o archivos.
@@ -217,11 +217,11 @@ configuraciones particulares para ciertos objetivos o archivos.
 
 ## Funciones avanzadas
 
-### 3.1. Funciones para cadenas de texto
+### Funciones para cadenas de texto
 
 Make ofrece funciones que facilitan la manipulación de cadenas de texto.
 
-#### 3.1.1. Función `subst`
+#### Función `subst`
 
 La función `subst` reemplaza un texto por otro en una cadena.
 
@@ -245,7 +245,7 @@ La función `subst` reemplaza un texto por otro en una cadena.
     Aquí, `subst` reemplaza `.cpp` por `.o` en la lista de archivos, generando
     `file1.o file2.o file3.o`.
 
-#### 3.1.2. Función `patsubst`
+#### Función `patsubst`
 
 La función `patsubst` permite hacer sustituciones usando patrones (como `%`).
 
@@ -269,7 +269,7 @@ La función `patsubst` permite hacer sustituciones usando patrones (como `%`).
     Este ejemplo reemplaza `.cpp` por `.o`, igual que el anterior, pero usando un patrón
     para mayor flexibilidad.
 
-#### 3.1.3. Funciones `filter` y `filter-out`
+#### Funciones `filter` y `filter-out`
 
 Estas funciones permiten filtrar listas.
 
@@ -292,7 +292,7 @@ Estas funciones permiten filtrar listas.
 
     Aquí, `filter` selecciona solo los archivos `.c`, resultando en `file1.c`.
 
-#### 3.1.4. Función `foreach`
+#### Función `foreach`
 
 La función `foreach` permite iterar sobre una lista y aplicar una operación a cada
 elemento.
@@ -317,7 +317,7 @@ elemento.
     Este ejemplo crea la lista `CLEAN_DIRS` con las rutas `dir1/clean`, `dir2/clean` y
     `dir3/clean`.
 
-#### 3.1.5. Función `if`
+#### Función `if`
 
 La función `if` permite ejecutar algo según una condición.
 
@@ -341,13 +341,13 @@ La función `if` permite ejecutar algo según una condición.
     Si `USE_DEBUG` es `yes`, se añade `-g` para depuración. Si no, se usa `-O2` para
     optimización.
 
-### 3.2. Directivas
+### Directivas
 
 Las directivas en Make controlan el flujo de ejecución, la inclusión de archivos y otras
 configuraciones avanzadas. Son herramientas poderosas para modularizar y personalizar el
 comportamiento de un Makefile.
 
-#### 3.2.1. Directiva `include`
+#### Directiva `include`
 
 La directiva `include` permite incluir otros Makefiles dentro de uno principal. Esto
 ayuda a organizar el código de manera modular y facilita el mantenimiento al separar
@@ -362,7 +362,7 @@ configuraciones y reglas en archivos diferentes.
     Este comando incluirá el contenido de `config.mk` en el Makefile actual, lo que permite
     reutilizar configuraciones o reglas comunes en varios Makefiles.
 
-#### 3.2.2. Directiva `VPATH`
+#### Directiva `VPATH`
 
 La directiva `VPATH` especifica directorios adicionales donde Make buscará los archivos
 necesarios, como los archivos fuente o de cabecera. Esto es útil cuando los archivos no
@@ -379,7 +379,7 @@ proyecto ordenada.
     encontrar los archivos necesarios. Esto es útil cuando tienes los archivos fuente y los
     archivos de cabecera en directorios separados.
 
-#### 3.2.3. Directiva `.PHONY`
+#### Directiva `.PHONY`
 
 La directiva `.PHONY` se utiliza para declarar objetivos que no corresponden a archivos
 reales en el sistema de archivos. Esto es importante para evitar que Make intente buscar
@@ -394,7 +394,7 @@ archivos con el mismo nombre que el objetivo y así prevenir conflictos.
     Aquí, `clean` y `all` son objetivos "falsos", ya que no representan archivos reales en
     el sistema, sino tareas o comandos que Make debe ejecutar.
 
-#### 3.2.4. Directiva `.DELETE_ON_ERROR`
+#### Directiva `.DELETE_ON_ERROR`
 
 La directiva `.DELETE_ON_ERROR` indica que Make debe eliminar un archivo de objetivo si
 un comando falla durante su ejecución. Esto es útil para evitar que queden archivos
@@ -409,7 +409,7 @@ incompletos o corruptos cuando un proceso de compilación falla.
     Esto asegura que cualquier archivo generado se eliminará si ocurre un error en su
     construcción, manteniendo el sistema limpio.
 
-### 3.3. Condicionales
+### Condicionales
 
 Makefiles permiten el uso de estructuras condicionales para adaptar las reglas según
 diferentes entornos o configuraciones. Esto es útil para crear Makefiles más flexibles y
@@ -442,10 +442,10 @@ reutilizables.
     compilación para depuración (`-g`). Si no, se utilizarán las banderas de optimización
     (`-O2`).
 
-### 3.4. Macros y funciones
+### Macros y funciones
 
-Make permite definir macros y funciones personalizadas para agrupar comandos y mejorar
-la legibilidad del Makefile. Estas macros ayudan a evitar la repetición y facilitan la
+Make permite definir macros y funciones personalizadas para agrupar comandos y mejorar la
+legibilidad del Makefile. Estas macros ayudan a evitar la repetición y facilitan la
 reutilización del código.
 
 !!!note "Sintaxis de una macro"
@@ -482,20 +482,20 @@ reutilización del código.
 
 ## Mejores prácticas y estilos
 
-El uso adecuado de Makefiles no solo facilita la compilación y gestión de proyectos,
-sino que también mejora la legibilidad y mantenimiento a largo plazo. A continuación, se
+El uso adecuado de Makefiles no solo facilita la compilación y gestión de proyectos, sino
+que también mejora la legibilidad y mantenimiento a largo plazo. A continuación, se
 presentan algunas de las mejores prácticas y estilos recomendados.
 
-### 4.1. Organización de Makefiles
+### Organización de Makefiles
 
-Es recomendable organizar el Makefile de manera que sea fácil de leer y mantener.
-Algunas sugerencias incluyen:
+Es recomendable organizar el Makefile de manera que sea fácil de leer y mantener. Algunas
+sugerencias incluyen:
 
-1. **Separar las reglas y configuraciones:** Definir las variables al inicio del
-   Makefile y agrupar las reglas relacionadas. Esto facilita el mantenimiento y
-   comprensión del archivo.
-2. **Uso de comentarios:** Añadir comentarios claros y concisos para explicar las
-   reglas, variables y funciones dentro del Makefile.
+1. **Separar las reglas y configuraciones:** Definir las variables al inicio del Makefile
+   y agrupar las reglas relacionadas. Esto facilita el mantenimiento y comprensión del
+   archivo.
+2. **Uso de comentarios:** Añadir comentarios claros y concisos para explicar las reglas,
+   variables y funciones dentro del Makefile.
 3. **Modularización:** Dividir los Makefiles grandes en varios archivos pequeños y
    organizados, utilizando la directiva `include`.
 
@@ -527,13 +527,13 @@ Algunas sugerencias incluyen:
     En este ejemplo, las variables de configuración se definen al inicio del archivo,
     seguidas de los objetivos, las reglas de compilación y finalmente la regla de limpieza.
 
-### 4.2. Depuración
+### Depuración
 
 La depuración de Makefiles puede ser compleja si no se siguen ciertas prácticas. Algunas
 técnicas útiles incluyen:
 
-1.  **Ejecución en seco (`-n`):** Esta opción permite ver qué comandos se ejecutarían
-    sin realmente ejecutarlos, lo cual es útil para verificar el flujo de ejecución.
+1.  **Ejecución en seco (`-n`):** Esta opción permite ver qué comandos se ejecutarían sin
+    realmente ejecutarlos, lo cual es útil para verificar el flujo de ejecución.
 
     !!!note "Sintaxis"
 

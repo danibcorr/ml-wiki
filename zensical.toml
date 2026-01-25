@@ -7,8 +7,9 @@ repo_url = "https://github.com/danibcorr/ml-wiki"
 repo_name = "danibcorr/ml-wiki"
 copyright = "Copyright &copy; 2026 Daniel Bazo Correa"
 docs_dir = "docs"
+
 nav = [
-    {"Inicio" = "index.md" },
+    {"Inicio" = "index.md"},
     {"Sistemas Operativos" = [
         "capt_1_operative_systems/topic_1_linux.md"
     ]},
@@ -37,6 +38,7 @@ nav = [
         ]}
     ]}
 ]
+
 extra_css = ["css/custom.css"]
 extra_javascript = [
     "javascripts/mathjax.js",
@@ -87,15 +89,25 @@ homepage = "https://danibcorr.github.io/web/"
 icon = "fontawesome/brands/linkedin"
 link = "https://www.linkedin.com/in/danibcorr/"
 
+[project.markdown_extensions.admonition]
+[project.markdown_extensions.tables]
+[project.markdown_extensions.attr_list]
+[project.markdown_extensions.md_in_html]
+
+[project.markdown_extensions.toc]
+toc_depth = 3
+
+[project.markdown_extensions.pymdownx.details]
+[project.markdown_extensions.pymdownx.superfences]
+[project.markdown_extensions.pymdownx.inlinehilite]
+[project.markdown_extensions.pymdownx.snippets]
+
 [project.markdown_extensions.pymdownx.arithmatex]
 generic = true
 
 [project.markdown_extensions.pymdownx.emoji]
 emoji_index = "zensical.extensions.emoji.twemoji"
 emoji_generator = "zensical.extensions.emoji.to_svg"
-
-[project.markdown_extensions.toc]
-toc_depth = 3
 
 [project.markdown_extensions.pymdownx.tabbed]
 alternate_style = true
@@ -104,12 +116,3 @@ alternate_style = true
 anchor_linenums = true
 line_spans = "__span"
 pygments_lang_class = true
-
-[project.markdown_extensions.admonition]
-[project.markdown_extensions.pymdownx.details]
-[project.markdown_extensions.pymdownx.superfences]
-[project.markdown_extensions.tables]
-[project.markdown_extensions.pymdownx.inlinehilite]
-[project.markdown_extensions.pymdownx.snippets]
-[project.markdown_extensions.attr_list]
-[project.markdown_extensions.md_in_html]

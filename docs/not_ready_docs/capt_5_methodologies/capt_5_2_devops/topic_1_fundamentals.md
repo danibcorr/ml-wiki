@@ -143,7 +143,7 @@ evaluar la estabilidad del sistema y orientar las decisiones de mejora.
 
 ## Pruebas y desarrollo basado en pruebas
 
-### 3.1. Desarrollo guiado por pruebas (TDD)
+### Desarrollo guiado por pruebas (TDD)
 
 El Desarrollo Guiado por Pruebas (_Test-Driven Development_, TDD) es una práctica
 esencial en entornos DevOps que propone escribir las pruebas antes del código de
@@ -158,7 +158,7 @@ sin alterar su comportamiento observable. Este proceso contribuye a mantener un 
 limpio, facilita la detección temprana de errores y reduce el riesgo de regresiones en
 cambios futuros.
 
-### 3.2. Desarrollo guiado por comportamiento (BDD)
+### Desarrollo guiado por comportamiento (BDD)
 
 El Desarrollo Guiado por Comportamiento (_Behavior-Driven Development_, BDD) extiende
 los principios de TDD al centrarse en el comportamiento del sistema desde la perspectiva
@@ -184,7 +184,7 @@ escalar verticalmente un único servidor. Combinados con infraestructuras en la 
 constituyen la base de los enfoques _cloud-native_, que simplifican la actualización, el
 despliegue y la operación continua de aplicaciones complejas.
 
-### 4.1. Patrones de resiliencia
+### Patrones de resiliencia
 
 Para reforzar la robustez de los sistemas distribuidos, se emplean patrones de
 resiliencia ampliamente contrastados. El patrón de reintento (_Retry_) permite gestionar
@@ -210,7 +210,7 @@ despliegues y la alineación entre los entornos de desarrollo, pruebas y producc
 Tratar la infraestructura como un artefacto más del software refuerza la eficiencia
 operativa y reduce la dependencia de configuraciones manuales.
 
-## 6. Integración y despliegue continuos (CI/CD)
+## Integración y despliegue continuos (CI/CD)
 
 La integración continua (CI) y el despliegue continuo (CD) constituyen prácticas
 esenciales para garantizar la calidad y la velocidad de entrega del software. La CI se

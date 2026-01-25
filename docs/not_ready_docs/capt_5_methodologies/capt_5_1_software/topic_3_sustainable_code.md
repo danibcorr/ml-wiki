@@ -10,8 +10,8 @@ title: Código sostenible
 
 El desarrollo de un proyecto debe realizarse bajo una estructura de código clara y
 sostenible, utilizando herramientas y metodologías para garantizar su organización y
-limpieza. Estas prácticas son fundamentales durante el desarrollo, puesta en producción
-y evolución del proyecto.
+limpieza. Estas prácticas son fundamentales durante el desarrollo, puesta en producción y
+evolución del proyecto.
 
 ### Estructura del proyecto
 
@@ -52,30 +52,30 @@ recomendaciones. Además, se sugieren herramientas como
 [Black](https://pypi.org/project/black/) y [Ruff](https://docs.astral.sh/ruff/) para
 aplicar estas convenciones automáticamente en los proyectos.
 
-#### 1.2.1. Diseño del código
+#### Diseño del código
 
 - Se debe utilizar una indentación de 4 espacios, sin mezclar espacios y tabuladores.
-- La longitud máxima de las líneas es de 79 caracteres; para comentarios y docstrings,
-  es de 72 caracteres.
-- Las líneas largas deben dividirse usando paréntesis, corchetes o llaves para mejorar
-  la legibilidad.
+- La longitud máxima de las líneas es de 79 caracteres; para comentarios y docstrings, es
+  de 72 caracteres.
+- Las líneas largas deben dividirse usando paréntesis, corchetes o llaves para mejorar la
+  legibilidad.
 
 Ejemplo:
 
-```py
+```py linenums="1"
 def funcion_larga(parametro1, parametro2,
                   parametro3, parametro4):
     return parametro1 + parametro2 + parametro3 + parametro4
 ```
 
-#### 1.2.2. Codificación de archivos y cadenas
+#### Codificación de archivos y cadenas
 
 - Los archivos fuente deben utilizar codificación UTF-8.
 - Se pueden emplear comillas simples o dobles para las cadenas, pero es importante
   mantener la consistencia.
 - Para cadenas multilínea, se prefieren las comillas dobles.
 
-```py
+```py linenums="1"
 cadena_simple = 'Hola mundo'
 cadena_doble = "Hola mundo"
 cadena_multilinea = """
@@ -84,7 +84,7 @@ cadena_multilinea = """
 """
 ```
 
-#### 1.2.3. Importaciones
+#### Importaciones
 
 Las importaciones deben estar ubicadas al principio del archivo y organizadas en el
 siguiente orden:
@@ -95,7 +95,7 @@ siguiente orden:
 
 Se recomienda utilizar importaciones absolutas.
 
-```py
+```py linenums="1"
 import os
 import sys
 
@@ -104,28 +104,28 @@ from external_lib import some_function
 from local_module import local_function
 ```
 
-#### 1.2.4. Espacios en blanco
+#### Espacios en blanco
 
 - No se deben añadir espacios adicionales alrededor de paréntesis, corchetes, llaves,
   comas o dos puntos.
 - Se debe agregar un espacio alrededor de operadores de asignación, comparación y
   booleanos.
 
-```py
+```py linenums="1"
 x = 5
 y = x + 1
 if x == y:
     print(f"x:{x}, y:{y}")
 ```
 
-#### 1.2.5. Comentarios y docstrings
+#### Comentarios y docstrings
 
 - Los comentarios deben ser claros y concisos, utilizando oraciones completas para
   describir el propósito del código.
-- Los **docstrings** son obligatorios para módulos, funciones, clases y métodos
-  públicos, describiendo su funcionalidad y parámetros.
+- Los **docstrings** son obligatorios para módulos, funciones, clases y métodos públicos,
+  describiendo su funcionalidad y parámetros.
 
-```py
+```py linenums="1"
 def suma(a, b):
     """
     Suma dos números y devuelve el resultado.
@@ -140,7 +140,7 @@ def suma(a, b):
     return a + b
 ```
 
-#### 1.2.6. Convenciones de nomenclatura
+#### Convenciones de nomenclatura
 
 - **Paquetes y módulos:** Se deben escribir en minúsculas, sin espacios (ej.
   `mi_modulo`).
@@ -150,7 +150,7 @@ def suma(a, b):
 - **Métodos y variables de instancia:** Como las funciones, con un guion bajo inicial
   para los elementos no públicos (ej. `_variable_interna`).
 
-```py
+```py linenums="1"
 class MiClase:
     MI_CONSTANTE = 42
 
