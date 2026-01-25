@@ -6,7 +6,7 @@ slug: /
 ---
 
 <p align="center">
-  <img src="/assets/img/docs/logos/machine-learning-wiki-logo.png" width="300"/>
+  <img src="./assets/img/docs/logos/machine-learning-wiki-logo.png" width="300"/>
   <br />
 </p>
 

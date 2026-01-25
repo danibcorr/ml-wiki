@@ -89,8 +89,8 @@ Analyst', solo quiero trabajos con salario > \$70k. Incluir solo trabajos ubicad
 
 ### Buscar roles de analista no senior
 
-Buscar roles de 'Data Analyst' o 'Business Analyst' que no sean senior. Obtener el título
-del trabajo, la ubicación y el salario promedio anual.
+Buscar roles de 'Data Analyst' o 'Business Analyst' que no sean senior. Obtener el
+título del trabajo, la ubicación y el salario promedio anual.
 
 ??? info "Solución"
 

@@ -31,7 +31,7 @@ sobre todo, favorecen la **reproducibilidad** de los proyectos.
 ### Anaconda
 
 <p align="center">
-  <img src="/assets/img/docs/logos/anaconda-logo.png" width="500"/>
+  <img src="../../../assets/img/docs/logos/anaconda-logo.png" width="500"/>
   <br />
   <em>Logo de Anaconda</em>
 </p>

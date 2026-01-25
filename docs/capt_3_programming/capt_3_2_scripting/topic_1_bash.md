@@ -12,7 +12,7 @@ title: Bash
 ## Introducción
 
 <p align="center">
-  <img src="/assets/img/docs/logos/bash-logo.png" width="500"/>
+  <img src="../../../assets/img/docs/logos/bash-logo.png" width="500"/>
   <br />
   <em>Logo de Bash</em>
 </p>

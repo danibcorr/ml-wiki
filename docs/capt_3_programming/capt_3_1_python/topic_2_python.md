@@ -12,7 +12,7 @@ title: Python
 ## Introducción
 
 <p align="center">
-  <img src="/assets/img/docs/logos/python-logo.png" height="250" width="250"/>
+  <img src="../../../assets/img/docs/logos/python-logo.png" height="250" width="250"/>
   <br />
   <em>Logo de Python</em>
 </p>

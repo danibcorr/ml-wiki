@@ -12,7 +12,7 @@ title: Linux
 ## Introducción
 
 <p align="center">
-  <img src="/assets/img/docs/logos/linux-logo.png" height="300" width="300"/>
+  <img src="../../assets/img/docs/logos/linux-logo.png" height="300" width="300"/>
   <br />
   <em>Mascota de Linux</em>
 </p>
@@ -51,7 +51,7 @@ sistema. Aunque existen alternativas modernas, **Bash** se mantiene como la _she
 extendida y estandarizada.
 
 <p align="center">
-  <img src="/assets/img/docs/shell-example.png"/>
+  <img src="../../assets/img/docs/shell-example.png"/>
   <br />
   <em>Ejemplo de una ventana de una shell o terminal</em>
 </p>

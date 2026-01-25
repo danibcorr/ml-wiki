@@ -11,7 +11,7 @@ title: Makefile
 ## Introducción
 
 <p align="center">
-  <img src="/assets/img/docs/logos/makefile-logo.png" width="300"/>
+  <img src="../../../assets/img/docs/logos/makefile-logo.png" width="300"/>
   <br />
   <em>Logo de Makefile</em>
 </p>
@@ -31,7 +31,7 @@ más destacada es la capacidad de automatización de tareas repetitivas.
 Una regla en un Makefile define el proceso de construcción de un objetivo (**_target_**)
 a partir de sus prerrequisitos. La estructura básica de una regla es la siguiente:
 
-```makefile
+```makefile linenums="1"
 targets: prerequisites
   comando
   comando
@@ -47,7 +47,7 @@ targets: prerequisites
 
 ???+ example "Ejemplo"
 
-    ```makefile
+    ```makefile linenums="1"
     install: pyproject.toml
         poetry install
     ```
@@ -75,7 +75,7 @@ comandos.
 
 ???+ example "Ejemplo"
 
-    ```makefile
+    ```makefile linenums="1"
     # Esta regla instala las dependencias de Poetry
     install: pyproject.toml
         poetry install
@@ -88,7 +88,7 @@ personalización de comandos o rutas.
 
 ???+ example "Ejemplo"
 
-    ```makefile
+    ```makefile linenums="1"
     TEST_FILE ?= ./tests
 
     # Regla para ejecutar tests al código
@@ -108,7 +108,7 @@ personalización de comandos o rutas.
     Para ejecutar la regla `tests` y especificar un archivo diferente al definido en la
     variable, se utiliza el siguiente comando:
 
-    ```sh
+    ```sh linenums="1"
     make tests TEST_FILE=./tests/test_ejemplo.py
     ```
 
@@ -135,7 +135,7 @@ necesidad de escribirlos explícitamente cada vez.
     Supongamos que estamos procesando datos en Python y queremos automatizar la creación de
     un archivo comprimido a partir de varios archivos generados:
 
-    ```makefile
+    ```makefile linenums="1"
     all: process_data archive
 
     process_data: input1.txt input2.txt script.py
@@ -197,7 +197,7 @@ configuraciones particulares para ciertos objetivos o archivos.
     Si queremos procesar archivos .csv para generar archivos .txt con una configuración
     específica para cada tipo de archivo:
 
-    ```makefile
+    ```makefile linenums="1"
     # Se agrega una opción de optimización para la generación de archivos intermedios
     %.txt: PYTHONFLAGS += --optimize
 
@@ -227,7 +227,7 @@ La función `subst` reemplaza un texto por otro en una cadena.
 
 !!!note "Sintaxis"
 
-    ```makefile
+    ```makefile linenums="1"
     $(subst from,to,text)
     ```
 
@@ -237,7 +237,7 @@ La función `subst` reemplaza un texto por otro en una cadena.
 
 ???+ example "Ejemplo"
 
-    ```makefile
+    ```makefile linenums="1"
     SOURCES = file1.cpp file2.cpp file3.cpp
     OBJECTS = $(subst .cpp,.o,$(SOURCES))
     ```
@@ -251,7 +251,7 @@ La función `patsubst` permite hacer sustituciones usando patrones (como `%`).
 
 !!!note "Sintaxis"
 
-    ```makefile
+    ```makefile linenums="1"
     $(patsubst pattern,replacement,text)
     ```
 
@@ -261,7 +261,7 @@ La función `patsubst` permite hacer sustituciones usando patrones (como `%`).
 
 ???+ example "Ejemplo"
 
-    ```makefile
+    ```makefile linenums="1"
     SOURCES = file1.cpp file2.cpp file3.cpp
     OBJECTS = $(patsubst %.cpp,%.o,$(SOURCES))
     ```
@@ -278,14 +278,14 @@ Estas funciones permiten filtrar listas.
 
 !!!note "Sintaxis"
 
-    ```makefile
+    ```makefile linenums="1"
     $(filter pattern...,text)
     $(filter-out pattern...,text)
     ```
 
 ???+ example "Ejemplo"
 
-    ```makefile
+    ```makefile linenums="1"
     SOURCES = file1.c file2.cpp file3.h
     C_FILES = $(filter %.c,$(SOURCES))
     ```
@@ -299,7 +299,7 @@ elemento.
 
 !!!note "Sintaxis"
 
-    ```makefile
+    ```makefile linenums="1"
     $(foreach var,list,text)
     ```
 
@@ -309,7 +309,7 @@ elemento.
 
 ???+ example "Ejemplo"
 
-    ```makefile
+    ```makefile linenums="1"
     DIRS = dir1 dir2 dir3
     CLEAN_DIRS = $(foreach dir,$(DIRS),$(dir)/clean)
     ```
@@ -323,7 +323,7 @@ La función `if` permite ejecutar algo según una condición.
 
 !!!note "Sintaxis"
 
-    ```makefile
+    ```makefile linenums="1"
     $(if condition,then-part[,else-part])
     ```
 
@@ -333,7 +333,7 @@ La función `if` permite ejecutar algo según una condición.
 
 ???+ example "Ejemplo"
 
-    ```makefile
+    ```makefile linenums="1"
     USE_DEBUG = yes
     CFLAGS = $(if $(USE_DEBUG),-g,-O2)
     ```
@@ -355,7 +355,7 @@ configuraciones y reglas en archivos diferentes.
 
 ???+ example "Ejemplo"
 
-    ```makefile
+    ```makefile linenums="1"
     include config.mk
     ```
 
@@ -371,7 +371,7 @@ proyecto ordenada.
 
 ???+ example "Ejemplo"
 
-    ```makefile
+    ```makefile linenums="1"
     VPATH = src:include
     ```
 
@@ -387,7 +387,7 @@ archivos con el mismo nombre que el objetivo y así prevenir conflictos.
 
 ???+ example "Ejemplo"
 
-    ```makefile
+    ```makefile linenums="1"
     .PHONY: clean all
     ```
 
@@ -402,7 +402,7 @@ incompletos o corruptos cuando un proceso de compilación falla.
 
 !!!note "Sintaxis"
 
-    ```makefile
+    ```makefile linenums="1"
     .DELETE_ON_ERROR:
     ```
 
@@ -417,7 +417,7 @@ reutilizables.
 
 !!!note "Sintaxis"
 
-    ```makefile
+    ```makefile linenums="1"
     ifeq (condición)
         acción
     else
@@ -430,7 +430,7 @@ reutilizables.
 
 ???+ example "Ejemplo"
 
-    ```makefile
+    ```makefile linenums="1"
     ifeq ($(USE_DEBUG),yes)
         CFLAGS = -g
     else
@@ -444,13 +444,13 @@ reutilizables.
 
 ### Macros y funciones
 
-Make permite definir macros y funciones personalizadas para agrupar comandos y mejorar la
-legibilidad del Makefile. Estas macros ayudan a evitar la repetición y facilitan la
+Make permite definir macros y funciones personalizadas para agrupar comandos y mejorar
+la legibilidad del Makefile. Estas macros ayudan a evitar la repetición y facilitan la
 reutilización del código.
 
 !!!note "Sintaxis de una macro"
 
-    ```makefile
+    ```makefile linenums="1"
     define nombre_de_macro
         comandos
     endef
@@ -461,7 +461,7 @@ reutilización del código.
 
 ???+ example "Ejemplo de macro"
 
-    ```makefile
+    ```makefile linenums="1"
     define compile_rule
         $(CC) $(CFLAGS) -c $< -o $@
     endef
@@ -472,7 +472,7 @@ reutilización del código.
 
     ???+ example "Ejemplo de invocación de macro"
 
-        ```makefile
+        ```makefile linenums="1"
         %.o: %.c
             $(call compile_rule)
         ```
@@ -482,26 +482,26 @@ reutilización del código.
 
 ## Mejores prácticas y estilos
 
-El uso adecuado de Makefiles no solo facilita la compilación y gestión de proyectos, sino
-que también mejora la legibilidad y mantenimiento a largo plazo. A continuación, se
+El uso adecuado de Makefiles no solo facilita la compilación y gestión de proyectos,
+sino que también mejora la legibilidad y mantenimiento a largo plazo. A continuación, se
 presentan algunas de las mejores prácticas y estilos recomendados.
 
 ### Organización de Makefiles
 
-Es recomendable organizar el Makefile de manera que sea fácil de leer y mantener. Algunas
-sugerencias incluyen:
+Es recomendable organizar el Makefile de manera que sea fácil de leer y mantener.
+Algunas sugerencias incluyen:
 
-1. **Separar las reglas y configuraciones:** Definir las variables al inicio del Makefile
-   y agrupar las reglas relacionadas. Esto facilita el mantenimiento y comprensión del
-   archivo.
-2. **Uso de comentarios:** Añadir comentarios claros y concisos para explicar las reglas,
-   variables y funciones dentro del Makefile.
+1. **Separar las reglas y configuraciones:** Definir las variables al inicio del
+   Makefile y agrupar las reglas relacionadas. Esto facilita el mantenimiento y
+   comprensión del archivo.
+2. **Uso de comentarios:** Añadir comentarios claros y concisos para explicar las
+   reglas, variables y funciones dentro del Makefile.
 3. **Modularización:** Dividir los Makefiles grandes en varios archivos pequeños y
    organizados, utilizando la directiva `include`.
 
 ???+ example "Ejemplo de organización"
 
-    ```makefile
+    ```makefile linenums="1"
     # Variables de configuración
     CC = gcc
     CFLAGS = -Wall -O2
@@ -532,12 +532,12 @@ sugerencias incluyen:
 La depuración de Makefiles puede ser compleja si no se siguen ciertas prácticas. Algunas
 técnicas útiles incluyen:
 
-1.  **Ejecución en seco (`-n`):** Esta opción permite ver qué comandos se ejecutarían sin
-    realmente ejecutarlos, lo cual es útil para verificar el flujo de ejecución.
+1.  **Ejecución en seco (`-n`):** Esta opción permite ver qué comandos se ejecutarían
+    sin realmente ejecutarlos, lo cual es útil para verificar el flujo de ejecución.
 
     !!!note "Sintaxis"
 
-         ```sh
+         ```sh linenums="1"
          make -n
          ```
 
@@ -549,7 +549,7 @@ técnicas útiles incluyen:
 
     !!!note "Sintaxis"
 
-        ```sh
+        ```sh linenums="1"
         make -d
         ```
 
@@ -561,14 +561,14 @@ técnicas útiles incluyen:
 
     ???+ example "Ejemplo"
 
-        ```makefile
+        ```makefile linenums="1"
         debug:
             @echo "CFLAGS = $(CFLAGS)"
         ```
 
         Al ejecutar:
 
-        ```sh
+        ```sh linenums="1"
         make debug
         ```
 

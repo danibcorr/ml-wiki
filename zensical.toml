@@ -6,8 +6,6 @@ site_url = "https://danibcorr.github.io/ml-wiki/"
 repo_url = "https://github.com/danibcorr/ml-wiki"
 repo_name = "danibcorr/ml-wiki"
 copyright = "Copyright &copy; 2026 Daniel Bazo Correa"
-docs_dir = "docs"
-
 nav = [
     {"Inicio" = "index.md"},
     {"Sistemas Operativos" = [
@@ -38,8 +36,7 @@ nav = [
         ]}
     ]}
 ]
-
-extra_css = ["css/custom.css"]
+extra_css = ["stylesheets/extra.css"]
 extra_javascript = [
     "javascripts/mathjax.js",
     "https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"
