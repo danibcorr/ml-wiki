@@ -20,33 +20,56 @@ title: Python
 **Python** es un lenguaje de programación de alto nivel, interpretado y de propósito
 general, desarrollado por Guido van Rossum.
 
-Su sintaxis se caracteriza por ser clara y legible, lo que facilita tanto el aprendizaje
-como la escritura de código eficiente y comprensible.
+La principal ventaja que presenta Python es su rápida adaptación en el sector
+tecnológico, sobre todo con el gran crecimiento que ha tenido la inteligencia
+artificial. Asimismo, su curva de aprendizaje resulta en un lenguaje de programación
+accesible, presentando una sintaxis que se caracteriza por ser clara y legible.
 
 Python cuenta con una amplia comunidad de desarrolladores y un ecosistema robusto de
-bibliotecas y frameworks que permiten abordar una gran diversidad de proyectos,
+bibliotecas y _frameworks_ que permiten abordar una gran diversidad de proyectos,
 incluyendo aplicaciones web, análisis de datos, automatización de tareas y aprendizaje
 automático.
 
-## Instalación
-
 ### Creación y configuración del entorno
 
-Antes de comenzar a programar en Python, es recomendable crear un entorno virtual que
-permita aislar la versión de Python y los paquetes específicos de cada proyecto.
+Antes de comenzar a programar en Python, tenemos que descargarlo, aunque si estás
+utilizando Linux, por defecto suele traer alguna versión de Python +3.0, por lo que no
+necesitarías descargar nada más en un principio. En caso contrario, siempre puedes
+visitar la página oficial de la documentación o buscar un tutorial en Google sobre cómo
+instalar Python en tu sistema en específico.
 
-Esto evita conflictos entre dependencias y garantiza la reproducibilidad del entorno de
-desarrollo.
+En cualquier caso, tendrás que crear un entorno virtual que permita aislar la versión de
+Python y los paquetes específicos de cada proyecto. Puedes verlo como una pequeña
+parcela que está reservada para una versión de Python y unos paquetes específicos,
+consiguiendo aislamiento y separación de tu propio sistema o de otras posibles
+dependencias. Verás que es muy útil tener un entorno virtual separado para cada proyecto
+que realices, con ello, evitas conflictos entre dependencias y garantizas la
+reproducibilidad del entorno de desarrollo.
 
 Para obtener instrucciones detalladas sobre la configuración de entornos virtuales y la
-gestión de paquetes en Python, se puede consultar el
-[apartado de programación en Python](./topic_1_environments.md).
+gestión de paquetes en Python, puedes consultar la sección de entornos de esta misma
+wiki, dentro del
+[apartado de programación en Python](https://www.google.com/search?q=./topic_1_environments.md).
 
 ### Jupyter Notebooks
 
-Para experimentar y desarrollar en Python, se recomienda utilizar **Jupyter Notebooks**,
-una herramienta interactiva que integra código, texto y visualizaciones en un único
-documento. Entre sus principales ventajas destacan:
+<p align="center">
+  <img src="../../../assets/img/docs/jupyter-notebook.png"/>
+  <br />
+  <em>Ejemplo de un cuaderno Jupyter</em>
+</p>
+
+Existen dos formas posibles de trabajar en Python. Una de ellas es mediante ficheros con
+extensión **.py**, que puedes ver como un fichero .txt que permite al entorno de
+desarrollo (por ejemplo, Visual Studio Code) que utilices realizar autocompletado,
+corrección de sintaxis, entre otras cosas. Esta es la forma de programar que más
+recomiendo y es la que se utiliza en el desarrollo profesional y en la puesta en
+producción del código en Python.
+
+Sin embargo, creo que para empezar y explorar el lenguaje, así como para proyectos de
+ciencia de datos, se tiende a utilizar **Jupyter Notebooks**, una herramienta
+interactiva que integra código, texto y visualizaciones en un único documento. Entre sus
+principales ventajas destacan:
 
 - **Interactividad**: Permite ejecutar bloques de código de manera independiente, lo que
   facilita la prueba de ideas y la depuración paso a paso.
@@ -56,19 +79,22 @@ documento. Entre sus principales ventajas destacan:
   bibliotecas como **Matplotlib** o **Seaborn**, mostrando los resultados de manera
   inmediata dentro del mismo documento.
 
-A continuación, se presentan algunos atajos de teclado útiles para trabajar en **Jupyter
-Notebooks**:
-
-| Atajo              | Función                                                                                |
-| ------------------ | -------------------------------------------------------------------------------------- |
-| `ctrl + shift + p` | Abre la paleta de comandos en Visual Studio Code (incluye la opción de abrir Jupyter). |
-| `shift + tab`      | Muestra la documentación de una función o método en Jupyter.                           |
-| `esc + m`          | Cambia una celda a modo Markdown en Jupyter.                                           |
-| `esc + y`          | Cambia una celda a modo de código en Jupyter.                                          |
-| `ctrl + enter`     | Ejecuta la celda actual sin avanzar a la siguiente.                                    |
-| `shift + enter`    | Ejecuta la celda actual y avanza a la siguiente.                                       |
+El utilizar uno u otro depende sobre todo de lo fácil o difícil que te resulte organizar
+tus proyectos y cómo planteas tu sistema de exploración y desarrollo. También dependerá
+de cómo trabajen tus compañeros. En cualquier caso, no te cierres a ninguna herramienta,
+explora ambas, pero no abandones ninguna, pues cada una tiene su momento.
 
 ## Conceptos básicos
+
+Para dominar Python, es fundamental comprender primero los pilares que sostienen
+cualquier programa: cómo se almacena la información, cómo se manipula y cómo se controla
+el flujo de las instrucciones. En esta sección, exploraremos los elementos esenciales
+del lenguaje, desde los tipos de datos básicos y las operaciones matemáticas, hasta las
+estructuras de control que permiten dotar de lógica a nuestro código.
+
+A través de ejemplos prácticos, veremos cómo interactuar con el usuario, gestionar
+cadenas de texto y organizar scripts de forma profesional utilizando convenciones
+estándar de la industria.
 
 ### Tipos de datos
 
@@ -87,31 +113,65 @@ características:
 | **Sets** (colección única y desordenada)    | `set`             | `{"a", "b"}`                     |
 | **Booleanos** (valores lógicos)             | `bool`            | `True`, `False`                  |
 
+Las palabras reservadas son términos guardados exclusivamente para su uso en Python que
+no pueden ser sustituidos por el usuario. Es la manera, en este caso, que tiene Python
+para interpretar un tipo de dato como tal.
+
+En realidad, Python no requiere que se especifique el tipo de la variable, sin embargo,
+cada vez es más común (y buena práctica) utilizar lo que se conoce como _typing_ para
+definirlo. Por ejemplo:
+
+```py linenums="1"
+# Sin typing
+valor_entero = 12
+
+# Con typing
+valor_entero: int = 12
+lista_valores: list[int] = [1,2,3]
+diccionario_valores: dict[str, list[int]] = {"esto_es_un_string": [1,2,3]}
+```
+
 ### Operaciones con datos
 
 Python permite realizar una amplia variedad de operaciones sobre datos numéricos y otros
-tipos. A continuación, se describen las principales operaciones matemáticas y funciones
-disponibles:
+tipos. Las principales operaciones matemáticas y funciones disponibles son:
 
 | Operador/Función        | Descripción                                                            |
 | ----------------------- | ---------------------------------------------------------------------- |
 | `+`, `-`, `*`, `/`, `%` | Suma, resta, multiplicación, división y módulo (resto de la división). |
-| `-x`                    | Cambia el signo de un número.                                          |
-| `abs(x)`                | Devuelve el valor absoluto de `x`.                                     |
-| `pow(x, y)` o `x**y`    | Potencia de `x` elevado a `y`.                                         |
-| `max(x, y)`             | Devuelve el valor máximo entre `x` y `y`.                              |
-| `min(x, y)`             | Devuelve el valor mínimo entre `x` y `y`.                              |
-| `round(x, n)`           | Redondea `x` a `n` decimales.                                          |
-| `math.floor(x)`         | Redondea hacia abajo. Requiere importar `math`.                        |
-| `math.ceil(x)`          | Redondea hacia arriba. Requiere importar `math`.                       |
-| `math.sqrt(x)`          | Devuelve la raíz cuadrada de `x`. Requiere importar `math`.            |
-| `math.pi`               | Devuelve el valor de Pi. Requiere importar `math`.                     |
-| `hex(x)`                | Convierte `x` a hexadecimal.                                           |
-| `bin(x)`                | Convierte `x` a binario.                                               |
+| `-x`                    | Cambia el signo de un número ().                                       |
+| `abs(x)`                | Devuelve el valor absoluto ($                                          |
+| `pow(x, y)` o `x**y`    | Potencia de elevado a ().                                              |
+| `max(x, y)`             | Devuelve el valor máximo entre y .                                     |
+| `min(x, y)`             | Devuelve el valor mínimo entre y .                                     |
+| `round(x, n)`           | Redondea a decimales.                                                  |
+| `hex(x)`                | Convierte a hexadecimal.                                               |
+| `bin(x)`                | Convierte a binario.                                                   |
+
+Podemos extender la funcionalidad utilizando librerías, que pueden ser estándares
+(cuando ya vienen incluidas con la propia instalación de Python) o paquetes de terceros
+como NumPy, Pandas o similares. Por ejemplo, podemos ampliar las operaciones con datos
+utilizando la librería estándar interna de Python `math`:
+
+| Operador/Función | Descripción                                                   |
+| ---------------- | ------------------------------------------------------------- |
+| `math.floor(x)`  | Redondea hacia abajo (). Requiere importar `math`.            |
+| `math.ceil(x)`   | Redondea hacia arriba (). Requiere importar `math`.           |
+| `math.sqrt(x)`   | Devuelve la raíz cuadrada (). Requiere importar `math`.       |
+| `math.pi`        | Devuelve el valor de la constante . Requiere importar `math`. |
+
+Para ello, lo único que deberemos hacer es realizar una importación de la librería:
+
+```py linenums="1"
+import math
+
+math.floor(3.1415)
+```
 
 ### Operadores
 
-#### Operadores de comparación
+Existen diferentes tipos de operadores; entre ellos tenemos los **operadores de
+comparación** y los **operadores lógicos**.
 
 Los operadores de comparación permiten evaluar relaciones entre dos valores, devolviendo
 un resultado booleano (`True` o `False`).
@@ -125,10 +185,8 @@ un resultado booleano (`True` o `False`).
 | `A > B`   | A es mayor que B.         |
 | `A >= B`  | A es mayor o igual que B. |
 
-#### Operadores lógicos
-
-Los operadores lógicos permiten combinar varias condiciones y controlar el flujo de
-ejecución en función de los resultados.
+Por otro lado, los operadores lógicos permiten combinar varias condiciones y controlar
+el flujo de ejecución en función de los resultados.
 
 | Operador | Descripción                                                  |
 | -------- | ------------------------------------------------------------ |
@@ -148,7 +206,7 @@ Al crear variables en Python, se deben seguir ciertas reglas:
 - No se permiten espacios en los nombres.
 - No se deben utilizar los siguientes símbolos:
   `: ''' <> / , ? | \ ( ) ! @ ## $ % ^ & * ~ - +`.
-- Es recomendable utilizar nombres de variables en minúsculas.
+- Hay que utilizar nombres de variables en minúsculas.
 
 **Python es un lenguaje de tipificación dinámica**, por lo que no es necesario declarar
 explícitamente el tipo de dato, ya que este se asigna automáticamente según el valor.
@@ -227,11 +285,11 @@ numero = float(input("Introduce un numero: "))
 Este procedimiento es útil para manipular datos numéricos o realizar cálculos después de
 recibir la entrada del usuario.
 
-### Cadenas de texto (Strings)
+### Cadenas de texto
 
-Un **string** es una secuencia de caracteres que puede contener letras, números,
-símbolos o espacios. A cotinuación se muestra un ejemplo básico de string junto con el
-uso del indexado:
+Una cadena de texto, o **_string_**, es una secuencia de caracteres que puede contener
+letras, números, símbolos o espacios. A cotinuación se muestra un ejemplo básico de
+`string` junto con el uso del indexado:
 
 ```py linenums="1"
 frase = "Hola buenas"
@@ -243,21 +301,21 @@ print("El primer carácter de mi string es " + frase[0])
 print("El sexto carácter de mi string es " + frase[5])
 ```
 
-En este caso, el índice de un string comienza en `0`, por lo que:
+En este caso, el índice de un `string` comienza en `0`, por lo que:
 
-- `frase[0]` hace referencia al primer carácter del string, que es `"H"`.
-- `frase[5]` hace referencia al sexto carácter del string, que es `"b"`. Se observa como
-  el espacio en blanco cuenta como un carácter.
+- `frase[0]` hace referencia al primer carácter del `string`, que es `"H"`.
+- `frase[5]` hace referencia al sexto carácter del `string`, que es `"b"`. Se observa
+  como el espacio en blanco cuenta como un carácter.
 
-Python permite acceder a cualquier carácter de un string utilizando su posición, o
+Python permite acceder a cualquier carácter de un `string` utilizando su posición, o
 **índice**. El primer carácter tiene el índice `0`, el segundo carácter tiene el índice
 `1`, y así sucesivamente. También se pueden usar índices negativos para contar desde el
-final del string hacia el principio, por ejemplo, `frase[-1]` devuelve el último
-carácter.
+final del `string` hacia el principio. Por ejemplo, `frase[-1]` devuelve el último
+carácter 's'.
 
 Los strings son **inmutables**, lo que significa que no es posible cambiar un carácter
-específico en un string ya creado. Intentar modificar directamente un elemento producirá
-un error. Por ejemplo:
+específico en un `string` ya creado. Intentar modificar directamente un elemento
+producirá un error. Por ejemplo:
 
 ```py linenums="1"
 frase = "Hola buenas"
@@ -267,9 +325,11 @@ frase[0] = "h"  # Esto producirá un error
 ```
 
 Este código genera un error de tipo `TypeError` porque no se puede modificar
-directamente un carácter de un string existente. Para modificar un string, es necesario
-crear uno nuevo combinando partes del string original. Por ejemplo, para cambiar la
-primera letra de `"Hola buenas"` por una minúscula:
+directamente un carácter de un `string` existente.
+
+Para modificar un `string`, es necesario crear uno nuevo combinando partes del `string`
+original. Por ejemplo, para cambiar la primera letra de `"Hola buenas"` por una
+minúscula:
 
 ```py linenums="1"
 frase = "Hola buenas"
@@ -282,12 +342,12 @@ print(nueva_frase)
 ```
 
 En este ejemplo, se construye una nueva cadena concatenando `"h"` con el resto del
-string original (`frase[1:]`), que devuelve el string desde el segundo carácter en
+`string` original (`frase[1:]`), que devuelve el `string` desde el segundo carácter en
 adelante.
 
 #### Métodos
 
-Las variables de tipo string en Python disponen de varias funciones incorporadas para
+Las variables de tipo `string` en Python disponen de varias funciones incorporadas para
 manipular y analizar el contenido de la cadena:
 
 | Función                                            | Definición                                                                                                     |
@@ -367,7 +427,7 @@ else:
         print(f"La palabra {palabra} no contiene la letra {letra}")
     ```
 
-    En este caso, si `letra` se encuentra en el string `palabra`, el programa imprimirá un
+    En este caso, si `letra` se encuentra en el `string` `palabra`, el programa imprimirá un
     mensaje indicando que la palabra contiene la letra. En caso contrario, se ejecutará el
     bloque `else`.
 
@@ -397,9 +457,9 @@ for variable in iterable:
         print(numero)
     ```
 
-???+ example "Recorrer los caracteres de un string"
+???+ example "Recorrer los caracteres de un `string`"
 
-    Se puede utilizar `range()` y `len()` para iterar sobre los índices de un string:
+    Se puede utilizar `range()` y `len()` para iterar sobre los índices de un `string`:
 
     ```py linenums="1"
     mi_string = "Hola caracola"
@@ -407,7 +467,7 @@ for variable in iterable:
         print(mi_string[letra])
     ```
 
-    Alternativamente, se puede iterar directamente sobre los caracteres del string:
+    Alternativamente, se puede iterar directamente sobre los caracteres del `string`:
 
     ```py linenums="1"
     mi_string = "Hola caracola"
@@ -427,7 +487,7 @@ for variable in iterable:
         print(item)
     ```
 
-    En este ejemplo, solo se recorrerán los caracteres hasta el final del string más corto.
+    En este ejemplo, solo se recorrerán los caracteres hasta el final del `string` más corto.
 
 ???+ example "Uso de `enumerate()` para obtener índices y valores"
 
@@ -607,7 +667,7 @@ significa que puede cambiar durante la ejecución del programa. La indexación c
 0, y los índices negativos permiten acceder a los elementos desde el final de la lista.
 
 Para definir una lista, basta con usar corchetes y separar los elementos por comas. A
-continuación se muestra un ejemplo donde cada elemento es un string:
+continuación se muestra un ejemplo donde cada elemento es un `string`:
 
 ```py linenums="1"
 lista_amigos = ["Jorge", "Fran", "Ricardo"]
