@@ -1,7 +1,7 @@
 ---
 authors: Daniel Bazo Correa
 description: Construcción de CV y guía de entrevistas de trabajo.
-title: Guía CV
+title: Estrategias de empleo
 ---
 
 ## Bibliografía
@@ -10,439 +10,231 @@ title: Guía CV
 
 ## Introducción
 
-Esta guía se ha elaborado a partir de información recopilada de diversas fuentes, como
-artículos, videos, blogs especializados y modelos de currículum. Su propósito es servir
-como apoyo en la búsqueda de empleo, especialmente en ámbitos técnicos, y, al mismo
-tiempo, ofrecer una orientación práctica sobre las habilidades y competencias que
-conviene desarrollar y mantener a lo largo de la vida profesional.
+El propósito de esta guía es reunir consejos para la búsqueda de empleo, sobre todo si
+te mueves en el sector técnico. He juntado aquí información de fuentes que me parecen
+interesantes, modelos de CV que funcionan y lo que yo mismo he ido aprendiendo por el
+camino.
 
-El objetivo es que este material resulte útil para avanzar en la carrera profesional y
-que, en caso de tener que enfrentar nuevamente un proceso de búsqueda laboral, funcione
-como una referencia sólida y estructurada.
+Si tengo que resumirte cómo está el sector ahora mismo, la realidad es que ser bueno en
+lo técnico ya no es suficiente. De hecho, en muchas ocasiones se valora menos debido a
+los avances en inteligencia artificial que están cambiando nuestra forma de trabajar. Lo
+que de verdad marca la diferencia hoy es saber **explicar lo que haces de forma clara**.
+En tecnología, el punto de inflexión llega cuando eres capaz de demostrar que tu trabajo
+genera un impacto real y medible en la empresa.
 
-## Preparación para la búsqueda de empleo
+Con el tiempo, te das cuenta de que lo técnico deja de ser lo único importante y
+empiezan a pesar más las relaciones profesionales. Por eso, tener una red de contactos
+sólida es clave. Al final, los conocidos son los primeros que te avisan de una vacante o
+te dan una recomendación. Esos vínculos de confianza son los que suelen abrir las
+puertas a las mejores oportunidades.
 
-En un mercado laboral altamente competitivo no basta con poseer conocimientos técnicos.
-Es fundamental saber **presentar las competencias de manera clara y convincente**,
-demostrando cómo generan impacto real y medible en las organizaciones.
-
-A medida que se progresa en la carrera, el énfasis deja de estar únicamente en lo técnico
-y pasa a centrarse en las relaciones profesionales. **Construir y mantener una red de
-contactos sólida dentro y fuera de la empresa es crucial, ya que la estabilidad laboral
-no siempre está garantizada. Contar con vínculos de confianza puede marcar la diferencia
-a la hora de acceder a nuevas oportunidades.**
-
-Aunque no existe una fórmula universal para establecer relaciones profesionales
-efectivas, sí se pueden aplicar estrategias para destacar frente a empleadores, optimizar
-la presentación profesional y aumentar las probabilidades de contratación.
-
-### Currículum Vitae (CV)
+## Currículum Vitae (CV)
 
 El currículum vitae es la principal carta de presentación profesional. Determina la
-primera impresión que recibe un empleador y, en muchos casos, constituye el filtro
-inicial para decidir si se continúa con la candidatura.
+primera impresión del empleador y, en la mayoría de los casos, constituye el filtro
+inicial para decidir si una candidatura prospera.
 
-Un buen CV no se limita a enumerar habilidades o responsabilidades, debe demostrar cómo
-se aplican los conocimientos para **resolver problemas, aportar valor y generar
-resultados cuantificables**.
+Un CV eficaz no debe limitarse a enumerar habilidades o responsabilidades, debe
+demostrar cómo se aplican los conocimientos para **resolver problemas, aportar valor y
+generar resultados cuantificables**.
 
-Además, muchas empresas utilizan **Sistemas de Seguimiento de Candidatos (ATS, _Applicant
-Tracking Systems_)**, que filtran los CV antes de que lleguen a un reclutador humano. Por
-ello, es esencial **optimizar el documento para que sea compatible con los ATS**.
+Además, es fundamental considerar que muchas empresas utilizan **Sistemas de Seguimiento
+de Candidatos (ATS, _Applicant Tracking Systems_)**, los cuales filtran los documentos
+antes de que lleguen a un reclutador humano. Por ello, es esencial **optimizar el
+documento para que sea compatible con estas herramientas**.
 
-#### Estructura recomendada de un CV
+Para lograr una **estructura clara, lógica y profesional**, se recomienda organizar el
+CV en las siguientes secciones:
 
-Un CV eficaz debe seguir una **estructura clara, lógica y profesional**. Sus secciones
-principales son:
+- **Encabezado (Datos de contacto):** Debe incluir nombre y apellidos, teléfono, correo
+  electrónico profesional, ubicación (ciudad y país) y enlaces a perfiles relevantes
+  (LinkedIn, GitHub, etc.). La ubicación es un factor determinante, especialmente en
+  empleos presenciales.
+- **Resumen profesional:** Un breve párrafo de entre 60 y 100 palabras que resuma tu
+  especialidad, logros más relevantes y palabras clave alineadas con el puesto.
+- **Experiencia profesional:** Presentada en orden cronológico inverso (de lo más
+  reciente a lo más antiguo) bajo el formato: **[Puesto] | [Empresa] | [Fechas]**. Se
+  deben describir logros concretos y medibles utilizando la **fórmula XYZ**: _"Logré X,
+  medido por Y, realizando Z"_. Es fundamental reflejar tanto **habilidades técnicas
+  (_hard skills_)** como **habilidades blandas (_soft skills_)**, siempre aplicadas a
+  situaciones reales. Cabe destacar que, en los primeros años de carrera, el peso de la
+  parte técnica suele ser mayor.
+- **Educación y certificaciones:** Formato: **[Grado académico] | [Institución] |
+  [Año]**. Incluye certificaciones técnicas de peso (AWS, Azure, etc.). Los cursos en
+  línea (como Coursera) se pueden mencionar en la entrevista, pero generalmente no
+  aportan valor al CV y restan espacio para proyectos más relevantes.
+- **Proyectos y publicaciones (opcional):** Sección valiosa para perfiles con poca
+  experiencia, procesos de cambio de carrera o cuando los trabajos realizados están
+  directamente vinculados al puesto solicitado.
 
-- **Encabezado (Datos de contacto):**
-  - Nombre y apellidos.
-  - Teléfono y correo electrónico profesional.
-  - Perfil en línea (LinkedIn, GitHub u otras plataformas relevantes).
-  - Ubicación (ciudad y país). En empleos presenciales, la cercanía puede ser un factor
-    determinante.
+Para que el CV sea **claro, conciso y estratégico**, se sugiere:
 
-- **Resumen profesional o perfil:** Breve párrafo de entre 60 y 100 palabras que resuma:
-  - Especialidad.
-  - Logros más relevantes.
-  - Palabras clave alineadas con el puesto.
+1. **Adaptación:** Incorporar palabras clave de la descripción del puesto. Una
+   estrategia útil es crear una nube de palabras de la oferta de trabajo para
+   identificar los términos esenciales e incluirlos en el texto.
+2. **Formato compatible con ATS:** Evitar imágenes, gráficos o tablas que dificulten la
+   lectura automática. Usar tipografías legibles (Arial, Calibri, Times New Roman).
+3. **Extensión:** Mantener una extensión máxima de 1 página (máximo 2 solo en casos de
+   amplia trayectoria o perfiles académicos y de alta dirección).
+4. **Calidad:** Eliminar cualquier error ortográfico o gramatical y evitar frases
+   genéricas o clichés que no aporten información sustancial.
 
-    ???+ example "Ejemplo"
+## Carta de presentación
 
-    Data Scientist con más de 5 años de experiencia en el desarrollo de modelos
-    predictivos y análisis de datos masivos en telecomunicaciones. Experto en Python, SQL
-    y herramientas de visualización (Tableau, Power BI). Logré mejorar la detección de
-    celdas con anomalías en un 25%, lo que incrementó en un 10% la satisfacción de los
-    usuarios mediante técnicas de inteligencia artificial.
+La carta de presentación es un documento breve que acompaña al CV y explica **por qué
+eres la persona ideal para el puesto**. A diferencia del currículum, que se centra en
+datos técnicos y logros, la carta permite mostrar tu **motivación, trayectoria y
+personalidad**.
 
-- **Experiencia profesional:**
-  - Presentar en orden cronológico inverso (de lo más reciente a lo más antiguo), con el
-    formato: **\[Puesto] | \[Empresa] | \[Fechas]**.
-  - Describir logros concretos y medibles en un máximo de dos líneas, aplicando la
-    **fórmula XYZ**: _“Logré X, medido por Y, al hacer Z.”_
+Aunque no siempre es obligatoria, y en un mercado saturado y automatizado puede parecer
+una inversión de tiempo excesiva, sigue siendo una herramienta valiosa en procesos
+internacionales, empresas que buscan un trato personalizado o cuando se desea destacar
+logros excepcionales y cartas de recomendación. En cualquier caso, debe complementar al
+CV con coherencia, sin limitarse a repetir la misma información.
 
-    ???+ example "Ejemplo"s
-    - Diseñé pipelines ETL en Python y SQL, mejorando la calidad de datos en un **35%**.
-    - Implementé pipelines CI/CD, reduciendo tiempos de despliegue en **50%**.
-    - Entrené modelos predictivos que incrementaron la precisión en un **25%**.
-    - Optimizé consultas SQL, disminuyendo tiempos de respuesta en un **40%**.
-    - Automatizé despliegues con Jenkins, reduciendo plazos de entrega en un **50%**.
-    - Implementé infraestructura como código con Terraform, garantizando consistencia en
-      entornos de nube.
+Consejos clave para destacar:
 
-  Es recomendable reflejar tanto **habilidades técnicas (hard skills)** —lenguajes,
-  frameworks, herramientas— como **habilidades blandas (soft skills)** —liderazgo,
-  comunicación, análisis—, siempre aplicadas a situaciones reales.
+- **Personalización y brevedad:** Siempre que sea posible, identifica al responsable del
+  proceso (gerente de contratación o reclutador). Herramientas como LinkedIn son
+  fundamentales para esto.
+- **Investigación previa:** Incluso si no redactas una carta, investigar a tus
+  entrevistadores en LinkedIn antes de una videollamada te permitirá enfocar mejor tus
+  preguntas y demostrar interés real. He comprobado que este esfuerzo extra se percibe
+  positivamente, recuerda que buscar trabajo es, en sí mismo, un trabajo.
+- **Gancho inicial:** El primer párrafo debe captar la atención, mostrando conocimiento
+  de la empresa y vinculando tu interés con sus desafíos actuales.
+- **Enfoque en resultados:** Relaciona tu experiencia con los retos del puesto e incluye
+  logros medibles. Utiliza un lenguaje profesional, claro y sin jerga excesiva.
+- **Revisión:** Utiliza herramientas de corrección y, si es posible, pide a otra persona
+  que lea el texto.
+- **Formato:** Respeta la extensión máxima de **una página** y evita incluir información
+  innecesaria, como tu dirección postal completa.
 
-- **Educación y certificaciones:**
-  - Presentar con el formato: Grado académico | Institución | Año.
-  - Certificaciones técnicas relevantes (AWS, Azure, ...). Cursos en línea como Coursera
-    pueden mencionarse en entrevistas si surge el tema, pero no suelen aportar valor en
-    el CV.
+Estructura recomendada:
 
-- **Proyectos y publicaciones (opcional):** Esta sección resulta especialmente valiosa en
-  perfiles con menor experiencia laboral, en procesos de transición de carrera o cuando
-  se dispone de trabajos que puedan generar interés o estén vinculados al puesto y a la
-  empresa.
-
-#### Recomendaciones para optimizar el CV
-
-Un CV eficaz debe ser **claro, conciso y adaptado estratégicamente a cada oferta**. Se
-recomienda:
-
-- Incorporar palabras clave de la descripción del puesto (crear una nube de palabras
-  puede ser una estrategia útil).
-- Evitar imágenes, gráficos o tablas que dificulten la lectura por parte de los ATS.
-- Usar tipografías legibles y profesionales (Arial, Calibri, Times New Roman).
-- Mantener una extensión máxima de 1 página (2 solo en casos de amplia experiencia).
-- Eliminar cualquier error ortográfico o gramatical.
-- Evitar frases genéricas o clichés como “trabajo en equipo” o “altamente motivado”.
-
-## Carta de Presentación
-
-La carta de presentación es un documento breve que acompaña al currículum y explica **por
-qué eres la persona ideal para el puesto**. A diferencia del CV, que se centra en datos y
-logros, la carta permite mostrar tu **motivación, historia profesional y personalidad**.
-
-Aunque no siempre se solicita, es habitual en procesos internacionales o en empresas que
-valoran un trato más personalizado. En estos casos, puede ser el elemento decisivo para
-que un reclutador dedique tiempo a tu candidatura.
-
-Sus principales funciones son:
-
-- **Personalizar la candidatura.** Demuestra que no se trata de una aplicación genérica.
-- **Evidenciar interés genuino por la empresa.** Requiere investigación previa sobre su
-  misión, valores y proyectos.
-- **Mostrar habilidades de comunicación escrita.**
-- **Aportar valor diferencial.** Mientras el CV refleja experiencia, la carta ofrece
-  contexto y motivación.
-
-En conjunto, la carta de presentación debe complementar al CV, asegurando coherencia
-entre los dos documentos, sin repetir la misma información.
-
-### Errores comunes a evitar
-
-1. **No dirigirla a una persona concreta.** Siempre que sea posible, identifica al
-   responsable del proceso (gerente de contratación, líder de área, reclutador). LinkedIn
-   puede ser de gran ayuda.
-2. **Errores ortográficos o gramaticales.** Utiliza herramientas de corrección y pide a
-   otra persona que la revise.
-3. **Inicio genérico o poco atractivo.** El primer párrafo debe captar la atención,
-   mostrando conocimiento de la empresa y vinculando tu interés con sus desafíos
-   actuales.
-4. **Falta de resultados tangibles.** Relaciona tu experiencia con los retos del puesto e
-   incluye logros medibles.
-5. **Descuidar el formato.** Evita información innecesaria (como dirección completa),
-   emplea un lenguaje claro, profesional y sin excesiva jerga. Respeta la extensión
-   máxima de **1 página (ideal)** o **2 páginas (excepcionalmente)**.
-
-### Cómo redactar la carta paso a paso
-
-#### Paso 1. Preparación
-
-Antes de redactar la carta de presentación es fundamental realizar una preparación
-adecuada. Para ello, conviene analizar detenidamente la descripción del puesto con el fin
-de comprender las funciones y responsabilidades que se requieren. A partir de esta
-revisión, se deben identificar las palabras clave y las competencias prioritarias que la
-empresa valora, ya que integrarlas en el texto aumenta la relevancia de la candidatura.
-Asimismo, resulta recomendable investigar los retos actuales y los proyectos en los que
-está trabajando la organización, lo que permite demostrar interés genuino y conocimiento
-del contexto. Finalmente, localizar el nombre del responsable de contratación añade un
-toque de personalización que refuerza la cercanía y profesionalidad del mensaje.
-
-#### Paso 2. Estructura recomendada
-
-1. **Encabezado:** Datos de contacto tuyos y del destinatario.
-2. **Saludo personalizado:** “Estimado/a \[Nombre]”.
+1. **Encabezado:** Datos de contacto del remitente y del destinatario.
+2. **Saludo personalizado:** "Estimado/a [Nombre]".
 3. **Primer párrafo (gancho):** Expresa tu motivación para unirte a la empresa,
-   demostrando conocimiento de su cultura y proyectos.
-4. **Cuerpo (2–3 párrafos):**
-   - Relaciona tu experiencia con los requisitos del puesto.
-   - Explica cómo tus logros pueden aportar a la empresa.
-   - Utiliza modelos como **PAR (Problema–Acción–Resultado)** para estructurar ejemplos.
-
-5. **Cierre:** Reafirma tu entusiasmo, tu encaje con el puesto y tu disposición a una
-   entrevista.
-6. **Firma:** “Atentamente,” seguido de tu nombre.
-
-#### Paso 3. Revisión
-
-El tercer paso en la redacción de la carta de presentación consiste en una revisión
-minuciosa. En esta etapa es importante eliminar clichés y frases vacías que no aportan
-valor, así como comprobar cuidadosamente la ortografía y la gramática para garantizar un
-texto impecable. También conviene verificar que la extensión no supere entre una y dos
-páginas, manteniendo la brevedad sin sacrificar claridad ni precisión. Finalmente, es
-esencial cuidar el tono, que debe ser profesional, cercano y directo, transmitiendo
-seguridad y autenticidad en cada frase.
+   demostrando conocimiento de su cultura y proyectos actuales.
+4. **Cuerpo (2–3 párrafos):** Relaciona tu experiencia con los requisitos del puesto y
+   explica cómo tus logros aportarán valor. Se recomienda el modelo **PAR
+   (Problema–Acción–Resultado)** para estructurar los ejemplos.
+5. **Cierre:** Reafirma tu entusiasmo, tu encaje con la posición y tu disposición para
+   concertar una entrevista.
+6. **Firma:** "Atentamente," seguido de tu nombre.
 
 ## LinkedIn
 
-### LinkedIn como complemento
-
-LinkedIn no es simplemente un **currículum digital**, sino una plataforma integral:
+LinkedIn no es simplemente un currículum digital, sino una plataforma que funciona como
 vitrina profesional, espacio de _networking_ y motor de búsqueda de empleo.
 
-Un perfil bien estructurado y actualizado aumenta de forma significativa la probabilidad
-de ser contactado para entrevistas, mientras que uno incompleto o genérico puede reducir
-la visibilidad.
+Un perfil bien estructurado aumenta significativamente la probabilidad de ser contactado
+para entrevistas. En mi experiencia personal, todas las entrevistas que he realizado han
+surgido a través de esta red social.
 
-### Fundamentos de un perfil sólido
+Un perfil sólido comienza con una estética cuidada y profesional:
 
-Un perfil sólido en LinkedIn comienza por cuidar los aspectos visuales y de presentación.
-La foto de perfil debe ser profesional, clara y transmitir cercanía, lo ideal es emplear
-un fondo neutro, vestir de manera formal o semiformal y mostrar una sonrisa natural. En
-cambio, conviene evitar selfies, imágenes de baja calidad o fotografías sociales. A esto
-se suma el uso de un banner personalizado que refuerce la especialidad del profesional,
-lo que contribuye a proyectar una identidad coherente.
+- **Foto de perfil:** Debe ser clara y transmitir cercanía. Se recomienda emplear un
+  fondo neutro, vestimenta formal o semiformal y una expresión natural.
+- **Banner personalizado:** Es una oportunidad para reforzar tu especialidad técnica y
+  proyectar una identidad visual coherente con tu sector.
+- **URL personalizada:** Es fundamental contar con una dirección limpia y fácil de
+  recordar (por ejemplo: `linkedin.com/in/juan-perez` en lugar de una cadena de números
+  genérica). Esto facilita su inclusión en el CV y otros documentos.
 
-Mantener el perfil actualizado refleja dinamismo y seriedad, mientras que la interacción
-activa mediante publicaciones, comentarios y recomendaciones incrementa la credibilidad.
+Esta estrategia de optimización debe extenderse a otras redes o plataformas
+profesionales relevantes. El objetivo es que, cuando un reclutador realice una búsqueda
+sobre ti, encuentre múltiples fuentes fiables y coherentes que respalden tu trayectoria.
 
-Otro elemento clave es disponer de una **URL personalizada**, ya que una dirección clara,
-profesional y fácil de recordar facilita su inclusión en el currículum, correos
-electrónicos y otros documentos de presentación. Por ejemplo, en lugar de un enlace
-genérico como _linkedin.com/in/juanperez12345_, es preferible usar una versión optimizada
-como _linkedin.com/in/juan-perez_. Esta misma estrategia puede aplicarse a otras redes
-sociales o plataformas profesionales que consideres relevantes, de modo que, al realizar
-una búsqueda sobre ti, los reclutadores o contactos tengan acceso a múltiples fuentes
-fiables y coherentes que reflejen tu trayectoria y profesionalidad.
+Finalmente, aprovecha la **sección de introducción** para destacar enlaces estratégicos,
+como tu portafolio, blogs técnicos o páginas personales que demuestren tu trabajo de
+manera tangible.
 
-Finalmente, la **sección de introducción** ofrece la posibilidad de destacar enlaces a
-portafolios, blogs o páginas personales. En caso de no contar con estos recursos,
-herramientas como **Linktree** permiten centralizar en un único espacio proyectos,
-artículos o publicaciones, facilitando así que los reclutadores accedan de manera
-sencilla a muestras concretas del trabajo realizado.
+## Entrevista
 
-### Estrategias de visibilidad
+Una entrevista no debe considerarse un examen, sino un **diálogo estratégico**. Es la
+oportunidad para demostrar competencias técnicas, personalidad, capacidad de
+comunicación y adecuación a la cultura de la empresa.
 
-Las recomendaciones en LinkedIn actúan como **testimonios públicos de tu desempeño
-profesional**, aportando credibilidad y reforzando tu reputación ante reclutadores. Una
-estrategia efectiva consiste en solicitarlas tras evaluaciones de desempeño. Otra opción
-es ofrecer redactar una recomendación a un compañero y, a cambio, solicitar que él haga
-lo mismo, fomentando la reciprocidad y fortaleciendo las relaciones profesionales.
+### Tipos de preguntas y metodologías
 
-Para solicitarlas, basta con acceder al perfil del contacto, hacer clic en el botón
-**“Más”** y seleccionar **“Solicitar recomendación”**, asegurándote de personalizar el
-mensaje para que refleje claramente tu relación profesional y el tipo de feedback que
-aprecias.
+Las preguntas suelen clasificarse en dos categorías principales:
 
-## Habilidades de Entrevista
+1. Para las preguntas **conductuales (_behavioral_)**, que se basan en experiencias
+   pasadas para evaluar cómo has actuado en situaciones reales, se recomienda utilizar
+   el **método CARL**. Este consiste en describir primero el **Contexto** de la
+   situación inicial, explicar después la **Acción** o medidas que tomaste, mostrar los
+   **Resultados** e impacto logrado con datos concretos y, finalmente, detallar la
+   **Lección** aprendida y cómo la aplicarías en el futuro.
 
-### La entrevista como conversación estratégica
+2. En cuanto a las preguntas **situacionales (_situational_)**, que plantean escenarios
+   hipotéticos para evaluar tu capacidad de reacción, el **método RCS** es ideal para
+   mantener el control. El proceso consiste en **Replantear** la pregunta para confirmar
+   que la has entendido, **Clarificar** solicitando detalles adicionales si es necesario
+   y, por último, **Estructurar** (_structure_) tus ideas tomándote un momento antes de
+   responder de forma lógica.
 
-Una entrevista no debe considerarse un examen, sino un **diálogo estratégico** que
-permite demostrar tanto las competencias técnicas como la personalidad, la capacidad de
-comunicación y la adecuación cultural al entorno laboral. Prepararse adecuadamente es
-clave: conocer los tipos de preguntas habituales y contar con marcos de respuesta
-estructurados aumenta la confianza y proyecta profesionalismo.
+### Preparación de preguntas clave
 
-### Tipos de preguntas y marcos de respuesta
+#### "Háblame de ti"
 
-Las preguntas de entrevista suelen clasificarse en conductuales y situacionales, cada una
-con métodos específicos para estructurar la respuesta.
+Se recomienda estructurar la respuesta siguiendo la línea temporal
+**Presente–Pasado–Futuro**:
 
-#### Preguntas conductuales (_Behavioral_)
+- **Presente:** Tu rol actual y logros principales.
+- **Pasado:** Experiencia previa más relevante para el puesto.
+- **Futuro:** Cómo encaja tu perfil con los objetivos de la empresa.
 
-Estas se basan en experiencias pasadas y buscan evaluar cómo se ha actuado en situaciones
-similares.
+#### "¿Dónde te ves en X años?"
 
-???+ example "Ejemplo"
+El entrevistador busca compromiso y proyección. Un enfoque realista y profesional sería:
 
-Háblame de una ocasión en la que tuviste que gestionar un miembro del equipo difícil.
+- **Corto plazo (1–2 años):** Aprendizaje profundo de los procesos, productos, clientes
+  y retos del equipo.
+- **Medio plazo (3–4 años):** Generación de soluciones con impacto directo en la
+  organización.
+- **Largo plazo:** Evolución hacia roles de especialización técnica, liderazgo o
+  mentoría.
 
-#### Preguntas situacionales (_Situational_)
+#### "¿Por qué deberíamos contratarte?"
 
-Plantean escenarios hipotéticos para evaluar la capacidad de reacción y toma de
-decisiones.
-
-???+ example "Ejemplo"
-
-¿Qué harías si cometieras un error que nadie más hubiera notado?
-
-#### Método CARL
-
-Para responder preguntas conductuales de manera estructurada, se puede usar el método
-CARL:
-
-- **C**ontexto: Describe la situación.
-- **A**cción: Explica lo que hiciste.
-- **R**esultados: Muestra el impacto logrado con datos concretos.
-- **L**ección: Señala lo aprendido y cómo lo aplicarías en el futuro.
-
-???+ example "Ejemplo"
-
-En un proyecto con plazos ajustados (Contexto), organicé reuniones diarias y reasigné
-tareas (Acción). Logramos entregar tres días antes de lo previsto (Resultado). Aprendí la
-importancia de dividir el trabajo en sprints cortos (Lección).
-
-#### Método RCS (para preguntas situacionales)
-
-Para preguntas hipotéticas, el método RCS ayuda a estructurar la respuesta:
-
-- **R**eplantear: Confirma que entendiste la pregunta.
-- **C**larificar: Solicita detalles adicionales si es necesario.
-- **S**tructure: Organiza tus ideas antes de responder.
-
-???+ example "Ejemplo"
-
-Para confirmar, ¿preguntas cómo actuaría con un cliente que solicita algo imposible?
-(Replantear). ¿Se debe a limitaciones de recursos o a políticas internas? (Clarificar).
-Dame un momento para organizar mi respuesta (Structure).
-
-Este enfoque transmite calma, pensamiento crítico y claridad lógica.
-
-### Preguntas clave que debes dominar
-
-#### “Háblame de ti”
-
-Se recomienda estructurar la respuesta en **Presente–Pasado–Futuro**:
-
-- **Presente:** Describe tu rol actual y logros principales.
-- **Pasado:** Menciona la experiencia más relevante.
-- **Futuro:** Explica cómo tu perfil encaja en el puesto.
-
-???+ example "Ejemplo"
-
-Actualmente soy analista de datos y optimicé modelos predictivos que aumentaron la
-precisión en un 20%. Antes trabajé en consultoría estratégica, lo que me dio visión de
-negocio. Ahora quiero aplicar mis capacidades técnicas y de gestión para impulsar
-proyectos de inteligencia artificial en su empresa.
-
-#### “¿Dónde te ves en 5 años?”
-
-El entrevistador busca compromiso y proyección profesional:
-
-- **Años 1–2:** Aprender procesos y aportar en proyectos clave.
-- **Años 3–5:** Asumir roles de especialización, liderazgo o mentoría.
-
-#### “¿Por qué deberíamos contratarte?”
-
-Una estructura efectiva es la regla del 50/30/20:
+Una estructura efectiva para esta respuesta es la **regla del 50/30/20**:
 
 - **50%:** Lo que aportas y cómo tus logros conectan con los requisitos del puesto.
-- **30%:** Qué buscas y por qué deseas unirte a la empresa.
-- **20%:** Qué te diferencia, ya sea un rasgo personal, un ejemplo memorable o una
-  experiencia singular.
+- **30%:** Tus motivaciones y por qué deseas unirte específicamente a esa empresa.
+- **20%:** Tu factor diferenciador (un rasgo personal, una experiencia singular o un
+  ejemplo memorable).
 
-### Cómo manejar brechas laborales
+## Negociación salarial
 
-#### Cuándo explicarlas
+La negociación salarial es un aspecto crucial del proceso de selección que debe
+abordarse con preparación, datos y confianza. Es fundamental conocer de antemano el
+rango de mercado para el perfil solicitado, consultando plataformas como Glassdoor o
+hablando con compañeros del sector.
 
-- **Brechas cortas (menos de 6 meses) o muy antiguas:** No requieren explicación. Puedes
-  mencionar que aprovechaste ese tiempo para actualizar conocimientos o explorar nuevas
-  herramientas.
-- **Brechas largas o recientes:** Preparar una respuesta honesta y clara convierte la
-  brecha en una oportunidad para mostrar desarrollo personal o profesional.
+Además del salario base, se deben evaluar factores que influyen en la compensación
+total, como la modalidad de trabajo (remoto, híbrido o presencial), los gastos de
+transporte y el coste de vida, u otras ventajas que te puedan ofrecer.
 
-???+ example "Ejemplo"s
+Al final, trabajamos por dinero, así que el salario es de las primeras cosas que deben
+quedar claras. Si la oferta no te convence y ves que no hay margen para negociar, lo más
+sano es no seguir con el proceso, a menos que tengas una necesidad real. No nos
+engañemos, empezar un trabajo sintiéndote mal pagado desde el primer día no suele acabar
+bien.
 
-- Personal: cuidado de un familiar → demuestra organización, resiliencia y capacidad
-  multitarea.
-- Profesional (despido): explicar cómo mantuviste tus habilidades activas mediante
-  cursos, proyectos o voluntariado.
+### Estrategias de negociación
 
-### Negociación salarial
-
-La negociación salarial es un aspecto crucial del proceso de selección y debe abordarse
-con preparación y confianza. Es recomendable conocer el rango de mercado mediante
-plataformas como Glassdoor o consultando con colegas del sector. También se deben
-considerar factores como la modalidad de trabajo (remoto, híbrido o presencial),
-transporte y coste de vida, ya que influyen en la valoración de la oferta.
-
-**Técnicas efectivas:**
-
-1. Negocia como lo harías para un amigo cercano para ganar confianza.
-2. Usa cifras específicas: es más persuasivo pedir 57.650 € que 57.000 €.
-3. Define tu mínimo aceptable antes de iniciar la negociación.
-4. Argumenta con datos y referencias salariales, no con emociones.
-5. Mantén ética y gratitud, reforzando tu interés por el puesto.
-
-???+ example "Ejemplo"
-
-El promedio del sector es de 62.500 €. Con mis cuatro años de experiencia en \[área X],
-puedo aportar valor inmediato en \[reto específico]. ¿Sería posible ajustar la oferta
-para acercarnos a ese promedio?
-
-## Comunicación Profesional
-
-### Introducción
-
-En el entorno laboral actual, la **forma de comunicarse influye directamente en el
-impacto profesional**. No se trata únicamente de transmitir información, sino de generar
-confianza, alinear expectativas y facilitar el avance de los proyectos. Una comunicación
-efectiva contribuye a fortalecer la credibilidad, mejorar la colaboración y garantizar
-que los objetivos se cumplan de manera más eficiente.
-
-Este apartado se centra en dos pilares fundamentales: los **correos electrónicos
-efectivos**, que constituyen la base de la comunicación escrita diaria, y las **reuniones
-uno a uno con el manager**, espacios estratégicos para el desarrollo profesional. El
-objetivo es encontrar un equilibrio, ser cortés pero directo, evitando tanto la rudeza
-como la excesiva formalidad, de manera que el mensaje sea claro, profesional y
-constructivo.
-
-### Correos electrónicos efectivos
-
-Los correos electrónicos son una herramienta esencial de comunicación profesional y
-pueden clasificarse en dos grandes tipos, cada uno con sus propias buenas prácticas.
-
-#### Correos de solicitud y respuesta (_Request & Reply_)
-
-Los correos de solicitud y respuesta incluyen aquellos enviados para obtener información,
-solicitar apoyo o proponer iniciativas, y se subdividen en:
-
-1. **Correos fríos (_Cold Emails_):** Se envían como primer contacto a alguien con quien
-   no se ha interactuado previamente. Ejemplos comunes son solicitar información, apoyo
-   en un proyecto o proponer un “coffee chat”. Para que sean efectivos, es recomendable
-   explicar cómo encontraste a la persona o por qué escribes, mostrar un beneficio mutuo
-   o reconocimiento y, en caso de invitar a reuniones informales, pedir permiso antes de
-   enviar la invitación al calendario.
-
-2. **Correos de acción requerida (_Action Required Emails_):** Destinados a grupos de
-   trabajo, buscan generar una acción específica y medible. Por ejemplo, solicitar al
-   equipo que vote entre varias opciones. Se recomienda incluir en el asunto un llamado a
-   la acción claro, como “Encuesta de 1 minuto: vota tu actividad favorita”, y colocar la
-   acción principal al inicio del mensaje, seguida del contexto necesario.
-
-#### Correos de confirmación (_Confirmation_)
-
-Los correos de confirmación sirven para dejar constancia de acuerdos, decisiones o
-información relevante. Se incluyen:
-
-1. **Actas de reunión o recapitulaciones de cadenas extensas:** Su estructura óptima
-   contempla los puntos clave y acciones principales al inicio, la asignación de
-   responsables y, al final, notas adicionales que puedan ser consultadas como referencia
-   opcional.
-
-2. **Boletines o resúmenes de proyectos:** Estos correos, que suelen ser más largos,
-   deben incluir un **TL;DR** al inicio con resultados cuantificables, utilizar
-   plantillas para mantener consistencia y verificar que todos los destinatarios reciban
-   información relevante y pertinente.
-
-### Reuniones uno a uno con el manager
-
-Las reuniones individuales con el jefe son un espacio estratégico para fortalecer la
-comunicación, alinear objetivos y planificar el desarrollo profesional. Permiten recibir
-feedback constructivo, discutir el progreso de proyectos, identificar retos y bloqueos, y
-establecer planes de mejora continuos. Estas reuniones no deben verse como un trámite
-rutinario, sino como una oportunidad para crecer profesionalmente y aportar valor al
-equipo.
+- **Definir un suelo salarial:** Es vital tener clara una cifra que garantice
+  condiciones de vida favorables y realistas. A partir de ese número, es recomendable
+  añadir un margen o porcentaje extra como margen de maniobra.
+- **Priorizar el rango de la empresa:** Una buena práctica es preguntar primero cuál es
+  el rango presupuestado para la posición, lo que evita dar una cifra a la baja y
+  permite alinearse con las expectativas de la empresa. Sin embargo, en ocasiones me he
+  encontrado con reclutadores que se niegan a dar ese dato, en esos casos, suelo optar
+  por proponer una cifra más alta o un rango salarial amplio, con la idea de ir
+  ajustándolo a medida que obtengo más información sobre las responsabilidades reales
+  del puesto.
+- **Justificar la petición:** Las pretensiones económicas deben estar respaldadas por
+  argumentos sólidos: años de experiencia, proyectos que hayan generado beneficios
+  medibles, dominio de tecnologías clave o actividades adicionales que te distingan de
+  otros candidatos.

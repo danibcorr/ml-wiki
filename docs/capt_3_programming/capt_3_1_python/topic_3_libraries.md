@@ -24,3 +24,4 @@ librerías queden obsoletas.
 | **argparse**     | Proporciona herramientas para crear interfaces de línea de comandos, con definición de argumentos, opciones y ayuda automática.               |
 | **SQLModel**     | Facilita la interacción con bases de datos SQL mediante modelos de datos, combinando SQLAlchemy y Pydantic.                                   |
 | **Cookiecutter** | Genera proyectos a partir de plantillas, estandarizando la estructura de directorios y archivos para iniciar proyectos de manera consistente. |
+| **SlowApi**      | Permite asignar un límite en el número de peticiones para APIs en FastAPI                                                                     |
