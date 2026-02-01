@@ -34,6 +34,9 @@ nav = [
             "capt_3_programming/capt_3_4_cuda/topic_1_cuda.md",
             "capt_3_programming/capt_3_4_cuda/topic_2_exercises_cuda.md"
         ]}
+    ]},
+    {"Otros" = [
+        "capt_A_interviews/cv_guide.md"
     ]}
 ]
 extra_css = ["stylesheets/extra.css"]
