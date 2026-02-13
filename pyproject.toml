@@ -1,7 +1,7 @@
 [project]
 name = "ml-wiki"
-version = "0.1.1"
-description = "Add your description here"
+version = "0.1.2"
+description = "Machine Learning Wiki en Español"
 authors = [
     {name = "Daniel Bazo Correa", email = "none@none.com"},
 ]
