@@ -1,9 +1,4 @@
 <p align="center">
-  <img src="./docs/assets/img/docs/logos/machine-learning-wiki-logo.png" width="300"/>
-  <br />
-</p>
-
-<p align="center">
   <a href="https://github.com/danibcorr/wiki-personal/actions/workflows/workflow.yml"><img src="https://github.com/danibcorr/wiki-personal/actions/workflows/workflow.yml/badge.svg"></a>
   <a href="https://github.com/danibcorr/wiki-personal/blob/main/LICENSE" target="_blank">
       <img src="https://img.shields.io/github/license/danibcorr/wiki-personal" alt="License">
