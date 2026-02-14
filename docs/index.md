@@ -1,14 +1,9 @@
 ---
-title: Machine Learning Wiki
+title: Introducción
 description: Explicación de los contenidos.
 hide_table_of_contents: true
 slug: /
 ---
-
-<p align="center">
-  <img src="./assets/img/docs/logos/machine-learning-wiki-logo.png" width="300"/>
-  <br />
-</p>
 
 # Introducción
 
