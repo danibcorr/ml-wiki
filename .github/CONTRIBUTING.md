@@ -1,7 +1,7 @@
-# Cómo contribuir a ml-wiki
+# Cómo contribuir a wiki-personal
 
 ¡Hola y bienvenido! Nos alegra que estés interesado en contribuir al proyecto
-**ml-wiki**.
+**wiki-personal**.
 
 Apreciamos todo tipo de contribuciones, ya sea contenido, reportes de errores o nuevas
 funciones.
@@ -20,8 +20,8 @@ Existen dos formas principales de contribuir:
 
 ### Paso 1: Abrir un issue
 
-Comienza abriendo un **issue** para describir tu propuesta o el problema que encontraste.
-Esto nos ayuda a evaluar y guiar el trabajo antes de hacer cambios.
+Comienza abriendo un **issue** para describir tu propuesta o el problema que
+encontraste. Esto nos ayuda a evaluar y guiar el trabajo antes de hacer cambios.
 
 > Si tu cambio es pequeño (por ejemplo, corregir un error tipográfico), puedes omitir
 > este paso y abrir directamente un pull request.
@@ -91,8 +91,8 @@ El proyecto usa un **Makefile** para automatizar tareas comunes:
 | `make clean`      | Limpia cache y dependencias                     |
 | `make all`        | Ejecuta `build` y todas las tareas relacionadas |
 
-> Recomendamos usar `make dev` para previsualizar cambios mientras editas documentación o
-> contenido.
+> Recomendamos usar `make dev` para previsualizar cambios mientras editas documentación
+> o contenido.
 
 ## Estilo de documentación
 
@@ -114,5 +114,5 @@ Si no quieres escribir código, aún puedes ayudar:
 - Sugerir nuevas funciones o mejoras de usabilidad
 - Ayudar a organizar y responder issues
 
-Gracias por ser parte de la aventura de **ml-wiki**. ¡Nos alegra tenerte aquí! Si tienes
-preguntas, no dudes en contactarnos o abrir un issue.
+Gracias por ser parte de la aventura de **wiki-personal**. ¡Nos alegra tenerte aquí! Si
+tienes preguntas, no dudes en contactarnos o abrir un issue.

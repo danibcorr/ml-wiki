@@ -1,10 +1,10 @@
 [project]
-site_name = "Machine Learning Wiki"
-site_description = "🏛️ Machine Learning Wiki en Español"
+site_name = "Daniel Bazo Correa"
+site_description = "🏛️ Mi wiki personal como ingeniero y científico de datos en Español"
 site_author = "Daniel Bazo Correa"
-site_url = "https://danibcorr.github.io/ml-wiki/"
-repo_url = "https://github.com/danibcorr/ml-wiki"
-repo_name = "danibcorr/ml-wiki"
+site_url = "https://danibcorr.github.io/wiki-personal/"
+repo_url = "https://github.com/danibcorr/wiki-personal"
+repo_name = "danibcorr/wiki-personal"
 copyright = "Copyright &copy; 2026 Daniel Bazo Correa"
 nav = [
     {"Inicio" = "index.md"},
@@ -37,7 +37,12 @@ nav = [
     ]},
     {"Otros" = [
         "capt_A_interviews/cv_guide.md"
-    ]}
+    ]},
+    {"Dominios" = [
+        {"Telecomunicaciones" = [
+            "domain_specific/Redes y servicios de telecomunicaciones.md"
+        ]}
+    ]},
 ]
 extra_css = ["stylesheets/extra.css"]
 extra_javascript = [

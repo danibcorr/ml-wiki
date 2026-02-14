@@ -4,13 +4,13 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/danibcorr/ml-wiki/actions/workflows/workflow.yml"><img src="https://github.com/danibcorr/ml-wiki/actions/workflows/workflow.yml/badge.svg"></a>
-  <a href="https://github.com/danibcorr/ml-wiki/blob/main/LICENSE" target="_blank">
-      <img src="https://img.shields.io/github/license/danibcorr/ml-wiki" alt="License">
+  <a href="https://github.com/danibcorr/wiki-personal/actions/workflows/workflow.yml"><img src="https://github.com/danibcorr/wiki-personal/actions/workflows/workflow.yml/badge.svg"></a>
+  <a href="https://github.com/danibcorr/wiki-personal/blob/main/LICENSE" target="_blank">
+      <img src="https://img.shields.io/github/license/danibcorr/wiki-personal" alt="License">
   </a>
 </p>
 
-# Machine Learning Wiki
+# La Wiki de un ingeniero
 
 ¡Hola! 👋
 
